@@ -1,0 +1,28 @@
+name: iRead
+
+options:
+  bundleIdPrefix: com.AftrHours
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+
+targets:
+  MyApp:
+    type: application
+    platform: iOS
+
+    sources:
+      - App
+      - Views
+      - VM
+      - Ctrl
+      - Svc
+      - Models
+
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.AftrHours.iRead
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
