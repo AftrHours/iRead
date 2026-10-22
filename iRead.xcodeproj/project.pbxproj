@@ -6,70 +6,123 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1B8DE343974AA7AFF291968E /* LibCtrlLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E1C7062F5205CA3863FF97 /* LibCtrlLive.swift */; };
+		245C8F28237B8C8785CD8305 /* BookGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527E168E90C12FE141AF7804 /* BookGridView.swift */; };
+		2E8DFF33E779116D04EFC00E /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 62A00B5DED0A0F2FA6FE2B86 /* ZIPFoundation */; };
+		35C4991ECE64C928A2B380E5 /* BookRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069E91B4C7B79BE6D2B5A115 /* BookRowView.swift */; };
+		4091BC7DA7FD2FE4D51D83A6 /* LibVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D46F3EBDDB02AFF3A385EB3 /* LibVM.swift */; };
+		6655366219CE74100FA386FE /* LibSvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C8FFC921D7C86A1E151287 /* LibSvc.swift */; };
+		A8D02206CDF60C9CD3CF76C4 /* BookRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391B9DE41DC6D3A867C04BCA /* BookRecord.swift */; };
+		BE27E6B76572235F5A3656D9 /* iReadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9320C25F4790910EC62FEA /* iReadApp.swift */; };
+		BEDB0BA6D9C0E9CBFDC6AB3F /* LibSvcLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F5EC87BBD1CE1B23DFF5DE /* LibSvcLive.swift */; };
+		C1EA4A7FEA43AA33B5AA267F /* LibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C032D34569BCE02A2A8B15C /* LibView.swift */; };
+		E4202A2035A621B84303E175 /* LibCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC4A1C9D2AADD977AEA00B /* LibCtrl.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		97E73B452F88ADCC12F989ED /* MyApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		069E91B4C7B79BE6D2B5A115 /* BookRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRowView.swift; sourceTree = "<group>"; };
+		07E1C7062F5205CA3863FF97 /* LibCtrlLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibCtrlLive.swift; sourceTree = "<group>"; };
+		09C8FFC921D7C86A1E151287 /* LibSvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibSvc.swift; sourceTree = "<group>"; };
+		0C032D34569BCE02A2A8B15C /* LibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibView.swift; sourceTree = "<group>"; };
+		391B9DE41DC6D3A867C04BCA /* BookRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRecord.swift; sourceTree = "<group>"; };
+		4D46F3EBDDB02AFF3A385EB3 /* LibVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibVM.swift; sourceTree = "<group>"; };
+		527E168E90C12FE141AF7804 /* BookGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGridView.swift; sourceTree = "<group>"; };
+		53FC4A1C9D2AADD977AEA00B /* LibCtrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibCtrl.swift; sourceTree = "<group>"; };
+		8A9320C25F4790910EC62FEA /* iReadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iReadApp.swift; sourceTree = "<group>"; };
+		CE5AAF6A1BEBBEF5DEEFBB38 /* POC.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = POC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4F5EC87BBD1CE1B23DFF5DE /* LibSvcLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibSvcLive.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		CB4FC46E373859D58717FF1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E8DFF33E779116D04EFC00E /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
-		07CB0A87AEF9102F6D869167 /* Ctrl */ = {
+		470F026AFE315173DA712738 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				391B9DE41DC6D3A867C04BCA /* BookRecord.swift */,
 			);
-			path = Ctrl;
-			sourceTree = "<group>";
-		};
-		3276A1746EF5D4417B4BA4D3 /* Svc */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Svc;
-			sourceTree = "<group>";
-		};
-		3EFD33F6EE7E9F5EEC6CAD4E /* VM */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = VM;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4E99227E4B82CB3CB33B4C96 = {
 			isa = PBXGroup;
 			children = (
 				C21DF65F94FC512F46BF3693 /* App */,
-				07CB0A87AEF9102F6D869167 /* Ctrl */,
-				5D17A0AA7D6EF238450CB5A4 /* Models */,
-				3276A1746EF5D4417B4BA4D3 /* Svc */,
-				D1414FF536CD224B03D9B3BB /* Views */,
-				3EFD33F6EE7E9F5EEC6CAD4E /* VM */,
+				55B6F370BB373B0919BC4676 /* Books */,
 				D74725A98558B2877857C71D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		5D17A0AA7D6EF238450CB5A4 /* Models */ = {
+		55B6F370BB373B0919BC4676 /* Books */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Models;
+			path = Books;
+			sourceTree = "<group>";
+		};
+		63CF069CE0CED3ECA629D310 /* Svc */ = {
+			isa = PBXGroup;
+			children = (
+				09C8FFC921D7C86A1E151287 /* LibSvc.swift */,
+				D4F5EC87BBD1CE1B23DFF5DE /* LibSvcLive.swift */,
+			);
+			path = Svc;
+			sourceTree = "<group>";
+		};
+		64BA61D5645DC838C1B18266 /* Ctrl */ = {
+			isa = PBXGroup;
+			children = (
+				53FC4A1C9D2AADD977AEA00B /* LibCtrl.swift */,
+				07E1C7062F5205CA3863FF97 /* LibCtrlLive.swift */,
+			);
+			path = Ctrl;
+			sourceTree = "<group>";
+		};
+		9033B71882CAD70CE5D72503 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				527E168E90C12FE141AF7804 /* BookGridView.swift */,
+				069E91B4C7B79BE6D2B5A115 /* BookRowView.swift */,
+				0C032D34569BCE02A2A8B15C /* LibView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A4FA39699E9E11F25DB72479 /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				4D46F3EBDDB02AFF3A385EB3 /* LibVM.swift */,
+			);
+			path = VM;
 			sourceTree = "<group>";
 		};
 		C21DF65F94FC512F46BF3693 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				8A9320C25F4790910EC62FEA /* iReadApp.swift */,
+				64BA61D5645DC838C1B18266 /* Ctrl */,
+				470F026AFE315173DA712738 /* Models */,
+				63CF069CE0CED3ECA629D310 /* Svc */,
+				9033B71882CAD70CE5D72503 /* Views */,
+				A4FA39699E9E11F25DB72479 /* VM */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		D1414FF536CD224B03D9B3BB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		D74725A98558B2877857C71D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				97E73B452F88ADCC12F989ED /* MyApp.app */,
+				CE5AAF6A1BEBBEF5DEEFBB38 /* POC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,21 +130,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		63CC14BBD83F19ED76B15070 /* MyApp */ = {
+		FCE64F1400A1D2CA8B256612 /* POC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EE8B783AEFBC1FFF78E1121A /* Build configuration list for PBXNativeTarget "MyApp" */;
+			buildConfigurationList = FC73B1B3405D657C4582C3A5 /* Build configuration list for PBXNativeTarget "POC" */;
 			buildPhases = (
-				6C327C9ED430E2E1ABA78C1A /* Sources */,
+				936B8D6ADCB0FD65B875B5E0 /* Sources */,
+				CB4FC46E373859D58717FF1B /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MyApp;
+			name = POC;
 			packageProductDependencies = (
+				62A00B5DED0A0F2FA6FE2B86 /* ZIPFoundation */,
 			);
-			productName = MyApp;
-			productReference = 97E73B452F88ADCC12F989ED /* MyApp.app */;
+			productName = POC;
+			productReference = CE5AAF6A1BEBBEF5DEEFBB38 /* POC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -103,6 +158,9 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					FCE64F1400A1D2CA8B256612 = {
+						DevelopmentTeam = "";
+					};
 				};
 			};
 			buildConfigurationList = 095A63EB46EFF305AE552C39 /* Build configuration list for PBXProject "iRead" */;
@@ -114,43 +172,40 @@
 			);
 			mainGroup = 4E99227E4B82CB3CB33B4C96;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BB3D4BDF411766E58A76E4E7 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D74725A98558B2877857C71D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				63CC14BBD83F19ED76B15070 /* MyApp */,
+				FCE64F1400A1D2CA8B256612 /* POC */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6C327C9ED430E2E1ABA78C1A /* Sources */ = {
+		936B8D6ADCB0FD65B875B5E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				245C8F28237B8C8785CD8305 /* BookGridView.swift in Sources */,
+				A8D02206CDF60C9CD3CF76C4 /* BookRecord.swift in Sources */,
+				35C4991ECE64C928A2B380E5 /* BookRowView.swift in Sources */,
+				E4202A2035A621B84303E175 /* LibCtrl.swift in Sources */,
+				1B8DE343974AA7AFF291968E /* LibCtrlLive.swift in Sources */,
+				6655366219CE74100FA386FE /* LibSvc.swift in Sources */,
+				BEDB0BA6D9C0E9CBFDC6AB3F /* LibSvcLive.swift in Sources */,
+				4091BC7DA7FD2FE4D51D83A6 /* LibVM.swift in Sources */,
+				C1EA4A7FEA43AA33B5AA267F /* LibView.swift in Sources */,
+				BE27E6B76572235F5A3656D9 /* iReadApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		10CD80F86637A9A9C17E38A2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AftrHours.iRead;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		1E1D6E38D501B3858E0C2B1D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -186,6 +241,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -203,7 +259,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
@@ -242,6 +298,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -266,25 +323,49 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
-		9515C5A7A040A569D23055DF /* Debug */ = {
+		5D2EFDAACC515629F0E44496 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "iRead App";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AftrHours.iRead;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AftrHours.iReadApp;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
+		};
+		81851B10B57234F905AE3BFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "iRead App";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AftrHours.iReadApp;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -298,16 +379,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		EE8B783AEFBC1FFF78E1121A /* Build configuration list for PBXNativeTarget "MyApp" */ = {
+		FC73B1B3405D657C4582C3A5 /* Build configuration list for PBXNativeTarget "POC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9515C5A7A040A569D23055DF /* Debug */,
-				10CD80F86637A9A9C17E38A2 /* Release */,
+				5D2EFDAACC515629F0E44496 /* Debug */,
+				81851B10B57234F905AE3BFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BB3D4BDF411766E58A76E4E7 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.20;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		62A00B5DED0A0F2FA6FE2B86 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB3D4BDF411766E58A76E4E7 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 60C4B2D1A96826BC2DF01CA8 /* Project object */;
 }
