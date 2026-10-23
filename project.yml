@@ -13,26 +13,24 @@ packages:
     url: https://github.com/weichsel/ZIPFoundation
     from: 0.9.20
 targets:
-  POC:
+  iRead:
     type: application
     platform: iOS
     sources:
       - path: App
-      - path: Books
-        buildPhase: resources
     dependencies:
       - package: ZIPFoundation
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.AftrHours.iReadApp   # change on your POC branch
-        INFOPLIST_KEY_CFBundleDisplayName: "iRead App"      # change on your POC branch
+        PRODUCT_BUNDLE_IDENTIFIER: com.AftrHours.iRead
+        INFOPLIST_KEY_CFBundleDisplayName: "iRead"
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         TARGETED_DEVICE_FAMILY: "1,2"
         MARKETING_VERSION: "0.1"
         CURRENT_PROJECT_VERSION: "1"
 schemes:
-  POC:
+  iRead:
     build:
       targets:
-        POC: all
+        iRead: all
