@@ -1,10 +1,9 @@
-// Ctrl/LibCtrlLive.swift
 import Foundation
 
 struct LibCtrlLive: LibCtrl {
-    let libSvc: any LibSvc
+    let libRepo: any LibRepo
     
     func loadLibrary() async throws -> [BookRecord] {
-        return try await libSvc.fetchBooks()
+        return try await libRepo.fetchBooks()
     }
 }

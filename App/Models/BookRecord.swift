@@ -1,4 +1,3 @@
-// Models/BookRecord.swift
 import Foundation
 
 struct BookRecord: Identifiable {

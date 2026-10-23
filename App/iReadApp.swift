@@ -2,16 +2,23 @@ import SwiftUI
 
 @main
 struct iReadApp: App {
-    // Initialize the dependency graph once for the application lifecycle
-    @StateObject private var libVM: LibVM = {
-        let service = LibSvcLive()
-        let controller = LibCtrlLive(libSvc: service)
-        return LibVM(libCtrl: controller)
-    }()
-    
+    @State private var appNav: AppNav
+    @State private var libVM: LibVM
+
+    init() {
+        let appNav = AppNav()
+        _appNav = State(initialValue: appNav)
+        _libVM = State(initialValue: LibVM(libCtrl: LibCtrlLive(libRepo: LibRepoSample()), nav: appNav))
+    }
+
     var body: some Scene {
         WindowGroup {
-            LibView(libVM: libVM)
+            switch appNav.route {
+            case .library:
+                LibView(libVM: libVM)
+            case .reader(let bookID):
+                ReaderView(readerVM: ReaderVM(bookID: bookID, nav: appNav))
+            }
         }
     }
 }

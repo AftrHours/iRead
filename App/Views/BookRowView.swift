@@ -1,4 +1,3 @@
-// Views/BookRowView.swift
 import SwiftUI
 
 struct BookRowView: View {

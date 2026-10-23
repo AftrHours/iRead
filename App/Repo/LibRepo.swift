@@ -1,6 +1,5 @@
-// Svc/LibSvc.swift
 import Foundation
 
-protocol LibSvc: Sendable {
+protocol LibRepo: Sendable {
     func fetchBooks() async throws -> [BookRecord]
 }

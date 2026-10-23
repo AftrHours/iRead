@@ -1,8 +1,7 @@
-// Views/LibView.swift
 import SwiftUI
 
 struct LibView: View {
-    @StateObject var libVM: LibVM
+    let libVM: LibVM
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -70,17 +69,17 @@ struct LibView: View {
             Spacer()
             
             HStack(spacing: 8) {
-                Button(action: { libVM.gridTapped() }) {
+                Button(action: { libVM.viewModeChanged(.grid) }) {
                     Image(systemName: "square.grid.2x2")
                         .padding(8)
-                        .background(Circle().stroke(libVM.isGridView ? Color.gray : Color.clear))
+                        .background(Circle().stroke(libVM.viewMode == .grid ? Color.gray : Color.clear))
                         .foregroundColor(.black)
                 }
-                
-                Button(action: { libVM.rowTapped() }) {
+
+                Button(action: { libVM.viewModeChanged(.list) }) {
                     Image(systemName: "line.3.horizontal")
                         .padding(8)
-                        .background(Circle().stroke(!libVM.isGridView ? Color.gray : Color.clear))
+                        .background(Circle().stroke(libVM.viewMode == .list ? Color.gray : Color.clear))
                         .foregroundColor(.black)
                 }
             }
@@ -107,7 +106,7 @@ struct LibView: View {
                 .font(.title3)
                 .fontWeight(.semibold)
             
-            if libVM.isGridView {
+            if libVM.viewMode == .grid {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
                     ForEach(books) { book in
                         BookGridView(book: book)
@@ -128,10 +127,5 @@ struct LibView: View {
 }
 
 #Preview("Library View") {
-    // Initializes the dependency graph for the preview canvas
-    let service = LibSvcLive()
-    let controller = LibCtrlLive(libSvc: service)
-    let vm = LibVM(libCtrl: controller)
-    
-    return LibView(libVM: vm)
+    LibView(libVM: LibVM(libCtrl: LibCtrlLive(libRepo: LibRepoSample()), nav: AppNav()))
 }

@@ -1,4 +1,3 @@
-// Ctrl/LibCtrl.swift
 import Foundation
 
 protocol LibCtrl: Sendable {
