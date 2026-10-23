@@ -4,9 +4,13 @@ enum PageTextStyle {
     private static let maxTextWidth: CGFloat = 690
     private static let minSideMargin: CGFloat = 24
 
-    static func attributes(settings: ReadingSettings, bodyFontSize: CGFloat) -> [NSAttributedString.Key: Any] {
+    static func font(settings: ReadingSettings, bodyFontSize: CGFloat) -> UIFont {
         let textSizeScale = 1 + 0.1 * CGFloat(settings.textSizeStep)
-        let font = UIFont.systemFont(ofSize: bodyFontSize * textSizeScale)
+        return UIFont.systemFont(ofSize: bodyFontSize * textSizeScale)
+    }
+
+    static func attributes(settings: ReadingSettings, bodyFontSize: CGFloat) -> [NSAttributedString.Key: Any] {
+        let font = font(settings: settings, bodyFontSize: bodyFontSize)
         let lineSpacingScale = 0.12 + 0.08 * CGFloat(settings.lineSpacingStep)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .justified

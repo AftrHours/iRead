@@ -3,7 +3,7 @@ import Observation
 
 @MainActor
 @Observable
-final class AppNav: Nav {
+final class AppNav {
     enum Route {
         case library
         case reader(bookID: UUID)

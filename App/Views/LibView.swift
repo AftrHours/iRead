@@ -127,5 +127,5 @@ struct LibView: View {
 }
 
 #Preview("Library View") {
-    LibView(libVM: LibVM(libCtrl: LibCtrlLive(libRepo: LibRepoSample()), nav: AppNav()))
+    LibView(libVM: LibVM(libCtrl: LibCtrl(libRepo: LibRepo()), appNav: AppNav()))
 }

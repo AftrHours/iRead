@@ -10,6 +10,27 @@ struct ReaderMenuView: View {
             } label: {
                 row("Contents", systemImage: "list.bullet")
             }
+            Button {
+                readerVM.searchTapped()
+            } label: {
+                row("Search in Book", systemImage: "magnifyingglass")
+            }
+            Button {
+                readerVM.themeSettingsTapped()
+            } label: {
+                row("Theme & Settings", systemImage: "textformat.size")
+            }
+            Divider()
+                .padding(.horizontal, 20)
+                .padding(.vertical, 4)
+            Toggle("Symbols", isOn: Binding(get: { readerVM.settings.areSymbolsShown }, set: { readerVM.symbolsToggled($0) }))
+                .padding(.horizontal, 20)
+                .frame(minHeight: 44)
+            Button {
+                readerVM.symbolDetailsTapped()
+            } label: {
+                row("Symbol Details", systemImage: "chevron.right")
+            }
         }
         .buttonStyle(.plain)
         .padding(.vertical, 8)

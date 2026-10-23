@@ -6,7 +6,9 @@ struct PageTurnView: UIViewControllerRepresentable {
     let shownPage: Page
     let settings: ReadingSettings
     let bodyFontSize: CGFloat
+    let marks: [Int: [Mark]]
     let onPageChanged: (Page) -> Void
+    let onMarkTapped: (Mark, CGRect) -> Void
 
     func makeCoordinator() -> Coordinator {
         Coordinator(pageTurnView: self)
@@ -35,13 +37,26 @@ struct PageTurnView: UIViewControllerRepresentable {
             self.pageTurnView = pageTurnView
         }
 
+        private var displayedView: PageTextView? {
+            pageViewController?.viewControllers?.first?.view as? PageTextView
+        }
+
         private var displayedPage: Page? {
-            (pageViewController?.viewControllers?.first?.view as? PageTextView)?.page
+            displayedView?.page
+        }
+
+        private var isShownPageDisplayed: Bool {
+            displayedView.map {
+                $0.page == pageTurnView.shownPage
+                    && $0.settings == pageTurnView.settings
+                    && $0.bodyFontSize == pageTurnView.bodyFontSize
+                    && $0.marks == pageTurnView.marks[pageTurnView.shownPage.number, default: []]
+            } ?? false
         }
 
         func showShownPage() {
             let hasLoadedMissingPage = pageTurnView.pages.contains { missingPageNumbers.contains($0.number) }
-            guard !isTurning, displayedPage != pageTurnView.shownPage || hasLoadedMissingPage else { return }
+            guard !isTurning, !isShownPageDisplayed || hasLoadedMissingPage else { return }
             missingPageNumbers = []
             // UIPageViewController remembers a missing neighbor until it is given a page again.
             pageViewController?.setViewControllers([pageController(for: pageTurnView.shownPage)], direction: .forward, animated: false)
@@ -75,9 +90,14 @@ struct PageTurnView: UIViewControllerRepresentable {
 
         private func pageController(for page: Page) -> UIViewController {
             let controller = UIViewController()
-            controller.view = PageTextView(page: page, settings: pageTurnView.settings, bodyFontSize: pageTurnView.bodyFontSize) { [weak self] isForward in
-                self?.turnPage(isForward: isForward)
-            }
+            controller.view = PageTextView(
+                page: page,
+                settings: pageTurnView.settings,
+                bodyFontSize: pageTurnView.bodyFontSize,
+                marks: pageTurnView.marks[page.number, default: []],
+                onEdgeTapped: { [weak self] isForward in self?.turnPage(isForward: isForward) },
+                onMarkTapped: { [weak self] mark, rect in self?.pageTurnView.onMarkTapped(mark, rect) }
+            )
             return controller
         }
 

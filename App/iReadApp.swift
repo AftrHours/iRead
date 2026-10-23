@@ -4,18 +4,25 @@ import SwiftUI
 struct iReadApp: App {
     @State private var appNav: AppNav
     @State private var libVM: LibVM
-    private let libRepo: any LibRepo
-    private let bookContentRepo: any BookContentRepo = BookContentRepoSample(epubParseSvc: EPUBParseSvcXML())
-    private let pagerSvc: any PagerSvc = PagerSvcTextKit()
-    private let progRepo: any ProgRepo = ProgRepoFile()
-    private let eventSvc: any EventSvc = EventSvcOSLog()
+    private let libRepo: LibRepo
+    private let bookContentRepo: BookContentRepo
+    private let analysisRepo: AnalysisRepo
+    private let progRepo = ProgRepo()
+    private let readingSettingsRepo = ReadingSettingsRepo()
+    private let bookStateRepo = BookStateRepo()
+    private let pagerSvc = PagerSvc()
+    private let eventSvc = EventSvc()
+    private let brightnessSvc = BrightnessSvc()
 
     init() {
         let appNav = AppNav()
-        let libRepo = LibRepoSample()
+        let libRepo = LibRepo()
+        let bookContentRepo = BookContentRepo(epubParseSvc: EPUBParseSvc())
         self.libRepo = libRepo
+        self.bookContentRepo = bookContentRepo
+        analysisRepo = AnalysisRepo(bookContentRepo: bookContentRepo)
         _appNav = State(initialValue: appNav)
-        _libVM = State(initialValue: LibVM(libCtrl: LibCtrlLive(libRepo: libRepo), nav: appNav))
+        _libVM = State(initialValue: LibVM(libCtrl: LibCtrl(libRepo: libRepo), appNav: appNav))
     }
 
     var body: some Scene {
@@ -25,15 +32,19 @@ struct iReadApp: App {
                 LibView(libVM: libVM)
             case .reader(let bookID):
                 ReaderView(readerVM: ReaderVM(
-                    readerCtrl: ReaderCtrlLive(
+                    readerCtrl: ReaderCtrl(
                         bookID: bookID,
                         libRepo: libRepo,
                         bookContentRepo: bookContentRepo,
                         pagerSvc: pagerSvc,
                         progRepo: progRepo,
-                        eventSvc: eventSvc
+                        eventSvc: eventSvc,
+                        readingSettingsRepo: readingSettingsRepo,
+                        brightnessSvc: brightnessSvc,
+                        bookStateRepo: bookStateRepo
                     ),
-                    nav: appNav
+                    refCtrl: RefCtrl(bookID: bookID, bookContentRepo: bookContentRepo, analysisRepo: analysisRepo),
+                    appNav: appNav
                 ))
             }
         }

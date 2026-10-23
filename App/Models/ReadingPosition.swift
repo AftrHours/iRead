@@ -1,6 +1,6 @@
 import Foundation
 
-struct ReadingPosition: Codable, Comparable, Sendable {
+struct ReadingPosition: Codable, Comparable, Hashable, Sendable {
     let paragraph: Int
     let charOffset: Int
 

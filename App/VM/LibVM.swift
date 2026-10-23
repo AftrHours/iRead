@@ -13,12 +13,12 @@ final class LibVM {
     private(set) var allBooks: [BookRecord] = []
     private(set) var viewMode = ViewMode.grid
 
-    private let libCtrl: any LibCtrl
-    private let nav: any Nav
+    private let libCtrl: LibCtrl
+    private let appNav: AppNav
 
-    init(libCtrl: any LibCtrl, nav: any Nav) {
+    init(libCtrl: LibCtrl, appNav: AppNav) {
         self.libCtrl = libCtrl
-        self.nav = nav
+        self.appNav = appNav
     }
 
     func onAppear() async {
@@ -36,6 +36,6 @@ final class LibVM {
     func searchTapped() {}
 
     func bookTapped(_ book: BookRecord) {
-        nav.openReader(bookID: book.id)
+        appNav.openReader(bookID: book.id)
     }
 }

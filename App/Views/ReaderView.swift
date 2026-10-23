@@ -18,11 +18,15 @@ struct ReaderView: View {
                     .task { await readerVM.onAppear(viewport: viewport) }
                     .onChange(of: viewport) { _, viewport in readerVM.viewportChanged(viewport) }
             }
+            .overlay(alignment: .bottom) {
+                returnControls
+            }
             .padding(.top, 36)
             .padding(.bottom, 24)
             bottomBar
         }
         .background(Color(.systemBackground))
+        .animation(.easeInOut, value: readerVM.toastText)
         .onChange(of: scenePhase) { _, scenePhase in
             if scenePhase == .background {
                 readerVM.appBackgrounded()
@@ -32,6 +36,12 @@ struct ReaderView: View {
             switch sheet {
             case .contents:
                 ContentsView(readerVM: readerVM)
+            case .search(let searchVM):
+                SearchView(searchVM: searchVM)
+            case .themeSettings:
+                ThemeSettingsView(readerVM: readerVM)
+            case .symbolDetails:
+                symbolDetails
             }
         }
     }
@@ -42,15 +52,77 @@ struct ReaderView: View {
             PageTurnView(
                 pages: readerVM.pages,
                 shownPage: shownPage,
-                settings: readerVM.settings,
+                settings: readerVM.layoutSettings,
                 bodyFontSize: readerVM.viewport.bodyFontSize,
-                onPageChanged: { readerVM.pageChanged($0) }
+                marks: readerVM.marks,
+                onPageChanged: { readerVM.pageChanged($0) },
+                onMarkTapped: { readerVM.markTapped($0, at: $1) }
             )
+            .popover(
+                item: Binding(get: { readerVM.card }, set: { _ in readerVM.cardDismissed() }),
+                attachmentAnchor: .rect(.rect(readerVM.cardAnchor))
+            ) { card in
+                switch card {
+                case .reference(let referenceCard):
+                    RefCardView(card: referenceCard) { readerVM.jumpToPassageTapped() }
+                case .symbol(let entity):
+                    SymCardView(entity: entity) { readerVM.editSymbolTapped() }
+                }
+            }
         } else if readerVM.hasFailedToOpen {
             ContentUnavailableView("Can't Open Book", systemImage: "book.closed")
         } else {
             ProgressView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+    }
+
+    private var symbolDetails: some View {
+        NavigationStack {
+            Color.clear
+                .navigationTitle("Symbol Details")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button(role: .close) {
+                            readerVM.sheetDismissed()
+                        }
+                    }
+                }
+        }
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
+        .presentationBackground(Color(.systemBackground))
+    }
+
+    @ViewBuilder
+    private var returnControls: some View {
+        if readerVM.canReturn {
+            HStack(spacing: 12) {
+                Button {
+                    readerVM.returnDismissed()
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .frame(width: 44, height: 44)
+                        .background(Color(.systemGray2), in: .circle)
+                }
+                .accessibilityLabel("Dismiss")
+                Button("Return to Reading", systemImage: "arrow.uturn.backward") {
+                    readerVM.returnToReadingTapped()
+                }
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.capsule)
+                .controlSize(.large)
+            }
+        } else if let toastText = readerVM.toastText {
+            Text(toastText)
+                .foregroundStyle(.white)
+                .padding(.horizontal, 24)
+                .frame(minHeight: 44)
+                .background(Color(.systemGray2), in: .capsule)
+                .transition(.opacity)
         }
     }
 
