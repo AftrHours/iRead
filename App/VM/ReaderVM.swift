@@ -53,7 +53,14 @@ final class ReaderVM {
     }
 
     func backTapped() {
-        nav.closeReader()
+        Task {
+            await readerCtrl.saveNow()
+            nav.closeReader()
+        }
+    }
+
+    func appBackgrounded() {
+        Task { await readerCtrl.saveNow() }
     }
 
     private func showCurrentPage() async {

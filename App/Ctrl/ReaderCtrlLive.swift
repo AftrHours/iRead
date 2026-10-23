@@ -5,18 +5,24 @@ actor ReaderCtrlLive: ReaderCtrl {
     private let libRepo: any LibRepo
     private let bookContentRepo: any BookContentRepo
     private let pagerSvc: any PagerSvc
+    private let progRepo: any ProgRepo
+    private let eventSvc: any EventSvc
 
     private var content = BookContent(chapters: [], paragraphs: [], sentences: [], parserVersion: 0)
     private let settings = ReadingSettings()
     private var viewport = Viewport(size: .zero, bodyFontSize: 0)
     private var position = ReadingPosition(paragraph: 0, charOffset: 0)
     private var chapterPages: [[NSRange]] = []
+    private var readingProgress: ReadingProgress?
 
-    init(bookID: UUID, libRepo: any LibRepo, bookContentRepo: any BookContentRepo, pagerSvc: any PagerSvc) {
+    init(bookID: UUID, libRepo: any LibRepo, bookContentRepo: any BookContentRepo, pagerSvc: any PagerSvc,
+         progRepo: any ProgRepo, eventSvc: any EventSvc) {
         self.bookID = bookID
         self.libRepo = libRepo
         self.bookContentRepo = bookContentRepo
         self.pagerSvc = pagerSvc
+        self.progRepo = progRepo
+        self.eventSvc = eventSvc
     }
 
     func openBook() async throws -> BookRecord {
@@ -24,6 +30,15 @@ actor ReaderCtrlLive: ReaderCtrl {
             throw ContentError.notFound
         }
         content = try await bookContentRepo.content(for: bookID)
+        readingProgress = await progRepo.progress(for: bookID)
+        if let readingProgress {
+            let isRestored = isValid(readingProgress.position)
+            let chapterIndex = content.chapters.indices.contains(readingProgress.chapterIndex) ? readingProgress.chapterIndex : 0
+            position = isRestored
+                ? readingProgress.position
+                : ReadingPosition(paragraph: content.chapters[chapterIndex].paragraphs.lowerBound, charOffset: 0)
+            await eventSvc.log(.positionRestore(bookID: bookID, isRestored: isRestored))
+        }
         return book
     }
 
@@ -53,11 +68,48 @@ actor ReaderCtrlLive: ReaderCtrl {
         return pages
     }
 
-    func pageChanged(to page: Page) {
-        let chapter = content.chapters[page.chapterIndex]
-        let offset = page.range.location
+    func pageChanged(to page: Page) async {
+        position = position(chapterIndex: page.chapterIndex, offset: page.range.location)
+        let pageEnd = position(chapterIndex: page.chapterIndex, offset: NSMaxRange(page.range))
+        let lastVisibleSentence = content.sentences.lastIndex {
+            ReadingPosition(paragraph: $0.paragraph, charOffset: $0.range.location) < pageEnd
+        } ?? 0
+        let wordsBefore = content.paragraphs[..<position.paragraph].reduce(0) { $0 + $1.wordCount }
+        let totalWords = content.paragraphs.reduce(0) { $0 + $1.wordCount }
+        let progress = Double(wordsBefore) / Double(totalWords)
+        let isLastPage = page.chapterIndex == content.chapters.count - 1
+            && NSMaxRange(page.range) == content.chapters[page.chapterIndex].text.utf16.count
+        let wasFinished = self.readingProgress?.finishedAt != nil
+        let readingProgress = ReadingProgress(
+            bookID: bookID,
+            position: position,
+            chapterIndex: page.chapterIndex,
+            progress: progress,
+            lastReadAt: .now,
+            readingFrontier: FrontierRule.frontier(old: self.readingProgress?.readingFrontier ?? 0, lastVisibleSentence: lastVisibleSentence),
+            finishedAt: self.readingProgress?.finishedAt ?? (isLastPage || progress >= 0.99 ? .now : nil)
+        )
+        self.readingProgress = readingProgress
+        await progRepo.save(readingProgress)
+        if !wasFinished, readingProgress.finishedAt != nil {
+            await eventSvc.log(.bookFinished(bookID: bookID))
+        }
+    }
+
+    func saveNow() async {
+        guard let readingProgress else { return }
+        await progRepo.saveNow(readingProgress)
+    }
+
+    private func isValid(_ position: ReadingPosition) -> Bool {
+        content.paragraphs.indices.contains(position.paragraph)
+            && (0...content.paragraphs[position.paragraph].range.length).contains(position.charOffset)
+    }
+
+    private func position(chapterIndex: Int, offset: Int) -> ReadingPosition {
+        let chapter = content.chapters[chapterIndex]
         let paragraph = chapter.paragraphs.last { content.paragraphs[$0].range.location <= offset } ?? chapter.paragraphs.lowerBound
-        position = ReadingPosition(paragraph: paragraph, charOffset: offset - content.paragraphs[paragraph].range.location)
+        return ReadingPosition(paragraph: paragraph, charOffset: offset - content.paragraphs[paragraph].range.location)
     }
 
     private func page(after page: Page) async -> Page? {

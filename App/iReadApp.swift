@@ -7,6 +7,8 @@ struct iReadApp: App {
     private let libRepo: any LibRepo
     private let bookContentRepo: any BookContentRepo = BookContentRepoSample(epubParseSvc: EPUBParseSvcXML())
     private let pagerSvc: any PagerSvc = PagerSvcTextKit()
+    private let progRepo: any ProgRepo = ProgRepoFile()
+    private let eventSvc: any EventSvc = EventSvcOSLog()
 
     init() {
         let appNav = AppNav()
@@ -23,7 +25,14 @@ struct iReadApp: App {
                 LibView(libVM: libVM)
             case .reader(let bookID):
                 ReaderView(readerVM: ReaderVM(
-                    readerCtrl: ReaderCtrlLive(bookID: bookID, libRepo: libRepo, bookContentRepo: bookContentRepo, pagerSvc: pagerSvc),
+                    readerCtrl: ReaderCtrlLive(
+                        bookID: bookID,
+                        libRepo: libRepo,
+                        bookContentRepo: bookContentRepo,
+                        pagerSvc: pagerSvc,
+                        progRepo: progRepo,
+                        eventSvc: eventSvc
+                    ),
                     nav: appNav
                 ))
             }

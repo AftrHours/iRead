@@ -6,4 +6,5 @@ protocol ReaderCtrl: Sendable {
     func currentPage(viewport: Viewport) async -> Page
     func pages(around page: Page) async -> [Page]
     func pageChanged(to page: Page) async
+    func saveNow() async
 }

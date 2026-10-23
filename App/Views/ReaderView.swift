@@ -3,6 +3,7 @@ import SwiftUI
 struct ReaderView: View {
     @State private var readerVM: ReaderVM
     @ScaledMetric(relativeTo: .body) private var bodyFontSize: CGFloat = 17
+    @Environment(\.scenePhase) private var scenePhase
 
     init(readerVM: ReaderVM) {
         _readerVM = State(initialValue: readerVM)
@@ -22,6 +23,11 @@ struct ReaderView: View {
             bottomBar
         }
         .background(Color(.systemBackground))
+        .onChange(of: scenePhase) { _, scenePhase in
+            if scenePhase == .background {
+                readerVM.appBackgrounded()
+            }
+        }
     }
 
     @ViewBuilder
