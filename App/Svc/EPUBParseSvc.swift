@@ -3,6 +3,18 @@ import NaturalLanguage
 import ZIPFoundation
 
 struct EPUBParseSvc {
+    func metadata(from url: URL) throws -> (title: String?, author: String?) {
+        let archive = try Archive(url: url, accessMode: .read)
+        let container = try elements(of: "META-INF/container.xml", in: archive)
+        guard let opfPath = container.first(where: { $0.name == "rootfile" })?.attributes["full-path"] else {
+            throw ContentError.unreadable
+        }
+        let opf = try elements(of: opfPath, in: archive)
+        let title = opf.first { $0.name == "dc:title" }.map { normalized($0.text) }
+        let author = opf.first { $0.name == "dc:creator" }.map { normalized($0.text) }
+        return (title?.isEmpty == true ? nil : title, author?.isEmpty == true ? nil : author)
+    }
+
     func parse(_ url: URL) async throws -> BookContent {
         let archive = try Archive(url: url, accessMode: .read)
         let container = try elements(of: "META-INF/container.xml", in: archive)
