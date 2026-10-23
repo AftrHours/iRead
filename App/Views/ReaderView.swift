@@ -28,6 +28,12 @@ struct ReaderView: View {
                 readerVM.appBackgrounded()
             }
         }
+        .sheet(item: Binding(get: { readerVM.sheet }, set: { _ in readerVM.sheetDismissed() })) { sheet in
+            switch sheet {
+            case .contents:
+                ContentsView(readerVM: readerVM)
+            }
+        }
     }
 
     @ViewBuilder
@@ -84,9 +90,22 @@ struct ReaderView: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Spacer()
+            Button {
+                readerVM.menuTapped()
+            } label: {
+                Image(systemName: "ellipsis")
+                    .font(.title3.weight(.medium))
+                    .frame(width: 44, height: 44)
+                    .glassEffect(.regular.interactive(), in: .circle)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Reading menu")
+            .popover(isPresented: Binding(get: { readerVM.isMenuShown }, set: { _ in readerVM.menuDismissed() }), arrowEdge: .bottom) {
+                ReaderMenuView(readerVM: readerVM)
+            }
         }
-        .frame(height: 44)
-        .padding(.horizontal, 36)
+        .padding(.leading, 36)
+        .padding(.trailing, 16)
         .padding(.bottom, 8)
     }
 }

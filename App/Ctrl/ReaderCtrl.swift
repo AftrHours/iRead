@@ -5,6 +5,8 @@ protocol ReaderCtrl: Sendable {
     func chapterTitles() async -> [String]
     func currentPage(viewport: Viewport) async -> Page
     func pages(around page: Page) async -> [Page]
+    func firstPage(ofChapter index: Int) async -> Page
+    func chapterPageCounts() async -> [Int]
     func pageChanged(to page: Page) async
     func saveNow() async
 }

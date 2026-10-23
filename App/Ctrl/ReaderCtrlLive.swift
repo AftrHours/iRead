@@ -68,6 +68,15 @@ actor ReaderCtrlLive: ReaderCtrl {
         return pages
     }
 
+    func firstPage(ofChapter index: Int) async -> Page {
+        await page(chapterIndex: index, offset: 0)
+    }
+
+    func chapterPageCounts() async -> [Int] {
+        await paginate(through: content.chapters.count - 1)
+        return chapterPages.map(\.count)
+    }
+
     func pageChanged(to page: Page) async {
         position = position(chapterIndex: page.chapterIndex, offset: page.range.location)
         let pageEnd = position(chapterIndex: page.chapterIndex, offset: NSMaxRange(page.range))
