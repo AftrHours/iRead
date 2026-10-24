@@ -5,6 +5,10 @@ struct RefCtrl {
     let bookContentRepo: BookContentRepo
     let analysisRepo: AnalysisRepo
 
+    func prepare() async {
+        _ = try? await analysisRepo.analysis(for: bookID)
+    }
+
     func marks(on page: Page, highlighting mentionIndex: Int?, includingSymbols: Bool) async throws -> [Mark] {
         let content = try await bookContentRepo.content(for: bookID)
         let analysis = try await analysisRepo.analysis(for: bookID)

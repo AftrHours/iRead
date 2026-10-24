@@ -20,7 +20,7 @@ struct iReadApp: App {
         let bookContentRepo = BookContentRepo(epubParseSvc: EPUBParseSvc())
         self.libRepo = libRepo
         self.bookContentRepo = bookContentRepo
-        analysisRepo = AnalysisRepo(bookContentRepo: bookContentRepo)
+        analysisRepo = AnalysisRepo(bookContentRepo: bookContentRepo, analysisScheduleSvc: AnalysisScheduleSvc())
         _appNav = State(initialValue: appNav)
         _libVM = State(initialValue: LibVM(libCtrl: LibCtrl(libRepo: libRepo), appNav: appNav))
     }

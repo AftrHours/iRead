@@ -86,6 +86,7 @@ final class ReaderVM {
 
     func onAppear(viewport: Viewport) async {
         requestedViewport = viewport
+        Task { await refCtrl.prepare() }
         do {
             title = try await readerCtrl.openBook().title
             chapterTitles = await readerCtrl.chapterTitles()
@@ -288,6 +289,7 @@ final class ReaderVM {
     }
 
     private func loadMarks() async {
+        let pages = pages
         var marks: [Int: [Mark]] = [:]
         for page in pages {
             marks[page.number] = try? await refCtrl.marks(
@@ -296,6 +298,7 @@ final class ReaderVM {
                 includingSymbols: layoutSettings.areSymbolsShown
             )
         }
+        guard pages == self.pages else { return }
         self.marks = marks
     }
 
