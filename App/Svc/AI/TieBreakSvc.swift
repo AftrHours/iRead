@@ -1,16 +1,16 @@
 import Foundation
 
-extension EntityResolveSvc {
-    func breakTies(_ rules: RulesResult, sentences: [NumberedSentence], llm: LLMSvc) async -> ResolvedAnalysis {
-        var analysis = rules.analysis
+struct TieBreakSvc: Sendable {
+    func settle(_ rulesAnalysis: ResolvedAnalysis, sentences: [NumberedSentence], llm: LLMSvc) async -> ResolvedAnalysis {
+        var analysis = rulesAnalysis
         if llm.isAvailable {
             let textByIndex = Dictionary(uniqueKeysWithValues: sentences.map { ($0.index, $0.text) })
             await groupNames(in: &analysis, texts: textByIndex, llm: llm)
-            for index in rules.undecided {
+            for index in analysis.mentions.indices where analysis.mentions[index].isUndecided {
                 await settleDescription(at: index, in: &analysis, texts: textByIndex, llm: llm)
             }
         }
-        dropSmallDescribedEntities(in: &analysis)
+        MentionLinker.dropSmallDescribedEntities(in: &analysis)
         return analysis
     }
 
@@ -22,13 +22,12 @@ extension EntityResolveSvc {
             names: firstNames.map(\.text),
             sentences: Set(firstNames.map(\.sinceSentence)).sorted().compactMap { i in texts[i].map { ModelSentence(index: i, text: $0) } }
         )
-        let result = await llm.groupNames(request)
+        let groups = await llm.groupNames(request)
         analysis.modelCalls += 1
-        analysis.modelFailures += result.failedCalls
 
         let sinceByKey = Dictionary(firstNames.map { ($0.key, $0.sinceSentence) }, uniquingKeysWith: min)
-        for group in result.groups where EvidenceGuard.accepts(group, for: request) {
-            let keys = EvidenceGuard.supportedNames(group, for: request).map(Self.nameKey)
+        for group in groups where EvidenceGuard.accepts(group, for: request) {
+            let keys = EvidenceGuard.supportedNames(group, for: request).map(NameKey.of)
             for (a, b) in zip(keys, keys.dropFirst()) {
                 guard let from = analysis.entityKey(forName: b), let into = analysis.entityKey(forName: a) else { continue }
                 let at = max(group.evidenceSentence, sinceByKey[a] ?? 0, sinceByKey[b] ?? 0)
@@ -48,12 +47,12 @@ extension EntityResolveSvc {
         let request = LinkRequest(mention: mention, sentences: sentences, candidates: candidates)
         let choice = await llm.chooseReference(request)
         analysis.modelCalls += 1
-        guard let choice else { analysis.modelFailures += 1; return }
-        guard EvidenceGuard.accepts(choice, for: request) else { return }
+        guard let choice, EvidenceGuard.accepts(choice, for: request) else { return }
 
         let chosen = candidates[choice.candidateIndex].entity
         analysis.merge(own, into: chosen, at: analysis.entity(own)?.introSentence ?? mention.sentence, decidedBy: .model)
         analysis.mentions[index].decidedBy = .model
+        analysis.mentions[index].isUndecided = false
     }
 
     private func candidateCharacters(for mention: ResolvedMention, excluding own: Int, window: ClosedRange<Int>,

@@ -1,6 +1,6 @@
 import Foundation
 
-enum MentionKnobs {
+enum MentionFinderKnobs {
     static let titles: Set<String> = ["mr.", "mr", "mrs.", "mrs", "miss", "dr.", "dr", "aunt", "uncle", "sir", "lady"]
 
     static let personNameTypes: Set<String> = ["PersonalName", "Capitalised"]
@@ -29,12 +29,8 @@ enum MentionKnobs {
     static let maxWithPhraseWords = 6
 }
 
-extension EntityResolveSvc {
-    static var mentionKnobSummary: String {
-        "mentions: with-phrase \(MentionKnobs.allowWithPhrase ? "on" : "off"), \(MentionKnobs.personHeads.count) heads"
-    }
-
-    func findMentions(in sentences: [NumberedSentence], tags: SentenceTags) -> [ResolvedMention] {
+enum MentionFinder {
+    static func mentions(in sentences: [NumberedSentence], tags: SentenceTags) -> [ResolvedMention] {
         sentences.flatMap { sentence -> [ResolvedMention] in
             guard tags.tokens.indices.contains(sentence.index) else { return [] }
             let tokens = tags.tokens[sentence.index]
@@ -42,7 +38,7 @@ extension EntityResolveSvc {
         }
     }
 
-    private func names(in sentence: NumberedSentence, tokens: [Token]) -> [ResolvedMention] {
+    private static func names(in sentence: NumberedSentence, tokens: [Token]) -> [ResolvedMention] {
         var mentions: [ResolvedMention] = []
         var i = 0
         while i < tokens.count {
@@ -52,44 +48,44 @@ extension EntityResolveSvc {
             let run = Array(tokens[i...j])
             if !run.allSatisfy(isTitle) {
                 mentions.append(mention(run, in: sentence, form: .name,
-                                        head: Self.nameKey(run.map(\.text).joined(separator: " ")), modifiers: []))
+                                        head: NameKey.of(run.map(\.text).joined(separator: " ")), modifiers: []))
             }
             i = j + 1
         }
         return mentions
     }
 
-    private func joinsName(_ left: Token, _ right: Token, in sentence: NumberedSentence) -> Bool {
+    private static func joinsName(_ left: Token, _ right: Token, in sentence: NumberedSentence) -> Bool {
         let gap = textBetween(left, right, in: sentence)
         return gap == " " || (isTitle(left) && gap == ". ")
     }
 
-    private func isTitle(_ token: Token) -> Bool {
-        MentionKnobs.titles.contains(token.text.lowercased())
+    private static func isTitle(_ token: Token) -> Bool {
+        MentionFinderKnobs.titles.contains(token.text.lowercased())
     }
 
-    private func isNameWord(_ token: Token) -> Bool {
+    private static func isNameWord(_ token: Token) -> Bool {
         let lower = token.text.lowercased()
-        guard !MentionKnobs.groupWords.contains(lower) else { return false }
-        let isFamilyName = token.text.first?.isUppercase == true && MentionKnobs.familyTerms.contains(lower)
-        return token.name.map(MentionKnobs.personNameTypes.contains) == true || isFamilyName
+        guard !MentionFinderKnobs.groupWords.contains(lower) else { return false }
+        let isFamilyName = token.text.first?.isUppercase == true && MentionFinderKnobs.familyTerms.contains(lower)
+        return token.name.map(MentionFinderKnobs.personNameTypes.contains) == true || isFamilyName
     }
 
-    private func descriptions(in sentence: NumberedSentence, tokens: [Token]) -> [ResolvedMention] {
+    private static func descriptions(in sentence: NumberedSentence, tokens: [Token]) -> [ResolvedMention] {
         var mentions: [ResolvedMention] = []
-        for i in tokens.indices where MentionKnobs.determiners.contains(tokens[i].text.lowercased()) {
+        for i in tokens.indices where MentionFinderKnobs.determiners.contains(tokens[i].text.lowercased()) {
             var j = i + 1
-            while j < tokens.count, MentionKnobs.descriptionWordClasses.contains(tokens[j].lexicalClass) { j += 1 }
+            while j < tokens.count, MentionFinderKnobs.descriptionWordClasses.contains(tokens[j].lexicalClass) { j += 1 }
             let words = Array(tokens[(i + 1)..<j])
             guard let head = words.last, head.lexicalClass == "Noun", isPersonHead(head) else { continue }
             var modifiers = words.dropLast().map(\.lemma)
             var end = head
 
-            if MentionKnobs.allowWithPhrase, j < tokens.count, tokens[j].text.lowercased() == "with" {
+            if MentionFinderKnobs.allowWithPhrase, j < tokens.count, tokens[j].text.lowercased() == "with" {
                 var k = j + 1
-                while k < tokens.count, k - j <= MentionKnobs.maxWithPhraseWords,
-                      MentionKnobs.withPhraseWordClasses.contains(tokens[k].lexicalClass) {
-                    if MentionKnobs.descriptionWordClasses.contains(tokens[k].lexicalClass) {
+                while k < tokens.count, k - j <= MentionFinderKnobs.maxWithPhraseWords,
+                      MentionFinderKnobs.withPhraseWordClasses.contains(tokens[k].lexicalClass) {
+                    if MentionFinderKnobs.descriptionWordClasses.contains(tokens[k].lexicalClass) {
                         modifiers.append(tokens[k].lemma)
                         end = tokens[k]
                     }
@@ -101,20 +97,20 @@ extension EntityResolveSvc {
         return mentions
     }
 
-    private func isPersonHead(_ token: Token) -> Bool {
+    private static func isPersonHead(_ token: Token) -> Bool {
         let lower = token.text.lowercased()
-        return MentionKnobs.personHeads[token.lemma] != nil && lower == token.lemma && !MentionKnobs.groupWords.contains(lower)
+        return MentionFinderKnobs.personHeads[token.lemma] != nil && lower == token.lemma && !MentionFinderKnobs.groupWords.contains(lower)
     }
 
-    private func mention(_ run: [Token], in sentence: NumberedSentence, form: MentionForm, head: String, modifiers: [String]) -> ResolvedMention {
+    private static func mention(_ run: [Token], in sentence: NumberedSentence, form: MentionForm, head: String, modifiers: [String]) -> ResolvedMention {
         let location = run[0].start
         let length = run[run.count - 1].start + run[run.count - 1].length - location
         let text = (sentence.text as NSString).substring(with: NSRange(location: location, length: length))
         return ResolvedMention(sentence: sentence.index, location: location, length: length, text: text, form: form,
-                       head: head, modifiers: modifiers, entity: nil, decidedBy: nil)
+                               head: head, modifiers: modifiers, entity: nil, decidedBy: nil)
     }
 
-    private func textBetween(_ left: Token, _ right: Token, in sentence: NumberedSentence) -> String {
+    private static func textBetween(_ left: Token, _ right: Token, in sentence: NumberedSentence) -> String {
         let gapStart = left.start + left.length
         guard right.start >= gapStart else { return "" }
         return (sentence.text as NSString).substring(with: NSRange(location: gapStart, length: right.start - gapStart))

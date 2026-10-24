@@ -1,26 +1,22 @@
 import Foundation
 
-enum CastKnobs {
+enum CastBuilderKnobs {
     static let minNameCount = 2
 
     static let aliasConnectors: [String] = [#"^,\s*or\s*$"#, #"^\s*or\s*$"#, #"^,\s*called\s*$"#, #"^,\s*known as\s*$"#]
 }
 
-extension EntityResolveSvc {
-    static var castKnobSummary: String {
-        "cast: min \(CastKnobs.minNameCount) names, \(CastKnobs.aliasConnectors.count) alias patterns"
-    }
-
-    func buildCast(from mentions: [ResolvedMention], sentences: [NumberedSentence], tags: SentenceTags) -> ResolvedAnalysis {
-        var analysis = ResolvedAnalysis(tags: tags)
+enum CastBuilder {
+    static func cast(from mentions: [ResolvedMention], sentences: [NumberedSentence]) -> [ResolvedEntity] {
+        var analysis = ResolvedAnalysis()
         let names = mentions.filter { $0.form == .name }
         let byKey = Dictionary(grouping: names, by: \.head)
 
-        for mention in names where analysis.entityKey(forName: mention.head) == nil && (byKey[mention.head]?.count ?? 0) >= CastKnobs.minNameCount {
+        for mention in names where analysis.entityKey(forName: mention.head) == nil && (byKey[mention.head]?.count ?? 0) >= CastBuilderKnobs.minNameCount {
             let key = analysis.entities.count + 1
-            analysis.entities.append(ResolvedEntity(key: key, kind: .character,
+            analysis.entities.append(ResolvedEntity(key: key,
                                             names: [EntityName(text: mention.text, key: mention.head, sinceSentence: mention.sentence)],
-                                            label: Self.mostFrequentText(of: byKey[mention.head] ?? []),
+                                            label: mostFrequentText(of: byKey[mention.head] ?? []),
                                             introSentence: mention.sentence, mergeEdges: []))
         }
 
@@ -32,10 +28,10 @@ extension EntityResolveSvc {
                 joinNames(first, second, at: sentence, decidedBy: .rule, in: &analysis)
             }
         }
-        return analysis
+        return analysis.entities
     }
 
-    func joinNames(_ first: ResolvedMention, _ second: ResolvedMention, at sentence: Int, decidedBy: DecidedBy, in analysis: inout ResolvedAnalysis) {
+    private static func joinNames(_ first: ResolvedMention, _ second: ResolvedMention, at sentence: Int, decidedBy: DecidedBy, in analysis: inout ResolvedAnalysis) {
         switch (analysis.entityKey(forName: first.head), analysis.entityKey(forName: second.head)) {
         case let (a?, b?):
 
@@ -50,25 +46,14 @@ extension EntityResolveSvc {
         }
     }
 
-    private func isAlias(between first: ResolvedMention, and second: ResolvedMention, in text: String) -> Bool {
+    private static func isAlias(between first: ResolvedMention, and second: ResolvedMention, in text: String) -> Bool {
         let gapStart = first.location + first.length
         guard second.location >= gapStart else { return false }
         let gap = (text as NSString).substring(with: NSRange(location: gapStart, length: second.location - gapStart)).lowercased()
-        return CastKnobs.aliasConnectors.contains { gap.range(of: $0, options: .regularExpression) != nil }
+        return CastBuilderKnobs.aliasConnectors.contains { gap.range(of: $0, options: .regularExpression) != nil }
     }
 
     private static func mostFrequentText(of mentions: [ResolvedMention]) -> String {
         Dictionary(grouping: mentions, by: \.text).max { $0.value.count < $1.value.count }?.key ?? mentions.first?.text ?? ""
-    }
-}
-
-extension ResolvedAnalysis {
-    func entityKey(forName key: String) -> Int? {
-        entities.first { $0.names.contains { $0.key == key } }?.key
-    }
-
-    mutating func addName(_ mention: ResolvedMention, to key: Int, at sentence: Int) {
-        guard let i = entities.firstIndex(where: { $0.key == key }) else { return }
-        entities[i].names.append(EntityName(text: mention.text, key: mention.head, sinceSentence: sentence))
     }
 }

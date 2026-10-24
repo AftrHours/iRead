@@ -62,24 +62,12 @@ enum LLMKnobs {
     private static func numbered(_ sentences: [ModelSentence]) -> String {
         sentences.map { "[\($0.index)] \($0.text)" }.joined(separator: "\n")
     }
-
-    static var summary: String {
-        let sampling: String
-        switch self.sampling {
-        case .greedy: sampling = "greedy"
-        case .topK(let k, let seed): sampling = "top-\(k) seed \(seed.map(String.init) ?? "-")"
-        case .probability(let p, let seed): sampling = "p\(p) seed \(seed.map(String.init) ?? "-")"
-        }
-        return "FM \(sampling), temp \(temperature.map { "\($0)" } ?? "-"), tokens \(maxChooseReferenceTokens)/\(maxGroupNamesTokens), "
-            + "context \(contextSentenceCount), candidates \(maxCandidates), max \(maxCallsPerRun) calls"
-    }
 }
 
 struct LLMSvcFoundation: LLMSvc {
     var isAvailable: Bool { ModelAvailSvc().isFoundationModelsAvailable }
     var contextSentenceCount: Int { LLMKnobs.contextSentenceCount }
     var maxCandidates: Int { LLMKnobs.maxCandidates }
-    var knobSummary: String { LLMKnobs.summary }
 
     func allowsCall(callsSoFar: Int) -> Bool {
         isAvailable && callsSoFar < LLMKnobs.maxCallsPerRun
@@ -93,19 +81,18 @@ struct LLMSvcFoundation: LLMSvc {
         return LinkChoice(candidateIndex: answer.content.candidate, evidenceSentence: answer.content.evidenceSentence)
     }
 
-    func groupNames(_ request: NameGroupRequest) async -> NameGroupResult {
+    func groupNames(_ request: NameGroupRequest) async -> [NameGroupChoice] {
         var groups: [NameGroupChoice] = []
-        var failed = 0
         for start in stride(from: 0, to: request.names.count, by: LLMKnobs.maxNamesPerCall) {
             let names = Array(request.names[start..<min(start + LLMKnobs.maxNamesPerCall, request.names.count)])
             let session = LanguageModelSession(instructions: LLMKnobs.groupNamesInstructions)
             guard let answer = try? await session.respond(to: LLMKnobs.groupNamesPrompt(names: names, sentences: request.sentences),
                                                           generating: GroupNamesAnswer.self,
                                                           options: Self.options(maximumTokens: LLMKnobs.maxGroupNamesTokens))
-            else { failed += 1; continue }
+            else { continue }
             groups += answer.content.groups.map { NameGroupChoice(names: $0.names, evidenceSentence: $0.evidenceSentence) }
         }
-        return NameGroupResult(groups: groups, failedCalls: failed)
+        return groups
     }
 
     private static func options(maximumTokens: Int) -> GenerationOptions {

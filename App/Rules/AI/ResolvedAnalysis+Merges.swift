@@ -18,10 +18,6 @@ extension ResolvedAnalysis {
         mention.entity.map { follow($0, upTo: sentence) }
     }
 
-    func finalEntityKey(of mention: ResolvedMention) -> Int? {
-        mention.entity.map { follow($0, upTo: nil) }
-    }
-
     func finalKey(of entity: Int) -> Int {
         follow(entity, upTo: nil)
     }

@@ -1,7 +1,7 @@
 import Foundation
 import NaturalLanguage
 
-enum TaggingKnobs {
+enum WordTagKnobs {
     static let determiners: Set<String> = [
         "the", "a", "an", "this", "that", "these", "those", "his", "her", "its", "their", "my", "your", "our",
     ]
@@ -15,26 +15,20 @@ enum TaggingKnobs {
     static let stitchHyphenatedWords = true
 }
 
-extension EntityResolveSvc {
-    func detectTaggingEngine() -> TaggingEngine {
+struct WordTagSvc: Sendable {
+    func tag(_ sentences: [NumberedSentence]) -> SentenceTags {
+        let texts = sentences.map(\.text)
+        guard hasEnglishModels() else { return SentenceTags(tokens: texts.map(tokensByRules)) }
+        let tagger = NLTagger(tagSchemes: [.lexicalClass, .nameType, .lemma])
+        return SentenceTags(tokens: texts.map { tokensByNaturalLanguage($0, tagger: tagger) })
+    }
+
+    private func hasEnglishModels() -> Bool {
         let probe = "John walked to London."
         let tagger = NLTagger(tagSchemes: [.nameType])
         tagger.string = probe
         tagger.setLanguage(.english, range: probe.startIndex..<probe.endIndex)
-        let tag = tagger.tag(at: probe.startIndex, unit: .word, scheme: .nameType).0
-        return tag == .personalName ? .naturalLanguage : .rules
-    }
-
-    func tagWords(in sentences: [String], engine: TaggingEngine) -> [[Token]] {
-        switch engine {
-        case .naturalLanguage:
-            let tagger = NLTagger(tagSchemes: [.lexicalClass, .nameType, .lemma])
-            return sentences.map { tokensByNaturalLanguage($0, tagger: tagger) }
-        case .rules:
-            return sentences.map(tokensByRules)
-        case .skipped:
-            return sentences.map { _ in [] }
-        }
+        return tagger.tag(at: probe.startIndex, unit: .word, scheme: .nameType).0 == .personalName
     }
 
     private func tokensByNaturalLanguage(_ sentence: String, tagger: NLTagger) -> [Token] {
@@ -53,7 +47,7 @@ extension EntityResolveSvc {
             let name = [NLTag.personalName, .placeName, .organizationName].contains(nameTag) ? nameTag?.rawValue : nil
             let lexicalClass = tag?.rawValue ?? "Other"
 
-            if TaggingKnobs.stitchHyphenatedWords, let last = tokens.last, sentence[lastEnd..<wordRange.lowerBound] == "-" {
+            if WordTagKnobs.stitchHyphenatedWords, let last = tokens.last, sentence[lastEnd..<wordRange.lowerBound] == "-" {
                 let stitched = lastStart..<wordRange.upperBound
                 tokens[tokens.count - 1] = makeToken(String(sentence[stitched]), in: sentence, range: stitched,
                                                      lexicalClass: lexicalClass, name: name ?? last.name, lemma: last.lemma + "-" + lemma)
@@ -74,10 +68,10 @@ extension EntityResolveSvc {
             let lower = word.lowercased()
             let isCapitalised = word.first?.isUppercase == true && position > 0
             let lexicalClass: String
-            if TaggingKnobs.determiners.contains(lower) { lexicalClass = "Determiner" }
-            else if TaggingKnobs.pronouns.contains(lower) { lexicalClass = "Pronoun" }
-            else if TaggingKnobs.prepositions.contains(lower) { lexicalClass = "Preposition" }
-            else if TaggingKnobs.conjunctions.contains(lower) { lexicalClass = "Conjunction" }
+            if WordTagKnobs.determiners.contains(lower) { lexicalClass = "Determiner" }
+            else if WordTagKnobs.pronouns.contains(lower) { lexicalClass = "Pronoun" }
+            else if WordTagKnobs.prepositions.contains(lower) { lexicalClass = "Preposition" }
+            else if WordTagKnobs.conjunctions.contains(lower) { lexicalClass = "Conjunction" }
             else if isCapitalised { lexicalClass = "Noun" }
             else { lexicalClass = "Word" }
             return makeToken(word, in: sentence, range: piece.startIndex..<piece.endIndex, lexicalClass: lexicalClass,
