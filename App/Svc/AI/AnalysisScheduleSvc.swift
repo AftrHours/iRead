@@ -1,11 +1,19 @@
 import Foundation
 
 struct AnalysisScheduleSvc: Sendable {
-    func analysis(for content: BookContent) -> BookAnalysis {
+    func rulesPass(for content: BookContent) -> RulesPass {
         let entityResolveSvc = EntityResolveSvc()
         let sentences = SentenceText.numbered(in: content)
         let tags = entityResolveSvc.tagWords(in: sentences)
-        let resolved = entityResolveSvc.resolveByRules(sentences: sentences, tags: tags).analysis
-        return AnalysisMapper.map(resolved, content: content)
+        return RulesPass(content: content, sentences: sentences, rules: entityResolveSvc.resolveByRules(sentences: sentences, tags: tags))
+    }
+
+    func analysis(from pass: RulesPass) -> BookAnalysis {
+        AnalysisMapper.map(pass.rules.analysis, content: pass.content)
+    }
+
+    func refinedAnalysis(from pass: RulesPass) async -> BookAnalysis {
+        let resolved = await EntityResolveSvc().breakTies(pass.rules, sentences: pass.sentences, llm: ModelAvailSvc().makeLLMSvc())
+        return AnalysisMapper.map(resolved, content: pass.content)
     }
 }

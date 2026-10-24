@@ -55,7 +55,7 @@ final class PageTextView: UIView {
             guard case .symbol(let systemName, let entityName) = mark.kind else { continue }
             let button = UIButton(type: .system)
             button.setImage(UIImage(systemName: systemName, withConfiguration: UIImage.SymbolConfiguration(pointSize: symbolSize)), for: .normal)
-            button.tintColor = .label
+            button.tintColor = SymbolPalette.color(forSymbol: systemName)
             button.accessibilityLabel = entityName
             button.addAction(UIAction { [weak self, weak button] _ in
                 guard let self, let button else { return }

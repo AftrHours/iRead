@@ -86,7 +86,11 @@ final class ReaderVM {
 
     func onAppear(viewport: Viewport) async {
         requestedViewport = viewport
-        Task { await refCtrl.prepare() }
+        Task {
+            await refCtrl.prepare()
+            await refCtrl.refine()
+            await loadMarks()
+        }
         do {
             title = try await readerCtrl.openBook().title
             chapterTitles = await readerCtrl.chapterTitles()
@@ -258,6 +262,15 @@ final class ReaderVM {
         Task { await showCurrentPage() }
     }
 
+    private func loadPages(around page: Page) {
+        Task {
+            let pages = await readerCtrl.pages(around: page)
+            guard shownPage == page else { return }
+            self.pages = pages
+            await loadMarks()
+        }
+    }
+    
     private func showCurrentPage() async {
         let viewport = requestedViewport
         let settings = settings
@@ -277,15 +290,6 @@ final class ReaderVM {
         shownPage = page
         loadPages(around: page)
         Task { await readerCtrl.pageChanged(to: page) }
-    }
-
-    private func loadPages(around page: Page) {
-        Task {
-            let pages = await readerCtrl.pages(around: page)
-            guard shownPage == page else { return }
-            self.pages = pages
-            await loadMarks()
-        }
     }
 
     private func loadMarks() async {
