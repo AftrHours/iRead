@@ -4,15 +4,15 @@ import Observation
 @MainActor
 @Observable
 final class AppNav {
-    enum Route {
+    enum Route: Equatable {
         case library
-        case reader(bookID: UUID)
+        case reader(book: BookRecord)
     }
 
     private(set) var route = Route.library
 
-    func openReader(bookID: UUID) {
-        route = .reader(bookID: bookID)
+    func openReader(book: BookRecord) {
+        route = .reader(book: book)
     }
 
     func closeReader() {
