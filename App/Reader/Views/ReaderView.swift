@@ -4,6 +4,9 @@ struct ReaderView: View {
     @State private var readerVM: ReaderVM
     @ScaledMetric(relativeTo: .body) private var bodyFontSize: CGFloat = 17
     @Environment(\.scenePhase) private var scenePhase
+    #if DEBUG
+    @State private var isEngineDebugShown = false
+    #endif
 
     private var readerSettingsVM: ReaderSettingsVM { readerVM.readerSettingsVM }
     private var referenceVM: ReferenceVM { readerVM.referenceVM }
@@ -47,6 +50,11 @@ struct ReaderView: View {
                 symbolDetails
             }
         }
+        #if DEBUG
+        .sheet(isPresented: $isEngineDebugShown) {
+            EngineDebugView(engineDebugVM: referenceVM.makeEngineDebugVM())
+        }
+        #endif
     }
 
     @ViewBuilder
@@ -129,6 +137,28 @@ struct ReaderView: View {
         }
     }
 
+    #if DEBUG
+    private var engineDebugLabel: some View {
+        Group {
+            if referenceVM.isEngineRunning {
+                ProgressView()
+            } else {
+                Image(systemName: "ladybug")
+                    .font(.title3.weight(.medium))
+                    .overlay(alignment: .topTrailing) {
+                        Circle()
+                            .fill(.green)
+                            .frame(width: 8, height: 8)
+                            .offset(x: 4, y: -4)
+                    }
+            }
+        }
+        .frame(width: 44, height: 44)
+        .contentShape(.circle)
+        .glassEffect(.regular.interactive(), in: .circle)
+    }
+    #endif
+
     private var topBar: some View {
         ZStack {
             VStack(spacing: 6) {
@@ -153,6 +183,16 @@ struct ReaderView: View {
                 .buttonStyle(.plain)
                 .accessibilityLabel("Back")
                 Spacer()
+                #if DEBUG
+                Button {
+                    isEngineDebugShown = true
+                } label: {
+                    engineDebugLabel
+                }
+                .buttonStyle(.plain)
+                .keyboardShortcut("d", modifiers: [.command, .shift])
+                .accessibilityLabel("Engine Debug")
+                #endif
             }
         }
         .padding(.horizontal, 16)

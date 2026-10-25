@@ -28,6 +28,9 @@ final class ReferenceVM {
     private(set) var cardAnchor = CGRect.zero
     private(set) var canReturn = false
     private(set) var toastText: String?
+    #if DEBUG
+    private(set) var isEngineRunning = true
+    #endif
 
     @ObservationIgnored var onShowPage: (Page, Int?) -> Void = { _, _ in }
     @ObservationIgnored var onEditSymbol: () -> Void = {}
@@ -51,6 +54,9 @@ final class ReferenceVM {
             await refCtrl.prepare()
             await refCtrl.refine()
             await loadMarks()
+            #if DEBUG
+            isEngineRunning = false
+            #endif
         }
     }
 
@@ -133,6 +139,12 @@ final class ReferenceVM {
             await loadMarks()
         }
     }
+
+    #if DEBUG
+    func makeEngineDebugVM() -> EngineDebugVM {
+        EngineDebugVM(refCtrl: refCtrl, page: shownPage)
+    }
+    #endif
 
     func loadMarks() async {
         let pages = loadedPages

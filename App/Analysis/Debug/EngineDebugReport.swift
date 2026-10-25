@@ -1,0 +1,117 @@
+#if DEBUG
+import SwiftUI
+
+enum EngineDebugReport {
+    static func summary(of snapshot: AnalysisSnapshot) -> [EngineDebugSection] {
+        let pass = snapshot.pass
+        let content = pass.content
+        let rules = pass.analysis
+        let names = rules.mentions.filter { $0.form == .name }.count
+        let firstChapter = pass.sentences.first.map { content.paragraphs[content.sentences[$0.index].paragraph].chapterIndex }
+        return [
+            EngineDebugSection(title: "Story start", rows: [
+                EngineDebugRow(label: "Chapter", value: firstChapter.map { "\($0): \(content.chapters[$0].title)" } ?? "None"),
+                EngineDebugRow(label: "Sentences analysed", value: "\(pass.sentences.count) of \(content.sentences.count)")
+            ]),
+            EngineDebugSection(title: "Phase 1 · Rules", rows: [
+                EngineDebugRow(label: "Tagger", value: pass.usesNaturalLanguage ? "NaturalLanguage" : "Fallback rules (no English model)"),
+                EngineDebugRow(label: "Time", value: seconds(pass.duration)),
+                EngineDebugRow(label: "Mentions", value: "\(rules.mentions.count) (\(names) names, \(rules.mentions.count - names) descriptions)"),
+                EngineDebugRow(label: "Named characters", value: "\(rules.entities.filter(\.isNamed).count)"),
+                EngineDebugRow(label: "Described characters", value: "\(rules.entities.filter { !$0.isNamed }.count)"),
+                EngineDebugRow(label: "Linked", value: "\(rules.linkedMentions.count)"),
+                EngineDebugRow(label: "Undecided", value: "\(rules.mentions.filter(\.isUndecided).count)")
+            ]),
+            EngineDebugSection(title: "Phase 2 · Foundation Models", rows: modelRows(of: snapshot)),
+            EngineDebugSection(title: "On screen", rows: [
+                EngineDebugRow(label: "Characters with a symbol", value: "\(snapshot.book.entities.count)"),
+                EngineDebugRow(label: "Mentions", value: "\(snapshot.book.mentions.count)"),
+                EngineDebugRow(label: "Underlines", value: "\(snapshot.book.mentions.filter { $0.passage != nil }.count)")
+            ])
+        ]
+    }
+
+    static func characters(of snapshot: AnalysisSnapshot) -> [EngineDebugCharacter] {
+        let counts = Dictionary(grouping: snapshot.book.mentions, by: \.entityID).mapValues(\.count)
+        return snapshot.book.entities.map { entity in
+            EngineDebugCharacter(
+                id: entity.id,
+                name: entity.name,
+                symbolName: entity.symbolName,
+                color: Color(uiColor: SymbolPalette.color(forSymbol: entity.symbolName)),
+                names: entity.names.joined(separator: ", "),
+                mentionCount: counts[entity.id, default: 0],
+                firstSeen: entity.summary
+            )
+        }
+    }
+
+    static func sentences(on page: Page, in snapshot: AnalysisSnapshot) -> [EngineDebugSentence] {
+        let content = snapshot.pass.content
+        let entities = Dictionary(uniqueKeysWithValues: snapshot.book.entities.map { ($0.id, $0) })
+        let mentionsBySentence = Dictionary(grouping: snapshot.resolved.mentions, by: \.sentence)
+        return content.sentences.indices.compactMap { index in
+            let sentence = content.sentences[index]
+            let paragraph = content.paragraphs[sentence.paragraph]
+            let range = NSRange(location: paragraph.range.location + sentence.range.location, length: sentence.range.length)
+            guard paragraph.chapterIndex == page.chapterIndex, NSIntersectionRange(range, page.range).length > 0 else { return nil }
+            let mentions = (mentionsBySentence[index] ?? []).sorted { $0.location < $1.location }
+            let shown = mentions.map { mention in (mention, entity(of: mention, in: snapshot.resolved, shown: entities)) }
+            return EngineDebugSentence(
+                id: index,
+                text: highlighted(SentenceText.of(sentence, in: content), mentions: shown),
+                links: shown.map { link(for: $0.0, shownAs: $0.1, in: snapshot.resolved) }
+            )
+        }
+    }
+
+    private static func modelRows(of snapshot: AnalysisSnapshot) -> [EngineDebugRow] {
+        guard snapshot.isModelAvailable else {
+            return [EngineDebugRow(label: "Status", value: "Off: Apple Intelligence unavailable or LLMKnobs.isEnabled is false")]
+        }
+        guard let duration = snapshot.modelDuration else {
+            return [EngineDebugRow(label: "Status", value: "Running in the background, open this again later")]
+        }
+        let resolved = snapshot.resolved
+        return [
+            EngineDebugRow(label: "Status", value: "Done"),
+            EngineDebugRow(label: "Time", value: seconds(duration)),
+            EngineDebugRow(label: "Model calls", value: "\(resolved.modelCalls) of max \(LLMKnobs.maxCallsPerRun)"),
+            EngineDebugRow(label: "Descriptions settled", value: "\(resolved.mentions.filter { $0.decidedBy == .model }.count)"),
+            EngineDebugRow(label: "Still undecided", value: "\(resolved.mentions.filter(\.isUndecided).count)"),
+            EngineDebugRow(label: "Names joined", value: "\(resolved.entities.filter { $0.isNamed && $0.mergeEdges.contains { $0.decidedBy == .model } }.count)")
+        ]
+    }
+
+    private static func entity(of mention: ResolvedMention, in resolved: ResolvedAnalysis, shown entities: [String: Entity]) -> Entity? {
+        resolved.entityKey(of: mention, asOf: mention.sentence).flatMap { entities[AnalysisMapper.id(of: $0)] }
+    }
+
+    private static func highlighted(_ text: String, mentions: [(ResolvedMention, Entity?)]) -> AttributedString {
+        var result = AttributedString(text)
+        for (mention, entity) in mentions {
+            guard let stringRange = Range(NSRange(location: mention.location, length: mention.length), in: text),
+                  let range = Range(stringRange, in: result) else { continue }
+            result[range].foregroundColor = entity.map { Color(uiColor: SymbolPalette.color(forSymbol: $0.symbolName)) } ?? .secondary
+            result[range].font = .body.bold()
+        }
+        return result
+    }
+
+    private static func link(for mention: ResolvedMention, shownAs entity: Entity?, in resolved: ResolvedAnalysis) -> String {
+        let character = resolved.entityKey(of: mention, asOf: mention.sentence).flatMap { resolved.entity($0) }
+        let target = character.map { "#\($0.key) \($0.label)" } ?? "no character"
+        let decidedBy = switch mention.decidedBy {
+        case .rule: "rule"
+        case .model: "model"
+        case nil: "none"
+        }
+        let notes = [entity == nil && character != nil ? "no symbol" : nil, mention.isUndecided ? "undecided" : nil].compactMap { $0 }
+        return "“\(mention.text)” → \(target) · \(decidedBy)\(notes.isEmpty ? "" : " · " + notes.joined(separator: ", "))"
+    }
+
+    private static func seconds(_ duration: Duration) -> String {
+        duration.formatted(.units(allowed: [.seconds], width: .narrow, fractionalPart: .show(length: 1)))
+    }
+}
+#endif

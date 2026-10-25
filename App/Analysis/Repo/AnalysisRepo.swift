@@ -4,8 +4,9 @@ actor AnalysisRepo {
     private let bookContentRepo: BookContentRepo
     private let analysisScheduleSvc: AnalysisScheduleSvc
     private var passes: [UUID: Task<RulesPass, any Error>] = [:]
-    private var refinements: [UUID: Task<BookAnalysis, any Error>] = [:]
-    private var latest: [UUID: BookAnalysis] = [:]
+    private var refinements: [UUID: Task<AnalysisSnapshot, any Error>] = [:]
+    private var latest: [UUID: AnalysisSnapshot] = [:]
+    private var progress: [UUID: EngineProgress] = [:]
 
     init(bookContentRepo: BookContentRepo, analysisScheduleSvc: AnalysisScheduleSvc) {
         self.bookContentRepo = bookContentRepo
@@ -13,23 +14,39 @@ actor AnalysisRepo {
     }
 
     func analysis(for bookID: UUID) async throws -> BookAnalysis {
-        if let analysis = latest[bookID] { return analysis }
+        try await snapshot(for: bookID).book
+    }
+
+    func snapshot(for bookID: UUID) async throws -> AnalysisSnapshot {
+        if let snapshot = latest[bookID] { return snapshot }
         let pass = try await rulesPass(for: bookID)
-        if let analysis = latest[bookID] { return analysis }
-        let analysis = analysisScheduleSvc.analysis(from: pass)
-        latest[bookID] = analysis
-        return analysis
+        if let snapshot = latest[bookID] { return snapshot }
+        let snapshot = analysisScheduleSvc.analysis(from: pass)
+        latest[bookID] = snapshot
+        return snapshot
     }
 
     func refinedAnalysis(for bookID: UUID) async throws -> BookAnalysis {
         let pass = try await rulesPass(for: bookID)
-        let task = refinements[bookID] ?? Task.detached { [analysisScheduleSvc] in
-            await analysisScheduleSvc.refinedAnalysis(from: pass)
+        let task = refinements[bookID] ?? Task.detached { [analysisScheduleSvc, self] in
+            await analysisScheduleSvc.refinedAnalysis(from: pass) { progress in
+                Task { await self.record(progress, for: bookID) }
+            }
         }
         refinements[bookID] = task
-        let analysis = try await task.value
-        latest[bookID] = analysis
-        return analysis
+        let snapshot = try await task.value
+        latest[bookID] = snapshot
+        return snapshot.book
+    }
+
+    func progress(for bookID: UUID) -> EngineProgress? {
+        progress[bookID]
+    }
+
+    private func record(_ newProgress: EngineProgress, for bookID: UUID) {
+        if newProgress.done >= progress[bookID]?.done ?? 0 {
+            progress[bookID] = newProgress
+        }
     }
 
     private func rulesPass(for bookID: UUID) async throws -> RulesPass {

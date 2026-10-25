@@ -13,6 +13,14 @@ struct RefCtrl {
         _ = try? await analysisRepo.refinedAnalysis(for: bookID)
     }
 
+    func snapshot() async throws -> AnalysisSnapshot {
+        try await analysisRepo.snapshot(for: bookID)
+    }
+
+    func progress() async -> EngineProgress? {
+        await analysisRepo.progress(for: bookID)
+    }
+
     func marks(on page: Page, highlighting mentionIndex: Int?, includingSymbols: Bool) async throws -> [Mark] {
         let content = try await bookContentRepo.content(for: bookID)
         let analysis = try await analysisRepo.analysis(for: bookID)

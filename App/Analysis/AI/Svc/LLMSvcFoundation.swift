@@ -68,6 +68,8 @@ struct LLMSvcFoundation: LLMSvc {
     var isAvailable: Bool { ModelAvailSvc().isFoundationModelsAvailable }
     var contextSentenceCount: Int { LLMKnobs.contextSentenceCount }
     var maxCandidates: Int { LLMKnobs.maxCandidates }
+    var namesPerCall: Int { LLMKnobs.maxNamesPerCall }
+    var maxCalls: Int { LLMKnobs.maxCallsPerRun }
 
     func allowsCall(callsSoFar: Int) -> Bool {
         isAvailable && callsSoFar < LLMKnobs.maxCallsPerRun

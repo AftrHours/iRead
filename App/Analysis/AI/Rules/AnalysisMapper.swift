@@ -55,7 +55,7 @@ enum AnalysisMapper {
         return ContextPassage(paragraph: sentence.paragraph, range: sentence.range, text: SentenceText.of(sentence, in: content))
     }
 
-    private static func id(of key: Int) -> String {
+    static func id(of key: Int) -> String {
         "character-\(key)"
     }
 }

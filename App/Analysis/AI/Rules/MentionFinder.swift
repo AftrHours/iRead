@@ -31,10 +31,8 @@ enum MentionFinderKnobs {
 
 enum MentionFinder {
     static func mentions(in sentences: [NumberedSentence], tags: SentenceTags) -> [ResolvedMention] {
-        sentences.flatMap { sentence -> [ResolvedMention] in
-            guard tags.tokens.indices.contains(sentence.index) else { return [] }
-            let tokens = tags.tokens[sentence.index]
-            return (names(in: sentence, tokens: tokens) + descriptions(in: sentence, tokens: tokens)).sorted { $0.location < $1.location }
+        zip(sentences, tags.tokens).flatMap { sentence, tokens in
+            (names(in: sentence, tokens: tokens) + descriptions(in: sentence, tokens: tokens)).sorted { $0.location < $1.location }
         }
     }
 
