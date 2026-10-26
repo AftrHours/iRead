@@ -3,12 +3,12 @@ import NaturalLanguage
 
 enum WordTagKnobs {
     static let determiners: Set<String> = [
-        "the", "a", "an", "this", "that", "these", "those", "his", "her", "its", "their", "my", "your", "our",
+        "the", "a", "an", "this", "that", "these", "those", "his", "her", "its", "their", "my", "your", "our"
     ]
     static let pronouns: Set<String> = ["i", "you", "he", "she", "it", "we", "they", "me", "him", "them", "us"]
     static let prepositions: Set<String> = [
         "of", "in", "on", "at", "to", "from", "with", "by", "for", "about", "into", "over", "under", "through",
-        "between", "after", "before", "near", "upon", "without",
+        "between", "after", "before", "near", "upon", "without"
     ]
     static let conjunctions: Set<String> = ["and", "but", "or", "so", "nor", "yet", "because", "if", "when", "while"]
 
@@ -67,13 +67,19 @@ struct WordTagSvc: Sendable {
             let word = String(piece)
             let lower = word.lowercased()
             let isCapitalised = word.first?.isUppercase == true && position > 0
-            let lexicalClass: String
-            if WordTagKnobs.determiners.contains(lower) { lexicalClass = "Determiner" }
-            else if WordTagKnobs.pronouns.contains(lower) { lexicalClass = "Pronoun" }
-            else if WordTagKnobs.prepositions.contains(lower) { lexicalClass = "Preposition" }
-            else if WordTagKnobs.conjunctions.contains(lower) { lexicalClass = "Conjunction" }
-            else if isCapitalised { lexicalClass = "Noun" }
-            else { lexicalClass = "Word" }
+            let lexicalClass = if WordTagKnobs.determiners.contains(lower) {
+                "Determiner"
+            } else if WordTagKnobs.pronouns.contains(lower) {
+                "Pronoun"
+            } else if WordTagKnobs.prepositions.contains(lower) {
+                "Preposition"
+            } else if WordTagKnobs.conjunctions.contains(lower) {
+                "Conjunction"
+            } else if isCapitalised {
+                "Noun"
+            } else {
+                "Word"
+            }
             return makeToken(word, in: sentence, range: piece.startIndex..<piece.endIndex, lexicalClass: lexicalClass,
                              name: lexicalClass == "Noun" ? "Capitalised" : nil, lemma: lower)
         }

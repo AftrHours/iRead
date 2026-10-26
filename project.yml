@@ -12,6 +12,10 @@ packages:
   ZIPFoundation:
     url: https://github.com/weichsel/ZIPFoundation
     from: 0.9.20
+  # Runs SwiftLint on every build, using the rules in .swiftlint.yml. Xcode asks once to "Trust & Enable" it.
+  SwiftLintPlugins:
+    url: https://github.com/SimplyDanny/SwiftLintPlugins
+    from: 0.65.1
 targets:
   iRead:
     type: application
@@ -20,6 +24,9 @@ targets:
       - path: App
     dependencies:
       - package: ZIPFoundation
+    buildToolPlugins:
+      - plugin: SwiftLintBuildToolPlugin
+        package: SwiftLintPlugins
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.AftrHours.iRead
@@ -27,6 +34,8 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         TARGETED_DEVICE_FAMILY: "2"
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: YES
+        SUPPORTS_MACCATALYST: NO
         MARKETING_VERSION: "0.1"
         CURRENT_PROJECT_VERSION: "1"
 schemes:
