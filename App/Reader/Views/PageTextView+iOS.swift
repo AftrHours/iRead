@@ -12,7 +12,8 @@ final class PageTextView: UIView {
 
     private static let minTapSize: CGFloat = 44
     private static let symbolGap: CGFloat = 0.5
-    private static let symbolScale: CGFloat = 0.3
+    /// The symbol is half as tall as the capital letters, and it grows with the text size.
+    private static let symbolScale: CGFloat = 0.5
 
     init(page: Page, settings: ReadingSettings, marks: [Mark], onEdgeTapped: @escaping (_ isForward: Bool) -> Void,
          onCenterTapped: @escaping () -> Void, onMarkTapped: @escaping (Mark, CGRect) -> Void) {
@@ -43,14 +44,14 @@ final class PageTextView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        textView.frame = PageTextStyle.textFrame(in: bounds)
+        textView.frame = PageTextStyle.textFrame(in: bounds, settings: settings)
         for (mark, button) in symbolButtons {
             button.frame = symbolFrame(for: mark)
         }
     }
 
     private func addSymbolButtons() {
-        let symbolSize = PageTextStyle.font(settings: settings).pointSize * Self.symbolScale
+        let symbolSize = Self.symbolSize(for: PageTextStyle.font(settings: settings))
         for mark in marks {
             guard case .symbol(let style, let entityName) = mark.kind else { continue }
             let button = UIButton(type: .system)
@@ -68,17 +69,22 @@ final class PageTextView: UIView {
 
     private func symbolFrame(for mark: Mark) -> CGRect {
         let font = PageTextStyle.font(settings: settings)
-        let symbolSize = font.pointSize * Self.symbolScale
+        let symbolSize = Self.symbolSize(for: font)
         let layoutManager = textView.layoutManager
         let glyph = layoutManager.glyphIndexForCharacter(at: mark.range.location)
         let line = layoutManager.lineFragmentRect(forGlyphAt: glyph, effectiveRange: nil)
         let glyphLocation = layoutManager.location(forGlyphAt: glyph)
-        // Raised above the capitals into the gap between lines, so it never covers the previous word.
+        // Sits above the name's first letter, in the gap between lines. A quarter of it hangs over the space before
+        // the name: enough to give the letter room, not enough to reach the previous word.
         let center = CGPoint(
-            x: textView.frame.minX + line.minX + glyphLocation.x - Self.symbolGap - symbolSize / 2,
+            x: textView.frame.minX + line.minX + glyphLocation.x + symbolSize / 4,
             y: textView.frame.minY + line.minY + glyphLocation.y - font.capHeight - Self.symbolGap - symbolSize / 2
         )
         return CGRect(x: center.x - Self.minTapSize / 2, y: center.y - Self.minTapSize / 2, width: Self.minTapSize, height: Self.minTapSize)
+    }
+
+    private static func symbolSize(for font: UIFont) -> CGFloat {
+        font.capHeight * symbolScale
     }
 
     private func attributedText() -> NSAttributedString {

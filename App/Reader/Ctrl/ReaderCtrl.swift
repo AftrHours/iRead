@@ -49,6 +49,16 @@ actor ReaderCtrl {
         return await page(chapterIndex: paragraph.chapterIndex, offset: paragraph.range.location + position.charOffset)
     }
 
+    /// Where text starting at a position falls on a page, or nil if it isn't on that page.
+    func range(from position: ReadingPosition, length: Int, on page: Page) -> NSRange? {
+        let paragraph = content.paragraphs[position.paragraph]
+        guard paragraph.chapterIndex == page.chapterIndex else { return nil }
+        let chapterRange = NSRange(location: paragraph.range.location + position.charOffset, length: length)
+        let visibleRange = NSIntersectionRange(chapterRange, page.range)
+        guard visibleRange.length > 0 else { return nil }
+        return NSRange(location: visibleRange.location - page.range.location, length: visibleRange.length)
+    }
+
     func pages(around page: Page) async -> [Page] {
         var pages = [page]
         for _ in 0..<2 {
@@ -87,6 +97,7 @@ actor ReaderCtrl {
                 chapterTitle: content.chapters[chapterIndex].title,
                 snippet: match.snippet,
                 position: match.position,
+                length: match.length,
                 pageNumber: pagesBefore(chapterIndex: chapterIndex) + pageIndex + 1
             )
         }

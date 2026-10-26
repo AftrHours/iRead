@@ -6,12 +6,12 @@ import Observation
 final class ReferenceVM {
     enum Card: Identifiable {
         case reference(ReferenceCard)
-        case symbol(Entity)
+        case symbol(SymbolCard)
 
         var id: String {
             switch self {
             case .reference(let card): "reference \(card.mentionIndex)"
-            case .symbol(let entity): "symbol \(entity.id)"
+            case .symbol(let card): "symbol \(card.entity.id)"
             }
         }
     }
@@ -30,6 +30,9 @@ final class ReferenceVM {
     private(set) var toastText: String?
     private(set) var chapterEntities: [Entity] = []
     private(set) var editedSymbols: [String: SymbolStyle] = [:]
+    #if DEBUG
+    private(set) var isEngineRunning = true
+    #endif
 
     @ObservationIgnored var onShowPage: (Page, Int?) -> Void = { _, _ in }
     @ObservationIgnored var onEditSymbol: (Entity) -> Void = { _ in }
@@ -38,6 +41,8 @@ final class ReferenceVM {
     private var loadedPages: [Page] = []
     private var areSymbolsShown = false
     private var highlightedMentionIndex: Int?
+    private var highlightedSearchResult: SearchResult?
+    private var isFollowingAnalysis = false
     private var entityToEditAfterCard: Entity?
     private let refCtrl: RefCtrl
     private let readerStateCtrl: ReaderStateCtrl
@@ -50,11 +55,31 @@ final class ReferenceVM {
     }
 
     func onAppear() {
+        followAnalysis()
+    }
+
+    func appForegrounded() {
+        followAnalysis()
+    }
+
+    private func followAnalysis() {
+        guard !isFollowingAnalysis else { return }
+        isFollowingAnalysis = true
         Task {
-            await refCtrl.prepare()
-            await refCtrl.refine()
+            await refCtrl.startAnalysis()
+            for await _ in await refCtrl.analysisUpdates() {
+                await loadMarks()
+            }
             await loadMarks()
+            isFollowingAnalysis = false
+            #if DEBUG
+            isEngineRunning = false
+            #endif
         }
+    }
+
+    func appBackgrounded() {
+        Task { await refCtrl.stopAnalysis() }
     }
 
     func bookOpened() async {
@@ -73,8 +98,9 @@ final class ReferenceVM {
         self.areSymbolsShown = areSymbolsShown
     }
 
-    func pageShown(highlighting mentionIndex: Int?) {
+    func pageShown(highlighting mentionIndex: Int?, searchResult: SearchResult? = nil) {
         highlightedMentionIndex = mentionIndex
+        highlightedSearchResult = searchResult
     }
 
     func layoutChanged() {
@@ -86,7 +112,8 @@ final class ReferenceVM {
             guard let entity = try? await refCtrl.entity(forMention: mark.mentionIndex) else { return }
             cardAnchor = anchor
             guard mark.kind == .underline else {
-                card = .symbol(entity)
+                guard let symbolCard = try? await refCtrl.symbolCard(forMention: mark.mentionIndex) else { return }
+                card = .symbol(symbolCard)
                 return
             }
             guard let passage = try? await refCtrl.passage(forMention: mark.mentionIndex) else { return }
@@ -167,16 +194,28 @@ final class ReferenceVM {
         }
     }
 
+    #if DEBUG
+    func makeEngineDebugVM() -> EngineDebugVM {
+        EngineDebugVM(refCtrl: refCtrl, page: shownPage)
+    }
+    #endif
+
     func loadMarks() async {
         let pages = loadedPages
         var marks: [Int: [Mark]] = [:]
         for page in pages {
-            marks[page.number] = try? await refCtrl.marks(
+            var pageMarks = (try? await refCtrl.marks(
                 on: page,
                 highlighting: highlightedMentionIndex,
                 includingSymbols: areSymbolsShown,
                 editedSymbols: editedSymbols
-            )
+            )) ?? []
+            if let searchResult = highlightedSearchResult,
+               let range = await readerCtrl.range(from: searchResult.position, length: searchResult.length, on: page) {
+                // Same highlight as a jumped-to passage. Highlights aren't tappable, so it needs no mention.
+                pageMarks.append(Mark(mentionIndex: -1, range: range, kind: .highlight))
+            }
+            marks[page.number] = pageMarks
         }
         guard pages == loadedPages else { return }
         self.marks = marks

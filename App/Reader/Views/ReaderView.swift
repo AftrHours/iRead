@@ -4,6 +4,9 @@ struct ReaderView: View {
     @State private var readerVM: ReaderVM
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
+    #if DEBUG
+    @State private var isEngineDebugShown = false
+    #endif
 
     private var readerSettingsVM: ReaderSettingsVM { readerVM.readerSettingsVM }
     private var referenceVM: ReferenceVM { readerVM.referenceVM }
@@ -47,6 +50,8 @@ struct ReaderView: View {
         .onChange(of: scenePhase) { _, scenePhase in
             if scenePhase == .background {
                 readerVM.appBackgrounded()
+            } else if scenePhase == .active {
+                readerVM.appForegrounded()
             }
         }
         .sheet(item: Binding(get: { readerVM.sheet }, set: { _ in readerVM.sheetDismissed() })) { sheet in
@@ -65,6 +70,11 @@ struct ReaderView: View {
                 }
             }
         }
+        #if DEBUG
+        .sheet(isPresented: $isEngineDebugShown) {
+            EngineDebugView(engineDebugVM: referenceVM.makeEngineDebugVM())
+        }
+        #endif
     }
 
     @ViewBuilder
@@ -87,9 +97,9 @@ struct ReaderView: View {
                     switch card {
                     case .reference(let referenceCard):
                         RefCardView(card: referenceCard) { referenceVM.jumpToPassageTapped() }
-                    case .symbol(let entity):
-                        SymCardView(entity: entity, style: referenceVM.symbolStyle(for: entity)) {
-                            referenceVM.editSymbolTapped(entity)
+                    case .symbol(let symbolCard):
+                        SymCardView(card: symbolCard, style: referenceVM.symbolStyle(for: symbolCard.entity)) {
+                            referenceVM.editSymbolTapped(symbolCard.entity)
                         }
                     }
                 }
@@ -134,6 +144,28 @@ struct ReaderView: View {
         }
     }
 
+    #if DEBUG
+    private var engineDebugLabel: some View {
+        Group {
+            if referenceVM.isEngineRunning {
+                ProgressView()
+            } else {
+                Image(systemName: "ladybug")
+                    .font(.title3.weight(.medium))
+                    .overlay(alignment: .topTrailing) {
+                        Circle()
+                            .fill(.green)
+                            .frame(width: 8, height: 8)
+                            .offset(x: 4, y: -4)
+                    }
+            }
+        }
+        .frame(width: 44, height: 44)
+        .contentShape(.circle)
+        .glassEffect(.regular.interactive(), in: .circle)
+    }
+    #endif
+
     private var topBar: some View {
         ZStack {
             VStack(spacing: 6) {
@@ -152,6 +184,16 @@ struct ReaderView: View {
                     readerVM.backTapped()
                 }
                 Spacer()
+                #if DEBUG
+                Button {
+                    isEngineDebugShown = true
+                } label: {
+                    engineDebugLabel
+                }
+                .buttonStyle(.plain)
+                .keyboardShortcut("d", modifiers: [.command, .shift])
+                .accessibilityLabel("Engine Debug")
+                #endif
             }
         }
         .padding(.horizontal, 16)

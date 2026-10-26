@@ -1,21 +1,26 @@
 import Foundation
 
+enum LLMFailure: Error {
+    case exceededContext
+    case refused
+    case unavailable
+    case other
+}
+
 protocol LLMSvc: Sendable {
     var isAvailable: Bool { get }
-    var contextSentenceCount: Int { get }
-    var maxCandidates: Int { get }
+    var contextSize: Int { get }
+    var maxCallsPerChapter: Int { get }
 
-    func allowsCall(callsSoFar: Int) -> Bool
-    func groupNames(_ request: NameGroupRequest) async -> [NameGroupChoice]
-    func chooseReference(_ request: LinkRequest) async -> LinkChoice?
+    func prewarm()
+    func readSlice(_ request: SliceRequest) async throws(LLMFailure) -> SliceReading
 }
 
 struct LLMSvcUnavailable: LLMSvc {
     var isAvailable: Bool { false }
-    var contextSentenceCount: Int { 0 }
-    var maxCandidates: Int { 0 }
+    var contextSize: Int { 0 }
+    var maxCallsPerChapter: Int { 0 }
 
-    func allowsCall(callsSoFar: Int) -> Bool { false }
-    func groupNames(_ request: NameGroupRequest) async -> [NameGroupChoice] { [] }
-    func chooseReference(_ request: LinkRequest) async -> LinkChoice? { nil }
+    func prewarm() {}
+    func readSlice(_ request: SliceRequest) async throws(LLMFailure) -> SliceReading { throw .unavailable }
 }
