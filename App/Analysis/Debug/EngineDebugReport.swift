@@ -38,7 +38,7 @@ enum EngineDebugReport {
                 id: entity.id,
                 name: entity.name,
                 symbolName: entity.symbolName,
-                color: Color(uiColor: SymbolPalette.color(forSymbol: entity.symbolName)),
+                color: symbolColor(for: entity),
                 names: entity.names.joined(separator: ", "),
                 mentionCount: counts[entity.id, default: 0],
                 firstSeen: entity.appearances.first?.text ?? "No appearance description yet"
@@ -74,7 +74,7 @@ enum EngineDebugReport {
         for (mention, entity) in mentions {
             guard let stringRange = Range(NSRange(location: mention.location, length: mention.length), in: text),
                   let range = Range(stringRange, in: result) else { continue }
-            result[range].foregroundColor = entity.map { Color(uiColor: SymbolPalette.color(forSymbol: $0.symbolName)) } ?? .secondary
+            result[range].foregroundColor = entity.map(symbolColor) ?? .secondary
             result[range].font = .body.bold()
         }
         return result
@@ -92,5 +92,9 @@ enum EngineDebugReport {
         return "“\(mention.text)” → \(target) · \(decidedBy)\(notes.isEmpty ? "" : " · " + notes.joined(separator: ", "))"
     }
 
+    /// The analysis's own colour for a character, ignoring the reader's edits.
+    private static func symbolColor(for entity: Entity) -> Color {
+        Color(uiColor: SymbolPalette.color(at: SymbolPalette.style(for: entity, edited: [:]).colorIndex))
+    }
 }
 #endif

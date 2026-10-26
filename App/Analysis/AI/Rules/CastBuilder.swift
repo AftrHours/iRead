@@ -34,7 +34,8 @@ enum CastBuilder {
         return extended
     }
 
-    private static func joinNames(_ first: ResolvedMention, _ second: ResolvedMention, at sentence: Int, decidedBy: DecidedBy, in analysis: inout ResolvedAnalysis) {
+    private static func joinNames(_ first: ResolvedMention, _ second: ResolvedMention, at sentence: Int,
+                                  decidedBy: DecidedBy, in analysis: inout ResolvedAnalysis) {
         switch (analysis.entityKey(forName: first.head), analysis.entityKey(forName: second.head)) {
         case let (a?, b?):
 

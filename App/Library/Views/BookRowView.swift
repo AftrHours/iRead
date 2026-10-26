@@ -1,40 +1,39 @@
 import SwiftUI
 
-struct BookRowView: View {
+struct BookRowView<MenuButton: View>: View {
     let book: BookRecord
-    
+    let cover: UIImage?
+    let menu: MenuButton
+
     var body: some View {
         HStack(spacing: 16) {
             VStack(spacing: 4) {
                 Rectangle()
-                    .fill(Color.gray.opacity(0.3))
-                    .frame(width: 60, height: 80)
-
-                // Progress Bar constrained to thumbnail width
-                GeometryReader { geometry in
-                    ZStack(alignment: .leading) {
-                        Capsule()
-                            .fill(Color.black.opacity(0.18))
-                        Capsule()
-                            .fill(Color.gray)
-                            .frame(width: geometry.size.width * CGFloat(min(max(book.progress, 0), 1)))
+                    .fill(Color(.systemGray5))
+                    .frame(width: 60, height: 60 / bookCoverAspectRatio)
+                    .overlay(alignment: .top) {
+                        if let cover {
+                            Image(uiImage: cover)
+                                .resizable()
+                                .scaledToFill()
+                        }
                     }
-                }
-                .frame(width: 60, height: 4)
+                    .clipped()
+                ProgressBar(progress: book.progress)
+                    .frame(width: 60)
             }
-            
-            VStack(alignment: .leading) {
+
+            VStack(alignment: .leading, spacing: 2) {
                 Text(book.title)
-                    .font(.headline)
+                    .font(.body.weight(.medium))
                 Text(book.author)
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.secondary)
             }
-            
+
             Spacer()
-            
-            Image(systemName: "ellipsis")
-                .foregroundColor(.gray)
+
+            menu
         }
     }
 }
@@ -46,6 +45,6 @@ struct BookRowView: View {
         author: "Andy Weir",
         isContinueReading: false,
         progress: 0.4
-    ))
+    ), cover: nil, menu: Image(systemName: "ellipsis"))
     .padding()
 }

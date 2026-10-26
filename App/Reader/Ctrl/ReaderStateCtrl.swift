@@ -1,6 +1,8 @@
 import Foundation
 
 actor ReaderStateCtrl {
+    private static let maxRecentSearches = 10
+
     private let bookID: UUID
     private let readingSettingsRepo: ReadingSettingsRepo
     private let brightnessSvc: BrightnessSvc
@@ -50,6 +52,31 @@ actor ReaderStateCtrl {
 
     func clearReturnPosition() async {
         bookState.returnPosition = nil
+        await bookStateRepo.save(bookState, for: bookID)
+    }
+
+    func editedSymbols() -> [String: SymbolStyle] {
+        bookState.editedSymbols
+    }
+
+    func saveSymbol(_ style: SymbolStyle, forEntity entityID: String) async {
+        bookState.editedSymbols[entityID] = style
+        await bookStateRepo.save(bookState, for: bookID)
+    }
+
+    func recentSearches() -> [String] {
+        bookState.recentSearches
+    }
+
+    func saveRecentSearch(_ query: String) async {
+        bookState.recentSearches.removeAll { $0.caseInsensitiveCompare(query) == .orderedSame }
+        bookState.recentSearches.insert(query, at: 0)
+        bookState.recentSearches = Array(bookState.recentSearches.prefix(Self.maxRecentSearches))
+        await bookStateRepo.save(bookState, for: bookID)
+    }
+
+    func clearRecentSearches() async {
+        bookState.recentSearches = []
         await bookStateRepo.save(bookState, for: bookID)
     }
 }

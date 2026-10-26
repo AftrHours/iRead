@@ -103,6 +103,6 @@ struct LLMSvcFoundation: LLMSvc {
         case .topK(let k, let seed): sampling = .random(top: k, seed: seed)
         case .probability(let p, let seed): sampling = .random(probabilityThreshold: p, seed: seed)
         }
-        return GenerationOptions(sampling: sampling, temperature: LLMKnobs.temperature, maximumResponseTokens: maximumTokens)
+        return GenerationOptions(samplingMode: sampling, temperature: LLMKnobs.temperature, maximumResponseTokens: maximumTokens)
     }
 }

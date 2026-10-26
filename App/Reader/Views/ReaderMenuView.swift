@@ -19,7 +19,7 @@ struct ReaderMenuView: View {
             Button {
                 readerVM.themeSettingsTapped()
             } label: {
-                row("Theme & Settings", systemImage: "textformat.size")
+                row("Theme & Settings", systemImage: "textformat")
             }
             Divider()
                 .padding(.horizontal, 20)
@@ -28,9 +28,9 @@ struct ReaderMenuView: View {
                 .padding(.horizontal, 20)
                 .frame(minHeight: 44)
             Button {
-                readerVM.symbolDetailsTapped()
+                readerVM.chapterSymbolsTapped()
             } label: {
-                row("Symbol Details", systemImage: "chevron.right")
+                row("Chapter Symbols", systemImage: "chevron.right")
             }
         }
         .buttonStyle(.plain)

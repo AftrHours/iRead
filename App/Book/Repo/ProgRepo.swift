@@ -32,6 +32,34 @@ actor ProgRepo {
         writePending()
     }
 
+    /// Keeps the reading position, so marking a finished book as still reading goes back to where the reader was.
+    func setFinished(_ isFinished: Bool, for bookID: UUID) {
+        let current = pending[bookID] ?? progress(for: bookID)
+        saveNow(ReadingProgress(
+            bookID: bookID,
+            position: current?.position ?? ReadingPosition(paragraph: 0, charOffset: 0),
+            chapterIndex: current?.chapterIndex ?? 0,
+            progress: current?.progress ?? 0,
+            lastReadAt: current?.lastReadAt ?? .now,
+            readingFrontier: current?.readingFrontier ?? 0,
+            finishedAt: isFinished ? .now : nil
+        ))
+    }
+
+    /// Saved as a 0% record rather than deleted, so a sample book doesn't fall back to its mock progress.
+    func resetProgress(for bookID: UUID) {
+        let current = pending[bookID] ?? progress(for: bookID)
+        saveNow(ReadingProgress(
+            bookID: bookID,
+            position: ReadingPosition(paragraph: 0, charOffset: 0),
+            chapterIndex: 0,
+            progress: 0,
+            lastReadAt: current?.lastReadAt ?? .now,
+            readingFrontier: 0,
+            finishedAt: nil
+        ))
+    }
+
     private func writePending() {
         while let (bookID, progress) = pending.popFirst() {
             let url = fileURL(for: bookID)

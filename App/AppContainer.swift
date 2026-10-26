@@ -30,7 +30,7 @@ struct AppContainer {
     }
 
     func makeLibVM() -> LibVM {
-        LibVM(libCtrl: LibCtrl(libRepo: libRepo), appNav: appNav)
+        LibVM(libCtrl: LibCtrl(libRepo: libRepo, bookContentRepo: bookContentRepo), appNav: appNav)
     }
 
     func makeReaderVM(book: BookRecord) -> ReaderVM {
@@ -45,6 +45,7 @@ struct AppContainer {
             book: book,
             readerCtrl: readerCtrl,
             progressCtrl: ProgressCtrl(bookID: book.id, progRepo: progRepo, eventSvc: eventSvc),
+            readerStateCtrl: readerStateCtrl,
             appNav: appNav,
             readerSettingsVM: ReaderSettingsVM(readerStateCtrl: readerStateCtrl),
             referenceVM: ReferenceVM(

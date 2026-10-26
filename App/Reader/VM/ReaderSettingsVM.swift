@@ -27,24 +27,25 @@ final class ReaderSettingsVM {
         Task { brightness = await readerStateCtrl.brightness() }
     }
 
-    func textSizeDecreased() {
-        changeSettings { $0.textSizeStep = max($0.textSizeStep - 1, ReadingSettings.textSizeSteps.lowerBound) }
-    }
-
-    func textSizeIncreased() {
-        changeSettings { $0.textSizeStep = min($0.textSizeStep + 1, ReadingSettings.textSizeSteps.upperBound) }
+    func textSizeChanged(_ value: Double) {
+        let index = min(max(Int(value.rounded()), 0), ReadingSettings.textSizes.count - 1)
+        changeSettings { $0.textSizeIndex = index }
     }
 
     func lineSpacingDecreased() {
-        changeSettings { $0.lineSpacingStep = max($0.lineSpacingStep - 1, ReadingSettings.lineSpacingSteps.lowerBound) }
+        changeSettings {
+            $0.lineSpacingPercent = max($0.lineSpacingPercent - ReadingSettings.lineSpacingPercentStep, ReadingSettings.lineSpacingPercents.lowerBound)
+        }
     }
 
     func lineSpacingIncreased() {
-        changeSettings { $0.lineSpacingStep = min($0.lineSpacingStep + 1, ReadingSettings.lineSpacingSteps.upperBound) }
+        changeSettings {
+            $0.lineSpacingPercent = min($0.lineSpacingPercent + ReadingSettings.lineSpacingPercentStep, ReadingSettings.lineSpacingPercents.upperBound)
+        }
     }
 
-    func themeTapped(_ index: Int) {
-        changeSettings { $0.themeIndex = index }
+    func themeTapped(_ theme: ReadingTheme) {
+        changeSettings { $0.theme = theme }
     }
 
     func symbolsToggled(_ isOn: Bool) {
@@ -59,10 +60,9 @@ final class ReaderSettingsVM {
     private func changeSettings(_ change: (inout ReadingSettings) -> Void) {
         let previous = settings
         change(&settings)
-        if settings != previous {
-            let settings = settings
-            Task { await readerStateCtrl.save(settings) }
-        }
+        guard settings != previous else { return }
+        let settings = settings
+        Task { await readerStateCtrl.save(settings) }
         onSettingsChanged()
     }
 }

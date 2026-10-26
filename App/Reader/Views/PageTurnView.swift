@@ -5,9 +5,9 @@ struct PageTurnView: UIViewControllerRepresentable {
     let pages: [Page]
     let shownPage: Page
     let settings: ReadingSettings
-    let bodyFontSize: CGFloat
     let marks: [Int: [Mark]]
     let onPageChanged: (Page) -> Void
+    let onCenterTapped: () -> Void
     let onMarkTapped: (Mark, CGRect) -> Void
 
     func makeCoordinator() -> Coordinator {
@@ -49,7 +49,6 @@ struct PageTurnView: UIViewControllerRepresentable {
             displayedView.map {
                 $0.page == pageTurnView.shownPage
                     && $0.settings == pageTurnView.settings
-                    && $0.bodyFontSize == pageTurnView.bodyFontSize
                     && $0.marks == pageTurnView.marks[pageTurnView.shownPage.number, default: []]
             } ?? false
         }
@@ -93,9 +92,9 @@ struct PageTurnView: UIViewControllerRepresentable {
             controller.view = PageTextView(
                 page: page,
                 settings: pageTurnView.settings,
-                bodyFontSize: pageTurnView.bodyFontSize,
                 marks: pageTurnView.marks[page.number, default: []],
                 onEdgeTapped: { [weak self] isForward in self?.turnPage(isForward: isForward) },
+                onCenterTapped: { [weak self] in self?.pageTurnView.onCenterTapped() },
                 onMarkTapped: { [weak self] mark, rect in self?.pageTurnView.onMarkTapped(mark, rect) }
             )
             return controller

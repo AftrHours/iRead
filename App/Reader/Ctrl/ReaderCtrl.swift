@@ -7,7 +7,7 @@ actor ReaderCtrl {
 
     private var content = BookContent(chapters: [], paragraphs: [], sentences: [], parserVersion: 0)
     private var readingSettings = ReadingSettings()
-    private var viewport = Viewport(size: .zero, bodyFontSize: 0)
+    private var viewport = Viewport(size: .zero)
     private var position = ReadingPosition(paragraph: 0, charOffset: 0)
     private var chapterPages: [[NSRange]] = []
 
@@ -35,9 +35,7 @@ actor ReaderCtrl {
     }
 
     func currentPage(viewport: Viewport, settings: ReadingSettings) async -> Page {
-        let isLayoutChanged = viewport != self.viewport
-            || settings.textSizeStep != readingSettings.textSizeStep
-            || settings.lineSpacingStep != readingSettings.lineSpacingStep
+        let isLayoutChanged = viewport != self.viewport || !settings.hasSameLayout(as: readingSettings)
         self.viewport = viewport
         readingSettings = settings
         if isLayoutChanged {

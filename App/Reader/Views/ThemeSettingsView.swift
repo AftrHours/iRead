@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ThemeSettingsView: View {
+    private static let sliderTint = Color(red: 0xAC / 255, green: 0x7F / 255, blue: 0x5E / 255)
+
     let readerSettingsVM: ReaderSettingsVM
     @Environment(\.dismiss) private var dismiss
 
@@ -9,11 +11,22 @@ struct ThemeSettingsView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     section("Text Size", systemImage: "textformat.size") {
-                        stepper(minus: "A-", plus: "A+", name: "text size") {
-                            readerSettingsVM.textSizeDecreased()
-                        } onIncrease: {
-                            readerSettingsVM.textSizeIncreased()
+                        Slider(
+                            value: Binding(get: { Double(readerSettingsVM.settings.textSizeIndex) }, set: { readerSettingsVM.textSizeChanged($0) }),
+                            in: 0...Double(ReadingSettings.textSizes.count - 1),
+                            step: 1
+                        ) {
+                            Text("Text Size")
+                        } minimumValueLabel: {
+                            Text("A")
+                                .font(.footnote)
+                        } maximumValueLabel: {
+                            Text("A")
+                                .font(.title)
                         }
+                        .foregroundStyle(.secondary)
+                        .tint(Self.sliderTint)
+                        .padding(.horizontal, 8)
                     }
                     section("Reading Theme", systemImage: "slider.horizontal.3") {
                         Slider(value: Binding(get: { readerSettingsVM.brightness }, set: { readerSettingsVM.brightnessChanged($0) })) {
@@ -23,10 +36,12 @@ struct ThemeSettingsView: View {
                         } maximumValueLabel: {
                             Image(systemName: "sun.max")
                         }
+                        .foregroundStyle(.secondary)
+                        .tint(Self.sliderTint)
                         .padding(.horizontal, 8)
                         HStack(spacing: 20) {
-                            ForEach(0..<ReadingSettings.themeCount, id: \.self) { index in
-                                themeTile(index)
+                            ForEach(ReadingTheme.allCases, id: \.self) { theme in
+                                themeTile(theme)
                             }
                         }
                     }
@@ -85,22 +100,28 @@ struct ThemeSettingsView: View {
         .accessibilityLabel(label)
     }
 
-    private func themeTile(_ index: Int) -> some View {
-        let isSelected = readerSettingsVM.settings.themeIndex == index
+    private func themeTile(_ theme: ReadingTheme) -> some View {
+        let isSelected = readerSettingsVM.settings.theme == theme
+        let background = theme == .original ? UIColor.systemGray6 : PageTextStyle.backgroundColor(for: theme)
         return Button {
-            readerSettingsVM.themeTapped(index)
+            readerSettingsVM.themeTapped(theme)
         } label: {
-            Text("Aa")
-                .font(.title2.weight(.semibold))
-                .frame(maxWidth: .infinity, minHeight: 80)
-                .background(Color(.systemGray5), in: .rect(cornerRadius: 14))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 14)
-                        .stroke(isSelected ? Color.accentColor : .clear, lineWidth: 3)
-                }
+            VStack(spacing: 2) {
+                Text("Aa")
+                    .font(Font(PageTextStyle.font(for: theme, size: 24)))
+                Text(theme.title)
+                    .font(Font(PageTextStyle.font(for: theme, size: 12)))
+            }
+            .foregroundStyle(Color(PageTextStyle.textColor(for: theme)))
+            .frame(maxWidth: .infinity, minHeight: 80)
+            .background(Color(background), in: .rect(cornerRadius: 14))
+            .overlay {
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(isSelected ? Color.primary : .clear, lineWidth: 2)
+            }
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Theme \(index + 1)")
+        .accessibilityLabel("\(theme.title) theme")
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }

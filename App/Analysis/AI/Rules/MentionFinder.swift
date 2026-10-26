@@ -12,12 +12,12 @@ enum MentionFinderKnobs {
         "man": "man", "gentleman": "man", "fellow": "man",
         "woman": "woman", "lady": "woman",
         "boy": "boy", "lad": "boy",
-        "person": "person", "bookworm": "person",
+        "person": "person", "bookworm": "person"
     ]
 
     static let groupWords: Set<String> = [
         "everyone", "everybody", "nobody", "people", "girls", "boys", "sisters", "children",
-        "us", "we", "they", "all", "both", "no one",
+        "us", "we", "they", "all", "both", "no one"
     ]
 
     static let determiners: Set<String> = ["a", "an", "the", "this", "that", "his", "her", "their", "our", "my", "your"]

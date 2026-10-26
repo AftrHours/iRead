@@ -1,7 +1,7 @@
 import Foundation
 
 enum AnalysisMapperKnobs {
-    static let minimumMentions = 20
+    static let minimumMentions = 2
     static let onlyNamed = false
     static let symbols = [
         "circle.fill", "square.fill", "triangle.fill", "diamond.fill", "hexagon.fill", "star.fill",

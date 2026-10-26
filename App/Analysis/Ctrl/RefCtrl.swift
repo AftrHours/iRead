@@ -25,7 +25,7 @@ struct RefCtrl {
         await analysisRepo.progress(for: bookID)
     }
 
-    func marks(on page: Page, highlighting mentionIndex: Int?, includingSymbols: Bool) async throws -> [Mark] {
+    func marks(on page: Page, highlighting mentionIndex: Int?, includingSymbols: Bool, editedSymbols: [String: SymbolStyle]) async throws -> [Mark] {
         let content = try await bookContentRepo.content(for: bookID)
         let analysis = await analysisRepo.analysis(for: bookID)
         var marks: [Mark] = []
@@ -36,7 +36,8 @@ struct RefCtrl {
             let firstCharacter = NSRange(location: mention.range.location, length: 1)
             if includingSymbols, let entity = analysis.entities.first(where: { $0.id == mention.entityID }),
                let range = pageRange(paragraph: mention.paragraph, range: firstCharacter, on: page, in: content) {
-                marks.append(Mark(mentionIndex: index, range: range, kind: .symbol(systemName: entity.symbolName, entityName: entity.name)))
+                let style = SymbolPalette.style(for: entity, edited: editedSymbols)
+                marks.append(Mark(mentionIndex: index, range: range, kind: .symbol(style, entityName: entity.name)))
             }
             if index == mentionIndex, let passage = mention.passage,
                let range = pageRange(paragraph: passage.paragraph, range: passage.range, on: page, in: content) {
@@ -61,6 +62,18 @@ struct RefCtrl {
         guard let entity = analysis.entities.first(where: { $0.id == mention.entityID }) else { throw ContentError.notFound }
         let position = ReadingPosition(paragraph: mention.paragraph, charOffset: mention.range.location)
         return SymbolCard(entity: entity, appearance: AppearancePicker.best(in: entity.appearances, before: position))
+    }
+
+    /// The characters mentioned in a chapter, in the order they first appear.
+    func entities(inChapter chapterIndex: Int) async throws -> [Entity] {
+        let content = try await bookContentRepo.content(for: bookID)
+        let analysis = await analysisRepo.analysis(for: bookID)
+        var entityIDs: [String] = []
+        for mention in analysis.mentions
+        where content.paragraphs[mention.paragraph].chapterIndex == chapterIndex && !entityIDs.contains(mention.entityID) {
+            entityIDs.append(mention.entityID)
+        }
+        return entityIDs.compactMap { id in analysis.entities.first { $0.id == id } }
     }
 
     func passage(forMention index: Int) async throws -> ContextPassage {
