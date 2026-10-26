@@ -5,7 +5,8 @@ struct LibView: View {
     @State private var isImporting = false
 
     // Sizes and gaps from the library design (iPad 11").
-    private let gridColumns = Array(repeating: GridItem(.flexible(), spacing: 26, alignment: .top), count: 4)
+    // As many columns as fit: 4 in portrait like the design, 6 in landscape, so covers keep the same size.
+    private let gridColumns = [GridItem(.adaptive(minimum: 160), spacing: 26, alignment: .top)]
     private static let sideMargin: CGFloat = 35
 
     var body: some View {
