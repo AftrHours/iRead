@@ -12,7 +12,7 @@ final class PageTextView: UIView {
 
     private static let minTapSize: CGFloat = 44
     private static let symbolGap: CGFloat = 0.5
-    private static let symbolScale: CGFloat = 0.5
+    private static let symbolScale: CGFloat = 0.2
 
     init(page: Page, settings: ReadingSettings, bodyFontSize: CGFloat, marks: [Mark],
          onEdgeTapped: @escaping (_ isForward: Bool) -> Void, onMarkTapped: @escaping (Mark, CGRect) -> Void) {
