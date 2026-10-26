@@ -41,6 +41,7 @@ final class ReferenceVM {
     private var loadedPages: [Page] = []
     private var areSymbolsShown = false
     private var highlightedMentionIndex: Int?
+    private var highlightedSearchResult: SearchResult?
     private var isFollowingAnalysis = false
     private var entityToEditAfterCard: Entity?
     private let refCtrl: RefCtrl
@@ -97,8 +98,9 @@ final class ReferenceVM {
         self.areSymbolsShown = areSymbolsShown
     }
 
-    func pageShown(highlighting mentionIndex: Int?) {
+    func pageShown(highlighting mentionIndex: Int?, searchResult: SearchResult? = nil) {
         highlightedMentionIndex = mentionIndex
+        highlightedSearchResult = searchResult
     }
 
     func layoutChanged() {
@@ -202,12 +204,18 @@ final class ReferenceVM {
         let pages = loadedPages
         var marks: [Int: [Mark]] = [:]
         for page in pages {
-            marks[page.number] = try? await refCtrl.marks(
+            var pageMarks = (try? await refCtrl.marks(
                 on: page,
                 highlighting: highlightedMentionIndex,
                 includingSymbols: areSymbolsShown,
                 editedSymbols: editedSymbols
-            )
+            )) ?? []
+            if let searchResult = highlightedSearchResult,
+               let range = await readerCtrl.range(from: searchResult.position, length: searchResult.length, on: page) {
+                // Same highlight as a jumped-to passage. Highlights aren't tappable, so it needs no mention.
+                pageMarks.append(Mark(mentionIndex: -1, range: range, kind: .highlight))
+            }
+            marks[page.number] = pageMarks
         }
         guard pages == loadedPages else { return }
         self.marks = marks

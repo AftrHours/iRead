@@ -17,6 +17,10 @@ struct SymCardView: View {
             if let appearance = card.appearance {
                 Text("“\(appearance.text)”")
                     .fixedSize(horizontal: false, vertical: true)
+            } else {
+                Text("\(card.entity.name) hasn't been described yet.")
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             HStack {
                 Spacer()

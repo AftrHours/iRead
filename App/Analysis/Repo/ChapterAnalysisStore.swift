@@ -3,10 +3,6 @@ import Foundation
 struct ChapterAnalysisStore: Sendable {
     let root: URL
 
-    init(root: URL) {
-        self.root = root
-    }
-
     func load(bookID: UUID, chapter: Int, engineVersion: Int, parserVersion: Int) -> ChapterAnalysis? {
         guard let data = try? Data(contentsOf: file(bookID: bookID, chapter: chapter)),
               let analysis = try? JSONDecoder().decode(ChapterAnalysis.self, from: data),

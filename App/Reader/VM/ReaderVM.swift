@@ -177,7 +177,7 @@ final class ReaderVM {
 
     private func searchResultPicked(_ result: SearchResult) {
         sheet = nil
-        Task { show(await readerCtrl.page(containing: result.position)) }
+        Task { show(await readerCtrl.page(containing: result.position), searchResult: result) }
     }
 
     private func loadPages(around page: Page) {
@@ -204,8 +204,8 @@ final class ReaderVM {
         loadPageTotals()
     }
 
-    private func show(_ page: Page, highlighting mentionIndex: Int? = nil) {
-        referenceVM.pageShown(highlighting: mentionIndex)
+    private func show(_ page: Page, highlighting mentionIndex: Int? = nil, searchResult: SearchResult? = nil) {
+        referenceVM.pageShown(highlighting: mentionIndex, searchResult: searchResult)
         shownPage = page
         updateReferenceVM()
         loadPages(around: page)

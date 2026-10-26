@@ -60,12 +60,16 @@ struct ChapterSymbolsView: View {
             .buttonStyle(.plain)
             .accessibilityAddTraits(isExpanded ? .isSelected : [])
             if isExpanded {
-                if let appearance = entity.appearances.first {
-                    Text("“\(appearance.text)”")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .padding(.leading, 44)
+                Group {
+                    if let appearance = entity.appearances.first {
+                        Text("“\(appearance.text)”")
+                    } else {
+                        Text("\(entity.name) hasn't been described yet.")
+                    }
                 }
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .padding(.leading, 44)
                 HStack {
                     Spacer()
                     Button("Edit Symbol") {
