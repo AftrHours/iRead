@@ -52,8 +52,8 @@ struct EngineDebugView: View {
 
     private var summary: some View {
         List {
-            if engineDebugVM.isModelRunning {
-                Section("Phase 2 progress") { progress }
+            if engineDebugVM.isAnalysing {
+                Section("Analysis progress") { progress }
             }
             ForEach(engineDebugVM.summary) { section in
                 Section(section.title) {
@@ -70,7 +70,7 @@ struct EngineDebugView: View {
         if let progress = engineDebugVM.progress {
             VStack(alignment: .leading, spacing: 8) {
                 ProgressView(value: progress.fraction)
-                Text("\(Int(progress.fraction * 100))% · \(progress.done) of \(progress.total) model calls")
+                Text("\(Int(progress.fraction * 100))% · \(progress.done) of \(progress.total) chapters")
                     .font(.caption.monospacedDigit())
                     .foregroundStyle(.secondary)
             }

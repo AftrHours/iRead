@@ -3,26 +3,26 @@ import SwiftUI
 
 enum EngineDebugReport {
     static func summary(of snapshot: AnalysisSnapshot) -> [EngineDebugSection] {
-        let pass = snapshot.pass
-        let content = pass.content
-        let rules = pass.analysis
-        let names = rules.mentions.filter { $0.form == .name }.count
-        let firstChapter = pass.sentences.first.map { content.paragraphs[content.sentences[$0.index].paragraph].chapterIndex }
+        let resolved = snapshot.resolved
+        let content = snapshot.content
+        let names = resolved.mentions.filter { $0.form == .name }.count
+        let firstChapter = resolved.mentions.first.map { content.paragraphs[content.sentences[$0.sentence].paragraph].chapterIndex }
         return [
-            EngineDebugSection(title: "Story start", rows: [
-                EngineDebugRow(label: "Chapter", value: firstChapter.map { "\($0): \(content.chapters[$0].title)" } ?? "None"),
-                EngineDebugRow(label: "Sentences analysed", value: "\(pass.sentences.count) of \(content.sentences.count)")
+            EngineDebugSection(title: "Chapters", rows: [
+                EngineDebugRow(label: "Story starts at", value: firstChapter.map { "\($0): \(content.chapters[$0].title)" } ?? "None yet"),
+                EngineDebugRow(label: "Analysed", value: "\(snapshot.chaptersDone) of \(snapshot.chaptersTotal)")
             ]),
-            EngineDebugSection(title: "Phase 1 · Rules", rows: [
-                EngineDebugRow(label: "Tagger", value: pass.usesNaturalLanguage ? "NaturalLanguage" : "Fallback rules (no English model)"),
-                EngineDebugRow(label: "Time", value: seconds(pass.duration)),
-                EngineDebugRow(label: "Mentions", value: "\(rules.mentions.count) (\(names) names, \(rules.mentions.count - names) descriptions)"),
-                EngineDebugRow(label: "Named characters", value: "\(rules.entities.filter(\.isNamed).count)"),
-                EngineDebugRow(label: "Described characters", value: "\(rules.entities.filter { !$0.isNamed }.count)"),
-                EngineDebugRow(label: "Linked", value: "\(rules.linkedMentions.count)"),
-                EngineDebugRow(label: "Undecided", value: "\(rules.mentions.filter(\.isUndecided).count)")
+            EngineDebugSection(title: "Engine", rows: [
+                EngineDebugRow(label: "Model", value: snapshot.usesModel ? "Foundation Models" : "Off: rules only"),
+                EngineDebugRow(label: "Mentions", value: "\(resolved.mentions.count) (\(names) names, \(resolved.mentions.count - names) descriptions)"),
+                EngineDebugRow(label: "Named characters", value: "\(resolved.entities.filter(\.isNamed).count)"),
+                EngineDebugRow(label: "Described characters", value: "\(resolved.entities.filter { !$0.isNamed }.count)"),
+                EngineDebugRow(label: "Linked", value: "\(resolved.linkedMentions.count)"),
+                EngineDebugRow(label: "Undecided", value: "\(resolved.mentions.filter(\.isUndecided).count)"),
+                EngineDebugRow(label: "Decided by model", value: "\(resolved.mentions.filter { $0.decidedBy == .model }.count)"),
+                EngineDebugRow(label: "Model calls", value: "\(snapshot.modelCalls)"),
+                EngineDebugRow(label: "Failed slices", value: "\(snapshot.failedSlices)")
             ]),
-            EngineDebugSection(title: "Phase 2 · Foundation Models", rows: modelRows(of: snapshot)),
             EngineDebugSection(title: "On screen", rows: [
                 EngineDebugRow(label: "Characters with a symbol", value: "\(snapshot.book.entities.count)"),
                 EngineDebugRow(label: "Mentions", value: "\(snapshot.book.mentions.count)"),
@@ -47,7 +47,7 @@ enum EngineDebugReport {
     }
 
     static func sentences(on page: Page, in snapshot: AnalysisSnapshot) -> [EngineDebugSentence] {
-        let content = snapshot.pass.content
+        let content = snapshot.content
         let entities = Dictionary(uniqueKeysWithValues: snapshot.book.entities.map { ($0.id, $0) })
         let mentionsBySentence = Dictionary(grouping: snapshot.resolved.mentions, by: \.sentence)
         return content.sentences.indices.compactMap { index in
@@ -63,24 +63,6 @@ enum EngineDebugReport {
                 links: shown.map { link(for: $0.0, shownAs: $0.1, in: snapshot.resolved) }
             )
         }
-    }
-
-    private static func modelRows(of snapshot: AnalysisSnapshot) -> [EngineDebugRow] {
-        guard snapshot.isModelAvailable else {
-            return [EngineDebugRow(label: "Status", value: "Off: Apple Intelligence unavailable or LLMKnobs.isEnabled is false")]
-        }
-        guard let duration = snapshot.modelDuration else {
-            return [EngineDebugRow(label: "Status", value: "Running in the background, open this again later")]
-        }
-        let resolved = snapshot.resolved
-        return [
-            EngineDebugRow(label: "Status", value: "Done"),
-            EngineDebugRow(label: "Time", value: seconds(duration)),
-            EngineDebugRow(label: "Model calls", value: "\(resolved.modelCalls) of max \(LLMKnobs.maxCallsPerRun)"),
-            EngineDebugRow(label: "Descriptions settled", value: "\(resolved.mentions.filter { $0.decidedBy == .model }.count)"),
-            EngineDebugRow(label: "Still undecided", value: "\(resolved.mentions.filter(\.isUndecided).count)"),
-            EngineDebugRow(label: "Names joined", value: "\(resolved.entities.filter { $0.isNamed && $0.mergeEdges.contains { $0.decidedBy == .model } }.count)")
-        ]
     }
 
     private static func entity(of mention: ResolvedMention, in resolved: ResolvedAnalysis, shown entities: [String: Entity]) -> Entity? {
@@ -110,8 +92,5 @@ enum EngineDebugReport {
         return "“\(mention.text)” → \(target) · \(decidedBy)\(notes.isEmpty ? "" : " · " + notes.joined(separator: ", "))"
     }
 
-    private static func seconds(_ duration: Duration) -> String {
-        duration.formatted(.units(allowed: [.seconds], width: .narrow, fractionalPart: .show(length: 1)))
-    }
 }
 #endif

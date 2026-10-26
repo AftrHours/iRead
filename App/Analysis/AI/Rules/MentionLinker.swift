@@ -10,14 +10,16 @@ enum MentionLinkerKnobs {
 
     static let minMentionsForDescribedEntity = 2
 
-    static let appositionConnectors: [String] = [#"^,\s*$"#, #"^,\s*(who|that)\s+(was|is)\s*$"#]
+    static let appositionConnectors: [String] = [
+        #"^,\s*$"#, #"^,\s*(who|that)\s+(was|is)\s*$"#, #"^\s*(was|is)\s*$"#, #"^,?\s*(called|named|known as)\s*$"#
+    ]
 
     static let minLengthToStripEd = 5
 }
 
 enum MentionLinker {
-    static func link(_ mentions: [ResolvedMention], to cast: [ResolvedEntity], sentences: [NumberedSentence]) -> ResolvedAnalysis {
-        var analysis = ResolvedAnalysis(entities: cast)
+    static func link(_ mentions: [ResolvedMention], memory: CastMemory, earlier: [ResolvedMention], sentences: [NumberedSentence]) -> LinkedChapter {
+        var analysis = ResolvedAnalysis(entities: memory.entities, mentions: earlier)
         let textByIndex = Dictionary(uniqueKeysWithValues: sentences.map { ($0.index, $0.text) })
 
         for var mention in mentions.sorted(by: { ($0.sentence, $0.location) < ($1.sentence, $1.location) }) {
@@ -41,7 +43,9 @@ enum MentionLinker {
             if mention.entity != nil { mention.decidedBy = .rule }
             analysis.mentions.append(mention)
         }
-        return analysis
+        var linked = memory
+        linked.entities = analysis.entities
+        return LinkedChapter(mentions: Array(analysis.mentions.dropFirst(earlier.count)), memory: linked)
     }
 
     static func dropSmallDescribedEntities(in analysis: inout ResolvedAnalysis) {

@@ -39,6 +39,7 @@ final class ReferenceVM {
     private var loadedPages: [Page] = []
     private var areSymbolsShown = false
     private var highlightedMentionIndex: Int?
+    private var isFollowingAnalysis = false
     private let refCtrl: RefCtrl
     private let readerStateCtrl: ReaderStateCtrl
     private let readerCtrl: ReaderCtrl
@@ -50,14 +51,31 @@ final class ReferenceVM {
     }
 
     func onAppear() {
+        followAnalysis()
+    }
+
+    func appForegrounded() {
+        followAnalysis()
+    }
+
+    private func followAnalysis() {
+        guard !isFollowingAnalysis else { return }
+        isFollowingAnalysis = true
         Task {
-            await refCtrl.prepare()
-            await refCtrl.refine()
+            await refCtrl.startAnalysis()
+            for await _ in await refCtrl.analysisUpdates() {
+                await loadMarks()
+            }
             await loadMarks()
+            isFollowingAnalysis = false
             #if DEBUG
             isEngineRunning = false
             #endif
         }
+    }
+
+    func appBackgrounded() {
+        Task { await refCtrl.stopAnalysis() }
     }
 
     func bookOpened() async {

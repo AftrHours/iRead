@@ -107,6 +107,11 @@ final class ReaderVM {
 
     func appBackgrounded() {
         Task { await progressCtrl.saveNow() }
+        referenceVM.appBackgrounded()
+    }
+
+    func appForegrounded() {
+        referenceVM.appForegrounded()
     }
 
     func menuTapped() {

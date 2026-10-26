@@ -36,6 +36,8 @@ struct ReaderView: View {
         .onChange(of: scenePhase) { _, scenePhase in
             if scenePhase == .background {
                 readerVM.appBackgrounded()
+            } else if scenePhase == .active {
+                readerVM.appForegrounded()
             }
         }
         .sheet(item: Binding(get: { readerVM.sheet }, set: { _ in readerVM.sheetDismissed() })) { sheet in

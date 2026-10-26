@@ -27,22 +27,27 @@ enum MentionFinderKnobs {
 
     static let allowWithPhrase = true
     static let maxWithPhraseWords = 6
+
+    static let propagateKnownNames = true
+    static let minCapitalizedMidSentence = 2
+    static let maxLowercaseRatio = 0.2
 }
 
 enum MentionFinder {
-    static func mentions(in sentences: [NumberedSentence], tags: SentenceTags) -> [ResolvedMention] {
+    static func mentions(in sentences: [NumberedSentence], tags: SentenceTags, names: Set<String>) -> [ResolvedMention] {
         zip(sentences, tags.tokens).flatMap { sentence, tokens in
-            (names(in: sentence, tokens: tokens) + descriptions(in: sentence, tokens: tokens)).sorted { $0.location < $1.location }
+            (self.names(in: sentence, tokens: tokens, knownNames: names) + descriptions(in: sentence, tokens: tokens))
+                .sorted { $0.location < $1.location }
         }
     }
 
-    private static func names(in sentence: NumberedSentence, tokens: [Token]) -> [ResolvedMention] {
+    private static func names(in sentence: NumberedSentence, tokens: [Token], knownNames: Set<String>) -> [ResolvedMention] {
         var mentions: [ResolvedMention] = []
         var i = 0
         while i < tokens.count {
-            guard isNameWord(tokens[i]) else { i += 1; continue }
+            guard isNameWord(tokens[i], knownNames: knownNames) else { i += 1; continue }
             var j = i
-            while j + 1 < tokens.count, isNameWord(tokens[j + 1]), joinsName(tokens[j], tokens[j + 1], in: sentence) { j += 1 }
+            while j + 1 < tokens.count, isNameWord(tokens[j + 1], knownNames: knownNames), joinsName(tokens[j], tokens[j + 1], in: sentence) { j += 1 }
             let run = Array(tokens[i...j])
             if !run.allSatisfy(isTitle) {
                 mentions.append(mention(run, in: sentence, form: .name,
@@ -62,11 +67,11 @@ enum MentionFinder {
         MentionFinderKnobs.titles.contains(token.text.lowercased())
     }
 
-    private static func isNameWord(_ token: Token) -> Bool {
+    private static func isNameWord(_ token: Token, knownNames: Set<String>) -> Bool {
         let lower = token.text.lowercased()
-        guard !MentionFinderKnobs.groupWords.contains(lower) else { return false }
-        let isFamilyName = token.text.first?.isUppercase == true && MentionFinderKnobs.familyTerms.contains(lower)
-        return token.name.map(MentionFinderKnobs.personNameTypes.contains) == true || isFamilyName
+        guard token.text.first?.isUppercase == true, !MentionFinderKnobs.groupWords.contains(lower) else { return false }
+        let isTaggedName = token.name.map(MentionFinderKnobs.personNameTypes.contains) == true
+        return isTaggedName || knownNames.contains(lower) || MentionFinderKnobs.familyTerms.contains(lower)
     }
 
     private static func descriptions(in sentence: NumberedSentence, tokens: [Token]) -> [ResolvedMention] {

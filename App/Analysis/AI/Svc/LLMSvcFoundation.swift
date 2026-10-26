@@ -12,89 +12,88 @@ enum Sampling: Sendable {
 enum LLMKnobs {
     static let isEnabled = true
 
-    static let groupNamesInstructions = """
-        You group names that belong to the same person in a novel. Use only the numbered sentences given, \
-        never what you may know about the book. Group names only when a given sentence shows they are the same person, \
-        and give that sentence's number. Leave every other name ungrouped.
-        """
-    static let chooseReferenceInstructions = """
-        You identify which character a phrase in a novel refers to. Use only the numbered sentences given, \
-        never what you may know about the book. Answer with the number of the candidate the phrase refers to, \
-        or -1 if the sentences do not make it clear. Also give the number of the sentence that shows it. Be conservative.
+    static let sliceInstructions = """
+        You read a passage of a novel and keep track of its characters. You get numbered sentences, a list of \
+        mentions to decide, and cards for the characters known so far. For each listed mention, give the card number \
+        of the character it refers to, or 0 when it is not a character or the passage does not make it clear. List \
+        character names in the passage that are missing from the mention list, copied exactly. List pairs of names \
+        that belong to the same person; you may use general knowledge of name forms such as nicknames. List short \
+        descriptions of characters, copied exactly from the passage. Give a sentence number for every answer. Decide \
+        who is who only from the cards and the sentences given. Be conservative and leave out anything unsure.
         """
 
-    static let contextSentenceCount = 3
-    static let maxCandidates = 5
-
-    static let maxNamesPerCall = 12
+    static let maxCallsPerChapter = 40
 
     static let sampling: Sampling = .greedy
 
     static let temperature: Double? = nil
 
-    static let maxChooseReferenceTokens = 64
-    static let maxGroupNamesTokens = 512
+    static let maxSliceTokens = 1000
 
-    static let maxCallsPerRun = 150
-
-    static func chooseReferencePrompt(_ request: LinkRequest) -> String {
-        let candidates = request.candidates.enumerated().map { "\($0.offset). \($0.element.label)" }.joined(separator: "\n")
+    static func slicePrompt(_ request: SliceRequest) -> String {
+        let cards = request.cards.map { card in
+            var line = "\(card.number). \(card.name)"
+            if !card.aliases.isEmpty { line += " (also: \(card.aliases.joined(separator: ", ")))" }
+            if !card.traits.isEmpty { line += "; \(card.traits.joined(separator: "; "))" }
+            if !card.intro.isEmpty { line += "; first seen: \(card.intro)" }
+            return line
+        }.joined(separator: "\n")
+        let mentions = request.mentions.map { "\($0.number). \"\($0.text)\" in sentence \($0.sentence)" }.joined(separator: "\n")
         return """
             Sentences:
-            \(numbered(request.sentences))
+            \(request.sentences.map { "[\($0.index)] \($0.text)" }.joined(separator: "\n"))
 
-            Phrase: "\(request.mention.text)" (in sentence \(request.mention.sentence))
+            Mentions to decide:
+            \(mentions.isEmpty ? "none" : mentions)
 
-            Candidates:
-            \(candidates)
+            Character cards:
+            \(cards.isEmpty ? "none" : cards)
             """
-    }
-
-    static func groupNamesPrompt(names: [String], sentences: [ModelSentence]) -> String {
-        """
-        Sentences:
-        \(numbered(sentences))
-
-        Names: \(names.joined(separator: ", "))
-        """
-    }
-
-    private static func numbered(_ sentences: [ModelSentence]) -> String {
-        sentences.map { "[\($0.index)] \($0.text)" }.joined(separator: "\n")
     }
 }
 
 struct LLMSvcFoundation: LLMSvc {
     var isAvailable: Bool { ModelAvailSvc().isFoundationModelsAvailable }
-    var contextSentenceCount: Int { LLMKnobs.contextSentenceCount }
-    var maxCandidates: Int { LLMKnobs.maxCandidates }
-    var namesPerCall: Int { LLMKnobs.maxNamesPerCall }
-    var maxCalls: Int { LLMKnobs.maxCallsPerRun }
+    var contextSize: Int { SystemLanguageModel.default.contextSize }
+    var maxCallsPerChapter: Int { LLMKnobs.maxCallsPerChapter }
 
-    func allowsCall(callsSoFar: Int) -> Bool {
-        isAvailable && callsSoFar < LLMKnobs.maxCallsPerRun
+    func prewarm() {
+        LanguageModelSession(instructions: LLMKnobs.sliceInstructions).prewarm()
     }
 
-    func chooseReference(_ request: LinkRequest) async -> LinkChoice? {
-        let session = LanguageModelSession(instructions: LLMKnobs.chooseReferenceInstructions)
-        guard let answer = try? await session.respond(to: LLMKnobs.chooseReferencePrompt(request), generating: ChooseReferenceAnswer.self,
-                                                      options: Self.options(maximumTokens: LLMKnobs.maxChooseReferenceTokens))
-        else { return nil }
-        return LinkChoice(candidateIndex: answer.content.candidate, evidenceSentence: answer.content.evidenceSentence)
-    }
-
-    func groupNames(_ request: NameGroupRequest) async -> [NameGroupChoice] {
-        var groups: [NameGroupChoice] = []
-        for start in stride(from: 0, to: request.names.count, by: LLMKnobs.maxNamesPerCall) {
-            let names = Array(request.names[start..<min(start + LLMKnobs.maxNamesPerCall, request.names.count)])
-            let session = LanguageModelSession(instructions: LLMKnobs.groupNamesInstructions)
-            guard let answer = try? await session.respond(to: LLMKnobs.groupNamesPrompt(names: names, sentences: request.sentences),
-                                                          generating: GroupNamesAnswer.self,
-                                                          options: Self.options(maximumTokens: LLMKnobs.maxGroupNamesTokens))
-            else { continue }
-            groups += answer.content.groups.map { NameGroupChoice(names: $0.names, evidenceSentence: $0.evidenceSentence) }
+    func readSlice(_ request: SliceRequest) async throws(LLMFailure) -> SliceReading {
+        let session = LanguageModelSession(instructions: LLMKnobs.sliceInstructions)
+        let answer: SliceReadAnswer
+        do {
+            answer = try await session.respond(to: LLMKnobs.slicePrompt(request), generating: SliceReadAnswer.self,
+                                               options: Self.options(maximumTokens: LLMKnobs.maxSliceTokens)).content
+        } catch {
+            throw Self.failure(for: error)
         }
-        return groups
+        return SliceReading(
+            assignments: answer.assignments.map { MentionAssignment(mention: $0.mention, card: $0.card == 0 ? nil : $0.card, evidence: $0.sentence) },
+            missedNames: answer.missedNames.map { NamedSpan(text: $0.name, sentence: $0.sentence) },
+            sameNames: answer.sameNames.map { NamePair(first: $0.first, second: $0.second, evidence: $0.sentence) },
+            traits: answer.traits.map { TraitNote(card: $0.card, text: $0.text, sentence: $0.sentence) }
+        )
+    }
+
+    private static func failure(for error: any Error) -> LLMFailure {
+        if #available(iOS 27.0, macOS 27.0, *), let error = error as? LanguageModelError {
+            switch error {
+            case .contextSizeExceeded: return .exceededContext
+            case .guardrailViolation, .refusal: return .refused
+            default: return .other
+            }
+        }
+        if let error = error as? LanguageModelSession.GenerationError {
+            switch error {
+            case .exceededContextWindowSize: return .exceededContext
+            case .guardrailViolation, .refusal: return .refused
+            default: return .other
+            }
+        }
+        return .other
     }
 
     private static func options(maximumTokens: Int) -> GenerationOptions {

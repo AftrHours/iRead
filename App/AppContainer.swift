@@ -20,7 +20,13 @@ struct AppContainer {
         self.progRepo = progRepo
         self.bookContentRepo = bookContentRepo
         libRepo = LibRepo(epubParseSvc: epubParseSvc, progRepo: progRepo)
-        analysisRepo = AnalysisRepo(bookContentRepo: bookContentRepo, analysisScheduleSvc: AnalysisScheduleSvc())
+        analysisRepo = AnalysisRepo(
+            content: { [bookContentRepo] in try await bookContentRepo.content(for: $0) },
+            prepassSvc: BookPrepassSvc(),
+            chapterSvc: ChapterAnalysisSvc(),
+            store: ChapterAnalysisStore(root: URL.applicationSupportDirectory.appending(path: "Books")),
+            makeLLM: { ModelAvailSvc().makeLLMSvc() }
+        )
     }
 
     func makeLibVM() -> LibVM {

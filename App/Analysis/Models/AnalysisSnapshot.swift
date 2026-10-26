@@ -1,9 +1,12 @@
 import Foundation
 
 struct AnalysisSnapshot: Sendable {
-    let pass: RulesPass
-    let resolved: ResolvedAnalysis
     let book: BookAnalysis
-    let isModelAvailable: Bool
-    let modelDuration: Duration?
+    let resolved: ResolvedAnalysis
+    let content: BookContent
+    let chaptersDone: Int
+    let chaptersTotal: Int
+    let modelCalls: Int
+    let failedSlices: Int
+    let usesModel: Bool
 }
