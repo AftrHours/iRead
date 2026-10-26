@@ -1,0 +1,18 @@
+# Change Log - iRead
+
+What changed in iRead release by release: which screens and parts of the character engine a tester should re-check, and why each change was made. The diff is in `git log`.
+
+Format based on [Keep a Changelog](https://keepachangelog.com/). Versions follow [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`). **MAJOR** when a flow is understood differently afterwards, **MINOR** when a flow, a screen, or a capability is added and existing flows still read the same, **PATCH** for a fix or refinement inside a flow that already exists. The app is below 1.0.0, so nothing here promises compatibility.
+
+**How to read a row**
+
+- **Version**: the release.
+- **Impacted Features**: the screens or engine parts to re-test, by the names the project uses.
+- **Changes Made**: grouped under Added, Changed, Fixed, Removed, and Data. `Data` covers files that ship inside the app. They load with the build, so there is no store key to bump and nothing to reset on a device.
+- **Date & Time**: local time (WIB) of the release.
+- **Author**: the person who decided the change.
+
+| Version | Impacted Features | Changes Made | Date & Time | Author |
+|---|---|---|---|---|
+| **0.2.0** | • **Character engine (tuning)**<br>• **WALKTHROUGH.md** | **Added**<br>• LitBank baseline for Little Women in `App/Resources/litbank/`. LitBank is a public dataset where people labeled the first 2,014 words of Chapter 1 for entities, coreference, events, and quotations. The engine's characters and mentions can now be scored against hand labels. Before this, every check was a judgment by eye on 3 pages.<br>• `WALKTHROUGH.md` has a new section, "Data pembanding: LitBank", with what each file holds, how to map LitBank labels to the engine, and what the sample cannot tell us.<br><br>**Data**<br>• The sample covers about half of Chapter 1 (4,103 words) and ends at the scene where Beth offers her dollar for Marmee's gloves. That is enough to compare mentions of the four sisters, and too small to quote a final score.<br>• The annotated text is tokenized (`" I thought I 'd get her some with my dollar , "`), so its character offsets do not match the EPUB. The engine has to run on `514_little_women.txt` to be scored.<br>• Files were renamed (`514_little_women.entities.tsv`, `.events.tsv`, `.quotations.ann`, `.coref.conll`) because the originals share one name and XcodeGen flattens resources. The full dataset stays outside the repo.<br>• About 164 KB goes into the app bundle. No code reads the files yet, so there is no score.<br>• LitBank is CC BY 4.0, which is why its `README.md` stays next to the data. | 2026-10-26 15:00 | AbrMac |
+| **0.1.0** | • **Library**<br>• **Reading Page**<br>• **Reference Card**<br>• **Symbols** | **Added**<br>• Library page with a book grid, backed by `LibRepo`.<br>• Reading Page with page turning, a saved and restored reading position, a page total, a reading menu, and a contents sheet.<br>• Reference jump, still on dummy data.<br>• Character engine, in two phases. Phase 1 uses rules and Apple's NaturalLanguage tags. Phase 2 asks Foundation Models to break ties. The result maps to `BookAnalysis` and draws as underlines and per-character symbol colors on the page.<br>• `WALKTHROUGH.md` follows one sentence range of Little Women, Chapter 1, through every step of that engine. | 2026-10-25 10:34 | AbrMac |

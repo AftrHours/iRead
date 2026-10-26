@@ -487,9 +487,38 @@ Contoh s144: paragraf 98 mulai di huruf ke-6497 bab, dan mention mulai di huruf 
 
 ---
 
+## Data pembanding: LitBank
+
+Semua angka di atas berasal dari hasil engine sendiri, jadi benar atau salahnya dinilai dengan mata. LitBank memberi label buatan manusia untuk awal Little Women. Dengan label itu, hasil engine bisa dihitung benar dan salahnya.
+
+Berkas ada di `App/Resources/litbank/`. Datanya dari <https://github.com/dbamman/litbank> (buku nomor 514 di Project Gutenberg), berlisensi CC BY 4.0, dan `README.md` LitBank ikut disimpan untuk atribusi.
+
+**Cakupan.** Hanya 2.014 kata pertama yang diberi label. Itu sekitar separuh Bab 1 (4.103 kata) dan berakhir di adegan Beth menawarkan uang satu dolarnya untuk sarung tangan Marmee. Empat saudari sudah muncul di bagian ini, jadi cukup untuk membandingkan mention mereka. Skornya tetap dari sampel kecil dan belum mewakili seluruh buku.
+
+| Berkas | Isi |
+|---|---|
+| `514_little_women.txt` | Teks yang diberi label (85 baris), sudah ditokenisasi |
+| `514_little_women.entities.tsv` | Satu token per baris dengan tag BIO: PER (orang), FAC, GPE, LOC, VEH, ORG. Lapisan pertama punya 119 awal span PER; entitas bersarang ada di kolom berikutnya |
+| `514_little_women.coref.conll` | Format CoNLL, satu token per baris. Kolom terakhir menandai kelompok yang menunjuk orang atau benda yang sama, termasuk kata ganti |
+| `514_little_women.events.tsv` | Satu token per baris, ditandai `EVENT` atau `O` |
+| `514_little_women.quotations.ann` | Daftar kutipan dialog (`QUOTE`) dengan posisi tokennya |
+| `README.md` | Penjelasan LitBank dan lisensinya |
+
+**Teks yang diberi label tidak sama dengan teks EPUB.** Tokenisasi memisahkan tanda baca dan kontraksi, misalnya `" I thought I 'd get her some with my dollar , "`, dan semua posisi di berkas label mengacu ke teks itu. Jalankan engine pada `514_little_women.txt`, bukan pada `BookContent`, lalu bandingkan per token. Kalau dijalankan pada EPUB, posisinya bergeser dan skornya salah.
+
+**Pemetaan ke engine.**
+- Hanya PER yang relevan untuk engine tokoh. FAC, GPE, LOC, VEH, dan ORG diabaikan.
+- LitBank menandai nama (`Beth`) dan frasa umum (`her daughter`), sehingga bisa dibandingkan dengan mention nama dan deskripsi dari engine.
+- Kata ganti (`he`, `her`) hanya ada di `coref.conll`. Buang dari perbandingan, kecuali engine ikut menandainya.
+- Kelompok di `coref.conll` setara dengan satu tokoh di pemberhentian 6. Satu kelompok bisa memuat beberapa nama, dan satu tokoh engine bisa terpecah ke beberapa kelompok. Hitung keduanya sebagai kesalahan.
+
+**Status.** Belum ada kode yang membaca berkas ini dan belum ada skor. Berkasnya ikut masuk ke bundel aplikasi (±164 KB). Semua berkas dipisah dengan nama unik karena XcodeGen meratakan nama berkas resource.
+
+---
+
 ## Titik awal tuning
 
-Semua yang di bawah terlihat di contoh 3 halaman ini.
+Semua yang di bawah terlihat di contoh 3 halaman ini. Untuk mengukur terhadap label manusia, lihat bagian "Data pembanding: LitBank".
 
 | Masalah | Terjadi di | Knob atau tempat yang terkait |
 |---|---|---|
