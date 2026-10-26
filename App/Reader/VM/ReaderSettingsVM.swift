@@ -33,11 +33,15 @@ final class ReaderSettingsVM {
     }
 
     func lineSpacingDecreased() {
-        changeSettings { $0.lineSpacingPercent = max($0.lineSpacingPercent - ReadingSettings.lineSpacingPercentStep, ReadingSettings.lineSpacingPercents.lowerBound) }
+        changeSettings {
+            $0.lineSpacingPercent = max($0.lineSpacingPercent - ReadingSettings.lineSpacingPercentStep, ReadingSettings.lineSpacingPercents.lowerBound)
+        }
     }
 
     func lineSpacingIncreased() {
-        changeSettings { $0.lineSpacingPercent = min($0.lineSpacingPercent + ReadingSettings.lineSpacingPercentStep, ReadingSettings.lineSpacingPercents.upperBound) }
+        changeSettings {
+            $0.lineSpacingPercent = min($0.lineSpacingPercent + ReadingSettings.lineSpacingPercentStep, ReadingSettings.lineSpacingPercents.upperBound)
+        }
     }
 
     func themeTapped(_ theme: ReadingTheme) {

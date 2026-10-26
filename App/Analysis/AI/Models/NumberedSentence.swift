@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct NumberedSentence: Sendable {
     let index: Int
     let text: String

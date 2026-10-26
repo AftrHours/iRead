@@ -12,7 +12,9 @@ enum ContextPassagePicker {
             $0.sentence < mention.sentence && resolved.entityKey(of: $0, asOf: mention.sentence) == key
         }
         let sameDescription = earlier.filter { $0.form == .description && $0.head == mention.head }
-        let best = sameDescription.max { overlap($0, mention) < overlap($1, mention) || (overlap($0, mention) == overlap($1, mention) && $0.sentence > $1.sentence) }
+        let best = sameDescription.max {
+            overlap($0, mention) < overlap($1, mention) || (overlap($0, mention) == overlap($1, mention) && $0.sentence > $1.sentence)
+        }
         return (best ?? earlier.min { $0.sentence < $1.sentence })?.sentence
     }
 

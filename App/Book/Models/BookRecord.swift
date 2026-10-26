@@ -35,12 +35,25 @@ struct BookRecord: Identifiable, Codable, Equatable {
 extension BookRecord {
     /// Books bundled in App/Resources, shown in the library before anything is imported.
     static let samples: [(book: BookRecord, fileName: String)] = [
-        (BookRecord(id: sampleID(1), title: "Little Women", author: "Louisa May Alcott", isContinueReading: true, progress: 0.3, dateAdded: Date(timeIntervalSince1970: 0)), "little-women"),
-        (BookRecord(id: sampleID(5), title: "Anne of Green Gables", author: "L. M. Montgomery", isContinueReading: false, progress: 0, dateAdded: Date(timeIntervalSince1970: 0)), "anne-of-green-gables"),
-        (BookRecord(id: sampleID(6), title: "Moby Dick", author: "Herman Melville", isContinueReading: false, progress: 0, dateAdded: Date(timeIntervalSince1970: 0)), "moby-dick"),
-        (BookRecord(id: sampleID(7), title: "Pride and Prejudice", author: "Jane Austen", isContinueReading: false, progress: 0, dateAdded: Date(timeIntervalSince1970: 0)), "pride-and-prejudice"),
-        (BookRecord(id: sampleID(8), title: "The Adventures of Sherlock Holmes", author: "Arthur Conan Doyle", isContinueReading: false, progress: 0, dateAdded: Date(timeIntervalSince1970: 0)), "the-adventures-of-sherlock-holmes")
+        sample(1, "Little Women", by: "Louisa May Alcott", progress: 0.3, file: "little-women"),
+        sample(5, "Anne of Green Gables", by: "L. M. Montgomery", file: "anne-of-green-gables"),
+        sample(6, "Moby Dick", by: "Herman Melville", file: "moby-dick"),
+        sample(7, "Pride and Prejudice", by: "Jane Austen", file: "pride-and-prejudice"),
+        sample(8, "The Adventures of Sherlock Holmes", by: "Arthur Conan Doyle", file: "the-adventures-of-sherlock-holmes")
     ]
+
+    private static func sample(_ number: UInt8, _ title: String, by author: String, progress: Double = 0,
+                               file: String) -> (book: BookRecord, fileName: String) {
+        let book = BookRecord(
+            id: sampleID(number),
+            title: title,
+            author: author,
+            isContinueReading: progress > 0,
+            progress: progress,
+            dateAdded: Date(timeIntervalSince1970: 0)
+        )
+        return (book, file)
+    }
 
     private static func sampleID(_ number: UInt8) -> UUID {
         UUID(uuid: (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, number))

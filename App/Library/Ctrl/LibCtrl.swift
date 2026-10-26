@@ -3,7 +3,7 @@ import Foundation
 struct LibCtrl {
     let libRepo: LibRepo
     let bookContentRepo: BookContentRepo
-    
+
     func loadLibrary() async throws -> [BookRecord] {
         return try await libRepo.fetchBooks()
     }
