@@ -2,11 +2,23 @@ import SwiftUI
 
 struct ReaderView: View {
     @State private var readerVM: ReaderVM
-    @ScaledMetric(relativeTo: .body) private var bodyFontSize: CGFloat = 17
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.colorScheme) private var colorScheme
 
     private var readerSettingsVM: ReaderSettingsVM { readerVM.readerSettingsVM }
     private var referenceVM: ReferenceVM { readerVM.referenceVM }
+    private var theme: ReadingTheme { readerSettingsVM.layoutSettings.theme }
+    // Only the page's own text uses the theme colour. Set on the whole view, it would leak into
+    // the menu and sheets, which follow the system light or dark mode instead.
+    private var pageTextColor: Color { Color(PageTextStyle.textColor(for: theme)) }
+    /// Original follows the system; the other themes have a fixed light or dark page.
+    private var pageColorScheme: ColorScheme {
+        switch theme {
+        case .original: colorScheme
+        case .quiet: .dark
+        case .paper, .bold, .calm, .focus: .light
+        }
+    }
 
     init(readerVM: ReaderVM) {
         _readerVM = State(initialValue: readerVM)
@@ -16,20 +28,22 @@ struct ReaderView: View {
         VStack(spacing: 0) {
             topBar
             GeometryReader { proxy in
-                let viewport = Viewport(size: proxy.size, bodyFontSize: bodyFontSize)
+                let viewport = Viewport(size: proxy.size)
                 pageArea
                     .task { await readerVM.onAppear(viewport: viewport) }
                     .onChange(of: viewport) { _, viewport in readerVM.viewportChanged(viewport) }
             }
-            .overlay(alignment: .bottom) {
-                returnControls
-            }
             .padding(.top, 36)
-            .padding(.bottom, 24)
+            // Always kept free, so the text never moves or hides under the Return to Reading button.
+            Color.clear
+                .frame(height: 44)
+                .overlay { returnControls }
+                .padding(.vertical, 12)
             bottomBar
         }
-        .background(Color(.systemBackground))
+        .background(Color(PageTextStyle.backgroundColor(for: theme)))
         .animation(.easeInOut, value: referenceVM.toastText)
+        .animation(.easeInOut(duration: 0.2), value: readerVM.areControlsShown)
         .onChange(of: scenePhase) { _, scenePhase in
             if scenePhase == .background {
                 readerVM.appBackgrounded()
@@ -43,8 +57,12 @@ struct ReaderView: View {
                 SearchView(searchVM: searchVM)
             case .themeSettings:
                 ThemeSettingsView(readerSettingsVM: readerSettingsVM)
-            case .symbolDetails:
-                symbolDetails
+            case .chapterSymbols:
+                ChapterSymbolsView(referenceVM: referenceVM)
+            case .editSymbol(let entity):
+                EditSymbolView(entity: entity, style: referenceVM.symbolStyle(for: entity)) { style in
+                    referenceVM.symbolSaved(style, for: entity)
+                }
             }
         }
     }
@@ -56,21 +74,26 @@ struct ReaderView: View {
                 pages: readerVM.pages,
                 shownPage: shownPage,
                 settings: readerSettingsVM.layoutSettings,
-                bodyFontSize: readerVM.viewport.bodyFontSize,
                 marks: referenceVM.marks,
                 onPageChanged: { readerVM.pageChanged($0) },
+                onCenterTapped: { readerVM.pageCenterTapped() },
                 onMarkTapped: { referenceVM.markTapped($0, at: $1) }
             )
             .popover(
                 item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
                 attachmentAnchor: .rect(.rect(referenceVM.cardAnchor))
             ) { card in
-                switch card {
-                case .reference(let referenceCard):
-                    RefCardView(card: referenceCard) { referenceVM.jumpToPassageTapped() }
-                case .symbol(let entity):
-                    SymCardView(entity: entity) { referenceVM.editSymbolTapped() }
+                Group {
+                    switch card {
+                    case .reference(let referenceCard):
+                        RefCardView(card: referenceCard) { referenceVM.jumpToPassageTapped() }
+                    case .symbol(let entity):
+                        SymCardView(entity: entity, style: referenceVM.symbolStyle(for: entity)) {
+                            referenceVM.editSymbolTapped(entity)
+                        }
+                    }
                 }
+                .onDisappear { referenceVM.cardDisappeared() }
             }
         } else if readerVM.hasFailedToOpen {
             ContentUnavailableView("Can't Open Book", systemImage: "book.closed")
@@ -78,24 +101,6 @@ struct ReaderView: View {
             ProgressView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-    }
-
-    private var symbolDetails: some View {
-        NavigationStack {
-            Color.clear
-                .navigationTitle("Symbol Details")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button(role: .close) {
-                            readerVM.sheetDismissed()
-                        }
-                    }
-                }
-        }
-        .presentationDetents([.medium, .large])
-        .presentationDragIndicator(.visible)
-        .presentationBackground(Color(.systemBackground))
     }
 
     @ViewBuilder
@@ -140,18 +145,12 @@ struct ReaderView: View {
                     .foregroundStyle(.secondary)
             }
             .lineLimit(1)
+            .foregroundStyle(pageTextColor)
             .padding(.horizontal, 64)
             HStack {
-                Button {
+                circleButton(systemImage: "chevron.left", label: "Back") {
                     readerVM.backTapped()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.title3.weight(.medium))
-                        .frame(width: 44, height: 44)
-                        .glassEffect(.regular.interactive(), in: .circle)
                 }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Back")
                 Spacer()
             }
         }
@@ -163,24 +162,38 @@ struct ReaderView: View {
         HStack {
             Text(readerVM.pageLabel)
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(pageTextColor)
             Spacer()
-            Button {
+            circleButton(systemImage: "ellipsis", label: "Reading menu") {
                 readerVM.menuTapped()
-            } label: {
-                Image(systemName: "ellipsis")
-                    .font(.title3.weight(.medium))
-                    .frame(width: 44, height: 44)
-                    .glassEffect(.regular.interactive(), in: .circle)
             }
-            .buttonStyle(.plain)
-            .accessibilityLabel("Reading menu")
             .popover(isPresented: Binding(get: { readerVM.isMenuShown }, set: { _ in readerVM.menuDismissed() }), arrowEdge: .bottom) {
                 ReaderMenuView(readerVM: readerVM, readerSettingsVM: readerSettingsVM)
+                    .onDisappear { readerVM.menuDisappeared() }
             }
         }
         .padding(.leading, 36)
         .padding(.trailing, 16)
         .padding(.bottom, 8)
+    }
+
+    /// Hidden but still taking up space while the controls are hidden, so the page never moves.
+    private func circleButton(systemImage: String, label: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: systemImage)
+                .font(.title3.weight(.medium))
+                .foregroundStyle(pageTextColor)
+                .frame(width: 44, height: 44)
+                // The whole circle is tappable, not only the icon.
+                .contentShape(.circle)
+                .glassEffect(.regular.interactive(), in: .circle)
+                // Set inside the label, so the menu popover keeps the system mode.
+                .environment(\.colorScheme, pageColorScheme)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(label)
+        .opacity(readerVM.areControlsShown ? 1 : 0)
+        .allowsHitTesting(readerVM.areControlsShown)
+        .accessibilityHidden(!readerVM.areControlsShown)
     }
 }

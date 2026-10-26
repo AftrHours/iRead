@@ -5,6 +5,7 @@ struct LibRepo {
     private let progRepo: ProgRepo
     private var booksFolder: URL { .applicationSupportDirectory.appending(path: "Books") }
     private var libraryURL: URL { booksFolder.appending(path: "library.json") }
+    private var hiddenSamplesURL: URL { booksFolder.appending(path: "hidden-samples.json") }
 
     init(epubParseSvc: EPUBParseSvc, progRepo: ProgRepo) {
         self.epubParseSvc = epubParseSvc
@@ -13,7 +14,9 @@ struct LibRepo {
 
     func fetchBooks() async throws -> [BookRecord] {
         var books: [BookRecord] = []
-        for book in sampleBooks + importedBooks() {
+        let hiddenIDs = hiddenSampleIDs()
+        let samples = BookRecord.samples.map(\.book).filter { !hiddenIDs.contains($0.id) }
+        for book in samples + importedBooks() {
             guard let progress = await progRepo.progress(for: book.id) else {
                 books.append(book)
                 continue
@@ -23,7 +26,8 @@ struct LibRepo {
                 title: book.title,
                 author: book.author,
                 isContinueReading: book.isContinueReading,
-                progress: progress.progress,
+                // A finished book shows as fully read, even if it was marked finished part way through.
+                progress: progress.finishedAt == nil ? progress.progress : 1,
                 dateAdded: book.dateAdded,
                 lastReadAt: progress.lastReadAt
             ))
@@ -58,6 +62,31 @@ struct LibRepo {
         return book
     }
 
+    func setFinished(_ isFinished: Bool, for book: BookRecord) async {
+        await progRepo.setFinished(isFinished, for: book.id)
+    }
+
+    func resetProgress(for book: BookRecord) async {
+        await progRepo.resetProgress(for: book.id)
+    }
+
+    /// Deletes an imported book and its files. A sample book is only hidden, since it lives in the app bundle.
+    func remove(_ book: BookRecord) throws {
+        try FileManager.default.createDirectory(at: booksFolder, withIntermediateDirectories: true)
+        if BookRecord.samples.contains(where: { $0.book.id == book.id }) {
+            try JSONEncoder().encode(hiddenSampleIDs().union([book.id])).write(to: hiddenSamplesURL, options: .atomic)
+            return
+        }
+        let books = importedBooks().filter { $0.id != book.id }
+        try JSONEncoder.iso8601.encode(books).write(to: libraryURL, options: .atomic)
+        try? FileManager.default.removeItem(at: booksFolder.appending(path: book.id.uuidString))
+    }
+
+    private func hiddenSampleIDs() -> Set<UUID> {
+        guard let data = try? Data(contentsOf: hiddenSamplesURL) else { return [] }
+        return (try? JSONDecoder().decode(Set<UUID>.self, from: data)) ?? []
+    }
+
     private func importedBooks() -> [BookRecord] {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
@@ -66,21 +95,8 @@ struct LibRepo {
             return []
         }
         // Older builds saved the sample books into library.json too.
-        let sampleIDs = Set(sampleBooks.map(\.id))
+        let sampleIDs = Set(BookRecord.samples.map(\.book.id))
         return books.filter { !sampleIDs.contains($0.id) }
-    }
-
-    private var sampleBooks: [BookRecord] {
-        [
-            BookRecord(id: sampleID(1), title: "Little Women", author: "Louisa May Alcott", isContinueReading: true, progress: 0.3, dateAdded: Date(timeIntervalSince1970: 0)),
-            BookRecord(id: sampleID(2), title: "A", author: "Tegar", isContinueReading: true, progress: 0.8, dateAdded: Date(timeIntervalSince1970: 0)),
-            BookRecord(id: sampleID(3), title: "B", author: "Anna", isContinueReading: false, progress: 0.0, dateAdded: Date(timeIntervalSince1970: 0)),
-            BookRecord(id: sampleID(4), title: "C", author: "Zee", isContinueReading: false, progress: 0.0, dateAdded: Date(timeIntervalSince1970: 0))
-        ]
-    }
-
-    private func sampleID(_ number: UInt8) -> UUID {
-        UUID(uuid: (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, number))
     }
 }
 

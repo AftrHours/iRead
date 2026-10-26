@@ -5,22 +5,31 @@ import ZIPFoundation
 struct EPUBParseSvc {
     func metadata(from url: URL) throws -> (title: String?, author: String?) {
         let archive = try Archive(url: url, accessMode: .read)
-        let container = try elements(of: "META-INF/container.xml", in: archive)
-        guard let opfPath = container.first(where: { $0.name == "rootfile" })?.attributes["full-path"] else {
-            throw ContentError.unreadable
-        }
+        let opfPath = try opfPath(in: archive)
         let opf = try elements(of: opfPath, in: archive)
         let title = opf.first { $0.name == "dc:title" }.map { normalized($0.text) }
         let author = opf.first { $0.name == "dc:creator" }.map { normalized($0.text) }
         return (title?.isEmpty == true ? nil : title, author?.isEmpty == true ? nil : author)
     }
 
+    /// The cover image file, found by the EPUB 3 `cover-image` property or the EPUB 2 `cover` meta tag.
+    func cover(from url: URL) throws -> Data? {
+        let archive = try Archive(url: url, accessMode: .read)
+        let opfPath = try opfPath(in: archive)
+        let opf = try elements(of: opfPath, in: archive)
+        let items = opf.filter { $0.name == "item" }
+        let coverID = opf.first { $0.name == "meta" && $0.attributes["name"] == "cover" }?.attributes["content"]
+        let item = items.first { $0.attributes["properties"]?.split(separator: " ").contains("cover-image") == true }
+            ?? items.first { $0.attributes["id"] == coverID }
+        guard let item, let href = item.attributes["href"], item.attributes["media-type"]?.hasPrefix("image/") == true else {
+            return nil
+        }
+        return try data(path(of: href, in: (opfPath as NSString).deletingLastPathComponent), in: archive)
+    }
+
     func parse(_ url: URL) async throws -> BookContent {
         let archive = try Archive(url: url, accessMode: .read)
-        let container = try elements(of: "META-INF/container.xml", in: archive)
-        guard let opfPath = container.first(where: { $0.name == "rootfile" })?.attributes["full-path"] else {
-            throw ContentError.unreadable
-        }
+        let opfPath = try opfPath(in: archive)
         let opf = try elements(of: opfPath, in: archive)
         let folder = (opfPath as NSString).deletingLastPathComponent
         var paths: [String: String] = [:]
@@ -114,6 +123,14 @@ struct EPUBParseSvc {
             }
         }
         return entries
+    }
+
+    private func opfPath(in archive: Archive) throws -> String {
+        let container = try elements(of: "META-INF/container.xml", in: archive)
+        guard let opfPath = container.first(where: { $0.name == "rootfile" })?.attributes["full-path"] else {
+            throw ContentError.unreadable
+        }
+        return opfPath
     }
 
     private func elements(of path: String, in archive: Archive) throws -> [Element] {

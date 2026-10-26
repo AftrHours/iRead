@@ -9,7 +9,7 @@ App/
   iReadApp.swift      switches on AppNav.route, nothing else
   AppContainer.swift  builds every repo, service, Ctrl and VM (the only type that knows them all)
   AppNav.swift        route: .library or .reader(book:)
-  Resources/          bundled little-women.epub
+  Resources/          bundled sample EPUBs (listed in BookRecord.samples)
 
   Book/       per-book data shared by every feature (BookRecord, BookContent, Page, ReadingProgress,
               BookContentRepo, ProgRepo, EPUBParseSvc)
@@ -58,11 +58,11 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 |---|---|---|
 | `ReaderCtrl` | Book content, current position, pages, page counts, search, position ↔ page | `BookContentRepo`, `PagerSvc` |
 | `ProgressCtrl` | Restore and save progress, log restore and finished events | `ProgRepo`, `EventSvc` |
-| `ReaderStateCtrl` | Reading settings, brightness, and the "return to reading" position | `ReadingSettingsRepo`, `BrightnessSvc`, `BookStateRepo` |
-| `ReaderVM` (parent) | Pages, shown page, viewport, labels, sheets, menu, back, contents, search, saving progress in page-turn order | `ReaderCtrl`, `ProgressCtrl`, `AppNav` + 2 children |
-| `ReaderSettingsVM` | Settings, layout settings, brightness, text size, spacing, theme, symbols toggle | `ReaderStateCtrl` |
-| `ReferenceVM` | Marks, reference and symbol cards, highlight, jump and return, toast | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
-| `SearchVM` | Search query and results | `ReaderCtrl` |
+| `ReaderStateCtrl` | Reading settings, brightness, the "return to reading" position, edited symbols, recent searches | `ReadingSettingsRepo`, `BrightnessSvc`, `BookStateRepo` |
+| `ReaderVM` (parent) | Pages, shown page, viewport, labels, show/hide controls, sheets, menu, back, contents, search, saving progress in page-turn order | `ReaderCtrl`, `ProgressCtrl`, `ReaderStateCtrl` (handed to `SearchVM`), `AppNav` + 2 children |
+| `ReaderSettingsVM` | Settings, layout settings, brightness, text size, line spacing, theme, symbols toggle | `ReaderStateCtrl` |
+| `ReferenceVM` | Marks, reference and symbol cards, chapter characters, edited symbols, highlight, jump and return, toast | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
+| `SearchVM` | Search query, results and recent searches | `ReaderCtrl`, `ReaderStateCtrl` |
 
 `ReaderSettingsVM` and `ReferenceVM` share one `ReaderStateCtrl` per open book.
 
@@ -79,6 +79,7 @@ State flows one way. `ReaderVM` pushes the shown page, the loaded pages and whet
 3. `LibView.task` → `LibVM.onAppear` → `LibCtrl.loadLibrary` → `LibRepo.fetchBooks`
    (the built-in sample books plus the imported books in `Books/library.json`, then `ProgRepo.progress(for:)` per book).
 4. `LibVM.books` → `LibrarySorter.sorted(_:by:pinning:)`.
+5. `LibVM.loadCovers` → `LibCtrl.cover(for:)` → `BookContentRepo.cover(for:)` → `EPUBParseSvc.cover(from:)`, shrunk to a thumbnail once.
 
 **Import an EPUB**
 1. `LibView` + button → `EPUBDocumentPicker` → `LibVM.importFiles`.
@@ -86,13 +87,19 @@ State flows one way. `ReaderVM` pushes the shown page, the loaded pages and whet
    copies to `Books/<id>/book.epub`, appends it to `library.json` (imported books only, never the samples).
 3. → `LibCtrl.loadLibrary`. The new book stays pinned first until `LibVM.sortChanged`.
 
+**Book "…" menu in the library**
+- Share Book → `LibVM.shareTapped` → `LibCtrl.shareableFile(for:)` → `BookContentRepo.shareableFile(for:)` (a copy named after the title) → share sheet.
+- Mark as Finished / Still Reading → `LibCtrl.setFinished` → `LibRepo` → `ProgRepo.setFinished` (keeps the reading position).
+- Reset Progress → `LibCtrl.resetProgress` → `LibRepo` → `ProgRepo.resetProgress` (a saved 0% record, so samples don't fall back to mock progress).
+- Remove → alert → `LibCtrl.remove` → `LibRepo.remove`: imported books are deleted; sample books are added to `Books/hidden-samples.json`.
+
 **Open a book**
 1. `LibVM.bookTapped` → `AppNav.openReader(book:)`.
 2. `iReadApp` sees the route change → `AppContainer.makeReaderVM(book:)` (once per open) → `ReaderView`.
 3. `ReaderView.task` → `ReaderVM.onAppear`:
    1. `ReferenceVM.onAppear` → `RefCtrl.prepare` / `refine` → `AnalysisRepo` (in the background).
    2. `ReaderCtrl.openBook` → `BookContentRepo.content(for:)` → `EPUBParseSvc.parse`
-      (imported `book.epub` first, bundled `little-women.epub` second; one parse per book even with concurrent callers).
+      (imported `book.epub` first, then the bundled EPUB named in `BookRecord.samples`; one parse per book even with concurrent callers).
    3. `ReaderSettingsVM.bookOpened` → `ReaderStateCtrl.settings`.
    4. `ProgressCtrl.savedProgress` → `ReaderCtrl.restorePosition(from:)` → `ProgressCtrl.positionRestored`.
    5. `ReferenceVM.bookOpened` → `ReaderStateCtrl.load`.

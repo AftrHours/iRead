@@ -1,41 +1,65 @@
 import SwiftUI
 
-struct BookGridView: View {
-    let book: BookRecord
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            VStack(spacing: 4) {
-                Rectangle()
-                    .fill(Color.gray.opacity(0.3))
-                    .aspectRatio(3/4, contentMode: .fit)
+/// Cover width to height in the library design (171 × 234 pt).
+let bookCoverAspectRatio: CGFloat = 171 / 234
 
-                // Progress Bar spanning the cover width
-                GeometryReader { geometry in
-                    ZStack(alignment: .leading) {
-                        Capsule()
-                            .fill(Color.black.opacity(0.18))
-                        Capsule()
-                            .fill(Color.gray)
-                            .frame(width: geometry.size.width * CGFloat(min(max(book.progress, 0), 1)))
+struct BookGridView<MenuButton: View>: View {
+    let book: BookRecord
+    let cover: UIImage?
+    let menu: MenuButton
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Rectangle()
+                .fill(Color(.systemGray5))
+                .aspectRatio(bookCoverAspectRatio, contentMode: .fit)
+                // Cropped from the bottom, so the title at the top of most covers stays visible.
+                .overlay(alignment: .top) {
+                    if let cover {
+                        Image(uiImage: cover)
+                            .resizable()
+                            .scaledToFill()
                     }
                 }
-                .frame(height: 4)
-            }
-            
-            HStack {
-                VStack(alignment: .leading) {
+                .clipped()
+
+            ProgressBar(progress: book.progress)
+                .padding(.top, 10)
+
+            HStack(alignment: .center, spacing: 4) {
+                VStack(alignment: .leading, spacing: 2) {
                     Text(book.title)
-                        .font(.headline)
+                        .font(.body.weight(.medium))
                     Text(book.author)
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundStyle(.secondary)
                 }
-                Spacer()
-                Image(systemName: "ellipsis")
-                    .foregroundColor(.gray)
+                .lineLimit(1)
+                Spacer(minLength: 0)
+                menu
+            }
+            .padding(.top, 6)
+        }
+    }
+}
+
+/// The thin reading-progress bar under a cover.
+struct ProgressBar: View {
+    let progress: Double
+
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .fill(Color(.systemGray5))
+                Rectangle()
+                    .fill(Color(.systemGray2))
+                    .frame(width: geometry.size.width * min(max(progress, 0), 1))
             }
         }
+        .frame(height: 6)
+        .accessibilityElement()
+        .accessibilityLabel("\(Int((min(max(progress, 0), 1) * 100).rounded()))% read")
     }
 }
 
@@ -46,7 +70,7 @@ struct BookGridView: View {
         author: "Andy Weir",
         isContinueReading: true,
         progress: 0.4
-    ))
-    .frame(width: 160)
+    ), cover: nil, menu: Image(systemName: "ellipsis"))
+    .frame(width: 171)
     .padding()
 }

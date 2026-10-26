@@ -3,10 +3,10 @@ import UIKit
 final class PageTextView: UIView {
     let page: Page
     let settings: ReadingSettings
-    let bodyFontSize: CGFloat
     let marks: [Mark]
     private let textView = UITextView(usingTextLayoutManager: false)
     private let onEdgeTapped: (_ isForward: Bool) -> Void
+    private let onCenterTapped: () -> Void
     private let onMarkTapped: (Mark, CGRect) -> Void
     private var symbolButtons: [(mark: Mark, button: UIButton)] = []
 
@@ -14,16 +14,16 @@ final class PageTextView: UIView {
     private static let symbolGap: CGFloat = 0.5
     private static let symbolScale: CGFloat = 0.3
 
-    init(page: Page, settings: ReadingSettings, bodyFontSize: CGFloat, marks: [Mark],
-         onEdgeTapped: @escaping (_ isForward: Bool) -> Void, onMarkTapped: @escaping (Mark, CGRect) -> Void) {
+    init(page: Page, settings: ReadingSettings, marks: [Mark], onEdgeTapped: @escaping (_ isForward: Bool) -> Void,
+         onCenterTapped: @escaping () -> Void, onMarkTapped: @escaping (Mark, CGRect) -> Void) {
         self.page = page
         self.settings = settings
-        self.bodyFontSize = bodyFontSize
         self.marks = marks
         self.onEdgeTapped = onEdgeTapped
+        self.onCenterTapped = onCenterTapped
         self.onMarkTapped = onMarkTapped
         super.init(frame: .zero)
-        backgroundColor = .systemBackground
+        backgroundColor = PageTextStyle.backgroundColor(for: settings.theme)
         textView.attributedText = attributedText()
         textView.isEditable = false
         textView.isSelectable = false
@@ -50,12 +50,12 @@ final class PageTextView: UIView {
     }
 
     private func addSymbolButtons() {
-        let symbolSize = PageTextStyle.font(settings: settings, bodyFontSize: bodyFontSize).pointSize * Self.symbolScale
+        let symbolSize = PageTextStyle.font(settings: settings).pointSize * Self.symbolScale
         for mark in marks {
-            guard case .symbol(let systemName, let entityName) = mark.kind else { continue }
+            guard case .symbol(let style, let entityName) = mark.kind else { continue }
             let button = UIButton(type: .system)
-            button.setImage(UIImage(systemName: systemName, withConfiguration: UIImage.SymbolConfiguration(pointSize: symbolSize)), for: .normal)
-            button.tintColor = SymbolPalette.color(forSymbol: systemName)
+            button.setImage(UIImage(systemName: style.systemName, withConfiguration: UIImage.SymbolConfiguration(pointSize: symbolSize)), for: .normal)
+            button.tintColor = SymbolPalette.color(at: style.colorIndex)
             button.accessibilityLabel = entityName
             button.addAction(UIAction { [weak self, weak button] _ in
                 guard let self, let button else { return }
@@ -67,7 +67,7 @@ final class PageTextView: UIView {
     }
 
     private func symbolFrame(for mark: Mark) -> CGRect {
-        let font = PageTextStyle.font(settings: settings, bodyFontSize: bodyFontSize)
+        let font = PageTextStyle.font(settings: settings)
         let symbolSize = font.pointSize * Self.symbolScale
         let layoutManager = textView.layoutManager
         let glyph = layoutManager.glyphIndexForCharacter(at: mark.range.location)
@@ -84,7 +84,7 @@ final class PageTextView: UIView {
     private func attributedText() -> NSAttributedString {
         let text = NSMutableAttributedString(
             string: page.text,
-            attributes: PageTextStyle.attributes(settings: settings, bodyFontSize: bodyFontSize)
+            attributes: PageTextStyle.attributes(settings: settings)
         )
         for mark in marks {
             switch mark.kind {
@@ -110,6 +110,8 @@ final class PageTextView: UIView {
             onEdgeTapped(true)
         } else if let (mark, rect) = underline(at: tap.location(in: textView)) {
             onMarkTapped(mark, textView.convert(rect, to: self))
+        } else {
+            onCenterTapped()
         }
     }
 

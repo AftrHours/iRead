@@ -28,14 +28,17 @@ final class ReferenceVM {
     private(set) var cardAnchor = CGRect.zero
     private(set) var canReturn = false
     private(set) var toastText: String?
+    private(set) var chapterEntities: [Entity] = []
+    private(set) var editedSymbols: [String: SymbolStyle] = [:]
 
     @ObservationIgnored var onShowPage: (Page, Int?) -> Void = { _, _ in }
-    @ObservationIgnored var onEditSymbol: () -> Void = {}
+    @ObservationIgnored var onEditSymbol: (Entity) -> Void = { _ in }
 
     private var shownPage: Page?
     private var loadedPages: [Page] = []
     private var areSymbolsShown = false
     private var highlightedMentionIndex: Int?
+    private var entityToEditAfterCard: Entity?
     private let refCtrl: RefCtrl
     private let readerStateCtrl: ReaderStateCtrl
     private let readerCtrl: ReaderCtrl
@@ -57,6 +60,11 @@ final class ReferenceVM {
     func bookOpened() async {
         await readerStateCtrl.load()
         canReturn = await readerStateCtrl.hasReturnPosition()
+        editedSymbols = await readerStateCtrl.editedSymbols()
+    }
+
+    func symbolStyle(for entity: Entity) -> SymbolStyle {
+        SymbolPalette.style(for: entity, edited: editedSymbols)
     }
 
     func update(shownPage: Page?, loadedPages: [Page], areSymbolsShown: Bool) {
@@ -97,9 +105,34 @@ final class ReferenceVM {
         card = nil
     }
 
-    func editSymbolTapped() {
+    func chapterSymbolsShown() {
+        chapterEntities = []
+        guard let chapterIndex = shownPage?.chapterIndex else { return }
+        Task { chapterEntities = (try? await refCtrl.entities(inChapter: chapterIndex)) ?? [] }
+    }
+
+    func editSymbolTapped(_ entity: Entity) {
+        guard card != nil else {
+            onEditSymbol(entity)
+            return
+        }
+        // iOS drops a sheet presented while the card is still closing, so wait for cardDisappeared.
+        entityToEditAfterCard = entity
         card = nil
-        onEditSymbol()
+    }
+
+    func cardDisappeared() {
+        guard let entity = entityToEditAfterCard else { return }
+        entityToEditAfterCard = nil
+        onEditSymbol(entity)
+    }
+
+    func symbolSaved(_ style: SymbolStyle, for entity: Entity) {
+        editedSymbols[entity.id] = style
+        Task {
+            await readerStateCtrl.saveSymbol(style, forEntity: entity.id)
+            await loadMarks()
+        }
     }
 
     func jumpToPassageTapped() {
@@ -141,7 +174,8 @@ final class ReferenceVM {
             marks[page.number] = try? await refCtrl.marks(
                 on: page,
                 highlighting: highlightedMentionIndex,
-                includingSymbols: areSymbolsShown
+                includingSymbols: areSymbolsShown,
+                editedSymbols: editedSymbols
             )
         }
         guard pages == loadedPages else { return }

@@ -2,12 +2,18 @@ import SwiftUI
 
 struct SymCardView: View {
     let entity: Entity
+    let style: SymbolStyle
     let onEditTapped: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Label(entity.name, systemImage: entity.symbolName)
-                .font(.title3.bold())
+            Label {
+                Text(entity.name)
+            } icon: {
+                Image(systemName: style.systemName)
+                    .foregroundStyle(Color(SymbolPalette.color(at: style.colorIndex)))
+            }
+            .font(.title3.bold())
             Text(entity.summary)
                 .fixedSize(horizontal: false, vertical: true)
             HStack {
