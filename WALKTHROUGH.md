@@ -1,48 +1,88 @@
-# Walkthrough: alur data engine tokoh
+# Walkthrough: alur data engine tokoh (branch `Feature-tune`)
 
-Dokumen ini mengikuti **data** dari saat pembaca membuka buku sampai simbol dan garis bawah muncul di halaman. Setiap pemberhentian berisi empat hal:
+Dokumen ini mengikuti **data** dari saat pembaca membuka buku sampai simbol, garis bawah, dan kartu tokoh muncul di halaman. Setiap pemberhentian berisi empat hal:
 
 - **Masuk**: data yang diterima, dengan contoh nyata
 - **Fungsi**: file dan fungsi yang mengolahnya, termasuk fungsi `private`
 - **Keluar**: data yang dihasilkan, dengan contoh nyata
 - **Knob**: nilai yang bisa diubah untuk menala langkah itu
 
-Untuk siapa: engineer yang akan menala engine. Tidak perlu bisa menulis Swift. Cukup tahu bahwa `struct`/`enum` adalah tipe data, `func` adalah fungsi, `async` berarti fungsinya bisa menunggu, dan `private` berarti fungsi itu hanya dipakai di dalam file-nya.
+Untuk siapa: engineer yang akan menala engine. Tidak perlu bisa menulis Swift. Cukup tahu bahwa `struct`/`enum` adalah tipe data, `func` adalah fungsi, `async` berarti fungsinya bisa menunggu, `actor` berarti hanya satu pemanggil yang mengubah isinya pada satu waktu, dan `private` berarti fungsi itu hanya dipakai di dalam file-nya.
+
+Flowchart di dokumen ini ditulis dengan Mermaid. GitHub menampilkannya sebagai gambar; di Xcode terlihat sebagai teks.
+
+Semua path file relatif terhadap folder `App/`.
 
 ## Contoh yang dipakai di seluruh dokumen
 
-**Little Women, Bab 1, kalimat s91 sampai s175**, kira-kira halaman 6 sampai 8 di iPad Pro 13 inci dengan ukuran huruf bawaan. Di bagian ini keempat saudari diperkenalkan:
+**Little Women, Bab 1 ("CHAPTER ONE PLAYING PILGRIMS"), kalimat s65 sampai s293.** Di bagian tengahnya keempat saudari diperkenalkan:
 
-> **s141**: Elizabeth, or Beth, as everyone called her, was a rosy, smooth-haired, bright-eyed girl of thirteen, with a shy manner, a timid voice, and a peaceful expression which was seldom disturbed.
+> **s136**: Margaret, the eldest of the four, was sixteen, and very pretty, being plump and fair, with large eyes, plenty of soft brown hair, …
+>
+> **s141**: Elizabeth, or Beth, as everyone called her, was a rosy, smooth-haired, bright-eyed girl of thirteen, with a shy manner, a timid voice, …
 >
 > **s143**: Amy, though the youngest, was a most important person, in her own opinion at least.
 >
-> **s144**: A regular snow maiden, with blue eyes, and yellow hair curling on her shoulders, pale and slender, and always carrying herself like a young lady mindful of her manners.
+> **s144**: A regular snow maiden, with blue eyes, and yellow hair curling on her shoulders, pale and slender, …
 
-Pembaca manusia tahu "snow maiden" di s144 adalah **Amy**. Engine menautkannya ke **Beth**. Kasus ini diikuti di setiap pemberhentian, jadi kamu bisa melihat di mana kesalahannya terjadi.
+Pembaca manusia tahu tiga hal: Margaret adalah Meg, deskripsi s141 adalah Beth, dan "snow maiden" di s144 adalah **Amy**. Kasus-kasus ini diikuti di setiap pemberhentian, supaya terlihat langkah mana yang benar dan mana yang salah.
 
-Semua angka berasal dari menjalankan engine di Mac (yang punya model bahasa Inggris NaturalLanguage dan Apple Intelligence aktif), dengan kode engine di commit `530a040`. Branch `merge-libraryreading` (dan `Feature-tune` yang dibuat darinya) hanya memindahkan file engine ke folder baru tanpa mengubah isinya, jadi angkanya tetap berlaku. Di iPad hasilnya seharusnya sama.
+Angka berasal dari menjalankan engine di Mac (model bahasa Inggris NaturalLanguage dan Apple Intelligence aktif, konteks model 8192 token), dengan kode `Feature-tune` di commit `2e91e97` ditambah perubahan kartu penampilan (`AppearancePicker`). Di iPad hasilnya seharusnya sama. Simulator berbeda jauh, karena Simulator tidak punya model bahasa Inggris dan tidak punya Apple Intelligence.
 
-Semua path file di dokumen ini relatif terhadap folder `App/`. Di Simulator berbeda jauh, karena Simulator tidak punya model bahasa Inggris.
+## Gambaran besar
 
-## Peta singkat
+Engine membaca buku **bab demi bab**, seperti pembaca manusia. Ia membawa **ingatan tokoh** (`CastMemory`) dari satu bab ke bab berikutnya. Setiap bab diolah dua lapis: aturan dulu (NaturalLanguage dan Swift biasa, cepat), lalu Foundation Models membaca bab itu per potongan dan membetulkan hasil aturan. Hasil tiap bab disimpan di perangkat, jadi buku yang sama tidak perlu dianalisis ulang.
 
+```mermaid
+flowchart TB
+    subgraph Layar["Layar (Reader)"]
+        RV["ReaderView"] --> RVM["ReaderVM"] --> REF["ReferenceVM"]
+    end
+    REF -->|"startAnalysis, analysisUpdates"| RC["RefCtrl"]
+    REF -->|"marks, symbolCard, passage"| RC
+    RC --> AR["AnalysisRepo (actor)"]
+    AR -->|"sekali per buku"| PRE["BookPrepassSvc<br/>kalimat, awal cerita, label kata, kosakata nama"]
+    AR -->|"per bab"| CAS["ChapterAnalysisSvc"]
+    AR <-->|"baca/tulis chapter-N.json"| ST["ChapterAnalysisStore"]
+    subgraph Bab["Satu bab"]
+        CAS --> MF["MentionFinder"] --> CB["CastBuilder"] --> ML["MentionLinker"]
+        ML --> SR["Model membaca per potongan<br/>ChapterSlicer, CastCards, LLMSvcFoundation,<br/>EvidenceGuard, SliceReadingApplier"]
+        SR --> SA["SymbolAssigner"]
+    end
+    AR -->|"setiap bab selesai"| MAP["AnalysisMapper<br/>ContextPassagePicker, AppearancePicker"]
+    MAP --> BA["BookAnalysis"]
+    BA --> RC
 ```
-ReaderView ─► ReaderVM ─► ReferenceVM ─► RefCtrl ─► AnalysisRepo ─► AnalysisScheduleSvc
-                                                         │
-   FASE 1 (aturan, ±1,5 detik)                           ▼
-   BookContent ─► SentenceText ─► WordTagSvc ─► MentionFinder ─► CastBuilder ─► MentionLinker
-                                                                                      │
-   FASE 2 (model, ±4 menit, di latar belakang)                                        ▼
-                                                     TieBreakSvc ◄── LLMSvcFoundation, EvidenceGuard
-                                                         │
-                                                         ▼
-                              AnalysisMapper + ContextPassagePicker ─► BookAnalysis
-                                                         │
-ReaderView ◄─ PageTextView ◄─ ReferenceVM.loadMarks ◄─ RefCtrl.marks
-```
 
-**Fase 1** hanya memakai framework **NaturalLanguage** Apple (memberi label kata) ditambah aturan Swift biasa. **Fase 2** memakai **Foundation Models** (model bahasa di perangkat). Hasil fase 1 langsung ditampilkan. Hasil fase 2 menggantikannya setelah selesai.
+Urutan waktunya, dari buku dibuka sampai tanda muncul:
+
+```mermaid
+sequenceDiagram
+    participant V as ReaderView / ReaderVM
+    participant R as ReferenceVM
+    participant C as RefCtrl
+    participant A as AnalysisRepo
+    participant S as ChapterAnalysisStore
+    V->>R: onAppear()
+    R->>C: startAnalysis()
+    C->>A: startAnalysis(for: bookID)
+    R->>C: analysisUpdates()
+    A->>A: prepare(): kalimat, label kata, kosakata nama
+    loop setiap bab cerita (Little Women: bab 3 sampai 51)
+        A->>S: load(chapter)
+        alt sudah tersimpan dengan versi yang sama
+            S-->>A: ChapterAnalysis
+        else belum ada
+            A->>A: ChapterAnalysisSvc.analyze(chapter)
+            A->>S: save(ChapterAnalysis)
+            A-->>R: update: bab N selesai
+            R->>C: loadMarks() → marks(on: page)
+            C-->>V: [Mark] → simbol dan garis bawah tergambar
+        end
+    end
+    A-->>R: stream selesai
+    R->>C: loadMarks() sekali lagi
+```
 
 ## Tipe data yang lewat
 
@@ -52,472 +92,569 @@ ReaderView ◄─ PageTextView ◄─ ReferenceVM.loadMarks ◄─ RefCtrl.marks
 | `Sentence` | Satu kalimat: nomor paragraf dan rentang huruf di dalam paragraf | `Book/Models/Sentence.swift` |
 | `NumberedSentence` | Satu kalimat: nomor global (s0, s1, …) dan teksnya | `Analysis/AI/Models/NumberedSentence.swift` |
 | `SentenceTags`, `Token` | Label tiap kata di tiap kalimat: jenis kata, jenis nama, lemma, posisi | `Analysis/AI/Models/SentenceTags.swift` |
-| `ResolvedMention` | Satu penyebutan tokoh: kalimat, posisi, teks, bentuk (nama atau deskripsi), kata kepala, modifier, tokoh yang ditautkan, siapa yang memutuskan, dan apakah masih *undecided* | `Analysis/AI/Models/ResolvedMention.swift` |
-| `ResolvedEntity` | Satu tokoh di dalam engine: nomor (`key`), nama-namanya, label, kalimat pertama muncul, dan riwayat penggabungan (`mergeEdges`) | `Analysis/AI/Models/ResolvedEntity.swift` |
-| `ResolvedAnalysis` | Semua tokoh dan semua mention, ditambah hitungan panggilan model | `Analysis/AI/Models/ResolvedAnalysis.swift` |
-| `RulesPass` | Hasil fase 1 yang disimpan untuk fase 2: buku, kalimat bernomor, dan analisis | `Analysis/AI/Models/RulesPass.swift` |
-| `ModelSentence`, `ModelCandidate`, `LinkRequest`, `LinkChoice`, `NameGroupRequest`, `NameGroupChoice` | Pertanyaan ke model dan jawabannya | `Analysis/AI/Models/` |
-| `ChooseReferenceAnswer`, `GroupNamesAnswer`, `NameGroupItem` | Bentuk jawaban yang dipaksakan ke model (`@Generable`) | `Analysis/AI/Models/` |
-| `BookAnalysis`, `Entity`, `Mention`, `ContextPassage` | Hasil akhir dalam bentuk milik aplikasi, yang dibaca layar | `Analysis/Models/` |
+| `NameVocabulary` | Kata yang dianggap nama di seluruh cerita, dan berapa kali tiap nama muncul | `Analysis/AI/Models/NameVocabulary.swift` |
+| `PreparedBook` | Hasil pra-baca: buku, kalimat cerita, label kata, kosakata nama, dan rentang bab cerita | `Analysis/AI/Models/PreparedBook.swift` |
+| `ResolvedMention` | Satu penyebutan tokoh: kalimat, posisi, teks, bentuk (nama atau deskripsi), kata kepala, modifier, tokoh yang ditautkan, siapa yang memutuskan (`rule`/`model`), dan apakah masih *undecided* | `Analysis/AI/Models/ResolvedMention.swift` |
+| `ResolvedEntity` | Satu tokoh di dalam engine: nomor (`key`), nama-namanya (dengan kalimat sejak kapan berlaku), label, kalimat pertama muncul, dan riwayat penggabungan (`mergeEdges`) | `Analysis/AI/Models/ResolvedEntity.swift` |
+| `CastMemory` | **Ingatan tokoh** yang dibawa antar bab: semua tokoh, ciri tokoh dari model (`traits`), dan simbol yang sudah dibagikan (`symbols`) | `Analysis/AI/Models/CastMemory.swift` |
+| `CharacterTrait`, `SymbolAssignment` | Satu ciri tokoh (teks dan kalimat); satu simbol (nama SF Symbol dan sejak bab berapa) | `Analysis/AI/Models/` |
+| `LinkedChapter` | Mention satu bab beserta ingatan tokoh setelah bab itu, selama bab diolah | `Analysis/AI/Models/LinkedChapter.swift` |
+| `ResolvedAnalysis` | Semua tokoh dan semua mention, dipakai sebagai "papan kerja" di banyak langkah | `Analysis/AI/Models/ResolvedAnalysis.swift` |
+| `ChapterAnalysis` | **Hasil satu bab yang disimpan**: nomor bab, versi engine, versi parser, mention bab itu, ingatan tokoh setelah bab itu, jumlah panggilan model dan potongan yang gagal | `Analysis/AI/Models/ChapterAnalysis.swift` |
+| `ModelSentence`, `CastCard`, `SliceMention`, `SliceRequest` | Pertanyaan ke model: kalimat potongan, kartu tokoh, dan mention yang harus diputuskan | `Analysis/AI/Models/` |
+| `SliceReadAnswer` | Bentuk jawaban yang dipaksakan ke model (`@Generable`) | `Analysis/AI/Models/SliceReadAnswer.swift` |
+| `SliceReading`, `MentionAssignment`, `NamedSpan`, `NamePair`, `TraitNote` | Jawaban model setelah diterjemahkan, sebelum diperiksa | `Analysis/AI/Models/SliceReading.swift` |
+| `BookAnalysis`, `Entity`, `Mention`, `ContextPassage` | Hasil akhir dalam bentuk milik aplikasi, yang dibaca layar. `Entity.appearances` berisi kalimat penampilan tokoh | `Analysis/Models/` |
+| `SymbolCard` | Isi kartu simbol saat diketuk: tokoh dan satu kalimat penampilan | `Analysis/Models/SymbolCard.swift` |
+| `AnalysisSnapshot`, `EngineProgress` | Hasil terbaru beserta progres (berapa bab selesai), untuk layar dan view debug | `Analysis/Models/AnalysisSnapshot.swift`, `Analysis/AI/Models/EngineProgress.swift` |
 | `Mark` | Satu tanda di satu halaman: simbol, garis bawah, atau sorotan | `Analysis/Models/Mark.swift` |
 | `Page` | Satu halaman: nomor, bab, rentang huruf di teks bab, dan teksnya | `Book/Models/Page.swift` |
 
-Dua hal penting tentang posisi teks:
+Tiga hal penting tentang posisi dan waktu:
 - **Engine menghitung posisi per kalimat**, misalnya "huruf ke-0 sampai ke-54 di s144".
 - **Aplikasi menghitung posisi per paragraf**, misalnya "paragraf 98, mulai huruf ke-1266". `AnalysisMapper` (pemberhentian 9) yang menerjemahkan.
-
-Satu konsep penting lagi: **"per kalimat" (anti-spoiler)**. Penggabungan tokoh dicatat beserta kalimat tempat penggabungan itu terungkap (`mergedAtSentence`). Jadi pertanyaan "mention ini milik siapa" selalu dijawab *sejauh pembaca sudah tahu di kalimat itu*, lewat `entityKey(of:asOf:)`.
+- **"Per kalimat" (anti-spoiler).** Penggabungan tokoh dicatat beserta kalimat tempat penggabungan itu terungkap (`mergedAtSentence`), dan nama baru dicatat beserta kalimat sejak kapan berlaku (`sinceSentence`). Pertanyaan "mention ini milik siapa" selalu dijawab *sejauh pembaca sudah tahu di kalimat itu*, lewat `entityKey(of:asOf:)`.
 
 ---
 
-## 1. Buku dibuka
+## 1. Buku dibuka, analisis diminta
 
 **Masuk:** pembaca membuka Little Women.
 
 **Fungsi**
-- `AppContainer.swift` membuat semua objek. Untuk setiap buku yang dibuka, `makeReaderVM(book:)` membuat satu `ReferenceVM` dengan satu `RefCtrl`. `AnalysisRepo` hanya dibuat sekali di `init()` dan dipakai bersama semua buku.
-- `Reader/Views/ReaderView.swift`: `.task { await readerVM.onAppear(viewport:) }` dijalankan saat halaman baca tampil. View ini juga meneruskan `referenceVM.marks` ke `PageTurnView`, meneruskan ketukan tanda ke `referenceVM.markTapped`, dan menampilkan kartu dari `referenceVM.card`.
-- `Reader/VM/ReaderVM.swift` (halaman, pengaturan, progres baca)
-  - `onAppear(viewport:)` memanggil `referenceVM.onAppear()` lebih dulu, lalu membuka buku dan menampilkan halaman (`showCurrentPage()`) tanpa menunggu engine.
-  - `showCurrentPage()` menghitung halaman sekarang, memanggil `referenceVM.layoutChanged()` (mengosongkan tanda), lalu `loadPages(around:)`.
-  - `loadPages(around:)` memuat halaman di sekitar halaman sekarang, mengabari `ReferenceVM` lewat `updateReferenceVM()`, lalu memanggil `referenceVM.loadMarks()`.
-  - `show(_:highlighting:)` dipakai saat pembaca pindah halaman: `referenceVM.pageShown(highlighting:)`, lalu `loadPages(around:)`.
-  - `updateReferenceVM()` (`private`) memberi tahu `ReferenceVM` halaman yang tampil, halaman yang dimuat, dan apakah toggle **Symbols** aktif.
-  - Fungsi lain di `ReaderVM` (menu, pencarian, daftar isi, progres) bukan bagian engine. Satu-satunya hubungan: mengubah pengaturan (termasuk toggle Symbols, lewat `ReaderSettingsVM`) memanggil `showCurrentPage()`, jadi tanda dihitung ulang.
-- `Reader/VM/ReferenceVM.swift` (semua yang berhubungan dengan tanda dan kartu)
-  - `onAppear()` menjalankan satu `Task` di latar belakang: `refCtrl.prepare()` (fase 1), lalu `refCtrl.refine()` (fase 2), lalu `loadMarks()` sekali lagi supaya tanda di halaman ikut hasil fase 2.
-  - `update(shownPage:loadedPages:areSymbolsShown:)`, `pageShown(highlighting:)`, dan `layoutChanged()` hanya menyimpan keadaan yang dikirim `ReaderVM`.
-  - `bookOpened()` memuat posisi "kembali ke tempat membaca". Itu bagian fitur Jump to Passage, bukan engine.
+- `AppContainer.swift` membuat semua objek. `AnalysisRepo` dibuat **sekali** di `init()` dan dipakai bersama semua buku, dengan:
+  - `content`: cara mengambil `BookContent` dari `BookContentRepo`
+  - `prepassSvc: BookPrepassSvc()`, `chapterSvc: ChapterAnalysisSvc()`
+  - `store: ChapterAnalysisStore(root: Application Support/Books)`
+  - `makeLLM: { ModelAvailSvc().makeLLMSvc() }`
 
-**Keluar:** dua permintaan ke `RefCtrl`: `prepare()`/`refine()` (latar belakang) dan `marks(on:...)` (per halaman, pemberhentian 10).
+  Untuk setiap buku yang dibuka, `makeReaderVM(book:)` membuat satu `ReferenceVM` dengan satu `RefCtrl`.
+- `Reader/Views/ReaderView.swift`
+  - `.task { await readerVM.onAppear(viewport:) }` saat halaman baca tampil.
+  - `.onChange(of: scenePhase)`: aplikasi ke latar belakang → `readerVM.appBackgrounded()`; kembali aktif → `readerVM.appForegrounded()`.
+  - Meneruskan `referenceVM.marks` ke `PageTurnView`, ketukan tanda ke `referenceVM.markTapped`, dan menampilkan kartu dari `referenceVM.card`.
+- `Reader/VM/ReaderVM.swift`
+  - `onAppear(viewport:)` memanggil `referenceVM.onAppear()` lebih dulu, lalu membuka buku dan menampilkan halaman tanpa menunggu engine.
+  - `appBackgrounded()` menyimpan progres baca dan memanggil `referenceVM.appBackgrounded()`. `appForegrounded()` memanggil `referenceVM.appForegrounded()`.
+  - `loadPages(around:)` (`private`) memuat halaman di sekitar halaman sekarang, mengabari `ReferenceVM` lewat `updateReferenceVM()`, lalu memanggil `referenceVM.loadMarks()`.
+  - Fungsi lain (menu, pencarian, daftar isi, progres) bukan bagian engine. Mengubah pengaturan (termasuk toggle **Symbols**) menghitung ulang halaman, jadi tanda ikut dimuat ulang.
+- `Reader/VM/ReferenceVM.swift`
+  - `onAppear()` dan `appForegrounded()` memanggil `followAnalysis()`.
+  - `followAnalysis()` (`private`): kalau belum mengikuti analisis (`isFollowingAnalysis`), jalankan satu `Task`: `refCtrl.startAnalysis()`, lalu dengarkan `refCtrl.analysisUpdates()`. **Setiap kali satu bab selesai**, `loadMarks()` dipanggil, jadi tanda muncul bertahap bab demi bab. Setelah stream selesai, `loadMarks()` sekali lagi.
+  - `appBackgrounded()` memanggil `refCtrl.stopAnalysis()`. Analisis berhenti, dan bab yang sudah selesai tetap tersimpan.
+  - `update(shownPage:loadedPages:areSymbolsShown:)`, `pageShown(highlighting:)`, `layoutChanged()` hanya menyimpan keadaan dari `ReaderVM`.
+- `Analysis/Ctrl/RefCtrl.swift`: `startAnalysis()`, `stopAnalysis()`, `analysisUpdates()`, `snapshot()`, `progress()` hanya meneruskan ke `AnalysisRepo` dengan `bookID` buku ini.
+
+**Keluar:** `AnalysisRepo.startAnalysis(for: bookID)` dan satu `AsyncStream<Int>` yang memberi kabar nomor bab setiap kali satu bab selesai.
 
 **Knob:** tidak ada.
 
-## 2. Meminta analisis: RefCtrl → AnalysisRepo → AnalysisScheduleSvc
+## 2. AnalysisRepo: loop bab, simpan, lanjutkan
 
-**Masuk:** `bookID` buku yang dibuka.
+```mermaid
+flowchart TD
+    S(["startAnalysis(bookID)"]) --> A{"buku ini sudah<br/>sedang dianalisis?"}
+    A -->|ya| Z1(["tidak melakukan apa-apa"])
+    A -->|tidak| B["hentikan analisis buku lain<br/>mulai Task baru dengan token baru"]
+    B --> C["content(bookID): BookContent"]
+    C --> D["BookPrepassSvc.prepare: PreparedBook"]
+    D --> E["makeLLM, prewarm kalau model tersedia"]
+    E --> F{"bab berikutnya<br/>di book.chapters?"}
+    F -->|tidak ada lagi| Y["publish hasil yang belum dikabarkan<br/>finishIfCurrent: tutup stream"]
+    F -->|ada| G{"dibatalkan?"}
+    G -->|ya| Z2(["berhenti, bab yang sudah<br/>tersimpan tetap ada"])
+    G -->|tidak| H{"masih melanjutkan dari awal<br/>dan store.load ada hasil dengan<br/>versi engine dan parser sama?"}
+    H -->|ya| I["pakai hasil tersimpan<br/>(tidak dikabarkan dulu)"]
+    H -->|tidak| J["publish hasil tersimpan sebelumnya<br/>sekali saja"]
+    J --> K["waitWhileHot: tunggu kalau perangkat<br/>panas atau Low Power Mode"]
+    K --> L["ChapterAnalysisSvc.analyze(chapter,<br/>memory, mentionsSoFar, llm)"]
+    L --> M["store.save(ChapterAnalysis)"]
+    M --> N["publish snapshot, kabari pendengar: bab N"]
+    I --> O["memory = hasil.memory<br/>mentions += hasil.mentions"]
+    N --> O
+    O --> F
+```
+
+**Masuk:** `bookID`.
 
 **Fungsi**
-- `Analysis/Ctrl/RefCtrl.swift`
-  - `prepare()` memanggil `analysisRepo.analysis(for:)` dan membuang hasilnya. Tujuannya hanya memanaskan cache supaya fase 1 mulai secepatnya.
-  - `refine()` memanggil `analysisRepo.refinedAnalysis(for:)` (fase 2).
-- `Analysis/Repo/AnalysisRepo.swift` (sebuah `actor`: hanya satu pemanggil yang mengubah isinya pada satu waktu)
-  - `init(bookContentRepo:analysisScheduleSvc:)` menyimpan dua dependensinya. Dibuat sekali di `AppContainer.swift`.
-  - `analysis(for:)` mengembalikan hasil **terbaru** yang ada di `latest`. Kalau belum ada, ia menunggu fase 1 (`rulesPass(for:)`), memetakannya ke `BookAnalysis`, lalu menyimpannya.
-  - `refinedAnalysis(for:)` menjalankan fase 2 sekali per buku (disimpan di `refinements`), lalu **mengganti** `latest` dengan hasilnya.
-  - `rulesPass(for:)` (`private`) mengambil teks buku dari `BookContentRepo`, lalu menjalankan fase 1 sekali per buku (disimpan di `passes`).
+- `Analysis/Repo/AnalysisRepo.swift` (sebuah `actor`)
+  - `startAnalysis(for:)`: kalau buku ini sudah berjalan, tidak ada yang dilakukan. Kalau buku lain sedang berjalan, buku itu dihentikan dulu. Lalu `run` dijalankan dengan `Task.detached(priority: .utility)` dan sebuah **token** acak.
+  - `stopAnalysis()` membatalkan `Task` yang berjalan dan menutup stream pendengarnya.
+  - `analysis(for:)` mengembalikan `BookAnalysis` terbaru, **tanpa menunggu**. Kalau belum ada bab yang selesai, hasilnya kosong (belum ada tanda).
+  - `snapshot(for:)` dan `progress(for:)`: hasil terbaru beserta jumlah bab selesai.
+  - `updates(for:)` membuat satu `AsyncStream<Int>` untuk satu pendengar. Kalau buku itu tidak sedang dianalisis, stream langsung selesai.
+  - `run(_:token:)` (`private`) adalah **loop bab** pada gambar di atas. Ia membawa empat hal dari bab ke bab: `memory` (ingatan tokoh), `mentions` (semua mention sejauh ini), `calls`, dan `failed`.
 
-  Semua kerja berat dijalankan dengan `Task.detached`, jadi di luar actor dan tidak memblokir pemanggil lain.
-- `Book/Repo/BookContentRepo.swift`
-  - `content(for:)` mem-parse EPUB sekali per buku (`EPUBParseSvc.parse`) dan menyimpan hasilnya. Kalau parse gagal, hasil gagal itu dibuang supaya bisa dicoba lagi.
-  - `fileURL(for:)` (`private`) memakai buku yang diimpor pembaca kalau ada (`Application Support/Books/<id>/book.epub`), dan kalau tidak, Little Women bawaan. Jadi engine juga jalan untuk buku impor.
-  - `parseTask(for:)` (`private`) memulai parse di latar belakang.
+    Aturan melanjutkan: selama bab-bab di awal sudah tersimpan, hasilnya dipakai tanpa menghitung ulang. Begitu ada satu bab yang belum tersimpan, semua bab sesudahnya dihitung ulang (`isResuming = false`), karena ingatan tokohnya bergantung pada bab sebelumnya.
+  - `snapshot(_:...)` (`private`) membuat `AnalysisSnapshot`: memetakan ingatan dan mention ke `BookAnalysis` (pemberhentian 9), ditambah progres.
+  - `waitWhileHot()` (`private`): selama suhu perangkat `serious`/`critical` atau Low Power Mode aktif, tidur `throttlePause`, lalu cek lagi.
+  - `publish(_:chapter:for:)`, `finish(_:)`, `finishIfCurrent(_:token:)`, `removeListener(_:of:)` (`private`): menyimpan snapshot, mengabari pendengar, dan menutup stream. `finishIfCurrent` memeriksa token, supaya `Task` lama yang sudah diganti tidak menutup stream milik `Task` baru.
+- `Analysis/Repo/ChapterAnalysisStore.swift`
+  - `load(bookID:chapter:engineVersion:parserVersion:)` membaca `Application Support/Books/<bookID>/analysis/chapter-<N>.json`. Hasilnya dibuang kalau **versi engine atau versi parser berbeda**.
+  - `save(_:bookID:)` menulis file itu (sekali tulis, atomik).
+  - `clear(bookID:)` menghapus semua hasil satu buku.
+  - `folder(bookID:)`, `file(bookID:chapter:)` (`private`): path file.
 
-  Parser memecah teks jadi kalimat dengan `NLTokenizer` dari NaturalLanguage.
-- `Analysis/AI/Svc/AnalysisScheduleSvc.swift` adalah **seluruh pipeline dalam satu file**. Baca file ini dulu:
-  - `rulesPass(for:)`: fase 1, pemberhentian 3 sampai 7, berurutan.
-  - `analysis(from:)`: hasil fase 1 → `BookAnalysis` (pemberhentian 9).
-  - `refinedAnalysis(from:)`: fase 2 (pemberhentian 8), lalu → `BookAnalysis` (pemberhentian 9).
+**Keluar:** `AnalysisSnapshot` setiap kali satu bab selesai. Untuk Little Women: 49 bab cerita (bab 3 sampai 51 di `BookContent`). Satu file bab berukuran sekitar 35 KB (Bab 1).
 
-**Keluar:** `BookContent` masuk ke `rulesPass(for:)`.
+Waktu di Mac: semua 49 bab dengan aturan saja sekitar **0,2 detik** (ditambah pra-baca 1,5 detik). Dengan model, Bab 1 sekitar **61 detik** untuk 3 panggilan model, termasuk memanaskan model.
 
-**Knob:** tidak ada.
+**Knob**
+- `AnalysisRepoKnobs.throttlePause`: berapa lama menunggu sebelum mengecek suhu lagi
+- `ChapterAnalysisKnobs.engineVersion` (di `ChapterAnalysisSvc.swift`): **naikkan angka ini setiap kali mengubah aturan, prompt, atau knob yang mengubah hasil bab** (pemberhentian 4 sampai 8). Kalau tidak, aplikasi akan terus memakai hasil lama yang tersimpan. Knob di pemberhentian 9 sampai 11 (`AnalysisMapperKnobs.symbols`, `AppearanceKnobs`, `ContextPassageKnobs`, warna) **tidak perlu** menaikkan versi, karena dihitung ulang dari hasil tersimpan setiap kali dimuat. Pengecualian: `AnalysisMapperKnobs.minimumMentions` dan `onlyNamed` dipakai `SymbolAssigner` saat bab diolah, jadi perlu menaikkan versi.
 
-## 3. BookContent → kalimat bernomor
+## 3. Pra-baca buku: kalimat, awal cerita, label kata, kosakata nama
 
-**Masuk:** `BookContent`. Untuk Little Women: 52 bab (sesuai daftar isi EPUB), 4278 paragraf, dan 10.163 kalimat.
+Langkah ini dijalankan **sekali per buku** sebelum loop bab, karena ada informasi yang hanya bisa didapat dari seluruh cerita (misalnya: apakah "Meg" sering muncul sebagai nama).
 
-Contoh, kalimat s144 di dalam `BookContent`:
-- `Sentence`: paragraf 98, rentang `{1266, 168}` di dalam paragraf
-- `Paragraph` 98: bab 3 ("CHAPTER ONE PLAYING PILGRIMS"), rentang `{6497, 1510}` di dalam teks bab
-
-**Fungsi:** `Analysis/AI/Rules/SentenceText.swift`
-- `of(_:in:)` mengambil teks satu kalimat: posisi paragraf ditambah posisi kalimat, lalu potong dari teks bab. Untuk s144: 6497 + 1266 = huruf ke-7763 di teks bab.
-- `numbered(in:)` mengubah semua kalimat jadi `NumberedSentence`. Nomor kalimat = urutannya di seluruh buku.
-
-**Keluar:** `[NumberedSentence]`, 10.163 kalimat. Contoh:
-- `s141`: "Elizabeth, or Beth, as everyone called her, was a rosy, smooth-haired, bright-eyed girl of thirteen, …"
-- `s144`: "A regular snow maiden, with blue eyes, and yellow hair curling on her shoulders, …"
-
-**Knob:** tidak ada.
-
-## 4. Kalimat → label kata (Step 2)
-
-**Masuk:** `[NumberedSentence]`.
-
-**Fungsi:** `Analysis/AI/Svc/WordTagSvc.swift`
-- `tag(_:)` memeriksa apakah model bahasa Inggris tersedia. Kalau ya, semua kalimat dilabeli dengan NLTagger; kalau tidak, dengan aturan cadangan.
-- `hasEnglishModels()` (`private`) mengetes kalimat "John walked to London." Kalau "John" dikenali sebagai `PersonalName`, model tersedia.
-- `tokensByNaturalLanguage(_:tagger:)` (`private`) memberi tiap kata tiga label dari `NLTagger`:
-  - **jenis kata** (`lexicalClass`): Noun, Verb, Adjective, Determiner, …
-  - **jenis nama** (`nameType`): PersonalName, PlaceName, OrganizationName, atau tidak ada
-  - **lemma**: bentuk dasar ("eyes" → "eye", "called" → "call")
-
-  NLTagger memotong kata bertanda hubung ("smooth" + "haired"). Fungsi ini menyambungnya kembali jadi satu kata ("smooth-haired") kalau knob `stitchHyphenatedWords` aktif.
-- `tokensByRules(_:)` (`private`) adalah cadangan tanpa model: jenis kata ditebak dari daftar kata di knob, dan kata berhuruf kapital (bukan di awal kalimat) dianggap nama.
-- `makeToken(_:in:range:lexicalClass:name:lemma:)` (`private`) membuat satu `Token` dan mengubah posisinya ke hitungan huruf UTF-16 (satuan posisi yang dipakai seluruh aplikasi).
-
-**Keluar:** `SentenceTags`, satu daftar `Token` per kalimat. Contoh `teks/jenis/nama/lemma@posisi`:
-
-```
-s141: Elizabeth/Noun/PersonalName/elizabeth@0  or/Conjunction/or@11  Beth/Noun/PersonalName/beth@14
-      as/Preposition/as@20  … was/Verb/be@44  a/Determiner/a@48  rosy/Noun/rosy@50
-      smooth-haired/Adjective/smooth-haired@56  bright-eyed/Adjective/bright-eyed@71  girl/Noun/girl@83 …
-s144: A/Determiner/a@0  regular/Adjective/regular@2  snow/Noun/snow@10  maiden/Noun/maiden@15
-      with/Preposition/with@23  blue/Adjective/blue@28  eyes/Noun/eye@33  and/Conjunction/and@39
-      yellow/Adjective/yellow@43  hair/Noun/hair@50  curling/Verb/curl@55 …
+```mermaid
+flowchart LR
+    BC["BookContent<br/>52 bab, 10.163 kalimat"] --> N["SentenceText.numbered<br/>s0 ... s10162"]
+    N --> SS["StoryStart.storySentences<br/>buang judul, daftar isi"]
+    SS --> T["WordTagSvc.tag<br/>NLTagger"]
+    T --> V["NameVocabularyBuilder.build<br/>161 nama"]
+    BC --> FC["StoryStart.firstStoryChapter<br/>bab 3"]
+    SS --> PB["PreparedBook"]
+    T --> PB
+    V --> PB
+    FC -->|"chapters 3..<52"| PB
 ```
 
-Perhatikan "rosy" dilabeli **Noun**, bukan Adjective. Itu keputusan NLTagger, bukan kode kita.
+**Masuk:** `BookContent`. Untuk Little Women: 52 bab (sesuai daftar isi EPUB), 4278 paragraf, 10.163 kalimat. Bab 0 sampai 2 adalah "Little Women", "Contents", dan "PART 1"; bab 3 adalah "CHAPTER ONE PLAYING PILGRIMS".
 
-**Knob:** `WordTagKnobs` di file yang sama. Hanya berpengaruh di jalur cadangan, kecuali yang terakhir:
-- `determiners`, `pronouns`, `prepositions`, `conjunctions`: daftar kata untuk menebak jenis kata
-- `stitchHyphenatedWords`: sambung kata bertanda hubung (berlaku di kedua jalur)
+Contoh, kalimat s144 di dalam `BookContent`: paragraf 98, rentang `{1266, 168}` di dalam paragraf.
 
-## 5. Label kata → mention (Step 3a)
+**Fungsi**
+- `Analysis/AI/Svc/BookPrepassSvc.swift`, `prepare(_:)`: menjalankan keempat langkah di bawah dan mengemasnya jadi `PreparedBook`.
+- `Analysis/AI/Rules/SentenceText.swift`
+  - `numbered(in:)` mengubah semua kalimat jadi `NumberedSentence`. Nomor kalimat = urutannya di seluruh buku.
+  - `of(_:in:)` mengambil teks satu kalimat dari teks babnya.
+- `Analysis/AI/Rules/StoryStart.swift` (melewati judul dan daftar isi)
+  - `firstStoryChapter(in:)` mencari **bab daftar isi**: bab pertama yang punya minimal `minContentsParagraphs` paragraf dan sebagian besar paragrafnya (≥ `titleShareForContents`) adalah judul bab lain. Cerita dimulai di bab pertama sesudahnya yang **bukan** hanya judul ("PART 1" dilewati). Kalau tidak ada daftar isi, cerita dimulai di bab 0.
+  - `storySentences(_:in:)` membuang kalimat sebelum bab itu.
+  - `titleShare(of:titles:in:)`, `normalized(_:)` (`private`): bagian paragraf yang berupa judul bab; huruf kecil dan spasi dirapikan.
+- `Analysis/AI/Svc/WordTagSvc.swift`
+  - `tag(_:)`: kalau model bahasa Inggris tersedia, semua kalimat dilabeli `NLTagger`; kalau tidak, dengan aturan cadangan.
+  - `hasEnglishModels()` mengetes "John walked to London.": kalau "John" dikenali sebagai `PersonalName`, model tersedia.
+  - `tokensByNaturalLanguage(_:tagger:)` (`private`) memberi tiap kata tiga label: **jenis kata** (Noun, Verb, Adjective, Determiner, …), **jenis nama** (PersonalName, PlaceName, OrganizationName, atau tidak ada), dan **lemma** (bentuk dasar, "eyes" → "eye"). Kata bertanda hubung disambung lagi ("smooth-haired").
+  - `tokensByRules(_:)` (`private`): cadangan tanpa model; jenis kata ditebak dari daftar di knob, kata berhuruf kapital di tengah kalimat dianggap nama.
+  - `makeToken(...)` (`private`): satu `Token`, posisi dalam hitungan UTF-16.
+- `Analysis/AI/Rules/NameVocabularyBuilder.swift`
+  - `build(sentences:tags:)`: kumpulkan kata yang dianggap nama (`knownNames`), lalu jalankan `MentionFinder` di seluruh cerita dan hitung berapa kali tiap nama muncul (`nameCounts`).
+  - `knownNames(in:)` (`private`) memilih kata yang **pernah** dilabeli nama orang oleh NLTagger, **dan** muncul berhuruf kapital di tengah kalimat minimal `minCapitalizedMidSentence` kali, **dan** jarang ditulis huruf kecil (≤ `maxLowercaseRatio` × jumlah kapital). Ini yang membuat "Meg" dikenali di setiap kalimat walaupun NLTagger hanya kadang-kadang melabelinya, sementara "brown" (lebih sering huruf kecil) tidak dianggap nama.
 
-**Masuk:** `[NumberedSentence]` dan `SentenceTags`.
+**Keluar:** `PreparedBook`:
+- `sentences`: 10.098 kalimat cerita, mulai s65
+- `tags`: label kata tiap kalimat. Contoh s141:
+
+  ```
+  Elizabeth/Noun/PersonalName/elizabeth@0  or/Conjunction/or@11  Beth/Noun/PersonalName/beth@14
+  as/Preposition/as@20  everyone/Noun/everyone@23  called/Verb/call@32  her/Pronoun/she@39
+  was/Verb/be@44  a/Determiner/a@48  rosy/Noun/rosy@50  smooth-haired/Adjective@56  bright-eyed/Adjective@71 …
+  ```
+
+  "rosy" dilabeli **Noun**, bukan Adjective. Itu keputusan NLTagger.
+- `vocabulary`: 161 nama. Contoh jumlah: jo 1341, meg 681, amy 640, laurie 592, beth 460, marmee 48, margaret 20, elizabeth 1
+- `chapters`: `3..<52`, yaitu 49 bab cerita
+
+Waktu: sekitar 1,5 detik di Mac.
+
+**Knob**
+- `StoryStartKnobs` (`StoryStart.swift`): `titleShareForContents`, `minContentsParagraphs`
+- `WordTagKnobs` (`WordTagSvc.swift`): daftar kata untuk jalur cadangan, dan `stitchHyphenatedWords`
+- `MentionFinderKnobs.propagateKnownNames`, `minCapitalizedMidSentence`, `maxLowercaseRatio` (`MentionFinder.swift`): aturan kosakata nama
+
+## 4. Bab → mention
+
+Mulai di sini, semuanya terjadi **di dalam satu bab**, di `ChapterAnalysisSvc.analyze` (`Analysis/AI/Svc/ChapterAnalysisSvc.swift`):
+
+```mermaid
+flowchart TD
+    IN["chapter, PreparedBook,<br/>memory dari bab sebelumnya,<br/>mentionsSoFar"] --> F["ambil kalimat dan label kata bab ini"]
+    F --> MF["MentionFinder.mentions<br/>nama + deskripsi"]
+    MF --> CB["CastBuilder.extend<br/>tokoh baru, alias"]
+    CB --> ML["MentionLinker.link<br/>tautkan tiap mention"]
+    ML --> Q{"model tersedia?"}
+    Q -->|ya| SL["ChapterSlicer.slices"]
+    SL --> RD["SliceReader.read per potongan<br/>(pemberhentian 7)"]
+    RD --> SA
+    Q -->|tidak| SA["SymbolAssigner.assign"]
+    SA --> OUT["ChapterAnalysis<br/>mention bab ini + memory baru"]
+```
+
+**Masuk:** kalimat dan label kata Bab 1 (s65 sampai s293, 229 kalimat), dan `vocabulary.names`.
 
 **Fungsi:** `Analysis/AI/Rules/MentionFinder.swift`
-- `mentions(in:tags:)` menggabungkan **nama** dan **deskripsi** dari tiap kalimat, lalu mengurutkannya menurut posisi.
-- `names(in:tokens:)` (`private`) mencari deret kata yang semuanya "kata nama" dan saling bersambung ("Mr. March", "Louisa May Alcott"). Deret yang isinya cuma gelar ("Mr.") dibuang.
-- `joinsName(_:_:in:)` (`private`): dua kata tergabung kalau dipisah satu spasi, atau kalau kata pertama gelar dan dipisah ". ".
-- `isTitle(_:)` (`private`): apakah kata ada di knob `titles`.
-- `isNameWord(_:)` (`private`): kata dianggap nama kalau jenis namanya ada di `personNameTypes`, atau kalau kata keluarga berhuruf kapital ("Father", "Marmee"). Kata kelompok ("everyone", "girls") selalu ditolak.
-- `descriptions(in:tokens:)` (`private`) mencari pola **determiner + (kata sifat/benda)… + kata kepala orang**, misalnya "a rosy, smooth-haired, bright-eyed girl". Kalau sesudahnya ada "with …", kata sifat/benda di frasa itu ikut jadi modifier ("…, with blue eyes, and yellow hair").
-- `isPersonHead(_:)` (`private`): kata kepala harus ada di knob `personHeads` dan bukan kata kelompok.
+- `mentions(in:tags:names:)` menggabungkan **nama** dan **deskripsi** dari tiap kalimat, diurutkan menurut posisi.
+- `names(in:tokens:knownNames:)` (`private`) mencari deret "kata nama" yang bersambung ("Mr. March", "Aunt March"). Deret yang isinya cuma gelar dibuang.
+- `isNameWord(_:knownNames:)` (`private`): kata dianggap nama kalau **berhuruf kapital** dan bukan kata kelompok, **dan** salah satu: dilabeli nama orang oleh NLTagger, ada di kosakata nama (pemberhentian 3), atau kata keluarga ("Father", "Marmee").
+- `joinsName(_:_:in:)`, `isTitle(_:)`, `textBetween(_:_:in:)` (`private`): dua kata bergabung kalau dipisah satu spasi, atau gelar diikuti ". ".
+- `descriptions(in:tokens:)` (`private`) mencari pola **determiner + (kata sifat/benda)… + kata kepala orang** ("a rosy, smooth-haired, bright-eyed girl"). Kalau diikuti "with …", kata sifat/benda di frasa itu ikut jadi modifier.
+- `isPersonHead(_:)` (`private`): kata kepala ada di `personHeads`.
 - `mention(_:in:form:head:modifiers:)` (`private`) membuat satu `ResolvedMention`.
-- `textBetween(_:_:in:)` (`private`) mengambil teks di antara dua kata.
-- Dipakai juga: `Analysis/AI/Rules/NameKey.swift`, `NameKey.of(_:)`, yang menormalkan nama jadi kunci ("Mr. March" → "mr march"). Kunci ini yang dibandingkan, bukan teks aslinya.
+- Dipakai juga: `NameKey.of(_:)` (`Analysis/AI/Rules/NameKey.swift`) menormalkan nama jadi kunci ("Mr. March" → "mr march").
 
-**Keluar:** `[ResolvedMention]`, 5679 mention di seluruh buku (5016 nama). Di s91–s175 ada 58 mention: 47 nama dan 11 deskripsi. Semua deskripsinya:
+**Keluar:** 181 mention di Bab 1: 166 nama, 15 deskripsi. Contoh:
 
-| Kalimat | Teks | Kepala | Modifier |
-|---|---|---|---|
-| s115 | a little girl | girl | little |
-| s115 | a young lady | lady | young |
-| s119 | a girl | girl | |
-| s120 | a boy | boy | |
-| s122 | a poky old woman | woman | poky, old |
-| s140 | a girl | girl | |
-| s140 | a woman | woman | |
-| s141 | a rosy, smooth-haired, bright-eyed girl | girl | rosy, smooth-haired, bright-eyed |
-| s144 | A regular snow maiden, with blue eyes, and yellow hair | maiden | regular, snow, blue, eye, yellow, hair |
-| s154 | the man | man | |
-| s175 | a child | child | |
-
-Nama di s141: "Elizabeth" (kunci `elizabeth`) dan "Beth" (kunci `beth`). Di s143: "Amy".
+| Kalimat | Teks | Bentuk | Kepala | Modifier |
+|---|---|---|---|---|
+| s136 | Margaret | nama | margaret | |
+| s141 | Elizabeth | nama | elizabeth | |
+| s141 | Beth | nama | beth | |
+| s141 | a rosy, smooth-haired, bright-eyed girl | deskripsi | girl | rosy, smooth-haired, bright-eyed |
+| s143 | Amy | nama | amy | |
+| s144 | A regular snow maiden, with blue eyes, and yellow hair | deskripsi | maiden | regular, snow, blue, eye, yellow, hair |
 
 **Knob:** `MentionFinderKnobs`
-- `titles`: gelar yang boleh menempel ke nama ("mr.", "mrs.", "aunt", …)
+- `titles`: gelar yang boleh menempel ke nama
 - `personNameTypes`: jenis nama dari NLTagger yang dianggap orang
 - `familyTerms`: kata keluarga yang dianggap nama bila berhuruf kapital
-- `personHeads`: kata kepala yang dianggap orang, beserta kelompok sinonimnya ("lad" → "boy", "maiden" → "girl"). Kelompok ini dipakai lagi di pemberhentian 7
+- `personHeads`: kata kepala orang beserta kelompok sinonimnya ("maiden" → "girl"); dipakai lagi di pemberhentian 6
 - `groupWords`: kata kelompok yang bukan satu orang ("girls", "everyone")
-- `determiners`: kata pembuka deskripsi
-- `descriptionWordClasses`, `withPhraseWordClasses`: jenis kata yang boleh ada di dalam deskripsi dan di frasa "with …"
-- `allowWithPhrase`, `maxWithPhraseWords`: frasa "with …" boleh ikut, dan sampai berapa kata
+- `determiners`, `descriptionWordClasses`, `withPhraseWordClasses`, `allowWithPhrase`, `maxWithPhraseWords`: bentuk deskripsi
 
-## 6. Mention → daftar tokoh (Step 3b)
+## 5. Mention → ingatan tokoh
 
-**Masuk:** `[ResolvedMention]` dan `[NumberedSentence]`.
+**Masuk:** mention Bab 1, ingatan tokoh dari bab sebelumnya (untuk Bab 1: kosong), kalimat bab, dan kosakata nama.
 
 **Fungsi:** `Analysis/AI/Rules/CastBuilder.swift`
-- `cast(from:sentences:)`
-  1. Setiap kunci nama yang muncul minimal `minNameCount` kali menjadi satu tokoh. Nomornya urut kemunculan pertama, dan labelnya ejaan yang paling sering muncul.
-  2. Lalu ia mencari pola alias di kalimat yang sama ("Elizabeth, or Beth") dan menggabungkan kedua nama.
-- `joinNames(_:_:at:decidedBy:in:)` (`private`) menggabungkan dua nama:
-  - kalau keduanya sudah tokoh, yang muncul belakangan digabung ke yang lebih awal;
-  - kalau baru satu yang tokoh, nama lainnya ditambahkan ke tokoh itu.
-- `isAlias(between:and:in:)` (`private`): teks di antara dua nama cocok dengan salah satu pola di knob `aliasConnectors`.
+- `extend(_:with:sentences:vocabulary:)`
+  1. Setiap nama yang **belum** dikenal ingatan dan muncul minimal `minNameCount` kali di **seluruh cerita** (`vocabulary.nameCounts`) menjadi tokoh baru. Nomornya meneruskan nomor terbesar di ingatan; labelnya ejaan yang paling sering di bab ini.
+  2. Lalu dicari pola alias di kalimat yang sama ("Elizabeth, or Beth"), dan kedua nama digabung.
+- `joinNames(_:_:at:decidedBy:in:)` (`private`): kalau keduanya sudah tokoh, yang diperkenalkan belakangan digabung ke yang lebih awal; kalau baru satu, nama lainnya ditambahkan ke tokoh itu.
+- `isAlias(between:and:in:)` (`private`): teks di antara dua nama cocok dengan `aliasConnectors`.
 - `mostFrequentText(of:)` (`private`): ejaan yang paling sering.
-- Dipakai juga, di `Analysis/AI/Rules/ResolvedAnalysis+Names.swift`:
-  - `entityKey(forName:)` mencari tokoh yang memiliki kunci nama itu.
-  - `addName(_:to:at:)` menambahkan nama ke tokoh, beserta kalimat sejak kapan nama itu berlaku.
-- Dipakai juga, di `Analysis/AI/Rules/ResolvedAnalysis+Merges.swift`: `merge(_:into:at:decidedBy:)` (lihat pemberhentian 7).
+- Dipakai juga, di `Analysis/AI/Rules/ResolvedAnalysis+Names.swift`: `entityKey(forName:)` (tokoh yang punya kunci nama itu) dan `addName(_:to:at:)` (tambah nama, berlaku sejak kalimat tertentu).
 
-**Keluar:** `[ResolvedEntity]`, 168 tokoh bernama. Yang muncul di contoh:
+**Keluar:** `CastMemory` dengan 22 tokoh bernama setelah Bab 1:
 
-| Nomor | Label | Nama (sejak kalimat) | Pertama muncul |
-|---|---|---|---|
-| #3 | Beth | BETH (s20), Elizabeth (s141) | s20 |
-| #6 | Jo | Jo (s67) | s67 |
-| #7 | Amy | Amy (s70) | s70 |
-| #8 | Father | Father (s71) | s71 |
-| #9 | Mother | Mother (s71) | s71 |
-| #10 | Meg | Meg (s74) | s74 |
-| #11 | Papa | Papa (s92) | s92 |
-| #12 | Brown | brown (s137) | s137 |
+```
+#1 Jo (s67)   #2 Meg (s69)   #3 Amy (s70)   #4 Father (s71)   #5 Mother (s71)
+#6 Beth, Elizabeth (s71)   #7 Undine   #8 Papa   #9 Josephine   #10 Miss March
+#11 Margaret (s136)   #12 Marmee   #13 Hugo   #14 Roderigo   #15 Don Pedro   #16 Hagar
+#17 Shakespeare   #18 Mrs. March   #19 Apollyon   #20 Christian   #21 Hannah   #22 Aunt March
+```
 
-Dua hal yang perlu dicatat untuk tuning:
-- **Beth pertama "muncul" di s20, yaitu di daftar isi** ("CHAPTER SIX BETH FINDS THE PALACE BEAUTIFUL"), bukan di cerita. Daftar isi ikut dianggap teks buku.
-- **#12 "Brown" bukan tokoh.** Itu dari s137, "Jo was very tall, thin, and **brown**", yang dilabeli sebagai nama oleh NLTagger.
-
-"Elizabeth" tergabung ke Beth karena pola `, or ` di s141 cocok dengan `aliasConnectors`.
+Yang perlu dicatat:
+- **"Elizabeth" masuk ke Beth** karena pola ", or " di s141.
+- **Margaret (#11) dan Meg (#2) masih dua tokoh.** Tidak ada pola alias yang menghubungkannya. Begitu juga Josephine (#9) dan Jo (#1), Mother (#5), Marmee (#12), dan Mrs. March (#18).
+- Beberapa "tokoh" sebenarnya nama buku atau tokoh dalam permainan (Undine, Hugo, Roderigo, Apollyon, Christian, Shakespeare). Mereka hanya dapat simbol kalau cukup sering disebut (pemberhentian 8).
 
 **Knob:** `CastBuilderKnobs`
-- `minNameCount`: berapa kali sebuah nama harus muncul agar jadi tokoh
+- `minNameCount`: berapa kali nama harus muncul di seluruh cerita agar jadi tokoh
 - `aliasConnectors`: pola teks di antara dua nama yang berarti orang yang sama (", or", ", called", ", known as")
 
-## 7. Mention + tokoh → analisis aturan (Step 3c)
+## 6. Mention + ingatan → tautan aturan
 
-**Masuk:** `[ResolvedMention]`, `[ResolvedEntity]` (cast), dan `[NumberedSentence]`.
+**Masuk:** mention Bab 1, ingatan tokoh dari pemberhentian 5, semua mention bab-bab sebelumnya (`earlier`), dan kalimat bab.
 
 **Fungsi:** `Analysis/AI/Rules/MentionLinker.swift`
-- `link(_:to:sentences:)` membaca semua mention **sesuai urutan baca**, lalu memutuskan tokohnya:
+- `link(_:memory:earlier:sentences:)` membaca mention **sesuai urutan baca**:
   - **Nama** → tokoh yang punya nama itu, asalkan nama itu sudah berlaku di kalimat tersebut (`knownName`).
-  - **Deskripsi tepat sesudah nama** (apositif, misalnya "Jo, who was …") → tokoh nama itu (`appositionTarget`). Kalau deskripsi itu juga cocok dengan tokoh-deskripsi lain yang tak bernama, keduanya digabung.
-  - **Deskripsi yang cocok kuat dengan satu deskripsi sebelumnya** → tokoh deskripsi itu (`bestMatch`).
-  - **Selain itu** → tokoh baru yang hanya dikenal lewat deskripsi ini (`openDescribedEntity`), dan mention ditandai `isUndecided = true`. Fase 2 yang akan mencoba memutuskannya.
+  - **Deskripsi tepat sesudah nama** (apositif, misalnya "Jo, who was …", "Jo was a …") → tokoh nama itu (`appositionTarget`). Kalau deskripsi itu juga cocok dengan tokoh-deskripsi tak bernama, keduanya digabung.
+  - **Deskripsi yang cocok kuat dengan satu deskripsi sebelumnya** (di bab ini atau bab sebelumnya) → tokoh deskripsi itu (`bestMatch`).
+  - **Selain itu** → tokoh baru yang hanya dikenal lewat deskripsi ini (`openDescribedEntity`), dan mention ditandai `isUndecided = true`.
 
-  Semua mention yang dapat tokoh ditandai `decidedBy = .rule`.
-- `knownName(_:in:)` (`private`): tokoh yang memiliki kunci nama ini sejak kalimat ini atau sebelumnya.
-- `appositionTarget(of:in:text:)` (`private`): nama terakhir sebelum deskripsi di kalimat yang sama, kalau teks di antaranya cocok dengan knob `appositionConnectors`.
-- `Match` (`private`): hasil pencocokan, yaitu tidak ada, satu tokoh, atau seri.
-- `bestMatch(for:in:)` (`private`) memberi skor terhadap semua deskripsi sebelumnya. Hanya menang kalau tepat satu tokoh punya skor tertinggi.
-- `strongScore(_:_:)` (`private`) menghitung skor:
-  - **kepala**: sama persis → `sameHeadScore`; satu kelompok sinonim (dari `MentionFinderKnobs.personHeads`) → `synonymScore`; selain itu tidak cocok
+  Semua mention yang dapat tokoh ditandai `decidedBy = .rule`. Hasilnya `LinkedChapter`: mention bab ini dan ingatan yang sudah ditambah tokoh-deskripsi.
+- `knownName(_:in:)`, `appositionTarget(of:in:text:)`, `bestMatch(for:in:)`, `openDescribedEntity(for:in:)` (`private`): seperti di atas.
+- `strongScore(_:_:)` (`private`): skor dua deskripsi.
+  - **kepala** sama persis → `sameHeadScore`; satu kelompok sinonim → `synonymScore`; selain itu tidak cocok
   - **modifier**: tiap modifier yang sama → `sharedModifierScore`
   - **lolos kalau** total ≥ `strongMatchTotal` **dan** skor modifier ≥ `strongMatchModifiers`
-- `comparable(_:)` (`private`) menormalkan modifier sebelum dibandingkan: pecah di tanda hubung, huruf kecil, dan buang akhiran "-ed" untuk kata yang panjangnya minimal `minLengthToStripEd`.
-- `openDescribedEntity(for:in:)` (`private`) membuat tokoh baru yang hanya punya deskripsi.
-- `dropSmallDescribedEntities(in:)` membuang tokoh-deskripsi yang mention-nya kurang dari `minMentionsForDescribedEntity` dan tidak pernah digabung. Fungsi ini dipanggil di akhir fase 2, bukan di sini.
+- `comparable(_:)` (`private`): modifier dipecah di tanda hubung, huruf kecil, dan akhiran "-ed" dibuang untuk kata minimal `minLengthToStripEd` huruf.
+- `dropSmallDescribedEntities(in:)`: membuang tokoh-deskripsi kecil. **Saat ini tidak dipanggil di mana pun**, jadi tokoh-deskripsi tidak pernah dibuang (606 tokoh di akhir buku).
 - Dipakai juga, di `Analysis/AI/Rules/ResolvedAnalysis+Merges.swift`:
   - `linkedMentions`: mention yang sudah punya tokoh
   - `entity(_:)`: cari tokoh berdasarkan nomor
   - `entityKey(of:asOf:)`: tokoh sebuah mention **sejauh yang diketahui di kalimat tertentu**
   - `finalKey(of:)`: tokoh akhir setelah semua penggabungan
-  - `merge(_:into:at:decidedBy:)`: catat bahwa tokoh A adalah tokoh B mulai kalimat tertentu
+  - `merge(_:into:at:decidedBy:)`: catat bahwa tokoh A adalah tokoh B mulai kalimat tertentu. Kedua ujung dicari **sejauh kalimat itu**, jadi penggabungan yang baru terungkap belakangan tidak bocor ke halaman sebelumnya (anti-spoiler)
   - `follow(_:upTo:)` (`private`): ikuti rantai penggabungan sampai kalimat tertentu
-- Dipakai juga, di `Analysis/AI/Rules/ResolvedEntity+Names.swift`: `isNamed`, yaitu apakah tokoh punya minimal satu nama.
+- Dipakai juga: `isNamed` (`Analysis/AI/Rules/ResolvedEntity+Names.swift`), apakah tokoh punya minimal satu nama.
 
-**Keluar:** `ResolvedAnalysis`. Di seluruh buku: 5679 mention, 5405 tertaut, 405 *undecided*, dan 573 tokoh (168 bernama dan 405 tokoh-deskripsi).
-
-Hasil di contoh:
+**Keluar:** `LinkedChapter`, 34 tokoh (22 bernama, 12 tokoh-deskripsi), 12 mention *undecided*, 3 nama tanpa tokoh (nama yang muncul kurang dari `minNameCount` kali).
 
 | Kalimat | Mention | Ditautkan ke | Undecided |
 |---|---|---|---|
-| s115 | a little girl | tokoh baru #171 "a little girl" | ya |
-| s115 | a young lady | tokoh baru #172 | ya |
-| s119 | a girl | tokoh baru #173 | ya |
-| s120 | a boy | tokoh baru #174 | ya |
-| s122 | a poky old woman | #170 "a nervous, fussy old lady" (dari s87) | tidak |
-| s140 | a girl / a woman | tokoh baru #175 / #176 | ya |
-| s141 | Elizabeth, Beth | #3 Beth | tidak |
-| s141 | a rosy, smooth-haired, bright-eyed girl | tokoh baru #177 | ya |
-| s143 | Amy | #7 Amy | tidak |
-| **s144** | **A regular snow maiden, …** | **#177, deskripsi Beth dari s141** | tidak |
-| s154 | the man | tokoh baru #178 | ya |
-| s175 | a child | tokoh baru #179 | ya |
+| s136 | Margaret | #11 Margaret | tidak |
+| s141 | Elizabeth, Beth | #6 Beth | tidak |
+| s141 | a rosy, smooth-haired, bright-eyed girl | tokoh-deskripsi baru #30 | ya |
+| s143 | Amy | #3 Amy | tidak |
+| **s144** | **A regular snow maiden, …** | **#30, deskripsi s141 (Beth)** | **tidak** |
 
-**Kenapa s141 tidak langsung ke Beth?** Teks di antara "Beth" dan deskripsinya adalah ", as everyone called her, was ". Itu tidak cocok dengan `appositionConnectors`, yang hanya mengenal "," dan ", who was". Jadi deskripsinya jadi tokoh baru #177.
+**Kenapa s141 tidak langsung ke Beth?** Teks di antara "Beth" dan deskripsinya adalah ", as everyone called her, was ". Itu tidak cocok dengan `appositionConnectors`.
 
-**Kenapa s144 ikut #177, bukan Amy?** Skornya terhadap deskripsi s141:
+**Kenapa s144 ikut #30?** Skornya terhadap deskripsi s141:
 - kepala "maiden" dan "girl" satu kelompok sinonim → `synonymScore` = **1,5**
-- modifier s141 setelah dinormalkan: rosy, smooth, **hair** ("haired" dibuang "-ed"-nya), bright, eyed ("eyed" hanya 4 huruf, jadi tidak dipotong)
-- modifier s144: regular, snow, blue, eye, yellow, **hair**
-- satu modifier sama ("hair") → **2,0**
-- total **3,5**, tepat di ambang `strongMatchTotal` = 3,5, dan skor modifier tepat di `strongMatchModifiers` = 2,0 → lolos
+- modifier yang sama setelah dinormalkan: **"hair"** (dari "smooth-haired" dan "yellow hair") → **2,0**
+- total **3,5**, tepat di ambang `strongMatchTotal` = 3,5 → lolos
 
-Satu kata "hair" (Beth berambut halus, Amy berambut kuning) cukup untuk menautkan keduanya. Sementara itu "Amy" di s143 tidak ikut dipertimbangkan, karena aturan ini hanya membandingkan deskripsi dengan deskripsi.
+Satu kata "hair" cukup untuk menautkan deskripsi Amy ke deskripsi Beth. Karena mention ini **tidak** *undecided*, nasibnya bergantung pada apakah model ikut membaca kalimat itu (pemberhentian 7). Dengan aturan saja, s144 tetap di #30 dan tidak mendapat simbol, karena #30 terlalu kecil (pemberhentian 8).
 
 **Knob:** `MentionLinkerKnobs`
 - `sameHeadScore`, `synonymScore`, `sharedModifierScore`: bobot skor
-- `strongMatchTotal`, `strongMatchModifiers`: ambang kecocokan. Menaikkan `strongMatchTotal` ke 4,0 akan memutus kasus s144, tapi juga pasangan benar yang skornya pas-pasan
-- `minMentionsForDescribedEntity`: batas tokoh-deskripsi kecil yang dibuang di akhir fase 2
-- `appositionConnectors`: pola apositif. Menambahkan pola seperti ", as …, was" akan menautkan s141 langsung ke Beth
-- `minLengthToStripEd`: panjang minimal kata agar "-ed" dibuang. Dengan nilai 4, "eyed" jadi "ey", tetap tidak sama dengan "eye"
+- `strongMatchTotal`, `strongMatchModifiers`: ambang kecocokan. Menaikkan `strongMatchTotal` ke 4,0 memutus kasus s144, tapi juga pasangan benar yang skornya pas-pasan
+- `appositionConnectors`: pola apositif (", ", ", who was", " was ", ", called")
+- `minLengthToStripEd`: panjang minimal kata agar "-ed" dibuang
+- `minMentionsForDescribedEntity`: dipakai `dropSmallDescribedEntities`, yang saat ini tidak dipanggil
 
-## 8. Fase 2: model menyempurnakan (Step 5)
+## 7. Model membaca bab per potongan
 
-**Masuk:** `ResolvedAnalysis` dari fase 1, `[NumberedSentence]`, dan sebuah `LLMSvc`.
+Kalau Foundation Models tersedia, bab dipotong jadi beberapa **potongan**, dan model membaca setiap potongan bersama **kartu tokoh** dari ingatan. Model ditanya empat hal sekaligus, dan setiap jawabannya diperiksa dulu oleh `EvidenceGuard` sebelum dipakai.
+
+```mermaid
+flowchart TD
+    L["LinkedChapter dari aturan"] --> S["ChapterSlicer.slices<br/>potongan ≤ maxCharacters"]
+    S --> P{"potongan berikutnya?<br/>belum dibatalkan dan<br/>calls < maxCallsPerChapter"}
+    P -->|tidak| E(["selesai"])
+    P -->|ya| R["susun SliceRequest:<br/>• kalimat potongan<br/>• mention yang harus diputuskan<br/>• kartu tokoh (CastCards)"]
+    R --> M["LLMSvcFoundation.readSlice<br/>sesi model baru"]
+    M -->|"konteks terlalu panjang"| H["potong dua, baca masing-masing<br/>(sekali saja)"]
+    H --> P
+    M -->|"gagal / ditolak"| X["failed += 1"]
+    X --> P
+    M -->|"SliceReading"| G["EvidenceGuard memeriksa<br/>setiap jawaban"]
+    G --> A["SliceReadingApplier.apply:<br/>1. tautan mention<br/>2. nama yang terlewat<br/>3. pasangan nama sama<br/>4. ciri tokoh"]
+    A --> P
+```
+
+**Masuk:** `LinkedChapter` dari pemberhentian 6, semua mention bab-bab sebelumnya, kosakata nama, dan sebuah `LLMSvc`.
 
 **Fungsi**
 - `Analysis/AI/Svc/ModelAvailSvc.swift`
-  - `isFoundationModelsAvailable`: `true` kalau knob `LLMKnobs.isEnabled` aktif dan Apple Intelligence siap di perangkat.
-  - `makeLLMSvc()`: mengembalikan `LLMSvcFoundation` kalau tersedia, `LLMSvcUnavailable` kalau tidak.
+  - `isFoundationModelsAvailable`: `true` kalau `LLMKnobs.isEnabled` dan Apple Intelligence siap.
+  - `makeLLMSvc()`: `LLMSvcFoundation` kalau tersedia, `LLMSvcUnavailable` kalau tidak.
 - `Analysis/AI/Svc/LLMSvc.swift`
-  - `LLMSvc` adalah **protokol**: daftar kemampuan yang harus dimiliki penyedia model (`isAvailable`, `contextSentenceCount`, `maxCandidates`, `allowsCall(callsSoFar:)`, `groupNames(_:)`, `chooseReference(_:)`). Engine hanya bicara ke protokol ini, jadi model bisa diganti tanpa mengubah engine.
-  - `LLMSvcUnavailable` menjawab "tidak tersedia" untuk semuanya. Akibatnya fase 2 hanya membuang tokoh-deskripsi kecil.
-- `Analysis/AI/Svc/TieBreakSvc.swift`
-  - `settle(_:sentences:llm:)`: kalau model tersedia, jalankan `groupNames`, lalu `settleDescription` untuk setiap mention `isUndecided`, berurutan. Terakhir `MentionLinker.dropSmallDescribedEntities`.
-  - `groupNames(in:texts:llm:)` (`private`) mengirim nama pertama tiap tokoh dan kalimat tempat nama itu pertama muncul ke model, lalu bertanya: nama mana yang orang yang sama? Kelompok yang lolos `EvidenceGuard` digabung, berlaku sejak kalimat buktinya.
-  - `settleDescription(at:in:texts:llm:)` (`private`) mengirim jendela kalimat (kalimat mention dan `contextSentenceCount` kalimat sebelumnya) beserta daftar kandidat, lalu bertanya: frasa ini merujuk ke kandidat mana? Kalau jawabannya lolos `EvidenceGuard`, tokoh-deskripsi digabung ke kandidat itu, berlaku sejak deskripsi itu pertama muncul. Mention ditandai `decidedBy = .model` dan `isUndecided = false`.
-  - `candidateCharacters(for:excluding:window:in:limit:)` (`private`) memilih sampai `maxCandidates` kandidat: tokoh yang disebut paling akhir sebelum mention, mendahulukan yang ada di jendela. Label kandidat: nama tokoh, atau teks deskripsinya kalau tak bernama.
+  - `LLMSvc` adalah **protokol**: `isAvailable`, `contextSize`, `maxCallsPerChapter`, `prewarm()`, `readSlice(_:)`. Engine hanya bicara ke protokol ini, jadi model bisa diganti tanpa mengubah engine.
+  - `LLMFailure`: `exceededContext`, `refused`, `unavailable`, `other`.
+  - `LLMSvcUnavailable`: selalu "tidak tersedia". Dengan ini bab hanya diolah aturan.
+- `Analysis/AI/Svc/ChapterAnalysisSvc.swift`
+  - `analyze(...)` menghitung `maxCharacters` = `contextSize` × `budgetShare` × `charactersPerToken` (8192 × 0,35 × 3 = **8601 huruf**), lalu menjalankan `SliceReader.read` untuk setiap potongan.
+  - `SliceReader` (`private`), `read(_:into:canSplit:)`: susun `SliceRequest`, panggil model, terapkan jawaban. Mention yang ditanyakan: semua **deskripsi** di potongan, ditambah nama yang belum punya tokoh. Kalau konteks terlalu panjang, potongan dibelah dua sekali. Kegagalan lain dihitung di `failed`.
+- `Analysis/AI/Rules/ChapterSlicer.swift`, `slices(_:maxCharacters:)`: kalimat dikumpulkan berurutan sampai melewati `maxCharacters`.
+- `Analysis/AI/Rules/CastCards.swift`, `cards(for:mentions:memory:sentenceText:maxCards:)` memilih sampai `maxCards` kartu:
+  - urutan: tokoh **bernama** yang disebut di potongan, lalu tokoh lain di potongan, lalu tokoh yang terakhir disebut sebelum potongan
+  - hanya tokoh bernama, atau tokoh-deskripsi yang sudah disebut minimal `minDescribedMentions` kali sebelum potongan, dan sudah diperkenalkan paling lambat di akhir potongan
+  - isi kartu: nama (yang sudah berlaku sebelum potongan), alias, sampai `traitsPerCard` ciri terakhir, dan `introWords` kata pertama dari kalimat perkenalan. Tidak ada informasi dari sesudah potongan
 - `Analysis/AI/Svc/LLMSvcFoundation.swift`
-  - `LLMSvcFoundation.allowsCall(callsSoFar:)`: masih di bawah `maxCallsPerRun`?
-  - `chooseReference(_:)`: satu sesi model baru per pertanyaan, jawaban dipaksa berbentuk `ChooseReferenceAnswer` (nomor kandidat dan nomor kalimat bukti).
-  - `groupNames(_:)`: nama dikirim per `maxNamesPerCall`, jawaban berbentuk `GroupNamesAnswer` (daftar kelompok dan kalimat bukti). Panggilan yang gagal dilewati.
-  - `options(maximumTokens:)` (`private`) menerjemahkan knob `sampling` dan `temperature` ke `GenerationOptions`.
-  - `LLMKnobs.chooseReferencePrompt(_:)` dan `groupNamesPrompt(names:sentences:)` menyusun teks pertanyaan. `numbered(_:)` (`private`) menulis kalimat sebagai "[141] Elizabeth, or Beth, …".
-  - `Sampling`: cara memilih kata (`greedy`, `topK`, `probability`).
-- `Analysis/AI/Rules/EvidenceGuard.swift` memeriksa setiap jawaban model sebelum dipercaya:
-  - `accepts(_: LinkChoice, for:)`: nomor kandidat valid, kalimat bukti ikut dikirim dan tidak sesudah mention, dan nama kandidat muncul sebagai kata utuh **di salah satu kalimat yang dikirim**.
-  - `accepts(_: NameGroupChoice, for:)`: semua nama memang ditanyakan, dan minimal dua nama didukung kalimat bukti.
-  - `supportedNames(_:for:)`: nama yang muncul di kalimat bukti, berdekatan (tidak lebih dari `maxWordsBetweenGroupedNames` kata), dan tidak dipisah kata seperti "and".
-  - `appears(_:in:)` dan `wordRange(of:in:)` (`private`): cari kata utuh, tanpa membedakan huruf besar-kecil.
+  - `readSlice(_:)`: satu `LanguageModelSession` baru per potongan dengan instruksi `sliceInstructions`, jawaban dipaksa berbentuk `SliceReadAnswer`, lalu diterjemahkan ke `SliceReading` (kartu 0 = "bukan tokoh / tidak jelas").
+  - `prewarm()`: memanaskan model sebelum bab pertama.
+  - `failure(for:)` (`private`): menerjemahkan error Foundation Models (iOS 26 dan 27) ke `LLMFailure`.
+  - `options(maximumTokens:)` (`private`): knob `sampling` dan `temperature` → `GenerationOptions`.
+  - `LLMKnobs.slicePrompt(_:)` menyusun pertanyaan:
 
-**Keluar:** `ResolvedAnalysis` yang sudah disempurnakan. Di Mac: 240 detik, 150 panggilan (batas `maxCallsPerRun`, sementara ada 405 *undecided*), dan **0 nama yang digabung**. Yang diputuskan model di contoh:
+    ```
+    Sentences:
+    [141] Elizabeth, or Beth, as everyone called her, was a rosy, …
+    [144] A regular snow maiden, with blue eyes, and yellow hair …
+
+    Mentions to decide:
+    8. "a rosy, smooth-haired, bright-eyed girl" in sentence 141
+    9. "A regular snow maiden, with blue eyes, and yellow hair" in sentence 144
+
+    Character cards:
+    1. Jo; first seen: "Christmas won't be Christmas without any presents," grumbled Jo, …
+    3. Amy; first seen: "I don't think it's fair for some girls …
+    ```
+- `Analysis/AI/Models/SliceReadAnswer.swift`: empat daftar yang diminta dari model: `assignments` (mention → kartu), `missedNames` (nama yang terlewat), `sameNames` (dua nama orang yang sama), `traits` (ciri tokoh, disalin persis). Setiap jawaban wajib menyebut nomor kalimat bukti.
+- `Analysis/AI/Rules/EvidenceGuard.swift`
+  - `accepts(_: MentionAssignment, for:)`: mention memang ditanyakan, kalimat bukti ada di potongan dan **tidak sesudah** mention, dan kartu yang dipilih sudah diperkenalkan paling lambat di kalimat mention (anti-spoiler).
+  - `accepts(_: NamedSpan, for:)`: nama berhuruf kapital dan benar-benar ada di kalimat yang disebut.
+  - `accepts(_: NamePair, for:memory:)`: salah satu nama ada di kalimat bukti, dan nama lainnya ada di kartu atau di potongan.
+  - `accepts(_: TraitNote, for:)`: kartunya ada dan teks ciri benar-benar ada di kalimat yang disebut.
+  - `wordLocation(of:in:)`, `wordRange(of:in:)` (`private`): cari kata utuh.
+- `Analysis/AI/Rules/SliceReadingApplier.swift`, `apply(_:request:to:vocabulary:)`:
+  1. **Tautan:** mention yang lolos dipindah ke tokoh kartu itu (hanya mention itu, tokoh lain tidak digabung). Nama yang sudah punya tokoh tidak diubah. `decidedBy = .model`, `isUndecided = false`.
+  2. **Nama terlewat:** ditambahkan sebagai mention nama baru (kalau tidak bertumpuk dengan mention lain), ke tokoh lama atau tokoh baru (`newEntity`, `private`).
+  3. **Nama sama:** dua tokoh digabung mulai kalimat bukti (yang diperkenalkan belakangan masuk ke yang lebih awal), atau nama baru ditambahkan ke tokoh (`addName`, `private`).
+  4. **Ciri:** disimpan di `memory.traits`, hanya kalau kalimat bukti memang punya mention yang tertaut ke tokoh itu.
+
+**Keluar:** `LinkedChapter` yang sudah dibetulkan. Bab 1 di Mac: 3 potongan (s65–s153, s154–s255, s256–s293), **3 panggilan, 0 gagal**, sekitar 61 detik. Kartu untuk potongan pertama: Jo, Meg, Amy, Father, Mother, Beth, Undine, Papa (8, sudah penuh, jadi Margaret tidak dapat kartu).
+
+Keputusan model di Bab 1 (9 mention):
 
 | Kalimat | Mention | Keputusan model | Benar? |
 |---|---|---|---|
-| s115 | a little girl | Jenny Snow | Salah, dan **spoiler**: Jenny Snow baru muncul di s1504. Lihat penjelasan di bawah |
-| s120 | a boy | tetap #174 | Tidak berubah yang terlihat |
-| s140 | a girl | Jo | Benar |
-| s140 | a woman | Jo | Benar |
-| s141 | a rosy, smooth-haired, bright-eyed girl | Beth | Benar |
-| s154 | the man | Jo | Benar ("I'm the man of the family", kata Jo) |
+| s80 | a bookworm | Jo | Benar |
+| s82 | Faber | Amy | Salah, "Faber" adalah merek pensil |
+| s119 | a girl | Undine | Salah, Undine judul buku |
+| s140 | a woman | Amy | Salah, Jo yang dimaksud |
+| **s144** | **A regular snow maiden, …** | **Amy** | **Benar.** Hanya mention ini yang pindah; deskripsi s141 tetap di #30 |
+| s154 | the man | Jo | Benar ("I'm the man of the family") |
+| s205 | Macbeth | Jo | Salah, Jo sedang membicarakan sandiwara |
+| s253 | a selfish girl | Amy | Benar |
+| s257 | a little woman | Jo | Benar |
 
-**Kenapa s115 jadi Jenny Snow (bug spoiler):**
-1. Di fase 1, "a young lady" di s115 menjadi tokoh-deskripsi #172, dan "young lady" sesudahnya ikut tertaut ke sana. Di s1504 ("Jenny Snow, a satirical young lady") pola apositif menggabungkan #172 ke Jenny Snow **mulai s1504**. Sejauh ini benar.
-2. Di fase 2, model memasangkan "a little girl" (s115) ke kandidat "a young lady" (#172). Masuk akal, karena keduanya ada di kalimat yang sama dan merujuk ke Jo.
-3. `merge(_:into:at:)` di `Analysis/AI/Rules/ResolvedAnalysis+Merges.swift` mencari tujuan dengan `finalKey(of:)`, yang mengikuti **semua** penggabungan, termasuk yang baru terjadi di s1504. Jadi "a little girl" digabung langsung ke Jenny Snow, berlaku mulai s115.
-
-Akibatnya pembaca di halaman 6 bisa melihat nama yang baru diperkenalkan ratusan halaman kemudian. Perbaikannya ada di `merge`: tujuan harus dicari sejauh kalimat penggabungan (`follow(_:upTo:)` dengan kalimat itu), bukan sampai akhir buku.
-
-**Efek ke s144:** model menggabungkan #177 ke Beth mulai s141. Karena s144 sudah tertaut ke #177 (pemberhentian 7), s144 sekarang ikut jadi **Beth**. Kesalahan aturan di pemberhentian 7 terbawa, padahal model tidak pernah ditanya soal s144.
+Yang **tidak** terjadi: deskripsi s141 tidak ditautkan ke Beth, dan model **tidak** mengusulkan Margaret = Meg atau Josephine = Jo. Ciri yang tersimpan kebanyakan potongan aksi ("grumbled Jo, lying on the rug"), bukan penampilan.
 
 **Knob**
-- `LLMKnobs` di `LLMSvcFoundation.swift`:
-  - `isEnabled`: matikan fase model sepenuhnya
-  - `groupNamesInstructions`, `chooseReferenceInstructions`: instruksi ke model
-  - `chooseReferencePrompt`, `groupNamesPrompt`: format pertanyaan
-  - `contextSentenceCount`: berapa kalimat sebelum mention ikut dikirim
-  - `maxCandidates`: berapa kandidat ditawarkan
-  - `maxNamesPerCall`: berapa nama per panggilan gabung nama
-  - `sampling`, `temperature`: cara model memilih jawaban
-  - `maxChooseReferenceTokens`, `maxGroupNamesTokens`: panjang jawaban maksimum
-  - `maxCallsPerRun`: batas panggilan per buku
-- `EvidenceKnobs` di `EvidenceGuard.swift`:
-  - `maxWordsBetweenGroupedNames`: seberapa dekat dua nama di kalimat bukti
-  - `separatePeopleWords`: kata yang berarti dua orang berbeda ("and", "&", "with", "nor")
+- `ChapterAnalysisKnobs.budgetShare`: bagian konteks model yang dipakai untuk kalimat (sisanya untuk instruksi, kartu, dan jawaban)
+- `ChapterSlicerKnobs.charactersPerToken`: perkiraan huruf per token
+- `CastCardsKnobs`: `maxCards`, `introWords`, `traitsPerCard`, `aliasesPerCard`, `minDescribedMentions`
+- `LLMKnobs` (`LLMSvcFoundation.swift`):
+  - `isEnabled`: matikan model sepenuhnya
+  - `sliceInstructions`, `slicePrompt`: instruksi dan format pertanyaan
+  - `maxCallsPerChapter`: batas panggilan per bab
+  - `sampling`, `temperature`, `maxSliceTokens`: cara model memilih jawaban dan panjang jawaban
+- `EvidenceKnobs` (`EvidenceGuard.swift`): `maxWordsBetweenGroupedNames`, `separatePeopleWords` (saat ini tidak dipakai pemeriksaan potongan)
 
-## 9. Analisis → BookAnalysis (hasil untuk aplikasi)
+## 8. Simbol dibagikan, hasil bab dikemas
 
-**Masuk:** `ResolvedAnalysis` (dari fase 1 atau fase 2) dan `BookContent`.
+**Masuk:** `LinkedChapter` setelah model, semua mention sejauh ini, kosakata nama, nomor bab.
+
+**Fungsi:** `Analysis/AI/Rules/SymbolAssigner.swift`
+- `assign(_:mentionsSoFar:vocabulary:chapter:)` memberi simbol ke tokoh yang **belum punya** simbol dan lolos syarat:
+  - bukan tokoh yang sudah digabung ke tokoh lain
+  - bernama, kalau `onlyNamed` aktif
+  - cukup sering disebut: untuk tokoh bernama, jumlah kemunculan namanya di **seluruh cerita** (`vocabulary.nameCounts`); untuk tokoh-deskripsi, jumlah mention sejauh ini. Minimal `minimumMentions`
+  
+  Tokoh diurutkan menurut kalimat perkenalan, lalu posisi di kalimat itu, lalu nomor. Simbol diambil berurutan dari `AnalysisMapperKnobs.symbols`. **Simbol yang sudah dibagikan tidak pernah diganti.** Tokoh bernama mendapat simbol sejak bab 0 (`sinceChapter: 0`); tokoh-deskripsi hanya sejak bab ia lolos.
+- `order(of:in:)` (`private`): urutan di atas.
+- `ChapterAnalysisSvc.analyze` lalu mengemas `ChapterAnalysis` (bab, `engineVersion`, `parserVersion`, mention bab, ingatan, `modelCalls`, `failedSlices`), yang disimpan `AnalysisRepo` (pemberhentian 2).
+
+**Keluar:** 12 tokoh bersimbol setelah Bab 1:
+
+| Tokoh | Simbol | | Tokoh | Simbol |
+|---|---|---|---|---|
+| Jo | `circle.fill` | | Miss March | `heart.fill` |
+| Meg | `square.fill` | | Margaret | `pentagon.fill` |
+| Amy | `triangle.fill` | | Marmee | `octagon.fill` |
+| Father | `diamond.fill` | | Mrs. March | `moon.fill` |
+| Mother | `hexagon.fill` | | Hannah | `drop.fill` |
+| Beth | `star.fill` | | Aunt March | `bolt.fill` |
+
+Margaret dan Meg mendapat **dua simbol berbeda**, karena masih dua tokoh. Kalau kelak keduanya digabung (oleh aturan atau model), keduanya memakai simbol tokoh yang **diperkenalkan lebih dulu** (Meg) mulai kalimat penggabungan.
+
+Di akhir buku (aturan saja): 606 tokoh di ingatan, 28 bersimbol. Daftar simbol hanya 24, jadi 4 tokoh terakhir memakai ulang simbol pertama dan seterusnya.
+
+**Knob:** `AnalysisMapperKnobs` (`AnalysisMapper.swift`)
+- `minimumMentions`: syarat simbol
+- `onlyNamed`: hanya tokoh bernama
+- `symbols`: daftar simbol, dibagikan sesuai urutan perkenalan
+
+`minimumMentions` dan `onlyNamed` mengubah hasil yang disimpan, jadi setelah mengubahnya naikkan `engineVersion`.
+
+## 9. Hasil → BookAnalysis (untuk aplikasi)
+
+**Masuk:** ingatan tokoh dan semua mention sejauh ini (dari `AnalysisRepo.snapshot`), dan `BookContent`.
 
 **Fungsi**
 - `Analysis/AI/Rules/AnalysisMapper.swift`
-  - `map(_:content:)`
+  - `map(memory:mentions:content:)`
     1. Untuk tiap mention, ambil tokohnya **per kalimat** (`entityKey(of:asOf:)`).
-    2. Simpan hanya tokoh dengan minimal `minimumMentions` mention (dan bernama, kalau `onlyNamed`).
-    3. Urutkan tokoh menurut kalimat pertama muncul, lalu bagikan simbol dari daftar `symbols` sesuai urutan.
-    4. Ubah posisi mention dari per kalimat ke **per paragraf**: posisi kalimat di paragraf + posisi mention di kalimat.
-    5. Minta `ContextPassagePicker` memilih kalimat kutipan untuk garis bawah.
-  - `passage(at:in:)` (`private`): nomor kalimat → `ContextPassage` (paragraf, rentang, dan teks kalimat).
-  - `id(of:)` (`private`): nomor tokoh → id aplikasi ("character-3").
-  - `summary` tiap `Entity` diisi teks kalimat pertama tokoh itu muncul.
+    2. Simpan hanya tokoh yang punya simbol, urut menurut perkenalan.
+    3. Untuk tiap tokoh, buat `Entity`: id, label, simbol, nama-nama, dan **`appearances`** dari `AppearancePicker`.
+    4. Simpan hanya mention yang tokohnya punya simbol **dan** babnya ≥ `sinceChapter` simbol itu.
+    5. Ubah posisi mention dari per kalimat ke **per paragraf**: posisi kalimat di paragraf + posisi mention di kalimat.
+    6. Minta `ContextPassagePicker` memilih kalimat kutipan untuk garis bawah.
+  - `chapter(of:in:)`, `passage(at:in:)`, `order(of:in:)` (`private`), `id(of:)` ("character-3").
 - `Analysis/AI/Rules/ContextPassagePicker.swift`
-  - `sentence(for:among:in:)`: hanya untuk bentuk mention di knob `underlinedForms` (sekarang hanya deskripsi). Dari mention tokoh yang sama **sebelum** frasa ini, pilih:
-    1. deskripsi dengan kepala sama dan modifier paling banyak sama (seri → yang paling awal);
-    2. kalau tidak ada, kemunculan pertama tokoh itu;
-    3. kalau tidak ada mention sebelumnya sama sekali, `nil`: frasa ini pengenalnya sendiri, jadi tidak digaris bawahi.
+  - `sentence(for:among:in:)`: hanya untuk bentuk di `underlinedForms` (sekarang hanya deskripsi). Dari mention tokoh yang sama **sebelum** frasa ini, pilih deskripsi dengan kepala sama dan modifier paling banyak sama; kalau tidak ada, kemunculan pertama tokoh itu; kalau tidak ada sama sekali, `nil` (tidak digaris bawahi).
   - `overlap(_:_:)` (`private`): jumlah modifier yang sama.
+- `Analysis/AI/Rules/AppearancePicker.swift` (kalimat penampilan untuk kartu simbol)
+  - `passages(of:in:named:content:)`: semua kalimat yang menyebut tokoh itu dan lolos **tiga syarat**:
+    1. tokoh disebut di awal kalimat (posisi ≤ `maxMentionOffset`), jadi ia subjeknya, bukan disebut di akhir dialog
+    2. tidak ada tokoh **bernama** lain di kalimat itu (kalau `singleCharacterOnly`)
+    3. minimal `minWords` kata dari daftar `words` (tall, hair, eyes, plump, rosy, gown, …)
+  - `score(_:)`: jumlah kata penampilan di kalimat.
+  - `best(in:before:)`: dipakai saat kartu dibuka (pemberhentian 11). Dari kalimat penampilan yang posisinya **sebelum atau pada** mention yang diketuk, ambil yang skornya tertinggi; kalau seri, yang terbaru.
 
-**Keluar:** `BookAnalysis`.
+**Keluar:** `BookAnalysis`. Setelah Bab 1 (dengan model): 12 tokoh, 156 mention, 6 bergaris bawah.
 
-| | Fase 1 | Fase 2 |
-|---|---|---|
-| Tokoh (dengan simbol) | 23 | 25 |
-| Mention | 4249 | 4392 |
-| Bergaris bawah | 164 | 275 |
+Kalimat penampilan setelah Bab 1:
 
-Simbol tokoh di contoh:
+| Tokoh | `appearances` |
+|---|---|
+| Jo | s137 "Fifteen-year-old Jo was very tall, thin, and brown, and reminded one of a colt, …" |
+| Margaret | s136 "Margaret, the eldest of the four, was sixteen, and very pretty, being plump and fair, …" |
+| Beth | s141 "Elizabeth, or Beth, as everyone called her, was a rosy, smooth-haired, bright-eyed girl …" |
+| Amy | s144 "A regular snow maiden, with blue eyes, and yellow hair …" (hanya karena model memindahkan s144 ke Amy) |
+| Meg, Father, Mother, … | tidak ada |
 
-| Tokoh | Fase 1 | Fase 2 |
-|---|---|---|
-| Beth | `circle.fill` | `square.fill` |
-| Jo | `triangle.fill` | `diamond.fill` |
-| Amy | `diamond.fill` | `hexagon.fill` |
-| Meg | `heart.fill` | `pentagon.fill` |
-| Mother | `star.fill` | `star.fill` |
-| Marmee | `moon.fill` | `moon.fill` |
-
-Simbol berganti di antara fase. Di fase 2, "Laurence" lolos `minimumMentions` dan muncul paling awal (dari daftar isi), jadi urutan semua tokoh bergeser satu.
-
-Mention di contoh yang punya garis bawah:
-
-| Mention | Tokoh | Kutipan (`passage`) |
-|---|---|---|
-| s122 "a poky old woman" (fase 1 dan 2) | a nervous, fussy old lady | s87 "How would you like to be shut up for hours with a nervous, fussy old lady, …" |
-| s140 "a girl", "a woman" (fase 2) | Jo | "Christmas won't be Christmas without any presents," grumbled Jo, … (kemunculan pertama Jo) |
-| s141 "a rosy, smooth-haired, bright-eyed girl" (fase 2) | Beth | "CHAPTER SIX BETH FINDS THE PALACE BEAUTIFUL" (kemunculan pertama Beth, di daftar isi) |
-| s144 "A regular snow maiden, …" (fase 2) | **Beth** | sama, baris daftar isi |
-| s154 "the man" (fase 2) | Jo | kemunculan pertama Jo |
-
-Di fase 1, deskripsi s141 dan s144 **tidak tampil sama sekali**. Keduanya milik tokoh #177, yang hanya punya 2 mention (di bawah `minimumMentions` = 20).
-
-Contoh posisi s144 di `BookAnalysis` (fase 2): `Mention(entityID: "character-3", paragraph: 98, range: {1266, 54}, passage: …)`.
+Contoh s144 di `BookAnalysis`: `Mention(entityID: "character-3", paragraph: 98, range: {1266, 54}, passage: s70 …)`. Tokohnya Amy, dan kutipan garis bawahnya kemunculan pertama Amy di s70 ("I don't think it's fair for some girls to have plenty of pretty things, …"), karena belum ada deskripsi Amy lain berkepala "maiden" sebelumnya.
 
 **Knob**
-- `AnalysisMapperKnobs`:
-  - `minimumMentions`: tokoh dengan mention lebih sedikit tidak tampil
-  - `onlyNamed`: hanya tokoh bernama
-  - `symbols`: daftar simbol, dibagikan sesuai urutan kemunculan
 - `ContextPassageKnobs.underlinedForms`: bentuk mention yang digaris bawahi (`.description`, bisa ditambah `.name`)
+- `AppearanceKnobs`: `words`, `minWords`, `maxMentionOffset`, `singleCharacterOnly`
+
+Knob ini tidak perlu menaikkan `engineVersion`: cukup build dan buka buku lagi.
 
 ## 10. BookAnalysis → tanda per halaman
 
-**Masuk:** satu `Page` (nomor, bab, rentang huruf di teks bab, dan teksnya) dan `BookAnalysis` terbaru.
+**Masuk:** satu `Page` dan `BookAnalysis` terbaru.
 
 **Fungsi**
-- `Reader/VM/ReferenceVM.swift`, `loadMarks()`: untuk setiap halaman yang sedang dimuat (`loadedPages`, dikirim `ReaderVM`), minta tanda ke `RefCtrl`. Hasilnya dibuang kalau pembaca sudah pindah halaman selama menunggu. Dipanggil oleh `ReaderVM.loadPages(around:)`, oleh `onAppear()` setelah fase 2 selesai, dan oleh `returnDismissed()`.
+- `Reader/VM/ReferenceVM.swift`, `loadMarks()`: untuk setiap halaman yang sedang dimuat (`loadedPages`), minta tanda ke `RefCtrl`. Hasilnya dibuang kalau pembaca sudah pindah halaman selama menunggu. Dipanggil oleh `ReaderVM.loadPages(around:)`, oleh `followAnalysis()` setiap kali satu bab selesai, dan oleh `returnDismissed()`.
 - `Analysis/Ctrl/RefCtrl.swift`
   - `marks(on:highlighting:includingSymbols:)` memeriksa semua mention dan, kalau berada di halaman ini, membuat:
-    - **garis bawah** di seluruh frasa, kalau mention punya `passage`;
-    - **simbol** di huruf pertama frasa, kalau toggle Symbols aktif;
-    - **sorotan** di kalimat kutipan, kalau mention ini yang sedang dibuka lewat "Jump to Passage".
-  - `pageRange(paragraph:range:on:in:)` (`private`) mengubah posisi per paragraf jadi posisi di halaman: posisi paragraf di bab + posisi di paragraf, lalu dikurangi awal halaman. Kalau tidak beririsan dengan halaman, `nil`.
-  - `entity(forMention:)` dan `passage(forMention:)` dipakai saat tanda diketuk (pemberhentian 11).
+    - **garis bawah** di seluruh frasa, kalau mention punya `passage`
+    - **simbol** di huruf pertama frasa, kalau toggle Symbols aktif
+    - **sorotan** di kalimat kutipan, kalau mention ini yang sedang dibuka lewat "Jump to Passage"
+  - `pageRange(paragraph:range:on:in:)` (`private`): posisi per paragraf → posisi di halaman. Kalau tidak beririsan dengan halaman, `nil`.
 
-Contoh s144: paragraf 98 mulai di huruf ke-6497 bab, dan mention mulai di huruf ke-1266 paragraf. Jadi mention ada di huruf ke-**7763** teks bab. Kalau halaman yang tampil mulai di huruf ke-X teks bab, simbol diletakkan di huruf ke-(7763 − X) halaman itu.
+Contoh s144: paragraf 98 mulai di huruf ke-6497 bab, mention mulai di huruf ke-1266 paragraf, jadi mention ada di huruf ke-**7763** teks bab.
 
-**Keluar:** `[Mark]` per halaman, disimpan di `ReferenceVM.marks` dan diteruskan `ReaderView` → `PageTurnView` → `PageTextView`.
+**Keluar:** `[Mark]` per halaman, disimpan di `ReferenceVM.marks`, diteruskan `ReaderView` → `PageTurnView` → `PageTextView`.
 
-**Knob:** tidak ada di sini.
+**Knob:** tidak ada.
 
-## 11. Tanda → layar
+## 11. Tanda → layar dan kartu
 
-**Masuk:** `Page` dan `[Mark]` halaman itu.
+**Masuk:** `Page` dan `[Mark]` halaman itu; ketukan pembaca.
 
 **Fungsi**
 - `Reader/Views/PageTextView+iOS.swift`
-  - `init(page:settings:bodyFontSize:marks:onEdgeTapped:onMarkTapped:)` menyusun teks halaman dan membuat tombol simbol.
-  - `attributedText()` (`private`) memberi gaya teks: garis bawah titik-titik untuk `.underline`, latar kuning untuk `.highlight`.
-  - `addSymbolButtons()` (`private`) membuat satu tombol kecil per `.symbol`, dengan gambar SF Symbol dan warna dari `SymbolPalette`.
-  - `symbolFrame(for:)` (`private`) menaruh simbol sedikit di atas huruf pertama frasa. Area ketuknya minimal 44 poin.
-  - `layoutSubviews()` mengatur ulang posisi teks dan simbol saat ukuran berubah.
-  - `tapped(_:)` (`private`) membedakan ketukan di tepi halaman (pindah halaman) dari ketukan di teks.
-- `Analysis/Rules/SymbolPalette.swift`, `color(forSymbol:)`: warna diambil dari posisi simbol di `AnalysisMapperKnobs.symbols`, jadi simbol yang sama selalu berwarna sama.
+  - `init(page:settings:bodyFontSize:marks:...)` menyusun teks halaman dan tombol simbol.
+  - `attributedText()` (`private`): garis bawah titik-titik untuk `.underline`, latar kuning untuk `.highlight`.
+  - `addSymbolButtons()`, `symbolFrame(for:)` (`private`): satu tombol kecil per `.symbol`, sedikit di atas huruf pertama frasa, area ketuk minimal 44 poin.
+  - `layoutSubviews()`, `tapped(_:)`, `underline(at:)`: tata letak dan ketukan.
+- `Analysis/Rules/SymbolPalette.swift`, `color(forSymbol:)`: warna dari posisi simbol di `AnalysisMapperKnobs.symbols`.
 - `Reader/VM/ReferenceVM.swift`
-  - `markTapped(_:at:)`: simbol membuka kartu tokoh (`SymCardView`, dari `RefCtrl.entity(forMention:)`); garis bawah membuka kartu kutipan (`RefCardView`) dengan teks dari `RefCtrl.passage(forMention:)`, judul bab, dan halaman tempat kutipan itu berada.
-  - `jumpToPassageTapped()` menyimpan posisi baca sekarang, lalu pindah ke halaman kutipan dan menyorot kalimatnya (lewat `onShowPage`, yang menjalankan `ReaderVM.show(_:highlighting:)`).
-  - `returnToReadingTapped()` kembali ke posisi yang disimpan; `returnDismissed()` membuang posisi itu dan memuat ulang tanda tanpa sorotan.
-  - `cardDismissed()` menutup kartu; `editSymbolTapped()` membuka layar detail simbol.
+  - `markTapped(_:at:)`:
+    - **simbol** → `refCtrl.symbolCard(forMention:)` → kartu tokoh (`SymCardView`)
+    - **garis bawah** → `refCtrl.passage(forMention:)` → kartu kutipan (`RefCardView`), dengan judul bab dan halaman kutipan
+  - `jumpToPassageTapped()`, `returnToReadingTapped()`, `returnDismissed()`, `cardDismissed()`, `editSymbolTapped()`: fitur Jump to Passage dan Symbol Control Panel.
+- `Analysis/Ctrl/RefCtrl.swift`, `symbolCard(forMention:)`: tokoh mention itu, ditambah `AppearancePicker.best` dengan posisi mention yang diketuk. Hasilnya `SymbolCard`.
+- `Reader/Views/SymCardView.swift`: simbol dan nama tokoh, kalimat penampilan dalam tanda kutip (kalau ada), dan tombol **Edit Symbol**.
 
-**Keluar:** di halaman 7, "Elizabeth" dan "Beth" di s141 mendapat simbol Beth, "Amy" di s143 simbol Amy, dan "A regular snow maiden" di s144 **simbol Beth dengan garis bawah**. Diketuk, kartunya menampilkan baris daftar isi "CHAPTER SIX BETH FINDS THE PALACE BEAUTIFUL". Itu terjadi setelah fase 2 selesai; sebelumnya s141 dan s144 tidak bertanda apa pun.
+**Keluar:** di halaman yang memuat s136–s144 (setelah Bab 1 selesai dengan model):
+- "Margaret" (s136) bersimbol `pentagon.fill`, "Elizabeth" dan "Beth" (s141) `star.fill`, "Amy" (s143) `triangle.fill`.
+- "A regular snow maiden" (s144) bersimbol Amy dan **bergaris bawah**. Diketuk garis bawahnya: kutipan s70. Diketuk simbolnya: kartu Amy dengan kalimat s144 itu sendiri.
+- Simbol Jo diketuk sebelum s137: kartu hanya nama dan simbol. Sesudah s137: "Fifteen-year-old Jo was very tall, thin, and brown, …".
 
-**Knob:** `SymbolPaletteKnobs`
-- `colors`: palet warna
-- `fallback`: warna untuk simbol yang tidak dikenal
+**Knob:** `SymbolPaletteKnobs.colors`, `fallback`.
 
 ---
 
-## Titik awal tuning
+## View debug (lokal saja)
 
-Semua yang di bawah terlihat di contoh 3 halaman ini.
+`Analysis/Debug/` (file `EngineDebugView.swift`, `EngineDebugVM.swift`, `EngineDebugReport.swift`, `EngineDebugRows.swift`) hanya ada di build DEBUG dan **tidak untuk di-push**. Dibuka dengan tombol di bar bawah halaman baca. Tiga tab:
+- **Summary**: progres ("x% · n of 49 chapters"), panggilan model, potongan gagal
+- **Characters**: tokoh bersimbol dengan jumlah mention, nama-nama, dan kalimat penampilan pertamanya
+- **This Page**: kalimat di halaman yang sedang tampil beserta mention dan tokohnya
+
+Datanya dari `RefCtrl.snapshot()`.
+
+## Titik awal tuning
 
 | Masalah | Terjadi di | Knob atau tempat yang terkait |
 |---|---|---|
-| s144 (Amy) jadi Beth karena satu kata "hair" | Pemberhentian 7, skor tepat di ambang | `MentionLinkerKnobs.strongMatchTotal`, `strongMatchModifiers`, `sharedModifierScore` |
-| Deskripsi s141 tidak langsung ke Beth | Pemberhentian 7, pola apositif terlalu sempit | `MentionLinkerKnobs.appositionConnectors` |
-| Daftar isi dianggap cerita: Beth "pertama muncul" di s20, kutipan dan `summary` jadi judul bab | Pemberhentian 3 (isi `BookContent`), 6, dan 9 | Belum ada knob; perlu aturan untuk melewati daftar isi |
-| "brown" jadi tokoh "Brown" | Pemberhentian 4 (NLTagger) dan 5 | `MentionFinderKnobs`, misalnya menolak nama berhuruf kecil |
-| **Bug spoiler:** s115 "a little girl" → Jenny Snow, yang baru muncul di s1504 | Pemberhentian 8, `merge` mengikuti penggabungan yang terjadi sesudah kalimatnya | `ResolvedAnalysis.merge(_:into:at:decidedBy:)`; ini perbaikan kode, bukan tuning |
-| Gabung nama tidak menghasilkan apa pun (0 nama) | Pemberhentian 8, kalimat yang dikirim adalah kalimat pertama tiap nama, yang jarang memuat dua nama sekaligus | `TieBreakSvc.groupNames`, `LLMKnobs.maxNamesPerCall` |
-| Hanya 150 dari 405 *undecided* yang ditanyakan ke model | Pemberhentian 8 | `LLMKnobs.maxCallsPerRun` |
-| Semua simbol bergeser saat fase 2 selesai | Pemberhentian 9, simbol dibagikan menurut urutan | `AnalysisMapper.map`, `AnalysisMapperKnobs.minimumMentions` |
-| Simbol Father dan Mother bisa tertukar antar peluncuran | Pemberhentian 9, keduanya muncul di kalimat yang sama dan urutannya acak | `AnalysisMapper.map` (perlu pemecah seri) |
-| "eyed" tidak dianggap sama dengan "eye" | Pemberhentian 7 | `MentionLinkerKnobs.minLengthToStripEd`, `MentionLinker.comparable` |
+| Margaret dan Meg dua tokoh, dua simbol (juga Josephine/Jo, Mother/Marmee/Mrs. March) | Pemberhentian 5 (tidak ada pola alias) dan 7 (model tidak ditanya: kedua nama sudah punya tokoh, Margaret tidak dapat kartu) | `LLMKnobs.sliceInstructions` (minta pasangan kartu yang orang sama), `CastCardsKnobs.maxCards`, atau daftar nama panggilan sebagai knob baru |
+| s144 (Amy) tertaut ke deskripsi Beth oleh satu kata "hair" | Pemberhentian 6, skor tepat di ambang | `MentionLinkerKnobs.strongMatchTotal`, `strongMatchModifiers`. Model membetulkannya di branch ini, tapi hanya karena semua deskripsi ditanyakan |
+| Deskripsi s141 tidak ke Beth | Pemberhentian 6 (pola apositif sempit) dan 7 (model tidak memutuskannya) | `MentionLinkerKnobs.appositionConnectors` |
+| Model salah tokoh: "Faber" → Amy, "a girl" → Undine, "Macbeth" → Jo | Pemberhentian 7; kartu memuat nama buku dan tokoh permainan | `LLMKnobs.sliceInstructions`, `CastCardsKnobs`, `CastBuilderKnobs.minNameCount` |
+| Ciri tokoh dari model kebanyakan aksi, bukan penampilan | Pemberhentian 7 | `LLMKnobs.sliceInstructions` |
+| Banyak tokoh belum punya kalimat penampilan (Meg, Father, Mother) | Pemberhentian 9, syarat `AppearancePicker` ketat | `AppearanceKnobs.words`, `minWords`, `maxMentionOffset`, `singleCharacterOnly` |
+| 606 tokoh-deskripsi tidak pernah dibuang | Pemberhentian 6, `dropSmallDescribedEntities` tidak dipanggil | `MentionLinker.dropSmallDescribedEntities`, `minMentionsForDescribedEntity` |
+| 28 tokoh bersimbol, hanya 24 simbol | Pemberhentian 8 | `AnalysisMapperKnobs.symbols`, `minimumMentions` |
+| "Project Gutenberg" dapat simbol | Pemberhentian 3, lisensi di akhir buku ikut dianggap cerita | `StoryStart` (belum ada aturan akhir cerita) |
+| Satu bab dengan model sekitar 1 menit; 49 bab bisa hampir satu jam | Pemberhentian 7 | `LLMKnobs.maxCallsPerChapter`, `ChapterAnalysisKnobs.budgetShare` |
 
-Aplikasi belum punya cara melihat angka-angka ini. Semua data di dokumen ini diambil dengan skrip kecil yang menjalankan `AnalysisScheduleSvc` di Mac, di luar repo. Setelah mengubah knob, cara paling cepat melihat efeknya adalah membandingkan jumlah tokoh, mention, dan garis bawah di pemberhentian 9.
+**Setelah mengubah knob di pemberhentian 3 sampai 8, naikkan `ChapterAnalysisKnobs.engineVersion`**, supaya hasil bab yang tersimpan dihitung ulang.
+
+Cara melihat efek perubahan: buka view debug, atau jalankan skrip pemeriksa di `engine-checks/` (di luar repo) dengan `APP=../EReader/iRead/App ./run.sh <nomor>`. Bandingkan jumlah tokoh bersimbol, mention, dan garis bawah di pemberhentian 9, dan tabel keputusan model di pemberhentian 7.
+
+## Beda dengan branch `Feature-tune-gir`
+
+Branch itu sama sampai pemberhentian 6. Di pemberhentian 7 ia memakai cara lain (`ChapterAnalysisKnobs.modelStep = .referenceChoice`): model hanya ditanya tentang mention yang masih *undecided*, satu per satu, dengan beberapa kandidat. Akibatnya s144, yang sudah diputuskan aturan, **tidak** ditanyakan dan tetap tertaut ke deskripsi Beth. Dokumen ini hanya menjelaskan `Feature-tune`.

@@ -41,7 +41,7 @@ enum EngineDebugReport {
                 color: Color(uiColor: SymbolPalette.color(forSymbol: entity.symbolName)),
                 names: entity.names.joined(separator: ", "),
                 mentionCount: counts[entity.id, default: 0],
-                firstSeen: entity.summary
+                firstSeen: entity.appearances.first?.text ?? "No appearance description yet"
             )
         }
     }

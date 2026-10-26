@@ -6,12 +6,12 @@ import Observation
 final class ReferenceVM {
     enum Card: Identifiable {
         case reference(ReferenceCard)
-        case symbol(Entity)
+        case symbol(SymbolCard)
 
         var id: String {
             switch self {
             case .reference(let card): "reference \(card.mentionIndex)"
-            case .symbol(let entity): "symbol \(entity.id)"
+            case .symbol(let card): "symbol \(card.entity.id)"
             }
         }
     }
@@ -102,7 +102,8 @@ final class ReferenceVM {
             guard let entity = try? await refCtrl.entity(forMention: mark.mentionIndex) else { return }
             cardAnchor = anchor
             guard mark.kind == .underline else {
-                card = .symbol(entity)
+                guard let symbolCard = try? await refCtrl.symbolCard(forMention: mark.mentionIndex) else { return }
+                card = .symbol(symbolCard)
                 return
             }
             guard let passage = try? await refCtrl.passage(forMention: mark.mentionIndex) else { return }

@@ -20,12 +20,13 @@ enum AnalysisMapper {
         let kept = memory.entities
             .filter { memory.symbols[$0.key] != nil }
             .sorted { order(of: $0, in: links) < order(of: $1, in: links) }
+        let namedKeys = Set(memory.entities.filter(\.isNamed).map(\.key))
         let entities = kept.map { entity in
             Entity(
                 id: id(of: entity.key),
                 name: entity.label,
                 symbolName: memory.symbols[entity.key]?.symbolName ?? "",
-                summary: SentenceText.of(content.sentences[entity.introSentence], in: content),
+                appearances: AppearancePicker.passages(of: entity.key, in: links, named: namedKeys, content: content),
                 names: entity.names.map(\.text)
             )
         }

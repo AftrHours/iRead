@@ -78,8 +78,8 @@ struct ReaderView: View {
                 switch card {
                 case .reference(let referenceCard):
                     RefCardView(card: referenceCard) { referenceVM.jumpToPassageTapped() }
-                case .symbol(let entity):
-                    SymCardView(entity: entity) { referenceVM.editSymbolTapped() }
+                case .symbol(let symbolCard):
+                    SymCardView(card: symbolCard) { referenceVM.editSymbolTapped() }
                 }
             }
         } else if readerVM.hasFailedToOpen {

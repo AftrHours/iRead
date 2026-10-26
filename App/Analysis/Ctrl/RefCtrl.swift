@@ -54,6 +54,15 @@ struct RefCtrl {
         return entity
     }
 
+    func symbolCard(forMention index: Int) async throws -> SymbolCard {
+        let analysis = await analysisRepo.analysis(for: bookID)
+        guard analysis.mentions.indices.contains(index) else { throw ContentError.notFound }
+        let mention = analysis.mentions[index]
+        guard let entity = analysis.entities.first(where: { $0.id == mention.entityID }) else { throw ContentError.notFound }
+        let position = ReadingPosition(paragraph: mention.paragraph, charOffset: mention.range.location)
+        return SymbolCard(entity: entity, appearance: AppearancePicker.best(in: entity.appearances, before: position))
+    }
+
     func passage(forMention index: Int) async throws -> ContextPassage {
         let analysis = await analysisRepo.analysis(for: bookID)
         guard analysis.mentions.indices.contains(index), let passage = analysis.mentions[index].passage else {
