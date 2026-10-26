@@ -504,7 +504,11 @@ Berkas ada di `App/Resources/litbank/`. Datanya dari <https://github.com/dbamman
 | `514_little_women.quotations.ann` | Daftar kutipan dialog (`QUOTE`) dengan posisi tokennya |
 | `README.md` | Penjelasan LitBank dan lisensinya |
 
-**Teks yang diberi label tidak sama dengan teks EPUB.** Tokenisasi memisahkan tanda baca dan kontraksi, misalnya `" I thought I 'd get her some with my dollar , "`, dan semua posisi di berkas label mengacu ke teks itu. Jalankan engine pada `514_little_women.txt`, bukan pada `BookContent`, lalu bandingkan per token. Kalau dijalankan pada EPUB, posisinya bergeser dan skornya salah.
+**Teks yang diberi label tidak sama dengan teks EPUB.** Tokenisasi memisahkan tanda baca dan kontraksi, misalnya `" I thought I 'd get her some with my dollar , "`, dan EPUB memakai tanda kutip lengkung serta tanda pisah `—` untuk `--`. Karena itu engine dijalankan pada teks EPUB seperti biasa, dan label LitBank dipindahkan ke posisi karakter di EPUB:
+
+1. `LitBankDocument` membaca token dan span PER dari `514_little_women.txt` dan `514_little_women.entities.tsv`. Span diambil dari lapisan pertama (terluar) dan jumlah token di kedua berkas harus sama.
+2. `LitBankAligner.align` mencari 6 token pertama kalimat awal (`Christmas won't be Christmas without any presents`) di teks tiap bab, lalu mencocokkan token satu per satu ke depan. Tanda kutip lurus dan lengkung dianggap sama, `--` cocok dengan `—`, dan potongan kontraksi (`wo`, `n't`) cocok dengan `won't`. Token yang tidak cocok dicari lagi dalam 40 karakter ke depan.
+3. `MentionScorer.score` mengubah tiap span PER menjadi rentang karakter, mengambil mention engine yang berada di dalam jendela berlabel, lalu mencocokkannya satu lawan satu: persis sama dulu, baru yang saling tumpang tindih.
 
 **Pemetaan ke engine.**
 - Hanya PER yang relevan untuk engine tokoh. FAC, GPE, LOC, VEH, dan ORG diabaikan.
@@ -512,7 +516,31 @@ Berkas ada di `App/Resources/litbank/`. Datanya dari <https://github.com/dbamman
 - Kata ganti (`he`, `her`) hanya ada di `coref.conll`. Buang dari perbandingan, kecuali engine ikut menandainya.
 - Kelompok di `coref.conll` setara dengan satu tokoh di pemberhentian 6. Satu kelompok bisa memuat beberapa nama, dan satu tokoh engine bisa terpecah ke beberapa kelompok. Hitung keduanya sebagai kesalahan.
 
-**Status.** Belum ada kode yang membaca berkas ini dan belum ada skor. Berkasnya ikut masuk ke bundel aplikasi (±164 KB). Semua berkas dipisah dengan nama unik karena XcodeGen meratakan nama berkas resource.
+**Menjalankan.** Skor dihitung di Mac dengan skrip di luar repo, seperti data di bagian lain dokumen ini. Dari checkout `Feature-NLP-Baseline`:
+
+```bash
+engine-checks/baseline.sh
+```
+
+Skrip mengompilasi engine bersama `LitBankAligner` dan `MentionScorer`, menjalankan fase 1 (aturan) pada seluruh buku, lalu mencetak skor dan daftar mention yang meleset.
+
+**Hasil pertama (fase 1, aturan saja).** Label LitBank jatuh di bab `CHAPTER ONE PLAYING PILGRIMS`. 2.012 dari 2.014 token cocok; dua yang tidak cocok adalah garis bawah `_` penanda huruf miring. Ada 119 span PER.
+
+| | Precision | Recall | F1 | Cocok / meleset / berlebih |
+|---|---|---|---|---|
+| Rentang persis sama | 0,824 | 0,471 | 0,599 | 56 / 63 / 12 |
+| Rentang tumpang tindih | 0,912 | 0,521 | 0,663 | 62 / 57 / 6 |
+
+Tiga hal yang terlihat dari daftar yang meleset dan yang berlebih:
+- **Recall rendah sebagian karena engine sengaja tidak menandai frasa umum.** Banyak span yang meleset adalah `everyone`, `no one`, `some girls`, `one another`, `the four sisters`. `everyone` dan `no one` ada di `MentionFinderKnobs.groupWords`, jadi ini bukan bug, tetapi keputusan yang kini punya harga: menambah recall berarti memasukkan frasa kelompok.
+- **Nama `Meg` hanya ditemukan 4 dari 9 kali**, padahal `Jo` (16 dari 16), `Beth` (10 dari 10), dan `Amy` (9 untuk 8 label) hampir sempurna. Penyebabnya belum diperiksa. Mulai dari pemberhentian 4: apakah `NLTagger` memberi `Meg` label nama di kalimat-kalimat itu.
+- **Batas span LitBank lebih lebar daripada mention engine.** Pada label `Jo , who was a bookworm`, satu span PER mencakup `Jo` dan klausa relatifnya. Engine menemukan `Jo` dan `a bookworm` sebagai dua mention, jadi skor persis menghitungnya meleset, skor tumpang tindih menghitung satu cocok, dan `a bookworm` tetap tercatat berlebih karena pencocokan satu lawan satu. Karena itu skor tumpang tindih lebih dekat ke kenyataan.
+
+Mention berlebih lain adalah kesalahan engine yang sebenarnya: `Undine` dan `Sintran` (judul buku), `Faber` (merek pensil), dan `brown` (kata sifat yang dibaca sebagai nama; ada di tabel tuning di bawah).
+
+Yang diukur baru **deteksi mention** (apakah frasa orang ditemukan di tempat yang benar), belum **koreferensi** (apakah mention-mention itu digabung ke tokoh yang benar). Fase 2 (Foundation Models) belum diukur. Sampelnya 119 span dari separuh satu bab, jadi selisih beberapa poin bisa saja hanya kebetulan.
+
+**Status.** Berkas LitBank ikut masuk ke bundel aplikasi (±164 KB), tetapi aplikasi sendiri belum memanggil `LitBankDocument`. Semua berkas dipisah dengan nama unik karena XcodeGen meratakan nama berkas resource.
 
 ---
 
