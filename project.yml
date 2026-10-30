@@ -4,14 +4,29 @@ options:
   deploymentTarget:
     iOS: "26.0"
   createIntermediateGroups: true
+  # Marks the project as checked against this Xcode, so it stops asking to "Update to recommended settings".
+  xcodeVersion: "27.0"
 settings:
   base:
     SWIFT_VERSION: "6.0"
     DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    # Xcode 27's recommended settings that don't change how the code behaves.
+    DEAD_CODE_STRIPPING: YES
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    ENABLE_PREVIEWS: YES
+    ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    STRING_CATALOG_GENERATE_SYMBOLS: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
 packages:
-  ZIPFoundation:
-    url: https://github.com/weichsel/ZIPFoundation
-    from: 0.9.20
+  # Reads EPUB files (brings in ZIPFoundation itself). Lives in this repo, under Packages/.
+  EPUBKit:
+    path: Packages/EPUBKit
+  # Runs SwiftLint on every build, using the rules in .swiftlint.yml. Xcode asks once to "Trust & Enable" it.
+  SwiftLintPlugins:
+    url: https://github.com/SimplyDanny/SwiftLintPlugins
+    from: 0.65.1
 targets:
   iRead:
     type: application
@@ -19,7 +34,10 @@ targets:
     sources:
       - path: App
     dependencies:
-      - package: ZIPFoundation
+      - package: EPUBKit
+    buildToolPlugins:
+      - plugin: SwiftLintBuildToolPlugin
+        package: SwiftLintPlugins
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.AftrHours.iRead
@@ -27,6 +45,16 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         TARGETED_DEVICE_FAMILY: "2"
+        # iPad apps must support every orientation (required for iPad windowing and multitasking).
+        # Set for iPad and in general, because Xcode's check reads the general one.
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: >-
+          UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown
+          UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: >-
+          UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown
+          UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: YES
+        SUPPORTS_MACCATALYST: NO
         MARKETING_VERSION: "0.1"
         CURRENT_PROJECT_VERSION: "1"
 schemes:
