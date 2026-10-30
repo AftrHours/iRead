@@ -1,73 +1,37 @@
+import EPUBKit
 import Foundation
 import NaturalLanguage
-import ZIPFoundation
 
+/// Reads EPUB files with EPUBKit and turns their chapters into the app's BookContent.
 struct EPUBParseSvc {
+    private let reader = EPUBReader()
+
     func metadata(from url: URL) throws -> (title: String?, author: String?) {
-        let archive = try Archive(url: url, accessMode: .read)
-        let opfPath = try opfPath(in: archive)
-        let opf = try elements(of: opfPath, in: archive)
-        let title = opf.first { $0.name == "dc:title" }.map { normalized($0.text) }
-        let author = opf.first { $0.name == "dc:creator" }.map { normalized($0.text) }
-        return (title?.isEmpty == true ? nil : title, author?.isEmpty == true ? nil : author)
+        let metadata = try readingEPUB { try reader.metadata(from: url) }
+        return (metadata.title, metadata.author)
     }
 
     /// The cover image file, found by the EPUB 3 `cover-image` property or the EPUB 2 `cover` meta tag.
     func cover(from url: URL) throws -> Data? {
-        let archive = try Archive(url: url, accessMode: .read)
-        let opfPath = try opfPath(in: archive)
-        let opf = try elements(of: opfPath, in: archive)
-        let items = opf.filter { $0.name == "item" }
-        let coverID = opf.first { $0.name == "meta" && $0.attributes["name"] == "cover" }?.attributes["content"]
-        let item = items.first { $0.attributes["properties"]?.split(separator: " ").contains("cover-image") == true }
-            ?? items.first { $0.attributes["id"] == coverID }
-        guard let item, let href = item.attributes["href"], item.attributes["media-type"]?.hasPrefix("image/") == true else {
-            return nil
-        }
-        return try data(path(of: href, in: (opfPath as NSString).deletingLastPathComponent), in: archive)
+        try readingEPUB { try reader.cover(from: url) }
     }
 
     func parse(_ url: URL) async throws -> BookContent {
-        let archive = try Archive(url: url, accessMode: .read)
-        let opfPath = try opfPath(in: archive)
-        let opf = try elements(of: opfPath, in: archive)
-        let folder = (opfPath as NSString).deletingLastPathComponent
-        var paths: [String: String] = [:]
-        for item in opf where item.name == "item" {
-            if let id = item.attributes["id"], let href = item.attributes["href"] {
-                paths[id] = path(of: href, in: folder)
-            }
-        }
-        let spine = opf.filter { $0.name == "itemref" }.compactMap { $0.attributes["idref"].flatMap { paths[$0] } }
-        let tocPath = opf.first { $0.name == "spine" }?.attributes["toc"].flatMap { paths[$0] }
-        let tocEntries = try tocPath.map { try self.tocEntries(at: $0, in: archive) } ?? []
-        let bookTitle = normalized(opf.first { $0.name == "dc:title" }?.text ?? "")
-
-        var chapters: [RawChapter] = []
-        for path in spine {
-            let entries = tocEntries.filter { $0.path == path }
-            let reader = try parseXML(data(path, in: archive), with: ChapterReader(anchorIDs: Set(entries.compactMap(\.fragment))))
-            var titles: [Int: String] = [:]
-            for (order, entry) in entries.enumerated() {
-                // A file's first entry starts at its top, so text above its anchor stays in that chapter.
-                if let index = order == 0 ? 0 : entry.fragment.flatMap({ reader.anchorParagraphs[$0] }) {
-                    titles[index] = entry.title
-                }
-            }
-            for (index, paragraph) in reader.paragraphs.enumerated() {
-                if let title = titles[index] {
-                    chapters.append(RawChapter(title: title))
-                } else if chapters.isEmpty {
-                    chapters.append(RawChapter(title: bookTitle))
-                }
-                chapters[chapters.count - 1].paragraphs.append(paragraph)
-            }
-        }
+        let chapters = try readingEPUB { try reader.chapters(from: url) }
         guard !chapters.isEmpty else { throw ContentError.unreadable }
         return content(of: chapters)
     }
 
-    private func content(of rawChapters: [RawChapter]) -> BookContent {
+    /// EPUBKit reports a broken file as its own error; the rest of the app expects ContentError.
+    private func readingEPUB<Result>(_ read: () throws -> Result) throws -> Result {
+        do {
+            return try read()
+        } catch EPUBError.unreadable {
+            throw ContentError.unreadable
+        }
+    }
+
+    private func content(of rawChapters: [EPUBChapter]) -> BookContent {
         let tokenizer = NLTokenizer(unit: .sentence)
         var chapters: [Chapter] = []
         var paragraphs: [Paragraph] = []
@@ -106,142 +70,6 @@ struct EPUBParseSvc {
             guard !sentence.isEmpty else { return nil }
             let leadingSpaces = token.prefix(while: \.isWhitespace).utf16.count
             return NSRange(location: range.location + leadingSpaces, length: sentence.utf16.count)
-        }
-    }
-
-    private func tocEntries(at tocPath: String, in archive: Archive) throws -> [TocEntry] {
-        let folder = (tocPath as NSString).deletingLastPathComponent
-        var title = ""
-        var entries: [TocEntry] = []
-        for element in try elements(of: tocPath, in: archive) {
-            if element.name == "text" {
-                title = normalized(element.text)
-            }
-            if element.name == "content", let source = element.attributes["src"] {
-                let parts = source.components(separatedBy: "#")
-                entries.append(TocEntry(title: title, path: path(of: parts[0], in: folder), fragment: parts.dropFirst().first))
-            }
-        }
-        return entries
-    }
-
-    private func opfPath(in archive: Archive) throws -> String {
-        let container = try elements(of: "META-INF/container.xml", in: archive)
-        guard let opfPath = container.first(where: { $0.name == "rootfile" })?.attributes["full-path"] else {
-            throw ContentError.unreadable
-        }
-        return opfPath
-    }
-
-    private func elements(of path: String, in archive: Archive) throws -> [Element] {
-        try parseXML(data(path, in: archive), with: ElementCollector()).elements
-    }
-
-    private func data(_ path: String, in archive: Archive) throws -> Data {
-        guard let entry = archive[path] else { throw ContentError.unreadable }
-        var data = Data()
-        _ = try archive.extract(entry) { data.append($0) }
-        return data
-    }
-
-    private func parseXML<Delegate: XMLParserDelegate>(_ data: Data, with delegate: Delegate) throws -> Delegate {
-        let parser = XMLParser(data: data)
-        parser.delegate = delegate
-        guard parser.parse() else { throw ContentError.unreadable }
-        return delegate
-    }
-
-    private func path(of href: String, in folder: String) -> String {
-        (folder as NSString).appendingPathComponent(href.removingPercentEncoding ?? href)
-    }
-
-    private func normalized(_ text: String) -> String {
-        text.split(whereSeparator: \.isWhitespace).joined(separator: " ")
-    }
-
-    private struct RawChapter {
-        let title: String
-        var paragraphs: [String] = []
-    }
-
-    private struct TocEntry {
-        let title: String
-        let path: String
-        let fragment: String?
-    }
-
-    private struct Element {
-        let name: String
-        let attributes: [String: String]
-        var text = ""
-    }
-
-    private final class ElementCollector: NSObject, XMLParserDelegate {
-        private(set) var elements: [Element] = []
-
-        func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?,
-                    qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
-            elements.append(Element(name: elementName, attributes: attributeDict))
-        }
-
-        func parser(_ parser: XMLParser, foundCharacters string: String) {
-            guard !elements.isEmpty else { return }
-            elements[elements.count - 1].text += string
-        }
-    }
-
-    private final class ChapterReader: NSObject, XMLParserDelegate {
-        private(set) var paragraphs: [String] = []
-        private(set) var anchorParagraphs: [String: Int] = [:]
-        private let anchorIDs: Set<String>
-        private var paragraph = ""
-        private var isInBody = false
-
-        private static let blocks: Set = [
-            "p", "div", "section", "article", "header", "footer", "blockquote", "li", "tr", "br",
-            "h1", "h2", "h3", "h4", "h5", "h6"
-        ]
-
-        init(anchorIDs: Set<String>) {
-            self.anchorIDs = anchorIDs
-        }
-
-        func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?,
-                    qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
-            if elementName == "body" {
-                isInBody = true
-            }
-            if Self.blocks.contains(elementName) {
-                endParagraph()
-            }
-            if let id = attributeDict["id"], anchorIDs.contains(id) {
-                endParagraph()
-                anchorParagraphs[id] = paragraphs.count
-            }
-        }
-
-        func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-            if Self.blocks.contains(elementName) {
-                endParagraph()
-            }
-        }
-
-        func parser(_ parser: XMLParser, foundCharacters string: String) {
-            if isInBody {
-                paragraph += string
-            }
-        }
-
-        func parserDidEndDocument(_ parser: XMLParser) {
-            endParagraph()
-        }
-
-        private func endParagraph() {
-            let text = paragraph.replacing(/[ \t\r\n]+/, with: " ").trimmingCharacters(in: .whitespaces)
-            if !text.isEmpty {
-                paragraphs.append(text)
-            }
-            paragraph = ""
         }
     }
 }

@@ -1,6 +1,6 @@
 # iRead architecture
 
-iPad reader app. SwiftUI, Swift 6, iOS 26, XcodeGen (`project.yml` → `iRead.xcodeproj`), ZIPFoundation for EPUB.
+iPad reader app. SwiftUI, Swift 6, iOS 26, XcodeGen (`project.yml` → `iRead.xcodeproj`), EPUBKit (local package in `Packages/EPUBKit`, on ZIPFoundation) for EPUB.
 
 ## Folders and dependency direction
 
@@ -48,7 +48,7 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 | `VM`    | UI state, `@MainActor @Observable`. Receives intents (`xTapped`, `xChanged`, `onAppear`). |
 | `Ctrl`  | One use case, orchestrating repos and services. |
 | `Repo`  | Persists or caches data (files in Application Support, in-memory caches). Failed writes are logged to OSLog category `storage`. |
-| `Svc`   | Wraps a system or framework API (ZIPFoundation, UIKit, OSLog, Foundation Models). |
+| `Svc`   | Wraps a system or framework API (EPUBKit, UIKit, OSLog, Foundation Models). |
 | `Rules` | Pure functions, no state, no I/O. |
 | `Models`| Plain data. |
 

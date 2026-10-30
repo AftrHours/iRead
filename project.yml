@@ -20,9 +20,9 @@ settings:
     STRING_CATALOG_GENERATE_SYMBOLS: YES
     SWIFT_EMIT_LOC_STRINGS: YES
 packages:
-  ZIPFoundation:
-    url: https://github.com/weichsel/ZIPFoundation
-    from: 0.9.20
+  # Reads EPUB files (brings in ZIPFoundation itself). Lives in this repo, under Packages/.
+  EPUBKit:
+    path: Packages/EPUBKit
   # Runs SwiftLint on every build, using the rules in .swiftlint.yml. Xcode asks once to "Trust & Enable" it.
   SwiftLintPlugins:
     url: https://github.com/SimplyDanny/SwiftLintPlugins
@@ -34,7 +34,7 @@ targets:
     sources:
       - path: App
     dependencies:
-      - package: ZIPFoundation
+      - package: EPUBKit
     buildToolPlugins:
       - plugin: SwiftLintBuildToolPlugin
         package: SwiftLintPlugins
