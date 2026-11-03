@@ -23,6 +23,10 @@ packages:
   # Reads EPUB files (brings in ZIPFoundation itself). Lives in this repo, under Packages/.
   EPUBKit:
     path: Packages/EPUBKit
+  # Finds phrases worth underlining and the earlier passage that explains each one. Lives in its own repo.
+  UnderlineEngine:
+    url: https://github.com/AftrHours/UnderlineEngine
+    branch: main
   # Runs SwiftLint on every build, using the rules in .swiftlint.yml. Xcode asks once to "Trust & Enable" it.
   SwiftLintPlugins:
     url: https://github.com/SimplyDanny/SwiftLintPlugins
@@ -35,6 +39,7 @@ targets:
       - path: App
     dependencies:
       - package: EPUBKit
+      - package: UnderlineEngine
     buildToolPlugins:
       - plugin: SwiftLintBuildToolPlugin
         package: SwiftLintPlugins

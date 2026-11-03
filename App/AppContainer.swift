@@ -6,6 +6,7 @@ struct AppContainer {
     private let libRepo: LibRepo
     private let bookContentRepo: BookContentRepo
     private let analysisRepo: AnalysisRepo
+    private let underlineRepo = UnderlineRepo()
     private let progRepo: ProgRepo
     private let readingSettingsRepo = ReadingSettingsRepo()
     private let bookStateRepo = BookStateRepo()
@@ -49,7 +50,7 @@ struct AppContainer {
             appNav: appNav,
             readerSettingsVM: ReaderSettingsVM(readerStateCtrl: readerStateCtrl),
             referenceVM: ReferenceVM(
-                refCtrl: RefCtrl(bookID: book.id, bookContentRepo: bookContentRepo, analysisRepo: analysisRepo),
+                refCtrl: RefCtrl(bookID: book.id, bookContentRepo: bookContentRepo, analysisRepo: analysisRepo, underlineRepo: underlineRepo),
                 readerStateCtrl: readerStateCtrl,
                 readerCtrl: readerCtrl
             )

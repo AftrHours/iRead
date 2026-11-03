@@ -14,6 +14,4 @@ struct ResolvedMention: Sendable, Codable {
     let head: String
     let modifiers: [String]
     var entity: Int?
-    var decidedBy: DecidedBy?
-    var isUndecided = false
 }

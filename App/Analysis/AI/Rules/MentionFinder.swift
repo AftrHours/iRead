@@ -110,7 +110,7 @@ enum MentionFinder {
         let length = run[run.count - 1].start + run[run.count - 1].length - location
         let text = (sentence.text as NSString).substring(with: NSRange(location: location, length: length))
         return ResolvedMention(sentence: sentence.index, location: location, length: length, text: text, form: form,
-                               head: head, modifiers: modifiers, entity: nil, decidedBy: nil)
+                               head: head, modifiers: modifiers, entity: nil)
     }
 
     private static func textBetween(_ left: Token, _ right: Token, in sentence: NumberedSentence) -> String {
