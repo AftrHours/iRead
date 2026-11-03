@@ -14,8 +14,8 @@ App/
   Book/       per-book data shared by every feature (BookRecord, BookContent, Page, ReadingProgress,
               BookContentRepo, ProgRepo, EPUBParseSvc)
   Library/    library page: list, sort, grid/list, EPUB import
-  Analysis/   the AI feature: characters, mentions, symbols, reference passages
-    AI/       analysis internals (see below)
+  Analysis/   the AI feature: underlines and reference passages, through the UnderlineEngine package
+    Repo/     UnderlineRepo works through a book in the background, ChapterUnderlineStore saves each chapter
   Reader/     reading page: paging, progress, settings, search, contents, reference cards
 ```
 
@@ -58,23 +58,23 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 |---|---|---|
 | `ReaderCtrl` | Book content, current position, pages, page counts, search, position ↔ page | `BookContentRepo`, `PagerSvc` |
 | `ProgressCtrl` | Restore and save progress, log restore and finished events | `ProgRepo`, `EventSvc` |
-| `ReaderStateCtrl` | Reading settings, brightness, the "return to reading" position, edited symbols, recent searches | `ReadingSettingsRepo`, `BrightnessSvc`, `BookStateRepo` |
+| `ReaderStateCtrl` | Reading settings, brightness, the "return to reading" position, recent searches | `ReadingSettingsRepo`, `BrightnessSvc`, `BookStateRepo` |
 | `ReaderVM` (parent) | Pages, shown page, viewport, labels, show/hide controls, sheets, menu, back, contents, search, saving progress in page-turn order | `ReaderCtrl`, `ProgressCtrl`, `ReaderStateCtrl` (handed to `SearchVM`), `AppNav` + 2 children |
-| `ReaderSettingsVM` | Settings, layout settings, brightness, text size, line spacing, theme, symbols toggle | `ReaderStateCtrl` |
-| `ReferenceVM` | Marks, reference and symbol cards, chapter characters, edited symbols, highlight, jump and return, toast | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
+| `ReaderSettingsVM` | Settings, layout settings, brightness, text size, line spacing, theme | `ReaderStateCtrl` |
+| `ReferenceVM` | Marks, the reference card, highlight, jump and return, toast | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
 | `SearchVM` | Search query, results and recent searches | `ReaderCtrl`, `ReaderStateCtrl` |
 
 `ReaderSettingsVM` and `ReferenceVM` share one `ReaderStateCtrl` per open book.
 
-State flows one way. `ReaderVM` pushes the shown page, the loaded pages and whether symbols are shown into
-`ReferenceVM.update(shownPage:loadedPages:areSymbolsShown:)`. The children report back only through output callbacks:
-`ReferenceVM.onShowPage`, `ReferenceVM.onEditSymbol` and `ReaderSettingsVM.onSettingsChanged`, the same way
+State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
+`ReferenceVM.update(shownPage:loadedPages:)`. The children report back only through output callbacks:
+`ReferenceVM.onShowPage` and `ReaderSettingsVM.onSettingsChanged`, the same way
 `SearchVM` reports `onResultPicked`.
 
 ## Main flows
 
 **Launch → library**
-1. `iReadApp.init` → `AppContainer.init` builds `EPUBParseSvc`, `ProgRepo`, `BookContentRepo`, `LibRepo`, `AnalysisRepo` once.
+1. `iReadApp.init` → `AppContainer.init` builds `EPUBParseSvc`, `ProgRepo`, `BookContentRepo`, `LibRepo`, `UnderlineRepo` once.
 2. `AppContainer.makeLibVM` → `LibView`.
 3. `LibView.task` → `LibVM.onAppear` → `LibCtrl.loadLibrary` → `LibRepo.fetchBooks`
    (the built-in sample books plus the imported books in `Books/library.json`, then `ProgRepo.progress(for:)` per book).
@@ -97,7 +97,6 @@ State flows one way. `ReaderVM` pushes the shown page, the loaded pages and whet
 1. `LibVM.bookTapped` → `AppNav.openReader(book:)`.
 2. `iReadApp` sees the route change → `AppContainer.makeReaderVM(book:)` (once per open) → `ReaderView`.
 3. `ReaderView.task` → `ReaderVM.onAppear`:
-   1. `ReferenceVM.onAppear` → `RefCtrl.prepare` / `refine` → `AnalysisRepo` (in the background).
    2. `ReaderCtrl.openBook` → `BookContentRepo.content(for:)` → `EPUBParseSvc.parse`
       (imported `book.epub` first, then the bundled EPUB named in `BookRecord.samples`; one parse per book even with concurrent callers).
    3. `ReaderSettingsVM.bookOpened` → `ReaderStateCtrl.settings`.
@@ -107,22 +106,18 @@ State flows one way. `ReaderVM` pushes the shown page, the loaded pages and whet
 
 **Turn a page and save progress**
 1. `PageTurnView.onPageChanged` → `ReaderVM.pageChanged` → `ReaderVM.show` → `ReferenceVM.update`.
-2. → `ReaderCtrl.pages(around:)` → `ReferenceVM.update` → `ReferenceVM.loadMarks` → `RefCtrl.marks(on:highlighting:includingSymbols:)`.
+2. → `ReaderCtrl.pages(around:)` → `ReferenceVM.update` → `ReferenceVM.loadMarks` → `RefCtrl.marks(on:highlighting:)`.
 3. → after the previous turn's save finishes, `ReaderCtrl.pageChanged(to:)` → `ReadingProgressCalculator.progress(on:in:bookID:at:)`.
 4. → `ProgressCtrl.pageRead` → `ReadingProgressCalculator.merged` → `ProgRepo.save` (debounced),
    and `EventSvc.log(.bookFinished)` the first time the book is finished.
 5. Back or app backgrounded → `ProgressCtrl.saveNow` → `ProgRepo.saveNow`.
 
-**Tap an underlined mention, jump, and return**
+**Tap an underline, jump, and return**
+Underlines come from the UnderlineEngine package: `UnderlineRepo` works through the book in the background (the reader's chapter first)
+and saves each finished chapter with `ChapterUnderlineStore`. The first page shown starts it, through `ReferenceVM.update`.
 1. `PageTextView` → `PageTurnView.onMarkTapped` → `ReferenceVM.markTapped`
-   → `RefCtrl.entity(forMention:)`, `RefCtrl.passage(forMention:)`, `ReaderCtrl.page(containing:)` → `RefCardView`.
+   → `RefCtrl.reference(forUnderline:)`, `ReaderCtrl.page(containing:)` → `RefCardView`.
 2. Jump to Passage → `ReferenceVM.jumpToPassageTapped` → `ReaderCtrl.startPosition(of:)` → `ReaderStateCtrl.saveReturnPosition`
    → `ReaderCtrl.page(containing:)` → `onShowPage` → `ReaderVM.show(_:highlighting:)`.
 3. Return to Reading → `ReferenceVM.returnToReadingTapped` → `ReaderStateCtrl.returnPosition` → `ReaderCtrl.page(ifValid:)`
    → `ReaderStateCtrl.clearReturnPosition` → `onShowPage` and a 2-second toast.
-
-## Analysis/AI
-
-- `AI/Models`: the data passed between analysis steps and the on-device model (requests, answers, rules pass, resolved analysis).
-- `AI/Rules`: pure steps that find, link and name character mentions and map them to a `BookAnalysis`.
-- `AI/Svc`: wrappers for the on-device language model, word tagging, model availability, tie-breaks and analysis scheduling.

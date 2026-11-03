@@ -8,26 +8,27 @@ struct EngineDebugRow: Identifiable {
     var id: String { label }
 }
 
-struct EngineDebugSection: Identifiable {
-    let title: String
-    let rows: [EngineDebugRow]
-
-    var id: String { title }
-}
-
-struct EngineDebugCharacter: Identifiable {
+struct EngineDebugUnderline: Identifiable {
     let id: String
-    let name: String
-    let symbolName: String
-    let color: Color
-    let names: String
-    let mentionCount: Int
-    let firstSeen: String
+    let label: String
+    let sentence: AttributedString
+    let reference: String
+    let referenceLabel: String
 }
 
-struct EngineDebugSentence: Identifiable {
+/// The phrases dropped for one reason.
+struct EngineDebugDrops: Identifiable {
+    let reason: String
+    let phrases: [String]
+
+    var id: String { reason }
+}
+
+struct EngineDebugChapter: Identifiable {
     let id: Int
-    let text: AttributedString
-    let links: [String]
+    let title: String
+    let status: String
+    let underlines: [EngineDebugUnderline]
+    let drops: [EngineDebugDrops]
 }
 #endif

@@ -1,3 +1,5 @@
+> **Catatan:** dokumen ini menjelaskan engine lama (tokoh dan Simbol), yang sudah dihapus di branch `Underline-Engine`. Lihat `docs/superpowers/specs/2026-11-03-underline-engine-integration.md`.
+
 # Walkthrough: alur data engine tokoh (branch `Feature-tune`)
 
 Dokumen ini mengikuti **data** dari saat pembaca membuka buku sampai simbol, garis bawah, dan kartu tokoh muncul di halaman. Setiap pemberhentian berisi empat hal:

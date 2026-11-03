@@ -3,13 +3,12 @@ import SwiftUI
 
 struct EngineDebugView: View {
     enum Tab: String, CaseIterable {
-        case summary = "Summary"
-        case characters = "Characters"
-        case page = "This Page"
+        case chapter = "This Chapter"
+        case book = "Whole Book"
     }
 
     @State private var engineDebugVM: EngineDebugVM
-    @State private var tab = Tab.summary
+    @State private var tab = Tab.chapter
     @Environment(\.dismiss) private var dismiss
 
     init(engineDebugVM: EngineDebugVM) {
@@ -19,7 +18,7 @@ struct EngineDebugView: View {
     var body: some View {
         NavigationStack {
             content
-                .navigationTitle("Engine Debug")
+                .navigationTitle("Underlines")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
@@ -30,7 +29,7 @@ struct EngineDebugView: View {
                             ForEach(Tab.allCases, id: \.self) { Text($0.rawValue) }
                         }
                         .pickerStyle(.segmented)
-                        .frame(width: 360)
+                        .frame(width: 280)
                     }
                 }
         }
@@ -39,78 +38,52 @@ struct EngineDebugView: View {
 
     @ViewBuilder
     private var content: some View {
-        if engineDebugVM.isLoading {
-            ProgressView()
-        } else {
-            switch tab {
-            case .summary: summary
-            case .characters: characters
-            case .page: page
-            }
-        }
-    }
-
-    private var summary: some View {
-        List {
-            if engineDebugVM.isAnalysing {
-                Section("Analysis progress") { progress }
-            }
-            ForEach(engineDebugVM.summary) { section in
-                Section(section.title) {
-                    ForEach(section.rows) { row in
+        if let report = engineDebugVM.report {
+            List {
+                Section("Run") {
+                    ForEach(report.summary) { row in
                         LabeledContent(row.label, value: row.value)
                     }
                 }
-            }
-        }
-    }
-
-    @ViewBuilder
-    private var progress: some View {
-        if let progress = engineDebugVM.progress {
-            VStack(alignment: .leading, spacing: 8) {
-                ProgressView(value: progress.fraction)
-                Text("\(Int(progress.fraction * 100))% · \(progress.done) of \(progress.total) chapters")
-                    .font(.caption.monospacedDigit())
-                    .foregroundStyle(.secondary)
-            }
-        } else {
-            HStack(spacing: 8) {
-                ProgressView()
-                Text("Waiting to start")
-                    .foregroundStyle(.secondary)
-            }
-        }
-    }
-
-    private var characters: some View {
-        List(engineDebugVM.characters) { character in
-            VStack(alignment: .leading, spacing: 4) {
-                Label(character.name, systemImage: character.symbolName)
-                    .font(.headline)
-                    .foregroundStyle(character.color)
-                Text("\(character.mentionCount) mentions · names: \(character.names.isEmpty ? "none" : character.names)")
-                    .font(.caption)
-                Text(character.firstSeen)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
-            }
-        }
-    }
-
-    private var page: some View {
-        List(engineDebugVM.sentences) { sentence in
-            VStack(alignment: .leading, spacing: 4) {
-                Text("s\(sentence.id)")
-                    .font(.caption.monospaced())
-                    .foregroundStyle(.secondary)
-                Text(sentence.text)
-                ForEach(sentence.links, id: \.self) { link in
-                    Text(link)
-                        .font(.caption.monospaced())
+                ForEach(chapters(in: report)) { chapter in
+                    Section("\(chapter.title) · \(chapter.status)") {
+                        if chapter.underlines.isEmpty {
+                            Text("No underlines")
+                                .foregroundStyle(.secondary)
+                        }
+                        ForEach(chapter.underlines, content: row)
+                        ForEach(chapter.drops, content: dropsRow)
+                    }
                 }
             }
+        } else {
+            ProgressView()
+        }
+    }
+
+    private func chapters(in report: EngineDebugReport) -> [EngineDebugChapter] {
+        guard tab == .chapter else { return report.chapters }
+        return report.chapters.filter { $0.id == report.currentChapter }
+    }
+
+    private func dropsRow(_ drops: EngineDebugDrops) -> some View {
+        DisclosureGroup("\(drops.reason): \(drops.phrases.count)") {
+            ForEach(Array(drops.phrases.enumerated()), id: \.offset) { _, phrase in
+                Text(phrase)
+                    .font(.caption)
+            }
+        }
+    }
+
+    private func row(_ underline: EngineDebugUnderline) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(underline.label)
+                .font(.caption.monospaced())
+                .foregroundStyle(.secondary)
+            Text(underline.sentence)
+            Text("\(underline.referenceLabel): \(underline.reference)")
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
     }
 }

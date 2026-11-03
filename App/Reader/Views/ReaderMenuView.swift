@@ -21,17 +21,6 @@ struct ReaderMenuView: View {
             } label: {
                 row("Theme & Settings", systemImage: "textformat")
             }
-            Divider()
-                .padding(.horizontal, 20)
-                .padding(.vertical, 4)
-            Toggle("Symbols", isOn: Binding(get: { readerSettingsVM.settings.areSymbolsShown }, set: { readerSettingsVM.symbolsToggled($0) }))
-                .padding(.horizontal, 20)
-                .frame(minHeight: 44)
-            Button {
-                readerVM.chapterSymbolsTapped()
-            } label: {
-                row("Chapter Symbols", systemImage: "chevron.right")
-            }
         }
         .buttonStyle(.plain)
         .padding(.vertical, 8)

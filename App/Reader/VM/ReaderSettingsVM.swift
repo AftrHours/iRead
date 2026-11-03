@@ -48,10 +48,6 @@ final class ReaderSettingsVM {
         changeSettings { $0.theme = theme }
     }
 
-    func symbolsToggled(_ isOn: Bool) {
-        changeSettings { $0.areSymbolsShown = isOn }
-    }
-
     func brightnessChanged(_ brightness: Double) {
         self.brightness = brightness
         Task { await readerStateCtrl.changeBrightness(to: brightness) }

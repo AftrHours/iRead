@@ -1,11 +1,12 @@
 import Foundation
+import UnderlineEngine
 
 @MainActor
 struct AppContainer {
     let appNav = AppNav()
     private let libRepo: LibRepo
     private let bookContentRepo: BookContentRepo
-    private let analysisRepo: AnalysisRepo
+    private let underlineRepo: UnderlineRepo
     private let progRepo: ProgRepo
     private let readingSettingsRepo = ReadingSettingsRepo()
     private let bookStateRepo = BookStateRepo()
@@ -20,12 +21,11 @@ struct AppContainer {
         self.progRepo = progRepo
         self.bookContentRepo = bookContentRepo
         libRepo = LibRepo(epubParseSvc: epubParseSvc, progRepo: progRepo)
-        analysisRepo = AnalysisRepo(
+        underlineRepo = UnderlineRepo(
             content: { [bookContentRepo] in try await bookContentRepo.content(for: $0) },
-            prepassSvc: BookPrepassSvc(),
-            chapterSvc: ChapterAnalysisSvc(),
-            store: ChapterAnalysisStore(root: URL.applicationSupportDirectory.appending(path: "Books")),
-            makeLLM: { ModelAvailSvc().makeLLMSvc() }
+            store: ChapterUnderlineStore(root: URL.applicationSupportDirectory.appending(path: "Books")),
+            makeCtrl: { UnderlineCtrl() },
+            modelAnswers: { await ModelCheckSvc().modelAnswers() }
         )
     }
 
@@ -49,7 +49,7 @@ struct AppContainer {
             appNav: appNav,
             readerSettingsVM: ReaderSettingsVM(readerStateCtrl: readerStateCtrl),
             referenceVM: ReferenceVM(
-                refCtrl: RefCtrl(bookID: book.id, bookContentRepo: bookContentRepo, analysisRepo: analysisRepo),
+                refCtrl: RefCtrl(bookID: book.id, bookContentRepo: bookContentRepo, underlineRepo: underlineRepo),
                 readerStateCtrl: readerStateCtrl,
                 readerCtrl: readerCtrl
             )

@@ -62,12 +62,6 @@ struct ReaderView: View {
                 SearchView(searchVM: searchVM)
             case .themeSettings:
                 ThemeSettingsView(readerSettingsVM: readerSettingsVM)
-            case .chapterSymbols:
-                ChapterSymbolsView(referenceVM: referenceVM)
-            case .editSymbol(let entity):
-                EditSymbolView(entity: entity, style: referenceVM.symbolStyle(for: entity)) { style in
-                    referenceVM.symbolSaved(style, for: entity)
-                }
             }
         }
         #if DEBUG
@@ -93,17 +87,7 @@ struct ReaderView: View {
                 item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
                 attachmentAnchor: .rect(.rect(referenceVM.cardAnchor))
             ) { card in
-                Group {
-                    switch card {
-                    case .reference(let referenceCard):
-                        RefCardView(card: referenceCard) { referenceVM.jumpToPassageTapped() }
-                    case .symbol(let symbolCard):
-                        SymCardView(card: symbolCard, style: referenceVM.symbolStyle(for: symbolCard.entity)) {
-                            referenceVM.editSymbolTapped(symbolCard.entity)
-                        }
-                    }
-                }
-                .onDisappear { referenceVM.cardDisappeared() }
+                RefCardView(card: card) { referenceVM.jumpToPassageTapped() }
             }
         } else if readerVM.hasFailedToOpen {
             ContentUnavailableView("Can't Open Book", systemImage: "book.closed")
@@ -152,12 +136,6 @@ struct ReaderView: View {
             } else {
                 Image(systemName: "ladybug")
                     .font(.title3.weight(.medium))
-                    .overlay(alignment: .topTrailing) {
-                        Circle()
-                            .fill(.green)
-                            .frame(width: 8, height: 8)
-                            .offset(x: 4, y: -4)
-                    }
             }
         }
         .frame(width: 44, height: 44)
@@ -192,7 +170,7 @@ struct ReaderView: View {
                 }
                 .buttonStyle(.plain)
                 .keyboardShortcut("d", modifiers: [.command, .shift])
-                .accessibilityLabel("Engine Debug")
+                .accessibilityLabel("Underlines Debug")
                 #endif
             }
         }

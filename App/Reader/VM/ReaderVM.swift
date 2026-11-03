@@ -8,16 +8,12 @@ final class ReaderVM {
         case contents
         case search(SearchVM)
         case themeSettings
-        case chapterSymbols
-        case editSymbol(Entity)
 
         var id: String {
             switch self {
             case .contents: "contents"
             case .search: "search"
             case .themeSettings: "themeSettings"
-            case .chapterSymbols: "chapterSymbols"
-            case .editSymbol(let entity): "editSymbol \(entity.id)"
             }
         }
     }
@@ -66,8 +62,7 @@ final class ReaderVM {
         readerSettingsVM.onSettingsChanged = { [weak self] in
             Task { await self?.showCurrentPage() }
         }
-        referenceVM.onShowPage = { [weak self] page, mentionIndex in self?.show(page, highlighting: mentionIndex) }
-        referenceVM.onEditSymbol = { [weak self] entity in self?.sheet = .editSymbol(entity) }
+        referenceVM.onShowPage = { [weak self] page, underlineID in self?.show(page, highlighting: underlineID) }
     }
 
     func startPageLabel(ofChapter index: Int) -> String {
@@ -76,7 +71,6 @@ final class ReaderVM {
 
     func onAppear(viewport: Viewport) async {
         requestedViewport = viewport
-        referenceVM.onAppear()
         do {
             try await readerCtrl.openBook()
             await readerSettingsVM.bookOpened()
@@ -156,11 +150,6 @@ final class ReaderVM {
         readerSettingsVM.themeSettingsShown()
     }
 
-    func chapterSymbolsTapped() {
-        referenceVM.chapterSymbolsShown()
-        openAfterMenu(.chapterSymbols)
-    }
-
     func sheetDismissed() {
         sheet = nil
     }
@@ -204,8 +193,8 @@ final class ReaderVM {
         loadPageTotals()
     }
 
-    private func show(_ page: Page, highlighting mentionIndex: Int? = nil, searchResult: SearchResult? = nil) {
-        referenceVM.pageShown(highlighting: mentionIndex, searchResult: searchResult)
+    private func show(_ page: Page, highlighting underlineID: String? = nil, searchResult: SearchResult? = nil) {
+        referenceVM.pageShown(highlighting: underlineID, searchResult: searchResult)
         shownPage = page
         updateReferenceVM()
         loadPages(around: page)
@@ -218,11 +207,7 @@ final class ReaderVM {
     }
 
     private func updateReferenceVM() {
-        referenceVM.update(
-            shownPage: shownPage,
-            loadedPages: pages,
-            areSymbolsShown: readerSettingsVM.layoutSettings.areSymbolsShown
-        )
+        referenceVM.update(shownPage: shownPage, loadedPages: pages)
     }
 
     private func loadPageTotals() {

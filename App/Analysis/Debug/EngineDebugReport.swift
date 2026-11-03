@@ -1,100 +1,111 @@
 #if DEBUG
-import SwiftUI
+import Foundation
+import UnderlineEngine
 
-enum EngineDebugReport {
-    static func summary(of snapshot: AnalysisSnapshot) -> [EngineDebugSection] {
-        let resolved = snapshot.resolved
-        let content = snapshot.content
-        let names = resolved.mentions.filter { $0.form == .name }.count
-        let firstChapter = resolved.mentions.first.map { content.paragraphs[content.sentences[$0.sentence].paragraph].chapterIndex }
-        return [
-            EngineDebugSection(title: "Chapters", rows: [
-                EngineDebugRow(label: "Story starts at", value: firstChapter.map { "\($0): \(content.chapters[$0].title)" } ?? "None yet"),
-                EngineDebugRow(label: "Analysed", value: "\(snapshot.chaptersDone) of \(snapshot.chaptersTotal)")
-            ]),
-            EngineDebugSection(title: "Engine", rows: [
-                EngineDebugRow(label: "Model", value: snapshot.usesModel ? "Foundation Models" : "Off: rules only"),
-                EngineDebugRow(label: "Mentions", value: "\(resolved.mentions.count) (\(names) names, \(resolved.mentions.count - names) descriptions)"),
-                EngineDebugRow(label: "Named characters", value: "\(resolved.entities.filter(\.isNamed).count)"),
-                EngineDebugRow(label: "Described characters", value: "\(resolved.entities.filter { !$0.isNamed }.count)"),
-                EngineDebugRow(label: "Linked", value: "\(resolved.linkedMentions.count)"),
-                EngineDebugRow(label: "Undecided", value: "\(resolved.mentions.filter(\.isUndecided).count)"),
-                EngineDebugRow(label: "Decided by model", value: "\(resolved.mentions.filter { $0.decidedBy == .model }.count)"),
-                EngineDebugRow(label: "Model calls", value: "\(snapshot.modelCalls)"),
-                EngineDebugRow(label: "Failed slices", value: "\(snapshot.failedSlices)")
-            ]),
-            EngineDebugSection(title: "On screen", rows: [
-                EngineDebugRow(label: "Characters with a symbol", value: "\(snapshot.book.entities.count)"),
-                EngineDebugRow(label: "Mentions", value: "\(snapshot.book.mentions.count)"),
-                EngineDebugRow(label: "Underlines", value: "\(snapshot.book.mentions.filter { $0.passage != nil }.count)")
-            ])
+/// What the debug screen lists: how the run is going, and every underlined sentence by chapter.
+struct EngineDebugReport {
+    let summary: [EngineDebugRow]
+    let chapters: [EngineDebugChapter]
+    let currentChapter: Int?
+
+    init(progress: UnderlineProgress?, underlines: [Underline], dropped: [Int: [DroppedPhrase]], content: BookContent, currentChapter: Int?, now: Date = .now) {
+        let droppedCount = dropped.values.map(\.count).reduce(0, +)
+        summary = Self.summary(progress: progress, underlineCount: underlines.count, droppedCount: droppedCount, content: content, now: now)
+        chapters = Self.chapters(progress: progress, underlines: underlines, dropped: dropped, content: content)
+        self.currentChapter = currentChapter
+    }
+
+    private static func summary(progress: UnderlineProgress?, underlineCount: Int, droppedCount: Int, content: BookContent, now: Date) -> [EngineDebugRow] {
+        guard let progress else { return [EngineDebugRow(label: "Status", value: "Not started")] }
+        var rows = [
+            EngineDebugRow(label: "Status", value: phaseText(progress, content: content, now: now)),
+            EngineDebugRow(label: "Path", value: progress.usesModel ? "Foundation Models" : "Rules only (no model)"),
+            EngineDebugRow(label: "Chapters done", value: "\(progress.doneChapters.count) of \(progress.chapterCount)"),
+            EngineDebugRow(label: "Underlines", value: "\(underlineCount)"),
+            EngineDebugRow(label: "Dropped phrases", value: "\(droppedCount)")
         ]
+        if progress.phase == .modelNotAnswering {
+            rows.append(EngineDebugRow(label: "Note", value: "Nothing was saved for this chapter. It runs again when the book opens."))
+        }
+        return rows
     }
 
-    static func characters(of snapshot: AnalysisSnapshot) -> [EngineDebugCharacter] {
-        let counts = Dictionary(grouping: snapshot.book.mentions, by: \.entityID).mapValues(\.count)
-        return snapshot.book.entities.map { entity in
-            EngineDebugCharacter(
-                id: entity.id,
-                name: entity.name,
-                symbolName: entity.symbolName,
-                color: symbolColor(for: entity),
-                names: entity.names.joined(separator: ", "),
-                mentionCount: counts[entity.id, default: 0],
-                firstSeen: entity.appearances.first?.text ?? "No appearance description yet"
-            )
+    private static func phaseText(_ progress: UnderlineProgress, content: BookContent, now: Date) -> String {
+        switch progress.phase {
+        case .loading: "Loading saved chapters"
+        case .working(let chapter):
+            "Working on \(content.chapters[chapter].title), \(Duration.seconds(now.timeIntervalSince(progress.workingSince ?? now)).formatted(.time(pattern: .minuteSecond)))"
+        case .paused: "Paused: device is hot or in Low Power Mode"
+        case .finished: "Finished"
+        case .modelNotAnswering: "Stopped: the model isn't answering"
+        case .stopped: "Stopped: app left the book"
         }
     }
 
-    static func sentences(on page: Page, in snapshot: AnalysisSnapshot) -> [EngineDebugSentence] {
-        let content = snapshot.content
-        let entities = Dictionary(uniqueKeysWithValues: snapshot.book.entities.map { ($0.id, $0) })
-        let mentionsBySentence = Dictionary(grouping: snapshot.resolved.mentions, by: \.sentence)
-        return content.sentences.indices.compactMap { index in
-            let sentence = content.sentences[index]
-            let paragraph = content.paragraphs[sentence.paragraph]
-            let range = NSRange(location: paragraph.range.location + sentence.range.location, length: sentence.range.length)
-            guard paragraph.chapterIndex == page.chapterIndex, NSIntersectionRange(range, page.range).length > 0 else { return nil }
-            let mentions = (mentionsBySentence[index] ?? []).sorted { $0.location < $1.location }
-            let shown = mentions.map { mention in (mention, entity(of: mention, in: snapshot.resolved, shown: entities)) }
-            return EngineDebugSentence(
+    private static func chapters(progress: UnderlineProgress?, underlines: [Underline], dropped: [Int: [DroppedPhrase]], content: BookContent) -> [EngineDebugChapter] {
+        let byChapter = Dictionary(grouping: underlines) { content.paragraphs[$0.paragraph].chapterIndex }
+        return content.chapters.indices.map { index in
+            let found = (byChapter[index] ?? []).sorted { ($0.sentence, $0.range.location) < ($1.sentence, $1.range.location) }
+            return EngineDebugChapter(
                 id: index,
-                text: highlighted(SentenceText.of(sentence, in: content), mentions: shown),
-                links: shown.map { link(for: $0.0, shownAs: $0.1, in: snapshot.resolved) }
+                title: content.chapters[index].title,
+                status: status(of: index, count: found.count, progress: progress),
+                underlines: found.map { row(for: $0, content: content) },
+                drops: drops(dropped[index] ?? [])
             )
         }
     }
 
-    private static func entity(of mention: ResolvedMention, in resolved: ResolvedAnalysis, shown entities: [String: Entity]) -> Entity? {
-        resolved.entityKey(of: mention, asOf: mention.sentence).flatMap { entities[AnalysisMapper.id(of: $0)] }
+    /// Grouped by reason, the most common first.
+    private static func drops(_ phrases: [DroppedPhrase]) -> [EngineDebugDrops] {
+        Dictionary(grouping: phrases, by: \.reason)
+            .map { reason, phrases in
+                EngineDebugDrops(reason: text(for: reason), phrases: phrases.sorted { $0.sentence < $1.sentence }.map { "s\($0.sentence): \($0.phrase)" })
+            }
+            .sorted { ($0.phrases.count, $1.reason) > ($1.phrases.count, $0.reason) }
     }
 
-    private static func highlighted(_ text: String, mentions: [(ResolvedMention, Entity?)]) -> AttributedString {
-        var result = AttributedString(text)
-        for (mention, entity) in mentions {
-            guard let stringRange = Range(NSRange(location: mention.location, length: mention.length), in: text),
-                  let range = Range(stringRange, in: result) else { continue }
-            result[range].foregroundColor = entity.map(symbolColor) ?? .secondary
-            result[range].font = .body.bold()
+    private static func text(for reason: DropReason) -> String {
+        switch reason {
+        case .noCandidate: "No earlier sentence scored high enough"
+        case .pickedNone: "Picked no sentence"
+        case .confirmRejected: "Confirm said it doesn't explain the phrase"
+        case .guardRejected: "Guard rejected the pick"
+        case .densityLimit: "Over the limit for its paragraph"
+        case .modelFailed: "Model call failed"
         }
-        return result
     }
 
-    private static func link(for mention: ResolvedMention, shownAs entity: Entity?, in resolved: ResolvedAnalysis) -> String {
-        let character = resolved.entityKey(of: mention, asOf: mention.sentence).flatMap { resolved.entity($0) }
-        let target = character.map { "#\($0.key) \($0.label)" } ?? "no character"
-        let decidedBy = switch mention.decidedBy {
-        case .rule: "rule"
-        case .model: "model"
-        case nil: "none"
-        }
-        let notes = [entity == nil && character != nil ? "no symbol" : nil, mention.isUndecided ? "undecided" : nil].compactMap { $0 }
-        return "“\(mention.text)” → \(target) · \(decidedBy)\(notes.isEmpty ? "" : " · " + notes.joined(separator: ", "))"
+    private static func status(of chapter: Int, count: Int, progress: UnderlineProgress?) -> String {
+        if progress?.doneChapters.contains(chapter) == true { return "Done, \(count)" }
+        if progress?.phase == .working(chapter: chapter) { return "Working, \(count) so far" }
+        return count > 0 ? "Not finished, \(count) so far" : "Not done"
     }
 
-    /// The analysis's own colour for a character, ignoring the reader's edits.
-    private static func symbolColor(for entity: Entity) -> Color {
-        Color(uiColor: SymbolPalette.color(at: SymbolPalette.style(for: entity, edited: [:]).colorIndex))
+    private static func row(for underline: Underline, content: BookContent) -> EngineDebugUnderline {
+        EngineDebugUnderline(
+            id: underline.id,
+            label: "s\(underline.sentence) · \(underline.kind.rawValue) · \(underline.decidedBy.rawValue)",
+            sentence: sentence(of: underline, content: content),
+            reference: underline.reference.text,
+            referenceLabel: "s\(underline.reference.sentence)"
+        )
+    }
+
+    /// The sentence with its phrase in bold. Falls back to the phrase alone if the indexes don't line up.
+    private static func sentence(of underline: Underline, content: BookContent) -> AttributedString {
+        var phrase = AttributedString(underline.text)
+        phrase.inlinePresentationIntent = .stronglyEmphasized
+        guard content.sentences.indices.contains(underline.sentence) else { return phrase }
+        let sentenceRange = content.sentences[underline.sentence].range
+        let paragraph = content.paragraphs[underline.paragraph]
+        let chapter = content.chapters[paragraph.chapterIndex].text as NSString
+        let text = chapter.substring(with: paragraph.range) as NSString
+        let start = underline.range.location - sentenceRange.location
+        guard NSMaxRange(sentenceRange) <= text.length, start >= 0, start + underline.range.length <= sentenceRange.length else { return phrase }
+        let sentence = text.substring(with: sentenceRange) as NSString
+        let after = start + underline.range.length
+        return AttributedString(sentence.substring(to: start)) + phrase + AttributedString(sentence.substring(from: after))
     }
 }
 #endif

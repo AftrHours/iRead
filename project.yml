@@ -27,6 +27,10 @@ packages:
   SwiftLintPlugins:
     url: https://github.com/SimplyDanny/SwiftLintPlugins
     from: 0.65.1
+  # Finds the phrases worth underlining and the earlier passage that explains each one. Only Analysis/ imports it.
+  UnderlineEngine:
+    url: https://github.com/AftrHours/UnderlineEngine
+    branch: Underline-Engine
 targets:
   iRead:
     type: application
@@ -35,6 +39,7 @@ targets:
       - path: App
     dependencies:
       - package: EPUBKit
+      - package: UnderlineEngine
     buildToolPlugins:
       - plugin: SwiftLintBuildToolPlugin
         package: SwiftLintPlugins
@@ -44,7 +49,7 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: "iRead"
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
-        TARGETED_DEVICE_FAMILY: "2"
+        TARGETED_DEVICE_FAMILY: "1,2"
         # iPad apps must support every orientation (required for iPad windowing and multitasking).
         # Set for iPad and in general, because Xcode's check reads the general one.
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: >-
