@@ -147,7 +147,7 @@ xcodegen generate
 xcodebuild test -project iRead.xcodeproj -scheme iRead -testPlan Unit -destination 'platform=iOS Simulator,name=iPad Air 11-inch (M4)'
 ```
 
-**Unit vs Full.** Both plans (`Tests/Unit.xctestplan`, `Tests/Full.xctestplan`) run every test in parallel, in random order,
+**Unit vs Full.** Both plans (`Unit.xctestplan`, `Full.xctestplan`, next to `project.yml`) run every test in parallel, in random order,
 with code coverage for `iRead`. Unit (the default) skips tests tagged `.golden`; Full runs them too. The golden tests compare
 real books with stored snapshots: BK-13 (chapter counts of the bundled books) and CH-27 (*Little Women* chapter 1).
 

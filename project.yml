@@ -35,6 +35,10 @@ packages:
   SwiftLintPlugins:
     url: https://github.com/SimplyDanny/SwiftLintPlugins
     from: 0.65.1
+# The test plans sit next to the project and are listed in it, so Xcode's Test navigator finds their targets.
+fileGroups:
+  - Unit.xctestplan
+  - Full.xctestplan
 targets:
   iRead:
     type: application
@@ -78,7 +82,6 @@ targets:
     sources:
       - path: Tests
         excludes:
-          - "*.xctestplan"
           - "Fixtures/make-fixtures.sh"
     dependencies:
       - target: iRead
@@ -97,6 +100,6 @@ schemes:
     test:
       # Unit (the default) skips tests tagged .golden; Full runs everything. Code coverage is set in the plans.
       testPlans:
-        - path: Tests/Unit.xctestplan
+        - path: Unit.xctestplan
           defaultPlan: true
-        - path: Tests/Full.xctestplan
+        - path: Full.xctestplan
