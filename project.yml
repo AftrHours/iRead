@@ -98,6 +98,10 @@ schemes:
         iRead: all
         iReadTests: [test]
     test:
+      # Listed here as well as in the plans, the way Xcode itself writes a scheme: Xcode's Test navigator reads it from here.
+      targets:
+        - name: iReadTests
+          parallelizable: true
       # Unit (the default) skips tests tagged .golden; Full runs everything. Code coverage is set in the plans.
       testPlans:
         - path: Unit.xctestplan
