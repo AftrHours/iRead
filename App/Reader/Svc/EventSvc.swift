@@ -1,7 +1,12 @@
 import OSLog
 
-struct EventSvc {
-    private let logger = Logger(subsystem: "com.AftrHours.iRead", category: "events")
+/// A protocol so tests can count logged events.
+protocol EventSvc: Sendable {
+    func log(_ event: ReaderEvent) async
+}
+
+struct EventSvcOSLog: EventSvc {
+    private let logger = Logger(subsystem: Logger.appSubsystem, category: "events")
 
     func log(_ event: ReaderEvent) async {
         switch event {

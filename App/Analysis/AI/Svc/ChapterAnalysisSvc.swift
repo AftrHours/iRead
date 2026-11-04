@@ -24,7 +24,7 @@ struct ChapterAnalysisSvc: Sendable {
         SymbolAssigner.assign(&linked.memory, mentionsSoFar: mentionsSoFar + linked.mentions, vocabulary: book.vocabulary, chapter: chapter)
         return ChapterAnalysis(chapter: chapter, engineVersion: ChapterAnalysisKnobs.engineVersion,
                                parserVersion: content.parserVersion, mentions: linked.mentions,
-                               memory: linked.memory, modelCalls: reader.calls, failedSlices: reader.failed)
+                               memory: linked.memory)
     }
 }
 
@@ -34,7 +34,6 @@ private struct SliceReader {
     let vocabulary: NameVocabulary
     let sentenceText: [Int: String]
     var calls = 0
-    var failed = 0
 
     mutating func read(_ slice: [NumberedSentence], into linked: inout LinkedChapter, canSplit: Bool) async {
         guard !Task.isCancelled, calls < llm.maxCallsPerChapter, let first = slice.first?.index, let last = slice.last?.index else { return }
@@ -53,7 +52,7 @@ private struct SliceReader {
             await read(Array(slice[..<half]), into: &linked, canSplit: false)
             await read(Array(slice[half...]), into: &linked, canSplit: false)
         } catch {
-            failed += 1
+            // A slice the model can't read keeps the rules' answers.
         }
     }
 }

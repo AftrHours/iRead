@@ -11,7 +11,7 @@ actor AnalysisRepo {
     private let store: ChapterAnalysisStore
     private let makeLLM: @Sendable () -> any LLMSvc
     private var running: (bookID: UUID, token: UUID, task: Task<Void, Never>)?
-    private var snapshots: [UUID: AnalysisSnapshot] = [:]
+    private var analyses: [UUID: BookAnalysis] = [:]
     private var listeners: [UUID: [UUID: AsyncStream<Int>.Continuation]] = [:]
 
     init(content: @escaping @Sendable (UUID) async throws -> BookContent, prepassSvc: BookPrepassSvc, chapterSvc: ChapterAnalysisSvc,
@@ -37,15 +37,7 @@ actor AnalysisRepo {
     }
 
     func analysis(for bookID: UUID) -> BookAnalysis {
-        snapshots[bookID]?.book ?? BookAnalysis(entities: [], mentions: [])
-    }
-
-    func snapshot(for bookID: UUID) -> AnalysisSnapshot? {
-        snapshots[bookID]
-    }
-
-    func progress(for bookID: UUID) -> EngineProgress? {
-        snapshots[bookID].map { EngineProgress(done: $0.chaptersDone, total: $0.chaptersTotal) }
+        analyses[bookID] ?? BookAnalysis(entities: [], mentions: [])
     }
 
     func updates(for bookID: UUID) -> AsyncStream<Int> {
@@ -68,11 +60,9 @@ actor AnalysisRepo {
         let version = ChapterAnalysisKnobs.engineVersion
         var memory = CastMemory.empty
         var mentions: [ResolvedMention] = []
-        var calls = 0
-        var failed = 0
         var isResuming = true
         var hasUnpublished = false
-        for (done, chapter) in book.chapters.enumerated() {
+        for chapter in book.chapters {
             if Task.isCancelled { return }
             let result: ChapterAnalysis
             if isResuming, let stored = store.load(bookID: bookID, chapter: chapter, engineVersion: version, parserVersion: content.parserVersion) {
@@ -80,7 +70,7 @@ actor AnalysisRepo {
             } else {
                 isResuming = false
                 if hasUnpublished {
-                    await publish(snapshot(book, memory, mentions, done, calls, failed, llm), chapter: chapter - 1, for: bookID)
+                    await publish(AnalysisMapper.map(memory: memory, mentions: mentions, content: content), chapter: chapter - 1, for: bookID)
                 }
                 await waitWhileHot()
                 if Task.isCancelled { return }
@@ -90,31 +80,15 @@ actor AnalysisRepo {
             }
             memory = result.memory
             mentions += result.mentions
-            calls += result.modelCalls
-            failed += result.failedSlices
             hasUnpublished = isResuming
             if !isResuming {
-                await publish(snapshot(book, memory, mentions, done + 1, calls, failed, llm), chapter: chapter, for: bookID)
+                await publish(AnalysisMapper.map(memory: memory, mentions: mentions, content: content), chapter: chapter, for: bookID)
             }
         }
         if hasUnpublished {
-            await publish(snapshot(book, memory, mentions, book.chapters.count, calls, failed, llm), chapter: book.chapters.upperBound - 1, for: bookID)
+            await publish(AnalysisMapper.map(memory: memory, mentions: mentions, content: content), chapter: book.chapters.upperBound - 1, for: bookID)
         }
         await finishIfCurrent(bookID, token: token)
-    }
-
-    private nonisolated func snapshot(_ book: PreparedBook, _ memory: CastMemory, _ mentions: [ResolvedMention],
-                                      _ done: Int, _ calls: Int, _ failed: Int, _ llm: any LLMSvc) -> AnalysisSnapshot {
-        AnalysisSnapshot(
-            book: AnalysisMapper.map(memory: memory, mentions: mentions, content: book.content),
-            resolved: ResolvedAnalysis(entities: memory.entities, mentions: mentions),
-            content: book.content,
-            chaptersDone: done,
-            chaptersTotal: book.chapters.count,
-            modelCalls: calls,
-            failedSlices: failed,
-            usesModel: llm.isAvailable
-        )
     }
 
     private nonisolated func waitWhileHot() async {
@@ -124,8 +98,8 @@ actor AnalysisRepo {
         }
     }
 
-    private func publish(_ snapshot: AnalysisSnapshot, chapter: Int, for bookID: UUID) {
-        snapshots[bookID] = snapshot
+    private func publish(_ analysis: BookAnalysis, chapter: Int, for bookID: UUID) {
+        analyses[bookID] = analysis
         listeners[bookID]?.values.forEach { $0.yield(chapter) }
     }
 

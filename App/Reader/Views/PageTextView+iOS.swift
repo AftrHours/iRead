@@ -53,7 +53,7 @@ final class PageTextView: UIView {
     private func addSymbolButtons() {
         let symbolSize = Self.symbolSize(for: PageTextStyle.font(settings: settings))
         for mark in marks {
-            guard case .symbol(let style, let entityName) = mark.kind else { continue }
+            guard case .symbol(let style, let entityName, _) = mark.kind else { continue }
             let button = UIButton(type: .system)
             button.setImage(UIImage(systemName: style.systemName, withConfiguration: UIImage.SymbolConfiguration(pointSize: symbolSize)), for: .normal)
             button.tintColor = SymbolPalette.color(at: style.colorIndex)
@@ -123,7 +123,7 @@ final class PageTextView: UIView {
 
     private func underline(at point: CGPoint) -> (Mark, CGRect)? {
         let layoutManager = textView.layoutManager
-        for mark in marks where mark.kind == .underline {
+        for mark in marks where mark.isUnderline {
             let glyphs = layoutManager.glyphRange(forCharacterRange: mark.range, actualCharacterRange: nil)
             var tappedLine: CGRect?
             layoutManager.enumerateEnclosingRects(

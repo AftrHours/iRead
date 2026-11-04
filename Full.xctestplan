@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "98439543-CB1D-4426-978A-1741DD90FC04",
+      "name" : "Default",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:iRead.xcodeproj",
+          "identifier" : "C18E3FD1D7A7024570D85A8F",
+          "name" : "iRead"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:iRead.xcodeproj",
+        "identifier" : "5AC2443908F8A231181B3368",
+        "name" : "iReadTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -2,13 +2,14 @@ import Foundation
 import OSLog
 
 actor ProgRepo {
-    private let booksFolder = URL.applicationSupportDirectory.appending(path: "Books")
+    private let booksFolder: URL
     private var pending: [UUID: ReadingProgress] = [:]
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
-    private let logger = Logger(subsystem: "com.AftrHours.iRead", category: "storage")
+    private let logger = Logger(subsystem: Logger.appSubsystem, category: "storage")
 
-    init() {
+    init(folder: URL = .applicationSupportDirectory.appending(path: "Books")) {
+        booksFolder = folder
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
         encoder.dateEncodingStrategy = .iso8601
         decoder.dateDecodingStrategy = .iso8601

@@ -2,8 +2,14 @@ import EPUBKit
 import Foundation
 import NaturalLanguage
 
-/// Reads EPUB files with EPUBKit and turns their chapters into the app's BookContent.
-struct EPUBParseSvc {
+/// Reads EPUB files and turns their chapters into the app's BookContent. A protocol so tests can count parses.
+protocol EPUBParseSvc: Sendable {
+    func metadata(from url: URL) throws -> (title: String?, author: String?)
+    func cover(from url: URL) throws -> Data?
+    func parse(_ url: URL) async throws -> BookContent
+}
+
+struct EPUBParseSvcEPUBKit: EPUBParseSvc {
     private let reader = EPUBReader()
 
     func metadata(from url: URL) throws -> (title: String?, author: String?) {
@@ -19,7 +25,7 @@ struct EPUBParseSvc {
     func parse(_ url: URL) async throws -> BookContent {
         let chapters = try readingEPUB { try reader.chapters(from: url) }
         guard !chapters.isEmpty else { throw ContentError.unreadable }
-        return content(of: chapters)
+        return Self.content(of: chapters.map { ($0.title, $0.paragraphs) })
     }
 
     /// EPUBKit reports a broken file as its own error; the rest of the app expects ContentError.
@@ -31,7 +37,8 @@ struct EPUBParseSvc {
         }
     }
 
-    private func content(of rawChapters: [EPUBChapter]) -> BookContent {
+    /// Global paragraph and sentence indexes, with UTF-16 ranges inside each chapter's text (paragraphs joined by "\n").
+    static func content(of rawChapters: [(title: String, paragraphs: [String])]) -> BookContent {
         let tokenizer = NLTokenizer(unit: .sentence)
         var chapters: [Chapter] = []
         var paragraphs: [Paragraph] = []
@@ -58,7 +65,7 @@ struct EPUBParseSvc {
         return BookContent(chapters: chapters, paragraphs: paragraphs, sentences: sentences, parserVersion: 1)
     }
 
-    private func sentenceRanges(in text: String, tokenizer: NLTokenizer) -> [NSRange] {
+    private static func sentenceRanges(in text: String, tokenizer: NLTokenizer) -> [NSRange] {
         // Ebooks often put a no-break space after "Mr." or "Dr.", which the tokenizer reads as a sentence end.
         // A copy with plain spaces has the same UTF-16 length, so its ranges still match the original text.
         let plain = text.replacingOccurrences(of: "\u{00A0}", with: " ")
