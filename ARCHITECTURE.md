@@ -1,6 +1,6 @@
 # iRead architecture
 
-iPad reader app. SwiftUI, Swift 6, iOS 26, XcodeGen (`project.yml` → `iRead.xcodeproj`). Packages: EPUBKit (local, in `Packages/EPUBKit`, on ZIPFoundation) reads EPUB files; [UnderlineEngine](https://github.com/AftrHours/UnderlineEngine) (from GitHub, branch `main`) finds the phrases to underline.
+iPhone and iPad reader app (iPhone in portrait only). SwiftUI, Swift 6, iOS 26, XcodeGen (`project.yml` → `iRead.xcodeproj`). Packages: EPUBKit (local, in `Packages/EPUBKit`, on ZIPFoundation) reads EPUB files; [UnderlineEngine](https://github.com/AftrHours/UnderlineEngine) (from GitHub, pinned to one commit in `project.yml`) finds the phrases to underline.
 
 ## Folders and dependency direction
 
@@ -137,3 +137,35 @@ are hidden (turning a page hides both; tapping the middle of the page shows both
   - `AI/Models`: the data passed between steps and the on-device model (requests, answers, resolved analysis).
   - `AI/Rules`: pure steps that find, link and name character mentions and map them to a `BookAnalysis`.
   - `AI/Svc`: wrappers for the on-device language model, word tagging, model availability and the per-chapter pass.
+
+## Testing & CI
+
+**Run the tests.** In Xcode, ⌘U runs the Unit plan. From the terminal:
+
+```sh
+xcodegen generate
+xcodebuild test -project iRead.xcodeproj -scheme iRead -testPlan Unit -destination 'platform=iOS Simulator,name=iPad Air 11-inch (M4)'
+```
+
+**Unit vs Full.** Both plans (`Unit.xctestplan`, `Full.xctestplan`, next to `project.yml`) run every test in parallel, in random order,
+with code coverage for `iRead`. Unit (the default) skips tests tagged `.golden`; Full runs them too. The golden tests compare
+real books with stored snapshots: BK-13 (chapter counts of the bundled books) and CH-27 (*Little Women* chapter 1).
+
+**How the tests are written.** Swift Testing (`@Suite`, `@Test`, `#expect`) in `Tests/`, in the same folders as `App/`.
+Each test is named by its ID in `docs/TEST_CASES.md`. A real bug the tests found is wrapped in `withKnownIssue` until it is fixed.
+- Every test gets its own temp folder (`TempFolder` in `Tests/Support/`); repos take it as `init(folder:)`.
+- `EventSvc`, `EPUBParseSvc` and `PagerSvc` are protocols so tests can use the fakes in `Tests/Support/Fakes.swift`. The app uses
+  `EventSvcOSLog`, `EPUBParseSvcEPUBKit` and `PagerSvcTextKit`.
+- Tests never use Foundation Models (CI simulators don't have it): they use `LLMSvcUnavailable`.
+
+**Fixtures** are small EPUBs in `Tests/Fixtures/`, made by `sh Tests/Fixtures/make-fixtures.sh` (the `.epub` files are committed too).
+`BookContent.make(chapters:)` builds book content with the parser's own code, so its ranges match a parsed book.
+
+**CI.** Xcode Cloud tests the `iRead` scheme on every pull request into `dev` or `main` and on every push to `dev`.
+After cloning, it runs `ci_scripts/ci_post_clone.sh`: it installs XcodeGen, generates the project and lets the SwiftLint
+plugin run without the "Trust & Enable" click. Xcode Cloud never resolves packages itself: it builds the versions in the committed
+`iRead.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved`, the only committed file of the generated project.
+After changing a package in `project.yml`, regenerate, let Xcode resolve, and commit `project.yml` and `Package.resolved` together.
+
+**App identity.** The bundle ID (`com.aftrhours.reader`) and display name are set once, in `project.yml`. The display name can
+change any time. **Never change the bundle ID after the first upload to App Store Connect.**

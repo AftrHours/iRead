@@ -3,10 +3,10 @@ import Foundation
 actor ProgressCtrl {
     private let bookID: UUID
     private let progRepo: ProgRepo
-    private let eventSvc: EventSvc
+    private let eventSvc: any EventSvc
     private var readingProgress: ReadingProgress?
 
-    init(bookID: UUID, progRepo: ProgRepo, eventSvc: EventSvc) {
+    init(bookID: UUID, progRepo: ProgRepo, eventSvc: any EventSvc) {
         self.bookID = bookID
         self.progRepo = progRepo
         self.eventSvc = eventSvc

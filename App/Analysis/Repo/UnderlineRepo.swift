@@ -10,8 +10,8 @@ actor UnderlineRepo {
         let underlines: [Underline]
     }
 
-    private let booksFolder = URL.applicationSupportDirectory.appending(path: "Books")
-    private let logger = Logger(subsystem: "com.AftrHours.iRead", category: "storage")
+    private let booksFolder: URL
+    private let logger = Logger(subsystem: Logger.appSubsystem, category: "storage")
     private let underlineCtrl = UnderlineCtrl()
     private var foundUnderlines: [UUID: [Int: [Underline]]] = [:]
     private var finishedChapters: [UUID: Set<Int>] = [:]
@@ -20,6 +20,10 @@ actor UnderlineRepo {
     /// Every phrase the engine considered this session, kept or dropped, for the debug view.
     private var foundRecords: [UUID: [Int: [UnderlineRecord]]] = [:]
     #endif
+
+    init(folder: URL = .applicationSupportDirectory.appending(path: "Books")) {
+        booksFolder = folder
+    }
 
     /// Whether pick and confirm use the on-device model, or only rules.
     var usesModel: Bool {

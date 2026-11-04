@@ -2,8 +2,12 @@ import Foundation
 import OSLog
 
 struct BookStateRepo {
-    private let booksFolder = URL.applicationSupportDirectory.appending(path: "Books")
-    private let logger = Logger(subsystem: "com.AftrHours.iRead", category: "storage")
+    private let booksFolder: URL
+    private let logger = Logger(subsystem: Logger.appSubsystem, category: "storage")
+
+    init(folder: URL = .applicationSupportDirectory.appending(path: "Books")) {
+        booksFolder = folder
+    }
 
     func state(for bookID: UUID) async -> BookState {
         guard let data = try? Data(contentsOf: fileURL(for: bookID)),

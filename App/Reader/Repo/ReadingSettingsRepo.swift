@@ -2,8 +2,12 @@ import Foundation
 import OSLog
 
 struct ReadingSettingsRepo {
-    private let fileURL = URL.applicationSupportDirectory.appending(path: "reading-settings.json")
-    private let logger = Logger(subsystem: "com.AftrHours.iRead", category: "storage")
+    private let fileURL: URL
+    private let logger = Logger(subsystem: Logger.appSubsystem, category: "storage")
+
+    init(folder: URL = .applicationSupportDirectory) {
+        fileURL = folder.appending(path: "reading-settings.json")
+    }
 
     func settings() async -> ReadingSettings {
         guard let data = try? Data(contentsOf: fileURL),

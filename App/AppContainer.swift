@@ -10,12 +10,12 @@ struct AppContainer {
     private let progRepo: ProgRepo
     private let readingSettingsRepo = ReadingSettingsRepo()
     private let bookStateRepo = BookStateRepo()
-    private let pagerSvc = PagerSvc()
-    private let eventSvc = EventSvc()
+    private let pagerSvc = PagerSvcTextKit()
+    private let eventSvc = EventSvcOSLog()
     private let brightnessSvc = BrightnessSvc()
 
     init() {
-        let epubParseSvc = EPUBParseSvc()
+        let epubParseSvc = EPUBParseSvcEPUBKit()
         let progRepo = ProgRepo()
         let bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc)
         self.progRepo = progRepo

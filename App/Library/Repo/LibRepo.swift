@@ -1,15 +1,16 @@
 import Foundation
 
 struct LibRepo {
-    private let epubParseSvc: EPUBParseSvc
+    private let epubParseSvc: any EPUBParseSvc
     private let progRepo: ProgRepo
-    private var booksFolder: URL { .applicationSupportDirectory.appending(path: "Books") }
+    private let booksFolder: URL
     private var libraryURL: URL { booksFolder.appending(path: "library.json") }
     private var hiddenSamplesURL: URL { booksFolder.appending(path: "hidden-samples.json") }
 
-    init(epubParseSvc: EPUBParseSvc, progRepo: ProgRepo) {
+    init(epubParseSvc: any EPUBParseSvc, progRepo: ProgRepo, folder: URL = .applicationSupportDirectory.appending(path: "Books")) {
         self.epubParseSvc = epubParseSvc
         self.progRepo = progRepo
+        booksFolder = folder
     }
 
     func fetchBooks() async throws -> [BookRecord] {
