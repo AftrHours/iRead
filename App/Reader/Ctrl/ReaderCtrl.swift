@@ -3,7 +3,7 @@ import Foundation
 actor ReaderCtrl {
     private let bookID: UUID
     private let bookContentRepo: BookContentRepo
-    private let pagerSvc: PagerSvc
+    private let pagerSvc: any PagerSvc
 
     private var content = BookContent(chapters: [], paragraphs: [], sentences: [], parserVersion: 0)
     private var readingSettings = ReadingSettings()
@@ -11,7 +11,7 @@ actor ReaderCtrl {
     private var position = ReadingPosition(paragraph: 0, charOffset: 0)
     private var chapterPages: [[NSRange]] = []
 
-    init(bookID: UUID, bookContentRepo: BookContentRepo, pagerSvc: PagerSvc) {
+    init(bookID: UUID, bookContentRepo: BookContentRepo, pagerSvc: any PagerSvc) {
         self.bookID = bookID
         self.bookContentRepo = bookContentRepo
         self.pagerSvc = pagerSvc

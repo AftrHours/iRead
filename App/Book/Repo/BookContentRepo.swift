@@ -1,12 +1,14 @@
 import Foundation
 
 actor BookContentRepo {
-    private let epubParseSvc: EPUBParseSvc
+    private let epubParseSvc: any EPUBParseSvc
+    private let booksFolder: URL
     private var parsing: [UUID: Task<BookContent, any Error>] = [:]
     private var covers: [UUID: Data] = [:]
 
-    init(epubParseSvc: EPUBParseSvc) {
+    init(epubParseSvc: any EPUBParseSvc, folder: URL = .applicationSupportDirectory.appending(path: "Books")) {
         self.epubParseSvc = epubParseSvc
+        booksFolder = folder
     }
 
     func content(for bookID: UUID) async throws -> BookContent {
@@ -49,7 +51,7 @@ actor BookContentRepo {
     }
 
     private func fileURL(for bookID: UUID) throws -> URL {
-        let importedURL = URL.applicationSupportDirectory.appending(path: "Books/\(bookID.uuidString)/book.epub")
+        let importedURL = booksFolder.appending(path: "\(bookID.uuidString)/book.epub")
         if FileManager.default.fileExists(atPath: importedURL.path) {
             return importedURL
         }
