@@ -1,11 +1,5 @@
 import Foundation
 
-enum EvidenceKnobs {
-    static let maxWordsBetweenGroupedNames = 4
-
-    static let separatePeopleWords: Set<String> = ["and", "&", "with", "nor"]
-}
-
 enum EvidenceGuard {
     static func accepts(_ assignment: MentionAssignment, for request: SliceRequest) -> Bool {
         guard let mention = request.mentions.first(where: { $0.number == assignment.mention }),

@@ -6,11 +6,11 @@ struct RefCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Earlier Mention")
+            Text("Explained Earlier")
                 .font(.headline)
                 .foregroundStyle(.secondary)
             VStack(alignment: .leading, spacing: 8) {
-                Text(card.name)
+                Text(card.phrase)
                     .font(.title2.bold())
                 Text(card.location)
                     .font(.caption)

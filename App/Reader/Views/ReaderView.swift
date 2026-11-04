@@ -5,7 +5,7 @@ struct ReaderView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
     #if DEBUG
-    @State private var isEngineDebugShown = false
+    @State private var isUnderlineDebugShown = false
     #endif
 
     private var readerSettingsVM: ReaderSettingsVM { readerVM.readerSettingsVM }
@@ -71,8 +71,8 @@ struct ReaderView: View {
             }
         }
         #if DEBUG
-        .sheet(isPresented: $isEngineDebugShown) {
-            EngineDebugView(engineDebugVM: referenceVM.makeEngineDebugVM())
+        .sheet(isPresented: $isUnderlineDebugShown) {
+            UnderlineDebugView(underlineDebugVM: referenceVM.makeUnderlineDebugVM())
         }
         #endif
     }
@@ -84,7 +84,7 @@ struct ReaderView: View {
                 pages: readerVM.pages,
                 shownPage: shownPage,
                 settings: readerSettingsVM.layoutSettings,
-                marks: referenceVM.marks,
+                marks: readerVM.marks,
                 onPageChanged: { readerVM.pageChanged($0) },
                 onCenterTapped: { readerVM.pageCenterTapped() },
                 onMarkTapped: { referenceVM.markTapped($0, at: $1) }
@@ -144,28 +144,6 @@ struct ReaderView: View {
         }
     }
 
-    #if DEBUG
-    private var engineDebugLabel: some View {
-        Group {
-            if referenceVM.isEngineRunning {
-                ProgressView()
-            } else {
-                Image(systemName: "ladybug")
-                    .font(.title3.weight(.medium))
-                    .overlay(alignment: .topTrailing) {
-                        Circle()
-                            .fill(.green)
-                            .frame(width: 8, height: 8)
-                            .offset(x: 4, y: -4)
-                    }
-            }
-        }
-        .frame(width: 44, height: 44)
-        .contentShape(.circle)
-        .glassEffect(.regular.interactive(), in: .circle)
-    }
-    #endif
-
     private var topBar: some View {
         ZStack {
             VStack(spacing: 6) {
@@ -185,14 +163,10 @@ struct ReaderView: View {
                 }
                 Spacer()
                 #if DEBUG
-                Button {
-                    isEngineDebugShown = true
-                } label: {
-                    engineDebugLabel
+                circleButton(systemImage: "ladybug", label: "Underline Debug") {
+                    isUnderlineDebugShown = true
                 }
-                .buttonStyle(.plain)
                 .keyboardShortcut("d", modifiers: [.command, .shift])
-                .accessibilityLabel("Engine Debug")
                 #endif
             }
         }

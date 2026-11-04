@@ -8,8 +8,6 @@ enum MentionLinkerKnobs {
     static let strongMatchTotal = 3.5
     static let strongMatchModifiers = 2.0
 
-    static let minMentionsForDescribedEntity = 2
-
     static let appositionConnectors: [String] = [
         #"^,\s*$"#, #"^,\s*(who|that)\s+(was|is)\s*$"#, #"^\s*(was|is)\s*$"#, #"^,?\s*(called|named|known as)\s*$"#
     ]
@@ -37,31 +35,13 @@ enum MentionLinker {
                     mention.entity = key
                 } else {
                     mention.entity = openDescribedEntity(for: mention, in: &analysis)
-                    mention.isUndecided = true
                 }
             }
-            if mention.entity != nil { mention.decidedBy = .rule }
             analysis.mentions.append(mention)
         }
         var linked = memory
         linked.entities = analysis.entities
         return LinkedChapter(mentions: Array(analysis.mentions.dropFirst(earlier.count)), memory: linked)
-    }
-
-    static func dropSmallDescribedEntities(in analysis: inout ResolvedAnalysis) {
-        let counts = Dictionary(grouping: analysis.linkedMentions, by: { $0.entity! }).mapValues(\.count)
-        let small = Set(analysis.entities.filter {
-            !$0.isNamed && $0.mergeEdges.isEmpty && (counts[$0.key] ?? 0) < MentionLinkerKnobs.minMentionsForDescribedEntity
-        }.map(\.key))
-        guard !small.isEmpty else { return }
-        for i in analysis.mentions.indices where analysis.mentions[i].entity.map(small.contains) == true {
-            analysis.mentions[i].entity = nil
-            analysis.mentions[i].decidedBy = nil
-        }
-        analysis.entities.removeAll { small.contains($0.key) }
-        for i in analysis.entities.indices {
-            analysis.entities[i].mergeEdges.removeAll { small.contains($0.into) }
-        }
     }
 
     private static func knownName(_ mention: ResolvedMention, in analysis: ResolvedAnalysis) -> Int? {

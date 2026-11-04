@@ -12,8 +12,6 @@ enum SliceReadingApplier {
             let mention = analysis.mentions[index]
             if mention.form == .name, mention.entity != nil { continue }
             analysis.mentions[index].entity = assignment.card.flatMap { cards[$0]?.entity }
-            analysis.mentions[index].decidedBy = .model
-            analysis.mentions[index].isUndecided = false
         }
 
         for span in reading.missedNames where EvidenceGuard.accepts(span, for: request) {
@@ -24,7 +22,7 @@ enum SliceReadingApplier {
             let key = NameKey.of(span.text)
             let entity = analysis.entityKey(forName: key) ?? newEntity(named: span.text, key: key, at: span.sentence, in: &analysis)
             analysis.mentions.append(ResolvedMention(sentence: span.sentence, location: location, length: length, text: span.text, form: .name,
-                                                     head: key, modifiers: [], entity: entity, decidedBy: .model))
+                                                     head: key, modifiers: [], entity: entity))
         }
         analysis.mentions.sort { ($0.sentence, $0.location) < ($1.sentence, $1.location) }
 
