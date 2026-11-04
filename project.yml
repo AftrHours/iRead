@@ -62,7 +62,10 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: iRead
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
-        TARGETED_DEVICE_FAMILY: "2"
+        # Universal: 1 = iPhone, 2 = iPad.
+        TARGETED_DEVICE_FAMILY: "1,2"
+        # iPhone: portrait only, like a book held in one hand.
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
         # iPad apps must support every orientation (required for iPad windowing and multitasking).
         # Set for iPad and in general, because Xcode's check reads the general one.
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: >-
@@ -75,7 +78,7 @@ targets:
         SUPPORTS_MACCATALYST: NO
         MARKETING_VERSION: "0.1"
         CURRENT_PROJECT_VERSION: "1"
-  # Unit tests (Swift Testing), run inside the app on an iPad simulator. Folders mirror App/.
+  # Unit tests (Swift Testing), run inside the app on an iPhone or iPad simulator. Folders mirror App/.
   iReadTests:
     type: bundle.unit-test
     platform: iOS
@@ -89,7 +92,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.aftrhours.reader.tests
         GENERATE_INFOPLIST_FILE: YES
-        TARGETED_DEVICE_FAMILY: "2"
+        TARGETED_DEVICE_FAMILY: "1,2"
 # Shared, so Xcode Cloud sees it. It keeps the default Archive action: Xcode Cloud only lists products whose scheme can archive.
 schemes:
   iRead:
