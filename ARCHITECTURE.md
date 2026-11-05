@@ -15,6 +15,7 @@ App/
               BookContentRepo, ProgRepo, EPUBParseSvc)
   Library/    library page: list, sort, grid/list, EPUB import
   Analysis/   the AI feature: underlines with their reference passages (UnderlineEngine)
+    Svc/      ModelCheckSvc: one test call to the on-device model before the first chapter
     Debug/    DEBUG-only underline debug sheet
   Reader/     reading page: paging, progress, settings, search, contents, reference cards
 ```
@@ -48,7 +49,7 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 | `VM`    | UI state, `@MainActor @Observable`. Receives intents (`xTapped`, `xChanged`, `onAppear`). |
 | `Ctrl`  | One use case, orchestrating repos and services. |
 | `Repo`  | Persists or caches data (files in Application Support, in-memory caches). Failed writes are logged to OSLog category `storage`. |
-| `Svc`   | Wraps a system or framework API (EPUBKit, UIKit, OSLog). |
+| `Svc`   | Wraps a system or framework API (EPUBKit, UIKit, OSLog, Foundation Models). |
 | `Rules` | Pure functions, no state, no I/O. |
 | `Models`| Plain data. |
 
@@ -67,8 +68,8 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 `ReaderSettingsVM` and `ReferenceVM` share one `ReaderStateCtrl` per open book.
 
 State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
-`ReferenceVM.update(shownPage:loadedPages:)`. `ReaderVM.marks` hides underlines while the controls
-are hidden (turning a page hides both; tapping the middle of the page shows both). Highlights always show. The children report back only through output callbacks:
+`ReferenceVM.update(shownPage:loadedPages:)`. Underlines and highlights always show, whether or not the controls do
+(turning a page hides the controls; tapping the middle of the page shows them). The children report back only through output callbacks:
 `ReferenceVM.onShowPage` and `ReaderSettingsVM.onSettingsChanged`, the same way
 `SearchVM` reports `onResultPicked`.
 
@@ -123,7 +124,7 @@ are hidden (turning a page hides both; tapping the middle of the page shows both
    until `appForegrounded`.
 
 **Tap an underline, jump, and return**
-1. Controls shown → `PageTextView` → `PageTurnView.onMarkTapped` → `ReferenceVM.markTapped`
+1. `PageTextView` → `PageTurnView.onMarkTapped` → `ReferenceVM.markTapped`
    → `RefCtrl.underline(withID:)`, `ReaderCtrl.page(containing:)` → `RefCardView` (the phrase and the passage that explains it).
 2. Jump to Passage → `ReferenceVM.jumpToPassageTapped` → `ReaderCtrl.startPosition(of:)` → `ReaderStateCtrl.saveReturnPosition`
    → `ReaderCtrl.page(containing:)` → `onShowPage` → `ReaderVM.show(_:highlighting:)`.
@@ -136,6 +137,9 @@ are hidden (turning a page hides both; tapping the middle of the page shows both
   and saves each finished chapter with the parser and engine versions (`UnderlineRepoKnobs.engineVersion`, bumped with the
   UnderlineEngine pin in `project.yml`); a chapter saved by another version is underlined again. Starting another chapter stops the running one. In DEBUG it also keeps every phrase's
   record (kept or dropped, and why) for `Debug/UnderlineDebugView` (ladybug button, or ⌘⇧D).
+  Before the first chapter, `Svc/ModelCheckSvc` makes one tiny call to Apple's on-device model. The system can say the model is
+  available while every call fails (the Simulator does this), and UnderlineEngine drops a phrase whose model call fails, so then
+  the engine runs with its rules only (`UnderlineCtrl(model: .rulesOnly)`). A chapter where a model call still fails isn't saved.
 - `Rules/ChapterInputMapper`: one chapter of `BookContent` → UnderlineEngine's `ChapterInput` (same indexes and ranges).
 
 ## Testing & CI

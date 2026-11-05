@@ -5,7 +5,8 @@ import UnderlineEngine
 enum UnderlineRepoKnobs {
     /// Saved with each finished chapter. Bump it when you change UnderlineEngine's pinned revision in project.yml,
     /// so chapters underlined by the old engine are underlined again.
-    static let engineVersion = 1
+    /// 2: chapters saved while every model call failed (no underlines) are underlined again, now with the rules fallback.
+    static let engineVersion = 2
 }
 
 /// Runs UnderlineEngine on one chapter at a time and keeps what it finds: in memory while the app runs, and on disk
@@ -20,7 +21,9 @@ actor UnderlineRepo {
 
     private let booksFolder: URL
     private let logger = Logger(subsystem: Logger.appSubsystem, category: "storage")
-    private let underlineCtrl = UnderlineCtrl()
+    private let modelCheckSvc = ModelCheckSvc()
+    /// Made on first use, once the model has been checked.
+    private var underlineCtrl: UnderlineCtrl?
     private var foundUnderlines: [UUID: [Int: [Underline]]] = [:]
     private var finishedChapters: [UUID: Set<Int>] = [:]
     private var running: Task<Void, Never>?
@@ -35,7 +38,7 @@ actor UnderlineRepo {
 
     /// Whether pick and confirm use the on-device model, or only rules.
     var usesModel: Bool {
-        underlineCtrl.usesModel
+        get async { await engine().usesModel }
     }
 
     /// Underlines a chapter from `sentence` to its end, then from its start. Yields after each paragraph that adds
@@ -74,11 +77,14 @@ actor UnderlineRepo {
                      continuation: AsyncStream<Void>.Continuation) async {
         defer { continuation.finish() }
         let index = chapter.chapterIndex
+        let underlineCtrl = await engine()
         let indexed = await underlineCtrl.prepare(chapter)
         #if DEBUG
         foundRecords[bookID, default: [:]][index] = []
         #endif
+        var hadModelFailure = false
         for await result in underlineCtrl.paragraphResults(in: indexed, startingAt: sentence) {
+            hadModelFailure = hadModelFailure || result.records.contains { $0.dropped == .modelFailed }
             // A chapter stopped earlier and started again finds some underlines twice.
             let known = Set(underlines(inChapter: index, of: bookID).map(\.id))
             foundUnderlines[bookID, default: [:]][index, default: []] += result.underlines.filter { !known.contains($0.id) }
@@ -87,10 +93,23 @@ actor UnderlineRepo {
             #endif
             if !result.underlines.isEmpty { continuation.yield() }
         }
-        guard !Task.isCancelled else { return }
+        // A chapter where a model call failed misses underlines, so it isn't kept: it's tried again next time.
+        guard !Task.isCancelled, !hadModelFailure else { return }
         finishedChapters[bookID, default: []].insert(index)
         save(StoredChapter(parserVersion: parserVersion, engineVersion: UnderlineRepoKnobs.engineVersion,
                            underlines: underlines(inChapter: index, of: bookID)), chapter: index, of: bookID)
+    }
+
+    /// UnderlineEngine uses the on-device model whenever the system says it's available, and drops a phrase when a
+    /// model call fails. So the model is checked once first; if it can't answer, the engine uses its rules only.
+    private func engine() async -> UnderlineCtrl {
+        if let underlineCtrl { return underlineCtrl }
+        let canUseModel = await modelCheckSvc.modelAnswers()
+        // Another caller may have made it while this one waited.
+        if let underlineCtrl { return underlineCtrl }
+        let made = UnderlineCtrl(model: canUseModel ? .automatic : .rulesOnly)
+        underlineCtrl = made
+        return made
     }
 
     private func isFinished(_ chapter: Int, of bookID: UUID, parserVersion: Int) -> Bool {

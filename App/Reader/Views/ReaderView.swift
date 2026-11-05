@@ -78,7 +78,7 @@ struct ReaderView: View {
                 pages: readerVM.pages,
                 shownPage: shownPage,
                 settings: readerSettingsVM.layoutSettings,
-                marks: readerVM.marks,
+                marks: referenceVM.marks,
                 onPageChanged: { readerVM.pageChanged($0) },
                 onCenterTapped: { readerVM.pageCenterTapped() },
                 onMarkTapped: { referenceVM.markTapped($0, at: $1) }

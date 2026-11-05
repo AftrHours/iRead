@@ -50,12 +50,6 @@ final class ReaderVM {
         return "Page \(shownPage.number) of \(pageCount)"
     }
 
-    /// Underlines show only while the controls do, so a turned page reads clean. Highlights always show.
-    var marks: [Int: [Mark]] {
-        guard !areControlsShown else { return referenceVM.marks }
-        return referenceVM.marks.mapValues { $0.filter { !$0.isUnderline } }
-    }
-
     init(book: BookRecord, readerCtrl: ReaderCtrl, progressCtrl: ProgressCtrl, readerStateCtrl: ReaderStateCtrl, appNav: AppNav,
          readerSettingsVM: ReaderSettingsVM, referenceVM: ReferenceVM) {
         self.book = book
