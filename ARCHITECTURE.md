@@ -14,8 +14,7 @@ App/
   Book/       per-book data shared by every feature (BookRecord, BookContent, Page, ReadingProgress,
               BookContentRepo, ProgRepo, EPUBParseSvc)
   Library/    library page: list, sort, grid/list, EPUB import
-  Analysis/   the AI features: underlines with their reference passages (UnderlineEngine), and character symbols
-    AI/       the character engine behind symbols (see below)
+  Analysis/   the AI feature: underlines with their reference passages (UnderlineEngine)
     Debug/    DEBUG-only underline debug sheet
   Reader/     reading page: paging, progress, settings, search, contents, reference cards
 ```
@@ -49,7 +48,7 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 | `VM`    | UI state, `@MainActor @Observable`. Receives intents (`xTapped`, `xChanged`, `onAppear`). |
 | `Ctrl`  | One use case, orchestrating repos and services. |
 | `Repo`  | Persists or caches data (files in Application Support, in-memory caches). Failed writes are logged to OSLog category `storage`. |
-| `Svc`   | Wraps a system or framework API (EPUBKit, UIKit, OSLog, Foundation Models). |
+| `Svc`   | Wraps a system or framework API (EPUBKit, UIKit, OSLog). |
 | `Rules` | Pure functions, no state, no I/O. |
 | `Models`| Plain data. |
 
@@ -59,27 +58,28 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 |---|---|---|
 | `ReaderCtrl` | Book content, current position, pages, page counts, search, position ↔ page | `BookContentRepo`, `PagerSvc` |
 | `ProgressCtrl` | Restore and save progress, log restore and finished events | `ProgRepo`, `EventSvc` |
-| `ReaderStateCtrl` | Reading settings, brightness, the "return to reading" position, edited symbols, recent searches | `ReadingSettingsRepo`, `BrightnessSvc`, `BookStateRepo` |
+| `ReaderStateCtrl` | Reading settings, brightness, the "return to reading" position, recent searches | `ReadingSettingsRepo`, `BrightnessSvc`, `BookStateRepo` |
 | `ReaderVM` (parent) | Pages, shown page, viewport, labels, show/hide controls, sheets, menu, back, contents, search, saving progress in page-turn order | `ReaderCtrl`, `ProgressCtrl`, `ReaderStateCtrl` (handed to `SearchVM`), `AppNav` + 2 children |
-| `ReaderSettingsVM` | Settings, layout settings, brightness, text size, line spacing, theme, symbols toggle | `ReaderStateCtrl` |
-| `ReferenceVM` | Marks, following underlines for the shown chapter, reference and symbol cards, chapter characters, edited symbols, highlight, jump and return, toast | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
-| `SearchVM` | Search query, results and recent searches | `ReaderCtrl`, `ReaderStateCtrl` |
+| `ReaderSettingsVM` | Settings, layout settings, brightness, text size, line spacing, theme | `ReaderStateCtrl` |
+| `ReferenceVM` | Marks, following underlines for the shown chapter, reference cards, highlight, jump and return, toast | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
+| `SearchVM` | Search query (searched once typing pauses for 300 ms, 2 characters or more), results and recent searches | `ReaderCtrl.search` (passed in as a closure, so tests can count searches), `ReaderStateCtrl` |
 
 `ReaderSettingsVM` and `ReferenceVM` share one `ReaderStateCtrl` per open book.
 
-State flows one way. `ReaderVM` pushes the shown page, the loaded pages and whether symbols are shown into
-`ReferenceVM.update(shownPage:loadedPages:areSymbolsShown:)`. `ReaderVM.marks` hides underlines while the controls
-are hidden (turning a page hides both; tapping the middle of the page shows both). Symbols and highlights always show. The children report back only through output callbacks:
-`ReferenceVM.onShowPage`, `ReferenceVM.onEditSymbol` and `ReaderSettingsVM.onSettingsChanged`, the same way
+State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
+`ReferenceVM.update(shownPage:loadedPages:)`. `ReaderVM.marks` hides underlines while the controls
+are hidden (turning a page hides both; tapping the middle of the page shows both). Highlights always show. The children report back only through output callbacks:
+`ReferenceVM.onShowPage` and `ReaderSettingsVM.onSettingsChanged`, the same way
 `SearchVM` reports `onResultPicked`.
 
 ## Main flows
 
 **Launch → library**
-1. `iReadApp.init` → `AppContainer.init` builds `EPUBParseSvc`, `ProgRepo`, `BookContentRepo`, `LibRepo`, `AnalysisRepo`, `UnderlineRepo` once.
+1. `iReadApp.init` → `AppContainer.init` builds `EPUBParseSvc`, `ProgRepo`, `BookContentRepo`, `LibRepo`, `UnderlineRepo` once.
 2. `AppContainer.makeLibVM` → `LibView`.
 3. `LibView.task` → `LibVM.onAppear` → `LibCtrl.loadLibrary` → `LibRepo.fetchBooks`
-   (the built-in sample books plus the imported books in `Books/library.json`, then `ProgRepo.progress(for:)` per book).
+   (the built-in sample books plus the imported books in `Books/library.json`), then `ProgRepo.progress(for:)` per book,
+   merged in by `LibCtrl` (a finished book shows as fully read).
 4. `LibVM.books` → `LibrarySorter.sorted(_:by:pinning:)`.
 5. `LibVM.loadCovers` → `LibCtrl.cover(for:)` → `BookContentRepo.cover(for:)` → `EPUBParseSvc.cover(from:)`, shrunk to a thumbnail once.
 
@@ -91,37 +91,40 @@ are hidden (turning a page hides both; tapping the middle of the page shows both
 
 **Book "…" menu in the library**
 - Share Book → `LibVM.shareTapped` → `LibCtrl.shareableFile(for:)` → `BookContentRepo.shareableFile(for:)` (a copy named after the title) → share sheet.
-- Mark as Finished / Still Reading → `LibCtrl.setFinished` → `LibRepo` → `ProgRepo.setFinished` (keeps the reading position).
-- Reset Progress → `LibCtrl.resetProgress` → `LibRepo` → `ProgRepo.resetProgress` (a saved 0% record, so samples don't fall back to mock progress).
+- Mark as Finished / Still Reading → `LibCtrl.setFinished` → `ProgRepo.setFinished` (keeps the reading position).
+- Reset Progress → `LibCtrl.resetProgress` → `ProgRepo.resetProgress` (a saved 0% record, so samples don't fall back to mock progress).
 - Remove → alert → `LibCtrl.remove` → `LibRepo.remove`: imported books are deleted; sample books are added to `Books/hidden-samples.json`.
+  Then `BookContentRepo.forget` drops the book's parse and cover from memory.
 
 **Open a book**
 1. `LibVM.bookTapped` → `AppNav.openReader(book:)`.
 2. `iReadApp` sees the route change → `AppContainer.makeReaderVM(book:)` (once per open) → `ReaderView`.
 3. `ReaderView.task` → `ReaderVM.onAppear`:
-   1. `ReferenceVM.onAppear` → `RefCtrl.startAnalysis` → `AnalysisRepo` (characters for symbols, whole book, in the background).
-   2. `ReaderCtrl.openBook` → `BookContentRepo.content(for:)` → `EPUBParseSvc.parse`
-      (imported `book.epub` first, then the bundled EPUB named in `BookRecord.samples`; one parse per book even with concurrent callers).
-   3. `ReaderSettingsVM.bookOpened` → `ReaderStateCtrl.settings`.
-   4. `ProgressCtrl.savedProgress` → `ReaderCtrl.restorePosition(from:)` → `ProgressCtrl.positionRestored`.
-   5. `ReferenceVM.bookOpened` → `ReaderStateCtrl.load`.
-   6. `ReaderVM.showCurrentPage` → `ReaderCtrl.currentPage` → `PagerSvc.pageRanges`.
-   7. `ReferenceVM.update` sees a new chapter → `RefCtrl.underlineUpdates(from:)` → `ChapterInputMapper` → `UnderlineRepo.underline`
+   1. `ReaderCtrl.openBook` → `BookContentRepo.content(for:)` → `EPUBParseSvc.parse`
+      (imported `book.epub` first, then the bundled EPUB named in `BookRecord.samples`; one parse per book even with concurrent callers;
+      only the 2 most recently used books stay parsed in memory).
+   2. `ReaderSettingsVM.bookOpened` → `ReaderStateCtrl.settings`.
+   3. `ProgressCtrl.savedProgress` → `ReaderCtrl.restorePosition(from:)` → `ProgressCtrl.positionRestored`.
+   4. `ReferenceVM.bookOpened` → `ReaderStateCtrl.load`.
+   5. `ReaderVM.showCurrentPage` → `ReaderCtrl.currentPage` → `PagerSvc.pageRanges`.
+   6. `ReferenceVM.update` sees a new chapter → `RefCtrl.underlineUpdates(from:)` → `ChapterInputMapper` → `UnderlineRepo.underline`
       (UnderlineEngine from the page's first sentence, then wrapping; a finished chapter loads from `Books/<id>/underlines/`).
       Each update → `ReferenceVM.loadMarks`.
 
 **Turn a page and save progress**
 1. `PageTurnView.onPageChanged` → `ReaderVM.pageChanged` → `ReaderVM.show` → `ReferenceVM.update`.
-2. → `ReaderCtrl.pages(around:)` → `ReferenceVM.update` → `ReferenceVM.loadMarks` → `RefCtrl.marks(on:highlighting:includingSymbols:)`.
+2. → `ReaderCtrl.pages(around:)` → `ReferenceVM.update` → `ReferenceVM.loadMarks` → `RefCtrl.marks(on:highlighting:)`.
 3. → after the previous turn's save finishes, `ReaderCtrl.pageChanged(to:)` → `ReadingProgressCalculator.progress(on:in:bookID:at:)`.
 4. → `ProgressCtrl.pageRead` → `ReadingProgressCalculator.merged` → `ProgRepo.save` (debounced),
    and `EventSvc.log(.bookFinished)` the first time the book is finished.
-5. Back or app backgrounded → `ProgressCtrl.saveNow` → `ProgRepo.saveNow`.
+5. Back → `ReaderVM.backTapped` waits for the last turn's save, then `ProgressCtrl.saveNow` → `ProgRepo.saveNow`,
+   then `ReferenceVM.close` (cancels the underline task for good), then `AppNav.closeReader`.
+   App backgrounded → `ProgressCtrl.saveNow` → `ProgRepo.saveNow`, and `ReferenceVM.appBackgrounded` pauses the underlining
+   until `appForegrounded`.
 
 **Tap an underline, jump, and return**
 1. Controls shown → `PageTextView` → `PageTurnView.onMarkTapped` → `ReferenceVM.markTapped`
    → `RefCtrl.underline(withID:)`, `ReaderCtrl.page(containing:)` → `RefCardView` (the phrase and the passage that explains it).
-   A tapped symbol → `RefCtrl.symbolCard(forMention:)` → `SymCardView`.
 2. Jump to Passage → `ReferenceVM.jumpToPassageTapped` → `ReaderCtrl.startPosition(of:)` → `ReaderStateCtrl.saveReturnPosition`
    → `ReaderCtrl.page(containing:)` → `onShowPage` → `ReaderVM.show(_:highlighting:)`.
 3. Return to Reading → `ReferenceVM.returnToReadingTapped` → `ReaderStateCtrl.returnPosition` → `ReaderCtrl.page(ifValid:)`
@@ -130,13 +133,10 @@ are hidden (turning a page hides both; tapping the middle of the page shows both
 ## Analysis
 
 - `Repo/UnderlineRepo`: runs UnderlineEngine's `UnderlineCtrl` on one chapter at a time, keeps its underlines in memory,
-  and saves each finished chapter. Starting another chapter stops the running one. In DEBUG it also keeps every phrase's
+  and saves each finished chapter with the parser and engine versions (`UnderlineRepoKnobs.engineVersion`, bumped with the
+  UnderlineEngine pin in `project.yml`); a chapter saved by another version is underlined again. Starting another chapter stops the running one. In DEBUG it also keeps every phrase's
   record (kept or dropped, and why) for `Debug/UnderlineDebugView` (ladybug button, or ⌘⇧D).
 - `Rules/ChapterInputMapper`: one chapter of `BookContent` → UnderlineEngine's `ChapterInput` (same indexes and ranges).
-- `Repo/AnalysisRepo` + `AI/`: the character engine. It finds characters and their mentions and gives each a symbol.
-  - `AI/Models`: the data passed between steps and the on-device model (requests, answers, resolved analysis).
-  - `AI/Rules`: pure steps that find, link and name character mentions and map them to a `BookAnalysis`.
-  - `AI/Svc`: wrappers for the on-device language model, word tagging, model availability and the per-chapter pass.
 
 ## Testing & CI
 
@@ -149,14 +149,14 @@ xcodebuild test -project iRead.xcodeproj -scheme iRead -testPlan Unit -destinati
 
 **Unit vs Full.** Both plans (`Unit.xctestplan`, `Full.xctestplan`, next to `project.yml`) run every test in parallel, in random order,
 with code coverage for `iRead`. Unit (the default) skips tests tagged `.golden`; Full runs them too. The golden tests compare
-real books with stored snapshots: BK-13 (chapter counts of the bundled books) and CH-27 (*Little Women* chapter 1).
+real books with stored snapshots: BK-13 (chapter counts of the bundled books).
 
 **How the tests are written.** Swift Testing (`@Suite`, `@Test`, `#expect`) in `Tests/`, in the same folders as `App/`.
 Each test is named by its ID in `docs/TEST_CASES.md`. A real bug the tests found is wrapped in `withKnownIssue` until it is fixed.
 - Every test gets its own temp folder (`TempFolder` in `Tests/Support/`); repos take it as `init(folder:)`.
 - `EventSvc`, `EPUBParseSvc` and `PagerSvc` are protocols so tests can use the fakes in `Tests/Support/Fakes.swift`. The app uses
   `EventSvcOSLog`, `EPUBParseSvcEPUBKit` and `PagerSvcTextKit`.
-- Tests never use Foundation Models (CI simulators don't have it): they use `LLMSvcUnavailable`.
+- Tests never call Foundation Models directly (CI simulators don't have it).
 
 **Fixtures** are small EPUBs in `Tests/Fixtures/`, made by `sh Tests/Fixtures/make-fixtures.sh` (the `.epub` files are committed too).
 `BookContent.make(chapters:)` builds book content with the parser's own code, so its ranges match a parsed book.

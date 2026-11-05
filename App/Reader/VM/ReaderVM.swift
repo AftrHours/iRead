@@ -8,16 +8,12 @@ final class ReaderVM {
         case contents
         case search(SearchVM)
         case themeSettings
-        case chapterSymbols
-        case editSymbol(Entity)
 
         var id: String {
             switch self {
             case .contents: "contents"
             case .search: "search"
             case .themeSettings: "themeSettings"
-            case .chapterSymbols: "chapterSymbols"
-            case .editSymbol(let entity): "editSymbol \(entity.id)"
             }
         }
     }
@@ -54,7 +50,7 @@ final class ReaderVM {
         return "Page \(shownPage.number) of \(pageCount)"
     }
 
-    /// Underlines show only while the controls do, so a turned page reads clean. Symbols and highlights always show.
+    /// Underlines show only while the controls do, so a turned page reads clean. Highlights always show.
     var marks: [Int: [Mark]] {
         guard !areControlsShown else { return referenceVM.marks }
         return referenceVM.marks.mapValues { $0.filter { !$0.isUnderline } }
@@ -73,7 +69,6 @@ final class ReaderVM {
             Task { await self?.showCurrentPage() }
         }
         referenceVM.onShowPage = { [weak self] page, underlineID in self?.show(page, highlighting: underlineID) }
-        referenceVM.onEditSymbol = { [weak self] entity in self?.sheet = .editSymbol(entity) }
     }
 
     func startPageLabel(ofChapter index: Int) -> String {
@@ -82,7 +77,6 @@ final class ReaderVM {
 
     func onAppear(viewport: Viewport) async {
         requestedViewport = viewport
-        referenceVM.onAppear()
         do {
             try await readerCtrl.openBook()
             await readerSettingsVM.bookOpened()
@@ -117,7 +111,12 @@ final class ReaderVM {
 
     func backTapped() {
         Task {
+            // Waits for the last page turn's save first, so it isn't lost.
+            await progressTask?.value
+            progressTask?.cancel()
+            progressTask = nil
             await progressCtrl.saveNow()
+            referenceVM.close()
             appNav.closeReader()
         }
     }
@@ -152,19 +151,16 @@ final class ReaderVM {
     }
 
     func searchTapped() {
-        openAfterMenu(.search(SearchVM(readerCtrl: readerCtrl, readerStateCtrl: readerStateCtrl) { [weak self] result in
-            self?.searchResultPicked(result)
-        }))
+        openAfterMenu(.search(SearchVM(
+            search: { [readerCtrl] in await readerCtrl.search($0) },
+            readerStateCtrl: readerStateCtrl,
+            onResultPicked: { [weak self] result in self?.searchResultPicked(result) }
+        )))
     }
 
     func themeSettingsTapped() {
         openAfterMenu(.themeSettings)
         readerSettingsVM.themeSettingsShown()
-    }
-
-    func chapterSymbolsTapped() {
-        referenceVM.chapterSymbolsShown()
-        openAfterMenu(.chapterSymbols)
     }
 
     func sheetDismissed() {
@@ -224,11 +220,7 @@ final class ReaderVM {
     }
 
     private func updateReferenceVM() {
-        referenceVM.update(
-            shownPage: shownPage,
-            loadedPages: pages,
-            areSymbolsShown: readerSettingsVM.layoutSettings.areSymbolsShown
-        )
+        referenceVM.update(shownPage: shownPage, loadedPages: pages)
     }
 
     private func loadPageTotals() {

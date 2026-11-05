@@ -108,12 +108,14 @@ final class LibVM {
     func removeConfirmed() {
         guard let book = bookToRemove else { return }
         bookToRemove = nil
-        do {
-            try libCtrl.remove(book)
-        } catch {
-            bookActionError = error.localizedDescription
+        Task {
+            do {
+                try await libCtrl.remove(book)
+            } catch {
+                bookActionError = error.localizedDescription
+            }
+            await reloadLibrary()
         }
-        Task { await reloadLibrary() }
     }
 
     func dismissBookActionError() {

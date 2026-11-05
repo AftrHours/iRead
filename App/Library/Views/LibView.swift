@@ -215,8 +215,9 @@ private struct ShareSheet: UIViewControllerRepresentable {
 #Preview("Library View") {
     let epubParseSvc = EPUBParseSvcEPUBKit()
     let libCtrl = LibCtrl(
-        libRepo: LibRepo(epubParseSvc: epubParseSvc, progRepo: ProgRepo()),
-        bookContentRepo: BookContentRepo(epubParseSvc: epubParseSvc)
+        libRepo: LibRepo(epubParseSvc: epubParseSvc),
+        bookContentRepo: BookContentRepo(epubParseSvc: epubParseSvc),
+        progRepo: ProgRepo()
     )
     return LibView(libVM: LibVM(libCtrl: libCtrl, appNav: AppNav()))
 }

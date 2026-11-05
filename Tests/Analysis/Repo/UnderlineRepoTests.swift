@@ -62,4 +62,14 @@ struct UnderlineRepoTests {
         let ids = await repo.underlines(inChapter: 1, of: bookID).map(\.id)
         #expect(Set(ids).count == ids.count)
     }
+
+    @Test("AN-14 a stored chapter is reused only when it was saved by the same UnderlineEngine version",
+          arguments: [(UnderlineRepoKnobs.engineVersion, true), (UnderlineRepoKnobs.engineVersion - 1, false), (nil, false)])
+    func engineVersion(stored version: Int?, isReused: Bool) async throws {
+        try StoredUnderlines.write([marker], chapter: 0, of: bookID, parserVersion: content.parserVersion, engineVersion: version, in: folder.url)
+        let repo = UnderlineRepo(folder: folder.url)
+        for await _ in await underline(0, in: repo) {}
+        #expect(await repo.underlines(inChapter: 0, of: bookID).contains(marker) == isReused)
+        #expect(try StoredUnderlines.read(chapter: 0, of: bookID, in: folder.url).engineVersion == UnderlineRepoKnobs.engineVersion)
+    }
 }

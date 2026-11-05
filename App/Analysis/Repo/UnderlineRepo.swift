@@ -2,11 +2,19 @@ import Foundation
 import OSLog
 import UnderlineEngine
 
+enum UnderlineRepoKnobs {
+    /// Saved with each finished chapter. Bump it when you change UnderlineEngine's pinned revision in project.yml,
+    /// so chapters underlined by the old engine are underlined again.
+    static let engineVersion = 1
+}
+
 /// Runs UnderlineEngine on one chapter at a time and keeps what it finds: in memory while the app runs, and on disk
 /// once a chapter is finished, so each chapter is underlined only once.
 actor UnderlineRepo {
     private struct StoredChapter: Codable {
         let parserVersion: Int
+        /// nil in files saved before this field existed.
+        let engineVersion: Int?
         let underlines: [Underline]
     }
 
@@ -81,14 +89,15 @@ actor UnderlineRepo {
         }
         guard !Task.isCancelled else { return }
         finishedChapters[bookID, default: []].insert(index)
-        save(StoredChapter(parserVersion: parserVersion, underlines: underlines(inChapter: index, of: bookID)), chapter: index, of: bookID)
+        save(StoredChapter(parserVersion: parserVersion, engineVersion: UnderlineRepoKnobs.engineVersion,
+                           underlines: underlines(inChapter: index, of: bookID)), chapter: index, of: bookID)
     }
 
     private func isFinished(_ chapter: Int, of bookID: UUID, parserVersion: Int) -> Bool {
         if finishedChapters[bookID]?.contains(chapter) == true { return true }
         guard let data = try? Data(contentsOf: fileURL(chapter: chapter, of: bookID)),
               let stored = try? JSONDecoder().decode(StoredChapter.self, from: data),
-              stored.parserVersion == parserVersion else { return false }
+              stored.parserVersion == parserVersion, stored.engineVersion == UnderlineRepoKnobs.engineVersion else { return false }
         foundUnderlines[bookID, default: [:]][chapter] = stored.underlines
         finishedChapters[bookID, default: []].insert(chapter)
         return true

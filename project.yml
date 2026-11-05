@@ -30,6 +30,7 @@ packages:
   # re-resolves packages, then commit project.yml and iRead.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved together.
   UnderlineEngine:
     url: https://github.com/AftrHours/UnderlineEngine
+    # Bump UnderlineRepoKnobs.engineVersion when you change this revision.
     revision: f0375d0b3171ed02992a520986eaad3ed937d03e
   # Runs SwiftLint on every build, using the rules in .swiftlint.yml. Xcode asks once to "Trust & Enable" it.
   SwiftLintPlugins:

@@ -62,12 +62,6 @@ struct ReaderView: View {
                 SearchView(searchVM: searchVM)
             case .themeSettings:
                 ThemeSettingsView(readerSettingsVM: readerSettingsVM)
-            case .chapterSymbols:
-                ChapterSymbolsView(referenceVM: referenceVM)
-            case .editSymbol(let entity):
-                EditSymbolView(entity: entity, style: referenceVM.symbolStyle(for: entity)) { style in
-                    referenceVM.symbolSaved(style, for: entity)
-                }
             }
         }
         #if DEBUG
@@ -92,18 +86,8 @@ struct ReaderView: View {
             .popover(
                 item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
                 attachmentAnchor: .rect(.rect(referenceVM.cardAnchor))
-            ) { card in
-                Group {
-                    switch card {
-                    case .reference(let referenceCard):
-                        RefCardView(card: referenceCard) { referenceVM.jumpToPassageTapped() }
-                    case .symbol(let symbolCard):
-                        SymCardView(card: symbolCard, style: referenceVM.symbolStyle(for: symbolCard.entity)) {
-                            referenceVM.editSymbolTapped(symbolCard.entity)
-                        }
-                    }
-                }
-                .onDisappear { referenceVM.cardDisappeared() }
+            ) { referenceCard in
+                RefCardView(card: referenceCard) { referenceVM.jumpToPassageTapped() }
             }
         } else if readerVM.hasFailedToOpen {
             ContentUnavailableView("Can't Open Book", systemImage: "book.closed")
@@ -184,7 +168,7 @@ struct ReaderView: View {
                 readerVM.menuTapped()
             }
             .popover(isPresented: Binding(get: { readerVM.isMenuShown }, set: { _ in readerVM.menuDismissed() }), arrowEdge: .bottom) {
-                ReaderMenuView(readerVM: readerVM, readerSettingsVM: readerSettingsVM)
+                ReaderMenuView(readerVM: readerVM)
                     .onDisappear { readerVM.menuDisappeared() }
             }
         }

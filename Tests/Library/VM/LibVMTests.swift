@@ -12,8 +12,9 @@ struct LibVMTests {
         let books = folder.url.appending(path: "Books")
         let epubParseSvc = EPUBParseSvcEPUBKit()
         let libCtrl = LibCtrl(
-            libRepo: LibRepo(epubParseSvc: epubParseSvc, progRepo: ProgRepo(folder: books), folder: books),
-            bookContentRepo: BookContentRepo(epubParseSvc: epubParseSvc, folder: books)
+            libRepo: LibRepo(epubParseSvc: epubParseSvc, folder: books),
+            bookContentRepo: BookContentRepo(epubParseSvc: epubParseSvc, folder: books),
+            progRepo: ProgRepo(folder: books)
         )
         let libVM = LibVM(libCtrl: libCtrl, appNav: AppNav())
         await libVM.onAppear()

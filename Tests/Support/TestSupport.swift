@@ -54,7 +54,10 @@ extension BookContent {
     }
 
     func text(ofSentence index: Int) -> String {
-        SentenceText.of(sentences[index], in: self)
+        let sentence = sentences[index]
+        let paragraph = paragraphs[sentence.paragraph]
+        let range = NSRange(location: paragraph.range.location + sentence.range.location, length: sentence.range.length)
+        return (chapters[paragraph.chapterIndex].text as NSString).substring(with: range)
     }
 }
 
@@ -83,18 +86,11 @@ func eventually(within seconds: Double = 5, isolation: isolated (any Actor)? = #
 /// An iPad-sized page, for ReaderCtrl and PagerSvc.
 let iPadViewport = Viewport(size: CGSize(width: 820, height: 1180))
 
-extension AnalysisRepo {
-    /// The character engine on fixed content, storing chapters under `folder`, with no language model.
-    static func make(content: BookContent, folder: URL) -> AnalysisRepo {
-        AnalysisRepo(content: { _ in content }, prepassSvc: BookPrepassSvc(), chapterSvc: ChapterAnalysisSvc(),
-                     store: ChapterAnalysisStore(root: folder), makeLLM: { LLMSvcUnavailable() })
-    }
-}
-
 /// UnderlineRepo's file for one finished chapter: `<folder>/<id>/underlines/chapter-N.json`.
 enum StoredUnderlines {
     struct File: Codable {
         let parserVersion: Int
+        let engineVersion: Int?
         let underlines: [Underline]
     }
 
@@ -102,10 +98,12 @@ enum StoredUnderlines {
         folder.appending(path: "\(bookID.uuidString)/underlines/chapter-\(chapter).json")
     }
 
-    static func write(_ underlines: [Underline], chapter: Int, of bookID: UUID, parserVersion: Int, in folder: URL) throws {
+    /// `engineVersion: nil` writes a file without the field, like builds before it existed.
+    static func write(_ underlines: [Underline], chapter: Int, of bookID: UUID, parserVersion: Int,
+                      engineVersion: Int? = UnderlineRepoKnobs.engineVersion, in folder: URL) throws {
         let url = url(chapter: chapter, of: bookID, in: folder)
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
-        try JSONEncoder().encode(File(parserVersion: parserVersion, underlines: underlines)).write(to: url)
+        try JSONEncoder().encode(File(parserVersion: parserVersion, engineVersion: engineVersion, underlines: underlines)).write(to: url)
     }
 
     static func read(chapter: Int, of bookID: UUID, in folder: URL) throws -> File {
@@ -125,41 +123,5 @@ extension Underline {
                          reference: AnswerPassage(sentence: sentence(passageParagraph, passageRange), paragraph: passageParagraph,
                                                   range: passageRange, text: passage),
                          decidedBy: .rules)
-    }
-}
-
-extension ResolvedMention {
-    static func name(_ text: String, sentence: Int = 0, at location: Int = 0, entity: Int? = nil) -> ResolvedMention {
-        ResolvedMention(sentence: sentence, location: location, length: text.utf16.count, text: text, form: .name,
-                        head: NameKey.of(text), modifiers: [], entity: entity)
-    }
-
-    static func description(_ text: String, head: String, modifiers: [String] = [], sentence: Int = 0, at location: Int = 0,
-                            entity: Int? = nil) -> ResolvedMention {
-        ResolvedMention(sentence: sentence, location: location, length: text.utf16.count, text: text, form: .description,
-                        head: head, modifiers: modifiers, entity: entity)
-    }
-}
-
-extension ResolvedEntity {
-    static func named(_ name: String, key: Int, since sentence: Int = 0) -> ResolvedEntity {
-        ResolvedEntity(key: key, names: [EntityName(text: name, key: NameKey.of(name), sinceSentence: sentence)], label: name,
-                       introSentence: sentence, mergeEdges: [])
-    }
-
-    static func unnamed(_ label: String, key: Int, since sentence: Int = 0) -> ResolvedEntity {
-        ResolvedEntity(key: key, names: [], label: label, introSentence: sentence, mergeEdges: [])
-    }
-}
-
-extension AnalysisRepo {
-    /// Starts the analysis and waits until it has gone through every chapter.
-    func runToEnd(_ bookID: UUID) async -> [Int] {
-        startAnalysis(for: bookID)
-        var chapters: [Int] = []
-        for await chapter in updates(for: bookID) {
-            chapters.append(chapter)
-        }
-        return chapters
     }
 }
