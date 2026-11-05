@@ -1,6 +1,7 @@
 name: iRead
 options:
-  bundleIdPrefix: com.AftrHours
+  # Same prefix as the bundle IDs below.
+  bundleIdPrefix: com.aftrhours
   deploymentTarget:
     iOS: "26.0"
   createIntermediateGroups: true
@@ -20,13 +21,24 @@ settings:
     STRING_CATALOG_GENERATE_SYMBOLS: YES
     SWIFT_EMIT_LOC_STRINGS: YES
 packages:
-  ZIPFoundation:
-    url: https://github.com/weichsel/ZIPFoundation
-    from: 0.9.20
+  # Reads EPUB files (brings in ZIPFoundation itself). Lives in this repo, under Packages/.
+  EPUBKit:
+    path: Packages/EPUBKit
+  # Finds phrases worth underlining and the earlier passage that explains each one. Lives in its own repo.
+  # Pinned to one commit, so every build (and Xcode Cloud, which only reads the committed Package.resolved) uses the same code.
+  # To update it on purpose: put the new commit hash here, run `xcodegen generate`, open the project once so Xcode
+  # re-resolves packages, then commit project.yml and iRead.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved together.
+  UnderlineEngine:
+    url: https://github.com/AftrHours/UnderlineEngine
+    revision: f0375d0b3171ed02992a520986eaad3ed937d03e
   # Runs SwiftLint on every build, using the rules in .swiftlint.yml. Xcode asks once to "Trust & Enable" it.
   SwiftLintPlugins:
     url: https://github.com/SimplyDanny/SwiftLintPlugins
     from: 0.65.1
+# The test plans sit next to the project and are listed in it, so Xcode's Test navigator finds their targets.
+fileGroups:
+  - Unit.xctestplan
+  - Full.xctestplan
 targets:
   iRead:
     type: application
@@ -34,17 +46,26 @@ targets:
     sources:
       - path: App
     dependencies:
-      - package: ZIPFoundation
+      - package: EPUBKit
+      - package: UnderlineEngine
     buildToolPlugins:
       - plugin: SwiftLintBuildToolPlugin
         package: SwiftLintPlugins
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.AftrHours.iRead
-        INFOPLIST_KEY_CFBundleDisplayName: "iRead"
+        # App identity. Renaming is a one-line edit here.
+        # - Display name (the name under the app icon): can change any time.
+        # - Bundle ID: must NEVER change after the first upload to App Store Connect, which ties the app to it.
+        #   Keep it a literal value (not $(VAR) or an .xcconfig): Xcode Cloud reads it from the project as written.
+        #   iReadTests uses this ID + ".tests".
+        PRODUCT_BUNDLE_IDENTIFIER: com.aftrhours.reader
+        INFOPLIST_KEY_CFBundleDisplayName: iRead
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
-        TARGETED_DEVICE_FAMILY: "2"
+        # Universal: 1 = iPhone, 2 = iPad.
+        TARGETED_DEVICE_FAMILY: "1,2"
+        # iPhone: portrait only, like a book held in one hand.
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
         # iPad apps must support every orientation (required for iPad windowing and multitasking).
         # Set for iPad and in general, because Xcode's check reads the general one.
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: >-
@@ -57,8 +78,35 @@ targets:
         SUPPORTS_MACCATALYST: NO
         MARKETING_VERSION: "0.1"
         CURRENT_PROJECT_VERSION: "1"
+  # Unit tests (Swift Testing), run inside the app on an iPhone or iPad simulator. Folders mirror App/.
+  iReadTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests
+        excludes:
+          - "Fixtures/make-fixtures.sh"
+    dependencies:
+      - target: iRead
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aftrhours.reader.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
+# Shared, so Xcode Cloud sees it. It keeps the default Archive action: Xcode Cloud only lists products whose scheme can archive.
 schemes:
   iRead:
     build:
       targets:
         iRead: all
+        iReadTests: [test]
+    test:
+      # Listed here as well as in the plans, the way Xcode itself writes a scheme: Xcode's Test navigator reads it from here.
+      targets:
+        - name: iReadTests
+          parallelizable: true
+      # Unit (the default) skips tests tagged .golden; Full runs everything. Code coverage is set in the plans.
+      testPlans:
+        - path: Unit.xctestplan
+          defaultPlan: true
+        - path: Full.xctestplan

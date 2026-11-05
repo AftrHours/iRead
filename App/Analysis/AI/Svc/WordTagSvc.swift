@@ -23,7 +23,7 @@ struct WordTagSvc: Sendable {
         return SentenceTags(tokens: texts.map { tokensByNaturalLanguage($0, tagger: tagger) })
     }
 
-    private func hasEnglishModels() -> Bool {
+    func hasEnglishModels() -> Bool {
         let probe = "John walked to London."
         let tagger = NLTagger(tagSchemes: [.nameType])
         tagger.string = probe

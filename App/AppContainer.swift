@@ -6,21 +6,28 @@ struct AppContainer {
     private let libRepo: LibRepo
     private let bookContentRepo: BookContentRepo
     private let analysisRepo: AnalysisRepo
+    private let underlineRepo = UnderlineRepo()
     private let progRepo: ProgRepo
     private let readingSettingsRepo = ReadingSettingsRepo()
     private let bookStateRepo = BookStateRepo()
-    private let pagerSvc = PagerSvc()
-    private let eventSvc = EventSvc()
+    private let pagerSvc = PagerSvcTextKit()
+    private let eventSvc = EventSvcOSLog()
     private let brightnessSvc = BrightnessSvc()
 
     init() {
-        let epubParseSvc = EPUBParseSvc()
+        let epubParseSvc = EPUBParseSvcEPUBKit()
         let progRepo = ProgRepo()
         let bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc)
         self.progRepo = progRepo
         self.bookContentRepo = bookContentRepo
         libRepo = LibRepo(epubParseSvc: epubParseSvc, progRepo: progRepo)
-        analysisRepo = AnalysisRepo(bookContentRepo: bookContentRepo, analysisScheduleSvc: AnalysisScheduleSvc())
+        analysisRepo = AnalysisRepo(
+            content: { [bookContentRepo] in try await bookContentRepo.content(for: $0) },
+            prepassSvc: BookPrepassSvc(),
+            chapterSvc: ChapterAnalysisSvc(),
+            store: ChapterAnalysisStore(root: URL.applicationSupportDirectory.appending(path: "Books")),
+            makeLLM: { ModelAvailSvc().makeLLMSvc() }
+        )
     }
 
     func makeLibVM() -> LibVM {
@@ -43,7 +50,7 @@ struct AppContainer {
             appNav: appNav,
             readerSettingsVM: ReaderSettingsVM(readerStateCtrl: readerStateCtrl),
             referenceVM: ReferenceVM(
-                refCtrl: RefCtrl(bookID: book.id, bookContentRepo: bookContentRepo, analysisRepo: analysisRepo),
+                refCtrl: RefCtrl(bookID: book.id, bookContentRepo: bookContentRepo, analysisRepo: analysisRepo, underlineRepo: underlineRepo),
                 readerStateCtrl: readerStateCtrl,
                 readerCtrl: readerCtrl
             )

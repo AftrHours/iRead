@@ -1,8 +1,13 @@
 import UIKit
 
-struct PagerSvc {
+/// A protocol so tests can use fixed page ranges.
+protocol PagerSvc: Sendable {
+    func pageRanges(for text: String, viewport: Viewport, settings: ReadingSettings) async -> [NSRange]
+}
+
+struct PagerSvcTextKit: PagerSvc {
     func pageRanges(for text: String, viewport: Viewport, settings: ReadingSettings) async -> [NSRange] {
-        let pageSize = PageTextStyle.textFrame(in: CGRect(origin: .zero, size: viewport.size)).size
+        let pageSize = PageTextStyle.textFrame(in: CGRect(origin: .zero, size: viewport.size), settings: settings).size
         let attributes = PageTextStyle.attributes(settings: settings)
         let storage = NSTextStorage(string: text, attributes: attributes)
         let layoutManager = NSLayoutManager()

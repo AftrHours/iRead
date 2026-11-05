@@ -54,6 +54,12 @@ final class ReaderVM {
         return "Page \(shownPage.number) of \(pageCount)"
     }
 
+    /// Underlines show only while the controls do, so a turned page reads clean. Symbols and highlights always show.
+    var marks: [Int: [Mark]] {
+        guard !areControlsShown else { return referenceVM.marks }
+        return referenceVM.marks.mapValues { $0.filter { !$0.isUnderline } }
+    }
+
     init(book: BookRecord, readerCtrl: ReaderCtrl, progressCtrl: ProgressCtrl, readerStateCtrl: ReaderStateCtrl, appNav: AppNav,
          readerSettingsVM: ReaderSettingsVM, referenceVM: ReferenceVM) {
         self.book = book
@@ -66,7 +72,7 @@ final class ReaderVM {
         readerSettingsVM.onSettingsChanged = { [weak self] in
             Task { await self?.showCurrentPage() }
         }
-        referenceVM.onShowPage = { [weak self] page, mentionIndex in self?.show(page, highlighting: mentionIndex) }
+        referenceVM.onShowPage = { [weak self] page, underlineID in self?.show(page, highlighting: underlineID) }
         referenceVM.onEditSymbol = { [weak self] entity in self?.sheet = .editSymbol(entity) }
     }
 
@@ -118,6 +124,11 @@ final class ReaderVM {
 
     func appBackgrounded() {
         Task { await progressCtrl.saveNow() }
+        referenceVM.appBackgrounded()
+    }
+
+    func appForegrounded() {
+        referenceVM.appForegrounded()
     }
 
     func menuTapped() {
@@ -172,7 +183,7 @@ final class ReaderVM {
 
     private func searchResultPicked(_ result: SearchResult) {
         sheet = nil
-        Task { show(await readerCtrl.page(containing: result.position)) }
+        Task { show(await readerCtrl.page(containing: result.position), searchResult: result) }
     }
 
     private func loadPages(around page: Page) {
@@ -199,8 +210,8 @@ final class ReaderVM {
         loadPageTotals()
     }
 
-    private func show(_ page: Page, highlighting mentionIndex: Int? = nil) {
-        referenceVM.pageShown(highlighting: mentionIndex)
+    private func show(_ page: Page, highlighting underlineID: String? = nil, searchResult: SearchResult? = nil) {
+        referenceVM.pageShown(highlighting: underlineID, searchResult: searchResult)
         shownPage = page
         updateReferenceVM()
         loadPages(around: page)

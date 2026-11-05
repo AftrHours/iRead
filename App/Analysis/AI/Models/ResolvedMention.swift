@@ -1,11 +1,11 @@
 import Foundation
 
-enum MentionForm: Sendable {
+enum MentionForm: Sendable, Codable {
     case name
     case description
 }
 
-struct ResolvedMention: Sendable {
+struct ResolvedMention: Sendable, Codable {
     let sentence: Int
     let location: Int
     let length: Int
@@ -14,6 +14,4 @@ struct ResolvedMention: Sendable {
     let head: String
     let modifiers: [String]
     var entity: Int?
-    var decidedBy: DecidedBy?
-    var isUndecided = false
 }

@@ -23,9 +23,10 @@ extension ResolvedAnalysis {
     }
 
     mutating func merge(_ from: Int, into: Int, at sentence: Int, decidedBy: DecidedBy) {
-        let source = finalKey(of: from), target = finalKey(of: into)
+        let source = follow(from, upTo: sentence), target = follow(into, upTo: sentence)
         guard source != target, let i = entities.firstIndex(where: { $0.key == source }) else { return }
         entities[i].mergeEdges.append(MergeEdge(into: target, mergedAtSentence: sentence, decidedBy: decidedBy))
+        entities[i].mergeEdges.sort { $0.mergedAtSentence < $1.mergedAtSentence }
     }
 
     private func follow(_ key: Int, upTo sentence: Int?) -> Int {

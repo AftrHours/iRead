@@ -7,13 +7,14 @@ enum CastBuilderKnobs {
 }
 
 enum CastBuilder {
-    static func cast(from mentions: [ResolvedMention], sentences: [NumberedSentence]) -> [ResolvedEntity] {
-        var analysis = ResolvedAnalysis()
+    static func extend(_ memory: CastMemory, with mentions: [ResolvedMention], sentences: [NumberedSentence], vocabulary: NameVocabulary) -> CastMemory {
+        var analysis = ResolvedAnalysis(entities: memory.entities)
         let names = mentions.filter { $0.form == .name }
         let byKey = Dictionary(grouping: names, by: \.head)
 
-        for mention in names where analysis.entityKey(forName: mention.head) == nil && (byKey[mention.head]?.count ?? 0) >= CastBuilderKnobs.minNameCount {
-            let key = analysis.entities.count + 1
+        for mention in names where analysis.entityKey(forName: mention.head) == nil
+            && vocabulary.nameCounts[mention.head, default: 0] >= CastBuilderKnobs.minNameCount {
+            let key = (analysis.entities.map(\.key).max() ?? 0) + 1
             analysis.entities.append(ResolvedEntity(key: key,
                                             names: [EntityName(text: mention.text, key: mention.head, sinceSentence: mention.sentence)],
                                             label: mostFrequentText(of: byKey[mention.head] ?? []),
@@ -28,7 +29,9 @@ enum CastBuilder {
                 joinNames(first, second, at: sentence, decidedBy: .rule, in: &analysis)
             }
         }
-        return analysis.entities
+        var extended = memory
+        extended.entities = analysis.entities
+        return extended
     }
 
     private static func joinNames(_ first: ResolvedMention, _ second: ResolvedMention, at sentence: Int,
@@ -55,6 +58,11 @@ enum CastBuilder {
     }
 
     private static func mostFrequentText(of mentions: [ResolvedMention]) -> String {
-        Dictionary(grouping: mentions, by: \.text).max { $0.value.count < $1.value.count }?.key ?? mentions.first?.text ?? ""
+        let counts = Dictionary(grouping: mentions, by: \.text).mapValues(\.count)
+        var best = mentions.first?.text ?? ""
+        for mention in mentions where counts[mention.text, default: 0] > counts[best, default: 0] {
+            best = mention.text
+        }
+        return best
     }
 }

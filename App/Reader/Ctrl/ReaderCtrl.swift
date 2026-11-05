@@ -3,7 +3,7 @@ import Foundation
 actor ReaderCtrl {
     private let bookID: UUID
     private let bookContentRepo: BookContentRepo
-    private let pagerSvc: PagerSvc
+    private let pagerSvc: any PagerSvc
 
     private var content = BookContent(chapters: [], paragraphs: [], sentences: [], parserVersion: 0)
     private var readingSettings = ReadingSettings()
@@ -11,7 +11,7 @@ actor ReaderCtrl {
     private var position = ReadingPosition(paragraph: 0, charOffset: 0)
     private var chapterPages: [[NSRange]] = []
 
-    init(bookID: UUID, bookContentRepo: BookContentRepo, pagerSvc: PagerSvc) {
+    init(bookID: UUID, bookContentRepo: BookContentRepo, pagerSvc: any PagerSvc) {
         self.bookID = bookID
         self.bookContentRepo = bookContentRepo
         self.pagerSvc = pagerSvc
@@ -47,6 +47,16 @@ actor ReaderCtrl {
     func page(containing position: ReadingPosition) async -> Page {
         let paragraph = content.paragraphs[position.paragraph]
         return await page(chapterIndex: paragraph.chapterIndex, offset: paragraph.range.location + position.charOffset)
+    }
+
+    /// Where text starting at a position falls on a page, or nil if it isn't on that page.
+    func range(from position: ReadingPosition, length: Int, on page: Page) -> NSRange? {
+        let paragraph = content.paragraphs[position.paragraph]
+        guard paragraph.chapterIndex == page.chapterIndex else { return nil }
+        let chapterRange = NSRange(location: paragraph.range.location + position.charOffset, length: length)
+        let visibleRange = NSIntersectionRange(chapterRange, page.range)
+        guard visibleRange.length > 0 else { return nil }
+        return NSRange(location: visibleRange.location - page.range.location, length: visibleRange.length)
     }
 
     func pages(around page: Page) async -> [Page] {
@@ -87,6 +97,7 @@ actor ReaderCtrl {
                 chapterTitle: content.chapters[chapterIndex].title,
                 snippet: match.snippet,
                 position: match.position,
+                length: match.length,
                 pageNumber: pagesBefore(chapterIndex: chapterIndex) + pageIndex + 1
             )
         }

@@ -1,21 +1,27 @@
 import SwiftUI
 
 struct SymCardView: View {
-    let entity: Entity
+    let card: SymbolCard
     let style: SymbolStyle
     let onEditTapped: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Label {
-                Text(entity.name)
+                Text(card.entity.name)
             } icon: {
                 Image(systemName: style.systemName)
                     .foregroundStyle(Color(SymbolPalette.color(at: style.colorIndex)))
             }
             .font(.title3.bold())
-            Text(entity.summary)
-                .fixedSize(horizontal: false, vertical: true)
+            if let appearance = card.appearance {
+                Text("“\(appearance.text)”")
+                    .fixedSize(horizontal: false, vertical: true)
+            } else {
+                Text("\(card.entity.name) hasn't been described yet.")
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
             HStack {
                 Spacer()
                 Button("Edit Symbol", action: onEditTapped)

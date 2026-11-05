@@ -4,6 +4,9 @@ struct ReaderView: View {
     @State private var readerVM: ReaderVM
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
+    #if DEBUG
+    @State private var isUnderlineDebugShown = false
+    #endif
 
     private var readerSettingsVM: ReaderSettingsVM { readerVM.readerSettingsVM }
     private var referenceVM: ReferenceVM { readerVM.referenceVM }
@@ -47,6 +50,8 @@ struct ReaderView: View {
         .onChange(of: scenePhase) { _, scenePhase in
             if scenePhase == .background {
                 readerVM.appBackgrounded()
+            } else if scenePhase == .active {
+                readerVM.appForegrounded()
             }
         }
         .sheet(item: Binding(get: { readerVM.sheet }, set: { _ in readerVM.sheetDismissed() })) { sheet in
@@ -65,6 +70,11 @@ struct ReaderView: View {
                 }
             }
         }
+        #if DEBUG
+        .sheet(isPresented: $isUnderlineDebugShown) {
+            UnderlineDebugView(underlineDebugVM: referenceVM.makeUnderlineDebugVM())
+        }
+        #endif
     }
 
     @ViewBuilder
@@ -74,7 +84,7 @@ struct ReaderView: View {
                 pages: readerVM.pages,
                 shownPage: shownPage,
                 settings: readerSettingsVM.layoutSettings,
-                marks: referenceVM.marks,
+                marks: readerVM.marks,
                 onPageChanged: { readerVM.pageChanged($0) },
                 onCenterTapped: { readerVM.pageCenterTapped() },
                 onMarkTapped: { referenceVM.markTapped($0, at: $1) }
@@ -87,9 +97,9 @@ struct ReaderView: View {
                     switch card {
                     case .reference(let referenceCard):
                         RefCardView(card: referenceCard) { referenceVM.jumpToPassageTapped() }
-                    case .symbol(let entity):
-                        SymCardView(entity: entity, style: referenceVM.symbolStyle(for: entity)) {
-                            referenceVM.editSymbolTapped(entity)
+                    case .symbol(let symbolCard):
+                        SymCardView(card: symbolCard, style: referenceVM.symbolStyle(for: symbolCard.entity)) {
+                            referenceVM.editSymbolTapped(symbolCard.entity)
                         }
                     }
                 }
@@ -152,6 +162,12 @@ struct ReaderView: View {
                     readerVM.backTapped()
                 }
                 Spacer()
+                #if DEBUG
+                circleButton(systemImage: "ladybug", label: "Underline Debug") {
+                    isUnderlineDebugShown = true
+                }
+                .keyboardShortcut("d", modifiers: [.command, .shift])
+                #endif
             }
         }
         .padding(.horizontal, 16)

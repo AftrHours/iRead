@@ -4,6 +4,6 @@ struct Entity: Sendable {
     let id: String
     let name: String
     let symbolName: String
-    let summary: String
+    let appearances: [ContextPassage]
     let names: [String]
 }
