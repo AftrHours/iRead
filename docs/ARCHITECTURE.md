@@ -47,7 +47,9 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
   Everything else uses `SavedUnderline`, so an engine update only touches those files.
 - Add a layer or type only when it does real work. A protocol is added when a test needs one.
 
-## What the suffixes mean
+## Naming
+
+A type's last word says its layer:
 
 | Suffix  | Job |
 |---------|-----|
@@ -58,6 +60,25 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 | `Svc`   | Wraps a system or framework API (EPUBKit, UIKit, OSLog, Foundation Models, CloudKit). |
 | `Rules` | Pure functions, no state, no I/O. |
 | `Models`| Plain data. |
+| `Knobs` | Constants worth tuning, next to the type that uses them (`UnderlineRepoKnobs.engineVersion`). |
+
+Names that are easy to mix up:
+
+- **Ref = Reference.** `RefCtrl`, `RefCardView`, `ReferenceVM` and `ReferenceCard` are all about the reference: the earlier
+  passage that explains an underline. **Rating** is the reader's thumbs up / down on that reference (`RatingVM`, `RatingCtrl`,
+  `RatingRepo`, `UnderlineRating`, `Verdict`).
+- **Ours or the engine's.** `SavedUnderline` and `ContextPassage` are the app's. `Underline`, `AnswerPassage`, `UnderlineRecord`
+  and `UnderlineCtrl` come from the UnderlineEngine package: `UnderlineCtrl` is the engine's entry point, not one of our Ctrls.
+- **Book ID vs fingerprint.** `BookRecord.id` is a random UUID for one copy in the library. `BookContent.fingerprint` is a hash of
+  the book's text, the same on every device, so underlines and ratings are kept under it.
+- **Short forms.** `Lib` = Library, `Prog` = Progress (`ProgRepo` saves what `ProgressCtrl` decides).
+- **Settings vs state.** `ReadingSettings` is how the page looks (text size, spacing, theme). `BookState` is one book's
+  return-to-reading spot and recent searches. `ReaderStateCtrl` handles both.
+- **Mark** is anything drawn on the page: an underline or a highlight.
+- **Protocols and their types.** The protocol is `XSvc`; the app's real one adds the framework (`CloudSvcCloudKit`,
+  `EPUBParseSvcEPUBKit`); test ones in `Tests/Support/Fakes.swift` add `Fake`, `Spy` or `Fixed`.
+- **iCloud databases.** `CloudDatabase.reader` is the reader's private database (saved underlines);
+  `.developers` is the public one (shared ratings).
 
 ## Reader split
 
