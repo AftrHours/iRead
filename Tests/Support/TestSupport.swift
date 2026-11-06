@@ -86,7 +86,7 @@ func eventually(within seconds: Double = 5, isolation: isolated (any Actor)? = #
 /// An iPad-sized page, for ReaderCtrl and PagerSvc.
 let iPadViewport = Viewport(size: CGSize(width: 820, height: 1180))
 
-/// UnderlineRepo's file for one finished chapter: `<folder>/<id>/underlines/chapter-N.json`.
+/// UnderlineRepo's file for one finished chapter: `<folder>/<book fingerprint>/chapter-N.json`.
 enum StoredUnderlines {
     struct File: Codable {
         let parserVersion: Int
@@ -94,20 +94,20 @@ enum StoredUnderlines {
         let underlines: [Underline]
     }
 
-    static func url(chapter: Int, of bookID: UUID, in folder: URL) -> URL {
-        folder.appending(path: "\(bookID.uuidString)/underlines/chapter-\(chapter).json")
+    static func url(chapter: Int, of book: String, in folder: URL) -> URL {
+        folder.appending(path: "\(book)/chapter-\(chapter).json")
     }
 
     /// `engineVersion: nil` writes a file without the field, like builds before it existed.
-    static func write(_ underlines: [Underline], chapter: Int, of bookID: UUID, parserVersion: Int,
+    static func write(_ underlines: [Underline], chapter: Int, of book: String, parserVersion: Int,
                       engineVersion: Int? = UnderlineRepoKnobs.engineVersion, in folder: URL) throws {
-        let url = url(chapter: chapter, of: bookID, in: folder)
+        let url = url(chapter: chapter, of: book, in: folder)
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
         try JSONEncoder().encode(File(parserVersion: parserVersion, engineVersion: engineVersion, underlines: underlines)).write(to: url)
     }
 
-    static func read(chapter: Int, of bookID: UUID, in folder: URL) throws -> File {
-        try JSONDecoder().decode(File.self, from: Data(contentsOf: url(chapter: chapter, of: bookID, in: folder)))
+    static func read(chapter: Int, of book: String, in folder: URL) throws -> File {
+        try JSONDecoder().decode(File.self, from: Data(contentsOf: url(chapter: chapter, of: book, in: folder)))
     }
 }
 

@@ -65,7 +65,8 @@ struct EPUBParseSvcEPUBKit: EPUBParseSvc {
                 paragraphs: firstParagraph..<paragraphs.count
             ))
         }
-        return BookContent(chapters: chapters, paragraphs: paragraphs, sentences: sentences, parserVersion: 1)
+        return BookContent(chapters: chapters, paragraphs: paragraphs, sentences: sentences, parserVersion: 1,
+                           fingerprint: BookFingerprint.of(chapters))
     }
 
     private static func sentenceRanges(in text: String, tokenizer: NLTokenizer) -> [NSRange] {

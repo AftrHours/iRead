@@ -5,7 +5,8 @@ struct AppContainer {
     let appNav = AppNav()
     private let libRepo: LibRepo
     private let bookContentRepo: BookContentRepo
-    private let underlineRepo = UnderlineRepo()
+    private let underlineRepo: UnderlineRepo
+    private let ratingRepo: RatingRepo
     private let progRepo: ProgRepo
     private let readingSettingsRepo = ReadingSettingsRepo()
     private let bookStateRepo = BookStateRepo()
@@ -18,6 +19,9 @@ struct AppContainer {
         progRepo = ProgRepo()
         bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc)
         libRepo = LibRepo(epubParseSvc: epubParseSvc)
+        let cloudSvc = CloudSvcCloudKit()
+        underlineRepo = UnderlineRepo(modelCheckSvc: ModelCheckSvc(), cloudSvc: cloudSvc)
+        ratingRepo = RatingRepo(cloudSvc: cloudSvc)
     }
 
     func makeLibVM() -> LibVM {
@@ -40,7 +44,8 @@ struct AppContainer {
             appNav: appNav,
             readerSettingsVM: ReaderSettingsVM(readerStateCtrl: readerStateCtrl),
             referenceVM: ReferenceVM(
-                refCtrl: RefCtrl(bookID: book.id, bookContentRepo: bookContentRepo, underlineRepo: underlineRepo),
+                refCtrl: RefCtrl(bookID: book.id, bookTitle: book.title, bookContentRepo: bookContentRepo,
+                                 underlineRepo: underlineRepo, ratingRepo: ratingRepo),
                 readerStateCtrl: readerStateCtrl,
                 readerCtrl: readerCtrl
             )

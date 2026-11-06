@@ -87,7 +87,18 @@ struct ReaderView: View {
                 item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
                 attachmentAnchor: .rect(.rect(referenceVM.cardAnchor))
             ) { referenceCard in
-                RefCardView(card: referenceCard) { referenceVM.jumpToPassageTapped() }
+                RefCardView(
+                    card: referenceCard,
+                    onVerdictTapped: { referenceVM.verdictTapped($0) },
+                    onJumpTapped: { referenceVM.jumpToPassageTapped() }
+                )
+                .alert("Share Your Ratings?", isPresented: Binding(get: { referenceVM.isAskingToShare }, set: { _ in })) {
+                    Button("Share") { referenceVM.sharingChosen(true) }
+                    Button("Don't Share", role: .cancel) { referenceVM.sharingChosen(false) }
+                } message: {
+                    Text("Ratings help the developers improve underlines. Each rating sends the underlined sentence and its passage, "
+                         + "without your name. You can change this in the reader menu.")
+                }
             }
         } else if readerVM.hasFailedToOpen {
             ContentUnavailableView("Can't Open Book", systemImage: "book.closed")

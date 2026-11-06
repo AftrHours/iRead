@@ -16,6 +16,7 @@ final class UnderlineDebugVM {
     private(set) var summary = ""
     private(set) var note: String?
     private(set) var rows: [Row] = []
+    private(set) var cloudLines: [String] = []
     private let refCtrl: RefCtrl
     private let chapterIndex: Int?
 
@@ -27,7 +28,9 @@ final class UnderlineDebugVM {
     /// Refreshes every second while open, because the engine may still be working on the chapter.
     func onAppear() async {
         guard let chapterIndex else { return }
+        let account = Self.text(of: await refCtrl.cloudAccount())
         while !Task.isCancelled {
+            cloudLines = await cloudStatus(chapterIndex, account: account)
             let model = await refCtrl.underlinesUseModel() ? "Foundation Models" : "Rules only"
             let records = await refCtrl.underlineRecords(inChapter: chapterIndex)
             if records.isEmpty {
@@ -49,6 +52,30 @@ final class UnderlineDebugVM {
             }
             try? await Task.sleep(for: .seconds(1))
         }
+    }
+
+    private static func text(of account: CloudAccount?) -> String {
+        switch account {
+        case .signedIn?: "signed in"
+        case .signedOut?: "not signed in (Settings app)"
+        case .restricted?: "not allowed on this device"
+        case .unknown?: "couldn't tell (offline?)"
+        case nil: "none"
+        }
+    }
+
+    private func cloudStatus(_ chapterIndex: Int, account: String) async -> [String] {
+        let sharing = switch await refCtrl.sharesRatings() {
+        case true?: "on"
+        case false?: "off"
+        case nil: "not asked yet"
+        }
+        let ratings = await refCtrl.ratingsStatus()
+        return [
+            "Account: \(account)",
+            "This chapter: \(await refCtrl.cloudResult(inChapter: chapterIndex) ?? "still underlining")",
+            "Ratings: sharing \(sharing) · \(ratings.unsent) waiting to send" + (ratings.lastSend.map { " · \($0)" } ?? "")
+        ]
     }
 
     private static func detail(of record: UnderlineRecord) -> String {

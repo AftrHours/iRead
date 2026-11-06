@@ -5,7 +5,7 @@ actor ReaderCtrl {
     private let bookContentRepo: BookContentRepo
     private let pagerSvc: any PagerSvc
 
-    private var content = BookContent(chapters: [], paragraphs: [], sentences: [], parserVersion: 0)
+    private var content = BookContent(chapters: [], paragraphs: [], sentences: [], parserVersion: 0, fingerprint: "")
     private var readingSettings = ReadingSettings()
     private var viewport = Viewport(size: .zero)
     private var position = ReadingPosition(paragraph: 0, charOffset: 0)

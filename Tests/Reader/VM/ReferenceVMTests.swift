@@ -17,13 +17,14 @@ struct ReferenceVMTests {
         ]])
         let underline = Underline.make("the clock", paragraph: 2, passage: "The old clock stood in the hall for years.", passageParagraph: 0,
                                        in: content)
-        try StoredUnderlines.write([underline], chapter: 0, of: sampleID, parserVersion: content.parserVersion, in: folder.url)
+        try StoredUnderlines.write([underline], chapter: 0, of: content.fingerprint, parserVersion: content.parserVersion, in: folder.url)
 
         let bookContentRepo = BookContentRepo(epubParseSvc: EPUBParseSvcSpy(content: content), folder: folder.url)
         let readerCtrl = ReaderCtrl(bookID: sampleID, bookContentRepo: bookContentRepo, pagerSvc: PagerSvcFixed(pageLength: 40))
         let readerStateCtrl = ReaderStateCtrl(bookID: sampleID, readingSettingsRepo: ReadingSettingsRepo(folder: folder.url),
                                               brightnessSvc: BrightnessSvc(), bookStateRepo: BookStateRepo(folder: folder.url))
-        let refCtrl = RefCtrl(bookID: sampleID, bookContentRepo: bookContentRepo, underlineRepo: UnderlineRepo(folder: folder.url))
+        let refCtrl = RefCtrl(bookID: sampleID, bookTitle: "Sample", bookContentRepo: bookContentRepo,
+                              underlineRepo: UnderlineRepo(folder: folder.url), ratingRepo: RatingRepo(folder: folder.url))
         let referenceVM = ReferenceVM(refCtrl: refCtrl, readerStateCtrl: readerStateCtrl, readerCtrl: readerCtrl)
 
         try await readerCtrl.openBook()
@@ -63,7 +64,8 @@ struct ReferenceVMTests {
         let readerCtrl = ReaderCtrl(bookID: sampleID, bookContentRepo: bookContentRepo, pagerSvc: PagerSvcFixed(pageLength: 40))
         let readerStateCtrl = ReaderStateCtrl(bookID: sampleID, readingSettingsRepo: ReadingSettingsRepo(folder: folder.url),
                                               brightnessSvc: BrightnessSvc(), bookStateRepo: BookStateRepo(folder: folder.url))
-        let refCtrl = RefCtrl(bookID: sampleID, bookContentRepo: bookContentRepo, underlineRepo: UnderlineRepo(folder: folder.url))
+        let refCtrl = RefCtrl(bookID: sampleID, bookTitle: "Sample", bookContentRepo: bookContentRepo,
+                              underlineRepo: UnderlineRepo(folder: folder.url), ratingRepo: RatingRepo(folder: folder.url))
         try await readerCtrl.openBook()
         let page = await readerCtrl.currentPage(viewport: iPadViewport, settings: ReadingSettings())
 
@@ -82,5 +84,43 @@ struct ReferenceVMTests {
             #expect(referenceVM.underlineTask == underlineTask)
         }
         #expect(await eventually { releasedVM == nil })
+    }
+
+    @Test("RD-29 a thumb fills in and asks once whether to share; tapping it again takes the rating back", .timeLimit(.minutes(1)))
+    func thumbs() async throws {
+        let content = BookContent.make(chapters: [["The old clock stood in the hall.", "Then Anna looked at the clock again."]])
+        let underline = Underline.make("the clock", paragraph: 1, passage: "The old clock stood in the hall.", passageParagraph: 0, in: content)
+        try StoredUnderlines.write([underline], chapter: 0, of: content.fingerprint, parserVersion: content.parserVersion, in: folder.url)
+        let bookContentRepo = BookContentRepo(epubParseSvc: EPUBParseSvcSpy(content: content), folder: folder.url)
+        let readerCtrl = ReaderCtrl(bookID: sampleID, bookContentRepo: bookContentRepo, pagerSvc: PagerSvcFixed(pageLength: 40))
+        let readerStateCtrl = ReaderStateCtrl(bookID: sampleID, readingSettingsRepo: ReadingSettingsRepo(folder: folder.url),
+                                              brightnessSvc: BrightnessSvc(), bookStateRepo: BookStateRepo(folder: folder.url))
+        let refCtrl = RefCtrl(bookID: sampleID, bookTitle: "Sample", bookContentRepo: bookContentRepo,
+                              underlineRepo: UnderlineRepo(folder: folder.url), ratingRepo: RatingRepo(folder: folder.url))
+        let referenceVM = ReferenceVM(refCtrl: refCtrl, readerStateCtrl: readerStateCtrl, readerCtrl: readerCtrl)
+        try await readerCtrl.openBook()
+        let page = await readerCtrl.currentPage(viewport: iPadViewport, settings: ReadingSettings())
+        for await _ in try await refCtrl.underlineUpdates(from: page) {}
+        func savedVerdict() async -> Verdict? {
+            (try? await refCtrl.verdict(onUnderline: underline.id)) ?? nil
+        }
+
+        referenceVM.markTapped(Mark(range: NSRange(), kind: .underline(id: underline.id)), at: .zero)
+        #expect(await eventually { referenceVM.card != nil })
+        referenceVM.verdictTapped(.up)
+        #expect(referenceVM.card?.verdict == .up)
+        #expect(await eventually { referenceVM.isAskingToShare })
+        referenceVM.sharingChosen(false)
+        #expect(!referenceVM.isAskingToShare)
+        #expect(await eventually { await refCtrl.sharesRatings() == false })
+
+        referenceVM.verdictTapped(.down)
+        #expect(referenceVM.card?.verdict == .down)
+        #expect(await eventually { await savedVerdict() == .down })
+        #expect(!referenceVM.isAskingToShare)
+
+        referenceVM.verdictTapped(.down)
+        #expect(referenceVM.card?.verdict == nil)
+        #expect(await eventually { await savedVerdict() == nil })
     }
 }

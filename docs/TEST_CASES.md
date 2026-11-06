@@ -6,7 +6,8 @@ UnderlineEngine's own phrase picking is tested in its own repo; here we only tes
 
 Test setup this list assumes:
 - Repos take a folder (`init(folder:)`) so each test uses a fresh temp folder.
-- Protocols exist for `EventSvc` (count events), `EPUBParseSvc` (count parses) and `PagerSvc` (fixed page ranges).
+- Protocols exist for `EventSvc` (count events), `EPUBParseSvc` (count parses), `PagerSvc` (fixed page ranges) and
+  `CloudSvc` (`CloudSvcFake`: iCloud in memory, or offline). Tests never reach iCloud.
 - Never call Foundation Models directly (CI simulators don't have it).
 - Fixtures in `Tests/Fixtures`: `minimal.epub` (2 chapters × 3 paragraphs), `no-chapters.epub`, `corrupt.epub`,
   `epub2-cover.epub`, `epub3-cover.epub`, `no-metadata.epub`; plus a `BookContent.make(chapters:)` helper.
@@ -54,6 +55,7 @@ Test setup this list assumes:
 | BK-13 | P1 | Golden (Full plan) | Parse all 5 bundled samples | No throw; chapter counts match stored snapshot (a change means bump `parserVersion`) |
 | BK-14 | P0 | `BookContentRepo.content` | Open books A, B, C, then B, C, then A twice at once, then C, then B | Only 2 books kept: A parsed again once (shared by both callers), then B parsed again |
 | BK-15 | P1 | `BookContentRepo.forget` | Book parsed and cover read; forget | Parsed again on next call; cover not served from memory |
+| BK-16 | P0 | `BookFingerprint` | Same chapters twice; one word changed; same text in other chapter breaks | Same fingerprint; different; different |
 
 ## Reading progress
 
@@ -107,6 +109,7 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | RD-26 | P0 | `SearchVM` | Results shown; query changes to " A " | Results cleared; no search |
 | RD-27 | P0 | `SearchVM` | Type "A", "An", "Ann", "Anna" quickly | One search, for "Anna", after the typing pause |
 | RD-28 | P0 | `SearchVM` | Slow search for "Anna", then "Darcy" from recent searches | "Darcy" results stay after the "Anna" search returns |
+| RD-29 | P0 | `ReferenceVM` | Thumbs up on a card; answer "Don't Share"; thumbs down; thumbs down again | Filled and asked once; switches without asking; rating taken back |
 
 ## Underlines and references
 
@@ -123,3 +126,13 @@ The app's only AI feature: phrases worth underlining, each with the earlier pass
 | AN-07 | P0 | `RefCtrl.marks` | `highlighting:` an underline whose reference is on page | `.highlight` for it only |
 | AN-09 | P1 | `RefCtrl.underline(withID:)` | Unknown ID | `ContentError.notFound` |
 | AN-14 | P0 | `UnderlineRepo` | Stored chapter with the same / older / missing `engineVersion` (`UnderlineRepoKnobs`) | Loaded from disk / underlined again and saved with the current version |
+| AN-15 | P0 | `UnderlineRepo` | Chapter in the reader's iCloud with the same / older engine version | Used without the engine and saved on disk / underlined again (debug sheet says which) |
+| AN-16 | P0 | `UnderlineRepo` | Finish a chapter; a second device (new folder) with the same iCloud | Record saved in iCloud; the second device gets the same underlines |
+| AN-17 | P1 | `UnderlineRepo` | iCloud offline or signed out | Chapter still underlined and saved on disk |
+| AN-18 | P0 | `RatingRepo` | Rate before answering; then agree to share | Kept on device, nothing sent; then sent with its sentence and passage |
+| AN-19 | P0 | `RatingRepo` | Sharing; rate up, then down, then take back | One record, "down"; then deleted |
+| AN-20 | P1 | `RatingRepo` | Sharing; rate while offline; a later launch sends | Nothing sent while offline; sent later |
+| AN-21 | P0 | `RatingRepo` | Say no; rate; turn sharing on; rate another | Nothing sent; only the new rating is sent |
+| AN-22 | P0 | `RefCtrl.rate` | Rate an underline in chapter 2 | Phrase, sentence and passage texts; sentence numbers count from the chapter's start |
+| AN-23 | P1 | `UnderlineRepo.cloudAccount` | iCloud signed in; signed out; no iCloud | `.signedIn`; `.signedOut`; nil |
+| AN-24 | P1 | `RatingRepo` | Rate up; rate down while the first send is still running | One record, "down"; nothing left waiting |

@@ -12,10 +12,11 @@ App/
   Resources/          bundled sample EPUBs (listed in BookRecord.samples)
 
   Book/       per-book data shared by every feature (BookRecord, BookContent, Page, ReadingProgress,
-              BookContentRepo, ProgRepo, EPUBParseSvc)
+              BookContentRepo, ProgRepo, EPUBParseSvc, BookFingerprint: names a book by its text)
   Library/    library page: list, sort, grid/list, EPUB import
-  Analysis/   the AI feature: underlines with their reference passages (UnderlineEngine)
+  Analysis/   the AI feature: underlines with their reference passages (UnderlineEngine), and the readers' ratings of them
     Svc/      ModelCheckSvc: one test call to the on-device model before the first chapter
+              CloudSvc: iCloud records through CloudKit (the reader's private database, and the developers' public one)
     Debug/    DEBUG-only underline debug sheet
   Reader/     reading page: paging, progress, settings, search, contents, reference cards
 ```
@@ -49,7 +50,7 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 | `VM`    | UI state, `@MainActor @Observable`. Receives intents (`xTapped`, `xChanged`, `onAppear`). |
 | `Ctrl`  | One use case, orchestrating repos and services. |
 | `Repo`  | Persists or caches data (files in Application Support, in-memory caches). Failed writes are logged to OSLog category `storage`. |
-| `Svc`   | Wraps a system or framework API (EPUBKit, UIKit, OSLog, Foundation Models). |
+| `Svc`   | Wraps a system or framework API (EPUBKit, UIKit, OSLog, Foundation Models, CloudKit). |
 | `Rules` | Pure functions, no state, no I/O. |
 | `Models`| Plain data. |
 
@@ -76,7 +77,7 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 ## Main flows
 
 **Launch → library**
-1. `iReadApp.init` → `AppContainer.init` builds `EPUBParseSvc`, `ProgRepo`, `BookContentRepo`, `LibRepo`, `UnderlineRepo` once.
+1. `iReadApp.init` → `AppContainer.init` builds `EPUBParseSvc`, `ProgRepo`, `BookContentRepo`, `LibRepo`, `UnderlineRepo`, `RatingRepo` once.
 2. `AppContainer.makeLibVM` → `LibView`.
 3. `LibView.task` → `LibVM.onAppear` → `LibCtrl.loadLibrary` → `LibRepo.fetchBooks`
    (the built-in sample books plus the imported books in `Books/library.json`), then `ProgRepo.progress(for:)` per book,
@@ -109,7 +110,8 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
    4. `ReferenceVM.bookOpened` → `ReaderStateCtrl.load`.
    5. `ReaderVM.showCurrentPage` → `ReaderCtrl.currentPage` → `PagerSvc.pageRanges`.
    6. `ReferenceVM.update` sees a new chapter → `RefCtrl.underlineUpdates(from:)` → `ChapterInputMapper` → `UnderlineRepo.underline`
-      (UnderlineEngine from the page's first sentence, then wrapping; a finished chapter loads from `Books/<id>/underlines/`).
+      (a finished chapter loads from `Underlines/<fingerprint>/`, or else from the reader's iCloud; otherwise UnderlineEngine runs
+      from the page's first sentence, then wraps). Books are named by `BookContent.fingerprint`, so the same book matches on every device.
       Each update → `ReferenceVM.loadMarks`.
 
 **Turn a page and save progress**
@@ -125,7 +127,10 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 
 **Tap an underline, jump, and return**
 1. `PageTextView` → `PageTurnView.onMarkTapped` → `ReferenceVM.markTapped`
-   → `RefCtrl.underline(withID:)`, `ReaderCtrl.page(containing:)` → `RefCardView` (the phrase and the passage that explains it).
+   → `RefCtrl.underline(withID:)`, `ReaderCtrl.page(containing:)`, `RefCtrl.verdict(onUnderline:)` → `RefCardView`
+   (the phrase, the passage that explains it, and thumbs up / down).
+   Thumb → `ReferenceVM.verdictTapped` → `RefCtrl.rate` → `RatingRepo.save`. The first rating asks once whether to share ratings
+   (`ReferenceVM.sharingChosen`; also the Share Ratings switch in the reader menu).
 2. Jump to Passage → `ReferenceVM.jumpToPassageTapped` → `ReaderCtrl.startPosition(of:)` → `ReaderStateCtrl.saveReturnPosition`
    → `ReaderCtrl.page(containing:)` → `onShowPage` → `ReaderVM.show(_:highlighting:)`.
 3. Return to Reading → `ReferenceVM.returnToReadingTapped` → `ReaderStateCtrl.returnPosition` → `ReaderCtrl.page(ifValid:)`
@@ -133,13 +138,24 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 
 ## Analysis
 
-- `Repo/UnderlineRepo`: runs UnderlineEngine's `UnderlineCtrl` on one chapter at a time, keeps its underlines in memory,
-  and saves each finished chapter with the parser and engine versions (`UnderlineRepoKnobs.engineVersion`, bumped with the
-  UnderlineEngine pin in `project.yml`); a chapter saved by another version is underlined again. Starting another chapter stops the running one. In DEBUG it also keeps every phrase's
-  record (kept or dropped, and why) for `Debug/UnderlineDebugView` (ladybug button, or ⌘⇧D).
-  Before the first chapter, `Svc/ModelCheckSvc` makes one tiny call to Apple's on-device model. The system can say the model is
+- `Repo/UnderlineRepo`: runs UnderlineEngine's `UnderlineCtrl` one chapter at a time (starting another stops the running one).
+  A finished chapter is saved on disk (`Underlines/<fingerprint>/`) and in the reader's iCloud (private database, record type
+  `ChapterUnderlines`, named `<fingerprint>-<chapter>`), with the parser and engine versions (`UnderlineRepoKnobs.engineVersion`,
+  bumped with the UnderlineEngine pin in `project.yml`). A chapter not on disk is looked for in iCloud before the engine runs,
+  so another device, a reinstall or a re-import doesn't underline it again. A chapter from another version is underlined again.
+  Without iCloud everything still works on the device.
+- `Svc/ModelCheckSvc`: one tiny call to Apple's on-device model before the first chapter. The system can say the model is
   available while every call fails (the Simulator does this), and UnderlineEngine drops a phrase whose model call fails, so then
-  the engine runs with its rules only (`UnderlineCtrl(model: .rulesOnly)`). A chapter where a model call still fails isn't saved.
+  the engine uses its rules only. A chapter where a model call still fails isn't saved. AppContainer passes it in; tests don't,
+  so they never call the model.
+- `Svc/CloudSvc`: CloudKit records, with a 10-second timeout so the app never waits long for iCloud. The reader menu shows
+  `CloudSvc.account` (checked in the background when a book opens and when the app comes back; only Settings can sign in).
+- `Repo/RatingRepo`: the reader's thumbs up / down, in `ratings.json`. The first rating asks whether to share. Shared ratings go to
+  the public database (record type `UnderlineRating`) with the phrase, its sentence and the reference passage, sentences counted
+  from the chapter's start like UnderlineEngine's golden set. Taking a rating back deletes its record. One send runs at a time;
+  what can't be sent yet is retried when a book opens. See `docs/ICLOUD.md` for the CloudKit Console.
+- `Debug/UnderlineDebugView` (DEBUG; ladybug button or ⌘⇧D): every phrase the engine considered, kept or dropped and why, plus
+  an iCloud section: the account, where this chapter's underlines came from or went, and the ratings waiting to be sent.
 - `Rules/ChapterInputMapper`: one chapter of `BookContent` → UnderlineEngine's `ChapterInput` (same indexes and ranges).
 
 ## Testing & CI
@@ -158,8 +174,8 @@ real books with stored snapshots: BK-13 (chapter counts of the bundled books).
 **How the tests are written.** Swift Testing (`@Suite`, `@Test`, `#expect`) in `Tests/`, in the same folders as `App/`.
 Each test is named by its ID in `docs/TEST_CASES.md`. A real bug the tests found is wrapped in `withKnownIssue` until it is fixed.
 - Every test gets its own temp folder (`TempFolder` in `Tests/Support/`); repos take it as `init(folder:)`.
-- `EventSvc`, `EPUBParseSvc` and `PagerSvc` are protocols so tests can use the fakes in `Tests/Support/Fakes.swift`. The app uses
-  `EventSvcOSLog`, `EPUBParseSvcEPUBKit` and `PagerSvcTextKit`.
+- `EventSvc`, `EPUBParseSvc`, `PagerSvc` and `CloudSvc` are protocols so tests can use the fakes in `Tests/Support/Fakes.swift`.
+  The app uses `EventSvcOSLog`, `EPUBParseSvcEPUBKit`, `PagerSvcTextKit` and `CloudSvcCloudKit`. Tests never reach iCloud.
 - Tests never call Foundation Models directly (CI simulators don't have it).
 
 **Fixtures** are small EPUBs in `Tests/Fixtures/`, made by `sh Tests/Fixtures/make-fixtures.sh` (the `.epub` files are committed too).

@@ -11,9 +11,10 @@ struct RefCtrlTests {
         ["A new day began with rain.", "The rain stopped by evening."]
     ])
 
-    private func makeRefCtrl() -> RefCtrl {
+    private func makeRefCtrl(ratingRepo: RatingRepo? = nil) -> RefCtrl {
         let bookContentRepo = BookContentRepo(epubParseSvc: EPUBParseSvcSpy(content: content), folder: folder.url)
-        return RefCtrl(bookID: sampleID, bookContentRepo: bookContentRepo, underlineRepo: UnderlineRepo(folder: folder.url))
+        return RefCtrl(bookID: sampleID, bookTitle: "Sample", bookContentRepo: bookContentRepo,
+                       underlineRepo: UnderlineRepo(folder: folder.url), ratingRepo: ratingRepo ?? RatingRepo(folder: folder.url))
     }
 
     private func wholeChapter(_ index: Int) -> Page {
@@ -25,7 +26,7 @@ struct RefCtrlTests {
     private func load(_ underlines: [Underline], into refCtrl: RefCtrl) async throws {
         for chapter in content.chapters.indices {
             let inChapter = underlines.filter { content.paragraphs[$0.paragraph].chapterIndex == chapter }
-            try StoredUnderlines.write(inChapter, chapter: chapter, of: sampleID, parserVersion: content.parserVersion, in: folder.url)
+            try StoredUnderlines.write(inChapter, chapter: chapter, of: content.fingerprint, parserVersion: content.parserVersion, in: folder.url)
             for await _ in try await refCtrl.underlineUpdates(from: wholeChapter(chapter)) {}
         }
     }
@@ -69,4 +70,24 @@ struct RefCtrlTests {
         await #expect(throws: ContentError.notFound) { try await makeRefCtrl().underline(withID: "99:0") }
     }
 
+    @Test("AN-22 a rating keeps the phrase, its sentence and the reference passage, counting sentences from the chapter's start")
+    func rate() async throws {
+        let cloud = CloudSvcFake()
+        let ratingRepo = RatingRepo(folder: folder.url, cloudSvc: cloud)
+        await ratingRepo.setSharesRatings(true)
+        let refCtrl = makeRefCtrl(ratingRepo: ratingRepo)
+        try await load([rain], into: refCtrl)
+
+        try await refCtrl.rate(underline: rain.id, .down)
+        #expect(try await refCtrl.verdict(onUnderline: rain.id) == .down)
+        let fields = try #require(cloud.records(in: .developers).values.first)
+        #expect(fields["verdict"] == .text("down"))
+        #expect(fields["bookTitle"] == .text("Sample"))
+        #expect(fields["chapterIndex"] == .number(1))
+        #expect(fields["phrase"] == .text("The rain"))
+        #expect(fields["sentence"] == .number(1))
+        #expect(fields["sentenceText"] == .text("The rain stopped by evening."))
+        #expect(fields["reference"] == .number(0))
+        #expect(fields["referenceText"] == .text("A new day began with rain."))
+    }
 }
