@@ -169,10 +169,12 @@ flowchart TB
   subgraph ViewModel["ViewModel · screen state"]
     ReaderVM
     ReferenceVM
+    RatingVM
   end
   subgraph Controller["Controller · one use case"]
     ReaderCtrl
     RefCtrl
+    RatingCtrl
     ReaderStateCtrl
   end
   subgraph Repo["Repo · saves and loads"]
@@ -188,13 +190,17 @@ flowchart TB
   iCloud[(iCloud)]
 
   ReaderVM --> ReferenceVM
+  ReaderVM --> RatingVM
   ReferenceVM --> RefCtrl
   ReferenceVM -. pages .-> ReaderCtrl
   ReferenceVM -. return spot .-> ReaderStateCtrl
+  RatingVM --> RatingCtrl
 
   RefCtrl --> BookContentRepo
   RefCtrl --> UnderlineRepo
-  RefCtrl --> RatingRepo
+  RatingCtrl --> BookContentRepo
+  RatingCtrl -. rated underline .-> UnderlineRepo
+  RatingCtrl --> RatingRepo
 
   UnderlineRepo --> ModelCheckSvc
   UnderlineRepo --> Engine
@@ -263,12 +269,16 @@ classDiagram
     NSRange range
   }
 
-  class Underline {
+  class SavedUnderline {
     String id
+    Int sentence
     NSRange range
     String text
+    String kind
+    String decidedBy
   }
   class ContextPassage {
+    Int sentence
     Int paragraph
     NSRange range
     String text
@@ -307,9 +317,9 @@ classDiagram
   Paragraph "1" *-- "0..*" Sentence
   Chapter "1" -- "1..*" Page : split to fit the screen
 
-  Chapter "1" -- "0..*" Underline : found by the engine
-  Underline "1" -- "1" ContextPassage : explained by
-  Underline "1" -- "0..1" UnderlineRating : rated by the reader
+  Chapter "1" -- "0..*" SavedUnderline : found by the engine
+  SavedUnderline "1" *-- "1" ContextPassage : reference
+  SavedUnderline "1" -- "0..1" UnderlineRating : rated by the reader
   UnderlineRating "0..*" --> "0..1" Verdict : verdict
   Page "1" *-- "0..*" Mark : underlines and highlight
   SearchResult "0..*" --> "1" ReadingPosition : where
@@ -611,6 +621,7 @@ sequenceDiagram
   participant ReaderCtrl
   participant ProgressCtrl
   participant ReferenceVM
+  participant RatingVM
   participant BookContentRepo
   participant ProgRepo
 
@@ -624,7 +635,8 @@ sequenceDiagram
   ProgRepo-->>ReaderVM: last position
   ReaderVM->>ReaderCtrl: restorePosition, currentPage
   ReaderVM->>ReferenceVM: bookOpened
-  ReferenceVM->>ReferenceVM: check iCloud, resend unsent ratings
+  ReaderVM->>RatingVM: bookOpened
+  RatingVM->>RatingVM: check iCloud, resend unsent ratings
   ReaderCtrl-->>ReaderView: page
 
   Reader->>ReaderView: swipe
@@ -666,6 +678,7 @@ sequenceDiagram
   else not saved anywhere
     UnderlineRepo->>Engine: prepare, paragraphResults
     Engine-->>UnderlineRepo: underlines, one paragraph at a time
+    UnderlineRepo->>UnderlineRepo: turn each into SavedUnderline
     UnderlineRepo->>UnderlineRepo: save on this phone
     UnderlineRepo->>CloudSvc: save to iCloud
   end
@@ -684,22 +697,25 @@ File: `docs/diagrams/11-sequence-rate-a-passage.mmd`
 sequenceDiagram
   actor Reader
   participant ReferenceVM
-  participant RefCtrl
+  participant RatingVM
+  participant RatingCtrl
   participant RatingRepo
   participant CloudSvc
   participant Public as Developers' CloudKit
 
   Reader->>ReferenceVM: tap an underline
-  ReferenceVM->>RefCtrl: underline and its rating so far
-  ReferenceVM-->>Reader: card with the passage and thumbs
-  Reader->>ReferenceVM: thumb up or down
+  ReferenceVM-->>Reader: card with the passage
+  Reader->>RatingVM: card shown
+  RatingVM->>RatingCtrl: rating so far
+  RatingVM-->>Reader: thumbs
+  Reader->>RatingVM: thumb up or down
   opt first rating ever
-    ReferenceVM-->>Reader: ask to share ratings
-    Reader->>ReferenceVM: Share or Don't Share
-    ReferenceVM->>RefCtrl: setSharesRatings
+    RatingVM-->>Reader: ask to share ratings
+    Reader->>RatingVM: Share or Don't Share
+    RatingVM->>RatingCtrl: setSharesRatings
   end
-  ReferenceVM->>RefCtrl: rate
-  RefCtrl->>RatingRepo: save rating
+  RatingVM->>RatingCtrl: rate
+  RatingCtrl->>RatingRepo: save rating
   RatingRepo->>RatingRepo: write ratings.json
   alt sharing is on
     RatingRepo->>CloudSvc: save UnderlineRating

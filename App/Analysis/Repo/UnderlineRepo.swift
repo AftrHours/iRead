@@ -3,18 +3,15 @@ import OSLog
 import UnderlineEngine
 
 enum UnderlineRepoKnobs {
-    /// Bump with UnderlineEngine's pin in project.yml, so chapters underlined by the old engine are underlined again.
-    static let engineVersion = 2
+    static let engineVersion = 3
 }
 
-/// Runs UnderlineEngine one chapter at a time. A finished chapter is kept on disk and in the reader's iCloud,
-/// under the book's fingerprint, so it's underlined once for all their devices and imports.
 actor UnderlineRepo {
     private struct StoredChapter: Codable {
         let parserVersion: Int
         /// nil in files saved before this field existed.
         let engineVersion: Int?
-        let underlines: [Underline]
+        let underlines: [SavedUnderline]
     }
 
     private static let recordType = "ChapterUnderlines"
@@ -25,7 +22,7 @@ actor UnderlineRepo {
     /// nil: no iCloud, as in tests.
     private let cloudSvc: (any CloudSvc)?
     private var underlineCtrl: UnderlineCtrl?
-    private var foundUnderlines: [String: [Int: [Underline]]] = [:]
+    private var foundUnderlines: [String: [Int: [SavedUnderline]]] = [:]
     private var finishedChapters: [String: Set<Int>] = [:]
     private var running: Task<Void, Never>?
     #if DEBUG
@@ -50,27 +47,27 @@ actor UnderlineRepo {
 
     /// Underlines from `sentence` to the chapter's end, then from its start. Yields after each paragraph that adds
     /// underlines. Starting another chapter stops this one.
-    func underline(_ chapter: ChapterInput, of book: String, parserVersion: Int, startingAt sentence: Int) -> AsyncStream<Void> {
+    func underline(chapter: Int, of content: BookContent, startingAt sentence: Int) -> AsyncStream<Void> {
         let (stream, continuation) = AsyncStream<Void>.makeStream()
-        guard !isFinished(chapter.chapterIndex, of: book, parserVersion: parserVersion) else {
+        guard !isFinished(chapter, of: content.fingerprint, parserVersion: content.parserVersion) else {
             continuation.yield()
             continuation.finish()
             return stream
         }
         running?.cancel()
         let task = Task {
-            await self.run(chapter, of: book, parserVersion: parserVersion, startingAt: sentence, continuation: continuation)
+            await self.run(chapter, of: content, startingAt: sentence, continuation: continuation)
         }
         running = task
         continuation.onTermination = { _ in task.cancel() }
         return stream
     }
 
-    func underlines(inChapter chapter: Int, of book: String) -> [Underline] {
+    func underlines(inChapter chapter: Int, of book: String) -> [SavedUnderline] {
         foundUnderlines[book]?[chapter] ?? []
     }
 
-    func underline(withID id: String, of book: String) -> Underline? {
+    func underline(withID id: String, of book: String) -> SavedUnderline? {
         foundUnderlines[book]?.values.lazy.flatMap { $0 }.first { $0.id == id }
     }
 
@@ -84,10 +81,11 @@ actor UnderlineRepo {
     }
     #endif
 
-    private func run(_ chapter: ChapterInput, of book: String, parserVersion: Int, startingAt sentence: Int,
+    private func run(_ index: Int, of content: BookContent, startingAt sentence: Int,
                      continuation: AsyncStream<Void>.Continuation) async {
         defer { continuation.finish() }
-        let index = chapter.chapterIndex
+        let book = content.fingerprint
+        let parserVersion = content.parserVersion
         if let stored = await cloudChapter(index, of: book, parserVersion: parserVersion) {
             guard !Task.isCancelled else { return }
             use(stored, chapter: index, of: book)
@@ -96,7 +94,7 @@ actor UnderlineRepo {
             return
         }
         let underlineCtrl = await engine()
-        let indexed = await underlineCtrl.prepare(chapter)
+        let indexed = await underlineCtrl.prepare(ChapterInputMapper.input(chapter: index, in: content))
         #if DEBUG
         foundRecords[book, default: [:]][index] = []
         #endif
@@ -105,7 +103,7 @@ actor UnderlineRepo {
             hadModelFailure = hadModelFailure || result.records.contains { $0.dropped == .modelFailed }
             // A chapter stopped and started again finds some underlines twice.
             let known = Set(underlines(inChapter: index, of: book).map(\.id))
-            foundUnderlines[book, default: [:]][index, default: []] += result.underlines.filter { !known.contains($0.id) }
+            foundUnderlines[book, default: [:]][index, default: []] += result.underlines.filter { !known.contains($0.id) }.map(SavedUnderline.init)
             #if DEBUG
             foundRecords[book, default: [:]][index, default: []] += result.records
             #endif
@@ -208,5 +206,15 @@ actor UnderlineRepo {
 
     private func recordName(_ chapter: Int, of book: String) -> String {
         "\(book)-\(chapter)"
+    }
+}
+
+private extension SavedUnderline {
+    init(_ underline: Underline) {
+        let reference = underline.reference
+        self.init(id: underline.id, sentence: underline.sentence, paragraph: underline.paragraph, range: underline.range,
+                  text: underline.text, kind: underline.kind.rawValue, decidedBy: underline.decidedBy.rawValue,
+                  reference: ContextPassage(sentence: reference.sentence, paragraph: reference.paragraph, range: reference.range,
+                                            text: reference.text))
     }
 }

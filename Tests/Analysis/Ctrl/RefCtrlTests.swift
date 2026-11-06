@@ -1,6 +1,5 @@
 import Foundation
 import Testing
-import UnderlineEngine
 @testable import iRead
 
 @Suite("RefCtrl", .timeLimit(.minutes(1)))
@@ -11,10 +10,9 @@ struct RefCtrlTests {
         ["A new day began with rain.", "The rain stopped by evening."]
     ])
 
-    private func makeRefCtrl(ratingRepo: RatingRepo? = nil) -> RefCtrl {
-        let bookContentRepo = BookContentRepo(epubParseSvc: EPUBParseSvcSpy(content: content), folder: folder.url)
-        return RefCtrl(bookID: sampleID, bookTitle: "Sample", bookContentRepo: bookContentRepo,
-                       underlineRepo: UnderlineRepo(folder: folder.url), ratingRepo: ratingRepo ?? RatingRepo(folder: folder.url))
+    private func makeRefCtrl() -> RefCtrl {
+        RefCtrl(bookID: sampleID, bookContentRepo: BookContentRepo(epubParseSvc: EPUBParseSvcSpy(content: content), folder: folder.url),
+                underlineRepo: UnderlineRepo(folder: folder.url))
     }
 
     private func wholeChapter(_ index: Int) -> Page {
@@ -23,7 +21,7 @@ struct RefCtrlTests {
     }
 
     /// Stores the underlines as finished chapters and loads them, as showing a page of each chapter does.
-    private func load(_ underlines: [Underline], into refCtrl: RefCtrl) async throws {
+    private func load(_ underlines: [SavedUnderline], into refCtrl: RefCtrl) async throws {
         for chapter in content.chapters.indices {
             let inChapter = underlines.filter { content.paragraphs[$0.paragraph].chapterIndex == chapter }
             try StoredUnderlines.write(inChapter, chapter: chapter, of: content.fingerprint, parserVersion: content.parserVersion, in: folder.url)
@@ -31,15 +29,15 @@ struct RefCtrlTests {
         }
     }
 
-    private var clockInHall: Underline {
+    private var clockInHall: SavedUnderline {
         .make("the clock", paragraph: 1, passage: "Then Anna saw the old clock in the hall.", passageParagraph: 0, in: content)
     }
 
-    private var clockAtNoon: Underline {
+    private var clockAtNoon: SavedUnderline {
         .make("the clock", paragraph: 2, passage: "Later Anna wound the clock at noon.", passageParagraph: 1, in: content)
     }
 
-    private var rain: Underline {
+    private var rain: SavedUnderline {
         .make("The rain", paragraph: 4, passage: "A new day began with rain.", passageParagraph: 3, in: content)
     }
 
@@ -68,26 +66,5 @@ struct RefCtrlTests {
     @Test("AN-09 an unknown underline isn't found")
     func unknownUnderline() async {
         await #expect(throws: ContentError.notFound) { try await makeRefCtrl().underline(withID: "99:0") }
-    }
-
-    @Test("AN-22 a rating keeps the phrase, its sentence and the reference passage, counting sentences from the chapter's start")
-    func rate() async throws {
-        let cloud = CloudSvcFake()
-        let ratingRepo = RatingRepo(folder: folder.url, cloudSvc: cloud)
-        await ratingRepo.setSharesRatings(true)
-        let refCtrl = makeRefCtrl(ratingRepo: ratingRepo)
-        try await load([rain], into: refCtrl)
-
-        try await refCtrl.rate(underline: rain.id, .down)
-        #expect(try await refCtrl.verdict(onUnderline: rain.id) == .down)
-        let fields = try #require(cloud.records(in: .developers).values.first)
-        #expect(fields["verdict"] == .text("down"))
-        #expect(fields["bookTitle"] == .text("Sample"))
-        #expect(fields["chapterIndex"] == .number(1))
-        #expect(fields["phrase"] == .text("The rain"))
-        #expect(fields["sentence"] == .number(1))
-        #expect(fields["sentenceText"] == .text("The rain stopped by evening."))
-        #expect(fields["reference"] == .number(0))
-        #expect(fields["referenceText"] == .text("A new day began with rain."))
     }
 }

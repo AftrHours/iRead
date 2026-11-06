@@ -18,17 +18,19 @@ final class UnderlineDebugVM {
     private(set) var rows: [Row] = []
     private(set) var cloudLines: [String] = []
     private let refCtrl: RefCtrl
+    private let ratingCtrl: RatingCtrl
     private let chapterIndex: Int?
 
-    init(refCtrl: RefCtrl, chapterIndex: Int?) {
+    init(refCtrl: RefCtrl, ratingCtrl: RatingCtrl, chapterIndex: Int?) {
         self.refCtrl = refCtrl
+        self.ratingCtrl = ratingCtrl
         self.chapterIndex = chapterIndex
     }
 
     /// Refreshes every second while open, because the engine may still be working on the chapter.
     func onAppear() async {
         guard let chapterIndex else { return }
-        let account = Self.text(of: await refCtrl.cloudAccount())
+        let account = Self.text(of: await ratingCtrl.cloudAccount())
         while !Task.isCancelled {
             cloudLines = await cloudStatus(chapterIndex, account: account)
             let model = await refCtrl.underlinesUseModel() ? "Foundation Models" : "Rules only"
@@ -40,7 +42,7 @@ final class UnderlineDebugVM {
                 note = underlines.isEmpty ? nil : "Loaded from a saved chapter, so dropped phrases aren't listed."
                 rows = underlines.enumerated().map { index, underline in
                     Row(id: index, phrase: underline.text,
-                        detail: "s\(underline.sentence) · \(underline.kind.rawValue) · \(underline.decidedBy.rawValue) · explained by s\(underline.reference.sentence)",
+                        detail: "s\(underline.sentence) · \(underline.kind) · \(underline.decidedBy) · explained by s\(underline.reference.sentence)",
                         isUnderlined: true)
                 }
             } else {
@@ -65,12 +67,12 @@ final class UnderlineDebugVM {
     }
 
     private func cloudStatus(_ chapterIndex: Int, account: String) async -> [String] {
-        let sharing = switch await refCtrl.sharesRatings() {
+        let sharing = switch await ratingCtrl.sharesRatings() {
         case true?: "on"
         case false?: "off"
         case nil: "not asked yet"
         }
-        let ratings = await refCtrl.ratingsStatus()
+        let ratings = await ratingCtrl.ratingsStatus()
         return [
             "Account: \(account)",
             "This chapter: \(await refCtrl.cloudResult(inChapter: chapterIndex) ?? "still underlining")",
@@ -83,6 +85,34 @@ final class UnderlineDebugVM {
             ? "explained by s\(record.pickedSentence.map(String.init) ?? "?")"
             : "dropped: \(record.dropped?.rawValue ?? "unknown")"
         return ["s\(record.sentence)", record.kind.rawValue, record.path?.rawValue, outcome].compactMap { $0 }.joined(separator: " · ")
+    }
+}
+
+/// The debug sheet's reads, kept here so only debug code sees UnderlineEngine's records.
+extension RefCtrl {
+    func underlinesUseModel() async -> Bool {
+        await underlineRepo.usesModel
+    }
+
+    func underlineRecords(inChapter chapter: Int) async -> [UnderlineRecord] {
+        guard let content = try? await bookContentRepo.content(for: bookID) else { return [] }
+        return await underlineRepo.records(inChapter: chapter, of: content.fingerprint)
+    }
+
+    func underlines(inChapter chapter: Int) async -> [SavedUnderline] {
+        guard let content = try? await bookContentRepo.content(for: bookID) else { return [] }
+        return await underlineRepo.underlines(inChapter: chapter, of: content.fingerprint)
+    }
+
+    func cloudResult(inChapter chapter: Int) async -> String? {
+        guard let content = try? await bookContentRepo.content(for: bookID) else { return nil }
+        return await underlineRepo.cloudResult(inChapter: chapter, of: content.fingerprint)
+    }
+}
+
+extension RatingCtrl {
+    func ratingsStatus() async -> (unsent: Int, lastSend: String?) {
+        (await ratingRepo.unsentCount, await ratingRepo.lastSendResult)
     }
 }
 #endif

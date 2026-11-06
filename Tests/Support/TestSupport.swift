@@ -1,6 +1,5 @@
 import Foundation
 import Testing
-import UnderlineEngine
 @testable import iRead
 
 extension Tag {
@@ -91,7 +90,7 @@ enum StoredUnderlines {
     struct File: Codable {
         let parserVersion: Int
         let engineVersion: Int?
-        let underlines: [Underline]
+        let underlines: [SavedUnderline]
     }
 
     static func url(chapter: Int, of book: String, in folder: URL) -> URL {
@@ -99,7 +98,7 @@ enum StoredUnderlines {
     }
 
     /// `engineVersion: nil` writes a file without the field, like builds before it existed.
-    static func write(_ underlines: [Underline], chapter: Int, of book: String, parserVersion: Int,
+    static func write(_ underlines: [SavedUnderline], chapter: Int, of book: String, parserVersion: Int,
                       engineVersion: Int? = UnderlineRepoKnobs.engineVersion, in folder: URL) throws {
         let url = url(chapter: chapter, of: book, in: folder)
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
@@ -111,17 +110,18 @@ enum StoredUnderlines {
     }
 }
 
-extension Underline {
+extension SavedUnderline {
     /// An underline on `phrase` in one paragraph, explained by `passage` in another.
-    static func make(_ phrase: String, paragraph: Int, passage: String, passageParagraph: Int, in content: BookContent) -> Underline {
+    static func make(_ phrase: String, paragraph: Int, passage: String, passageParagraph: Int, in content: BookContent) -> SavedUnderline {
         let range = (content.text(ofParagraph: paragraph) as NSString).range(of: phrase)
         let passageRange = (content.text(ofParagraph: passageParagraph) as NSString).range(of: passage)
         func sentence(_ paragraph: Int, _ range: NSRange) -> Int {
             content.sentences.firstIndex { $0.paragraph == paragraph && NSLocationInRange(range.location, $0.range) } ?? 0
         }
-        return Underline(sentence: sentence(paragraph, range), paragraph: paragraph, range: range, text: phrase, kind: .thing, role: nil,
-                         reference: AnswerPassage(sentence: sentence(passageParagraph, passageRange), paragraph: passageParagraph,
-                                                  range: passageRange, text: passage),
-                         decidedBy: .rules)
+        let underlined = sentence(paragraph, range)
+        return SavedUnderline(id: "\(underlined):\(range.location)", sentence: underlined, paragraph: paragraph, range: range, text: phrase,
+                              kind: "thing", decidedBy: "rules",
+                              reference: ContextPassage(sentence: sentence(passageParagraph, passageRange), paragraph: passageParagraph,
+                                                        range: passageRange, text: passage))
     }
 }

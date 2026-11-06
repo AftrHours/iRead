@@ -1,6 +1,5 @@
 import Foundation
 import Testing
-import UnderlineEngine
 @testable import iRead
 
 @Suite("UnderlineRepo", .timeLimit(.minutes(2)))
@@ -12,16 +11,17 @@ struct UnderlineRepoTests {
     ])
     private var book: String { content.fingerprint }
     /// Text the engine could never find, to tell a stored chapter from one underlined again.
-    private let marker = Underline(sentence: 0, paragraph: 0, range: NSRange(location: 0, length: 4), text: "marker", kind: .thing, role: nil,
-                                   reference: AnswerPassage(sentence: 0, paragraph: 0, range: NSRange(location: 0, length: 4), text: "marker"),
-                                   decidedBy: .rules)
+    private let marker = SavedUnderline(id: "0:0", sentence: 0, paragraph: 0, range: NSRange(location: 0, length: 4), text: "marker",
+                                        kind: "thing", decidedBy: "rules",
+                                        reference: ContextPassage(sentence: 0, paragraph: 0, range: NSRange(location: 0, length: 4),
+                                                                  text: "marker"))
 
     private func storedFileExists(chapter: Int) -> Bool {
         FileManager.default.fileExists(atPath: StoredUnderlines.url(chapter: chapter, of: book, in: folder.url).path)
     }
 
     private func underline(_ chapter: Int, in repo: UnderlineRepo) async -> AsyncStream<Void> {
-        await repo.underline(ChapterInputMapper.input(chapter: chapter, in: content), of: book, parserVersion: content.parserVersion,
+        await repo.underline(chapter: chapter, of: content,
                              startingAt: content.sentences.firstIndex { content.paragraphs[$0.paragraph].chapterIndex == chapter } ?? 0)
     }
 

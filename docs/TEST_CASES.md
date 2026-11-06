@@ -108,7 +108,8 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | RD-26 | P0 | `SearchVM` | Results shown; query changes to " A " | Results cleared; no search |
 | RD-27 | P0 | `SearchVM` | Type "A", "An", "Ann", "Anna" quickly | One search, for "Anna", after the typing pause |
 | RD-28 | P0 | `SearchVM` | Slow search for "Anna", then "Darcy" from recent searches | "Darcy" results stay after the "Anna" search returns |
-| RD-29 | P0 | `ReferenceVM` | Thumbs up on a card; answer "Don't Share"; thumbs down; thumbs down again | Filled and asked once; switches without asking; rating taken back |
+| RD-29 | P0 | `RatingVM` | Thumbs up on a card; answer "Don't Share"; thumbs down; thumbs down again | Filled and asked once; switches without asking; rating taken back |
+| RD-30 | P1 | `RatingVM.cardShown` | Thumbs up, then show the same card again at once | Thumbs up shown, read back after the save |
 
 ## Underlines and references
 
@@ -132,6 +133,7 @@ The app's only AI feature: phrases worth underlining, each with the earlier pass
 | AN-19 | P0 | `RatingRepo` | Sharing; rate up, then down, then take back | One record, "down"; then deleted |
 | AN-20 | P1 | `RatingRepo` | Sharing; rate while offline; a later launch sends | Nothing sent while offline; sent later |
 | AN-21 | P0 | `RatingRepo` | Say no; rate; turn sharing on; rate another | Nothing sent; only the new rating is sent |
-| AN-22 | P0 | `RefCtrl.rate` | Rate an underline in chapter 2 | Phrase, sentence and passage texts; sentence numbers count from the chapter's start |
+| AN-22 | P0 | `RatingCtrl.rate` | Rate an underline in chapter 2 | Phrase, sentence and passage texts; sentence numbers count from the chapter's start |
 | AN-23 | P1 | `UnderlineRepo.cloudAccount` | iCloud signed in; signed out; no iCloud | `.signedIn`; `.signedOut`; nil |
 | AN-24 | P1 | `RatingRepo` | Rate up; rate down while the first send is still running | One record, "down"; nothing left waiting |
+| AN-25 | P1 | `RatingCtrl.rate` | Underline not loaded | `ContentError.notFound` |

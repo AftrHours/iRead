@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ReaderMenuView: View {
     let readerVM: ReaderVM
+    let ratingVM: RatingVM
 
     var body: some View {
         VStack(spacing: 0) {
@@ -21,12 +22,12 @@ struct ReaderMenuView: View {
                 row("Theme & Settings", systemImage: "textformat")
             }
             Toggle("Share Ratings", isOn: Binding(
-                get: { readerVM.referenceVM.sharesRatings },
-                set: { readerVM.referenceVM.sharingChosen($0) }
+                get: { ratingVM.sharesRatings },
+                set: { ratingVM.sharingChosen($0) }
             ))
             .padding(.horizontal, 20)
             .frame(minHeight: 44)
-            if let account = readerVM.referenceVM.cloudAccount {
+            if let account = ratingVM.cloudAccount {
                 cloudRow(account)
             }
         }

@@ -1,6 +1,7 @@
 import Foundation
 
-struct ContextPassage: Sendable {
+struct ContextPassage: Codable, Sendable, Hashable {
+    let sentence: Int
     let paragraph: Int
     let range: NSRange
     let text: String

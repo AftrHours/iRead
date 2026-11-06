@@ -2,10 +2,12 @@ flowchart TB
   subgraph ViewModel["ViewModel · screen state"]
     ReaderVM
     ReferenceVM
+    RatingVM
   end
   subgraph Controller["Controller · one use case"]
     ReaderCtrl
     RefCtrl
+    RatingCtrl
     ReaderStateCtrl
   end
   subgraph Repo["Repo · saves and loads"]
@@ -21,13 +23,17 @@ flowchart TB
   iCloud[(iCloud)]
 
   ReaderVM --> ReferenceVM
+  ReaderVM --> RatingVM
   ReferenceVM --> RefCtrl
   ReferenceVM -. pages .-> ReaderCtrl
   ReferenceVM -. return spot .-> ReaderStateCtrl
+  RatingVM --> RatingCtrl
 
   RefCtrl --> BookContentRepo
   RefCtrl --> UnderlineRepo
-  RefCtrl --> RatingRepo
+  RatingCtrl --> BookContentRepo
+  RatingCtrl -. rated underline .-> UnderlineRepo
+  RatingCtrl --> RatingRepo
 
   UnderlineRepo --> ModelCheckSvc
   UnderlineRepo --> Engine

@@ -17,6 +17,7 @@ sequenceDiagram
   else not saved anywhere
     UnderlineRepo->>Engine: prepare, paragraphResults
     Engine-->>UnderlineRepo: underlines, one paragraph at a time
+    UnderlineRepo->>UnderlineRepo: turn each into SavedUnderline
     UnderlineRepo->>UnderlineRepo: save on this phone
     UnderlineRepo->>CloudSvc: save to iCloud
   end

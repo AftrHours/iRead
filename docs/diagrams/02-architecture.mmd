@@ -9,6 +9,7 @@ flowchart TB
     ReaderVM
     ReaderSettingsVM
     ReferenceVM
+    RatingVM
     SearchVM
   end
 
@@ -18,6 +19,7 @@ flowchart TB
     ProgressCtrl
     ReaderStateCtrl
     RefCtrl
+    RatingCtrl
   end
 
   subgraph Repo["Repo · saves and loads"]
@@ -46,6 +48,7 @@ flowchart TB
   ReaderView --> ReaderVM
   ReaderVM --> ReaderSettingsVM
   ReaderVM --> ReferenceVM
+  ReaderVM --> RatingVM
   ReaderVM --> SearchVM
 
   LibVM --> LibCtrl
@@ -55,6 +58,7 @@ flowchart TB
   ReferenceVM --> RefCtrl
   ReferenceVM --> ReaderStateCtrl
   ReferenceVM --> ReaderCtrl
+  RatingVM --> RatingCtrl
   SearchVM --> ReaderCtrl
   SearchVM --> ReaderStateCtrl
 
@@ -70,7 +74,9 @@ flowchart TB
   ReaderStateCtrl --> BrightnessSvc
   RefCtrl --> BookContentRepo
   RefCtrl --> UnderlineRepo
-  RefCtrl --> RatingRepo
+  RatingCtrl --> BookContentRepo
+  RatingCtrl --> UnderlineRepo
+  RatingCtrl --> RatingRepo
 
   LibRepo --> EPUBParseSvc
   BookContentRepo --> EPUBParseSvc

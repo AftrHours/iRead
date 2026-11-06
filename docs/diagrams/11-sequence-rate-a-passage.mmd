@@ -1,22 +1,25 @@
 sequenceDiagram
   actor Reader
   participant ReferenceVM
-  participant RefCtrl
+  participant RatingVM
+  participant RatingCtrl
   participant RatingRepo
   participant CloudSvc
   participant Public as Developers' CloudKit
 
   Reader->>ReferenceVM: tap an underline
-  ReferenceVM->>RefCtrl: underline and its rating so far
-  ReferenceVM-->>Reader: card with the passage and thumbs
-  Reader->>ReferenceVM: thumb up or down
+  ReferenceVM-->>Reader: card with the passage
+  Reader->>RatingVM: card shown
+  RatingVM->>RatingCtrl: rating so far
+  RatingVM-->>Reader: thumbs
+  Reader->>RatingVM: thumb up or down
   opt first rating ever
-    ReferenceVM-->>Reader: ask to share ratings
-    Reader->>ReferenceVM: Share or Don't Share
-    ReferenceVM->>RefCtrl: setSharesRatings
+    RatingVM-->>Reader: ask to share ratings
+    Reader->>RatingVM: Share or Don't Share
+    RatingVM->>RatingCtrl: setSharesRatings
   end
-  ReferenceVM->>RefCtrl: rate
-  RefCtrl->>RatingRepo: save rating
+  RatingVM->>RatingCtrl: rate
+  RatingCtrl->>RatingRepo: save rating
   RatingRepo->>RatingRepo: write ratings.json
   alt sharing is on
     RatingRepo->>CloudSvc: save UnderlineRating

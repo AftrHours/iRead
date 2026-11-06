@@ -9,7 +9,6 @@ final class ReferenceVM {
         let phrase: String
         let location: String
         let quote: String
-        var verdict: Verdict?
 
         var id: String { underlineID }
     }
@@ -19,10 +18,6 @@ final class ReferenceVM {
     private(set) var cardAnchor = CGRect.zero
     private(set) var canReturn = false
     private(set) var toastText: String?
-    private(set) var isAskingToShare = false
-    private(set) var sharesRatings = false
-    /// Checked again when the app comes back, in case the reader signed in in Settings.
-    private(set) var cloudAccount: CloudAccount?
 
     @ObservationIgnored var onShowPage: (Page, String?) -> Void = { _, _ in }
 
@@ -32,11 +27,9 @@ final class ReferenceVM {
     private var highlightedSearchResult: SearchResult?
     private var isClosed = false
     private var underlinedChapter: Int?
-    /// Ratings are saved one after another, so quick taps land in order.
-    private var ratingTask: Task<Void, Never>?
-    /// Readable so tests can check that closing the reader cancels it.
     private(set) var underlineTask: Task<Void, Never>?
-    private let refCtrl: RefCtrl
+    /// Not private, for ReaderVM's debug sheet.
+    let refCtrl: RefCtrl
     private let readerStateCtrl: ReaderStateCtrl
     private let readerCtrl: ReaderCtrl
 
@@ -48,7 +41,6 @@ final class ReferenceVM {
 
     func appForegrounded() {
         if let shownPage, underlinedChapter == nil { followUnderlines(from: shownPage) }
-        checkCloud()
     }
 
     /// Underlines the shown page's chapter, starting at that page, and redraws the marks as underlines are found.
@@ -81,17 +73,6 @@ final class ReferenceVM {
     func bookOpened() async {
         await readerStateCtrl.load()
         canReturn = await readerStateCtrl.hasReturnPosition()
-        sharesRatings = await refCtrl.sharesRatings() == true
-        checkCloud()
-    }
-
-    /// In the background, so opening a book doesn't wait for iCloud. Also retries ratings an earlier send missed.
-    private func checkCloud() {
-        Task { [weak self, refCtrl] in
-            let account = await refCtrl.cloudAccount()
-            self?.cloudAccount = account
-            await refCtrl.sendUnsentRatings()
-        }
     }
 
     func update(shownPage: Page?, loadedPages: [Page]) {
@@ -115,40 +96,20 @@ final class ReferenceVM {
         guard case .underline(let id) = mark.kind else { return }
         Task {
             guard let underline = try? await refCtrl.underline(withID: id) else { return }
-            let passagePage = await readerCtrl.page(containing: underline.passage.start)
+            let passagePage = await readerCtrl.page(containing: underline.reference.start)
             let chapterTitles = await readerCtrl.chapterTitles()
-            let verdict = try? await refCtrl.verdict(onUnderline: id)
             cardAnchor = anchor
             card = ReferenceCard(
                 underlineID: id,
-                phrase: underline.phrase,
+                phrase: underline.text,
                 location: "\(chapterTitles[passagePage.chapterIndex]) • Page \(passagePage.number)",
-                quote: "“\(underline.passage.text)”",
-                verdict: verdict
+                quote: "“\(underline.reference.text)”"
             )
         }
     }
 
     func cardDismissed() {
         card = nil
-    }
-
-    /// Tapping the chosen thumb again takes the rating back. The first rating asks whether to share.
-    func verdictTapped(_ verdict: Verdict) {
-        guard let shown = card else { return }
-        let newVerdict = shown.verdict == verdict ? nil : verdict
-        card?.verdict = newVerdict
-        ratingTask = Task { [previous = ratingTask, refCtrl] in
-            if newVerdict != nil, await refCtrl.sharesRatings() == nil { isAskingToShare = true }
-            await previous?.value
-            try? await refCtrl.rate(underline: shown.underlineID, newVerdict)
-        }
-    }
-
-    func sharingChosen(_ shares: Bool) {
-        isAskingToShare = false
-        sharesRatings = shares
-        Task { await refCtrl.setSharesRatings(shares) }
     }
 
     func jumpToPassageTapped() {
@@ -158,7 +119,7 @@ final class ReferenceVM {
         Task {
             await readerStateCtrl.saveReturnPosition(await readerCtrl.startPosition(of: shownPage))
             guard let underline = try? await refCtrl.underline(withID: referenceCard.underlineID) else { return }
-            onShowPage(await readerCtrl.page(containing: underline.passage.start), referenceCard.underlineID)
+            onShowPage(await readerCtrl.page(containing: underline.reference.start), referenceCard.underlineID)
         }
     }
 
@@ -182,12 +143,6 @@ final class ReferenceVM {
             await loadMarks()
         }
     }
-
-    #if DEBUG
-    func makeUnderlineDebugVM() -> UnderlineDebugVM {
-        UnderlineDebugVM(refCtrl: refCtrl, chapterIndex: shownPage?.chapterIndex)
-    }
-    #endif
 
     func loadMarks() async {
         let pages = loadedPages

@@ -5,6 +5,7 @@ sequenceDiagram
   participant ReaderCtrl
   participant ProgressCtrl
   participant ReferenceVM
+  participant RatingVM
   participant BookContentRepo
   participant ProgRepo
 
@@ -18,7 +19,8 @@ sequenceDiagram
   ProgRepo-->>ReaderVM: last position
   ReaderVM->>ReaderCtrl: restorePosition, currentPage
   ReaderVM->>ReferenceVM: bookOpened
-  ReferenceVM->>ReferenceVM: check iCloud, resend unsent ratings
+  ReaderVM->>RatingVM: bookOpened
+  RatingVM->>RatingVM: check iCloud, resend unsent ratings
   ReaderCtrl-->>ReaderView: page
 
   Reader->>ReaderView: swipe

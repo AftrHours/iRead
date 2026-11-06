@@ -20,6 +20,7 @@ final class ReaderVM {
 
     let readerSettingsVM: ReaderSettingsVM
     let referenceVM: ReferenceVM
+    let ratingVM: RatingVM
     private(set) var title = ""
     private(set) var chapterTitles: [String] = []
     private(set) var pages: [Page] = []
@@ -51,7 +52,7 @@ final class ReaderVM {
     }
 
     init(book: BookRecord, readerCtrl: ReaderCtrl, progressCtrl: ProgressCtrl, readerStateCtrl: ReaderStateCtrl, appNav: AppNav,
-         readerSettingsVM: ReaderSettingsVM, referenceVM: ReferenceVM) {
+         readerSettingsVM: ReaderSettingsVM, referenceVM: ReferenceVM, ratingVM: RatingVM) {
         self.book = book
         self.readerCtrl = readerCtrl
         self.progressCtrl = progressCtrl
@@ -59,6 +60,7 @@ final class ReaderVM {
         self.appNav = appNav
         self.readerSettingsVM = readerSettingsVM
         self.referenceVM = referenceVM
+        self.ratingVM = ratingVM
         readerSettingsVM.onSettingsChanged = { [weak self] in
             Task { await self?.showCurrentPage() }
         }
@@ -79,6 +81,7 @@ final class ReaderVM {
                 await progressCtrl.positionRestored(isRestored)
             }
             await referenceVM.bookOpened()
+            await ratingVM.bookOpened()
             title = book.title
             chapterTitles = await readerCtrl.chapterTitles()
             await showCurrentPage()
@@ -122,6 +125,7 @@ final class ReaderVM {
 
     func appForegrounded() {
         referenceVM.appForegrounded()
+        ratingVM.appForegrounded()
     }
 
     func menuTapped() {
@@ -213,6 +217,12 @@ final class ReaderVM {
         }
     }
 
+    #if DEBUG
+    func makeUnderlineDebugVM() -> UnderlineDebugVM {
+        UnderlineDebugVM(refCtrl: referenceVM.refCtrl, ratingCtrl: ratingVM.ratingCtrl, chapterIndex: shownPage?.chapterIndex)
+    }
+    #endif
+
     private func updateReferenceVM() {
         referenceVM.update(shownPage: shownPage, loadedPages: pages)
     }
@@ -226,8 +236,4 @@ final class ReaderVM {
             pageCount = counts.reduce(0, +)
         }
     }
-}
-
-extension ReaderVM {
-    typealias ReferenceCard = ReferenceVM.ReferenceCard
 }

@@ -44,11 +44,12 @@ struct AppContainer {
             appNav: appNav,
             readerSettingsVM: ReaderSettingsVM(readerStateCtrl: readerStateCtrl),
             referenceVM: ReferenceVM(
-                refCtrl: RefCtrl(bookID: book.id, bookTitle: book.title, bookContentRepo: bookContentRepo,
-                                 underlineRepo: underlineRepo, ratingRepo: ratingRepo),
+                refCtrl: RefCtrl(bookID: book.id, bookContentRepo: bookContentRepo, underlineRepo: underlineRepo),
                 readerStateCtrl: readerStateCtrl,
                 readerCtrl: readerCtrl
-            )
+            ),
+            ratingVM: RatingVM(ratingCtrl: RatingCtrl(bookID: book.id, bookTitle: book.title, bookContentRepo: bookContentRepo,
+                                                      underlineRepo: underlineRepo, ratingRepo: ratingRepo))
         )
     }
 }

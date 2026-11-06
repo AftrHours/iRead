@@ -8,8 +8,9 @@ struct ReaderView: View {
     @State private var isUnderlineDebugShown = false
     #endif
 
-    private var readerSettingsVM: ReaderSettingsVM { readerVM.readerSettingsVM }
-    private var referenceVM: ReferenceVM { readerVM.referenceVM }
+    private let readerSettingsVM: ReaderSettingsVM
+    private let referenceVM: ReferenceVM
+    private let ratingVM: RatingVM
     private var theme: ReadingTheme { readerSettingsVM.layoutSettings.theme }
     // Only the page's own text uses the theme colour. Set on the whole view, it would leak into
     // the menu and sheets, which follow the system light or dark mode instead.
@@ -25,6 +26,9 @@ struct ReaderView: View {
 
     init(readerVM: ReaderVM) {
         _readerVM = State(initialValue: readerVM)
+        readerSettingsVM = readerVM.readerSettingsVM
+        referenceVM = readerVM.referenceVM
+        ratingVM = readerVM.ratingVM
     }
 
     var body: some View {
@@ -66,7 +70,7 @@ struct ReaderView: View {
         }
         #if DEBUG
         .sheet(isPresented: $isUnderlineDebugShown) {
-            UnderlineDebugView(underlineDebugVM: referenceVM.makeUnderlineDebugVM())
+            UnderlineDebugView(underlineDebugVM: readerVM.makeUnderlineDebugVM())
         }
         #endif
     }
@@ -87,18 +91,7 @@ struct ReaderView: View {
                 item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
                 attachmentAnchor: .rect(.rect(referenceVM.cardAnchor))
             ) { referenceCard in
-                RefCardView(
-                    card: referenceCard,
-                    onVerdictTapped: { referenceVM.verdictTapped($0) },
-                    onJumpTapped: { referenceVM.jumpToPassageTapped() }
-                )
-                .alert("Share Your Ratings?", isPresented: Binding(get: { referenceVM.isAskingToShare }, set: { _ in })) {
-                    Button("Share") { referenceVM.sharingChosen(true) }
-                    Button("Don't Share", role: .cancel) { referenceVM.sharingChosen(false) }
-                } message: {
-                    Text("Ratings help the developers improve underlines. Each rating sends the underlined sentence and its passage, "
-                         + "without your name. You can change this in the reader menu.")
-                }
+                RefCardView(card: referenceCard, ratingVM: ratingVM, onJumpTapped: { referenceVM.jumpToPassageTapped() })
             }
         } else if readerVM.hasFailedToOpen {
             ContentUnavailableView("Can't Open Book", systemImage: "book.closed")
@@ -179,7 +172,7 @@ struct ReaderView: View {
                 readerVM.menuTapped()
             }
             .popover(isPresented: Binding(get: { readerVM.isMenuShown }, set: { _ in readerVM.menuDismissed() }), arrowEdge: .bottom) {
-                ReaderMenuView(readerVM: readerVM)
+                ReaderMenuView(readerVM: readerVM, ratingVM: ratingVM)
                     .onDisappear { readerVM.menuDisappeared() }
             }
         }

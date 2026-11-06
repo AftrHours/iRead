@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct RefCardView: View {
-    let card: ReaderVM.ReferenceCard
-    let onVerdictTapped: (Verdict) -> Void
+    let card: ReferenceVM.ReferenceCard
+    let ratingVM: RatingVM
     let onJumpTapped: () -> Void
 
     var body: some View {
@@ -33,13 +33,21 @@ struct RefCardView: View {
         .frame(width: 520)
         .presentationCompactAdaptation(.popover)
         .presentationBackground(Color(.systemBackground))
+        .task(id: card.underlineID) { await ratingVM.cardShown(underlineID: card.underlineID) }
+        .alert("Share Your Ratings?", isPresented: Binding(get: { ratingVM.isAskingToShare }, set: { _ in })) {
+            Button("Share") { ratingVM.sharingChosen(true) }
+            Button("Don't Share", role: .cancel) { ratingVM.sharingChosen(false) }
+        } message: {
+            Text("Ratings help the developers improve underlines. Each rating sends the underlined sentence and its passage, "
+                 + "without your name. You can change this in the reader menu.")
+        }
     }
 
     private func thumb(_ verdict: Verdict) -> some View {
-        let isChosen = card.verdict == verdict
+        let isChosen = ratingVM.verdict == verdict
         let symbol = verdict == .up ? "hand.thumbsup" : "hand.thumbsdown"
         return Button {
-            onVerdictTapped(verdict)
+            ratingVM.verdictTapped(verdict)
         } label: {
             Image(systemName: isChosen ? "\(symbol).fill" : symbol)
                 .font(.title3)

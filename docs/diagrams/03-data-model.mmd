@@ -51,12 +51,16 @@ classDiagram
     NSRange range
   }
 
-  class Underline {
+  class SavedUnderline {
     String id
+    Int sentence
     NSRange range
     String text
+    String kind
+    String decidedBy
   }
   class ContextPassage {
+    Int sentence
     Int paragraph
     NSRange range
     String text
@@ -95,9 +99,9 @@ classDiagram
   Paragraph "1" *-- "0..*" Sentence
   Chapter "1" -- "1..*" Page : split to fit the screen
 
-  Chapter "1" -- "0..*" Underline : found by the engine
-  Underline "1" -- "1" ContextPassage : explained by
-  Underline "1" -- "0..1" UnderlineRating : rated by the reader
+  Chapter "1" -- "0..*" SavedUnderline : found by the engine
+  SavedUnderline "1" *-- "1" ContextPassage : reference
+  SavedUnderline "1" -- "0..1" UnderlineRating : rated by the reader
   UnderlineRating "0..*" --> "0..1" Verdict : verdict
   Page "1" *-- "0..*" Mark : underlines and highlight
   SearchResult "0..*" --> "1" ReadingPosition : where

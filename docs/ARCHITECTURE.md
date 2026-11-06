@@ -15,6 +15,7 @@ App/
               BookContentRepo, ProgRepo, EPUBParseSvc, BookFingerprint: names a book by its text)
   Library/    library page: list, sort, grid/list, EPUB import
   Analysis/   the AI feature: underlines with their reference passages (UnderlineEngine), and the readers' ratings of them
+    Models/   SavedUnderline: the app's own copy of an underline the engine found; UnderlineRating; ContextPassage; Mark
     Svc/      ModelCheckSvc: one test call to the on-device model before the first chapter
               CloudSvc: iCloud records through CloudKit (the reader's private database, and the developers' public one)
     Debug/    DEBUG-only underline debug sheet
@@ -40,6 +41,10 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 - Dependencies point down: `View → VM → Ctrl → Repo / Svc → Models`. `Rules` can be called from anywhere.
 - A Ctrl never calls another Ctrl. A Repo never calls a VM. When two Ctrls must be combined, a VM does it.
 - Only `AppContainer` knows every type.
+- A View is handed the VMs it uses and never reaches one through another (no `readerVM.referenceVM.x`).
+  `ReaderView` takes its children from `ReaderVM` once, in `init`, and passes each one down.
+- Only `UnderlineRepo`, `ChapterInputMapper` and the DEBUG files in `Analysis/Debug/` import UnderlineEngine.
+  Everything else uses `SavedUnderline`, so an engine update only touches those files.
 - Add a layer or type only when it does real work. A protocol is added when a test needs one.
 
 ## What the suffixes mean
@@ -61,12 +66,16 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 | `ReaderCtrl` | Book content, current position, pages, page counts, search, position ↔ page | `BookContentRepo`, `PagerSvc` |
 | `ProgressCtrl` | Restore and save progress, log restore and finished events | `ProgRepo`, `EventSvc` |
 | `ReaderStateCtrl` | Reading settings, brightness, the "return to reading" position, recent searches | `ReadingSettingsRepo`, `BrightnessSvc`, `BookStateRepo` |
-| `ReaderVM` (parent) | Pages, shown page, viewport, labels, show/hide controls, sheets, menu, back, contents, search, saving progress in page-turn order | `ReaderCtrl`, `ProgressCtrl`, `ReaderStateCtrl` (handed to `SearchVM`), `AppNav` + 2 children |
+| `ReaderVM` (parent) | Pages, shown page, viewport, labels, show/hide controls, sheets, menu, back, contents, search, saving progress in page-turn order | `ReaderCtrl`, `ProgressCtrl`, `ReaderStateCtrl` (handed to `SearchVM`), `AppNav` + 3 children |
 | `ReaderSettingsVM` | Settings, layout settings, brightness, text size, line spacing, theme | `ReaderStateCtrl` |
 | `ReferenceVM` | Marks, following underlines for the shown chapter, reference cards, highlight, jump and return, toast | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
+| `RatingVM` | Thumbs on the shown card, the share question, the Share Ratings switch, the iCloud row in the menu | `RatingCtrl` |
 | `SearchVM` | Search query (searched once typing pauses for 300 ms, 2 characters or more), results and recent searches | `ReaderCtrl.search` (passed in as a closure, so tests can count searches), `ReaderStateCtrl` |
 
 `ReaderSettingsVM` and `ReferenceVM` share one `ReaderStateCtrl` per open book.
+`RefCtrl` (underlines and marks: `BookContentRepo`, `UnderlineRepo`) and `RatingCtrl` (ratings: `BookContentRepo`, `UnderlineRepo`
+to look up the rated underline, `RatingRepo`) share one `UnderlineRepo` for the whole app.
+`RefCardView` and `ReaderMenuView` get `RatingVM` directly.
 
 State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 `ReferenceVM.update(shownPage:loadedPages:)`. Underlines and highlights always show, whether or not the controls do
@@ -106,11 +115,12 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
       only the 2 most recently used books stay parsed in memory).
    2. `ReaderSettingsVM.bookOpened` → `ReaderStateCtrl.settings`.
    3. `ProgressCtrl.savedProgress` → `ReaderCtrl.restorePosition(from:)` → `ProgressCtrl.positionRestored`.
-   4. `ReferenceVM.bookOpened` → `ReaderStateCtrl.load`.
+   4. `ReferenceVM.bookOpened` → `ReaderStateCtrl.load`. `RatingVM.bookOpened` → `RatingCtrl.sharesRatings`, then in the background
+      `RatingCtrl.cloudAccount` and `RatingCtrl.sendUnsentRatings` (again on `appForegrounded`).
    5. `ReaderVM.showCurrentPage` → `ReaderCtrl.currentPage` → `PagerSvc.pageRanges`.
-   6. `ReferenceVM.update` sees a new chapter → `RefCtrl.underlineUpdates(from:)` → `ChapterInputMapper` → `UnderlineRepo.underline`
-      (a finished chapter loads from `Underlines/<fingerprint>/`, or else from the reader's iCloud; otherwise UnderlineEngine runs
-      from the page's first sentence, then wraps). Books are named by `BookContent.fingerprint`, so the same book matches on every device.
+   6. `ReferenceVM.update` sees a new chapter → `RefCtrl.underlineUpdates(from:)` → `UnderlineRepo.underline(chapter:of:startingAt:)`
+      (a finished chapter loads from `Underlines/<fingerprint>/`, or else from the reader's iCloud; otherwise `ChapterInputMapper`
+      → UnderlineEngine runs from the page's first sentence, then wraps, and each result becomes `SavedUnderline`). Books are named by `BookContent.fingerprint`, so the same book matches on every device.
       Each update → `ReferenceVM.loadMarks`.
 
 **Turn a page and save progress**
@@ -126,10 +136,11 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 
 **Tap an underline, jump, and return**
 1. `PageTextView` → `PageTurnView.onMarkTapped` → `ReferenceVM.markTapped`
-   → `RefCtrl.underline(withID:)`, `ReaderCtrl.page(containing:)`, `RefCtrl.verdict(onUnderline:)` → `RefCardView`
+   → `RefCtrl.underline(withID:)`, `ReaderCtrl.page(containing:)` → `RefCardView`
    (the phrase, the passage that explains it, and thumbs up / down).
-   Thumb → `ReferenceVM.verdictTapped` → `RefCtrl.rate` → `RatingRepo.save`. The first rating asks once whether to share ratings
-   (`ReferenceVM.sharingChosen`; also the Share Ratings switch in the reader menu).
+   The card's `.task` → `RatingVM.cardShown` → `RatingCtrl.verdict(onUnderline:)` fills in a saved thumb.
+   Thumb → `RatingVM.verdictTapped` → `RatingCtrl.rate` → `RatingRepo.save`. The first rating asks once whether to share ratings
+   (`RatingVM.sharingChosen`; also the Share Ratings switch in the reader menu).
 2. Jump to Passage → `ReferenceVM.jumpToPassageTapped` → `ReaderCtrl.startPosition(of:)` → `ReaderStateCtrl.saveReturnPosition`
    → `ReaderCtrl.page(containing:)` → `onShowPage` → `ReaderVM.show(_:highlighting:)`.
 3. Return to Reading → `ReferenceVM.returnToReadingTapped` → `ReaderStateCtrl.returnPosition` → `ReaderCtrl.page(ifValid:)`
@@ -137,10 +148,11 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 
 ## Analysis
 
-- `Repo/UnderlineRepo`: runs UnderlineEngine's `UnderlineCtrl` one chapter at a time (starting another stops the running one).
-  A finished chapter is saved on disk (`Underlines/<fingerprint>/`) and in the reader's iCloud (private database, record type
+- `Repo/UnderlineRepo`: runs UnderlineEngine's `UnderlineCtrl` one chapter at a time (starting another stops the running one),
+  and turns each `Underline` it returns into `SavedUnderline` (only what the app uses: phrase, kind, decided by, its reference
+  passage). Only `SavedUnderline` is kept in memory, saved and uploaded. A finished chapter is saved on disk (`Underlines/<fingerprint>/`) and in the reader's iCloud (private database, record type
   `ChapterUnderlines`, named `<fingerprint>-<chapter>`), with the parser and engine versions (`UnderlineRepoKnobs.engineVersion`,
-  bumped with the UnderlineEngine pin in `project.yml`). A chapter not on disk is looked for in iCloud before the engine runs,
+  bumped with the UnderlineEngine pin in `project.yml` or when `SavedUnderline` changes). A chapter not on disk is looked for in iCloud before the engine runs,
   so another device, a reinstall or a re-import doesn't underline it again. A chapter from another version is underlined again.
   Without iCloud everything still works on the device.
 - `Svc/ModelCheckSvc`: one tiny call to Apple's on-device model before the first chapter. The system can say the model is
@@ -153,9 +165,14 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
   the public database (record type `UnderlineRating`) with the phrase, its sentence and the reference passage, sentences counted
   from the chapter's start like UnderlineEngine's golden set. Taking a rating back deletes its record. One send runs at a time;
   what can't be sent yet is retried when a book opens. See `docs/ICLOUD.md` for the CloudKit Console.
-- `Debug/UnderlineDebugView` (DEBUG; ladybug button or ⌘⇧D): every phrase the engine considered, kept or dropped and why, plus
-  an iCloud section: the account, where this chapter's underlines came from or went, and the ratings waiting to be sent.
-- `Rules/ChapterInputMapper`: one chapter of `BookContent` → UnderlineEngine's `ChapterInput` (same indexes and ranges).
+- `Ctrl/RefCtrl`: underline updates for a page, marks, and an underline by ID. `Ctrl/RatingCtrl`: builds an `UnderlineRating`
+  from a `SavedUnderline` and the book's text, and the share answer, unsent ratings and iCloud account.
+- `Debug/UnderlineDebugView` (DEBUG; ladybug button or ⌘⇧D, made by `ReaderVM.makeUnderlineDebugVM`): every phrase the engine
+  considered, kept or dropped and why, plus an iCloud section: the account, where this chapter's underlines came from or went,
+  and the ratings waiting to be sent. Its `RefCtrl` and `RatingCtrl` reads live in `UnderlineDebugVM.swift`, as they use
+  UnderlineEngine's records.
+- `Rules/ChapterInputMapper`: one chapter of `BookContent` → UnderlineEngine's `ChapterInput` (same indexes and ranges), for
+  `UnderlineRepo`; and the first sentence on a page, for `RefCtrl`.
 
 ## Testing & CI
 
