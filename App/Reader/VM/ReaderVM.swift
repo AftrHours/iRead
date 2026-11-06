@@ -29,6 +29,9 @@ final class ReaderVM {
     private(set) var areControlsShown = true
     private(set) var isMenuShown = false
     private(set) var sheet: Sheet?
+    #if DEBUG
+    private(set) var isUnderlineDebugShown = false
+    #endif
 
     private var chapterStartPages: [Int] = []
     private var sheetAfterMenu: Sheet?
@@ -135,6 +138,21 @@ final class ReaderVM {
     func menuDismissed() {
         isMenuShown = false
     }
+
+    #if DEBUG
+    var isUnderlineDebugSheetPresented: Bool {
+        get { isUnderlineDebugShown }
+        set { if !newValue { underlineDebugDismissed() } }
+    }
+
+    func underlineDebugTapped() {
+        isUnderlineDebugShown = true
+    }
+
+    func underlineDebugDismissed() {
+        isUnderlineDebugShown = false
+    }
+    #endif
 
     /// A sheet asked for from the menu opens only once the menu has fully closed,
     /// because iOS drops a sheet that is presented while the menu is still closing.

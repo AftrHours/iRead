@@ -8,6 +8,22 @@ enum ReadingTheme: String, Codable, CaseIterable, Sendable {
     }
 }
 
+enum PageTurnStyle: String, Codable, CaseIterable, Sendable, Identifiable {
+    case slide
+    case curl
+    case fastFade
+
+    var id: Self { self }
+
+    var title: String {
+        switch self {
+        case .slide: "Slide"
+        case .curl: "Curl"
+        case .fastFade: "Fast Fade"
+        }
+    }
+}
+
 struct ReadingSettings: Codable, Equatable, Sendable {
     /// Apple Books' iPad body sizes, smallest to largest.
     static let textSizes: [Double] = [17, 18, 19, 20, 23, 25, 28, 34, 40, 48, 56]
@@ -18,6 +34,21 @@ struct ReadingSettings: Codable, Equatable, Sendable {
     var textSizeIndex = 3
     var lineSpacingPercent = 120
     var theme = ReadingTheme.original
+    var pageTurnStyle = PageTurnStyle.slide
+
+    private enum CodingKeys: String, CodingKey {
+        case textSizeIndex, lineSpacingPercent, theme, pageTurnStyle
+    }
+
+    init() {}
+
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        textSizeIndex = try container.decodeIfPresent(Int.self, forKey: .textSizeIndex) ?? 3
+        lineSpacingPercent = try container.decodeIfPresent(Int.self, forKey: .lineSpacingPercent) ?? 120
+        theme = try container.decodeIfPresent(ReadingTheme.self, forKey: .theme) ?? .original
+        pageTurnStyle = try container.decodeIfPresent(PageTurnStyle.self, forKey: .pageTurnStyle) ?? .slide
+    }
 
     var textSize: Double {
         Self.textSizes[min(max(textSizeIndex, 0), Self.textSizes.count - 1)]

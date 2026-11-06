@@ -5,22 +5,32 @@ struct iReadApp: App {
     private let appContainer: AppContainer
     @State private var libVM: LibVM
     @State private var readerVM: ReaderVM?
+    @State private var onboardingVM: OnboardingVM
+    @AppStorage("hasCompletedHiFiOnboarding") private var hasCompletedOnboarding = false
 
     init() {
         let appContainer = AppContainer()
         self.appContainer = appContainer
-        _libVM = State(initialValue: appContainer.makeLibVM())
+        let libVM = appContainer.makeLibVM()
+        _libVM = State(initialValue: libVM)
+        _onboardingVM = State(initialValue: appContainer.makeOnboardingVM(using: libVM))
     }
 
     var body: some Scene {
         WindowGroup {
             Group {
-                switch appContainer.appNav.route {
-                case .library:
-                    LibView(libVM: libVM)
-                case .reader:
-                    if let readerVM {
-                        ReaderView(readerVM: readerVM)
+                if hasCompletedOnboarding {
+                    switch appContainer.appNav.route {
+                    case .library:
+                        LibView(libVM: libVM)
+                    case .reader:
+                        if let readerVM {
+                            ReaderView(readerVM: readerVM)
+                        }
+                    }
+                } else {
+                    OnboardingView(onboardingVM: onboardingVM) {
+                        hasCompletedOnboarding = true
                     }
                 }
             }

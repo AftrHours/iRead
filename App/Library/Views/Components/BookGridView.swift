@@ -1,9 +1,10 @@
 import SwiftUI
 
-/// Cover width to height in the library design (171 × 234 pt).
-let bookCoverAspectRatio: CGFloat = 171 / 234
+/// The Hi-Fi library uses portrait covers close to a standard 2:3 book ratio.
+let bookCoverAspectRatio: CGFloat = 2 / 3
 
 struct BookGridView<MenuButton: View>: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let book: BookRecord
     let cover: UIImage?
     let menu: MenuButton
@@ -13,8 +14,7 @@ struct BookGridView<MenuButton: View>: View {
             Rectangle()
                 .fill(Color(.systemGray5))
                 .aspectRatio(bookCoverAspectRatio, contentMode: .fit)
-                // Cropped from the bottom, so the title at the top of most covers stays visible.
-                .overlay(alignment: .top) {
+                .overlay {
                     if let cover {
                         Image(uiImage: cover)
                             .resizable()
@@ -25,41 +25,28 @@ struct BookGridView<MenuButton: View>: View {
 
             ProgressBar(progress: book.progress)
                 .padding(.top, 10)
+                .padding(.horizontal, 10)
 
             HStack(alignment: .center, spacing: 4) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(book.title)
-                        .font(.body.weight(.medium))
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(LibraryPalette.primaryText)
+                        .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
                     Text(book.author)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .font(.caption)
+                        .foregroundStyle(LibraryPalette.secondaryText)
+                        .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
                 }
-                .lineLimit(1)
                 Spacer(minLength: 0)
                 menu
             }
-            .padding(.top, 6)
+            .padding(.top, 4)
+            .padding(.horizontal, 10)
+            .padding(.bottom, 3)
         }
-    }
-}
-
-/// The thin reading-progress bar under a cover.
-struct ProgressBar: View {
-    let progress: Double
-
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .fill(Color(.systemGray5))
-                Rectangle()
-                    .fill(Color(.systemGray2))
-                    .frame(width: geometry.size.width * min(max(progress, 0), 1))
-            }
-        }
-        .frame(height: 6)
-        .accessibilityElement()
-        .accessibilityLabel("\(Int((min(max(progress, 0), 1) * 100).rounded()))% read")
+        .background(LibraryPalette.card, in: .rect(cornerRadius: 14))
+        .clipShape(.rect(cornerRadius: 14))
     }
 }
 

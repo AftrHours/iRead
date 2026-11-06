@@ -9,6 +9,8 @@ final class LibVM {
         case list
     }
 
+    var searchText = ""
+    var isImportPickerPresented = false
     private(set) var allBooks: [BookRecord] = []
     private(set) var viewMode = ViewMode.grid
     private(set) var sortOption = LibrarySortOption.latestRead
@@ -20,6 +22,38 @@ final class LibVM {
 
     var books: [BookRecord] {
         LibrarySorter.sorted(allBooks, by: sortOption, pinning: newestImportedBookID)
+    }
+
+    var visibleBooks: [BookRecord] {
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !query.isEmpty else { return books }
+        return books.filter {
+            $0.title.localizedCaseInsensitiveContains(query)
+                || $0.author.localizedCaseInsensitiveContains(query)
+        }
+    }
+
+    var emptyStateTitle: String {
+        allBooks.isEmpty ? "No books yet" : "No books found"
+    }
+
+    var emptyStateMessage: String {
+        allBooks.isEmpty ? "Tap the + button to import an EPUB" : "Try a different title or author"
+    }
+
+    var isImportAlertPresented: Bool {
+        get { importError != nil }
+        set { if !newValue { dismissImportError() } }
+    }
+
+    var isRemoveAlertPresented: Bool {
+        get { bookToRemove != nil }
+        set { if !newValue { removeCancelled() } }
+    }
+
+    var isBookActionAlertPresented: Bool {
+        get { bookActionError != nil }
+        set { if !newValue { dismissBookActionError() } }
     }
 
     private static let coverSize = CGSize(width: 400, height: 600)
@@ -40,12 +74,22 @@ final class LibVM {
         viewMode = viewMode == .grid ? .list : .grid
     }
 
+    func importTapped() {
+        isImportPickerPresented = true
+    }
+
+    func importPickerCompleted(_ result: Result<[URL], any Error>) {
+        Task { await importFiles(result) }
+    }
+
     func sortChanged(_ sortOption: LibrarySortOption) {
         self.sortOption = sortOption
         newestImportedBookID = nil
     }
 
-    func importFiles(_ result: Result<[URL], any Error>) async {
+    @discardableResult
+    func importFiles(_ result: Result<[URL], any Error>) async -> Bool {
+        isImportPickerPresented = false
         switch result {
         case .success(let urls):
             do {
@@ -55,15 +99,18 @@ final class LibVM {
                 }
                 allBooks = try await libCtrl.loadLibrary()
                 await loadCovers()
+                return true
             } catch {
                 allBooks = (try? await libCtrl.loadLibrary()) ?? allBooks
                 importError = error.localizedDescription
+                return false
             }
         case .failure(let error):
             // User cancellation is a normal document picker outcome.
             if (error as? CocoaError)?.code != .userCancelled {
                 importError = error.localizedDescription
             }
+            return false
         }
     }
 
@@ -71,10 +118,16 @@ final class LibVM {
         importError = nil
     }
 
-    func searchTapped() {}
-
     func bookTapped(_ book: BookRecord) {
         appNav.openReader(book: book)
+    }
+
+    func finishedActionTitle(for book: BookRecord) -> String {
+        book.isFinished ? "Mark as Still Reading" : "Mark as Finished"
+    }
+
+    func finishedActionSymbol(for book: BookRecord) -> String {
+        book.isFinished ? "book" : "checkmark.circle"
     }
 
     func finishedToggled(_ book: BookRecord) {

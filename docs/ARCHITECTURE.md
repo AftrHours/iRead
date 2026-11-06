@@ -6,14 +6,16 @@ iPhone and iPad reader app (iPhone in portrait only). SwiftUI, Swift 6, iOS 26, 
 
 ```
 App/
-  iReadApp.swift      switches on AppNav.route, nothing else
+  iReadApp.swift      shows onboarding on first launch, then switches on AppNav.route
   AppContainer.swift  builds every repo, service, Ctrl and VM (the only type that knows them all)
   AppNav.swift        route: .library or .reader(book:)
   Resources/          bundled sample EPUBs (listed in BookRecord.samples)
+  LibraryPalette.swift colors shared by every feature
 
   Book/       per-book data shared by every feature (BookRecord, BookContent, Page, ReadingProgress,
               BookContentRepo, ProgRepo, EPUBParseSvc, BookFingerprint: names a book by its text)
-  Library/    library page: list, sort, grid/list, EPUB import
+  Onboarding/ first-launch introduction, with an EPUB import
+  Library/    library page: list, search, sort, grid/list, EPUB import
   Analysis/   the AI feature: underlines with their reference passages (UnderlineEngine), and the readers' ratings of them
     Models/   SavedUnderline: the app's own copy of an underline the engine found; UnderlineRating; ContextPassage; Mark
     Svc/      ModelCheckSvc: one test call to the on-device model before the first chapter
@@ -21,6 +23,8 @@ App/
     Debug/    DEBUG-only underline debug sheet
   Reader/     reading page: paging, progress, settings, search, contents, reference cards
 ```
+
+Small reusable view pieces live in a feature's `Views/Components/` (for example `RefCardView`, `BookMenu`).
 
 ```
             App (iReadApp, AppContainer, AppNav)
@@ -108,7 +112,8 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 
 **Launch → library**
 1. `iReadApp.init` → `AppContainer.init` builds `EPUBParseSvc`, `ProgRepo`, `BookContentRepo`, `LibRepo`, `UnderlineRepo`, `RatingRepo` once.
-2. `AppContainer.makeLibVM` → `LibView`.
+2. `AppContainer.makeLibVM` → `LibView`. On the first launch (`hasCompletedHiFiOnboarding` is false), `OnboardingView` shows first;
+   `OnboardingVM` (from `AppContainer.makeOnboardingVM(using:)`) imports through the same `LibVM.importFiles`. Skip or finish → `LibView`.
 3. `LibView.task` → `LibVM.onAppear` → `LibCtrl.loadLibrary` → `LibRepo.fetchBooks`
    (the built-in sample books plus the imported books in `Books/library.json`), then `ProgRepo.progress(for:)` per book,
    merged in by `LibCtrl` (a finished book shows as fully read).
@@ -116,7 +121,7 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 5. `LibVM.loadCovers` → `LibCtrl.cover(for:)` → `BookContentRepo.cover(for:)` → `EPUBParseSvc.cover(from:)`, shrunk to a thumbnail once.
 
 **Import an EPUB**
-1. `LibView` + button → `EPUBDocumentPicker` → `LibVM.importFiles`.
+1. `LibView` + button → `LibVM.importTapped` → `EPUBDocumentPicker` → `LibVM.importPickerCompleted` → `LibVM.importFiles`.
 2. → `LibCtrl.importBook(from:)` → `LibRepo.importBook` → `EPUBParseSvc.metadata(from:)`,
    copies to `Books/<id>/book.epub`, appends it to `library.json` (imported books only, never the samples).
 3. → `LibCtrl.loadLibrary`. The new book stays pinned first until `LibVM.sortChanged`.

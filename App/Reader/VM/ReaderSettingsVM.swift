@@ -48,6 +48,10 @@ final class ReaderSettingsVM {
         changeSettings { $0.theme = theme }
     }
 
+    func pageTurnStyleChanged(_ style: PageTurnStyle) {
+        changeSettings { $0.pageTurnStyle = style }
+    }
+
     func brightnessChanged(_ brightness: Double) {
         self.brightness = brightness
         Task { await readerStateCtrl.changeBrightness(to: brightness) }

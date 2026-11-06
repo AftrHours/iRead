@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct BookRowView<MenuButton: View>: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let book: BookRecord
     let cover: UIImage?
     let menu: MenuButton
@@ -11,7 +12,7 @@ struct BookRowView<MenuButton: View>: View {
                 Rectangle()
                     .fill(Color(.systemGray5))
                     .frame(width: 60, height: 60 / bookCoverAspectRatio)
-                    .overlay(alignment: .top) {
+                    .overlay {
                         if let cover {
                             Image(uiImage: cover)
                                 .resizable()
@@ -19,16 +20,20 @@ struct BookRowView<MenuButton: View>: View {
                         }
                     }
                     .clipped()
+                    .clipShape(.rect(cornerRadius: 4))
                 ProgressBar(progress: book.progress)
                     .frame(width: 60)
             }
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(book.title)
-                    .font(.body.weight(.medium))
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(LibraryPalette.primaryText)
+                    .lineLimit(dynamicTypeSize.isAccessibilitySize ? 3 : 2)
                 Text(book.author)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .font(.caption)
+                    .foregroundStyle(LibraryPalette.secondaryText)
+                    .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
             }
 
             Spacer()
