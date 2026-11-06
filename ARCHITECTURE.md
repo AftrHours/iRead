@@ -1,6 +1,6 @@
 # iRead architecture
 
-iPad reader app. SwiftUI, Swift 6, iOS 26, XcodeGen (`project.yml` → `iRead.xcodeproj`), EPUBKit (local package in `Packages/EPUBKit`, on ZIPFoundation) for EPUB.
+iPad reader app. SwiftUI, Swift 6, iOS 26, XcodeGen (`project.yml` → `iRead.xcodeproj`), EPUBKit (local package in `Packages/EPUBKit`, on ZIPFoundation) for EPUB, UnderlineEngine (remote package, branch `Underline-Engine`) for underlines. `WALKTHROUGH.md` follows the underline data step by step.
 
 ## Folders and dependency direction
 
@@ -97,12 +97,12 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 1. `LibVM.bookTapped` → `AppNav.openReader(book:)`.
 2. `iReadApp` sees the route change → `AppContainer.makeReaderVM(book:)` (once per open) → `ReaderView`.
 3. `ReaderView.task` → `ReaderVM.onAppear`:
-   2. `ReaderCtrl.openBook` → `BookContentRepo.content(for:)` → `EPUBParseSvc.parse`
+   1. `ReaderCtrl.openBook` → `BookContentRepo.content(for:)` → `EPUBParseSvc.parse`
       (imported `book.epub` first, then the bundled EPUB named in `BookRecord.samples`; one parse per book even with concurrent callers).
-   3. `ReaderSettingsVM.bookOpened` → `ReaderStateCtrl.settings`.
-   4. `ProgressCtrl.savedProgress` → `ReaderCtrl.restorePosition(from:)` → `ProgressCtrl.positionRestored`.
-   5. `ReferenceVM.bookOpened` → `ReaderStateCtrl.load`.
-   6. `ReaderVM.showCurrentPage` → `ReaderCtrl.currentPage` → `PagerSvc.pageRanges`.
+   2. `ReaderSettingsVM.bookOpened` → `ReaderStateCtrl.settings`.
+   3. `ProgressCtrl.savedProgress` → `ReaderCtrl.restorePosition(from:)` → `ProgressCtrl.positionRestored`.
+   4. `ReferenceVM.bookOpened` → `ReaderStateCtrl.load`.
+   5. `ReaderVM.showCurrentPage` → `ReaderCtrl.currentPage` → `PagerSvc.pageRanges`.
 
 **Turn a page and save progress**
 1. `PageTurnView.onPageChanged` → `ReaderVM.pageChanged` → `ReaderVM.show` → `ReferenceVM.update`.

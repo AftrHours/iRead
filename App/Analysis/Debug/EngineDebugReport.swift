@@ -73,6 +73,7 @@ struct EngineDebugReport {
         case .guardRejected: "Guard rejected the pick"
         case .densityLimit: "Over the limit for its paragraph"
         case .modelFailed: "Model call failed"
+        case .explainedInParagraph: "Explained in its own paragraph"
         }
     }
 

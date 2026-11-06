@@ -30,7 +30,7 @@ packages:
   # Finds the phrases worth underlining and the earlier passage that explains each one. Only Analysis/ imports it.
   UnderlineEngine:
     url: https://github.com/AftrHours/UnderlineEngine
-    branch: Underline-Engine
+    branch: main
 targets:
   iRead:
     type: application
