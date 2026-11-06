@@ -1,0 +1,18 @@
+flowchart LR
+  Reader[Reader]
+  Files[Files app]
+  Share[Other apps]
+  Model[Apple on-device model]
+  Private[Reader's iCloud]
+  Public[Developers' CloudKit]
+  App((iRead))
+
+  Reader -- taps, settings, search, ratings --> App
+  App -- pages, underlines, cards --> Reader
+  Files -- EPUB file --> App
+  App -- shared EPUB --> Share
+  App -- phrases and passages --> Model
+  Model -- picks and confirms --> App
+  App -- finished chapters' underlines --> Private
+  Private -- saved underlines --> App
+  App -- shared ratings --> Public

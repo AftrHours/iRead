@@ -1,0 +1,103 @@
+classDiagram
+  direction LR
+
+  class BookRecord {
+    UUID id
+    String title
+    String author
+    Double progress
+    Date dateAdded
+    Date lastReadAt
+  }
+  class ReadingProgress {
+    UUID bookID
+    Int chapterIndex
+    Double progress
+    Date lastReadAt
+    Date finishedAt
+  }
+  class ReadingPosition {
+    Int paragraph
+    Int charOffset
+  }
+  class BookState {
+    List~String~ recentSearches
+  }
+  class ReadingSettings {
+    Int textSizeIndex
+    Int lineSpacingPercent
+    ReadingTheme theme
+  }
+
+  class BookContent {
+    String fingerprint
+    Int parserVersion
+  }
+  class Chapter {
+    String title
+    String text
+  }
+  class Paragraph {
+    Int chapterIndex
+    NSRange range
+  }
+  class Sentence {
+    Int paragraph
+    NSRange range
+  }
+  class Page {
+    Int number
+    Int chapterIndex
+    NSRange range
+  }
+
+  class Underline {
+    String id
+    NSRange range
+    String text
+  }
+  class ContextPassage {
+    Int paragraph
+    NSRange range
+    String text
+  }
+  class UnderlineRating {
+    String book
+    String underlineID
+    Verdict verdict
+    String phrase
+    Int sentence
+    Int reference
+    Int engineVersion
+  }
+  class Verdict {
+    <<enumeration>>
+    up
+    down
+  }
+  class Mark {
+    NSRange range
+    Kind kind
+  }
+  class SearchResult {
+    String snippet
+    Int pageNumber
+  }
+
+  BookRecord "1" -- "0..1" ReadingProgress : saved progress
+  BookRecord "1" -- "0..1" BookState : return spot, searches
+  BookRecord "1" -- "1" BookContent : parsed from its EPUB
+  ReadingProgress "1" *-- "1" ReadingPosition : position
+  BookState "1" *-- "0..1" ReadingPosition : returnPosition
+
+  BookContent "1" *-- "1..*" Chapter
+  Chapter "1" *-- "1..*" Paragraph
+  Paragraph "1" *-- "0..*" Sentence
+  Chapter "1" -- "1..*" Page : split to fit the screen
+
+  Chapter "1" -- "0..*" Underline : found by the engine
+  Underline "1" -- "1" ContextPassage : explained by
+  Underline "1" -- "0..1" UnderlineRating : rated by the reader
+  UnderlineRating "0..*" --> "0..1" Verdict : verdict
+  Page "1" *-- "0..*" Mark : underlines and highlight
+  SearchResult "0..*" --> "1" ReadingPosition : where

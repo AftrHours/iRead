@@ -1,0 +1,27 @@
+sequenceDiagram
+  actor Reader
+  participant ReferenceVM
+  participant RefCtrl
+  participant RatingRepo
+  participant CloudSvc
+  participant Public as Developers' CloudKit
+
+  Reader->>ReferenceVM: tap an underline
+  ReferenceVM->>RefCtrl: underline and its rating so far
+  ReferenceVM-->>Reader: card with the passage and thumbs
+  Reader->>ReferenceVM: thumb up or down
+  opt first rating ever
+    ReferenceVM-->>Reader: ask to share ratings
+    Reader->>ReferenceVM: Share or Don't Share
+    ReferenceVM->>RefCtrl: setSharesRatings
+  end
+  ReferenceVM->>RefCtrl: rate
+  RefCtrl->>RatingRepo: save rating
+  RatingRepo->>RatingRepo: write ratings.json
+  alt sharing is on
+    RatingRepo->>CloudSvc: save UnderlineRating
+    CloudSvc->>Public: record
+  else sharing is off
+    RatingRepo->>RatingRepo: keep on this phone only
+  end
+  Note over Reader,Public: Tapping the same thumb again takes the rating back and deletes its record.

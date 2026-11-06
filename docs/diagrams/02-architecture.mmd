@@ -1,0 +1,81 @@
+flowchart TB
+  subgraph View["View · draws the screen"]
+    LibView
+    ReaderView
+  end
+
+  subgraph ViewModel["ViewModel · screen state"]
+    LibVM
+    ReaderVM
+    ReaderSettingsVM
+    ReferenceVM
+    SearchVM
+  end
+
+  subgraph Controller["Controller · one use case"]
+    LibCtrl
+    ReaderCtrl
+    ProgressCtrl
+    ReaderStateCtrl
+    RefCtrl
+  end
+
+  subgraph Repo["Repo · saves and loads"]
+    LibRepo
+    BookContentRepo
+    ProgRepo
+    ReadingSettingsRepo
+    BookStateRepo
+    UnderlineRepo
+    RatingRepo
+  end
+
+  subgraph Service["Service · wraps an Apple API"]
+    EPUBParseSvc
+    PagerSvc
+    BrightnessSvc
+    EventSvc
+    ModelCheckSvc
+    CloudSvc
+  end
+
+  Engine[[UnderlineEngine package]]
+  iCloud[(iCloud)]
+
+  LibView --> LibVM
+  ReaderView --> ReaderVM
+  ReaderVM --> ReaderSettingsVM
+  ReaderVM --> ReferenceVM
+  ReaderVM --> SearchVM
+
+  LibVM --> LibCtrl
+  ReaderVM --> ReaderCtrl
+  ReaderVM --> ProgressCtrl
+  ReaderSettingsVM --> ReaderStateCtrl
+  ReferenceVM --> RefCtrl
+  ReferenceVM --> ReaderStateCtrl
+  ReferenceVM --> ReaderCtrl
+  SearchVM --> ReaderCtrl
+  SearchVM --> ReaderStateCtrl
+
+  LibCtrl --> LibRepo
+  LibCtrl --> BookContentRepo
+  LibCtrl --> ProgRepo
+  ReaderCtrl --> BookContentRepo
+  ReaderCtrl --> PagerSvc
+  ProgressCtrl --> ProgRepo
+  ProgressCtrl --> EventSvc
+  ReaderStateCtrl --> ReadingSettingsRepo
+  ReaderStateCtrl --> BookStateRepo
+  ReaderStateCtrl --> BrightnessSvc
+  RefCtrl --> BookContentRepo
+  RefCtrl --> UnderlineRepo
+  RefCtrl --> RatingRepo
+
+  LibRepo --> EPUBParseSvc
+  BookContentRepo --> EPUBParseSvc
+  UnderlineRepo --> ModelCheckSvc
+  UnderlineRepo --> Engine
+  UnderlineRepo --> CloudSvc
+  RatingRepo --> CloudSvc
+  CloudSvc --> iCloud

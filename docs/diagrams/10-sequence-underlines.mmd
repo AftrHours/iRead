@@ -1,0 +1,25 @@
+sequenceDiagram
+  actor Reader
+  participant ReferenceVM
+  participant RefCtrl
+  participant UnderlineRepo
+  participant CloudSvc as CloudSvc (reader's iCloud)
+  participant Engine as UnderlineEngine
+
+  ReferenceVM->>RefCtrl: underlineUpdates for this page
+  RefCtrl->>UnderlineRepo: underline this chapter (by book fingerprint)
+  alt saved on this phone
+    UnderlineRepo-->>RefCtrl: saved underlines
+  else saved in iCloud
+    UnderlineRepo->>CloudSvc: record fingerprint-chapter
+    CloudSvc-->>UnderlineRepo: saved underlines
+    UnderlineRepo->>UnderlineRepo: save on this phone
+  else not saved anywhere
+    UnderlineRepo->>Engine: prepare, paragraphResults
+    Engine-->>UnderlineRepo: underlines, one paragraph at a time
+    UnderlineRepo->>UnderlineRepo: save on this phone
+    UnderlineRepo->>CloudSvc: save to iCloud
+  end
+  RefCtrl-->>ReferenceVM: new underlines found
+  ReferenceVM->>RefCtrl: marks on this page
+  ReferenceVM-->>Reader: underlines on the page
