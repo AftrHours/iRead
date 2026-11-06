@@ -52,6 +52,17 @@ classDiagram
     +DropReason dropped
   }
 
+  class SavedUnderline {
+    +String id
+    +Int sentence
+    +Int paragraph
+    +NSRange range
+    +String text
+    +String kind
+    +String decidedBy
+    +ContextPassage reference
+  }
+
   class UnderlineKind {
     <<enumeration>>
     action
@@ -107,6 +118,9 @@ classDiagram
   %% Output points back at the input by global index
   Underline "0..*" --> "1" SentenceInput : sentence
   AnswerPassage "0..*" --> "1" SentenceInput : sentence (always earlier)
+
+  %% In iRead: UnderlineRepo copies each Underline into the app's own model
+  Underline "1" ..> "1" SavedUnderline : copied into, in UnderlineRepo
 
   %% Enum values
   Underline "0..*" --> "1" UnderlineKind : kind

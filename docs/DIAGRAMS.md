@@ -1,6 +1,6 @@
 # iRead diagrams
 
-Author: Shanon Giuly Istanto · Updated 2026-11-06
+Author: Shanon Giuly Istanto · Updated 2026-11-06 (after the RatingVM / SavedUnderline split)
 
 Every diagram is Mermaid. GitHub draws them on this page. To edit one in Miro, copy its file from `docs/diagrams/` and paste it into Diagram → Build with code.
 
@@ -209,6 +209,55 @@ flowchart TB
   CloudSvc --> iCloud
 ```
 
+### 2e. Who owns whom
+
+`AppNav` only holds the current screen; `iReadApp` watches it and asks `AppContainer` to build the screen's VMs. Each View gets only the VMs it uses. `ReaderVM` owns the reader's child VMs and is the only VM that knows them. `PageTurnView` gets plain data and callbacks from `ReaderView`, not a VM.
+
+File: `docs/diagrams/02e-who-owns-whom.mmd`
+
+```mermaid
+flowchart TB
+  App[iReadApp]
+  Nav[AppNav · current screen]
+  Box[AppContainer · builds everything]
+
+  App -- watches --> Nav
+  App -- asks to build --> Box
+
+  subgraph LibraryScreen["Library screen · lives as long as the app"]
+    LibView --> LibVM
+  end
+
+  subgraph ReaderScreen["Reader screen · built new for each book"]
+    ReaderView --> ReaderVM
+    ContentsView --> ReaderVM
+    MenuView[ReaderMenuView] --> ReaderVM
+    MenuView --> RatingVM
+    CardView[RefCardView] --> RatingVM
+    ThemeView[ThemeSettingsView] --> ReaderSettingsVM
+    SearchView --> SearchVM
+    ReaderVM -. owns .-> ReaderSettingsVM
+    ReaderVM -. owns .-> ReferenceVM
+    ReaderVM -. owns .-> RatingVM
+    ReaderVM -. makes when search opens .-> SearchVM
+  end
+
+  Box --> LibVM
+  Box --> ReaderVM
+
+  LibVM -- openReader --> Nav
+  ReaderVM -- closeReader --> Nav
+
+  LibVM --> Ctrls[Controllers]
+  ReaderVM --> Ctrls
+  ReaderSettingsVM --> Ctrls
+  SearchVM --> Ctrls
+  ReferenceVM --> Ctrls
+  RatingVM --> Ctrls
+  Ctrls --> Data[Repos and Services]
+  Data --> Store[(Files, iCloud, Apple APIs)]
+```
+
 ## 3. Data model (DMD)
 
 The app's data and how it relates. A book has one record (library) and one parsed content (reader). `BookContent.fingerprint` names a book by its text, so underlines and ratings match on every device. `ReadingSettings` is one record for the whole app.
@@ -272,6 +321,7 @@ classDiagram
   class SavedUnderline {
     String id
     Int sentence
+    Int paragraph
     NSRange range
     String text
     String kind
@@ -327,7 +377,7 @@ classDiagram
 
 ## 4. UnderlineEngine input and output
 
-What iRead sends the engine (one chapter) and what it gets back (one result per paragraph). Indexes are global; ranges are UTF-16 inside a paragraph.
+What iRead sends the engine (one chapter) and what it gets back (one result per paragraph). `UnderlineRepo` copies each `Underline` into the app's own `SavedUnderline` right away, so nothing else in the app depends on the engine's types. Indexes are global; ranges are UTF-16 inside a paragraph.
 
 File: `docs/diagrams/04-underline-engine-data.mmd`
 
@@ -386,6 +436,17 @@ classDiagram
     +DropReason dropped
   }
 
+  class SavedUnderline {
+    +String id
+    +Int sentence
+    +Int paragraph
+    +NSRange range
+    +String text
+    +String kind
+    +String decidedBy
+    +ContextPassage reference
+  }
+
   class UnderlineKind {
     <<enumeration>>
     action
@@ -441,6 +502,9 @@ classDiagram
   %% Output points back at the input by global index
   Underline "0..*" --> "1" SentenceInput : sentence
   AnswerPassage "0..*" --> "1" SentenceInput : sentence (always earlier)
+
+  %% In iRead: UnderlineRepo copies each Underline into the app's own model
+  Underline "1" ..> "1" SavedUnderline : copied into, in UnderlineRepo
 
   %% Enum values
   Underline "0..*" --> "1" UnderlineKind : kind
@@ -676,6 +740,7 @@ sequenceDiagram
     CloudSvc-->>UnderlineRepo: saved underlines
     UnderlineRepo->>UnderlineRepo: save on this phone
   else not saved anywhere
+    UnderlineRepo->>UnderlineRepo: ChapterInputMapper builds the input
     UnderlineRepo->>Engine: prepare, paragraphResults
     Engine-->>UnderlineRepo: underlines, one paragraph at a time
     UnderlineRepo->>UnderlineRepo: turn each into SavedUnderline
@@ -705,9 +770,9 @@ sequenceDiagram
 
   Reader->>ReferenceVM: tap an underline
   ReferenceVM-->>Reader: card with the passage
-  Reader->>RatingVM: card shown
+  Note over ReferenceVM,RatingVM: the card appears and tells RatingVM which underline it shows
   RatingVM->>RatingCtrl: rating so far
-  RatingVM-->>Reader: thumbs
+  RatingVM-->>Reader: thumbs, chosen one lit
   Reader->>RatingVM: thumb up or down
   opt first rating ever
     RatingVM-->>Reader: ask to share ratings

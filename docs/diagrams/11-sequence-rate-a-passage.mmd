@@ -9,9 +9,9 @@ sequenceDiagram
 
   Reader->>ReferenceVM: tap an underline
   ReferenceVM-->>Reader: card with the passage
-  Reader->>RatingVM: card shown
+  Note over ReferenceVM,RatingVM: the card appears and tells RatingVM which underline it shows
   RatingVM->>RatingCtrl: rating so far
-  RatingVM-->>Reader: thumbs
+  RatingVM-->>Reader: thumbs, chosen one lit
   Reader->>RatingVM: thumb up or down
   opt first rating ever
     RatingVM-->>Reader: ask to share ratings
