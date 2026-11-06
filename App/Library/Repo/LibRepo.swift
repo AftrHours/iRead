@@ -2,38 +2,19 @@ import Foundation
 
 struct LibRepo {
     private let epubParseSvc: any EPUBParseSvc
-    private let progRepo: ProgRepo
     private let booksFolder: URL
     private var libraryURL: URL { booksFolder.appending(path: "library.json") }
     private var hiddenSamplesURL: URL { booksFolder.appending(path: "hidden-samples.json") }
 
-    init(epubParseSvc: any EPUBParseSvc, progRepo: ProgRepo, folder: URL = .applicationSupportDirectory.appending(path: "Books")) {
+    init(epubParseSvc: any EPUBParseSvc, folder: URL = .applicationSupportDirectory.appending(path: "Books")) {
         self.epubParseSvc = epubParseSvc
-        self.progRepo = progRepo
         booksFolder = folder
     }
 
-    func fetchBooks() async throws -> [BookRecord] {
-        var books: [BookRecord] = []
+    /// The sample books that aren't hidden, then the imported books, without reading progress.
+    func fetchBooks() throws -> [BookRecord] {
         let hiddenIDs = hiddenSampleIDs()
-        let samples = BookRecord.samples.map(\.book).filter { !hiddenIDs.contains($0.id) }
-        for book in samples + importedBooks() {
-            guard let progress = await progRepo.progress(for: book.id) else {
-                books.append(book)
-                continue
-            }
-            books.append(BookRecord(
-                id: book.id,
-                title: book.title,
-                author: book.author,
-                isContinueReading: book.isContinueReading,
-                // A finished book shows as fully read, even if it was marked finished part way through.
-                progress: progress.finishedAt == nil ? progress.progress : 1,
-                dateAdded: book.dateAdded,
-                lastReadAt: progress.lastReadAt
-            ))
-        }
-        return books
+        return BookRecord.samples.map(\.book).filter { !hiddenIDs.contains($0.id) } + importedBooks()
     }
 
     func importBook(from sourceURL: URL) async throws -> BookRecord {
@@ -61,14 +42,6 @@ struct LibRepo {
         books.append(book)
         try JSONEncoder.iso8601.encode(books).write(to: libraryURL, options: .atomic)
         return book
-    }
-
-    func setFinished(_ isFinished: Bool, for book: BookRecord) async {
-        await progRepo.setFinished(isFinished, for: book.id)
-    }
-
-    func resetProgress(for book: BookRecord) async {
-        await progRepo.resetProgress(for: book.id)
     }
 
     /// Deletes an imported book and its files. A sample book is only hidden, since it lives in the app bundle.

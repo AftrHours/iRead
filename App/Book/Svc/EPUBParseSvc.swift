@@ -28,11 +28,14 @@ struct EPUBParseSvcEPUBKit: EPUBParseSvc {
         return Self.content(of: chapters.map { ($0.title, $0.paragraphs) })
     }
 
-    /// EPUBKit reports a broken file as its own error; the rest of the app expects ContentError.
+    /// EPUBKit and ZIPFoundation (for a file that isn't a zip) report a broken file with their own errors;
+    /// the rest of the app expects ContentError.
     private func readingEPUB<Result>(_ read: () throws -> Result) throws -> Result {
         do {
             return try read()
-        } catch EPUBError.unreadable {
+        } catch let error as ContentError {
+            throw error
+        } catch {
             throw ContentError.unreadable
         }
     }
@@ -62,7 +65,8 @@ struct EPUBParseSvcEPUBKit: EPUBParseSvc {
                 paragraphs: firstParagraph..<paragraphs.count
             ))
         }
-        return BookContent(chapters: chapters, paragraphs: paragraphs, sentences: sentences, parserVersion: 1)
+        return BookContent(chapters: chapters, paragraphs: paragraphs, sentences: sentences, parserVersion: 1,
+                           fingerprint: BookFingerprint.of(chapters))
     }
 
     private static func sentenceRanges(in text: String, tokenizer: NLTokenizer) -> [NSRange] {

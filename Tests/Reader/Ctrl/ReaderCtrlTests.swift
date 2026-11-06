@@ -107,17 +107,6 @@ struct ReaderCtrlTests {
         #expect(page(current, contains: position))
     }
 
-    @Test("RD-07 toggling only symbols doesn't lay pages out again")
-    func symbolsToggle() async throws {
-        let (ctrl, pager) = try await makeReader()
-        _ = await ctrl.currentPage(viewport: iPadViewport, settings: ReadingSettings())
-        let layouts = pager.layoutCount
-        var settings = ReadingSettings()
-        settings.areSymbolsShown.toggle()
-        _ = await ctrl.currentPage(viewport: iPadViewport, settings: settings)
-        #expect(pager.layoutCount == layouts)
-    }
-
     @Test("RD-08 range(from:length:on:) is page-relative, nil off the page, and clipped at its end")
     func rangeOnPage() async throws {
         let (ctrl, _) = try await makeReader()
@@ -155,5 +144,21 @@ struct ReaderCtrlTests {
         let result = try #require(await ctrl.search("zebra").first)
         #expect(content.paragraphs[result.position.paragraph].chapterIndex == 3)
         #expect(result.pageNumber == (await ctrl.page(containing: result.position)).number)
+    }
+
+    @Test("RD-25 a cancelled search finds nothing and lays out no more chapters")
+    func cancelledSearch() async throws {
+        let (ctrl, pager) = try await makeReader()
+        _ = await ctrl.currentPage(viewport: iPadViewport, settings: ReadingSettings())
+        let layoutsBefore = pager.layoutCount
+
+        let search = Task {
+            try? await Task.sleep(for: .seconds(10))
+            return await ctrl.search("chapter")
+        }
+        search.cancel()
+        #expect(await search.value.isEmpty)
+        #expect(pager.layoutCount == layoutsBefore)
+        #expect(await !ctrl.search("chapter").isEmpty)
     }
 }

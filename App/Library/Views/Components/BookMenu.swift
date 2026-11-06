@@ -7,9 +7,6 @@ struct BookMenu: View {
 
     var body: some View {
         Menu {
-            Button("Share Book", systemImage: "square.and.arrow.up") {
-                libVM.shareTapped(book)
-            }
             Button(
                 libVM.finishedActionTitle(for: book),
                 systemImage: libVM.finishedActionSymbol(for: book)

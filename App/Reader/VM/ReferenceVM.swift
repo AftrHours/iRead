@@ -4,46 +4,32 @@ import Observation
 @MainActor
 @Observable
 final class ReferenceVM {
-    enum Card: Identifiable {
-        case reference(ReferenceCard)
-        case symbol(SymbolCard)
-
-        var id: String {
-            switch self {
-            case .reference(let card): "reference \(card.underlineID)"
-            case .symbol(let card): "symbol \(card.entity.id)"
-            }
-        }
-    }
-
-    struct ReferenceCard {
+    struct ReferenceCard: Identifiable {
         let underlineID: String
         let phrase: String
         let location: String
         let quote: String
+
+        var id: String { underlineID }
     }
 
     private(set) var marks: [Int: [Mark]] = [:]
-    private(set) var card: Card?
+    private(set) var card: ReferenceCard?
     private(set) var cardAnchor = CGRect.zero
     private(set) var canReturn = false
     private(set) var toastText: String?
-    private(set) var chapterEntities: [Entity] = []
-    private(set) var editedSymbols: [String: SymbolStyle] = [:]
 
     @ObservationIgnored var onShowPage: (Page, String?) -> Void = { _, _ in }
-    @ObservationIgnored var onEditSymbol: (Entity) -> Void = { _ in }
 
     private var shownPage: Page?
     private var loadedPages: [Page] = []
-    private var areSymbolsShown = false
     private var highlightedUnderlineID: String?
     private var highlightedSearchResult: SearchResult?
-    private var isFollowingAnalysis = false
+    private var isClosed = false
     private var underlinedChapter: Int?
-    private var underlineTask: Task<Void, Never>?
-    private var entityToEditAfterCard: Entity?
-    private let refCtrl: RefCtrl
+    private(set) var underlineTask: Task<Void, Never>?
+    /// Not private, for ReaderVM's debug sheet.
+    let refCtrl: RefCtrl
     private let readerStateCtrl: ReaderStateCtrl
     private let readerCtrl: ReaderCtrl
 
@@ -53,42 +39,33 @@ final class ReferenceVM {
         self.readerCtrl = readerCtrl
     }
 
-    func onAppear() {
-        followAnalysis()
-    }
-
     func appForegrounded() {
-        followAnalysis()
         if let shownPage, underlinedChapter == nil { followUnderlines(from: shownPage) }
     }
 
-    private func followAnalysis() {
-        guard !isFollowingAnalysis else { return }
-        isFollowingAnalysis = true
-        Task {
-            await refCtrl.startAnalysis()
-            for await _ in await refCtrl.analysisUpdates() {
-                await loadMarks()
-            }
-            await loadMarks()
-            isFollowingAnalysis = false
-        }
-    }
-
     /// Underlines the shown page's chapter, starting at that page, and redraws the marks as underlines are found.
+    /// Holds `self` weakly, so a closed reader is released while the task winds down.
     private func followUnderlines(from page: Page) {
+        guard !isClosed else { return }
         underlinedChapter = page.chapterIndex
         underlineTask?.cancel()
-        underlineTask = Task {
+        underlineTask = Task { [weak self, refCtrl] in
             guard let updates = try? await refCtrl.underlineUpdates(from: page) else { return }
             for await _ in updates {
+                guard let self else { return }
                 await loadMarks()
             }
         }
     }
 
     func appBackgrounded() {
-        Task { await refCtrl.stopAnalysis() }
+        underlineTask?.cancel()
+        underlinedChapter = nil
+    }
+
+    /// The reader is closing: stops this book's underlining for good.
+    func close() {
+        isClosed = true
         underlineTask?.cancel()
         underlinedChapter = nil
     }
@@ -96,17 +73,11 @@ final class ReferenceVM {
     func bookOpened() async {
         await readerStateCtrl.load()
         canReturn = await readerStateCtrl.hasReturnPosition()
-        editedSymbols = await readerStateCtrl.editedSymbols()
     }
 
-    func symbolStyle(for entity: Entity) -> SymbolStyle {
-        SymbolPalette.style(for: entity, edited: editedSymbols)
-    }
-
-    func update(shownPage: Page?, loadedPages: [Page], areSymbolsShown: Bool) {
+    func update(shownPage: Page?, loadedPages: [Page]) {
         self.shownPage = shownPage
         self.loadedPages = loadedPages
-        self.areSymbolsShown = areSymbolsShown
         if let shownPage, shownPage.chapterIndex != underlinedChapter {
             followUnderlines(from: shownPage)
         }
@@ -122,26 +93,18 @@ final class ReferenceVM {
     }
 
     func markTapped(_ mark: Mark, at anchor: CGRect) {
+        guard case .underline(let id) = mark.kind else { return }
         Task {
-            switch mark.kind {
-            case .underline(let id):
-                guard let underline = try? await refCtrl.underline(withID: id) else { return }
-                let passagePage = await readerCtrl.page(containing: underline.passage.start)
-                let chapterTitles = await readerCtrl.chapterTitles()
-                cardAnchor = anchor
-                card = .reference(ReferenceCard(
-                    underlineID: id,
-                    phrase: underline.phrase,
-                    location: "\(chapterTitles[passagePage.chapterIndex]) • Page \(passagePage.number)",
-                    quote: "“\(underline.passage.text)”"
-                ))
-            case .symbol(_, _, let mentionIndex):
-                guard let symbolCard = try? await refCtrl.symbolCard(forMention: mentionIndex) else { return }
-                cardAnchor = anchor
-                card = .symbol(symbolCard)
-            case .highlight:
-                break
-            }
+            guard let underline = try? await refCtrl.underline(withID: id) else { return }
+            let passagePage = await readerCtrl.page(containing: underline.reference.start)
+            let chapterTitles = await readerCtrl.chapterTitles()
+            cardAnchor = anchor
+            card = ReferenceCard(
+                underlineID: id,
+                phrase: underline.text,
+                location: "\(chapterTitles[passagePage.chapterIndex]) • Page \(passagePage.number)",
+                quote: "“\(underline.reference.text)”"
+            )
         }
     }
 
@@ -149,44 +112,14 @@ final class ReferenceVM {
         card = nil
     }
 
-    func chapterSymbolsShown() {
-        chapterEntities = []
-        guard let chapterIndex = shownPage?.chapterIndex else { return }
-        Task { chapterEntities = (try? await refCtrl.entities(inChapter: chapterIndex)) ?? [] }
-    }
-
-    func editSymbolTapped(_ entity: Entity) {
-        guard card != nil else {
-            onEditSymbol(entity)
-            return
-        }
-        // iOS drops a sheet presented while the card is still closing, so wait for cardDisappeared.
-        entityToEditAfterCard = entity
-        card = nil
-    }
-
-    func cardDisappeared() {
-        guard let entity = entityToEditAfterCard else { return }
-        entityToEditAfterCard = nil
-        onEditSymbol(entity)
-    }
-
-    func symbolSaved(_ style: SymbolStyle, for entity: Entity) {
-        editedSymbols[entity.id] = style
-        Task {
-            await readerStateCtrl.saveSymbol(style, forEntity: entity.id)
-            await loadMarks()
-        }
-    }
-
     func jumpToPassageTapped() {
-        guard case .reference(let referenceCard) = card, let shownPage else { return }
+        guard let referenceCard = card, let shownPage else { return }
         card = nil
         canReturn = true
         Task {
             await readerStateCtrl.saveReturnPosition(await readerCtrl.startPosition(of: shownPage))
             guard let underline = try? await refCtrl.underline(withID: referenceCard.underlineID) else { return }
-            onShowPage(await readerCtrl.page(containing: underline.passage.start), referenceCard.underlineID)
+            onShowPage(await readerCtrl.page(containing: underline.reference.start), referenceCard.underlineID)
         }
     }
 
@@ -211,22 +144,11 @@ final class ReferenceVM {
         }
     }
 
-    #if DEBUG
-    func makeUnderlineDebugVM() -> UnderlineDebugVM {
-        UnderlineDebugVM(refCtrl: refCtrl, chapterIndex: shownPage?.chapterIndex)
-    }
-    #endif
-
     func loadMarks() async {
         let pages = loadedPages
         var marks: [Int: [Mark]] = [:]
         for page in pages {
-            var pageMarks = (try? await refCtrl.marks(
-                on: page,
-                highlighting: highlightedUnderlineID,
-                includingSymbols: areSymbolsShown,
-                editedSymbols: editedSymbols
-            )) ?? []
+            var pageMarks = (try? await refCtrl.marks(on: page, highlighting: highlightedUnderlineID)) ?? []
             if let searchResult = highlightedSearchResult,
                let range = await readerCtrl.range(from: searchResult.position, length: searchResult.length, on: page) {
                 // Same highlight as a jumped-to passage.

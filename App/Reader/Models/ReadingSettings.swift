@@ -34,11 +34,10 @@ struct ReadingSettings: Codable, Equatable, Sendable {
     var textSizeIndex = 3
     var lineSpacingPercent = 120
     var theme = ReadingTheme.original
-    var areSymbolsShown = false
     var pageTurnStyle = PageTurnStyle.slide
 
     private enum CodingKeys: String, CodingKey {
-        case textSizeIndex, lineSpacingPercent, theme, areSymbolsShown, pageTurnStyle
+        case textSizeIndex, lineSpacingPercent, theme, pageTurnStyle
     }
 
     init() {}
@@ -48,16 +47,10 @@ struct ReadingSettings: Codable, Equatable, Sendable {
         textSizeIndex = try container.decodeIfPresent(Int.self, forKey: .textSizeIndex) ?? 3
         lineSpacingPercent = try container.decodeIfPresent(Int.self, forKey: .lineSpacingPercent) ?? 120
         theme = try container.decodeIfPresent(ReadingTheme.self, forKey: .theme) ?? .original
-        areSymbolsShown = try container.decodeIfPresent(Bool.self, forKey: .areSymbolsShown) ?? false
         pageTurnStyle = try container.decodeIfPresent(PageTurnStyle.self, forKey: .pageTurnStyle) ?? .slide
     }
 
     var textSize: Double {
         Self.textSizes[min(max(textSizeIndex, 0), Self.textSizes.count - 1)]
-    }
-
-    /// Everything except the symbols toggle changes where pages break.
-    func hasSameLayout(as other: ReadingSettings) -> Bool {
-        textSizeIndex == other.textSizeIndex && lineSpacingPercent == other.lineSpacingPercent && theme == other.theme
     }
 }

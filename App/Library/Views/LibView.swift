@@ -66,10 +66,6 @@ struct LibView: View {
         } message: {
             Text(libVM.importError ?? "Please try another EPUB file.")
         }
-        .sheet(item: $libVM.presentedShareFile) { file in
-            LibraryShareSheet(url: file.url)
-                .presentationDetents([.medium, .large])
-        }
         .alert("Remove Book?", isPresented: $libVM.isRemoveAlertPresented, presenting: libVM.bookToRemove) { _ in
             Button("Remove", role: .destructive) { libVM.removeConfirmed() }
             Button("Cancel", role: .cancel) { libVM.removeCancelled() }
@@ -155,8 +151,9 @@ struct LibView: View {
 #Preview("Library View") {
     let epubParseSvc = EPUBParseSvcEPUBKit()
     let libCtrl = LibCtrl(
-        libRepo: LibRepo(epubParseSvc: epubParseSvc, progRepo: ProgRepo()),
-        bookContentRepo: BookContentRepo(epubParseSvc: epubParseSvc)
+        libRepo: LibRepo(epubParseSvc: epubParseSvc),
+        bookContentRepo: BookContentRepo(epubParseSvc: epubParseSvc),
+        progRepo: ProgRepo()
     )
     return LibView(libVM: LibVM(libCtrl: libCtrl, appNav: AppNav()))
 }

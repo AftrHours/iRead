@@ -6,8 +6,9 @@ UnderlineEngine's own phrase picking is tested in its own repo; here we only tes
 
 Test setup this list assumes:
 - Repos take a folder (`init(folder:)`) so each test uses a fresh temp folder.
-- Protocols exist for `EventSvc` (count events), `EPUBParseSvc` (count parses) and `PagerSvc` (fixed page ranges).
-- `LLMSvcUnavailable` or a scripted fake `LLMSvc`; never Foundation Models.
+- Protocols exist for `EventSvc` (count events), `EPUBParseSvc` (count parses), `PagerSvc` (fixed page ranges) and
+  `CloudSvc` (`CloudSvcFake`: iCloud in memory, or offline). Tests never reach iCloud.
+- Never call Foundation Models directly (CI simulators don't have it).
 - Fixtures in `Tests/Fixtures`: `minimal.epub` (2 chapters × 3 paragraphs), `no-chapters.epub`, `corrupt.epub`,
   `epub2-cover.epub`, `epub3-cover.epub`, `no-metadata.epub`; plus a `BookContent.make(chapters:)` helper.
 
@@ -22,7 +23,7 @@ Test setup this list assumes:
 | LIB-05 | P0 | `LibrarySorter` | Sort `.readProgress` with 0.2, 0.9, 0.5 | 0.9, 0.5, 0.2 |
 | LIB-06 | P0 | `LibrarySorter` | Any sort, `pinning:` the book that would sort last | Pinned book first; rest keep sort order |
 | LIB-07 | P0 | `LibRepo.fetchBooks` | No files on disk | All bundled samples, none imported |
-| LIB-08 | P0 | `LibRepo.fetchBooks` | Saved progress has `finishedAt` set and `progress` 0.4 | Shows 1.0; `lastReadAt` from the progress file |
+| LIB-08 | P0 | `LibCtrl.loadLibrary` | Saved progress has `finishedAt` set and `progress` 0.4 | Shows 1.0; `lastReadAt` from the progress file |
 | LIB-09 | P0 | `LibRepo.importBook` | Import `minimal.epub` | `Books/<id>/book.epub` exists; `library.json` has one entry with EPUB title/author, progress 0 |
 | LIB-10 | P0 | `LibRepo.importBook` | Import `no-metadata.epub` named "My Book.epub" | Title "My Book", author "Unknown Author" |
 | LIB-11 | P0 | `LibRepo.importBook` | Import `corrupt.epub` | Throws `ContentError.unreadable`; nothing copied; `library.json` unchanged |
@@ -31,7 +32,9 @@ Test setup this list assumes:
 | LIB-14 | P1 | `LibRepo.fetchBooks` | Old `library.json` also lists sample IDs | Each sample appears once |
 | LIB-15 | P1 | `LibRepo.importBook` | Import the same file twice | Two books with different IDs (or a clear error, if the team decides to block duplicates) |
 | LIB-16 | P1 | `LibVM` | Import, then change sort | New book first after import; after `sortChanged` it moves to its sorted place |
-| LIB-17 | P1 | `LibRepo` + `ProgRepo` | Mark finished, then "Still Reading" | Shows 1.0, then returns to saved progress and position |
+| LIB-17 | P1 | `LibCtrl` + `ProgRepo` | Mark finished, then "Still Reading" | Shows 1.0, then returns to saved progress and position |
+| LIB-18 | P0 | `LibCtrl.remove` | Imported book parsed and cover read; remove it | Cover nil; content throws `ContentError.notFound` (not served from memory) |
+| LIB-19 | P1 | `LibCtrl.loadLibrary` | Saved progress for one sample only; one imported book | That sample shows its saved progress; other books keep their own; `LibRepo.fetchBooks` alone returns no progress |
 
 ## Book parsing
 
@@ -41,15 +44,17 @@ Test setup this list assumes:
 | BK-02 | P0 | `EPUBParseSvc.parse` | `minimal.epub` | Substring at each paragraph `range` equals source paragraph; paragraphs separated by one `\n` |
 | BK-03 | P0 | `EPUBParseSvc.parse` | Any book | Every sentence range inside its paragraph; no leading/trailing whitespace |
 | BK-04 | P0 | `EPUBParseSvc.parse` | "Mr. Darcy bowed. She left." | 2 sentences, not 3; ranges match original text |
-| BK-05 | P0 | `EPUBParseSvc.parse` | `no-chapters.epub` / `corrupt.epub` | Both throw `ContentError.unreadable` |
+| BK-05 | P0 | `EPUBParseSvc.parse` | `no-chapters.epub` / `corrupt.epub` (also `metadata` and `cover` for `corrupt.epub`) | All throw `ContentError.unreadable` |
 | BK-06 | P1 | `EPUBParseSvc.parse` | Text with emoji and accents | UTF-16 ranges still line up |
 | BK-07 | P1 | `EPUBParseSvc.metadata` / `.cover` | EPUB2 cover, EPUB3 cover, no cover | Title/author read; cover found for both styles; nil when none |
 | BK-08 | P0 | `BookContentRepo.content` | Two concurrent calls for one book | One parse (spy = 1); same content to both |
 | BK-09 | P1 | `BookContentRepo.content` | First parse fails, retry succeeds | Failure not cached |
 | BK-10 | P0 | `BookContentRepo` | Unknown book ID | Throws `ContentError.notFound` |
 | BK-11 | P1 | `BookContentRepo` | ID both imported and sample | Imported `book.epub` used |
-| BK-12 | P1 | `BookContentRepo.shareableFile` | Title "Good/Bad: A Tale" | File `Good-Bad- A Tale.epub`; same bytes |
 | BK-13 | P1 | Golden (Full plan) | Parse all 5 bundled samples | No throw; chapter counts match stored snapshot (a change means bump `parserVersion`) |
+| BK-14 | P0 | `BookContentRepo.content` | Open books A, B, C, then B, C, then A twice at once, then C, then B | Only 2 books kept: A parsed again once (shared by both callers), then B parsed again |
+| BK-15 | P1 | `BookContentRepo.forget` | Book parsed and cover read; forget | Parsed again on next call; cover not served from memory |
+| BK-16 | P0 | `BookFingerprint` | Same chapters twice; one word changed; same text in other chapter breaks | Same fingerprint; different; different |
 
 ## Reading progress
 
@@ -83,7 +88,6 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | RD-04 | P0 | `ReaderCtrl.pages(around:)` | Middle / first / last page | 5 pages / first + 2 after / 2 before + last |
 | RD-05 | P0 | `ReaderCtrl` | Last page of ch 1 → next | Ch 2 first page; page numbers continue |
 | RD-06 | P0 | `ReaderCtrl.currentPage` | Change text size, spacing, theme or viewport | Re-laid out; page still contains position |
-| RD-07 | P1 | `ReaderCtrl.currentPage` | Toggle only `areSymbolsShown` | No re-layout (pager spy not called) |
 | RD-08 | P0 | `ReaderCtrl.range(from:length:on:)` | On page / other chapter / crossing page end | Page-relative range / nil / clipped |
 | RD-09 | P0 | `ReaderCtrl.pageChanged` | Turn to a page | Progress has page's start; next `currentPage` is that page |
 | RD-10 | P0 | `PagerSvc.pageRanges` | Long text, fixed iPad viewport | Contiguous 0→end; no gaps, overlaps, empty pages |
@@ -96,12 +100,20 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | RD-17 | P0 | `ReaderStateCtrl` recents | Save "Darcy", "bingley", "darcy" | "darcy", "bingley" |
 | RD-18 | P1 | `ReaderStateCtrl` recents | 12 queries | 10 kept, newest first; clear empties |
 | RD-19 | P0 | `ReaderStateCtrl` return position | Save A, save B, reload | A kept; survives reload; clear removes |
-| RD-20 | P1 | `ReaderStateCtrl` edited symbols | Edit in book 1 | Persisted for book 1 only |
 | RD-21 | P1 | `ReadingSettings` | `textSizeIndex` -1 and 99 | 17 and 56 |
 | RD-22 | P1 | `ReadingSettingsRepo` | No file / save then read | Defaults / saved |
 | RD-23 | P1 | `ReferenceVM` | Jump to passage, then Return | Return position saved on jump; return shows original page and clears it |
+| RD-24 | P0 | `ReferenceVM.close` | Chapter underlining running; close the reader | Underline task cancelled and not restarted by a page update or `appForegrounded`; `ReferenceVM` released |
+| RD-25 | P0 | `ReaderCtrl.search` | Search cancelled before it runs | No results; no chapters laid out; a later search still finds matches |
+| RD-26 | P0 | `SearchVM` | Results shown; query changes to " A " | Results cleared; no search |
+| RD-27 | P0 | `SearchVM` | Type "A", "An", "Ann", "Anna" quickly | One search, for "Anna", after the typing pause |
+| RD-28 | P0 | `SearchVM` | Slow search for "Anna", then "Darcy" from recent searches | "Darcy" results stay after the "Anna" search returns |
+| RD-29 | P0 | `RatingVM` | Thumbs up on a card; answer "Don't Share"; thumbs down; thumbs down again | Filled and asked once; switches without asking; rating taken back |
+| RD-30 | P1 | `RatingVM.cardShown` | Thumbs up, then show the same card again at once | Thumbs up shown, read back after the save |
 
 ## Underlines and references
+
+The app's only AI feature: phrases worth underlining, each with the earlier passage that explains it.
 
 | ID | Pri | Unit | Given / When | Expected |
 | --- | --- | --- | --- | --- |
@@ -112,43 +124,16 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | AN-05 | P1 | `UnderlineRepo` | Start ch 2 while ch 1 runs; restart ch 1 | Ch 1 not saved half-done; no duplicate IDs |
 | AN-06 | P0 | `RefCtrl.marks` | Underline on page + one in other chapter | One `.underline` mark, page-relative; none for other |
 | AN-07 | P0 | `RefCtrl.marks` | `highlighting:` an underline whose reference is on page | `.highlight` for it only |
-| AN-08 | P0 | `RefCtrl.marks` | `includingSymbols: false` | No `.symbol` marks |
 | AN-09 | P1 | `RefCtrl.underline(withID:)` | Unknown ID | `ContentError.notFound` |
-| AN-10 | P1 | `RefCtrl.symbolCard` | Index out of range | `ContentError.notFound` |
-| AN-11 | P1 | `RefCtrl.entities(inChapter:)` | Mentions B, A, B | B, A |
-| AN-12 | P1 | `SymbolPalette.style` | With / without edited style | Edited wins; else colour = symbol index mod 10 |
-| AN-13 | P1 | `SymbolPalette.color(at:)` | Index 99 | Fallback colour |
-
-## Character engine
-
-No-spoiler cases (CH-14, CH-16) matter most: a symbol card must never show a passage the reader hasn't reached.
-
-| ID | Pri | Unit | Given / When | Expected |
-| --- | --- | --- | --- | --- |
-| CH-01 | P0 | `NameKey.of` | "Mr. Darcy", "MR  DARCY", "mr darcy" | All "mr darcy" |
-| CH-02 | P0 | `ChapterSlicer.slices` | 40, 40, 40 chars; max 100 | [40, 40], [40] |
-| CH-03 | P0 | `ChapterSlicer.slices` | One 300-char sentence; empty input | Own slice; `[]` |
-| CH-04 | P1 | `StoryStart.firstStoryChapter` | Title page, contents chapter, story | 2 |
-| CH-05 | P1 | `StoryStart.firstStoryChapter` | No contents chapter | 0 |
-| CH-06 | P0 | `MentionFinder.mentions` | "Mr. Darcy looked at Elizabeth." | Heads "mr darcy", "elizabeth"; "Mr." alone never a mention |
-| CH-07 | P1 | `MentionFinder.mentions` | "Everyone saw the tall girl." | No mention for "Everyone"; description with head "girl" |
-| CH-08 | P1 | `NameVocabularyBuilder.build` | "Will" capitalized twice, "will" 20× | Not a known name |
-| CH-09 | P0 | `CastBuilder.extend` | Name seen once vs twice | Entity only at ≥ 2 |
-| CH-10 | P0 | `CastBuilder.extend` | "Elizabeth, or Lizzy, laughed." | One entity with both names |
-| CH-11 | P1 | `MentionLinker.link` | "Anne, the red-haired girl, ran." | Description links to Anne |
-| CH-12 | P0 | `ResolvedAnalysis` merges | Merge 2 into 1 at sentence 10 | asOf 5 → 2, asOf 10 → 1; `finalKey(2)` = 1; chains followed |
-| CH-13 | P0 | `ResolvedAnalysis` merges | 1→2 then 2→1; merge into self | Terminates; self-merge no-op |
-| CH-14 | P0 | `EvidenceGuard.accepts` | Evidence after mention; card introduced after mention | Both rejected |
-| CH-15 | P0 | `EvidenceGuard.wordLocation` | "Ann" in "Anne smiled" / "Ann smiled" | nil / 0 |
-| CH-16 | P0 | `AppearancePicker.best` | Appearances at para 5 and 50, reader at 20 | Para 5 only (no spoilers) |
-| CH-17 | P1 | `AppearancePicker.passages` | Sentence describing two named characters | Excluded |
-| CH-18 | P0 | `SliceReadingApplier.apply` | Model reassigns an already-linked name | Ignored |
-| CH-19 | P1 | `SliceReadingApplier.apply` | Missed name overlapping existing mention | Not added |
-| CH-20 | P0 | `SymbolAssigner.assign` | 1 mention vs 3 mentions | Only the second gets a symbol |
-| CH-21 | P0 | `SymbolAssigner.assign` | Ch 1 then ch 2 with a new character | Old symbols unchanged; new gets next; wraps after 24 |
-| CH-22 | P1 | `AnalysisMapper.map` | Unnamed entity symbol from ch 3 | Ch 1–2 mentions hidden; IDs `character-<key>`; paragraph-relative ranges |
-| CH-23 | P0 | `ChapterAnalysisStore` | Load with same / other engine / other parser version | Loaded / nil / nil; `clear` removes folder |
-| CH-24 | P0 | `AnalysisRepo` + `LLMSvcUnavailable` | `startAnalysis` on `minimal.epub` | Runs to end; update per chapter; chapters stored |
-| CH-25 | P1 | `AnalysisRepo` | Stop mid-book, start again | Stored chapters reused; same book twice doesn't restart |
-| CH-26 | P1 | `AnalysisRepo.updates` | Book not running | Stream finishes at once |
-| CH-27 | P1 | Golden (Full plan) | Rules-only *Little Women* ch 1 | Meg, Jo, Beth, Amy with distinct symbols (review diffs after iOS updates) |
+| AN-14 | P0 | `UnderlineRepo` | Stored chapter with the same / older / missing `engineVersion` (`UnderlineRepoKnobs`) | Loaded from disk / underlined again and saved with the current version |
+| AN-15 | P0 | `UnderlineRepo` | Chapter in the reader's iCloud with the same / older engine version | Used without the engine and saved on disk / underlined again (debug sheet says which) |
+| AN-16 | P0 | `UnderlineRepo` | Finish a chapter; a second device (new folder) with the same iCloud | Record saved in iCloud; the second device gets the same underlines |
+| AN-17 | P1 | `UnderlineRepo` | iCloud offline or signed out | Chapter still underlined and saved on disk |
+| AN-18 | P0 | `RatingRepo` | Rate before answering; then agree to share | Kept on device, nothing sent; then sent with its sentence and passage |
+| AN-19 | P0 | `RatingRepo` | Sharing; rate up, then down, then take back | One record, "down"; then deleted |
+| AN-20 | P1 | `RatingRepo` | Sharing; rate while offline; a later launch sends | Nothing sent while offline; sent later |
+| AN-21 | P0 | `RatingRepo` | Say no; rate; turn sharing on; rate another | Nothing sent; only the new rating is sent |
+| AN-22 | P0 | `RatingCtrl.rate` | Rate an underline in chapter 2 | Phrase, sentence and passage texts; sentence numbers count from the chapter's start |
+| AN-23 | P1 | `UnderlineRepo.cloudAccount` | iCloud signed in; signed out; no iCloud | `.signedIn`; `.signedOut`; nil |
+| AN-24 | P1 | `RatingRepo` | Rate up; rate down while the first send is still running | One record, "down"; nothing left waiting |
+| AN-25 | P1 | `RatingCtrl.rate` | Underline not loaded | `ContentError.notFound` |

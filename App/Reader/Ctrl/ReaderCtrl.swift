@@ -5,7 +5,7 @@ actor ReaderCtrl {
     private let bookContentRepo: BookContentRepo
     private let pagerSvc: any PagerSvc
 
-    private var content = BookContent(chapters: [], paragraphs: [], sentences: [], parserVersion: 0)
+    private var content = BookContent(chapters: [], paragraphs: [], sentences: [], parserVersion: 0, fingerprint: "")
     private var readingSettings = ReadingSettings()
     private var viewport = Viewport(size: .zero)
     private var position = ReadingPosition(paragraph: 0, charOffset: 0)
@@ -35,7 +35,7 @@ actor ReaderCtrl {
     }
 
     func currentPage(viewport: Viewport, settings: ReadingSettings) async -> Page {
-        let isLayoutChanged = viewport != self.viewport || !settings.hasSameLayout(as: readingSettings)
+        let isLayoutChanged = viewport != self.viewport || settings != readingSettings
         self.viewport = viewport
         readingSettings = settings
         if isLayoutChanged {
@@ -86,9 +86,14 @@ actor ReaderCtrl {
         return ReadingProgressCalculator.progress(on: page, in: content, bookID: bookID, at: .now)
     }
 
+    /// Stops early, with no results, once the calling task is cancelled (the query changed).
     func search(_ query: String) async -> [SearchResult] {
-        let matches = BookSearch.matches(of: query, in: content)
-        await paginate(through: content.chapters.count - 1)
+        let matches = BookSearch.matches(of: query, in: content) { Task.isCancelled }
+        for chapterIndex in content.chapters.indices {
+            if Task.isCancelled { return [] }
+            await paginate(through: chapterIndex)
+        }
+        if Task.isCancelled { return [] }
         return matches.map { match in
             let paragraph = content.paragraphs[match.position.paragraph]
             let chapterIndex = paragraph.chapterIndex

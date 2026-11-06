@@ -5,8 +5,8 @@ struct AppContainer {
     let appNav = AppNav()
     private let libRepo: LibRepo
     private let bookContentRepo: BookContentRepo
-    private let analysisRepo: AnalysisRepo
-    private let underlineRepo = UnderlineRepo()
+    private let underlineRepo: UnderlineRepo
+    private let ratingRepo: RatingRepo
     private let progRepo: ProgRepo
     private let readingSettingsRepo = ReadingSettingsRepo()
     private let bookStateRepo = BookStateRepo()
@@ -16,22 +16,16 @@ struct AppContainer {
 
     init() {
         let epubParseSvc = EPUBParseSvcEPUBKit()
-        let progRepo = ProgRepo()
-        let bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc)
-        self.progRepo = progRepo
-        self.bookContentRepo = bookContentRepo
-        libRepo = LibRepo(epubParseSvc: epubParseSvc, progRepo: progRepo)
-        analysisRepo = AnalysisRepo(
-            content: { [bookContentRepo] in try await bookContentRepo.content(for: $0) },
-            prepassSvc: BookPrepassSvc(),
-            chapterSvc: ChapterAnalysisSvc(),
-            store: ChapterAnalysisStore(root: URL.applicationSupportDirectory.appending(path: "Books")),
-            makeLLM: { ModelAvailSvc().makeLLMSvc() }
-        )
+        progRepo = ProgRepo()
+        bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc)
+        libRepo = LibRepo(epubParseSvc: epubParseSvc)
+        let cloudSvc = CloudSvcCloudKit()
+        underlineRepo = UnderlineRepo(modelCheckSvc: ModelCheckSvc(), cloudSvc: cloudSvc)
+        ratingRepo = RatingRepo(cloudSvc: cloudSvc)
     }
 
     func makeLibVM() -> LibVM {
-        LibVM(libCtrl: LibCtrl(libRepo: libRepo, bookContentRepo: bookContentRepo), appNav: appNav)
+        LibVM(libCtrl: LibCtrl(libRepo: libRepo, bookContentRepo: bookContentRepo, progRepo: progRepo), appNav: appNav)
     }
 
     func makeOnboardingVM(using libVM: LibVM) -> OnboardingVM {
@@ -54,10 +48,12 @@ struct AppContainer {
             appNav: appNav,
             readerSettingsVM: ReaderSettingsVM(readerStateCtrl: readerStateCtrl),
             referenceVM: ReferenceVM(
-                refCtrl: RefCtrl(bookID: book.id, bookContentRepo: bookContentRepo, analysisRepo: analysisRepo, underlineRepo: underlineRepo),
+                refCtrl: RefCtrl(bookID: book.id, bookContentRepo: bookContentRepo, underlineRepo: underlineRepo),
                 readerStateCtrl: readerStateCtrl,
                 readerCtrl: readerCtrl
-            )
+            ),
+            ratingVM: RatingVM(ratingCtrl: RatingCtrl(bookID: book.id, bookTitle: book.title, bookContentRepo: bookContentRepo,
+                                                      underlineRepo: underlineRepo, ratingRepo: ratingRepo))
         )
     }
 }

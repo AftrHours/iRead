@@ -51,11 +51,4 @@ struct ReaderStateCtrlTests {
         #expect(await makeCtrl().returnPosition() == nil)
     }
 
-    @Test("RD-20 an edited symbol is saved for its own book only")
-    func editedSymbols() async {
-        let style = SymbolStyle(systemName: "star.fill", colorIndex: 3)
-        await makeCtrl().saveSymbol(style, forEntity: "character-1")
-        #expect(await makeCtrl().editedSymbols() == ["character-1": style])
-        #expect(await makeCtrl(bookID: UUID()).editedSymbols().isEmpty)
-    }
 }

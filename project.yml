@@ -10,7 +10,8 @@ options:
 settings:
   base:
     SWIFT_VERSION: "6.0"
-    DEVELOPMENT_TEAM: ""
+    # Shanon Giuly Istanto's team, which owns the app and its iCloud container.
+    DEVELOPMENT_TEAM: X7WUH4Z65U
     CODE_SIGN_STYLE: Automatic
     # Xcode 27's recommended settings that don't change how the code behaves.
     DEAD_CODE_STRIPPING: YES
@@ -30,7 +31,8 @@ packages:
   # re-resolves packages, then commit project.yml and iRead.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved together.
   UnderlineEngine:
     url: https://github.com/AftrHours/UnderlineEngine
-    revision: f0375d0b3171ed02992a520986eaad3ed937d03e
+    # Bump UnderlineRepoKnobs.engineVersion when you change this revision.
+    revision: a70465ed9c11e34eaf6e779d3b1ff43d5a75b47f
   # Runs SwiftLint on every build, using the rules in .swiftlint.yml. Xcode asks once to "Trust & Enable" it.
   SwiftLintPlugins:
     url: https://github.com/SimplyDanny/SwiftLintPlugins
@@ -51,6 +53,15 @@ targets:
     buildToolPlugins:
       - plugin: SwiftLintBuildToolPlugin
         package: SwiftLintPlugins
+    # iCloud through CloudKit: the reader's saved underlines (their private database) and the ratings they share (the public one).
+    # The container ID must match CloudSvcCloudKit.containerID. See docs/ICLOUD.md for the CloudKit Console steps.
+    entitlements:
+      path: App/iRead.entitlements
+      properties:
+        com.apple.developer.icloud-container-identifiers:
+          - iCloud.com.aftrhours.reader
+        com.apple.developer.icloud-services:
+          - CloudKit
     settings:
       base:
         # App identity. Renaming is a one-line edit here.
