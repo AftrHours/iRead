@@ -34,6 +34,10 @@ struct AppContainer {
         LibVM(libCtrl: LibCtrl(libRepo: libRepo, bookContentRepo: bookContentRepo), appNav: appNav)
     }
 
+    func makeOnboardingVM(using libVM: LibVM) -> OnboardingVM {
+        OnboardingVM { urls in await libVM.importFiles(.success(urls)) }
+    }
+
     func makeReaderVM(book: BookRecord) -> ReaderVM {
         let readerCtrl = ReaderCtrl(bookID: book.id, bookContentRepo: bookContentRepo, pagerSvc: pagerSvc)
         let readerStateCtrl = ReaderStateCtrl(

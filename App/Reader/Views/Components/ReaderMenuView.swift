@@ -35,7 +35,7 @@ struct ReaderMenuView: View {
         }
         .buttonStyle(.plain)
         .padding(.vertical, 8)
-        .frame(width: 280)
+        .frame(maxWidth: 280)
         .presentationCompactAdaptation(.popover)
         .presentationBackground(Color(.systemBackground))
     }

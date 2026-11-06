@@ -15,10 +15,13 @@ struct PageTurnView: UIViewControllerRepresentable {
     }
 
     func makeUIViewController(context: Context) -> UIPageViewController {
-        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        let transitionStyle: UIPageViewController.TransitionStyle = pageTurnStyle == .curl ? .pageCurl : .scroll
+        let pageViewController = UIPageViewController(transitionStyle: transitionStyle, navigationOrientation: .horizontal)
+        pageViewController.isDoubleSided = false
         pageViewController.dataSource = context.coordinator
         pageViewController.delegate = context.coordinator
         context.coordinator.pageViewController = pageViewController
+        context.coordinator.configureFadeSwipe(for: pageTurnStyle)
         return pageViewController
     }
 
@@ -27,11 +30,14 @@ struct PageTurnView: UIViewControllerRepresentable {
         context.coordinator.showShownPage()
     }
 
-    final class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    private var pageTurnStyle: PageTurnStyle { settings.pageTurnStyle }
+
+    final class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate {
         var pageTurnView: PageTurnView
         weak var pageViewController: UIPageViewController?
         private var isTurning = false
         private var missingPageNumbers: Set<Int> = []
+        private var fadeSwipeRecognizer: UIPanGestureRecognizer?
 
         init(pageTurnView: PageTurnView) {
             self.pageTurnView = pageTurnView
@@ -77,6 +83,38 @@ struct PageTurnView: UIViewControllerRepresentable {
             pageTurnView.onPageChanged(displayedPage)
         }
 
+        func configureFadeSwipe(for style: PageTurnStyle) {
+            guard style == .fastFade, let pageViewController else { return }
+            pageViewController.gestureRecognizers
+                .filter { $0 is UIPanGestureRecognizer }
+                .forEach { $0.isEnabled = false }
+            let recognizer = UIPanGestureRecognizer(target: self, action: #selector(fadeSwipeRecognized(_:)))
+            recognizer.delegate = self
+            pageViewController.view.addGestureRecognizer(recognizer)
+            fadeSwipeRecognizer = recognizer
+        }
+
+        func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+            guard let pan = gestureRecognizer as? UIPanGestureRecognizer,
+                  let view = pageViewController?.view else { return true }
+            let velocity = pan.velocity(in: view)
+            return abs(velocity.x) > abs(velocity.y)
+        }
+
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                               shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+            true
+        }
+
+        @objc private func fadeSwipeRecognized(_ gestureRecognizer: UIPanGestureRecognizer) {
+            guard gestureRecognizer.state == .ended, let view = pageViewController?.view else { return }
+            let translation = gestureRecognizer.translation(in: view).x
+            let velocity = gestureRecognizer.velocity(in: view).x
+            let distance = abs(translation) >= 36 ? translation : (abs(velocity) >= 400 ? velocity : 0)
+            guard distance != 0 else { return }
+            turnPage(isForward: distance < 0)
+        }
+
         private func page(next page: Page?, by offset: Int) -> Page? {
             guard let page else { return nil }
             let number = page.number + offset
@@ -103,9 +141,19 @@ struct PageTurnView: UIViewControllerRepresentable {
         private func turnPage(isForward: Bool) {
             guard !isTurning, let pageViewController, let page = page(next: displayedPage, by: isForward ? 1 : -1) else { return }
             isTurning = true
-            pageViewController.setViewControllers([pageController(for: page)], direction: isForward ? .forward : .reverse, animated: true) { [weak self] _ in
-                self?.isTurning = false
-                self?.pageTurnView.onPageChanged(page)
+            let direction: UIPageViewController.NavigationDirection = isForward ? .forward : .reverse
+            if pageTurnView.pageTurnStyle == .fastFade {
+                UIView.transition(with: pageViewController.view, duration: 0.18, options: [.transitionCrossDissolve, .beginFromCurrentState]) {
+                    pageViewController.setViewControllers([self.pageController(for: page)], direction: direction, animated: false)
+                } completion: { [weak self] _ in
+                    self?.isTurning = false
+                    self?.pageTurnView.onPageChanged(page)
+                }
+            } else {
+                pageViewController.setViewControllers([pageController(for: page)], direction: direction, animated: true) { [weak self] _ in
+                    self?.isTurning = false
+                    self?.pageTurnView.onPageChanged(page)
+                }
             }
         }
     }

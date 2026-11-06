@@ -1,12 +1,9 @@
 import SwiftUI
 
 struct ReaderView: View {
-    @State private var readerVM: ReaderVM
+    @Bindable private var readerVM: ReaderVM
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
-    #if DEBUG
-    @State private var isUnderlineDebugShown = false
-    #endif
 
     private var readerSettingsVM: ReaderSettingsVM { readerVM.readerSettingsVM }
     private var referenceVM: ReferenceVM { readerVM.referenceVM }
@@ -24,7 +21,7 @@ struct ReaderView: View {
     }
 
     init(readerVM: ReaderVM) {
-        _readerVM = State(initialValue: readerVM)
+        self.readerVM = readerVM
     }
 
     var body: some View {
@@ -71,7 +68,7 @@ struct ReaderView: View {
             }
         }
         #if DEBUG
-        .sheet(isPresented: $isUnderlineDebugShown) {
+        .sheet(isPresented: $readerVM.isUnderlineDebugSheetPresented) {
             UnderlineDebugView(underlineDebugVM: referenceVM.makeUnderlineDebugVM())
         }
         #endif
@@ -89,6 +86,7 @@ struct ReaderView: View {
                 onCenterTapped: { readerVM.pageCenterTapped() },
                 onMarkTapped: { referenceVM.markTapped($0, at: $1) }
             )
+            .id(readerSettingsVM.layoutSettings.pageTurnStyle)
             .popover(
                 item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
                 attachmentAnchor: .rect(.rect(referenceVM.cardAnchor))
@@ -158,14 +156,24 @@ struct ReaderView: View {
             .foregroundStyle(pageTextColor)
             .padding(.horizontal, 64)
             HStack {
-                circleButton(systemImage: "chevron.left", label: "Back") {
-                    readerVM.backTapped()
-                }
+                ReaderCircleButton(
+                    systemImage: "chevron.left",
+                    accessibilityLabel: "Back",
+                    foreground: pageTextColor,
+                    colorScheme: pageColorScheme,
+                    isVisible: readerVM.areControlsShown,
+                    action: readerVM.backTapped
+                )
                 Spacer()
                 #if DEBUG
-                circleButton(systemImage: "ladybug", label: "Underline Debug") {
-                    isUnderlineDebugShown = true
-                }
+                ReaderCircleButton(
+                    systemImage: "ladybug",
+                    accessibilityLabel: "Underline Debug",
+                    foreground: pageTextColor,
+                    colorScheme: pageColorScheme,
+                    isVisible: readerVM.areControlsShown,
+                    action: readerVM.underlineDebugTapped
+                )
                 .keyboardShortcut("d", modifiers: [.command, .shift])
                 #endif
             }
@@ -180,9 +188,14 @@ struct ReaderView: View {
                 .font(.caption)
                 .foregroundStyle(pageTextColor)
             Spacer()
-            circleButton(systemImage: "ellipsis", label: "Reading menu") {
-                readerVM.menuTapped()
-            }
+            ReaderCircleButton(
+                systemImage: "ellipsis",
+                accessibilityLabel: "Reading menu",
+                foreground: pageTextColor,
+                colorScheme: pageColorScheme,
+                isVisible: readerVM.areControlsShown,
+                action: readerVM.menuTapped
+            )
             .popover(isPresented: Binding(get: { readerVM.isMenuShown }, set: { _ in readerVM.menuDismissed() }), arrowEdge: .bottom) {
                 ReaderMenuView(readerVM: readerVM, readerSettingsVM: readerSettingsVM)
                     .onDisappear { readerVM.menuDisappeared() }
@@ -193,23 +206,4 @@ struct ReaderView: View {
         .padding(.bottom, 8)
     }
 
-    /// Hidden but still taking up space while the controls are hidden, so the page never moves.
-    private func circleButton(systemImage: String, label: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Image(systemName: systemImage)
-                .font(.title3.weight(.medium))
-                .foregroundStyle(pageTextColor)
-                .frame(width: 44, height: 44)
-                // The whole circle is tappable, not only the icon.
-                .contentShape(.circle)
-                .glassEffect(.regular.interactive(), in: .circle)
-                // Set inside the label, so the menu popover keeps the system mode.
-                .environment(\.colorScheme, pageColorScheme)
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel(label)
-        .opacity(readerVM.areControlsShown ? 1 : 0)
-        .allowsHitTesting(readerVM.areControlsShown)
-        .accessibilityHidden(!readerVM.areControlsShown)
-    }
 }

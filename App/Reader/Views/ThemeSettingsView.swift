@@ -52,6 +52,18 @@ struct ThemeSettingsView: View {
                             readerSettingsVM.lineSpacingIncreased()
                         }
                     }
+                    section("Page Turning", systemImage: "book.pages") {
+                        Picker("Page Turning", selection: Binding(
+                            get: { readerSettingsVM.settings.pageTurnStyle },
+                            set: { readerSettingsVM.pageTurnStyleChanged($0) }
+                        )) {
+                            ForEach(PageTurnStyle.allCases) { style in
+                                Text(style.title).tag(style)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .accessibilityLabel("Page turning animation")
+                    }
                 }
                 .padding(20)
             }
