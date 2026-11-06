@@ -51,7 +51,6 @@ Test setup this list assumes:
 | BK-09 | P1 | `BookContentRepo.content` | First parse fails, retry succeeds | Failure not cached |
 | BK-10 | P0 | `BookContentRepo` | Unknown book ID | Throws `ContentError.notFound` |
 | BK-11 | P1 | `BookContentRepo` | ID both imported and sample | Imported `book.epub` used |
-| BK-12 | P1 | `BookContentRepo.shareableFile` | Title "Good/Bad: A Tale" | File `Good-Bad- A Tale.epub`; same bytes |
 | BK-13 | P1 | Golden (Full plan) | Parse all 5 bundled samples | No throw; chapter counts match stored snapshot (a change means bump `parserVersion`) |
 | BK-14 | P0 | `BookContentRepo.content` | Open books A, B, C, then B, C, then A twice at once, then C, then B | Only 2 books kept: A parsed again once (shared by both callers), then B parsed again |
 | BK-15 | P1 | `BookContentRepo.forget` | Book parsed and cover read; forget | Parsed again on next call; cover not served from memory |

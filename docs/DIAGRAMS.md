@@ -20,7 +20,7 @@ flowchart LR
   subgraph Library
     U1(Browse and sort books)
     U2(Import an EPUB)
-    U3(Share, mark finished, reset, remove)
+    U3(Mark finished, reset, remove)
     U4(Open a book)
   end
 
@@ -485,7 +485,6 @@ File: `docs/diagrams/06-dfd-level-0.mmd`
 flowchart LR
   Reader[Reader]
   Files[Files app]
-  Share[Other apps]
   Model[Apple on-device model]
   Private[Reader's iCloud]
   Public[Developers' CloudKit]
@@ -494,7 +493,6 @@ flowchart LR
   Reader -- taps, settings, search, ratings --> App
   App -- pages, underlines, cards --> Reader
   Files -- EPUB file --> App
-  App -- shared EPUB --> Share
   App -- phrases and passages --> Model
   Model -- picks and confirms --> App
   App -- finished chapters' underlines --> Private

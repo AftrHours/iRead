@@ -92,7 +92,6 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 3. → `LibCtrl.loadLibrary`. The new book stays pinned first until `LibVM.sortChanged`.
 
 **Book "…" menu in the library**
-- Share Book → `LibVM.shareTapped` → `LibCtrl.shareableFile(for:)` → `BookContentRepo.shareableFile(for:)` (a copy named after the title) → share sheet.
 - Mark as Finished / Still Reading → `LibCtrl.setFinished` → `ProgRepo.setFinished` (keeps the reading position).
 - Reset Progress → `LibCtrl.resetProgress` → `ProgRepo.resetProgress` (a saved 0% record, so samples don't fall back to mock progress).
 - Remove → alert → `LibCtrl.remove` → `LibRepo.remove`: imported books are deleted; sample books are added to `Books/hidden-samples.json`.

@@ -47,18 +47,6 @@ struct BookContentRepoTests {
         #expect(content.chapters.map(\.title) == ["Chapter One", "Chapter Two"])
     }
 
-    @Test("BK-12 the shared copy is named after the title, with / and : replaced")
-    func shareableFile() async throws {
-        let repo = BookContentRepo(epubParseSvc: EPUBParseSvcEPUBKit(), folder: folder.url)
-        let bookID = try Fixture.importedBook("minimal", into: folder.url)
-        let book = BookRecord(id: bookID, title: "Good/Bad: A Tale", author: "Someone", isContinueReading: false, progress: 0)
-
-        let url = try await repo.shareableFile(for: book)
-        defer { try? FileManager.default.removeItem(at: url.deletingLastPathComponent()) }
-        #expect(url.lastPathComponent == "Good-Bad- A Tale.epub")
-        #expect(try Data(contentsOf: url) == Data(contentsOf: Fixture.url("minimal")))
-    }
-
     @Test("BK-14 only the 2 most recently used books stay parsed; a 3rd evicts the oldest")
     func keepsTwoRecentBooks() async throws {
         let spy = EPUBParseSvcSpy()

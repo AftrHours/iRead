@@ -4,11 +4,6 @@ import UIKit
 @MainActor
 @Observable
 final class LibVM {
-    struct ShareFile: Identifiable {
-        let url: URL
-        var id: URL { url }
-    }
-
     enum ViewMode {
         case grid
         case list
@@ -21,7 +16,6 @@ final class LibVM {
     private(set) var covers: [UUID: UIImage] = [:]
     private(set) var bookToRemove: BookRecord?
     private(set) var bookActionError: String?
-    private(set) var shareFile: ShareFile?
     private var newestImportedBookID: UUID?
 
     var books: [BookRecord] {
@@ -120,20 +114,6 @@ final class LibVM {
 
     func dismissBookActionError() {
         bookActionError = nil
-    }
-
-    func shareTapped(_ book: BookRecord) {
-        Task {
-            do {
-                shareFile = ShareFile(url: try await libCtrl.shareableFile(for: book))
-            } catch {
-                bookActionError = error.localizedDescription
-            }
-        }
-    }
-
-    func shareDismissed() {
-        shareFile = nil
     }
 
     private func reloadLibrary() async {

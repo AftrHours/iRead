@@ -35,10 +35,6 @@ struct LibCtrl {
         await bookContentRepo.forget(book.id)
     }
 
-    func shareableFile(for book: BookRecord) async throws -> URL {
-        try await bookContentRepo.shareableFile(for: book)
-    }
-
     /// A book with no saved progress keeps its own (a sample's mock progress, or 0 for an imported book).
     private func withProgress(_ book: BookRecord, _ progress: ReadingProgress?) -> BookRecord {
         guard let progress else { return book }

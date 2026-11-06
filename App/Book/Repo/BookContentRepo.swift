@@ -48,17 +48,6 @@ actor BookContentRepo {
         return cover
     }
 
-    /// A copy of the book's EPUB named after its title, for the share sheet.
-    func shareableFile(for book: BookRecord) throws -> URL {
-        let folder = URL.temporaryDirectory.appending(path: "Share/\(book.id.uuidString)")
-        let name = book.title.replacing(/[\/:]/, with: "-")
-        let destination = folder.appending(path: "\(name).epub")
-        try? FileManager.default.removeItem(at: folder)
-        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
-        try FileManager.default.copyItem(at: fileURL(for: book.id), to: destination)
-        return destination
-    }
-
     /// Callers already waiting on a dropped parse still get its content.
     private func markUsed(_ bookID: UUID) {
         recentBookIDs.removeAll { $0 == bookID }
