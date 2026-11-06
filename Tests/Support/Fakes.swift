@@ -77,3 +77,50 @@ final class PagerSvcFixed: PagerSvc {
         return stride(from: 0, to: length, by: pageLength).map { NSRange(location: $0, length: min(pageLength, length - $0)) }
     }
 }
+
+/// Keeps records in memory, as iCloud would. While `isOffline`, every call fails, like a device that isn't signed in.
+/// Each save waits `saveDelay`, like a slow network.
+final class CloudSvcFake: CloudSvc {
+    private let state = Mutex<(records: [CloudDatabase: [String: [String: CloudValue]]], isOffline: Bool)>(([:], false))
+    private let saveDelay: Duration
+
+    init(saveDelay: Duration = .zero) {
+        self.saveDelay = saveDelay
+    }
+
+    /// Signed out while offline, as the app sees a device without iCloud.
+    func account() async -> CloudAccount {
+        isOffline ? .signedOut : .signedIn
+    }
+
+    var isOffline: Bool {
+        get { state.withLock { $0.isOffline } }
+        set { state.withLock { $0.isOffline = newValue } }
+    }
+
+    func records(in database: CloudDatabase) -> [String: [String: CloudValue]] {
+        state.withLock { $0.records[database] ?? [:] }
+    }
+
+    func record(named name: String, in database: CloudDatabase) async throws -> [String: CloudValue]? {
+        try state.withLock { state in
+            if state.isOffline { throw URLError(.notConnectedToInternet) }
+            return state.records[database]?[name]
+        }
+    }
+
+    func save(_ fields: [String: CloudValue], asRecord name: String, ofType type: String, in database: CloudDatabase) async throws {
+        try await Task.sleep(for: saveDelay)
+        try state.withLock { state in
+            if state.isOffline { throw URLError(.notConnectedToInternet) }
+            state.records[database, default: [:]][name] = fields
+        }
+    }
+
+    func deleteRecord(named name: String, in database: CloudDatabase) async throws {
+        try state.withLock { state in
+            if state.isOffline { throw URLError(.notConnectedToInternet) }
+            state.records[database]?[name] = nil
+        }
+    }
+}

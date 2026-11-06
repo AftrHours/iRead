@@ -55,15 +55,6 @@ actor ReaderStateCtrl {
         await bookStateRepo.save(bookState, for: bookID)
     }
 
-    func editedSymbols() -> [String: SymbolStyle] {
-        bookState.editedSymbols
-    }
-
-    func saveSymbol(_ style: SymbolStyle, forEntity entityID: String) async {
-        bookState.editedSymbols[entityID] = style
-        await bookStateRepo.save(bookState, for: bookID)
-    }
-
     func recentSearches() -> [String] {
         bookState.recentSearches
     }

@@ -8,22 +8,19 @@ final class ReaderVM {
         case contents
         case search(SearchVM)
         case themeSettings
-        case chapterSymbols
-        case editSymbol(Entity)
 
         var id: String {
             switch self {
             case .contents: "contents"
             case .search: "search"
             case .themeSettings: "themeSettings"
-            case .chapterSymbols: "chapterSymbols"
-            case .editSymbol(let entity): "editSymbol \(entity.id)"
             }
         }
     }
 
     let readerSettingsVM: ReaderSettingsVM
     let referenceVM: ReferenceVM
+    let ratingVM: RatingVM
     private(set) var title = ""
     private(set) var chapterTitles: [String] = []
     private(set) var pages: [Page] = []
@@ -54,14 +51,8 @@ final class ReaderVM {
         return "Page \(shownPage.number) of \(pageCount)"
     }
 
-    /// Underlines show only while the controls do, so a turned page reads clean. Symbols and highlights always show.
-    var marks: [Int: [Mark]] {
-        guard !areControlsShown else { return referenceVM.marks }
-        return referenceVM.marks.mapValues { $0.filter { !$0.isUnderline } }
-    }
-
     init(book: BookRecord, readerCtrl: ReaderCtrl, progressCtrl: ProgressCtrl, readerStateCtrl: ReaderStateCtrl, appNav: AppNav,
-         readerSettingsVM: ReaderSettingsVM, referenceVM: ReferenceVM) {
+         readerSettingsVM: ReaderSettingsVM, referenceVM: ReferenceVM, ratingVM: RatingVM) {
         self.book = book
         self.readerCtrl = readerCtrl
         self.progressCtrl = progressCtrl
@@ -69,11 +60,11 @@ final class ReaderVM {
         self.appNav = appNav
         self.readerSettingsVM = readerSettingsVM
         self.referenceVM = referenceVM
+        self.ratingVM = ratingVM
         readerSettingsVM.onSettingsChanged = { [weak self] in
             Task { await self?.showCurrentPage() }
         }
         referenceVM.onShowPage = { [weak self] page, underlineID in self?.show(page, highlighting: underlineID) }
-        referenceVM.onEditSymbol = { [weak self] entity in self?.sheet = .editSymbol(entity) }
     }
 
     func startPageLabel(ofChapter index: Int) -> String {
@@ -82,7 +73,6 @@ final class ReaderVM {
 
     func onAppear(viewport: Viewport) async {
         requestedViewport = viewport
-        referenceVM.onAppear()
         do {
             try await readerCtrl.openBook()
             await readerSettingsVM.bookOpened()
@@ -91,6 +81,7 @@ final class ReaderVM {
                 await progressCtrl.positionRestored(isRestored)
             }
             await referenceVM.bookOpened()
+            await ratingVM.bookOpened()
             title = book.title
             chapterTitles = await readerCtrl.chapterTitles()
             await showCurrentPage()
@@ -117,7 +108,12 @@ final class ReaderVM {
 
     func backTapped() {
         Task {
+            // Waits for the last page turn's save first, so it isn't lost.
+            await progressTask?.value
+            progressTask?.cancel()
+            progressTask = nil
             await progressCtrl.saveNow()
+            referenceVM.close()
             appNav.closeReader()
         }
     }
@@ -129,6 +125,7 @@ final class ReaderVM {
 
     func appForegrounded() {
         referenceVM.appForegrounded()
+        ratingVM.appForegrounded()
     }
 
     func menuTapped() {
@@ -152,19 +149,16 @@ final class ReaderVM {
     }
 
     func searchTapped() {
-        openAfterMenu(.search(SearchVM(readerCtrl: readerCtrl, readerStateCtrl: readerStateCtrl) { [weak self] result in
-            self?.searchResultPicked(result)
-        }))
+        openAfterMenu(.search(SearchVM(
+            search: { [readerCtrl] in await readerCtrl.search($0) },
+            readerStateCtrl: readerStateCtrl,
+            onResultPicked: { [weak self] result in self?.searchResultPicked(result) }
+        )))
     }
 
     func themeSettingsTapped() {
         openAfterMenu(.themeSettings)
         readerSettingsVM.themeSettingsShown()
-    }
-
-    func chapterSymbolsTapped() {
-        referenceVM.chapterSymbolsShown()
-        openAfterMenu(.chapterSymbols)
     }
 
     func sheetDismissed() {
@@ -223,12 +217,14 @@ final class ReaderVM {
         }
     }
 
+    #if DEBUG
+    func makeUnderlineDebugVM() -> UnderlineDebugVM {
+        UnderlineDebugVM(refCtrl: referenceVM.refCtrl, ratingCtrl: ratingVM.ratingCtrl, chapterIndex: shownPage?.chapterIndex)
+    }
+    #endif
+
     private func updateReferenceVM() {
-        referenceVM.update(
-            shownPage: shownPage,
-            loadedPages: pages,
-            areSymbolsShown: readerSettingsVM.layoutSettings.areSymbolsShown
-        )
+        referenceVM.update(shownPage: shownPage, loadedPages: pages)
     }
 
     private func loadPageTotals() {
@@ -240,8 +236,4 @@ final class ReaderVM {
             pageCount = counts.reduce(0, +)
         }
     }
-}
-
-extension ReaderVM {
-    typealias ReferenceCard = ReferenceVM.ReferenceCard
 }

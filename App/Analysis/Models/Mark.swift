@@ -4,7 +4,6 @@ struct Mark: Equatable, Sendable {
     enum Kind: Equatable, Sendable {
         case underline(id: String)
         case highlight
-        case symbol(SymbolStyle, entityName: String, mentionIndex: Int)
     }
 
     let range: NSRange

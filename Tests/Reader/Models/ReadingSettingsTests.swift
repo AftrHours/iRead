@@ -23,7 +23,6 @@ struct ReadingSettingsTests {
         settings.textSizeIndex = 6
         settings.lineSpacingPercent = 150
         settings.theme = .calm
-        settings.areSymbolsShown = true
         await repo.save(settings)
         #expect(await ReadingSettingsRepo(folder: folder.url).settings() == settings)
     }

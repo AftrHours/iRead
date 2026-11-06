@@ -8,8 +8,9 @@ struct ReaderView: View {
     @State private var isUnderlineDebugShown = false
     #endif
 
-    private var readerSettingsVM: ReaderSettingsVM { readerVM.readerSettingsVM }
-    private var referenceVM: ReferenceVM { readerVM.referenceVM }
+    private let readerSettingsVM: ReaderSettingsVM
+    private let referenceVM: ReferenceVM
+    private let ratingVM: RatingVM
     private var theme: ReadingTheme { readerSettingsVM.layoutSettings.theme }
     // Only the page's own text uses the theme colour. Set on the whole view, it would leak into
     // the menu and sheets, which follow the system light or dark mode instead.
@@ -25,6 +26,9 @@ struct ReaderView: View {
 
     init(readerVM: ReaderVM) {
         _readerVM = State(initialValue: readerVM)
+        readerSettingsVM = readerVM.readerSettingsVM
+        referenceVM = readerVM.referenceVM
+        ratingVM = readerVM.ratingVM
     }
 
     var body: some View {
@@ -62,17 +66,11 @@ struct ReaderView: View {
                 SearchView(searchVM: searchVM)
             case .themeSettings:
                 ThemeSettingsView(readerSettingsVM: readerSettingsVM)
-            case .chapterSymbols:
-                ChapterSymbolsView(referenceVM: referenceVM)
-            case .editSymbol(let entity):
-                EditSymbolView(entity: entity, style: referenceVM.symbolStyle(for: entity)) { style in
-                    referenceVM.symbolSaved(style, for: entity)
-                }
             }
         }
         #if DEBUG
         .sheet(isPresented: $isUnderlineDebugShown) {
-            UnderlineDebugView(underlineDebugVM: referenceVM.makeUnderlineDebugVM())
+            UnderlineDebugView(underlineDebugVM: readerVM.makeUnderlineDebugVM())
         }
         #endif
     }
@@ -84,7 +82,7 @@ struct ReaderView: View {
                 pages: readerVM.pages,
                 shownPage: shownPage,
                 settings: readerSettingsVM.layoutSettings,
-                marks: readerVM.marks,
+                marks: referenceVM.marks,
                 onPageChanged: { readerVM.pageChanged($0) },
                 onCenterTapped: { readerVM.pageCenterTapped() },
                 onMarkTapped: { referenceVM.markTapped($0, at: $1) }
@@ -92,18 +90,8 @@ struct ReaderView: View {
             .popover(
                 item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
                 attachmentAnchor: .rect(.rect(referenceVM.cardAnchor))
-            ) { card in
-                Group {
-                    switch card {
-                    case .reference(let referenceCard):
-                        RefCardView(card: referenceCard) { referenceVM.jumpToPassageTapped() }
-                    case .symbol(let symbolCard):
-                        SymCardView(card: symbolCard, style: referenceVM.symbolStyle(for: symbolCard.entity)) {
-                            referenceVM.editSymbolTapped(symbolCard.entity)
-                        }
-                    }
-                }
-                .onDisappear { referenceVM.cardDisappeared() }
+            ) { referenceCard in
+                RefCardView(card: referenceCard, ratingVM: ratingVM, onJumpTapped: { referenceVM.jumpToPassageTapped() })
             }
         } else if readerVM.hasFailedToOpen {
             ContentUnavailableView("Can't Open Book", systemImage: "book.closed")
@@ -184,7 +172,7 @@ struct ReaderView: View {
                 readerVM.menuTapped()
             }
             .popover(isPresented: Binding(get: { readerVM.isMenuShown }, set: { _ in readerVM.menuDismissed() }), arrowEdge: .bottom) {
-                ReaderMenuView(readerVM: readerVM, readerSettingsVM: readerSettingsVM)
+                ReaderMenuView(readerVM: readerVM, ratingVM: ratingVM)
                     .onDisappear { readerVM.menuDisappeared() }
             }
         }

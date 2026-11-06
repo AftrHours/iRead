@@ -21,7 +21,17 @@ struct UnderlineDebugView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                Section("iCloud") {
+                    ForEach(underlineDebugVM.cloudLines, id: \.self) { line in
+                        Text(line)
+                            .font(.callout)
+                    }
+                }
                 Section("This chapter") {
+                    if underlineDebugVM.rows.isEmpty {
+                        Text("Nothing yet: the engine is still reading this chapter.")
+                            .foregroundStyle(.secondary)
+                    }
                     ForEach(underlineDebugVM.rows) { row in
                         VStack(alignment: .leading, spacing: 4) {
                             Text(row.phrase)
@@ -32,11 +42,6 @@ struct UnderlineDebugView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
-                }
-            }
-            .overlay {
-                if underlineDebugVM.rows.isEmpty {
-                    ContentUnavailableView("Nothing Yet", systemImage: "underline", description: Text("The engine is still reading this chapter."))
                 }
             }
             .navigationTitle("Underline Debug")

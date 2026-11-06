@@ -18,14 +18,8 @@ struct ReadingSettings: Codable, Equatable, Sendable {
     var textSizeIndex = 3
     var lineSpacingPercent = 120
     var theme = ReadingTheme.original
-    var areSymbolsShown = false
 
     var textSize: Double {
         Self.textSizes[min(max(textSizeIndex, 0), Self.textSizes.count - 1)]
-    }
-
-    /// Everything except the symbols toggle changes where pages break.
-    func hasSameLayout(as other: ReadingSettings) -> Bool {
-        textSizeIndex == other.textSizeIndex && lineSpacingPercent == other.lineSpacingPercent && theme == other.theme
     }
 }

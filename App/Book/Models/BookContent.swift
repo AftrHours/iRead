@@ -5,4 +5,6 @@ struct BookContent: Sendable {
     let paragraphs: [Paragraph]
     let sentences: [Sentence]
     let parserVersion: Int
+    /// See BookFingerprint.
+    let fingerprint: String
 }

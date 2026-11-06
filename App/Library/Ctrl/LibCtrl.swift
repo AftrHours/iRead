@@ -3,9 +3,15 @@ import Foundation
 struct LibCtrl {
     let libRepo: LibRepo
     let bookContentRepo: BookContentRepo
+    let progRepo: ProgRepo
 
+    /// Every book in the library, with its saved reading progress.
     func loadLibrary() async throws -> [BookRecord] {
-        return try await libRepo.fetchBooks()
+        var books: [BookRecord] = []
+        for book in try libRepo.fetchBooks() {
+            books.append(withProgress(book, await progRepo.progress(for: book.id)))
+        }
+        return books
     }
 
     func importBook(from url: URL) async throws -> BookRecord {
@@ -17,18 +23,30 @@ struct LibCtrl {
     }
 
     func setFinished(_ isFinished: Bool, for book: BookRecord) async {
-        await libRepo.setFinished(isFinished, for: book)
+        await progRepo.setFinished(isFinished, for: book.id)
     }
 
     func resetProgress(for book: BookRecord) async {
-        await libRepo.resetProgress(for: book)
+        await progRepo.resetProgress(for: book.id)
     }
 
-    func remove(_ book: BookRecord) throws {
+    func remove(_ book: BookRecord) async throws {
         try libRepo.remove(book)
+        await bookContentRepo.forget(book.id)
     }
 
-    func shareableFile(for book: BookRecord) async throws -> URL {
-        try await bookContentRepo.shareableFile(for: book)
+    /// A book with no saved progress keeps its own (a sample's mock progress, or 0 for an imported book).
+    private func withProgress(_ book: BookRecord, _ progress: ReadingProgress?) -> BookRecord {
+        guard let progress else { return book }
+        return BookRecord(
+            id: book.id,
+            title: book.title,
+            author: book.author,
+            isContinueReading: book.isContinueReading,
+            // A finished book shows as fully read, even if it was marked finished part way through.
+            progress: progress.finishedAt == nil ? progress.progress : 1,
+            dateAdded: book.dateAdded,
+            lastReadAt: progress.lastReadAt
+        )
     }
 }

@@ -63,10 +63,6 @@ struct LibView: View {
         } message: {
             Text(libVM.importError ?? "Please try another EPUB file.")
         }
-        .sheet(item: Binding(get: { libVM.shareFile }, set: { _ in libVM.shareDismissed() })) { file in
-            ShareSheet(url: file.url)
-                .presentationDetents([.medium, .large])
-        }
         .alert("Remove Book?", isPresented: Binding(
             get: { libVM.bookToRemove != nil },
             set: { if !$0 { libVM.removeCancelled() } }
@@ -174,9 +170,6 @@ struct BookMenu: View {
 
     var body: some View {
         Menu {
-            Button("Share Book", systemImage: "square.and.arrow.up") {
-                libVM.shareTapped(book)
-            }
             Button(
                 book.isFinished ? "Mark as Still Reading" : "Mark as Finished",
                 systemImage: book.isFinished ? "book" : "checkmark.circle"
@@ -201,22 +194,12 @@ struct BookMenu: View {
     }
 }
 
-/// The iOS share sheet for one file.
-private struct ShareSheet: UIViewControllerRepresentable {
-    let url: URL
-
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        UIActivityViewController(activityItems: [url], applicationActivities: nil)
-    }
-
-    func updateUIViewController(_ controller: UIActivityViewController, context: Context) {}
-}
-
 #Preview("Library View") {
     let epubParseSvc = EPUBParseSvcEPUBKit()
     let libCtrl = LibCtrl(
-        libRepo: LibRepo(epubParseSvc: epubParseSvc, progRepo: ProgRepo()),
-        bookContentRepo: BookContentRepo(epubParseSvc: epubParseSvc)
+        libRepo: LibRepo(epubParseSvc: epubParseSvc),
+        bookContentRepo: BookContentRepo(epubParseSvc: epubParseSvc),
+        progRepo: ProgRepo()
     )
     return LibView(libVM: LibVM(libCtrl: libCtrl, appNav: AppNav()))
 }

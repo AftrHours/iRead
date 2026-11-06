@@ -73,9 +73,9 @@ struct EPUBParseSvcTests {
     @Test("BK-05 corrupt.epub can't be read")
     func corrupt() async throws {
         let url = try Fixture.url("corrupt")
-        await withKnownIssue("A file that isn't a zip throws ZIPFoundation's error, not ContentError.unreadable") {
-            await #expect(throws: ContentError.unreadable) { try await svc.parse(url) }
-        }
+        await #expect(throws: ContentError.unreadable) { try await svc.parse(url) }
+        #expect(throws: ContentError.unreadable) { try svc.metadata(from: url) }
+        #expect(throws: ContentError.unreadable) { try svc.cover(from: url) }
     }
 
     @Test("BK-06 emoji and accents keep UTF-16 ranges lined up")

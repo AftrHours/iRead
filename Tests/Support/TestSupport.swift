@@ -1,6 +1,5 @@
 import Foundation
 import Testing
-import UnderlineEngine
 @testable import iRead
 
 extension Tag {
@@ -54,7 +53,10 @@ extension BookContent {
     }
 
     func text(ofSentence index: Int) -> String {
-        SentenceText.of(sentences[index], in: self)
+        let sentence = sentences[index]
+        let paragraph = paragraphs[sentence.paragraph]
+        let range = NSRange(location: paragraph.range.location + sentence.range.location, length: sentence.range.length)
+        return (chapters[paragraph.chapterIndex].text as NSString).substring(with: range)
     }
 }
 
@@ -83,83 +85,43 @@ func eventually(within seconds: Double = 5, isolation: isolated (any Actor)? = #
 /// An iPad-sized page, for ReaderCtrl and PagerSvc.
 let iPadViewport = Viewport(size: CGSize(width: 820, height: 1180))
 
-extension AnalysisRepo {
-    /// The character engine on fixed content, storing chapters under `folder`, with no language model.
-    static func make(content: BookContent, folder: URL) -> AnalysisRepo {
-        AnalysisRepo(content: { _ in content }, prepassSvc: BookPrepassSvc(), chapterSvc: ChapterAnalysisSvc(),
-                     store: ChapterAnalysisStore(root: folder), makeLLM: { LLMSvcUnavailable() })
-    }
-}
-
-/// UnderlineRepo's file for one finished chapter: `<folder>/<id>/underlines/chapter-N.json`.
+/// UnderlineRepo's file for one finished chapter: `<folder>/<book fingerprint>/chapter-N.json`.
 enum StoredUnderlines {
     struct File: Codable {
         let parserVersion: Int
-        let underlines: [Underline]
+        let engineVersion: Int?
+        let underlines: [SavedUnderline]
     }
 
-    static func url(chapter: Int, of bookID: UUID, in folder: URL) -> URL {
-        folder.appending(path: "\(bookID.uuidString)/underlines/chapter-\(chapter).json")
+    static func url(chapter: Int, of book: String, in folder: URL) -> URL {
+        folder.appending(path: "\(book)/chapter-\(chapter).json")
     }
 
-    static func write(_ underlines: [Underline], chapter: Int, of bookID: UUID, parserVersion: Int, in folder: URL) throws {
-        let url = url(chapter: chapter, of: bookID, in: folder)
+    /// `engineVersion: nil` writes a file without the field, like builds before it existed.
+    static func write(_ underlines: [SavedUnderline], chapter: Int, of book: String, parserVersion: Int,
+                      engineVersion: Int? = UnderlineRepoKnobs.engineVersion, in folder: URL) throws {
+        let url = url(chapter: chapter, of: book, in: folder)
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
-        try JSONEncoder().encode(File(parserVersion: parserVersion, underlines: underlines)).write(to: url)
+        try JSONEncoder().encode(File(parserVersion: parserVersion, engineVersion: engineVersion, underlines: underlines)).write(to: url)
     }
 
-    static func read(chapter: Int, of bookID: UUID, in folder: URL) throws -> File {
-        try JSONDecoder().decode(File.self, from: Data(contentsOf: url(chapter: chapter, of: bookID, in: folder)))
+    static func read(chapter: Int, of book: String, in folder: URL) throws -> File {
+        try JSONDecoder().decode(File.self, from: Data(contentsOf: url(chapter: chapter, of: book, in: folder)))
     }
 }
 
-extension Underline {
+extension SavedUnderline {
     /// An underline on `phrase` in one paragraph, explained by `passage` in another.
-    static func make(_ phrase: String, paragraph: Int, passage: String, passageParagraph: Int, in content: BookContent) -> Underline {
+    static func make(_ phrase: String, paragraph: Int, passage: String, passageParagraph: Int, in content: BookContent) -> SavedUnderline {
         let range = (content.text(ofParagraph: paragraph) as NSString).range(of: phrase)
         let passageRange = (content.text(ofParagraph: passageParagraph) as NSString).range(of: passage)
         func sentence(_ paragraph: Int, _ range: NSRange) -> Int {
             content.sentences.firstIndex { $0.paragraph == paragraph && NSLocationInRange(range.location, $0.range) } ?? 0
         }
-        return Underline(sentence: sentence(paragraph, range), paragraph: paragraph, range: range, text: phrase, kind: .thing, role: nil,
-                         reference: AnswerPassage(sentence: sentence(passageParagraph, passageRange), paragraph: passageParagraph,
-                                                  range: passageRange, text: passage),
-                         decidedBy: .rules)
-    }
-}
-
-extension ResolvedMention {
-    static func name(_ text: String, sentence: Int = 0, at location: Int = 0, entity: Int? = nil) -> ResolvedMention {
-        ResolvedMention(sentence: sentence, location: location, length: text.utf16.count, text: text, form: .name,
-                        head: NameKey.of(text), modifiers: [], entity: entity)
-    }
-
-    static func description(_ text: String, head: String, modifiers: [String] = [], sentence: Int = 0, at location: Int = 0,
-                            entity: Int? = nil) -> ResolvedMention {
-        ResolvedMention(sentence: sentence, location: location, length: text.utf16.count, text: text, form: .description,
-                        head: head, modifiers: modifiers, entity: entity)
-    }
-}
-
-extension ResolvedEntity {
-    static func named(_ name: String, key: Int, since sentence: Int = 0) -> ResolvedEntity {
-        ResolvedEntity(key: key, names: [EntityName(text: name, key: NameKey.of(name), sinceSentence: sentence)], label: name,
-                       introSentence: sentence, mergeEdges: [])
-    }
-
-    static func unnamed(_ label: String, key: Int, since sentence: Int = 0) -> ResolvedEntity {
-        ResolvedEntity(key: key, names: [], label: label, introSentence: sentence, mergeEdges: [])
-    }
-}
-
-extension AnalysisRepo {
-    /// Starts the analysis and waits until it has gone through every chapter.
-    func runToEnd(_ bookID: UUID) async -> [Int] {
-        startAnalysis(for: bookID)
-        var chapters: [Int] = []
-        for await chapter in updates(for: bookID) {
-            chapters.append(chapter)
-        }
-        return chapters
+        let underlined = sentence(paragraph, range)
+        return SavedUnderline(id: "\(underlined):\(range.location)", sentence: underlined, paragraph: paragraph, range: range, text: phrase,
+                              kind: "thing", decidedBy: "rules",
+                              reference: ContextPassage(sentence: sentence(passageParagraph, passageRange), paragraph: passageParagraph,
+                                                        range: passageRange, text: passage))
     }
 }
