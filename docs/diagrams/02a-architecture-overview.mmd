@@ -1,0 +1,13 @@
+flowchart TB
+  App["App · iReadApp, AppContainer, AppNav"]
+  Library["Library · the library screen"]
+  Reader["Reader · the reading screen"]
+  Analysis["Analysis · underlines and ratings"]
+  Book["Book · book data both screens share"]
+
+  App --> Library
+  App --> Reader
+  Reader --> Analysis
+  Library --> Book
+  Reader --> Book
+  Analysis --> Book

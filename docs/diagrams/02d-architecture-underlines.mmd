@@ -1,0 +1,36 @@
+flowchart TB
+  subgraph ViewModel["ViewModel · screen state"]
+    ReaderVM
+    ReferenceVM
+  end
+  subgraph Controller["Controller · one use case"]
+    ReaderCtrl
+    RefCtrl
+    ReaderStateCtrl
+  end
+  subgraph Repo["Repo · saves and loads"]
+    BookContentRepo
+    UnderlineRepo
+    RatingRepo
+  end
+  subgraph Service["Service · wraps an Apple API"]
+    ModelCheckSvc
+    CloudSvc
+  end
+  Engine[[UnderlineEngine package]]
+  iCloud[(iCloud)]
+
+  ReaderVM --> ReferenceVM
+  ReferenceVM --> RefCtrl
+  ReferenceVM -. pages .-> ReaderCtrl
+  ReferenceVM -. return spot .-> ReaderStateCtrl
+
+  RefCtrl --> BookContentRepo
+  RefCtrl --> UnderlineRepo
+  RefCtrl --> RatingRepo
+
+  UnderlineRepo --> ModelCheckSvc
+  UnderlineRepo --> Engine
+  UnderlineRepo --> CloudSvc
+  RatingRepo --> CloudSvc
+  CloudSvc --> iCloud

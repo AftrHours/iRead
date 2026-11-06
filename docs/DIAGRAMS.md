@@ -54,87 +54,148 @@ flowchart LR
 
 ## 2. Architecture
 
-Layers, and who calls whom. Arrows only point down. `AppContainer` builds everything; pure Rules (sorting, search, progress maths, `BookFingerprint`) are left out.
+One big diagram of every type has too many crossing lines, so it's split: an overview of the features, then one diagram per feature. In each, a layer only calls the layer below it. Dashed lines are calls into another feature's types. `AppContainer` builds everything; pure Rules (sorting, search, progress maths, `BookFingerprint`) are left out.
 
-File: `docs/diagrams/02-architecture.mmd`
+### 2a. Features
+
+Which part of the app may use which. No cycles.
+
+File: `docs/diagrams/02a-architecture-overview.mmd`
+
+```mermaid
+flowchart TB
+  App["App · iReadApp, AppContainer, AppNav"]
+  Library["Library · the library screen"]
+  Reader["Reader · the reading screen"]
+  Analysis["Analysis · underlines and ratings"]
+  Book["Book · book data both screens share"]
+
+  App --> Library
+  App --> Reader
+  Reader --> Analysis
+  Library --> Book
+  Reader --> Book
+  Analysis --> Book
+```
+
+### 2b. Library
+
+File: `docs/diagrams/02b-architecture-library.mmd`
 
 ```mermaid
 flowchart TB
   subgraph View["View · draws the screen"]
     LibView
-    ReaderView
   end
-
   subgraph ViewModel["ViewModel · screen state"]
     LibVM
-    ReaderVM
-    ReaderSettingsVM
-    ReferenceVM
-    SearchVM
   end
-
   subgraph Controller["Controller · one use case"]
     LibCtrl
-    ReaderCtrl
-    ProgressCtrl
-    ReaderStateCtrl
-    RefCtrl
   end
-
   subgraph Repo["Repo · saves and loads"]
     LibRepo
     BookContentRepo
     ProgRepo
-    ReadingSettingsRepo
-    BookStateRepo
-    UnderlineRepo
-    RatingRepo
   end
-
   subgraph Service["Service · wraps an Apple API"]
     EPUBParseSvc
-    PagerSvc
-    BrightnessSvc
-    EventSvc
-    ModelCheckSvc
-    CloudSvc
   end
 
-  Engine[[UnderlineEngine package]]
-  iCloud[(iCloud)]
-
   LibView --> LibVM
-  ReaderView --> ReaderVM
-  ReaderVM --> ReaderSettingsVM
-  ReaderVM --> ReferenceVM
-  ReaderVM --> SearchVM
-
   LibVM --> LibCtrl
-  ReaderVM --> ReaderCtrl
-  ReaderVM --> ProgressCtrl
-  ReaderSettingsVM --> ReaderStateCtrl
-  ReferenceVM --> RefCtrl
-  ReferenceVM --> ReaderStateCtrl
-  ReferenceVM --> ReaderCtrl
-  SearchVM --> ReaderCtrl
-  SearchVM --> ReaderStateCtrl
-
   LibCtrl --> LibRepo
   LibCtrl --> BookContentRepo
   LibCtrl --> ProgRepo
-  ReaderCtrl --> BookContentRepo
-  ReaderCtrl --> PagerSvc
+  LibRepo --> EPUBParseSvc
+  BookContentRepo --> EPUBParseSvc
+```
+
+### 2c. Reader
+
+Repos and Services sit on one row, because a Controller calls both directly.
+
+File: `docs/diagrams/02c-architecture-reader.mmd`
+
+```mermaid
+flowchart TB
+  subgraph View["View · draws the screen"]
+    ReaderView
+  end
+  subgraph ViewModel["ViewModel · screen state"]
+    ReaderVM
+    SearchVM
+    ReaderSettingsVM
+  end
+  subgraph Controller["Controller · one use case"]
+    ProgressCtrl
+    ReaderCtrl
+    ReaderStateCtrl
+  end
+  subgraph Below["Repo · saves and loads   +   Service · wraps an Apple API"]
+    ProgRepo
+    EventSvc
+    BookContentRepo
+    PagerSvc
+    BookStateRepo
+    ReadingSettingsRepo
+    BrightnessSvc
+  end
+
+  ReaderView --> ReaderVM
+  ReaderVM --> SearchVM
+  ReaderVM --> ReaderSettingsVM
+  ReaderVM --> ProgressCtrl
+  ReaderVM --> ReaderCtrl
+  SearchVM --> ReaderCtrl
+  SearchVM --> ReaderStateCtrl
+  ReaderSettingsVM --> ReaderStateCtrl
+
   ProgressCtrl --> ProgRepo
   ProgressCtrl --> EventSvc
-  ReaderStateCtrl --> ReadingSettingsRepo
+  ReaderCtrl --> BookContentRepo
+  ReaderCtrl --> PagerSvc
   ReaderStateCtrl --> BookStateRepo
+  ReaderStateCtrl --> ReadingSettingsRepo
   ReaderStateCtrl --> BrightnessSvc
+```
+
+### 2d. Underlines and ratings
+
+File: `docs/diagrams/02d-architecture-underlines.mmd`
+
+```mermaid
+flowchart TB
+  subgraph ViewModel["ViewModel · screen state"]
+    ReaderVM
+    ReferenceVM
+  end
+  subgraph Controller["Controller · one use case"]
+    ReaderCtrl
+    RefCtrl
+    ReaderStateCtrl
+  end
+  subgraph Repo["Repo · saves and loads"]
+    BookContentRepo
+    UnderlineRepo
+    RatingRepo
+  end
+  subgraph Service["Service · wraps an Apple API"]
+    ModelCheckSvc
+    CloudSvc
+  end
+  Engine[[UnderlineEngine package]]
+  iCloud[(iCloud)]
+
+  ReaderVM --> ReferenceVM
+  ReferenceVM --> RefCtrl
+  ReferenceVM -. pages .-> ReaderCtrl
+  ReferenceVM -. return spot .-> ReaderStateCtrl
+
   RefCtrl --> BookContentRepo
   RefCtrl --> UnderlineRepo
   RefCtrl --> RatingRepo
 
-  LibRepo --> EPUBParseSvc
-  BookContentRepo --> EPUBParseSvc
   UnderlineRepo --> ModelCheckSvc
   UnderlineRepo --> Engine
   UnderlineRepo --> CloudSvc
