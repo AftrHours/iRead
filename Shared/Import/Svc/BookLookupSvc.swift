@@ -4,8 +4,8 @@ import Foundation
 /// Gutendex was tried first and often took over 30 seconds). A protocol so tests stay offline.
 protocol BookLookupSvc: Sendable {
     /// nil when Apple has no listing with this ID.
-    func listing(id: String, country: String) async throws -> (title: String, author: String)?
-    func gutenbergBooks(matching query: String) async throws -> [GutendexBook]
+    func lookUpListing(id: String, country: String) async throws -> (title: String, author: String)?
+    func searchGutenberg(for query: String) async throws -> [GutendexBook]
 }
 
 struct BookLookupSvcURLSession: BookLookupSvc {
@@ -18,13 +18,13 @@ struct BookLookupSvcURLSession: BookLookupSvc {
         let results: [Item]
     }
 
-    func listing(id: String, country: String) async throws -> (title: String, author: String)? {
+    func lookUpListing(id: String, country: String) async throws -> (title: String, author: String)? {
         var components = URLComponents(string: "https://itunes.apple.com/lookup")!
         components.queryItems = [URLQueryItem(name: "id", value: id), URLQueryItem(name: "country", value: country)]
         return Self.decodeListing(try await fetch(components.url!))
     }
 
-    func gutenbergBooks(matching query: String) async throws -> [GutendexBook] {
+    func searchGutenberg(for query: String) async throws -> [GutendexBook] {
         var components = URLComponents(string: "https://www.gutenberg.org/ebooks/search.opds/")!
         components.queryItems = [URLQueryItem(name: "query", value: query)]
         return Self.decodeOPDS(try await fetch(components.url!))

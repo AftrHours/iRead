@@ -3,7 +3,7 @@ import Foundation
 enum AppleBooksLink {
     /// The listing ID (from an `id<digits>` path segment or an `id` query item) and the store country (a two-letter
     /// first path segment, else "us"). nil for a link that isn't on apple.com or has no ID.
-    static func listing(in url: URL) -> (id: String, country: String)? {
+    static func readListingID(from url: URL) -> (id: String, country: String)? {
         guard let host = url.host?.lowercased(), host == "apple.com" || host.hasSuffix(".apple.com") else { return nil }
         let parts = url.pathComponents.filter { $0 != "/" }
         // The digits right after "id": Apple Books' Share Book adds a letter after them (".../id395687522P").

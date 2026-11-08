@@ -11,13 +11,13 @@ struct LibraryIndexRepo: Sendable {
     }
 
     /// Empty when the app hasn't written one yet.
-    func load() -> LibraryIndex {
+    func readIndex() -> LibraryIndex {
         guard let data = try? Data(contentsOf: fileURL),
               let index = try? JSONDecoder().decode(LibraryIndex.self, from: data) else { return LibraryIndex(books: []) }
         return index
     }
 
-    func save(_ index: LibraryIndex) {
+    func writeIndex(_ index: LibraryIndex) {
         do {
             try FileManager.default.createDirectory(at: fileURL.deletingLastPathComponent(), withIntermediateDirectories: true)
             try JSONEncoder().encode(index).write(to: fileURL, options: .atomic)

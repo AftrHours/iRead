@@ -45,7 +45,7 @@ enum EditionMatcher {
     }
 
     /// The first book with an EPUB whose title and author match. A book with no authors only matches an unknown author.
-    static func bestMatch(title: String, author: String, in books: [GutendexBook]) -> GutenbergEdition? {
+    static func matchEdition(title: String, author: String, in books: [GutendexBook]) -> GutenbergEdition? {
         for book in books {
             guard let epub = book.formats["application/epub+zip"], let epubURL = URL(string: epub),
                   titlesMatch(title, book.title) else { continue }

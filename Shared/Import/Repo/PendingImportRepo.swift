@@ -18,14 +18,14 @@ struct PendingImportRepo: Sendable {
     }
 
     /// Moves the downloaded file in. The edition is written last, so a half-written import is never listed.
-    func add(epubAt file: URL, edition: GutenbergEdition) throws {
+    func writePending(epubAt file: URL, edition: GutenbergEdition) throws {
         let entry = folder.appending(path: UUID().uuidString)
         try FileManager.default.createDirectory(at: entry, withIntermediateDirectories: true)
         try FileManager.default.moveItem(at: file, to: entry.appending(path: "book.epub"))
         try JSONEncoder().encode(edition).write(to: entry.appending(path: "edition.json"), options: .atomic)
     }
 
-    func all() -> [PendingImport] {
+    func readPending() -> [PendingImport] {
         let entries = (try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)) ?? []
         return entries.compactMap { entry in
             let epubURL = entry.appending(path: "book.epub")
@@ -37,7 +37,7 @@ struct PendingImportRepo: Sendable {
         }
     }
 
-    func remove(_ pending: PendingImport) {
+    func removePending(_ pending: PendingImport) {
         do {
             try FileManager.default.removeItem(at: folder.appending(path: pending.id.uuidString))
         } catch {

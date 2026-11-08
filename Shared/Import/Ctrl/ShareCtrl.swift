@@ -35,7 +35,7 @@ struct ShareCtrl: Sendable {
         self.timeout = timeout
     }
 
-    func resolve(_ link: URL) async -> ShareOutcome {
+    func findFreeEdition(for link: URL) async -> ShareOutcome {
         await withTaskGroup(of: ShareOutcome?.self) { group in
             group.addTask { await self.find(link) }
             group.addTask {
@@ -48,20 +48,20 @@ struct ShareCtrl: Sendable {
         }
     }
 
-    func send(_ edition: GutenbergEdition, file: URL) throws {
-        try pendingImportRepo.add(epubAt: file, edition: edition)
+    func saveForApp(_ edition: GutenbergEdition, file: URL) throws {
+        try pendingImportRepo.writePending(epubAt: file, edition: edition)
     }
 
     /// Title and last name first. Gutenberg's search already matched the author there (it knows "Sun Tzu" is "Sunzi"), so
     /// only the title is checked. When that finds nothing, the title alone, where the author is checked too.
-    private func edition(for listing: (title: String, author: String)) async throws -> GutenbergEdition? {
+    private func searchAndMatch(_ listing: (title: String, author: String)) async throws -> GutenbergEdition? {
         let query = EditionMatcher.searchQuery(title: listing.title, author: listing.author)
-        let match = EditionMatcher.bestMatch(title: listing.title, author: "",
-                                             in: try await bookLookupSvc.gutenbergBooks(matching: query))
+        let match = EditionMatcher.matchEdition(title: listing.title, author: "",
+                                             in: try await bookLookupSvc.searchGutenberg(for: query))
         let titleOnly = EditionMatcher.titleQuery(listing.title)
         guard match == nil, titleOnly != query else { return match.map { named($0, by: listing.author) } }
-        return EditionMatcher.bestMatch(title: listing.title, author: listing.author,
-                                        in: try await bookLookupSvc.gutenbergBooks(matching: titleOnly))
+        return EditionMatcher.matchEdition(title: listing.title, author: listing.author,
+                                        in: try await bookLookupSvc.searchGutenberg(for: titleOnly))
             .map { named($0, by: listing.author) }
     }
 
@@ -72,23 +72,23 @@ struct ShareCtrl: Sendable {
     }
 
     private func find(_ link: URL) async -> ShareOutcome {
-        guard let (id, country) = AppleBooksLink.listing(in: link) else { return .unsupportedLink }
+        guard let (id, country) = AppleBooksLink.readListingID(from: link) else { return .unsupportedLink }
         let listing: (title: String, author: String)?
         let match: GutenbergEdition?
         do {
-            listing = try await bookLookupSvc.listing(id: id, country: country)
+            listing = try await bookLookupSvc.lookUpListing(id: id, country: country)
             guard let listing else { return .notFound(title: nil) }
-            match = try await edition(for: listing)
+            match = try await searchAndMatch(listing)
         } catch {
             return .unreachable
         }
         guard let edition = match else { return .notFound(title: listing?.title) }
         let identity = BookIdentity(gutenbergNumber: edition.number, title: edition.title, author: edition.author, fingerprint: nil)
-        if let existing = DuplicateRules.match(identity, in: libraryIndexRepo.load().books) {
+        if let existing = DuplicateRules.checkDuplicates(of: identity, in: libraryIndexRepo.readIndex().books) {
             return .alreadyInLibrary(title: existing.title)
         }
         do {
-            return .found(edition, file: try await downloadSvc.download(edition.epubURL, maxBytes: ShareCtrlKnobs.maxBytes))
+            return .found(edition, file: try await downloadSvc.downloadEPUB(from: edition.epubURL, maxBytes: ShareCtrlKnobs.maxBytes))
         } catch ImportError.tooLarge {
             return .tooLarge
         } catch {

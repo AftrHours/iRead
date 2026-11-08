@@ -216,12 +216,12 @@ The Share extension and the app never run together: they meet in the App Group f
 ```mermaid
 flowchart LR
     AB[Apple Books<br/>Share Book] -->|store link| SV[ShareView / ShareVM]
-    SV --> SC[ShareCtrl]
+    SV --> SC[ShareCtrl.findFreeEdition]
     SC -->|id, country| IT[(iTunes Lookup)]
-    SC -->|title + last name| GD[(Gutendex)]
+    SC -->|title + last name| GD[(Gutenberg search)]
     SC -->|already there?| LI[LibraryIndexRepo]
     SC -->|EPUB, 100 MB max| GB[(gutenberg.org)]
-    SC -->|Send| PI[PendingImportRepo]
+    SC -->|Send: saveForApp| PI[PendingImportRepo]
     PI -.App Group.-> IC[ImportCtrl.importPending]
     IC --> LR[LibRepo]
     IC -->|refreshIndex| LI

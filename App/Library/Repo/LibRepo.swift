@@ -18,7 +18,7 @@ struct LibRepo {
     }
 
     /// Reads the EPUB once (its whole text, for the fingerprint). Throws `ContentError.unreadable` for a broken file.
-    func candidate(for sourceURL: URL) async throws -> ImportCandidate {
+    func readEPUB(at sourceURL: URL) async throws -> ImportCandidate {
         let hasAccess = sourceURL.startAccessingSecurityScopedResource()
         defer { if hasAccess { sourceURL.stopAccessingSecurityScopedResource() } }
 
@@ -32,10 +32,10 @@ struct LibRepo {
     }
 
     func importBook(from sourceURL: URL) async throws -> BookRecord {
-        try importBook(from: sourceURL, as: await candidate(for: sourceURL))
+        try saveBook(from: sourceURL, as: await readEPUB(at: sourceURL))
     }
 
-    func importBook(from sourceURL: URL, as candidate: ImportCandidate) throws -> BookRecord {
+    func saveBook(from sourceURL: URL, as candidate: ImportCandidate) throws -> BookRecord {
         let hasAccess = sourceURL.startAccessingSecurityScopedResource()
         defer { if hasAccess { sourceURL.stopAccessingSecurityScopedResource() } }
 
@@ -67,7 +67,7 @@ struct LibRepo {
         return BookRecord.samples.map(\.book).filter { hiddenIDs.contains($0.id) }
     }
 
-    func unhideSample(_ id: UUID) throws {
+    func showHiddenSample(_ id: UUID) throws {
         try FileManager.default.createDirectory(at: booksFolder, withIntermediateDirectories: true)
         try JSONEncoder().encode(hiddenSampleIDs().subtracting([id])).write(to: hiddenSamplesURL, options: .atomic)
     }

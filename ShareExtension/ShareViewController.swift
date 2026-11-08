@@ -27,11 +27,11 @@ final class ShareViewController: UIViewController {
         host.didMove(toParent: self)
     }
 
-    private var sharedProviders: [NSItemProvider] {
+    private func collectAttachments() -> [NSItemProvider] {
         (extensionContext?.inputItems as? [NSExtensionItem])?.flatMap { $0.attachments ?? [] } ?? []
     }
 
     private func sharedLink() async -> URL? {
-        await AppleBooksLink.find(in: sharedProviders)
+        await AppleBooksLink.readLink(from: collectAttachments())
     }
 }

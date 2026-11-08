@@ -1,6 +1,6 @@
 # Share import data flow (DFD)
 
-How a book moves from Apple Books' Share Book into iRead's library: Level 1 (five processes), then Level 2 (the steps inside each one), each step linked to the code that does it. For the folders and layers, see [ARCHITECTURE.md](ARCHITECTURE.md).
+How a book moves from Apple Books' Share Book into iRead's library: Level 1 (five processes), then Level 2 (the steps inside each one). Each process name is also the Swift function that does it: "Read the link" is `readLink(from:)`, "Find the free edition" is `findFreeEdition(for:)`. For the folders and layers, see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 - [Notation](#notation)
 - [Level 1: five processes](#level-1-five-processes)
@@ -19,7 +19,7 @@ A DFD answers one question: what data moves where, and which process changes it.
 | Shape | Meaning | Here |
 |---|---|---|
 | Box | External entity, outside iRead | Apple Books, iTunes Lookup, Project Gutenberg, the reader |
-| Circle | Process that changes data, named with a verb | 2.0 Find the free edition |
+| Circle | Process that changes data, named with a verb (and the Swift function of the same name) | 2.0 Find the free edition |
 | Cylinder | Data store | `PendingImports/`, `library-index.json`, the library |
 | Arrow | Data flow, named with a noun | `GutenbergEdition` |
 | Dashed box | A process from another diagram, shown for context | |
@@ -73,17 +73,17 @@ flowchart TD
     classDef store fill:#f2f0e6,stroke:#6f6d60,color:#24231d
 ```
 
-| Process | Question it answers | In | Out | Runs |
-|---|---|---|---|---|
-| 1. Read the link | Which Apple Books listing was shared? | `NSItemProvider` attachments | `URL?` | Once per share, in the extension |
-| 2. Find the free edition | Is this book on Project Gutenberg, and new to the library? | link, `LibraryIndex` | `ShareOutcome` (edition + temp EPUB, or why not) | Once per share, in the extension, 30 s at most |
-| 3. Save for the app | What does the app pick up later? | `GutenbergEdition`, temp EPUB | `PendingImport` | When the reader taps Send |
-| 4. Import the book | Is it new, and where does it go? | `PendingImport` or an opened EPUB | `BookRecord` in the library | Each time the app becomes active, and per opened file |
-| 5. Refresh the index | What will the extension check duplicates against? | visible books | `LibraryIndex` | After every import or removal |
+| Process | Function | Question it answers | In | Out | Called by |
+|---|---|---|---|---|---|
+| 1.0 | `AppleBooksLink.readLink(from:)` | Which Apple Books listing was shared? | `[NSItemProvider]` | `URL?` | `ShareViewController.sharedLink()`, once per share |
+| 2.0 | `ShareCtrl.findFreeEdition(for:)` | Is this book on Project Gutenberg, and new to the library? | link, `LibraryIndex` | `ShareOutcome` | `ShareVM.onAppear(link:)`, once per share, 30 s at most |
+| 3.0 | `ShareCtrl.saveForApp(_:file:)` | What does the app pick up later? | `GutenbergEdition`, temp EPUB | `PendingImport` on disk | `ShareVM.sendTapped()`, when the reader taps Send |
+| 4.0 | `ImportCtrl.importBook(from:)` | Is it new, and where does it go? | an EPUB (pending or opened) | `BookRecord` in the library | `ImportCtrl.importPending()` each time the app becomes active; `LibVM.fileOpened(_:)` and `LibVM.importFiles(_:)` per file |
+| 5.0 | `ImportCtrl.refreshIndex()` | What will the extension check duplicates against? | visible books | `LibraryIndex` | `LibVM`, after every import or removal |
 
-Processes 1 to 3 never see the library: an extension can't read the app's own folder. `library-index.json` is the app's summary of it, written by process 5 and read by process 2. A book that is still waiting in `PendingImports/` is not in that index yet.
+Processes 1 to 3 never see the library: an extension can't read the app's own folder. `library-index.json` is the app's summary of it, written by 5.0 and read by 2.0. A book that is still waiting in `PendingImports/` is not in that index yet.
 
-The extension starts in `ShareViewController.viewDidLoad` ([`ShareViewController.swift`](../ShareExtension/ShareViewController.swift)). The app side starts in `LibView`'s `scenePhase` change ([`LibView.swift`](../App/Library/Views/LibView.swift)), which calls `LibVM.appBecameActive` ([`LibVM.swift`](../App/Library/VM/LibVM.swift)).
+The extension starts in `ShareViewController.viewDidLoad()` ([`ShareViewController.swift`](../ShareExtension/ShareViewController.swift)). The app side starts in `LibView`'s `scenePhase` change ([`LibView.swift`](../App/Library/Views/LibView.swift)), which calls `LibVM.appBecameActive()` ([`LibVM.swift`](../App/Library/VM/LibVM.swift)).
 
 ## 1. Read the link
 
@@ -109,18 +109,18 @@ flowchart TD
     classDef ref fill:#f2f0e6,stroke:#6f6d60,color:#24231d,stroke-dasharray:4 3
 ```
 
-| Step | What happens | Code | Stops as |
+| Step | Function | What happens | Stops as |
 |---|---|---|---|
-| 1.1 | Every attachment of every shared item | `ShareViewController.sharedProviders` | |
-| 1.2 | Load each attachment in each type it offers (Apple Books' own attachments aren't documented) | `AppleBooksLink.find(in:)` | |
-| 1.3 | A URL as is; plain text, styled text or bytes read as a URL, else the first link in the text (`NSDataDetector`) | `AppleBooksLink.links(in:)`, `firstURL(in:)` | |
-| 1.4 | The first link 2.1 can read, else the first web link, else any link | `AppleBooksLink.find(in:)` | No link at all: "Only Apple Books links…" |
+| 1.1 | `ShareViewController.collectAttachments()` | Every attachment of every shared item | |
+| 1.2 | `AppleBooksLink.loadEveryType(of:)`, which calls `NSItemProvider.loadItem(forTypeIdentifier:)` | Load each attachment in each type it offers (Apple Books' own attachments aren't documented) | |
+| 1.3 | `AppleBooksLink.pullOutLinks(from:)`, `pullOutLinks(fromText:)`, `firstURL(in:)` | A URL as is; plain text, styled text or bytes read as a URL, else the first link in the text (`NSDataDetector`) | |
+| 1.4 | `AppleBooksLink.preferAppleBooksLink(_:)` | The first link `readListingID(from:)` can read, else the first web link, else any link | No link at all: "Only Apple Books links…" |
 
 Apple Books sends one `public.url` attachment, for example `https://books.apple.com/id/book/dream-psychology/id395687522P`. The letter after the ID is Apple's, and 2.1 ignores it.
 
 ## 2. Find the free edition
 
-Runs once per share, from `ShareVM.onAppear` ([`ShareVM.swift`](../Shared/Import/VM/ShareVM.swift)), which calls `ShareCtrl.resolve` ([`ShareCtrl.swift`](../Shared/Import/Ctrl/ShareCtrl.swift)). The sheet shows "Finding this book…" until it ends.
+Runs once per share, from `ShareVM.onAppear(link:)` ([`ShareVM.swift`](../Shared/Import/VM/ShareVM.swift)). `findFreeEdition(for:)` races `find(_:)` against the timeout; `find(_:)` runs 2.1 to 2.6 ([`ShareCtrl.swift`](../Shared/Import/Ctrl/ShareCtrl.swift)). The sheet shows "Finding this book…" until it ends.
 
 ```mermaid
 flowchart TD
@@ -136,6 +136,7 @@ flowchart TD
     P24(("2.4 Match the<br/>edition")):::ext
     P25(("2.5 Check<br/>duplicates")):::ext
     P26(("2.6 Download<br/>the EPUB")):::ext
+    P27(("2.7 Write the<br/>sheet text")):::ext
     P3["3.0 Save for the app"]:::ref
 
     P1 -->|"link"| P21
@@ -143,9 +144,10 @@ flowchart TD
     P22 -->|"id + country"| IT
     IT -->|"trackName + artistName"| P22
     P22 -->|"title + author"| P23
+    P22 -->|"title + author"| P24
     P23 -->|"query"| PG
     PG -->|"OPDS feed"| P23
-    P23 -->|"books"| P24
+    P23 -->|"GutendexBook list"| P24
     P24 -->|"GutenbergEdition"| P25
     LI -->|"indexed books"| P25
     P25 -->|"new edition"| P26
@@ -153,8 +155,9 @@ flowchart TD
     PG -->|"EPUB bytes"| P26
     P26 -->|"EPUB file"| TMP
     TMP -->|"EPUB file"| P3
-    P26 -->|"edition"| P3
-    P25 -->|"outcome message"| RD
+    P26 -->|"ShareOutcome"| P27
+    P27 -->|"sheet text"| RD
+    P27 -->|"edition"| P3
 
     classDef entity fill:#f2f0e6,stroke:#6f6d60,color:#24231d
     classDef ext fill:#ffdd4a,stroke:#a88a00,color:#3d2f00
@@ -162,18 +165,17 @@ flowchart TD
     classDef ref fill:#f2f0e6,stroke:#6f6d60,color:#24231d,stroke-dasharray:4 3
 ```
 
-| Step | What happens | Code | Stops as |
+| Step | Function | What happens | Stops as |
 |---|---|---|---|
-| 2.1 | Host must be `apple.com` or `*.apple.com`. The ID is the digits right after "id" in a path part (or an `id` query item); the country is a two-letter first path part, else "us" | `AppleBooksLink.listing(in:)` | `.unsupportedLink` |
-| 2.2 | `itunes.apple.com/lookup?id=…&country=…` gives the title and author | `BookLookupSvcURLSession.listing`, `decodeListing` | No listing: `.notFound(title: nil)`; no answer: `.unreachable` |
-| 2.3 | Gutenberg's own search, `gutenberg.org/ebooks/search.opds/?query=`: first the plain title and the author's last name, then the title alone if that matches nothing. Book entries become `GutendexBook`s; entries that list authors or subjects are skipped | `ShareCtrl.edition(for:)`, `EditionMatcher.searchQuery`, `titleQuery`, `BookLookupSvcURLSession.gutenbergBooks`, `decodeOPDS`, `GutenbergNumber.opdsEntry` | No answer: `.unreachable` |
-| 2.4 | The first book with an EPUB whose title matches. After the title + last name search only the title is checked (Gutenberg already matched "Sun Tzu" to "Sunzi"); after the title-only search the author is checked too. The author shown is Apple's | `EditionMatcher.bestMatch`, `titlesMatch`, `authorsMatch`, `ShareCtrl.named` | `.notFound(title:)` |
-| 2.5 | Same Gutenberg number, or matching title and author, as a book in the index. The text fingerprint can't help here: the EPUB isn't parsed in the extension | `DuplicateRules.match`, `LibraryIndexRepo.load` | `.alreadyInLibrary(title:)` |
-| 2.6 | Download `https://www.gutenberg.org/ebooks/<number>.epub3.images` to a temp `.epub` | `DownloadSvcURLSession.download` | Over 100 MB: `.tooLarge`; no answer: `.unreachable` |
+| 2.1 | `AppleBooksLink.readListingID(from:)` | Host must be `apple.com` or `*.apple.com`. The ID is the digits right after "id" in a path part (or an `id` query item); the country is a two-letter first path part, else "us" | `.unsupportedLink` |
+| 2.2 | `BookLookupSvc.lookUpListing(id:country:)`, with `decodeListing(_:)` | `itunes.apple.com/lookup?id=…&country=…` gives the title and author | No listing: `.notFound(title: nil)`; no answer: `.unreachable` |
+| 2.3 | `BookLookupSvc.searchGutenberg(for:)`, with `decodeOPDS(_:)` and `GutenbergNumber.opdsEntry(_:)`; queries from `EditionMatcher.searchQuery(title:author:)` and `titleQuery(_:)` | Gutenberg's own search, `gutenberg.org/ebooks/search.opds/?query=`: first the plain title and the author's last name, then the title alone if that matches nothing. Book entries become `GutendexBook`s; entries that list authors or subjects are skipped | No answer: `.unreachable` |
+| 2.4 | `EditionMatcher.matchEdition(title:author:in:)`, called by `ShareCtrl.searchAndMatch(_:)`; `ShareCtrl.named(_:by:)` | The first book with an EPUB whose title matches (`titlesMatch`). After the title + last name search only the title is checked (Gutenberg already matched "Sun Tzu" to "Sunzi"); after the title-only search the author is checked too (`authorsMatch`). The author shown is Apple's | `.notFound(title:)` |
+| 2.5 | `DuplicateRules.checkDuplicates(of:in:)`, reading `LibraryIndexRepo.readIndex()` | Same Gutenberg number, or matching title and author, as a book in the index. The text fingerprint can't help here: the EPUB isn't parsed in the extension | `.alreadyInLibrary(title:)` |
+| 2.6 | `DownloadSvc.downloadEPUB(from:maxBytes:)` | Download `https://www.gutenberg.org/ebooks/<number>.epub3.images` to a temp `.epub` | Over 100 MB: `.tooLarge`; no answer: `.unreachable` |
+| 2.7 | `ShareVM.sheetText(for:)`, called by `ShareVM.onAppear(link:)` | The outcome becomes the sheet's text; only `.found` keeps the edition and file and turns Send on | |
 
 Knobs: `ShareCtrlKnobs.timeout` (30 s for 2.1 to 2.6 together; past it, `.unreachable`), `ShareCtrlKnobs.maxBytes` (100 MB), and a 30 s timeout on each request.
-
-What the reader sees for each outcome is `ShareVM.message(for:)`:
 
 | `ShareOutcome` | Sheet | Send |
 |---|---|---|
@@ -186,18 +188,18 @@ What the reader sees for each outcome is `ShareVM.message(for:)`:
 
 ## 3. Save for the app
 
-Runs when the reader taps Send. The sheet then closes and the reader stays in Apple Books. Code: `ShareVM.sendTapped`, `ShareCtrl.send`, [`PendingImportRepo.swift`](../Shared/Import/Repo/PendingImportRepo.swift).
+Runs when the reader taps Send. The sheet then closes and the reader stays in Apple Books. Code: [`ShareVM.swift`](../Shared/Import/VM/ShareVM.swift), [`ShareCtrl.swift`](../Shared/Import/Ctrl/ShareCtrl.swift), [`PendingImportRepo.swift`](../Shared/Import/Repo/PendingImportRepo.swift).
 
 ```mermaid
 flowchart TD
     P2["2.0 Find the free edition"]:::ref
     PI[("PendingImports/")]:::store
-    P31(("3.1 Copy the<br/>EPUB")):::ext
-    P32(("3.2 Write the<br/>edition")):::ext
+    P31(("3.1 Send<br/>tapped")):::ext
+    P32(("3.2 Write the<br/>pending book")):::ext
 
-    P2 -->|"temp EPUB"| P31
-    P2 -->|"GutenbergEdition"| P32
-    P31 -->|"&lt;id&gt;/book.epub"| PI
+    P2 -->|"edition + temp EPUB"| P31
+    P31 -->|"edition + temp EPUB"| P32
+    P32 -->|"&lt;id&gt;/book.epub"| PI
     P32 -->|"&lt;id&gt;/edition.json"| PI
 
     classDef ext fill:#ffdd4a,stroke:#a88a00,color:#3d2f00
@@ -205,16 +207,22 @@ flowchart TD
     classDef ref fill:#f2f0e6,stroke:#6f6d60,color:#24231d,stroke-dasharray:4 3
 ```
 
-| Step | What happens | Code | Stops as |
+| Step | Function | What happens | Stops as |
 |---|---|---|---|
-| 3.1 | Copy the temp EPUB to `PendingImports/<new UUID>/book.epub` in the App Group | `PendingImportRepo.add(epubAt:edition:)` | "iRead couldn’t save this book. Try again." |
-| 3.2 | Write `edition.json` last, so a half-written folder has no edition and 4.1 skips it | `PendingImportRepo.add(epubAt:edition:)` | Same |
+| 3.1 | `ShareVM.sendTapped()` → `ShareCtrl.saveForApp(_:file:)` | Takes the edition and the downloaded file kept by 2.7, then closes the sheet | Nothing found: Send is off |
+| 3.2 | `PendingImportRepo.writePending(epubAt:edition:)` | Copy the temp EPUB to `PendingImports/<new UUID>/book.epub` in the App Group, then write `edition.json` last, so a half-written folder has no edition and 4.1 skips it | "iRead couldn’t save this book. Try again." |
 
-Cancel writes nothing and deletes the temp EPUB (`ShareVM.cancelTapped`).
+Cancel writes nothing and deletes the temp EPUB (`ShareVM.cancelTapped()`).
 
 ## 4. Import the book
 
-Runs each time the app becomes active (`LibView` `scenePhase` → `LibVM.appBecameActive`), once for each EPUB opened with iRead (`iReadApp` `.onOpenURL` → `LibVM.fileOpened`), and for each file picked in the library (`LibVM.importFiles`). All three go through `LibVM.oneAtATime`, so two imports never run at once. Code: [`ImportCtrl.swift`](../App/Library/Ctrl/ImportCtrl.swift) and [`LibRepo.swift`](../App/Library/Repo/LibRepo.swift).
+Runs each time the app becomes active, once for each EPUB opened with iRead, and for each file picked in the library. All three go through `LibVM.oneAtATime`, so two imports never run at once. Code: [`ImportCtrl.swift`](../App/Library/Ctrl/ImportCtrl.swift) and [`LibRepo.swift`](../App/Library/Repo/LibRepo.swift).
+
+| Caller | Path |
+|---|---|
+| Shared books | `LibView` `scenePhase` → `LibVM.appBecameActive()` → `ImportCtrl.importPending()` → `importBook(from:)` per pending book |
+| "Open in iRead" | `iReadApp` `.onOpenURL` → `LibVM.fileOpened(_:)` → `importBook(from:)` |
+| File picker | `LibVM.importFiles(_:)` → `importBook(from:)` per file |
 
 ```mermaid
 flowchart TD
@@ -226,6 +234,7 @@ flowchart TD
     P43(("4.3 Check<br/>duplicates")):::app
     P44(("4.4 Show a<br/>hidden sample")):::app
     P45(("4.5 Save the<br/>book")):::app
+    P46(("4.6 Remove<br/>pending")):::app
     P5["5.0 Refresh the index"]:::ref
 
     PI -->|"PendingImport"| P41
@@ -238,6 +247,8 @@ flowchart TD
     P44 -->|"sample ID"| LB
     P44 -->|"new candidate"| P45
     P45 -->|"BookRecord + book.epub"| LB
+    P41 -->|"PendingImport"| P46
+    P46 -->|"folder removed"| PI
     LB -->|"visible books"| P5
 
     classDef entity fill:#f2f0e6,stroke:#6f6d60,color:#24231d
@@ -246,39 +257,43 @@ flowchart TD
     classDef ref fill:#f2f0e6,stroke:#6f6d60,color:#24231d,stroke-dasharray:4 3
 ```
 
-| Step | What happens | Code | Stops as |
+| Step | Function | What happens | Stops as |
 |---|---|---|---|
-| 4.1 | Every folder in `PendingImports/` with both files. Each one is removed after 4.2 to 4.5, whatever happened | `ImportCtrl.importPending`, `PendingImportRepo.all`, `remove` | |
-| 4.2 | Title, author and `dc:identifier` (for the Gutenberg number), then a full parse for the text fingerprint | `LibRepo.candidate(for:)`, `EPUBParseSvc.metadata`, `GutenbergNumber.from(identifiers:)` | Unreadable EPUB |
-| 4.3 | The same rule as 2.5, against the books the library shows now | `ImportCtrl.importFile(from:)`, `DuplicateRules.match`, `LibRepo.fetchBooks` | `ImportError.alreadyInLibrary` |
-| 4.4 | The same book as a sample the reader removed: show the sample again instead of copying | `LibRepo.hiddenSamples`, `unhideSample` | |
-| 4.5 | Copy the EPUB to `Books/<UUID>/book.epub` and add a `BookRecord` to `Books/library.json` | `LibRepo.importBook(from:as:)` | |
+| 4.1 | `PendingImportRepo.readPending()`, called by `ImportCtrl.importPending()` | Every folder in `PendingImports/` that has both files | |
+| 4.2 | `LibRepo.readEPUB(at:)` → `EPUBParseSvc.metadata(from:)`, `parse(_:)`, `GutenbergNumber.from(identifiers:)` | Title, author and `dc:identifier` (for the Gutenberg number), then a full parse for the text fingerprint | Unreadable EPUB |
+| 4.3 | `DuplicateRules.checkDuplicates(of:in:)` against `LibRepo.fetchBooks()`, in `ImportCtrl.importBook(from:)` | The same rule as 2.5, plus the fingerprint, against the books the library shows now | `ImportError.alreadyInLibrary` |
+| 4.4 | `LibRepo.hiddenSamples()`, `LibRepo.showHiddenSample(_:)` | The same book as a sample the reader removed: show the sample again instead of copying | |
+| 4.5 | `LibRepo.saveBook(from:as:)` | Copy the EPUB to `Books/<UUID>/book.epub` and add a `BookRecord` to `Books/library.json` | |
+| 4.6 | `PendingImportRepo.removePending(_:)`, called by `ImportCtrl.importPending()` | Delete the pending folder after 4.2 to 4.5, whatever happened | |
 
-A shared book that stops here is only logged (`.info`, category `storage`): the reader left the sheet long ago. An opened or picked file that stops here shows its message in the library's alert. iOS's copy in `Documents/Inbox` is deleted either way.
+A shared book that stops here is only logged by `importPending()` (`.info`, category `storage`): the reader left the sheet long ago. An opened or picked file that stops here shows its message in the library's alert. `importBook(from:)` deletes iOS's copy in `Documents/Inbox` either way.
 
 ## 5. Refresh the index
 
-Runs after 4 (pending books and opened files), after the file picker imports, and after a book is removed. Code: `ImportCtrl.refreshIndex`, [`LibraryIndexRepo.swift`](../Shared/Import/Repo/LibraryIndexRepo.swift).
+Runs after 4.0, and after a book is removed (`LibVM.removeConfirmed()`). Code: [`ImportCtrl.swift`](../App/Library/Ctrl/ImportCtrl.swift), [`LibraryIndexRepo.swift`](../Shared/Import/Repo/LibraryIndexRepo.swift).
 
 ```mermaid
 flowchart TD
     LB[("Library")]:::store
     LI[("library-index.json")]:::store
-    P51(("5.1 Summarize<br/>books")):::app
-    P52(("5.2 Write the<br/>index")):::app
+    P51(("5.1 Fetch the<br/>books")):::app
+    P52(("5.2 Summarize<br/>each book")):::app
+    P53(("5.3 Write the<br/>index")):::app
 
-    LB -->|"visible BookRecords"| P51
-    P51 -->|"IndexedBook list"| P52
-    P52 -->|"LibraryIndex"| LI
+    LB -->|"library.json + samples"| P51
+    P51 -->|"visible BookRecords"| P52
+    P52 -->|"IndexedBook list"| P53
+    P53 -->|"LibraryIndex"| LI
 
     classDef app fill:#9fe1cb,stroke:#0f6e56,color:#04342c
     classDef store fill:#f2f0e6,stroke:#6f6d60,color:#24231d
 ```
 
-| Step | What happens | Code |
+| Step | Function | What happens |
 |---|---|---|
-| 5.1 | Each visible book (samples not hidden, then imported books) as its title and `BookIdentity` | `LibRepo.fetchBooks`, `BookRecord.identity` |
-| 5.2 | Replace `library-index.json` in the App Group | `LibraryIndexRepo.save` |
+| 5.1 | `LibRepo.fetchBooks()` | The visible books: samples not hidden, then imported books |
+| 5.2 | `ImportCtrl.summarize(_:)` | Each book as its title and `BookRecord.identity` |
+| 5.3 | `LibraryIndexRepo.writeIndex(_:)` | Replace `library-index.json` in the App Group |
 
 Until the app has opened once there is no index, so 2.5 finds no duplicates; 4.3 still does.
 
@@ -286,17 +301,17 @@ Until the app has opened once there is no index, so 2.5 finds no duplicates; 4.3
 
 A real share, run on 2026-11-08. Times are from a Mac on Wi-Fi.
 
-| Step | Data |
-|---|---|
-| 1.4 | `https://books.apple.com/id/book/dream-psychology/id395687522P` |
-| 2.1 | id `395687522`, country `id` |
-| 2.2 | "Dream Psychology", "Sigmund Freud" |
-| 2.3 | query `dream psychology freud`; first entry `https://www.gutenberg.org/ebooks/15489.opds` |
-| 2.4 | 15489, "Dream Psychology: Psychoanalysis for Beginners" (title starts with the Apple title) |
-| 2.5 | Not in the index |
-| 2.6 | 205,990 bytes; 3.3 s from 2.1 to here |
+| Step | Function | Data |
+|---|---|---|
+| 1.4 | `AppleBooksLink.readLink(from:)` | `https://books.apple.com/id/book/dream-psychology/id395687522P` |
+| 2.1 | `AppleBooksLink.readListingID(from:)` | id `395687522`, country `id` |
+| 2.2 | `BookLookupSvc.lookUpListing(id:country:)` | "Dream Psychology", "Sigmund Freud" |
+| 2.3 | `BookLookupSvc.searchGutenberg(for:)` | query `dream psychology freud`; first entry `https://www.gutenberg.org/ebooks/15489.opds` |
+| 2.4 | `EditionMatcher.matchEdition(title:author:in:)` | 15489, "Dream Psychology: Psychoanalysis for Beginners" (title starts with the Apple title) |
+| 2.5 | `DuplicateRules.checkDuplicates(of:in:)` | Not in the index |
+| 2.6 | `DownloadSvc.downloadEPUB(from:maxBytes:)` | 205,990 bytes; 3.3 s from 2.1 to here |
 
-`PendingImports/<UUID>/edition.json` after Send:
+`PendingImports/<UUID>/edition.json` after `PendingImportRepo.writePending(epubAt:edition:)`:
 
 ```json
 {
@@ -307,7 +322,7 @@ A real share, run on 2026-11-08. Times are from a Mac on Wi-Fi.
 }
 ```
 
-One entry in `library-index.json` after the app imports it. Step 4.2 parsed the whole book, so it has a `fingerprint` (shortened here); bundled samples have none until they are read once:
+One entry in `library-index.json` after `LibraryIndexRepo.writeIndex(_:)`. Step 4.2 parsed the whole book, so it has a `fingerprint` (shortened here); bundled samples have none until they are read once:
 
 ```json
 {
@@ -321,24 +336,24 @@ One entry in `library-index.json` after the app imports it. Step 4.2 parsed the 
 }
 ```
 
-*The Art of War* (`id395534623`) takes 1.9 s. Gutenberg lists its author as "active 6th century B.C. Sunzi", so 2.4 checks only the title, and the sheet shows Apple's "Sun Tzu".
+*The Art of War* (`id395534623`) takes 1.9 s. Gutenberg lists its author as "active 6th century B.C. Sunzi", so 2.4 checks only the title, and `ShareCtrl.named(_:by:)` keeps Apple's "Sun Tzu".
 
 ## Data dictionary
 
-The labels on the arrows describe the data. This table ties them to Swift types.
+The labels on the arrows describe the data. This table ties them to Swift types and the function that makes them.
 
-| Label | Swift | What it holds | Defined in |
-|---|---|---|---|
-| shared attachments | `NSExtensionItem`, `NSItemProvider` | What Apple Books hands the extension | UIKit / Foundation |
-| link | `URL` | The Apple Books store link | |
-| id + country | `(id: String, country: String)` | The listing ID and store country | `Shared/Import/Rules/AppleBooksLink.swift` |
-| title + author | `(title: String, author: String)` | Apple's listing | `Shared/Import/Svc/BookLookupSvc.swift` |
-| books | `GutendexBook` | Gutenberg number, title, authors, EPUB address | `Shared/Import/Models/GutendexBook.swift` |
-| edition | `GutenbergEdition` | Number, title, author, EPUB address. `Codable`: it is `edition.json` | `Shared/Import/Models/GutenbergEdition.swift` |
-| outcome | `ShareOutcome` | Found (edition + temp file), or why not | `Shared/Import/Ctrl/ShareCtrl.swift` |
-| pending import | `PendingImport` | Folder ID, EPUB URL, edition | `Shared/Import/Repo/PendingImportRepo.swift` |
-| indexed books | `LibraryIndex`, `IndexedBook` | Title and identity of each visible book | `Shared/Import/Models/LibraryIndex.swift` |
-| identity | `BookIdentity` | Gutenberg number, title, author, fingerprint | `Shared/Import/Models/BookIdentity.swift` |
-| ImportCandidate | `ImportCandidate` | Title, author, identity of an EPUB about to be imported | `App/Library/Models/ImportCandidate.swift` |
-| BookRecord | `BookRecord` | One library book, with `gutenbergNumber` and `fingerprint` | `App/Book/Models/BookRecord.swift` |
-| errors | `ImportError` | `unreachable`, `tooLarge`, `alreadyInLibrary(title:)` | `Shared/Import/Models/ImportError.swift` |
+| Label | Swift | What it holds | Made by | Defined in |
+|---|---|---|---|---|
+| shared attachments | `NSExtensionItem`, `NSItemProvider` | What Apple Books hands the extension | iOS | UIKit / Foundation |
+| link | `URL` | The Apple Books store link | `AppleBooksLink.readLink(from:)` | |
+| id + country | `(id: String, country: String)` | The listing ID and store country | `AppleBooksLink.readListingID(from:)` | `Shared/Import/Rules/AppleBooksLink.swift` |
+| title + author | `(title: String, author: String)` | Apple's listing | `BookLookupSvc.lookUpListing(id:country:)` | `Shared/Import/Svc/BookLookupSvc.swift` |
+| GutendexBook list | `GutendexBook` | Gutenberg number, title, authors, EPUB address | `BookLookupSvcURLSession.decodeOPDS(_:)` | `Shared/Import/Models/GutendexBook.swift` |
+| edition | `GutenbergEdition` | Number, title, author, EPUB address. `Codable`: it is `edition.json` | `EditionMatcher.matchEdition(title:author:in:)` | `Shared/Import/Models/GutenbergEdition.swift` |
+| outcome | `ShareOutcome` | Found (edition + temp file), or why not | `ShareCtrl.findFreeEdition(for:)` | `Shared/Import/Ctrl/ShareCtrl.swift` |
+| pending import | `PendingImport` | Folder ID, EPUB URL, edition | `PendingImportRepo.readPending()` | `Shared/Import/Repo/PendingImportRepo.swift` |
+| indexed books | `LibraryIndex`, `IndexedBook` | Title and identity of each visible book | `ImportCtrl.summarize(_:)` | `Shared/Import/Models/LibraryIndex.swift` |
+| identity | `BookIdentity` | Gutenberg number, title, author, fingerprint | `LibRepo.readEPUB(at:)`, `BookRecord.identity` | `Shared/Import/Models/BookIdentity.swift` |
+| ImportCandidate | `ImportCandidate` | Title, author, identity of an EPUB about to be imported | `LibRepo.readEPUB(at:)` | `App/Library/Models/ImportCandidate.swift` |
+| BookRecord | `BookRecord` | One library book, with `gutenbergNumber` and `fingerprint` | `LibRepo.saveBook(from:as:)` | `App/Book/Models/BookRecord.swift` |
+| errors | `ImportError` | `unreachable`, `tooLarge`, `alreadyInLibrary(title:)` | `BookLookupSvc`, `DownloadSvc`, `ImportCtrl.importBook(from:)` | `Shared/Import/Models/ImportError.swift` |

@@ -31,22 +31,22 @@ final class ShareVM {
     /// nil when the share had no link at all.
     func onAppear(link: URL?) async {
         guard let link else {
-            state = .failed(Self.message(for: .unsupportedLink))
+            state = .failed(Self.sheetText(for: .unsupportedLink))
             return
         }
-        let outcome = await shareCtrl.resolve(link)
+        let outcome = await shareCtrl.findFreeEdition(for: link)
         if case .found(let edition, let file) = outcome {
             downloadedFile = file
             state = .found(edition)
         } else {
-            state = .failed(Self.message(for: outcome))
+            state = .failed(Self.sheetText(for: outcome))
         }
     }
 
     func sendTapped() {
         guard case .found(let edition) = state, let downloadedFile else { return }
         do {
-            try shareCtrl.send(edition, file: downloadedFile)
+            try shareCtrl.saveForApp(edition, file: downloadedFile)
             onFinish()
         } catch {
             state = .failed("iRead couldn’t save this book. Try again.")
@@ -58,7 +58,7 @@ final class ShareVM {
         onFinish()
     }
 
-    private static func message(for outcome: ShareOutcome) -> String {
+    private static func sheetText(for outcome: ShareOutcome) -> String {
         switch outcome {
         case .found: ""
         case .unsupportedLink: "Only Apple Books links can be shared to iRead for now."

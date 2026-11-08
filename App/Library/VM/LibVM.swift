@@ -109,7 +109,7 @@ final class LibVM {
 
     private func importOpenedFile(_ url: URL) async {
         do {
-            newestImportedBookID = try await importCtrl.importFile(from: url).id
+            newestImportedBookID = try await importCtrl.importBook(from: url).id
         } catch {
             importError = error.localizedDescription
         }
@@ -157,7 +157,7 @@ final class LibVM {
         var allInLibrary = true
         for url in urls {
             do {
-                newestImportedBookID = try await importCtrl.importFile(from: url).id
+                newestImportedBookID = try await importCtrl.importBook(from: url).id
             } catch ImportError.alreadyInLibrary(let title) {
                 problems.append(ImportError.alreadyInLibrary(title: title).localizedDescription)
             } catch {

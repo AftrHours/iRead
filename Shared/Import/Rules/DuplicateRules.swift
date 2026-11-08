@@ -2,7 +2,7 @@ import Foundation
 
 /// The same book, as the reader sees it: the same Project Gutenberg ebook, the same work (title and author), or the same text.
 enum DuplicateRules {
-    static func match(_ identity: BookIdentity, in books: [IndexedBook]) -> IndexedBook? {
+    static func checkDuplicates(of identity: BookIdentity, in books: [IndexedBook]) -> IndexedBook? {
         books.first { isSame(identity, $0.identity) }
     }
 
