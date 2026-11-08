@@ -10,7 +10,9 @@ public struct EPUBReader: Sendable {
         let opf = try elements(of: opfPath, in: archive)
         let title = opf.first { $0.name == "dc:title" }.map { normalized($0.text) }
         let author = opf.first { $0.name == "dc:creator" }.map { normalized($0.text) }
-        return EPUBMetadata(title: title?.isEmpty == true ? nil : title, author: author?.isEmpty == true ? nil : author)
+        let identifiers = opf.filter { $0.name == "dc:identifier" || $0.name == "dc:source" }.map { normalized($0.text) }.filter { !$0.isEmpty }
+        return EPUBMetadata(title: title?.isEmpty == true ? nil : title, author: author?.isEmpty == true ? nil : author,
+                            identifiers: identifiers)
     }
 
     /// The cover image file, found by the EPUB 3 `cover-image` property or the EPUB 2 `cover` meta tag.
