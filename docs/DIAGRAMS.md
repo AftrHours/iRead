@@ -209,6 +209,25 @@ flowchart TB
   CloudSvc --> iCloud
 ```
 
+### 2d½. Sharing a book from Apple Books
+
+The Share extension and the app never run together: they meet in the App Group folder.
+
+```mermaid
+flowchart LR
+    AB[Apple Books<br/>Share Book] -->|store link| SV[ShareView / ShareVM]
+    SV --> SC[ShareCtrl]
+    SC -->|id, country| IT[(iTunes Lookup)]
+    SC -->|title + last name| GD[(Gutendex)]
+    SC -->|already there?| LI[LibraryIndexRepo]
+    SC -->|EPUB, 100 MB max| GB[(gutenberg.org)]
+    SC -->|Send| PI[PendingImportRepo]
+    PI -.App Group.-> IC[ImportCtrl.importPending]
+    IC --> LR[LibRepo]
+    IC -->|refreshIndex| LI
+    LV[LibVM.appBecameActive] --> IC
+```
+
 ### 2e. Who owns whom
 
 `AppNav` only holds the current screen; `iReadApp` watches it and asks `AppContainer` to build the screen's VMs. Each View gets only the VMs it uses. `ReaderVM` owns the reader's child VMs and is the only VM that knows them. `PageTurnView` gets plain data and callbacks from `ReaderView`, not a VM.

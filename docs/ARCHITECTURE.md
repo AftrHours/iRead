@@ -22,6 +22,13 @@ App/
               CloudSvc: iCloud records through CloudKit (the reader's private database, and the developers' public one)
     Debug/    DEBUG-only underline debug sheet
   Reader/     reading page: paging, progress, settings, search, contents, reference cards
+
+Shared/       compiled into both the app and the Share extension
+  AppGroup.swift      the folder the two share (group.com.aftrhours.reader)
+  Import/     sharing a book from Apple Books: AppleBooksLink, EditionMatcher and DuplicateRules (Rules),
+              BookLookupSvc (iTunes Lookup, Gutendex) and DownloadSvc, PendingImportRepo and LibraryIndexRepo (App Group files),
+              ShareCtrl and ShareVM (the sheet's logic, here so iReadTests can test it)
+ShareExtension/  the Share extension target (iReadShare): ShareViewController reads the shared link, ShareView is the sheet
 ```
 
 Small reusable view pieces live in a feature's `Views/Components/` (for example `RefCardView`, `BookMenu`).
@@ -122,9 +129,29 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 
 **Import an EPUB**
 1. `LibView` + button → `LibVM.importTapped` → `EPUBDocumentPicker` → `LibVM.importPickerCompleted` → `LibVM.importFiles`.
-2. → `LibCtrl.importBook(from:)` → `LibRepo.importBook` → `EPUBParseSvc.metadata(from:)`,
-   copies to `Books/<id>/book.epub`, appends it to `library.json` (imported books only, never the samples).
-3. → `LibCtrl.loadLibrary`. The new book stays pinned first until `LibVM.sortChanged`.
+2. → `ImportCtrl.importFile(from:)` → `LibRepo.candidate(for:)` (`EPUBParseSvc.metadata` and one full parse for the fingerprint,
+   plus the Gutenberg number from `dc:identifier`) → `DuplicateRules.match` against the visible books: a match throws
+   `ImportError.alreadyInLibrary`; a match with a hidden sample shows the sample again instead.
+3. → `LibRepo.importBook(from:as:)` copies to `Books/<id>/book.epub` and appends it to `library.json` (imported books only, never the samples).
+4. → `LibCtrl.loadLibrary`, then `ImportCtrl.refreshIndex`. The new book stays pinned first until `LibVM.sortChanged`.
+5. A duplicate never stops the files after it; problems are listed in one alert at the end. Every import (picker,
+   Open in iRead, shared books) runs one at a time through `LibVM.oneAtATime`, so two can't add the same book together.
+
+**Open in iRead** (an EPUB from Files, Safari, Mail or AirDrop)
+- `project.yml` registers `org.idpf.epub-container` (`LSHandlerRank: Alternate`, not opened in place), so iOS copies the file
+  into `Documents/Inbox` and opens the app. `iReadApp.onOpenURL` → `LibVM.fileOpened` → the same `ImportCtrl.importFile`.
+  The Inbox copy is deleted afterwards. A duplicate shows the "Couldn’t import EPUB" alert. The reader is never opened.
+
+**Share from Apple Books** (Share Book → iRead; Apple Books shares a store link, never the file)
+1. `ShareViewController` reads the link (a URL, or the first link in shared text) → `ShareView` → `ShareVM.onAppear`.
+2. → `ShareCtrl.resolve`, within 30 s: `AppleBooksLink.listing` (ID and country) → `BookLookupSvc.listing` (iTunes Lookup) →
+   `BookLookupSvc.gutenbergBooks` (Gutendex) → `EditionMatcher.bestMatch` → `DuplicateRules.match` against `LibraryIndexRepo`
+   (the index the app writes) → `DownloadSvc.download` (100 MB at most). Every failure is a message in the sheet with Send off.
+3. Send → `ShareCtrl.send` → `PendingImportRepo.add`: `PendingImports/<id>/book.epub` and `edition.json` in the App Group.
+   The sheet closes; the reader stays in Apple Books.
+4. Next time the app is active (`LibVM.onAppear`, or `LibView` seeing `scenePhase == .active`) → `LibVM.appBecameActive` →
+   `ImportCtrl.importPending`: each file goes through `importFile`; a duplicate or broken file is logged (`storage`) and dropped,
+   with nothing shown. Then `ImportCtrl.refreshIndex`.
 
 **Book "…" menu in the library**
 - Mark as Finished / Still Reading → `LibCtrl.setFinished` → `ProgRepo.setFinished` (keeps the reading position).
