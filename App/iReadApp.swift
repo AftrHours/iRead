@@ -34,6 +34,9 @@ struct iReadApp: App {
                     }
                 }
             }
+            .onOpenURL { url in
+                Task { await libVM.fileOpened(url) }
+            }
             .onChange(of: appContainer.appNav.route) { _, route in
                 guard case .reader(let book) = route else {
                     readerVM = nil

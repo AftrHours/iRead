@@ -40,7 +40,7 @@ struct LibCtrlTests {
     @Test("LIB-19 books with no saved progress keep their own; LibRepo itself never reads progress")
     func noSavedProgress() async throws {
         let libCtrl = makeLibCtrl()
-        let imported = try await libCtrl.importBook(from: Fixture.url("minimal"))
+        let imported = try await libCtrl.libRepo.importBook(from: Fixture.url("minimal"))
         await libCtrl.progRepo.saveNow(.make(bookID: sampleID, progress: 0.7))
 
         let library = try await libCtrl.loadLibrary()
@@ -54,7 +54,7 @@ struct LibCtrlTests {
     @Test("LIB-18 removing a book also drops its parsed content and cover from memory")
     func removeForgetsBook() async throws {
         let libCtrl = makeLibCtrl()
-        let book = try await libCtrl.importBook(from: Fixture.url("epub3-cover"))
+        let book = try await libCtrl.libRepo.importBook(from: Fixture.url("epub3-cover"))
         _ = try await libCtrl.bookContentRepo.content(for: book.id)
         #expect(await libCtrl.cover(for: book.id) != nil)
 
