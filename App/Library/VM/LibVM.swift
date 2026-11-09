@@ -19,6 +19,8 @@ final class LibVM {
     private(set) var bookToRemove: BookRecord?
     private(set) var bookActionError: String?
     private var newestImportedBookID: UUID?
+   
+    private var lastImport: Task<Void, Never>?
 
     var books: [BookRecord] {
         LibrarySorter.sorted(allBooks, by: sortOption, pinning: newestImportedBookID)
@@ -58,16 +60,62 @@ final class LibVM {
 
     private static let coverSize = CGSize(width: 400, height: 600)
     private let libCtrl: LibCtrl
+    private let importCtrl: ImportCtrl
     private let appNav: AppNav
 
-    init(libCtrl: LibCtrl, appNav: AppNav) {
+    init(libCtrl: LibCtrl, importCtrl: ImportCtrl, appNav: AppNav) {
         self.libCtrl = libCtrl
+        self.importCtrl = importCtrl
         self.appNav = appNav
     }
 
     func onAppear() async {
         allBooks = (try? await libCtrl.loadLibrary()) ?? []
         await loadCovers()
+        await appBecameActive()
+    }
+
+    /// Imports the books shared from Apple Books while the app was away, and refreshes the index the Share extension reads.
+    func appBecameActive() async {
+        await oneAtATime { await self.importPending() }
+    }
+
+    /// An EPUB opened with iRead from another app ("Open in iRead").
+    func fileOpened(_ url: URL) async {
+        await oneAtATime { await self.importOpenedFile(url) }
+    }
+
+    private func oneAtATime<Result: Sendable>(_ work: @escaping @MainActor () async -> Result) async -> Result {
+        let previous = lastImport
+        let task = Task { @MainActor in
+            await previous?.value
+            return await work()
+        }
+        lastImport = Task { _ = await task.value }
+        return await task.value
+    }
+
+    private func importPending() async {
+        let added = await importCtrl.importPending()
+        if let newest = added.last {
+            newestImportedBookID = newest.id
+        }
+        if !added.isEmpty {
+            await reloadLibrary()
+            await loadCovers()
+        }
+        try? importCtrl.refreshIndex()
+    }
+
+    private func importOpenedFile(_ url: URL) async {
+        do {
+            newestImportedBookID = try await importCtrl.importBook(from: url).id
+        } catch {
+            importError = error.localizedDescription
+        }
+        await reloadLibrary()
+        await loadCovers()
+        try? importCtrl.refreshIndex()
     }
 
     func toggleViewMode() {
@@ -87,24 +135,14 @@ final class LibVM {
         newestImportedBookID = nil
     }
 
+    /// True when every file is now in the library: imported, or already there. Each problem is listed once at the end,
+    /// and a duplicate never stops the files after it.
     @discardableResult
     func importFiles(_ result: Result<[URL], any Error>) async -> Bool {
         isImportPickerPresented = false
         switch result {
         case .success(let urls):
-            do {
-                for url in urls {
-                    let importedBook = try await libCtrl.importBook(from: url)
-                    newestImportedBookID = importedBook.id
-                }
-                allBooks = try await libCtrl.loadLibrary()
-                await loadCovers()
-                return true
-            } catch {
-                allBooks = (try? await libCtrl.loadLibrary()) ?? allBooks
-                importError = error.localizedDescription
-                return false
-            }
+            return await oneAtATime { await self.importPicked(urls) }
         case .failure(let error):
             // User cancellation is a normal document picker outcome.
             if (error as? CocoaError)?.code != .userCancelled {
@@ -112,6 +150,28 @@ final class LibVM {
             }
             return false
         }
+    }
+
+    private func importPicked(_ urls: [URL]) async -> Bool {
+        var problems: [String] = []
+        var allInLibrary = true
+        for url in urls {
+            do {
+                newestImportedBookID = try await importCtrl.importBook(from: url).id
+            } catch ImportError.alreadyInLibrary(let title) {
+                problems.append(ImportError.alreadyInLibrary(title: title).localizedDescription)
+            } catch {
+                allInLibrary = false
+                problems.append(error.localizedDescription)
+            }
+        }
+        await reloadLibrary()
+        await loadCovers()
+        try? importCtrl.refreshIndex()
+        if !problems.isEmpty {
+            importError = problems.joined(separator: "\n")
+        }
+        return allInLibrary
     }
 
     func dismissImportError() {
@@ -162,6 +222,7 @@ final class LibVM {
                 bookActionError = error.localizedDescription
             }
             await reloadLibrary()
+            try? importCtrl.refreshIndex()
         }
     }
 

@@ -17,11 +17,27 @@ struct LibRepo {
         return BookRecord.samples.map(\.book).filter { !hiddenIDs.contains($0.id) } + importedBooks()
     }
 
-    func importBook(from sourceURL: URL) async throws -> BookRecord {
+    /// Reads the EPUB once (its whole text, for the fingerprint). Throws `ContentError.unreadable` for a broken file.
+    func readEPUB(at sourceURL: URL) async throws -> ImportCandidate {
         let hasAccess = sourceURL.startAccessingSecurityScopedResource()
         defer { if hasAccess { sourceURL.stopAccessingSecurityScopedResource() } }
 
         let metadata = try epubParseSvc.metadata(from: sourceURL)
+        let content = try await epubParseSvc.parse(sourceURL)
+        let title = metadata.title ?? sourceURL.deletingPathExtension().lastPathComponent
+        let author = metadata.author ?? "Unknown Author"
+        let identity = BookIdentity(gutenbergNumber: GutenbergNumber.from(identifiers: metadata.identifiers), title: title,
+                                    author: author, fingerprint: content.fingerprint)
+        return ImportCandidate(title: title, author: author, identity: identity)
+    }
+
+    func importBook(from sourceURL: URL) async throws -> BookRecord {
+        try saveBook(from: sourceURL, as: await readEPUB(at: sourceURL))
+    }
+
+    func saveBook(from sourceURL: URL, as candidate: ImportCandidate) throws -> BookRecord {
+        let hasAccess = sourceURL.startAccessingSecurityScopedResource()
+        defer { if hasAccess { sourceURL.stopAccessingSecurityScopedResource() } }
 
         try FileManager.default.createDirectory(at: booksFolder, withIntermediateDirectories: true)
         let id = UUID()
@@ -29,19 +45,31 @@ struct LibRepo {
         try FileManager.default.createDirectory(at: destination.deletingLastPathComponent(), withIntermediateDirectories: true)
         try FileManager.default.copyItem(at: sourceURL, to: destination)
 
-        let filename = sourceURL.deletingPathExtension().lastPathComponent
         let book = BookRecord(
             id: id,
-            title: metadata.title ?? filename,
-            author: metadata.author ?? "Unknown Author",
+            title: candidate.title,
+            author: candidate.author,
             isContinueReading: false,
             progress: 0,
-            dateAdded: .now
+            dateAdded: .now,
+            gutenbergNumber: candidate.identity.gutenbergNumber,
+            fingerprint: candidate.identity.fingerprint
         )
         var books = importedBooks()
         books.append(book)
         try JSONEncoder.iso8601.encode(books).write(to: libraryURL, options: .atomic)
         return book
+    }
+
+    /// Sample books the reader removed.
+    func hiddenSamples() -> [BookRecord] {
+        let hiddenIDs = hiddenSampleIDs()
+        return BookRecord.samples.map(\.book).filter { hiddenIDs.contains($0.id) }
+    }
+
+    func showHiddenSample(_ id: UUID) throws {
+        try FileManager.default.createDirectory(at: booksFolder, withIntermediateDirectories: true)
+        try JSONEncoder().encode(hiddenSampleIDs().subtracting([id])).write(to: hiddenSamplesURL, options: .atomic)
     }
 
     /// Deletes an imported book and its files. A sample book is only hidden, since it lives in the app bundle.

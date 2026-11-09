@@ -13,6 +13,8 @@ struct AppContainer {
     private let pagerSvc = PagerSvcTextKit()
     private let eventSvc = EventSvcOSLog()
     private let brightnessSvc = BrightnessSvc()
+    private let pendingImportRepo = PendingImportRepo()
+    private let libraryIndexRepo = LibraryIndexRepo()
 
     init() {
         let epubParseSvc = EPUBParseSvcEPUBKit()
@@ -25,7 +27,11 @@ struct AppContainer {
     }
 
     func makeLibVM() -> LibVM {
-        LibVM(libCtrl: LibCtrl(libRepo: libRepo, bookContentRepo: bookContentRepo, progRepo: progRepo), appNav: appNav)
+        LibVM(
+            libCtrl: LibCtrl(libRepo: libRepo, bookContentRepo: bookContentRepo, progRepo: progRepo),
+            importCtrl: ImportCtrl(libRepo: libRepo, pendingImportRepo: pendingImportRepo, libraryIndexRepo: libraryIndexRepo),
+            appNav: appNav
+        )
     }
 
     func makeOnboardingVM(using libVM: LibVM) -> OnboardingVM {

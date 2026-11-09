@@ -47,14 +47,18 @@ targets:
     platform: iOS
     sources:
       - path: App
+      # Code the Share extension uses too (book lookup, pending imports, the library index).
+      - path: Shared
     dependencies:
       - package: EPUBKit
       - package: UnderlineEngine
+      - target: iReadShare
     buildToolPlugins:
       - plugin: SwiftLintBuildToolPlugin
         package: SwiftLintPlugins
     # iCloud through CloudKit: the reader's saved underlines (their private database) and the ratings they share (the public one).
     # The container ID must match CloudSvcCloudKit.containerID. See docs/ICLOUD.md for the CloudKit Console steps.
+    # The App Group is the folder the app shares with the Share extension: books waiting to be imported, and the library index.
     entitlements:
       path: App/iRead.entitlements
       properties:
@@ -62,6 +66,21 @@ targets:
           - iCloud.com.aftrhours.reader
         com.apple.developer.icloud-services:
           - CloudKit
+        com.apple.security.application-groups:
+          - group.com.aftrhours.reader
+    # "Open in iRead" for EPUB files from Files, Safari, Mail and AirDrop. Alternate: Apple Books stays the default.
+    # Not opened in place: iOS copies the file into Documents/Inbox, the same copy-in import as the picker.
+    # Xcode merges this file with the INFOPLIST_KEY_* settings below (GENERATE_INFOPLIST_FILE).
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: EPUB
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Alternate
+            LSItemContentTypes:
+              - org.idpf.epub-container
+        LSSupportsOpeningDocumentsInPlace: false
     settings:
       base:
         # App identity. Renaming is a one-line edit here.
@@ -87,6 +106,41 @@ targets:
           UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
         SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: YES
         SUPPORTS_MACCATALYST: NO
+        MARKETING_VERSION: "0.1"
+        CURRENT_PROJECT_VERSION: "1"
+  # The Share extension: Share Book in Apple Books → iRead finds the free Project Gutenberg edition and leaves it for the app.
+  # Bundle ID: the app's + ".share", kept literal for the same Xcode Cloud reason as the app's. Versions must equal the app's.
+  iReadShare:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: ShareExtension
+      - path: Shared
+    buildToolPlugins:
+      - plugin: SwiftLintBuildToolPlugin
+        package: SwiftLintPlugins
+    info:
+      path: ShareExtension/Info.plist
+      properties:
+        CFBundleDisplayName: iRead
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.share-services
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShareViewController
+          NSExtensionAttributes:
+            NSExtensionActivationRule:
+              NSExtensionActivationSupportsWebURLWithMaxCount: 1
+              NSExtensionActivationSupportsText: true
+    # Only the App Group: the extension never talks to iCloud.
+    entitlements:
+      path: ShareExtension/iReadShare.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.aftrhours.reader
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aftrhours.reader.share
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
         MARKETING_VERSION: "0.1"
         CURRENT_PROJECT_VERSION: "1"
   # Unit tests (Swift Testing), run inside the app on an iPhone or iPad simulator. Folders mirror App/.

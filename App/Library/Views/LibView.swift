@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LibView: View {
     @Bindable var libVM: LibVM
+    @Environment(\.scenePhase) private var scenePhase
 
     // Keep the requested column count stable across orientation and size changes.
     private var gridColumns: [GridItem] {
@@ -55,6 +56,12 @@ struct LibView: View {
             }
         }
         .task { await libVM.onAppear() }
+        // Books shared from Apple Books wait in the App Group until the app comes back.
+        .onChange(of: scenePhase) { _, scenePhase in
+            if scenePhase == .active {
+                Task { await libVM.appBecameActive() }
+            }
+        }
         .background(LibraryPalette.page.ignoresSafeArea())
         .background {
             EPUBDocumentPicker(isPresented: $libVM.isImportPickerPresented) { result in
@@ -150,10 +157,12 @@ struct LibView: View {
 
 #Preview("Library View") {
     let epubParseSvc = EPUBParseSvcEPUBKit()
+    let libRepo = LibRepo(epubParseSvc: epubParseSvc)
     let libCtrl = LibCtrl(
-        libRepo: LibRepo(epubParseSvc: epubParseSvc),
+        libRepo: libRepo,
         bookContentRepo: BookContentRepo(epubParseSvc: epubParseSvc),
         progRepo: ProgRepo()
     )
-    return LibView(libVM: LibVM(libCtrl: libCtrl, appNav: AppNav()))
+    let importCtrl = ImportCtrl(libRepo: libRepo, pendingImportRepo: PendingImportRepo(), libraryIndexRepo: LibraryIndexRepo())
+    return LibView(libVM: LibVM(libCtrl: libCtrl, importCtrl: importCtrl, appNav: AppNav()))
 }

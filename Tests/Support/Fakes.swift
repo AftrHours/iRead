@@ -34,7 +34,7 @@ final class EPUBParseSvcSpy: EPUBParseSvc {
         state.withLock { $0.parses }
     }
 
-    func metadata(from url: URL) throws -> (title: String?, author: String?) {
+    func metadata(from url: URL) throws -> (title: String?, author: String?, identifiers: [String]) {
         try real.metadata(from: url)
     }
 

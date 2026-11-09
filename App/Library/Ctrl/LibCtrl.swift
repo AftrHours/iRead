@@ -14,10 +14,6 @@ struct LibCtrl {
         return books
     }
 
-    func importBook(from url: URL) async throws -> BookRecord {
-        try await libRepo.importBook(from: url)
-    }
-
     func cover(for bookID: UUID) async -> Data? {
         await bookContentRepo.cover(for: bookID)
     }
@@ -46,7 +42,9 @@ struct LibCtrl {
             // A finished book shows as fully read, even if it was marked finished part way through.
             progress: progress.finishedAt == nil ? progress.progress : 1,
             dateAdded: book.dateAdded,
-            lastReadAt: progress.lastReadAt
+            lastReadAt: progress.lastReadAt,
+            gutenbergNumber: book.gutenbergNumber,
+            fingerprint: book.fingerprint
         )
     }
 }

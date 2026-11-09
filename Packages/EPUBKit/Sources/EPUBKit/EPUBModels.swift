@@ -3,6 +3,8 @@ import Foundation
 public struct EPUBMetadata: Sendable {
     public let title: String?
     public let author: String?
+    /// The text of every `dc:identifier` and `dc:source`, in file order (a Project Gutenberg book names its URL here).
+    public let identifiers: [String]
 }
 
 /// A chapter as the table of contents divides the book, with its text split into paragraphs.

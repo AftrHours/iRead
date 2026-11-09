@@ -4,7 +4,7 @@ import NaturalLanguage
 
 /// Reads EPUB files and turns their chapters into the app's BookContent. A protocol so tests can count parses.
 protocol EPUBParseSvc: Sendable {
-    func metadata(from url: URL) throws -> (title: String?, author: String?)
+    func metadata(from url: URL) throws -> (title: String?, author: String?, identifiers: [String])
     func cover(from url: URL) throws -> Data?
     func parse(_ url: URL) async throws -> BookContent
 }
@@ -12,9 +12,9 @@ protocol EPUBParseSvc: Sendable {
 struct EPUBParseSvcEPUBKit: EPUBParseSvc {
     private let reader = EPUBReader()
 
-    func metadata(from url: URL) throws -> (title: String?, author: String?) {
+    func metadata(from url: URL) throws -> (title: String?, author: String?, identifiers: [String]) {
         let metadata = try readingEPUB { try reader.metadata(from: url) }
-        return (metadata.title, metadata.author)
+        return (metadata.title, metadata.author, metadata.identifiers)
     }
 
     /// The cover image file, found by the EPUB 3 `cover-image` property or the EPUB 2 `cover` meta tag.
