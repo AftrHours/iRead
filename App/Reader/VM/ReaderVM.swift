@@ -5,7 +5,7 @@ import Observation
 @Observable
 final class ReaderVM {
     enum Sheet: Identifiable {
-        case contents
+    case contents
         case search(SearchVM)
         case themeSettings
 
@@ -26,15 +26,14 @@ final class ReaderVM {
     private(set) var pages: [Page] = []
     private(set) var shownPage: Page?
     private(set) var hasFailedToOpen = false
-    private(set) var areControlsShown = true
-    private(set) var isMenuShown = false
+    /// Focus mode hides the reading controls, leaving only the page. Off when the book opens.
+    private(set) var isFocusMode = false
     private(set) var sheet: Sheet?
     #if DEBUG
     private(set) var isUnderlineDebugShown = false
     #endif
 
     private var chapterStartPages: [Int] = []
-    private var sheetAfterMenu: Sheet?
     private var pageCount: Int?
     private var requestedViewport = Viewport(size: .zero)
     private var progressTask: Task<Void, Never>?
@@ -50,7 +49,7 @@ final class ReaderVM {
 
     var pageLabel: String {
         guard let shownPage else { return "" }
-        guard areControlsShown, let pageCount else { return "Page \(shownPage.number)" }
+        guard !isFocusMode, let pageCount else { return "Page \(shownPage.number)" }
         return "Page \(shownPage.number) of \(pageCount)"
     }
 
@@ -99,14 +98,14 @@ final class ReaderVM {
         Task { await showCurrentPage() }
     }
 
-    /// Like Apple Books: turning the page hides the controls, tapping the middle of the page toggles them.
+    /// Like Apple Books: turning the page turns focus mode on, tapping the middle of the page toggles it.
     func pageChanged(_ page: Page) {
-        areControlsShown = false
+        isFocusMode = true
         show(page)
     }
 
     func pageCenterTapped() {
-        areControlsShown.toggle()
+        isFocusMode.toggle()
     }
 
     func backTapped() {
@@ -131,14 +130,6 @@ final class ReaderVM {
         ratingVM.appForegrounded()
     }
 
-    func menuTapped() {
-        isMenuShown = true
-    }
-
-    func menuDismissed() {
-        isMenuShown = false
-    }
-
     #if DEBUG
     var isUnderlineDebugSheetPresented: Bool {
         get { isUnderlineDebugShown }
@@ -154,28 +145,20 @@ final class ReaderVM {
     }
     #endif
 
-    /// A sheet asked for from the menu opens only once the menu has fully closed,
-    /// because iOS drops a sheet that is presented while the menu is still closing.
-    func menuDisappeared() {
-        guard let sheetAfterMenu else { return }
-        sheet = sheetAfterMenu
-        self.sheetAfterMenu = nil
-    }
-
     func contentsTapped() {
-        openAfterMenu(.contents)
+        sheet = .contents
     }
 
     func searchTapped() {
-        openAfterMenu(.search(SearchVM(
+        sheet = .search(SearchVM(
             search: { [readerCtrl] in await readerCtrl.search($0) },
             readerStateCtrl: readerStateCtrl,
             onResultPicked: { [weak self] result in self?.searchResultPicked(result) }
-        )))
+        ))
     }
 
     func themeSettingsTapped() {
-        openAfterMenu(.themeSettings)
+        sheet = .themeSettings
         readerSettingsVM.themeSettingsShown()
     }
 
@@ -186,11 +169,6 @@ final class ReaderVM {
     func chapterTapped(_ index: Int) {
         sheet = nil
         Task { show(await readerCtrl.firstPage(ofChapter: index)) }
-    }
-
-    private func openAfterMenu(_ sheet: Sheet) {
-        sheetAfterMenu = sheet
-        isMenuShown = false
     }
 
     private func searchResultPicked(_ result: SearchResult) {

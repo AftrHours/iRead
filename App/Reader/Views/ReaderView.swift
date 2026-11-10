@@ -7,12 +7,10 @@ struct ReaderView: View {
 
     private let readerSettingsVM: ReaderSettingsVM
     private let referenceVM: ReferenceVM
-    private let ratingVM: RatingVM
     private var theme: ReadingTheme { readerSettingsVM.layoutSettings.theme }
-    // Only the page's own text uses the theme colour. Set on the whole view, it would leak into
-    // the menu and sheets, which follow the system light or dark mode instead.
+
     private var pageTextColor: Color { Color(PageTextStyle.textColor(for: theme)) }
-    /// Original follows the system; the other themes have a fixed light or dark page.
+
     private var pageColorScheme: ColorScheme {
         switch theme {
         case .original: colorScheme
@@ -25,29 +23,45 @@ struct ReaderView: View {
         self.readerVM = readerVM
         readerSettingsVM = readerVM.readerSettingsVM
         referenceVM = readerVM.referenceVM
-        ratingVM = readerVM.ratingVM
     }
 
     var body: some View {
         VStack(spacing: 0) {
-            topBar
-            GeometryReader { proxy in
-                let viewport = Viewport(size: proxy.size)
-                pageArea
-                    .task { await readerVM.onAppear(viewport: viewport) }
-                    .onChange(of: viewport) { _, viewport in readerVM.viewportChanged(viewport) }
+            TopBar(
+                title: readerVM.title,
+                chapterTitle: readerVM.chapterTitle,
+                foreground: pageTextColor,
+                colorScheme: pageColorScheme,
+                isFocusMode: readerVM.isFocusMode,
+                onBack: readerVM.backTapped,
+                onUnderlineDebug: underlineDebugAction
+            )
+            .padding(.horizontal)
+            .padding(.top)
+            
+            // 9.5% of the width each side, like Apple Books: about 78pt on an iPad in portrait, 38pt on an iPhone.
+            PageArea(readerVM: readerVM, textMarginRatio: 0.09)
+                .padding(.top)
+                .padding(.bottom)
+            
+            BottomBar(
+                pageLabel: readerVM.pageLabel,
+                foreground: pageTextColor,
+                colorScheme: pageColorScheme,
+                isFocusMode: readerVM.isFocusMode,
+                canReturn: referenceVM.canReturn,
+                toastText: referenceVM.toastText,
+                onReturnDismissed: referenceVM.returnDismissed,
+                onReturnTapped: referenceVM.returnToReadingTapped
+            ) {
+                ToolbarList(readerVM: readerVM)
             }
-            .padding(.top, 36)
-            // Always kept free, so the text never moves or hides under the Return to Reading button.
-            Color.clear
-                .frame(height: 44)
-                .overlay { returnControls }
-                .padding(.vertical, 12)
-            bottomBar
+            .padding(.leading,36)
+            .padding(.trailing)
         }
         .background(Color(PageTextStyle.backgroundColor(for: theme)))
         .animation(.easeInOut, value: referenceVM.toastText)
-        .animation(.easeInOut(duration: 0.2), value: readerVM.areControlsShown)
+        .animation(.easeInOut(duration: 0.2), value: readerVM.isFocusMode)
         .onChange(of: scenePhase) { _, scenePhase in
             if scenePhase == .background {
                 readerVM.appBackgrounded()
@@ -58,7 +72,11 @@ struct ReaderView: View {
         .sheet(item: Binding(get: { readerVM.sheet }, set: { _ in readerVM.sheetDismissed() })) { sheet in
             switch sheet {
             case .contents:
-                ContentsView(readerVM: readerVM)
+                ContentsSheet(
+                    chapterTitles: readerVM.chapterTitles,
+                    startPageLabel: readerVM.startPageLabel(ofChapter:),
+                    onChapterTapped: readerVM.chapterTapped
+                )
             case .search(let searchVM):
                 SearchView(searchVM: searchVM)
             case .themeSettings:
@@ -72,126 +90,24 @@ struct ReaderView: View {
         #endif
     }
 
-    @ViewBuilder
-    private var pageArea: some View {
-        if let shownPage = readerVM.shownPage {
-            PageTurnView(
-                pages: readerVM.pages,
-                shownPage: shownPage,
-                settings: readerSettingsVM.layoutSettings,
-                marks: referenceVM.marks,
-                onPageChanged: { readerVM.pageChanged($0) },
-                onCenterTapped: { readerVM.pageCenterTapped() },
-                onMarkTapped: { referenceVM.markTapped($0, at: $1) }
-            )
-            .id(readerSettingsVM.layoutSettings.pageTurnStyle)
-            .popover(
-                item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
-                attachmentAnchor: .rect(.rect(referenceVM.cardAnchor))
-            ) { referenceCard in
-                RefCardView(card: referenceCard, ratingVM: ratingVM, onJumpTapped: { referenceVM.jumpToPassageTapped() })
-            }
-        } else if readerVM.hasFailedToOpen {
-            ContentUnavailableView("Can't Open Book", systemImage: "book.closed")
-        } else {
-            ProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
-    }
-
-    @ViewBuilder
-    private var returnControls: some View {
-        if referenceVM.canReturn {
-            HStack(spacing: 12) {
-                Button {
-                    referenceVM.returnDismissed()
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(.white)
-                        .frame(width: 44, height: 44)
-                        .background(Color(.systemGray2), in: .circle)
-                }
-                .accessibilityLabel("Dismiss")
-                Button("Return to Reading", systemImage: "arrow.uturn.backward") {
-                    referenceVM.returnToReadingTapped()
-                }
-                .buttonStyle(.borderedProminent)
-                .buttonBorderShape(.capsule)
-                .controlSize(.large)
-            }
-        } else if let toastText = referenceVM.toastText {
-            Text(toastText)
-                .foregroundStyle(.white)
-                .padding(.horizontal, 24)
-                .frame(minHeight: 44)
-                .background(Color(.systemGray2), in: .capsule)
-                .transition(.opacity)
-        }
-    }
-
-    private var topBar: some View {
-        ZStack {
-            VStack(spacing: 6) {
-                Text(readerVM.title)
-                    .font(.subheadline.weight(.semibold))
-                Text(readerVM.chapterTitle)
-                    .font(.caption2)
-                    .textCase(.uppercase)
-                    .foregroundStyle(.secondary)
-            }
-            .lineLimit(1)
-            .foregroundStyle(pageTextColor)
-            .padding(.horizontal, 64)
-            HStack {
-                ReaderCircleButton(
-                    systemImage: "chevron.left",
-                    accessibilityLabel: "Back",
-                    foreground: pageTextColor,
-                    colorScheme: pageColorScheme,
-                    isVisible: readerVM.areControlsShown,
-                    action: readerVM.backTapped
-                )
-                Spacer()
-                #if DEBUG
-                ReaderCircleButton(
-                    systemImage: "ladybug",
-                    accessibilityLabel: "Underline Debug",
-                    foreground: pageTextColor,
-                    colorScheme: pageColorScheme,
-                    isVisible: readerVM.areControlsShown,
-                    action: readerVM.underlineDebugTapped
-                )
-                .keyboardShortcut("d", modifiers: [.command, .shift])
-                #endif
-            }
-        }
-        .padding(.horizontal, 16)
-        .padding(.top, 26)
-    }
-
-    private var bottomBar: some View {
-        HStack {
-            Text(readerVM.pageLabel)
-                .font(.caption)
-                .foregroundStyle(pageTextColor)
-            Spacer()
-            ReaderCircleButton(
-                systemImage: "ellipsis",
-                accessibilityLabel: "Reading menu",
-                foreground: pageTextColor,
-                colorScheme: pageColorScheme,
-                isVisible: readerVM.areControlsShown,
-                action: readerVM.menuTapped
-            )
-            .popover(isPresented: Binding(get: { readerVM.isMenuShown }, set: { _ in readerVM.menuDismissed() }), arrowEdge: .bottom) {
-                ReaderMenuView(readerVM: readerVM, ratingVM: ratingVM)
-                    .onDisappear { readerVM.menuDisappeared() }
-            }
-        }
-        .padding(.leading, 36)
-        .padding(.trailing, 16)
-        .padding(.bottom, 8)
+    private var underlineDebugAction: (() -> Void)? {
+        #if DEBUG
+        readerVM.underlineDebugTapped
+        #else
+        nil
+        #endif
     }
 
 }
+
+#if DEBUG
+@MainActor
+private func previewReader(_ title: String = "Little Women") -> ReaderView {
+    let book = BookRecord.samples.first { $0.book.title == title }?.book ?? BookRecord.samples[0].book
+    return ReaderView(readerVM: AppContainer.forPreviews().makeReaderVM(book: book))
+}
+
+#Preview("Reader") {
+    previewReader()
+}
+#endif

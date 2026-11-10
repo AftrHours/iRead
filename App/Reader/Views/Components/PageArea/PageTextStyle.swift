@@ -1,10 +1,6 @@
 import UIKit
 
 enum PageTextStyle {
-    private static let minSideMargin: CGFloat = 24
-    private static let sideMarginRatio: CGFloat = 0.08
-    private static let maxTextWidthPerPoint: CGFloat = 48
-
     static func font(settings: ReadingSettings) -> UIFont {
         font(for: settings.theme, size: settings.textSize)
     }
@@ -49,16 +45,12 @@ enum PageTextStyle {
         let lineHeight = font.pointSize * CGFloat(settings.lineSpacingPercent) / 100
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .justified
+        // Without it, a justified line with few words is stretched letter by letter on a narrow iPhone column.
+        paragraphStyle.hyphenationFactor = 1
         paragraphStyle.minimumLineHeight = lineHeight
         paragraphStyle.maximumLineHeight = lineHeight
         paragraphStyle.paragraphSpacing = lineHeight
         return [.font: font, .paragraphStyle: paragraphStyle, .foregroundColor: textColor(for: settings.theme)]
-    }
-
-    static func textFrame(in bounds: CGRect, settings: ReadingSettings) -> CGRect {
-        let sideMargin = max(minSideMargin, bounds.width * sideMarginRatio)
-        let width = min(CGFloat(settings.textSize) * maxTextWidthPerPoint, bounds.width - 2 * sideMargin)
-        return CGRect(x: bounds.midX - width / 2, y: bounds.minY, width: width, height: bounds.height)
     }
 }
 
