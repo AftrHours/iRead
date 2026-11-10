@@ -19,7 +19,6 @@ final class LibVM {
     private(set) var bookToRemove: BookRecord?
     private(set) var bookActionError: String?
     private var newestImportedBookID: UUID?
-   
     private var lastImport: Task<Void, Never>?
 
     var books: [BookRecord] {
