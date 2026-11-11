@@ -1,20 +1,21 @@
 import SwiftUI
 
-struct ContentsView: View {
-    let readerVM: ReaderVM
+struct ContentsSheet: View {
+    let chapterTitles: [String]
+    let startPageLabel: (Int) -> String
+    let onChapterTapped: (Int) -> Void
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationStack {
-            List(readerVM.chapterTitles.indices, id: \.self) { index in
+            List(chapterTitles.indices, id: \.self) { index in
                 Button {
-                    readerVM.chapterTapped(index)
+                    onChapterTapped(index)
                 } label: {
                     HStack {
-                        Text(readerVM.chapterTitles[index])
+                        Text(chapterTitles[index])
                         Spacer()
-                        Text(readerVM.startPageLabel(ofChapter: index))
-                        Image(systemName: "chevron.right")
+                        Text(startPageLabel(index))
                             .font(.footnote.weight(.semibold))
                             .accessibilityHidden(true)
                     }
@@ -33,8 +34,21 @@ struct ContentsView: View {
                 }
             }
         }
-        .presentationDetents([.medium, .large])
+        .presentationDetents([.large])
         .presentationDragIndicator(.visible)
         .presentationBackground(Color(.systemBackground))
     }
+}
+
+#Preview("Contents – as Sheet") {
+    let chapterTitles = (1...20).map { "Chapter \($0)" }
+    Color.gray.opacity(0.2)
+        .ignoresSafeArea()
+        .sheet(isPresented: .constant(true)) {
+            ContentsSheet(
+                chapterTitles: chapterTitles,
+                startPageLabel: { "\($0 * 14 + 1)" },
+                onChapterTapped: { print("Chapter \($0 + 1) ditekan") }
+            )
+        }
 }

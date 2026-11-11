@@ -1,17 +1,14 @@
 import SwiftUI
 
-/// Reusable glass action button for the reading controls.
-struct ReaderCircleButton: View {
-    let systemImage: String
-    let accessibilityLabel: String
+struct ToolbarMenu<Items: View>: View {
     let foreground: Color
     let colorScheme: ColorScheme
     let isVisible: Bool
-    let action: () -> Void
+    @ViewBuilder let items: () -> Items
 
     var body: some View {
-        Button(action: action) {
-            Image(systemName: systemImage)
+        Menu(content: items) {
+            Image(systemName: "ellipsis")
                 .font(.title3.weight(.medium))
                 .foregroundStyle(foreground)
                 .frame(width: 44, height: 44)
@@ -19,10 +16,19 @@ struct ReaderCircleButton: View {
                 .glassEffect(.regular.interactive(), in: .circle)
                 .environment(\.colorScheme, colorScheme)
         }
-        .buttonStyle(.plain)
-        .accessibilityLabel(accessibilityLabel)
+        .menuStyle(.button)
+        .menuOrder(.fixed)
+        .accessibilityLabel("Reading menu")
         .opacity(isVisible ? 1 : 0)
         .allowsHitTesting(isVisible)
         .accessibilityHidden(!isVisible)
+    }
+}
+
+#Preview("Menu Button") {
+    ToolbarMenu(foreground: .primary, colorScheme: .light, isVisible: true) {
+        Button("Contents", systemImage: "list.bullet") {}
+        Button("Search in Book", systemImage: "magnifyingglass") {}
+        Button("Theme & Settings", systemImage: "textformat") {}
     }
 }

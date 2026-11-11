@@ -17,12 +17,21 @@ struct AppContainer {
     private let libraryIndexRepo = LibraryIndexRepo()
 
     init() {
+        self.init(modelCheckSvc: ModelCheckSvc(), cloudSvc: CloudSvcCloudKit())
+    }
+
+    /// For SwiftUI previews: underlines from rules only, and nothing goes to iCloud.
+    /// Not limited to debug builds, so a #Preview without #if DEBUG still builds for TestFlight. The app never calls it.
+    static func forPreviews() -> AppContainer {
+        AppContainer(modelCheckSvc: nil, cloudSvc: nil)
+    }
+
+    private init(modelCheckSvc: ModelCheckSvc?, cloudSvc: (any CloudSvc)?) {
         let epubParseSvc = EPUBParseSvcEPUBKit()
         progRepo = ProgRepo()
         bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc)
         libRepo = LibRepo(epubParseSvc: epubParseSvc)
-        let cloudSvc = CloudSvcCloudKit()
-        underlineRepo = UnderlineRepo(modelCheckSvc: ModelCheckSvc(), cloudSvc: cloudSvc)
+        underlineRepo = UnderlineRepo(modelCheckSvc: modelCheckSvc, cloudSvc: cloudSvc)
         ratingRepo = RatingRepo(cloudSvc: cloudSvc)
     }
 

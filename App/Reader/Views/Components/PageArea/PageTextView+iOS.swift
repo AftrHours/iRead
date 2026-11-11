@@ -3,6 +3,7 @@ import UIKit
 final class PageTextView: UIView {
     let page: Page
     let settings: ReadingSettings
+    let horizontalMargin: CGFloat
     let marks: [Mark]
     private let textView = UITextView(usingTextLayoutManager: false)
     private let onEdgeTapped: (_ isForward: Bool) -> Void
@@ -11,10 +12,11 @@ final class PageTextView: UIView {
 
     private static let minTapSize: CGFloat = 44
 
-    init(page: Page, settings: ReadingSettings, marks: [Mark], onEdgeTapped: @escaping (_ isForward: Bool) -> Void,
+    init(page: Page, settings: ReadingSettings, horizontalMargin: CGFloat, marks: [Mark], onEdgeTapped: @escaping (_ isForward: Bool) -> Void,
          onCenterTapped: @escaping () -> Void, onMarkTapped: @escaping (Mark, CGRect) -> Void) {
         self.page = page
         self.settings = settings
+        self.horizontalMargin = horizontalMargin
         self.marks = marks
         self.onEdgeTapped = onEdgeTapped
         self.onCenterTapped = onCenterTapped
@@ -39,7 +41,7 @@ final class PageTextView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        textView.frame = PageTextStyle.textFrame(in: bounds, settings: settings)
+        textView.frame = Viewport.textFrame(in: bounds, horizontalMargin: horizontalMargin)
     }
 
     private func attributedText() -> NSAttributedString {
@@ -63,12 +65,13 @@ final class PageTextView: UIView {
 
     @objc private func tapped(_ tap: UITapGestureRecognizer) {
         let x = tap.location(in: self).x
-        if x < max(textView.frame.minX, Self.minTapSize) {
+        // Underlines first: on an iPhone the margin is under 44pt, so the edge zones reach into the text.
+        if let (mark, rect) = underline(at: tap.location(in: textView)) {
+            onMarkTapped(mark, textView.convert(rect, to: self))
+        } else if x < max(textView.frame.minX, Self.minTapSize) {
             onEdgeTapped(false)
         } else if x > min(textView.frame.maxX, bounds.width - Self.minTapSize) {
             onEdgeTapped(true)
-        } else if let (mark, rect) = underline(at: tap.location(in: textView)) {
-            onMarkTapped(mark, textView.convert(rect, to: self))
         } else {
             onCenterTapped()
         }

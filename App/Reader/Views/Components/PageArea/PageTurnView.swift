@@ -5,6 +5,7 @@ struct PageTurnView: UIViewControllerRepresentable {
     let pages: [Page]
     let shownPage: Page
     let settings: ReadingSettings
+    let horizontalMargin: CGFloat
     let marks: [Int: [Mark]]
     let onPageChanged: (Page) -> Void
     let onCenterTapped: () -> Void
@@ -55,6 +56,7 @@ struct PageTurnView: UIViewControllerRepresentable {
             displayedView.map {
                 $0.page == pageTurnView.shownPage
                     && $0.settings == pageTurnView.settings
+                    && $0.horizontalMargin == pageTurnView.horizontalMargin
                     && $0.marks == pageTurnView.marks[pageTurnView.shownPage.number, default: []]
             } ?? false
         }
@@ -130,6 +132,7 @@ struct PageTurnView: UIViewControllerRepresentable {
             controller.view = PageTextView(
                 page: page,
                 settings: pageTurnView.settings,
+                horizontalMargin: pageTurnView.horizontalMargin,
                 marks: pageTurnView.marks[page.number, default: []],
                 onEdgeTapped: { [weak self] isForward in self?.turnPage(isForward: isForward) },
                 onCenterTapped: { [weak self] in self?.pageTurnView.onCenterTapped() },

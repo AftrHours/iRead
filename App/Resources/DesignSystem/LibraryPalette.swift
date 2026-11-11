@@ -14,7 +14,9 @@ enum LibraryPalette {
     static let controlFill = Color(hex: 0xA8D0FF)
     static let divider = adaptive(light: 0xD9DCEC, dark: 0x39365F)
     static let searchFill = adaptive(light: 0xFFFFFF, dark: 0x27244E)
-
+    static let color: UInt32 = 0xA8D0FF
+    
+    
     private static func adaptive(light: UInt32, dark: UInt32) -> Color {
         Color(uiColor: UIColor { traits in
             UIColor(hex: traits.userInterfaceStyle == .dark ? dark : light)

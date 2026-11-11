@@ -82,4 +82,13 @@ struct ReferenceVMTests {
         }
         #expect(await eventually { releasedVM == nil })
     }
+
+    @Test("the card's quote has one pair of curly quotes, even when the passage already starts or ends with one")
+    func quoteMarks() {
+        #expect(ReferenceVM.quoted("“Really, Mother?") == "“Really, Mother?”")
+        #expect(ReferenceVM.quoted("“Really, Mother?”") == "“Really, Mother?”")
+        #expect(ReferenceVM.quoted("The old clock stood in the hall.") == "“The old clock stood in the hall.”")
+        // Apostrophes are part of the words, so they stay.
+        #expect(ReferenceVM.quoted("the girls’") == "“the girls’”")
+    }
 }

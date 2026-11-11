@@ -103,9 +103,16 @@ final class ReferenceVM {
                 underlineID: id,
                 phrase: underline.text,
                 location: "\(chapterTitles[passagePage.chapterIndex]) • Page \(passagePage.number)",
-                quote: "“\(underline.reference.text)”"
+                quote: Self.quoted(underline.reference.text)
             )
         }
+    }
+
+    /// Wraps the passage in curly quotes. Quotes already at either end are dropped first, so dialogue
+    /// such as “Really, Mother? shows as “Really, Mother?” and not ““Really, Mother?”.
+    static func quoted(_ text: String) -> String {
+        let quoteMarks = CharacterSet(charactersIn: "\"“”").union(.whitespacesAndNewlines)
+        return "“\(text.trimmingCharacters(in: quoteMarks))”"
     }
 
     func cardDismissed() {
