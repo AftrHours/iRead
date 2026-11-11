@@ -29,6 +29,39 @@ final class SearchVM {
         Task { recentSearches = await readerStateCtrl.recentSearches() }
     }
 
+    init(previewQuery: String? = nil) {
+        let folder = URL.temporaryDirectory.appending(path: "iRead-XcodePreview-\(UUID().uuidString)")
+        let stateCtrl = ReaderStateCtrl(
+            bookID: UUID(),
+            readingSettingsRepo: ReadingSettingsRepo(folder: folder),
+            brightnessSvc: BrightnessSvc(),
+            bookStateRepo: BookStateRepo(folder: folder)
+        )
+        search = { _ in [] }
+        readerStateCtrl = stateCtrl
+        onResultPicked = { _ in }
+        query = previewQuery ?? ""
+        recentSearches = ["Elizabeth", "the old house", "carriage"]
+        if previewQuery != nil {
+            results = [
+                SearchResult(
+                    chapterTitle: "A Strange Visitor",
+                    snippet: "...the carriage had stopped before the old house, and Elizabeth turned toward the sound...",
+                    position: ReadingPosition(paragraph: 3, charOffset: 0),
+                    length: 7,
+                    pageNumber: 12
+                ),
+                SearchResult(
+                    chapterTitle: "The Journey Begins",
+                    snippet: "...she remembered the old house at the edge of the village...",
+                    position: ReadingPosition(paragraph: 18, charOffset: 24),
+                    length: 7,
+                    pageNumber: 34
+                )
+            ]
+        }
+    }
+
     /// Searches once typing pauses, so typing a name runs one search, not one per letter.
     func queryChanged(_ query: String) {
         self.query = query

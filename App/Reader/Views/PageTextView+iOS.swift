@@ -1,3 +1,4 @@
+import SwiftUI
 import UIKit
 
 final class PageTextView: UIView {
@@ -96,4 +97,24 @@ final class PageTextView: UIView {
         }
         return nil
     }
+}
+
+private struct PageTextPreview: UIViewRepresentable {
+    func makeUIView(context: Context) -> PageTextView {
+        PageTextView(
+            page: Page(number: 12, chapterIndex: 0, range: NSRange(location: 0, length: 190),
+                       text: "Elizabeth had just begun to read again when the carriage stopped before the old house. She looked up from the letter, listening for the sound of footsteps on the path."),
+            settings: ReadingSettings(),
+            marks: [],
+            onEdgeTapped: { _ in },
+            onCenterTapped: {},
+            onMarkTapped: { _, _ in }
+        )
+    }
+
+    func updateUIView(_ uiView: PageTextView, context: Context) {}
+}
+
+#Preview("Reader Page Text") {
+    PageTextPreview()
 }

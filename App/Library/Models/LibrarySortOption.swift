@@ -13,8 +13,10 @@ enum LibrarySortOption: String, CaseIterable, Identifiable, Sendable {
         case .title: "Title"
         case .author: "Author"
         case .dateAdded: "Date Added"
-        case .latestRead: "Latest Read"
+        case .latestRead: "Recent"
         case .readProgress: "Read Progress"
         }
     }
+
+    static let menuOptions: [LibrarySortOption] = [.latestRead, .title, .author]
 }

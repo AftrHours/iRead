@@ -44,3 +44,9 @@ struct OnboardingReferencePreview: View {
         .background(LibraryPalette.card, in: .rect(cornerRadius: 22))
     }
 }
+
+#Preview("Reference Preview Card") {
+    OnboardingReferencePreview()
+        .padding()
+        .background(LibraryPalette.page)
+}

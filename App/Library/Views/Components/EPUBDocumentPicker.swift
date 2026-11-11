@@ -60,3 +60,20 @@ struct EPUBDocumentPicker: UIViewControllerRepresentable {
         }
     }
 }
+
+private struct EPUBPickerPreviewHost: View {
+    @State private var isPresented = false
+
+    var body: some View {
+        Button("Import EPUB") { isPresented = true }
+            .buttonStyle(.borderedProminent)
+            .background {
+                EPUBDocumentPicker(isPresented: $isPresented) { _ in }
+            }
+            .padding()
+    }
+}
+
+#Preview("EPUB Picker") {
+    EPUBPickerPreviewHost()
+}

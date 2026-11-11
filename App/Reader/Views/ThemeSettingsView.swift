@@ -137,3 +137,7 @@ struct ThemeSettingsView: View {
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
+
+#Preview("Theme & Settings") {
+    ThemeSettingsView(readerSettingsVM: PreviewFixtures.readerSettingsVM())
+}

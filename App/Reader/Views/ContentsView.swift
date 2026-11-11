@@ -38,3 +38,7 @@ struct ContentsView: View {
         .presentationBackground(Color(.systemBackground))
     }
 }
+
+#Preview("Book Contents") {
+    ContentsView(readerVM: PreviewFixtures.readerVM())
+}

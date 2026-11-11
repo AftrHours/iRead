@@ -195,3 +195,7 @@ struct ReaderView: View {
     }
 
 }
+
+#Preview("Reader") {
+    ReaderView(readerVM: PreviewFixtures.readerVM())
+}

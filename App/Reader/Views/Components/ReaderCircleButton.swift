@@ -26,3 +26,13 @@ struct ReaderCircleButton: View {
         .accessibilityHidden(!isVisible)
     }
 }
+
+#Preview("Reader Controls") {
+    HStack(spacing: 20) {
+        ReaderCircleButton(systemImage: "chevron.left", accessibilityLabel: "Back", foreground: .primary,
+                           colorScheme: .light, isVisible: true, action: {})
+        ReaderCircleButton(systemImage: "ellipsis", accessibilityLabel: "Reading menu", foreground: .primary,
+                           colorScheme: .light, isVisible: true, action: {})
+    }
+    .padding()
+}

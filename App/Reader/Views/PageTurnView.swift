@@ -158,3 +158,48 @@ struct PageTurnView: UIViewControllerRepresentable {
         }
     }
 }
+
+private struct PageTurnStylePreview: View {
+    let style: PageTurnStyle
+
+    private var pages: [Page] {
+        [
+            Page(number: 1, chapterIndex: 0, range: NSRange(location: 0, length: 112),
+                 text: "The rain had stopped before the lamps were lit. In the quiet street, a carriage rolled slowly past the old house."),
+            Page(number: 2, chapterIndex: 0, range: NSRange(location: 112, length: 105),
+                 text: "By morning, the sky was clear. Elizabeth opened the letter again and wondered what its final line could mean."),
+            Page(number: 3, chapterIndex: 0, range: NSRange(location: 217, length: 104),
+                 text: "At the edge of the village, a familiar figure waited beside the gate, watching the road in silence.")
+        ]
+    }
+
+    private var previewSettings: ReadingSettings {
+        var settings = ReadingSettings()
+        settings.pageTurnStyle = style
+        return settings
+    }
+
+    var body: some View {
+        PageTurnView(
+            pages: pages,
+            shownPage: pages[0],
+            settings: previewSettings,
+            marks: [:],
+            onPageChanged: { _ in },
+            onCenterTapped: {},
+            onMarkTapped: { _, _ in }
+        )
+    }
+}
+
+#Preview("Slide Page Turn") {
+    PageTurnStylePreview(style: .slide)
+}
+
+#Preview("Curl Page Turn") {
+    PageTurnStylePreview(style: .curl)
+}
+
+#Preview("Fast Fade Page Turn") {
+    PageTurnStylePreview(style: .fastFade)
+}

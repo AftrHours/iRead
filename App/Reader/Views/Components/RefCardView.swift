@@ -80,3 +80,19 @@ struct RefCardView: View {
         .accessibilityAddTraits(isChosen ? .isSelected : [])
     }
 }
+
+#Preview("Reference Card") {
+    let readerVM = PreviewFixtures.readerVM()
+    RefCardView(
+        card: ReferenceVM.ReferenceCard(
+            underlineID: "preview-underline",
+            phrase: "the old house",
+            location: "Chapter 2 • Page 12",
+            quote: "The old house stood beyond the village, quiet beneath the evening sky."
+        ),
+        ratingVM: readerVM.ratingVM,
+        onJumpTapped: {}
+    )
+    .padding()
+    .background(LibraryPalette.page)
+}

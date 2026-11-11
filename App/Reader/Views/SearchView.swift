@@ -92,3 +92,11 @@ struct SearchView: View {
         }
     }
 }
+
+#Preview("Search Results") {
+    SearchView(searchVM: SearchVM(previewQuery: "old house"))
+}
+
+#Preview("Recent Searches") {
+    SearchView(searchVM: SearchVM())
+}

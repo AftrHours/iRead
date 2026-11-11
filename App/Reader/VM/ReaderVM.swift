@@ -43,6 +43,7 @@ final class ReaderVM {
     private let progressCtrl: ProgressCtrl
     private let readerStateCtrl: ReaderStateCtrl
     private let appNav: AppNav
+    private var isPreviewOnly = false
 
     var chapterTitle: String {
         shownPage.map { chapterTitles[$0.chapterIndex] } ?? ""
@@ -76,6 +77,21 @@ final class ReaderVM {
 
     func onAppear(viewport: Viewport) async {
         requestedViewport = viewport
+        if isPreviewOnly {
+            let pageTexts = [
+                "The rain had stopped before the lamps were lit. In the quiet street, a carriage rolled slowly past the old house.",
+                "By morning, the sky was clear. Elizabeth opened the letter again and wondered what its final line could mean.",
+                "At the edge of the village, a familiar figure waited beside the gate, watching the road in silence."
+            ]
+            chapterTitles = ["A Strange Visitor", "The Journey Begins", "At the Old House"]
+            title = book.title
+            pages = pageTexts.enumerated().map { index, text in
+                Page(number: index + 1, chapterIndex: 0, range: NSRange(location: 0, length: (text as NSString).length), text: text)
+            }
+            shownPage = pages.first
+            readerSettingsVM.layoutChanged(to: readerSettingsVM.settings)
+            return
+        }
         do {
             try await readerCtrl.openBook()
             await readerSettingsVM.bookOpened()
@@ -95,12 +111,18 @@ final class ReaderVM {
 
     func viewportChanged(_ viewport: Viewport) {
         requestedViewport = viewport
+        if isPreviewOnly { return }
         guard shownPage != nil else { return }
         Task { await showCurrentPage() }
     }
 
     /// Like Apple Books: turning the page hides the controls, tapping the middle of the page toggles them.
     func pageChanged(_ page: Page) {
+        if isPreviewOnly {
+            shownPage = page
+            areControlsShown = false
+            return
+        }
         areControlsShown = false
         show(page)
     }
@@ -133,6 +155,14 @@ final class ReaderVM {
 
     func menuTapped() {
         isMenuShown = true
+    }
+
+    func prepareForPreview() {
+        isPreviewOnly = true
+        readerSettingsVM.onSettingsChanged = {}
+        title = book.title
+        chapterTitles = ["A Strange Visitor", "The Journey Begins", "At the Old House"]
+        chapterStartPages = [1, 12, 34]
     }
 
     func menuDismissed() {

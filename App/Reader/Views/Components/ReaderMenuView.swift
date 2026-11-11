@@ -79,3 +79,9 @@ struct ReaderMenuView: View {
         .contentShape(.rect)
     }
 }
+
+#Preview("Reader Menu") {
+    let readerVM = PreviewFixtures.readerVM()
+    ReaderMenuView(readerVM: readerVM, ratingVM: readerVM.ratingVM)
+        .padding()
+}
