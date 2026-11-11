@@ -5,6 +5,7 @@ struct LibRepo {
     private let booksFolder: URL
     private var libraryURL: URL { booksFolder.appending(path: "library.json") }
     private var hiddenSamplesURL: URL { booksFolder.appending(path: "hidden-samples.json") }
+    private var renamedTitlesURL: URL { booksFolder.appending(path: "renamed-titles.json") }
 
     init(epubParseSvc: any EPUBParseSvc, folder: URL = .applicationSupportDirectory.appending(path: "Books")) {
         self.epubParseSvc = epubParseSvc
@@ -14,7 +15,11 @@ struct LibRepo {
     /// The sample books that aren't hidden, then the imported books, without reading progress.
     func fetchBooks() throws -> [BookRecord] {
         let hiddenIDs = hiddenSampleIDs()
-        return BookRecord.samples.map(\.book).filter { !hiddenIDs.contains($0.id) } + importedBooks()
+        let titles = renamedTitles()
+        let samples = BookRecord.samples.map(\.book)
+            .filter { !hiddenIDs.contains($0.id) }
+            .map { book in copy(book, titled: titles[book.id.uuidString] ?? book.title) }
+        return samples + importedBooks()
     }
 
     /// Reads the EPUB once (its whole text, for the fingerprint). Throws `ContentError.unreadable` for a broken file.
@@ -84,9 +89,36 @@ struct LibRepo {
         try? FileManager.default.removeItem(at: booksFolder.appending(path: book.id.uuidString))
     }
 
+    /// Renames the library entry while leaving the imported EPUB's metadata and bytes intact.
+    func rename(_ book: BookRecord, to title: String) throws {
+        try FileManager.default.createDirectory(at: booksFolder, withIntermediateDirectories: true)
+        if BookRecord.samples.contains(where: { $0.book.id == book.id }) {
+            var titles = renamedTitles()
+            titles[book.id.uuidString] = title
+            try JSONEncoder().encode(titles).write(to: renamedTitlesURL, options: .atomic)
+            return
+        }
+
+        var books = importedBooks()
+        guard let index = books.firstIndex(where: { $0.id == book.id }) else { return }
+        books[index] = copy(books[index], titled: title)
+        try JSONEncoder.iso8601.encode(books).write(to: libraryURL, options: .atomic)
+    }
+
     private func hiddenSampleIDs() -> Set<UUID> {
         guard let data = try? Data(contentsOf: hiddenSamplesURL) else { return [] }
         return (try? JSONDecoder().decode(Set<UUID>.self, from: data)) ?? []
+    }
+
+    private func renamedTitles() -> [String: String] {
+        guard let data = try? Data(contentsOf: renamedTitlesURL) else { return [:] }
+        return (try? JSONDecoder().decode([String: String].self, from: data)) ?? [:]
+    }
+
+    private func copy(_ book: BookRecord, titled title: String) -> BookRecord {
+        BookRecord(id: book.id, title: title, author: book.author, isContinueReading: book.isContinueReading,
+                   progress: book.progress, dateAdded: book.dateAdded, lastReadAt: book.lastReadAt,
+                   gutenbergNumber: book.gutenbergNumber, fingerprint: book.fingerprint)
     }
 
     private func importedBooks() -> [BookRecord] {

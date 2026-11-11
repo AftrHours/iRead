@@ -11,13 +11,20 @@ final class LibVM {
 
     var searchText = ""
     var isImportPickerPresented = false
+    private(set) var isSelectionMode = false
+    private(set) var selectedBookIDs: Set<UUID> = []
+    private(set) var isVoiceSearchActive = false
+    private(set) var voiceSearchError: String?
+    var renameDraft = ""
     private(set) var allBooks: [BookRecord] = []
     private(set) var viewMode = ViewMode.grid
     private(set) var sortOption = LibrarySortOption.latestRead
     private(set) var importError: String?
     private(set) var covers: [UUID: UIImage] = [:]
     private(set) var bookToRemove: BookRecord?
+    private(set) var bookToRename: BookRecord?
     private(set) var bookActionError: String?
+    private(set) var cloudAccount: CloudAccount = .unknown
     private var newestImportedBookID: UUID?
     private var lastImport: Task<Void, Never>?
 
@@ -35,11 +42,13 @@ final class LibVM {
     }
 
     var emptyStateTitle: String {
-        allBooks.isEmpty ? "No books yet" : "No books found"
+        if allBooks.isEmpty { return "Let’s add your first book!" }
+        return searchText.isEmpty ? "No books found" : "No Results"
     }
 
     var emptyStateMessage: String {
-        allBooks.isEmpty ? "Tap the + button to import an EPUB" : "Try a different title or author"
+        if allBooks.isEmpty { return "Tap the + button to import an EPUB file." }
+        return "Try searching by title or author again."
     }
 
     var isImportAlertPresented: Bool {
@@ -57,20 +66,41 @@ final class LibVM {
         set { if !newValue { dismissBookActionError() } }
     }
 
+    var isRenameAlertPresented: Bool {
+        get { bookToRename != nil }
+        set { if !newValue { renameCancelled() } }
+    }
+
+    var isVoiceSearchAlertPresented: Bool {
+        get { voiceSearchError != nil }
+        set { if !newValue { voiceSearchError = nil } }
+    }
+
+    var accountActionTitle: String {
+        cloudAccount == .signedIn ? "Sign out from Apple Account" : "Sign in from Apple Account"
+    }
+
     private static let coverSize = CGSize(width: 400, height: 600)
     private let libCtrl: LibCtrl
     private let importCtrl: ImportCtrl
     private let appNav: AppNav
+    private let speechSearchSvc: SpeechSearchSvc
+    private let cloudSvc: (any CloudSvc)?
+    private var voiceSearchSessionID: UUID?
 
-    init(libCtrl: LibCtrl, importCtrl: ImportCtrl, appNav: AppNav) {
+    init(libCtrl: LibCtrl, importCtrl: ImportCtrl, appNav: AppNav, speechSearchSvc: SpeechSearchSvc = SpeechSearchSvc(),
+         cloudSvc: (any CloudSvc)? = nil) {
         self.libCtrl = libCtrl
         self.importCtrl = importCtrl
         self.appNav = appNav
+        self.speechSearchSvc = speechSearchSvc
+        self.cloudSvc = cloudSvc
     }
 
     func onAppear() async {
         allBooks = (try? await libCtrl.loadLibrary()) ?? []
         await loadCovers()
+        await refreshCloudAccount()
         await appBecameActive()
     }
 
@@ -119,6 +149,76 @@ final class LibVM {
 
     func toggleViewMode() {
         viewMode = viewMode == .grid ? .list : .grid
+    }
+
+    func selectionModeTapped() {
+        isSelectionMode = true
+        selectedBookIDs.removeAll()
+    }
+
+    func selectionTapped(_ book: BookRecord) {
+        guard isSelectionMode else { return }
+        if selectedBookIDs.contains(book.id) {
+            selectedBookIDs.remove(book.id)
+        } else {
+            selectedBookIDs.insert(book.id)
+        }
+    }
+
+    func selectionModeDismissed() {
+        isSelectionMode = false
+        selectedBookIDs.removeAll()
+    }
+
+    func refreshCloudAccount() async {
+        guard let cloudSvc else { return }
+        cloudAccount = await cloudSvc.account()
+    }
+
+    func accountSettingsTapped() {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+        UIApplication.shared.open(settingsURL)
+    }
+
+    func voiceSearchTapped() {
+        if isVoiceSearchActive {
+            voiceSearchSessionID = nil
+            speechSearchSvc.stop()
+            isVoiceSearchActive = false
+            return
+        }
+
+        let sessionID = UUID()
+        voiceSearchSessionID = sessionID
+        isVoiceSearchActive = true
+        Task {
+            do {
+                try await speechSearchSvc.start { [weak self] transcript in
+                    guard self?.voiceSearchSessionID == sessionID else { return }
+                    self?.searchText = transcript
+                } onFailure: { [weak self] message in
+                    guard self?.voiceSearchSessionID == sessionID else { return }
+                    self?.voiceSearchError = message
+                } onFinished: { [weak self] in
+                    guard self?.voiceSearchSessionID == sessionID else { return }
+                    self?.voiceSearchSessionID = nil
+                    self?.isVoiceSearchActive = false
+                }
+                guard voiceSearchSessionID == sessionID else {
+                    speechSearchSvc.stop()
+                    return
+                }
+            } catch {
+                guard voiceSearchSessionID == sessionID else { return }
+                voiceSearchSessionID = nil
+                isVoiceSearchActive = false
+                voiceSearchError = error.localizedDescription
+            }
+        }
+    }
+
+    func dismissVoiceSearchError() {
+        voiceSearchError = nil
     }
 
     func importTapped() {
@@ -178,6 +278,10 @@ final class LibVM {
     }
 
     func bookTapped(_ book: BookRecord) {
+        guard !isSelectionMode else {
+            selectionTapped(book)
+            return
+        }
         appNav.openReader(book: book)
     }
 
@@ -205,6 +309,32 @@ final class LibVM {
 
     func removeTapped(_ book: BookRecord) {
         bookToRemove = book
+    }
+
+    func renameTapped(_ book: BookRecord) {
+        bookToRename = book
+        renameDraft = book.title
+    }
+
+    func renameCancelled() {
+        bookToRename = nil
+        renameDraft = ""
+    }
+
+    func renameConfirmed() {
+        guard let book = bookToRename else { return }
+        let title = renameDraft.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !title.isEmpty else { return }
+        bookToRename = nil
+        renameDraft = ""
+        Task {
+            do {
+                try libCtrl.rename(book, to: title)
+                await reloadLibrary()
+            } catch {
+                bookActionError = error.localizedDescription
+            }
+        }
     }
 
     func removeCancelled() {

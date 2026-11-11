@@ -12,7 +12,7 @@ struct BookGridView<MenuButton: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Rectangle()
-                .fill(Color(.systemGray5))
+                .fill(AppColors.menuTextMuted.opacity(0.16))
                 .aspectRatio(bookCoverAspectRatio, contentMode: .fit)
                 .overlay {
                     if let cover {
@@ -24,29 +24,28 @@ struct BookGridView<MenuButton: View>: View {
                 .clipped()
 
             ProgressBar(progress: book.progress)
-                .padding(.top, 10)
-                .padding(.horizontal, 10)
+                .padding(.top, 5)
 
             HStack(alignment: .center, spacing: 4) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(book.title)
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(LibraryPalette.primaryText)
+                        .font(AppTypography.caption1(.semibold))
+                        .foregroundStyle(AppColors.textPrimary)
                         .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
                     Text(book.author)
-                        .font(.caption)
-                        .foregroundStyle(LibraryPalette.secondaryText)
+                        .font(AppTypography.caption2())
+                        .foregroundStyle(AppColors.textSecondary)
                         .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
                 }
                 Spacer(minLength: 0)
                 menu
             }
-            .padding(.top, 4)
-            .padding(.horizontal, 10)
-            .padding(.bottom, 3)
+            .padding(.top, 5)
+            .padding(.horizontal, 8)
+            .padding(.bottom, 7)
         }
-        .background(LibraryPalette.card, in: .rect(cornerRadius: 14))
-        .clipShape(.rect(cornerRadius: 14))
+        .background(AppColors.popoverBackground, in: .rect(cornerRadius: 10))
+        .clipShape(.rect(cornerRadius: 10))
     }
 }
 

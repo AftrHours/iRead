@@ -7,6 +7,8 @@ struct PageArea: View {
     let textMarginRatio: CGFloat
     private var referenceVM: ReferenceVM { readerVM.referenceVM }
     private var readerSettingsVM: ReaderSettingsVM { readerVM.readerSettingsVM }
+    /// Room the reference popover needs below an underline. About the tallest card (a long quote on an iPhone), plus a margin.
+    private static let popoverHeight: CGFloat = 400
 
     var body: some View {
         GeometryReader { proxy in
@@ -27,9 +29,21 @@ struct PageArea: View {
                     .id(readerSettingsVM.layoutSettings.pageTurnStyle)
                     .popover(
                         item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
-                        attachmentAnchor: .rect(.rect(referenceVM.cardAnchor))
+                        attachmentAnchor: .rect(.rect(referenceVM.cardAnchor)),
+                        // Below the underline when the card fits there, else above it. SwiftUI only takes one fixed
+                        // edge, or nil to let the system pick the roomiest side, which puts the card above mid-page underlines.
+                        arrowEdge: proxy.size.height - referenceVM.cardAnchor.maxY >= Self.popoverHeight ? .top : .bottom
                     ) { referenceCard in
-                        RefCardView(card: referenceCard, ratingVM: readerVM.ratingVM, onJumpTapped: { referenceVM.jumpToPassageTapped() })
+                        RefPopover(
+                            card: referenceCard,
+                            verdict: readerVM.ratingVM.verdict,
+                            isAskingToShare: readerVM.ratingVM.isAskingToShare,
+                            onVerdictTapped: readerVM.ratingVM.verdictTapped,
+                            onSharingChosen: readerVM.ratingVM.sharingChosen,
+                            onJumpTapped: referenceVM.jumpToPassageTapped
+                        )
+                        // Reads this underline's saved rating each time the card opens.
+                        .task(id: referenceCard.underlineID) { await readerVM.ratingVM.cardShown(underlineID: referenceCard.underlineID) }
                     }
                 } else if readerVM.hasFailedToOpen {
                     ContentUnavailableView("Can't Open Book", systemImage: "book.closed")

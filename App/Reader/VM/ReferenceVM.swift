@@ -102,17 +102,20 @@ final class ReferenceVM {
             card = ReferenceCard(
                 underlineID: id,
                 phrase: underline.text,
-                location: "\(chapterTitles[passagePage.chapterIndex]) • Page \(passagePage.number)",
+                location: Self.location(chapterTitle: chapterTitles[passagePage.chapterIndex], page: passagePage.number),
                 quote: Self.quoted(underline.reference.text)
             )
         }
     }
 
-    /// Wraps the passage in curly quotes. Quotes already at either end are dropped first, so dialogue
-    /// such as “Really, Mother? shows as “Really, Mother?” and not ““Really, Mother?”.
+    /// "Chapter 2 • Page 19" as in the design. A section without a chapter number, like the contents, keeps its title.
+    static func location(chapterTitle: String, page: Int) -> String {
+        let chapter = ChapterNumber.from(title: chapterTitle).map { "Chapter \($0)" } ?? chapterTitle
+        return "\(chapter) • Page \(page)"
+    }
+
     static func quoted(_ text: String) -> String {
-        let quoteMarks = CharacterSet(charactersIn: "\"“”").union(.whitespacesAndNewlines)
-        return "“\(text.trimmingCharacters(in: quoteMarks))”"
+        "…\(text.trimmingCharacters(in: .whitespacesAndNewlines))…"
     }
 
     func cardDismissed() {

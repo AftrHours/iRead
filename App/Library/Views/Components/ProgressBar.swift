@@ -9,14 +9,24 @@ struct ProgressBar: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .leading) {
-                Rectangle().fill(LibraryPalette.progressTrack)
+                Rectangle().fill(AppColors.readerReferencePanel)
                 Rectangle()
-                    .fill(LibraryPalette.progressFill)
+                    .fill(AppColors.actionPrimary)
                     .frame(width: geometry.size.width * clampedProgress)
             }
         }
-        .frame(height: 6)
+        .frame(height: 4)
         .accessibilityElement()
         .accessibilityLabel("\(Int((clampedProgress * 100).rounded()))% read")
     }
+}
+
+#Preview("Reading Progress") {
+    VStack(alignment: .leading, spacing: 16) {
+        ProgressBar(progress: 0.32)
+        ProgressBar(progress: 0.76)
+        ProgressBar(progress: 1)
+    }
+    .frame(width: 240)
+    .padding()
 }
