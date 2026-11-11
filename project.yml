@@ -92,6 +92,8 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: iRead
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "iRead uses speech recognition to search your library by voice."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "iRead uses the microphone when you tap voice search."
         # Universal: 1 = iPhone, 2 = iPad.
         TARGETED_DEVICE_FAMILY: "1,2"
         # iPhone: portrait only, like a book held in one hand.

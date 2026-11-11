@@ -21,3 +21,14 @@ struct OnboardingBookIllustration: View {
         .accessibilityHidden(true)
     }
 }
+
+#Preview("Book Illustrations") {
+    HStack(spacing: 12) {
+        OnboardingBookIllustration(symbol: "book.closed.fill", tint: LibraryPalette.addButton, rotation: -8)
+        OnboardingBookIllustration(symbol: "text.book.closed.fill", tint: LibraryPalette.secondaryText, rotation: 7)
+        OnboardingBookIllustration(symbol: "book.closed.fill", tint: LibraryPalette.controlFill, rotation: -3)
+    }
+    .padding()
+    .frame(width: 360)
+    .background(LibraryPalette.page)
+}

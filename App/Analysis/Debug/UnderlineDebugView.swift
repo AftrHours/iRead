@@ -55,4 +55,13 @@ struct UnderlineDebugView: View {
         .task { await underlineDebugVM.onAppear() }
     }
 }
+
+#Preview("Underline Debug") {
+    let readerVM = PreviewFixtures.readerVM()
+    UnderlineDebugView(underlineDebugVM: UnderlineDebugVM(
+        refCtrl: readerVM.referenceVM.refCtrl,
+        ratingCtrl: readerVM.ratingVM.ratingCtrl,
+        chapterIndex: nil
+    ))
+}
 #endif

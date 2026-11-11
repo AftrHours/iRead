@@ -10,7 +10,7 @@ struct BookRowView<MenuButton: View>: View {
         HStack(spacing: 16) {
             VStack(spacing: 4) {
                 Rectangle()
-                    .fill(Color(.systemGray5))
+                    .fill(AppColors.menuTextMuted.opacity(0.16))
                     .frame(width: 60, height: 60 / bookCoverAspectRatio)
                     .overlay {
                         if let cover {
@@ -27,12 +27,12 @@ struct BookRowView<MenuButton: View>: View {
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(book.title)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(LibraryPalette.primaryText)
+                    .font(AppTypography.subheadline(.semibold))
+                    .foregroundStyle(AppColors.textPrimary)
                     .lineLimit(dynamicTypeSize.isAccessibilitySize ? 3 : 2)
                 Text(book.author)
-                    .font(.caption)
-                    .foregroundStyle(LibraryPalette.secondaryText)
+                    .font(AppTypography.footnote())
+                    .foregroundStyle(AppColors.textSecondary)
                     .lineLimit(dynamicTypeSize.isAccessibilitySize ? 2 : 1)
             }
 

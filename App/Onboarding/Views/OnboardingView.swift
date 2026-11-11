@@ -187,3 +187,7 @@ struct OnboardingView: View {
         .buttonStyle(.plain)
     }
 }
+
+#Preview("Onboarding") {
+    OnboardingView(onboardingVM: PreviewFixtures.onboardingVM(), onFinish: {})
+}
