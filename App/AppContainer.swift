@@ -15,6 +15,7 @@ struct AppContainer {
     private let brightnessSvc = BrightnessSvc()
     private let pendingImportRepo = PendingImportRepo()
     private let libraryIndexRepo = LibraryIndexRepo()
+    private let cloudSvc: (any CloudSvc)?
 
     init() {
         self.init(modelCheckSvc: ModelCheckSvc(), cloudSvc: CloudSvcCloudKit())
@@ -33,6 +34,7 @@ struct AppContainer {
         libRepo = LibRepo(epubParseSvc: epubParseSvc)
         underlineRepo = UnderlineRepo(modelCheckSvc: modelCheckSvc, cloudSvc: cloudSvc)
         ratingRepo = RatingRepo(cloudSvc: cloudSvc)
+        self.cloudSvc = cloudSvc
     }
 
     func makeLibVM() -> LibVM {
@@ -40,7 +42,7 @@ struct AppContainer {
             libCtrl: LibCtrl(libRepo: libRepo, bookContentRepo: bookContentRepo, progRepo: progRepo),
             importCtrl: ImportCtrl(libRepo: libRepo, pendingImportRepo: pendingImportRepo, libraryIndexRepo: libraryIndexRepo),
             appNav: appNav,
-            cloudSvc: CloudSvcCloudKit()
+            cloudSvc: cloudSvc
         )
     }
 
