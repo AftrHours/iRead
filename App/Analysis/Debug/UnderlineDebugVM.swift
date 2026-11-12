@@ -109,6 +109,7 @@ final class UnderlineDebugVM {
 
     private static func text(of run: UnderlineRepo.BookRun?) -> String {
         guard let run else { return "Not started since the app opened." }
+        if let refusal = run.refusal { return refusal }
         var parts = ["\(run.finished) of \(run.total) chapters"]
         if let current = run.current, run.isRunning { parts.append("working on chapter \(current)") }
         if run.skippedPhrases > 0 { parts.append("\(run.skippedPhrases) phrases the model failed on") }

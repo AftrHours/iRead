@@ -98,6 +98,8 @@ actor UnderlineRepo {
         /// Chapters with too many failures, left for the next run.
         var leftOut: [Int] = []
         var isRunning = true
+        /// Why the run didn't start, such as the model not answering.
+        var refusal: String?
     }
 
     func bookRun(of book: String) -> BookRun? {
@@ -111,8 +113,16 @@ actor UnderlineRepo {
 
     /// Underlines every chapter in order and saves each one, so a whole book can be worked out in one go. Chapters already
     /// saved are skipped, so a stopped run carries on where it was. The chapter being read is not touched.
-    func startBook(_ content: BookContent) {
+    /// Only with Foundation Models: the chapters it saves become the seeds testers get, and rules alone underline far
+    /// less. When the app is on rules, the model is tried once more first.
+    func startBook(_ content: BookContent) async {
         guard bookTask == nil else { return }
+        guard await modelEngine() != nil else {
+            bookRuns[content.fingerprint] = BookRun(total: content.chapters.count, isRunning: false,
+                                                    refusal: "Not started: Foundation Models isn't answering, try again in a moment")
+            logger.notice("Whole book not started: the on-device model isn't answering")
+            return
+        }
         bookRuns[content.fingerprint] = BookRun(total: content.chapters.count)
         logger.info("Whole book: chapters are saved in \(self.savedFolder(of: content.fingerprint), privacy: .public)")
         bookTask = Task { await self.runBook(content) }
@@ -120,6 +130,18 @@ actor UnderlineRepo {
 
     func stopBook() {
         bookTask?.cancel()
+    }
+
+    /// The engine on Foundation Models, switching from rules when the model answers now. nil when it still doesn't.
+    private func modelEngine() async -> UnderlineCtrl? {
+        let current = await engine()
+        if current.usesModel { return current }
+        guard await modelAnswers() else { return nil }
+        let made = UnderlineCtrl(model: .automatic)
+        guard made.usesModel else { return nil }
+        underlineCtrl = made
+        logger.info("The on-device model answers now, so underlines use it")
+        return made
     }
 
     /// What "Export saved chapters" copied: chapter files per book fingerprint, and files left behind because an older
@@ -243,11 +265,18 @@ actor UnderlineRepo {
     /// so the model is tried once first and the engine falls back to rules.
     private func engine() async -> UnderlineCtrl {
         if let underlineCtrl { return underlineCtrl }
-        let canUseModel = await modelCheckSvc?.modelAnswers() ?? false
+        let canUseModel = await modelAnswers()
         if let underlineCtrl { return underlineCtrl }
         let made = UnderlineCtrl(model: canUseModel ? .automatic : .rulesOnly)
         underlineCtrl = made
         return made
+    }
+
+    /// Its own task, so a chapter stopped while the model is tried (the reader turned to another chapter) doesn't cancel
+    /// the call and count as the model failing, which would leave the app on rules until it is opened again.
+    private func modelAnswers() async -> Bool {
+        guard let modelCheckSvc else { return false }
+        return await Task { await modelCheckSvc.modelAnswers() }.value
     }
 
     /// A chapter is finished when this device saved it, or when the app comes with it: the bundled books are worked out
