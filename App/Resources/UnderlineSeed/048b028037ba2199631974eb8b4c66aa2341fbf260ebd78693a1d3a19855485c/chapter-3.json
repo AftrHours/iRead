@@ -1,0 +1,615 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "64:821",
+      "sentence": 64,
+      "paragraph": 31,
+      "range": [
+        821,
+        19
+      ],
+      "text": "drug-created dreams",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 54,
+        "paragraph": 30,
+        "range": [
+          85,
+          473
+        ],
+        "text": "My own complete happiness, and the home-centred interests which rise up around the man who first finds himself master of his own establishment, were sufficient to absorb all my attention, while Holmes, who loathed every form of society with his whole Bohemian soul, remained in our lodgings in Baker Street, buried among his old books, and alternating from week to week between cocaine and ambition, the drowsiness of the drug, and the fierce energy of his own keen nature."
+      }
+    },
+    {
+      "id": "70:1",
+      "sentence": 70,
+      "paragraph": 33,
+      "range": [
+        1,
+        17
+      ],
+      "text": "Wedlock suits you",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 53,
+        "paragraph": 30,
+        "range": [
+          36,
+          48
+        ],
+        "text": "My marriage had drifted us away from each other."
+      }
+    },
+    {
+      "id": "76:87",
+      "sentence": 76,
+      "paragraph": 35,
+      "range": [
+        87,
+        17
+      ],
+      "text": "in practice again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 58,
+        "paragraph": 31,
+        "range": [
+          0,
+          177
+        ],
+        "text": "One night—it was on the twentieth of March, 1888—I was returning from a journey to a patient (for I had now returned to civil practice), when my way led me through Baker Street."
+      }
+    },
+    {
+      "id": "84:275",
+      "sentence": 84,
+      "paragraph": 38,
+      "range": [
+        275,
+        9
+      ],
+      "text": "Mary Jane",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 80,
+        "paragraph": 37,
+        "range": [
+          24,
+          126
+        ],
+        "text": "How do I know that you have been getting yourself very wet lately, and that you have a most clumsy and careless servant girl?”"
+      }
+    },
+    {
+      "id": "88:465",
+      "sentence": 88,
+      "paragraph": 40,
+      "range": [
+        465,
+        17
+      ],
+      "text": "the London slavey",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 80,
+        "paragraph": 37,
+        "range": [
+          24,
+          126
+        ],
+        "text": "How do I know that you have been getting yourself very wet lately, and that you have a most clumsy and careless servant girl?”"
+      }
+    },
+    {
+      "id": "90:62",
+      "sentence": 90,
+      "paragraph": 41,
+      "range": [
+        62,
+        24
+      ],
+      "text": "his process of deduction",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 88,
+        "paragraph": 40,
+        "range": [
+          322,
+          161
+        ],
+        "text": "Hence, you see, my double deduction that you had been out in vile weather, and that you had a particularly malignant boot-slitting specimen of the London slavey."
+      }
+    },
+    {
+      "id": "107:139",
+      "sentence": 107,
+      "paragraph": 48,
+      "range": [
+        139,
+        22
+      ],
+      "text": "both seen and observed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 94,
+        "paragraph": 42,
+        "range": [
+          91,
+          33
+        ],
+        "text": "“You see, but you do not observe."
+      }
+    },
+    {
+      "id": "134:37",
+      "sentence": 134,
+      "paragraph": 58,
+      "range": [
+        37,
+        12
+      ],
+      "text": "his monogram",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 131,
+        "paragraph": 56,
+        "range": [
+          0,
+          124
+        ],
+        "text": "I did so, and saw a large “E” with a small “g,” a “P,” and a large “G” with a small “t” woven into the texture of the paper."
+      }
+    },
+    {
+      "id": "150:68",
+      "sentence": 150,
+      "paragraph": 61,
+      "range": [
+        68,
+        41
+      ],
+      "text": "the peculiar construction of the sentence",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 115,
+        "paragraph": 50,
+        "range": [
+          344,
+          55
+        ],
+        "text": "This account of you we have from all quarters received."
+      }
+    },
+    {
+      "id": "153:331",
+      "sentence": 153,
+      "paragraph": 61,
+      "range": [
+        331,
+        42
+      ],
+      "text": "this German who writes upon Bohemian paper",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 143,
+        "paragraph": 59,
+        "range": [
+          336,
+          69
+        ],
+        "text": "It is in a German-speaking country—in Bohemia, not far from Carlsbad."
+      }
+    },
+    {
+      "id": "159:83",
+      "sentence": 159,
+      "paragraph": 63,
+      "range": [
+        83,
+        45
+      ],
+      "text": "A nice little brougham and a pair of beauties",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 155,
+        "paragraph": 62,
+        "range": [
+          0,
+          129
+        ],
+        "text": "As he spoke there was the sharp sound of horses’ hoofs and grating wheels against the curb, followed by a sharp pull at the bell."
+      }
+    },
+    {
+      "id": "194:83",
+      "sentence": 194,
+      "paragraph": 74,
+      "range": [
+        83,
+        19
+      ],
+      "text": "It is both, or none",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 192,
+        "paragraph": 73,
+        "range": [
+          210,
+          60
+        ],
+        "text": "If not, I should much prefer to communicate with you alone.”"
+      }
+    },
+    {
+      "id": "202:164",
+      "sentence": 202,
+      "paragraph": 78,
+      "range": [
+        164,
+        44
+      ],
+      "text": "the title by which I have just called myself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 190,
+        "paragraph": 73,
+        "range": [
+          0,
+          64
+        ],
+        "text": "“You may address me as the Count Von Kramm, a Bohemian nobleman."
+      }
+    },
+    {
+      "id": "203:1",
+      "sentence": 203,
+      "paragraph": 79,
+      "range": [
+        1,
+        17
+      ],
+      "text": "I was aware of it",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 202,
+        "paragraph": 78,
+        "range": [
+          60,
+          172
+        ],
+        "text": "“The august person who employs me wishes his agent to be unknown to you, and I may confess at once that the title by which I have just called myself is not exactly my own.”"
+      }
+    },
+    {
+      "id": "206:1",
+      "sentence": 206,
+      "paragraph": 81,
+      "range": [
+        1,
+        24
+      ],
+      "text": "I was also aware of that",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 205,
+        "paragraph": 80,
+        "range": [
+          195,
+          98
+        ],
+        "text": "To speak plainly, the matter implicates the great House of Ormstein, hereditary kings of Bohemia.”"
+      }
+    },
+    {
+      "id": "209:1",
+      "sentence": 209,
+      "paragraph": 83,
+      "range": [
+        1,
+        51
+      ],
+      "text": "If your Majesty would condescend to state your case",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 205,
+        "paragraph": 80,
+        "range": [
+          195,
+          98
+        ],
+        "text": "To speak plainly, the matter implicates the great House of Ormstein, hereditary kings of Bohemia.”"
+      }
+    },
+    {
+      "id": "216:102",
+      "sentence": 216,
+      "paragraph": 85,
+      "range": [
+        102,
+        41
+      ],
+      "text": "Wilhelm Gottsreich Sigismond von Ormstein",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 205,
+        "paragraph": 80,
+        "range": [
+          195,
+          98
+        ],
+        "text": "To speak plainly, the matter implicates the great House of Ormstein, hereditary kings of Bohemia.”"
+      }
+    },
+    {
+      "id": "219:327",
+      "sentence": 219,
+      "paragraph": 86,
+      "range": [
+        327,
+        26
+      ],
+      "text": "come incognito from Prague",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 202,
+        "paragraph": 78,
+        "range": [
+          60,
+          172
+        ],
+        "text": "“The august person who employs me wishes his agent to be unknown to you, and I may confess at once that the title by which I have just called myself is not exactly my own.”"
+      }
+    },
+    {
+      "id": "223:8",
+      "sentence": 223,
+      "paragraph": 89,
+      "range": [
+        8,
+        23
+      ],
+      "text": "look her up in my index",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 221,
+        "paragraph": 88,
+        "range": [
+          0,
+          152
+        ],
+        "text": "“The facts are briefly these: Some five years ago, during a lengthy visit to Warsaw, I made the acquaintance of the well-known adventuress, Irene Adler."
+      }
+    },
+    {
+      "id": "235:254",
+      "sentence": 235,
+      "paragraph": 90,
+      "range": [
+        254,
+        17
+      ],
+      "text": "this young person",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 221,
+        "paragraph": 88,
+        "range": [
+          0,
+          152
+        ],
+        "text": "“The facts are briefly these: Some five years ago, during a lengthy visit to Warsaw, I made the acquaintance of the well-known adventuress, Irene Adler."
+      }
+    },
+    {
+      "id": "243:73",
+      "sentence": 243,
+      "paragraph": 96,
+      "range": [
+        73,
+        11
+      ],
+      "text": "her letters",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 235,
+        "paragraph": 90,
+        "range": [
+          201,
+          160
+        ],
+        "text": "Your Majesty, as I understand, became entangled with this young person, wrote her some compromising letters, and is now desirous of getting those letters back.”"
+      }
+    },
+    {
+      "id": "267:1",
+      "sentence": 267,
+      "paragraph": 114,
+      "range": [
+        1,
+        12
+      ],
+      "text": "Stolen, then",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 266,
+        "paragraph": 113,
+        "range": [
+          0,
+          20
+        ],
+        "text": "“She will not sell.”"
+      }
+    },
+    {
+      "id": "280:1",
+      "sentence": 280,
+      "paragraph": 121,
+      "range": [
+        1,
+        10
+      ],
+      "text": "To ruin me",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 253,
+        "paragraph": 105,
+        "range": [
+          0,
+          33
+        ],
+        "text": "“We were both in the photograph.”"
+      }
+    },
+    {
+      "id": "294:229",
+      "sentence": 294,
+      "paragraph": 127,
+      "range": [
+        229,
+        40
+      ],
+      "text": "Rather than I should marry another woman",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 282,
+        "paragraph": 123,
+        "range": [
+          0,
+          27
+        ],
+        "text": "“I am about to be married.”"
+      }
+    },
+    {
+      "id": "298:61",
+      "sentence": 298,
+      "paragraph": 131,
+      "range": [
+        61,
+        37
+      ],
+      "text": "the betrothal was publicly proclaimed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 282,
+        "paragraph": 123,
+        "range": [
+          0,
+          27
+        ],
+        "text": "“I am about to be married.”"
+      }
+    },
+    {
+      "id": "300:18",
+      "sentence": 300,
+      "paragraph": 132,
+      "range": [
+        18,
+        14
+      ],
+      "text": "three days yet",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 299,
+        "paragraph": 131,
+        "range": [
+          100,
+          26
+        ],
+        "text": "That will be next Monday.”"
+      }
+    },
+    {
+      "id": "304:62",
+      "sentence": 304,
+      "paragraph": 133,
+      "range": [
+        62,
+        19
+      ],
+      "text": "the Count Von Kramm",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 190,
+        "paragraph": 73,
+        "range": [
+          0,
+          64
+        ],
+        "text": "“You may address me as the Count Von Kramm, a Bohemian nobleman."
+      }
+    },
+    {
+      "id": "311:73",
+      "sentence": 311,
+      "paragraph": 139,
+      "range": [
+        73,
+        15
+      ],
+      "text": "that photograph",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 253,
+        "paragraph": 105,
+        "range": [
+          0,
+          33
+        ],
+        "text": "“We were both in the photograph.”"
+      }
+    },
+    {
+      "id": "325:145",
+      "sentence": 325,
+      "paragraph": 148,
+      "range": [
+        145,
+        18
+      ],
+      "text": "the royal brougham",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 159,
+        "paragraph": 63,
+        "range": [
+          82,
+          47
+        ],
+        "text": "“A nice little brougham and a pair of beauties."
+      }
+    }
+  ]
+}

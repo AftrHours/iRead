@@ -1,0 +1,783 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "6414:62",
+      "sentence": 6414,
+      "paragraph": 2403,
+      "range": [
+        62,
+        47
+      ],
+      "text": "such an offer seemed almost too good to be true",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6413,
+        "paragraph": 2402,
+        "range": [
+          421,
+          60
+        ],
+        "text": "Your salary with me, madam, would commence at £ 100 a year.’"
+      }
+    },
+    {
+      "id": "6434:28",
+      "sentence": 6434,
+      "paragraph": 2410,
+      "range": [
+        28,
+        35
+      ],
+      "text": "the nature of the child’s amusement",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6428,
+        "paragraph": 2409,
+        "range": [
+          55,
+          60
+        ],
+        "text": "Oh, if you could see him killing cockroaches with a slipper!"
+      }
+    },
+    {
+      "id": "6452:172",
+      "sentence": 6452,
+      "paragraph": 2419,
+      "range": [
+        172,
+        59
+      ],
+      "text": "I could not dream of sacrificing it in this offhand fashion",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6448,
+        "paragraph": 2418,
+        "range": [
+          0,
+          57
+        ],
+        "text": "“‘Or to cut your hair quite short before you come to us?’"
+      }
+    },
+    {
+      "id": "6471:355",
+      "sentence": 6471,
+      "paragraph": 2428,
+      "range": [
+        355,
+        56
+      ],
+      "text": "Very few governesses in England are getting £ 100 a year",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6413,
+        "paragraph": 2402,
+        "range": [
+          421,
+          60
+        ],
+        "text": "Your salary with me, madam, would commence at £ 100 a year.’"
+      }
+    },
+    {
+      "id": "6482:450",
+      "sentence": 6482,
+      "paragraph": 2430,
+      "range": [
+        450,
+        35
+      ],
+      "text": "a particular shade of electric blue",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6443,
+        "paragraph": 2414,
+        "range": [
+          93,
+          101
+        ],
+        "text": "If you were asked to wear any dress which we might give you, you would not object to our little whim."
+      }
+    },
+    {
+      "id": "6485:996",
+      "sentence": 6485,
+      "paragraph": 2430,
+      "range": [
+        996,
+        34
+      ],
+      "text": "I must remain firm upon this point",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6454,
+        "paragraph": 2421,
+        "range": [
+          0,
+          51
+        ],
+        "text": "“‘I am afraid that it is quite essential,’ said he."
+      }
+    },
+    {
+      "id": "6502:140",
+      "sentence": 6502,
+      "paragraph": 2438,
+      "range": [
+        140,
+        21
+      ],
+      "text": "his wife is a lunatic",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6455,
+        "paragraph": 2421,
+        "range": [
+          52,
+          108
+        ],
+        "text": "‘It is a little fancy of my wife’s, and ladies’ fancies, you know, madam, ladies’ fancies must be consulted."
+      }
+    },
+    {
+      "id": "6508:78",
+      "sentence": 6508,
+      "paragraph": 2441,
+      "range": [
+        78,
+        37
+      ],
+      "text": "Why should they give you £ 120 a year",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6480,
+        "paragraph": 2430,
+        "range": [
+          253,
+          138
+        ],
+        "text": "We are willing to give £ 30 a quarter, or £ 120 a year, so as to recompense you for any little inconvenience which our fads may cause you."
+      }
+    },
+    {
+      "id": "6524:188",
+      "sentence": 6524,
+      "paragraph": 2446,
+      "range": [
+        188,
+        31
+      ],
+      "text": "sacrifice my poor hair to-night",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6485,
+        "paragraph": 2430,
+        "range": [
+          850,
+          256
+        ],
+        "text": "As regards your hair, it is no doubt a pity, especially as I could not help remarking its beauty during our short interview, but I am afraid that I must remain firm upon this point, and I only hope that the increased salary may recompense you for the loss."
+      }
+    },
+    {
+      "id": "6538:795",
+      "sentence": 6538,
+      "paragraph": 2449,
+      "range": [
+        795,
+        59
+      ],
+      "text": "no sister of his should ever have accepted such a situation",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6495,
+        "paragraph": 2435,
+        "range": [
+          0,
+          95
+        ],
+        "text": "“I confess that it is not the situation which I should like to see a sister of mine apply for.”"
+      }
+    },
+    {
+      "id": "6539:0",
+      "sentence": 6539,
+      "paragraph": 2450,
+      "range": [
+        0,
+        41
+      ],
+      "text": "The telegram which we eventually received",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6520,
+        "paragraph": 2445,
+        "range": [
+          95,
+          77
+        ],
+        "text": "“But at any time, day or night, a telegram would bring me down to your help.”"
+      }
+    },
+    {
+      "id": "6578:805",
+      "sentence": 6578,
+      "paragraph": 2467,
+      "range": [
+        805,
+        54
+      ],
+      "text": "It is the five miles of country which makes the danger",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6423,
+        "paragraph": 2407,
+        "range": [
+          35,
+          61
+        ],
+        "text": "The Copper Beeches, five miles on the far side of Winchester."
+      }
+    },
+    {
+      "id": "6605:128",
+      "sentence": 6605,
+      "paragraph": 2479,
+      "range": [
+        128,
+        24
+      ],
+      "text": "drove me in his dog-cart",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6487,
+        "paragraph": 2430,
+        "range": [
+          1170,
+          73
+        ],
+        "text": "Now do try to come, and I shall meet you with the dog-cart at Winchester."
+      }
+    },
+    {
+      "id": "6611:164",
+      "sentence": 6611,
+      "paragraph": 2480,
+      "range": [
+        164,
+        48
+      ],
+      "text": "the conjecture which seemed to us to be probable",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6502,
+        "paragraph": 2438,
+        "range": [
+          116,
+          209
+        ],
+        "text": "Is it not possible that his wife is a lunatic, that he desires to keep the matter quiet for fear she should be taken to an asylum, and that he humours her fancies in every way in order to prevent an outbreak?”"
+      }
+    },
+    {
+      "id": "6614:586",
+      "sentence": 6614,
+      "paragraph": 2480,
+      "range": [
+        586,
+        41
+      ],
+      "text": "the daughter who has gone to Philadelphia",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6483,
+        "paragraph": 2430,
+        "range": [
+          550,
+          181
+        ],
+        "text": "You need not, however, go to the expense of purchasing one, as we have one belonging to my dear daughter Alice (now in Philadelphia), which would, I should think, fit you very well."
+      }
+    },
+    {
+      "id": "6626:686",
+      "sentence": 6626,
+      "paragraph": 2481,
+      "range": [
+        686,
+        28
+      ],
+      "text": "the disposition of her child",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6428,
+        "paragraph": 2409,
+        "range": [
+          55,
+          60
+        ],
+        "text": "Oh, if you could see him killing cockroaches with a slipper!"
+      }
+    },
+    {
+      "id": "6640:87",
+      "sentence": 6640,
+      "paragraph": 2485,
+      "range": [
+        87,
+        52
+      ],
+      "text": "falling in with our whims so far as to cut your hair",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6524,
+        "paragraph": 2446,
+        "range": [
+          149,
+          108
+        ],
+        "text": "I shall write to Mr. Rucastle at once, sacrifice my poor hair to-night, and start for Winchester to-morrow.”"
+      }
+    },
+    {
+      "id": "6642:243",
+      "sentence": 6642,
+      "paragraph": 2485,
+      "range": [
+        243,
+        23
+      ],
+      "text": "the electric-blue dress",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6482,
+        "paragraph": 2430,
+        "range": [
+          431,
+          118
+        ],
+        "text": "My wife is fond of a particular shade of electric blue and would like you to wear such a dress indoors in the morning."
+      }
+    },
+    {
+      "id": "6645:132",
+      "sentence": 6645,
+      "paragraph": 2486,
+      "range": [
+        132,
+        45
+      ],
+      "text": "unmistakable signs of having been worn before",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6483,
+        "paragraph": 2430,
+        "range": [
+          550,
+          181
+        ],
+        "text": "You need not, however, go to the expense of purchasing one, as we have one belonging to my dear daughter Alice (now in Philadelphia), which would, I should think, fit you very well."
+      }
+    },
+    {
+      "id": "6683:189",
+      "sentence": 6683,
+      "paragraph": 2495,
+      "range": [
+        189,
+        28
+      ],
+      "text": "nor seen the man in the road",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6666,
+        "paragraph": 2488,
+        "range": [
+          738,
+          175
+        ],
+        "text": "At the second glance, however, I perceived that there was a man standing in the Southampton Road, a small bearded man in a grey suit, who seemed to be looking in my direction."
+      }
+    },
+    {
+      "id": "6695:141",
+      "sentence": 6695,
+      "paragraph": 2500,
+      "range": [
+        141,
+        20
+      ],
+      "text": "old Toller, my groom",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6635,
+        "paragraph": 2483,
+        "range": [
+          204,
+          119
+        ],
+        "text": "Toller, for that is his name, is a rough, uncouth man, with grizzled hair and whiskers, and a perpetual smell of drink."
+      }
+    },
+    {
+      "id": "6707:55",
+      "sentence": 6707,
+      "paragraph": 2502,
+      "range": [
+        55,
+        45
+      ],
+      "text": "I had, as you know, cut off my hair in London",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6524,
+        "paragraph": 2446,
+        "range": [
+          149,
+          108
+        ],
+        "text": "I shall write to Mr. Rucastle at once, sacrifice my poor hair to-night, and start for Winchester to-morrow.”"
+      }
+    },
+    {
+      "id": "6764:693",
+      "sentence": 6764,
+      "paragraph": 2512,
+      "range": [
+        693,
+        28
+      ],
+      "text": "the shuttered window outside",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6731,
+        "paragraph": 2505,
+        "range": [
+          180,
+          102
+        ],
+        "text": "There were four of them in a row, three of which were simply dirty, while the fourth was shuttered up."
+      }
+    },
+    {
+      "id": "6793:195",
+      "sentence": 6793,
+      "paragraph": 2524,
+      "range": [
+        195,
+        29
+      ],
+      "text": "I’ll throw you to the mastiff",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6694,
+        "paragraph": 2500,
+        "range": [
+          83,
+          29
+        ],
+        "text": "‘It’s only Carlo, my mastiff."
+      }
+    },
+    {
+      "id": "6806:840",
+      "sentence": 6806,
+      "paragraph": 2525,
+      "range": [
+        840,
+        54
+      ],
+      "text": "Toller had drunk himself into a state of insensibility",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6755,
+        "paragraph": 2511,
+        "range": [
+          238,
+          132
+        ],
+        "text": "Recently he has been drinking hard, and yesterday evening he was very drunk; and when I came upstairs there was the key in the door."
+      }
+    },
+    {
+      "id": "6838:605",
+      "sentence": 6838,
+      "paragraph": 2537,
+      "range": [
+        605,
+        45
+      ],
+      "text": "By a curious chance you came upon her tresses",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6714,
+        "paragraph": 2502,
+        "range": [
+          834,
+          23
+        ],
+        "text": "It was my coil of hair."
+      }
+    },
+    {
+      "id": "6839:652",
+      "sentence": 6839,
+      "paragraph": 2537,
+      "range": [
+        652,
+        19
+      ],
+      "text": "The man in the road",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6666,
+        "paragraph": 2488,
+        "range": [
+          738,
+          175
+        ],
+        "text": "At the second glance, however, I perceived that there was a man standing in the Southampton Road, a small bearded man in a grey suit, who seemed to be looking in my direction."
+      }
+    },
+    {
+      "id": "6848:284",
+      "sentence": 6848,
+      "paragraph": 2539,
+      "range": [
+        284,
+        44
+      ],
+      "text": "This child’s disposition is abnormally cruel",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6629,
+        "paragraph": 2481,
+        "range": [
+          1017,
+          183
+        ],
+        "text": "Giving pain to any creature weaker than himself seems to be his one idea of amusement, and he shows quite remarkable talent in planning the capture of mice, little birds, and insects."
+      }
+    },
+    {
+      "id": "6860:55",
+      "sentence": 6860,
+      "paragraph": 2544,
+      "range": [
+        55,
+        33
+      ],
+      "text": "That is Mrs. Toller in the cellar",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6828,
+        "paragraph": 2535,
+        "range": [
+          209,
+          126
+        ],
+        "text": "If you could send her into the cellar on some errand, and then turn the key upon her, you would facilitate matters immensely.”"
+      }
+    },
+    {
+      "id": "6866:103",
+      "sentence": 6866,
+      "paragraph": 2546,
+      "range": [
+        103,
+        45
+      ],
+      "text": "the barricade which Miss Hunter had described",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6762,
+        "paragraph": 2512,
+        "range": [
+          383,
+          199
+        ],
+        "text": "The centre door was closed, and across the outside of it had been fastened one of the broad bars of an iron bed, padlocked at one end to a ring in the wall, and fastened at the other with stout cord."
+      }
+    },
+    {
+      "id": "6877:210",
+      "sentence": 6877,
+      "paragraph": 2548,
+      "range": [
+        210,
+        27
+      ],
+      "text": "The skylight above was open",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6765,
+        "paragraph": 2512,
+        "range": [
+          809,
+          61
+        ],
+        "text": "Evidently there was a skylight which let in light from above."
+      }
+    },
+    {
+      "id": "6893:25",
+      "sentence": 6893,
+      "paragraph": 2555,
+      "range": [
+        25,
+        22
+      ],
+      "text": "where’s your daughter?",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6835,
+        "paragraph": 2537,
+        "range": [
+          227,
+          148
+        ],
+        "text": "As to who this prisoner is, I have no doubt that it is the daughter, Miss Alice Rucastle, if I remember right, who was said to have gone to America."
+      }
+    },
+    {
+      "id": "6901:1",
+      "sentence": 6901,
+      "paragraph": 2558,
+      "range": [
+        1,
+        22
+      ],
+      "text": "He’s gone for the dog!",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6793,
+        "paragraph": 2524,
+        "range": [
+          28,
+          198
+        ],
+        "text": "And if you ever put your foot over that threshold again’—here in an instant the smile hardened into a grin of rage, and he glared down at me with the face of a demon—‘I’ll throw you to the mastiff.’"
+      }
+    },
+    {
+      "id": "6910:49",
+      "sentence": 6910,
+      "paragraph": 2561,
+      "range": [
+        49,
+        31
+      ],
+      "text": "It’s not been fed for two days.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6696,
+        "paragraph": 2500,
+        "range": [
+          209,
+          87
+        ],
+        "text": "We feed him once a day, and not too much then, so that he is always as keen as mustard."
+      }
+    },
+    {
+      "id": "6936:886",
+      "sentence": 6936,
+      "paragraph": 2569,
+      "range": [
+        886,
+        31
+      ],
+      "text": "with her beautiful hair cut off",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6837,
+        "paragraph": 2537,
+        "range": [
+          470,
+          134
+        ],
+        "text": "Hers had been cut off, very possibly in some illness through which she has passed, and so, of course, yours had to be sacrificed also."
+      }
+    },
+    {
+      "id": "6942:69",
+      "sentence": 6942,
+      "paragraph": 2574,
+      "range": [
+        69,
+        19
+      ],
+      "text": "blockaded the house",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6839,
+        "paragraph": 2537,
+        "range": [
+          652,
+          319
+        ],
+        "text": "The man in the road was undoubtedly some friend of hers—possibly her fiancé—and no doubt, as you wore the girl’s dress and were so like her, he was convinced from your laughter, whenever he saw you, and afterwards from your gesture, that Miss Rucastle was perfectly happy, and that she no longer desired his attentions."
+      }
+    },
+    {
+      "id": "6944:86",
+      "sentence": 6944,
+      "paragraph": 2576,
+      "range": [
+        86,
+        24
+      ],
+      "text": "a ladder should be ready",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6883,
+        "paragraph": 2551,
+        "range": [
+          96,
+          78
+        ],
+        "text": "“Ah, yes,” he cried, “here’s the end of a long light ladder against the eaves."
+      }
+    }
+  ]
+}

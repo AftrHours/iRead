@@ -1,0 +1,804 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "331:504",
+      "sentence": 331,
+      "paragraph": 150,
+      "range": [
+        504,
+        33
+      ],
+      "text": "the exalted station of his client",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 216,
+        "paragraph": 85,
+        "range": [
+          32,
+          176
+        ],
+        "text": "“Your Majesty had not spoken before I was aware that I was addressing Wilhelm Gottsreich Sigismond von Ormstein, Grand Duke of Cassel-Felstein, and hereditary King of Bohemia.”"
+      }
+    },
+    {
+      "id": "344:94",
+      "sentence": 344,
+      "paragraph": 155,
+      "range": [
+        94,
+        16
+      ],
+      "text": "Miss Irene Adler",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 221,
+        "paragraph": 88,
+        "range": [
+          0,
+          152
+        ],
+        "text": "“The facts are briefly these: Some five years ago, during a lengthy visit to Warsaw, I made the acquaintance of the well-known adventuress, Irene Adler."
+      }
+    },
+    {
+      "id": "347:131",
+      "sentence": 347,
+      "paragraph": 156,
+      "range": [
+        131,
+        39
+      ],
+      "text": "in the character of a groom out of work",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 334,
+        "paragraph": 151,
+        "range": [
+          0,
+          175
+        ],
+        "text": "It was close upon four before the door opened, and a drunken-looking groom, ill-kempt and side-whiskered, with an inflamed face and disreputable clothes, walked into the room."
+      }
+    },
+    {
+      "id": "350:297",
+      "sentence": 350,
+      "paragraph": 156,
+      "range": [
+        297,
+        25
+      ],
+      "text": "I soon found Briony Lodge",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 318,
+        "paragraph": 145,
+        "range": [
+          0,
+          40
+        ],
+        "text": "“Is Briony Lodge, Serpentine Avenue, St."
+      }
+    },
+    {
+      "id": "357:281",
+      "sentence": 357,
+      "paragraph": 157,
+      "range": [
+        281,
+        54
+      ],
+      "text": "as much information as I could desire about Miss Adler",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 348,
+        "paragraph": 156,
+        "range": [
+          172,
+          63
+        ],
+        "text": "There is a wonderful sympathy and freemasonry among horsey men."
+      }
+    },
+    {
+      "id": "362:124",
+      "sentence": 362,
+      "paragraph": 159,
+      "range": [
+        124,
+        29
+      ],
+      "text": "the Serpentine-mews, to a man",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 356,
+        "paragraph": 157,
+        "range": [
+          0,
+          132
+        ],
+        "text": "“I then lounged down the street and found, as I expected, that there was a mews in a lane which runs down by one wall of the garden."
+      }
+    },
+    {
+      "id": "371:1",
+      "sentence": 371,
+      "paragraph": 160,
+      "range": [
+        1,
+        19
+      ],
+      "text": "This Godfrey Norton",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 367,
+        "paragraph": 159,
+        "range": [
+          454,
+          48
+        ],
+        "text": "He is a Mr. Godfrey Norton, of the Inner Temple."
+      }
+    },
+    {
+      "id": "378:462",
+      "sentence": 378,
+      "paragraph": 160,
+      "range": [
+        462,
+        38
+      ],
+      "text": "the gentleman’s chambers in the Temple",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 367,
+        "paragraph": 159,
+        "range": [
+          454,
+          48
+        ],
+        "text": "He is a Mr. Godfrey Norton, of the Inner Temple."
+      }
+    },
+    {
+      "id": "383:182",
+      "sentence": 383,
+      "paragraph": 162,
+      "range": [
+        182,
+        37
+      ],
+      "text": "evidently the man of whom I had heard",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 366,
+        "paragraph": 159,
+        "range": [
+          368,
+          85
+        ],
+        "text": "He is dark, handsome, and dashing, never calls less than once a day, and often twice."
+      }
+    },
+    {
+      "id": "395:51",
+      "sentence": 395,
+      "paragraph": 165,
+      "range": [
+        51,
+        50
+      ],
+      "text": "half a sovereign if you reach it in twenty minutes",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 390,
+        "paragraph": 163,
+        "range": [
+          497,
+          46
+        ],
+        "text": "Half a guinea if you do it in twenty minutes!’"
+      }
+    },
+    {
+      "id": "397:112",
+      "sentence": 397,
+      "paragraph": 166,
+      "range": [
+        112,
+        23
+      ],
+      "text": "perch behind her landau",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 391,
+        "paragraph": 164,
+        "range": [
+          0,
+          271
+        ],
+        "text": "“Away they went, and I was just wondering whether I should not do well to follow them when up the lane came a neat little landau, the coachman with his coat only half-buttoned, and his tie under his ear, while all the tags of his harness were sticking out of the buckles."
+      }
+    },
+    {
+      "id": "401:405",
+      "sentence": 401,
+      "paragraph": 166,
+      "range": [
+        405,
+        40
+      ],
+      "text": "it was clear enough what was in the wind",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 388,
+        "paragraph": 163,
+        "range": [
+          261,
+          206
+        ],
+        "text": "As he stepped up to the cab, he pulled a gold watch from his pocket and looked at it earnestly, ‘Drive like the devil,’ he shouted, ‘first to Gross & Hankey’s in Regent Street, and then to the Church of St."
+      }
+    },
+    {
+      "id": "417:232",
+      "sentence": 417,
+      "paragraph": 171,
+      "range": [
+        232,
+        50
+      ],
+      "text": "Irene Adler, spinster, to Godfrey Norton, bachelor",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 406,
+        "paragraph": 167,
+        "range": [
+          230,
+          128
+        ],
+        "text": "There was not a soul there save the two whom I had followed and a surpliced clergyman, who seemed to be expostulating with them."
+      }
+    },
+    {
+      "id": "419:524",
+      "sentence": 419,
+      "paragraph": 171,
+      "range": [
+        524,
+        58
+      ],
+      "text": "it was the thought of it that started me laughing just now",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 339,
+        "paragraph": 152,
+        "range": [
+          16,
+          113
+        ],
+        "text": "he cried, and then he choked and laughed again until he was obliged to lie back, limp and helpless, in the chair."
+      }
+    },
+    {
+      "id": "426:277",
+      "sentence": 426,
+      "paragraph": 173,
+      "range": [
+        277,
+        46
+      ],
+      "text": "I shall drive out in the park at five as usual",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 363,
+        "paragraph": 159,
+        "range": [
+          155,
+          106
+        ],
+        "text": "She lives quietly, sings at concerts, drives out at five every day, and returns at seven sharp for dinner."
+      }
+    },
+    {
+      "id": "446:287",
+      "sentence": 446,
+      "paragraph": 185,
+      "range": [
+        287,
+        29
+      ],
+      "text": "Miss Irene, or Madame, rather",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 417,
+        "paragraph": 171,
+        "range": [
+          0,
+          283
+        ],
+        "text": "“I was half-dragged up to the altar, and before I knew where I was I found myself mumbling responses which were whispered in my ear, and vouching for things of which I knew nothing, and generally assisting in the secure tying up of Irene Adler, spinster, to Godfrey Norton, bachelor."
+      }
+    },
+    {
+      "id": "446:318",
+      "sentence": 446,
+      "paragraph": 185,
+      "range": [
+        318,
+        31
+      ],
+      "text": "returns from her drive at seven",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 363,
+        "paragraph": 159,
+        "range": [
+          155,
+          106
+        ],
+        "text": "She lives quietly, sings at concerts, drives out at five every day, and returns at seven sharp for dinner."
+      }
+    },
+    {
+      "id": "473:81",
+      "sentence": 473,
+      "paragraph": 196,
+      "range": [
+        81,
+        23
+      ],
+      "text": "to throw in this object",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 468,
+        "paragraph": 195,
+        "range": [
+          91,
+          100
+        ],
+        "text": "“It is an ordinary plumber’s smoke-rocket, fitted with a cap at either end to make it self-lighting."
+      }
+    },
+    {
+      "id": "478:62",
+      "sentence": 478,
+      "paragraph": 200,
+      "range": [
+        62,
+        72
+      ],
+      "text": "in the character of an amiable and simple-minded Nonconformist clergyman",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 335,
+        "paragraph": 151,
+        "range": [
+          176,
+          144
+        ],
+        "text": "Accustomed as I was to my friend’s amazing powers in the use of disguises, I had to look three times before I was certain that it was indeed he."
+      }
+    },
+    {
+      "id": "485:342",
+      "sentence": 485,
+      "paragraph": 201,
+      "range": [
+        342,
+        37
+      ],
+      "text": "Sherlock Holmes’ succinct description",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 351,
+        "paragraph": 156,
+        "range": [
+          324,
+          105
+        ],
+        "text": "It is a bijou villa, with a garden at the back, but built out in front right up to the road, two stories."
+      }
+    },
+    {
+      "id": "488:75",
+      "sentence": 488,
+      "paragraph": 202,
+      "range": [
+        75,
+        39
+      ],
+      "text": "this marriage rather simplifies matters",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 417,
+        "paragraph": 171,
+        "range": [
+          0,
+          283
+        ],
+        "text": "“I was half-dragged up to the altar, and before I knew where I was I found myself mumbling responses which were whispered in my ear, and vouching for things of which I knew nothing, and generally assisting in the secure tying up of Irene Adler, spinster, to Godfrey Norton, bachelor."
+      }
+    },
+    {
+      "id": "490:297",
+      "sentence": 490,
+      "paragraph": 202,
+      "range": [
+        297,
+        12
+      ],
+      "text": "his princess",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 284,
+        "paragraph": 125,
+        "range": [
+          0,
+          83
+        ],
+        "text": "“To Clotilde Lothman von Saxe-Meningen, second daughter of the King of Scandinavia."
+      }
+    },
+    {
+      "id": "494:57",
+      "sentence": 494,
+      "paragraph": 204,
+      "range": [
+        57,
+        18
+      ],
+      "text": "It is cabinet size",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 322,
+        "paragraph": 146,
+        "range": [
+          57,
+          31
+        ],
+        "text": "“Was the photograph a cabinet?”"
+      }
+    },
+    {
+      "id": "497:202",
+      "sentence": 497,
+      "paragraph": 204,
+      "range": [
+        202,
+        47
+      ],
+      "text": "Two attempts of the sort have already been made",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 271,
+        "paragraph": 115,
+        "range": [
+          126,
+          27
+        ],
+        "text": "Twice she has been waylaid."
+      }
+    },
+    {
+      "id": "506:380",
+      "sentence": 506,
+      "paragraph": 206,
+      "range": [
+        380,
+        44
+      ],
+      "text": "she had resolved to use it within a few days",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 298,
+        "paragraph": 131,
+        "range": [
+          0,
+          99
+        ],
+        "text": "“Because she has said that she would send it on the day when the betrothal was publicly proclaimed."
+      }
+    },
+    {
+      "id": "509:5",
+      "sentence": 509,
+      "paragraph": 207,
+      "range": [
+        5,
+        25
+      ],
+      "text": "it has twice been burgled",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 269,
+        "paragraph": 115,
+        "range": [
+          31,
+          45
+        ],
+        "text": "Twice burglars in my pay ransacked her house."
+      }
+    },
+    {
+      "id": "524:418",
+      "sentence": 524,
+      "paragraph": 215,
+      "range": [
+        418,
+        17
+      ],
+      "text": "the two guardsmen",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 487,
+        "paragraph": 201,
+        "range": [
+          533,
+          255
+        ],
+        "text": "There was a group of shabbily dressed men smoking and laughing in a corner, a scissors-grinder with his wheel, two guardsmen who were flirting with a nurse-girl, and several well-dressed young men who were lounging up and down with cigars in their mouths."
+      }
+    },
+    {
+      "id": "524:485",
+      "sentence": 524,
+      "paragraph": 215,
+      "range": [
+        485,
+        20
+      ],
+      "text": "the scissors-grinder",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 487,
+        "paragraph": 201,
+        "range": [
+          533,
+          255
+        ],
+        "text": "There was a group of shabbily dressed men smoking and laughing in a corner, a scissors-grinder with his wheel, two guardsmen who were flirting with a nurse-girl, and several well-dressed young men who were lounging up and down with cigars in their mouths."
+      }
+    },
+    {
+      "id": "542:9",
+      "sentence": 542,
+      "paragraph": 221,
+      "range": [
+        9,
+        31
+      ],
+      "text": "Bring him into the sitting-room",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 458,
+        "paragraph": 189,
+        "range": [
+          94,
+          48
+        ],
+        "text": "It will end in my being conveyed into the house."
+      }
+    },
+    {
+      "id": "549:716",
+      "sentence": 549,
+      "paragraph": 222,
+      "range": [
+        716,
+        42
+      ],
+      "text": "took the smoke-rocket from under my ulster",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 468,
+        "paragraph": 195,
+        "range": [
+          91,
+          100
+        ],
+        "text": "“It is an ordinary plumber’s smoke-rocket, fitted with a cap at either end to make it self-lighting."
+      }
+    },
+    {
+      "id": "554:157",
+      "sentence": 554,
+      "paragraph": 223,
+      "range": [
+        157,
+        24
+      ],
+      "text": "I saw him raise his hand",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 464,
+        "paragraph": 193,
+        "range": [
+          0,
+          134
+        ],
+        "text": "“And when I raise my hand—so—you will throw into the room what I give you to throw, and will, at the same time, raise the cry of fire."
+      }
+    },
+    {
+      "id": "558:743",
+      "sentence": 558,
+      "paragraph": 223,
+      "range": [
+        743,
+        31
+      ],
+      "text": "to find my friend’s arm in mine",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 471,
+        "paragraph": 195,
+        "range": [
+          305,
+          81
+        ],
+        "text": "You may then walk to the end of the street, and I will rejoin you in ten minutes."
+      }
+    },
+    {
+      "id": "566:1",
+      "sentence": 566,
+      "paragraph": 228,
+      "range": [
+        1,
+        38
+      ],
+      "text": "She showed me, as I told you she would",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 515,
+        "paragraph": 212,
+        "range": [
+          0,
+          28
+        ],
+        "text": "“I will get her to show me.”"
+      }
+    },
+    {
+      "id": "570:113",
+      "sentence": 570,
+      "paragraph": 230,
+      "range": [
+        113,
+        40
+      ],
+      "text": "everyone in the street was an accomplice",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 524,
+        "paragraph": 215,
+        "range": [
+          367,
+          180
+        ],
+        "text": "A fierce quarrel broke out, which was increased by the two guardsmen, who took sides with one of the loungers, and by the scissors-grinder, who was equally hot upon the other side."
+      }
+    },
+    {
+      "id": "573:37",
+      "sentence": 573,
+      "paragraph": 232,
+      "range": [
+        37,
+        47
+      ],
+      "text": "a little moist red paint in the palm of my hand",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 526,
+        "paragraph": 215,
+        "range": [
+          756,
+          164
+        ],
+        "text": "Holmes dashed into the crowd to protect the lady; but, just as he reached her, he gave a cry and dropped to the ground, with the blood running freely down his face."
+      }
+    },
+    {
+      "id": "582:266",
+      "sentence": 582,
+      "paragraph": 234,
+      "range": [
+        266,
+        38
+      ],
+      "text": "they were compelled to open the window",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 553,
+        "paragraph": 223,
+        "range": [
+          89,
+          47
+        ],
+        "text": "A maid rushed across and threw open the window."
+      }
+    },
+    {
+      "id": "591:573",
+      "sentence": 591,
+      "paragraph": 236,
+      "range": [
+        573,
+        36
+      ],
+      "text": "The alarm of fire was admirably done",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 554,
+        "paragraph": 223,
+        "range": [
+          137,
+          117
+        ],
+        "text": "At the same instant I saw him raise his hand and at the signal I tossed my rocket into the room with a cry of “Fire!”"
+      }
+    },
+    {
+      "id": "609:115",
+      "sentence": 609,
+      "paragraph": 240,
+      "range": [
+        115,
+        63
+      ],
+      "text": "this marriage may mean a complete change in her life and habits",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 417,
+        "paragraph": 171,
+        "range": [
+          0,
+          283
+        ],
+        "text": "“I was half-dragged up to the altar, and before I knew where I was I found myself mumbling responses which were whispered in my ear, and vouching for things of which I knew nothing, and generally assisting in the secure tying up of Irene Adler, spinster, to Godfrey Norton, bachelor."
+      }
+    }
+  ]
+}
