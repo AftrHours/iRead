@@ -32,7 +32,7 @@ packages:
   UnderlineEngine:
     url: https://github.com/AftrHours/UnderlineEngine
     # Bump UnderlineRepoKnobs.engineVersion when you change this revision.
-    revision: a70465ed9c11e34eaf6e779d3b1ff43d5a75b47f
+    revision: 25e0ff6c10b8037f1212702a6e114985002ba4d0
   # Runs SwiftLint on every build, using the rules in .swiftlint.yml. Xcode asks once to "Trust & Enable" it.
   SwiftLintPlugins:
     url: https://github.com/SimplyDanny/SwiftLintPlugins
@@ -47,6 +47,12 @@ targets:
     platform: iOS
     sources:
       - path: App
+        excludes:
+          - "Resources/UnderlineSeed"
+      # Underlines worked out ahead for the bundled books, one folder per book fingerprint. Copied as one folder, because
+      # every book has its own chapter-0.json and loose files would clash in the app bundle.
+      - path: App/Resources/UnderlineSeed
+        type: folder
       # Code the Share extension uses too (book lookup, pending imports, the library index).
       - path: Shared
     dependencies:

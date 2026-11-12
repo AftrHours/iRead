@@ -19,10 +19,11 @@ struct RefCtrl {
             if let range = pageRange(paragraph: underline.paragraph, range: underline.range, on: page, in: content) {
                 marks.append(Mark(range: range, kind: .underline(id: underline.id)))
             }
-            if underline.id == underlineID,
-               let range = pageRange(paragraph: underline.reference.paragraph, range: underline.reference.range, on: page, in: content) {
-                marks.append(Mark(range: range, kind: .highlight))
-            }
+        }
+        // Looked up by ID, because the passage can be in an earlier chapter than its underline.
+        if let underlineID, let underline = await underlineRepo.underline(withID: underlineID, of: content.fingerprint),
+           let range = pageRange(paragraph: underline.reference.paragraph, range: underline.reference.range, on: page, in: content) {
+            marks.append(Mark(range: range, kind: .highlight))
         }
         return marks
     }

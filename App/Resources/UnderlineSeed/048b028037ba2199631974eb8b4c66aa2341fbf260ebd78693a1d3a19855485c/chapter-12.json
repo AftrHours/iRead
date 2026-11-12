@@ -1,0 +1,783 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "4036:70",
+      "sentence": 4036,
+      "paragraph": 1501,
+      "range": [
+        70,
+        110
+      ],
+      "text": "I started from home before six, reached Leatherhead at twenty past, and came in by the first train to Waterloo",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4029,
+        "paragraph": 1498,
+        "range": [
+          86,
+          124
+        ],
+        "text": "You must have started early, and yet you had a good drive in a dog-cart, along heavy roads, before you reached the station.”"
+      }
+    },
+    {
+      "id": "4045:50",
+      "sentence": 4045,
+      "paragraph": 1503,
+      "range": [
+        50,
+        35
+      ],
+      "text": "it was concerned with an opal tiara",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4039,
+        "paragraph": 1501,
+        "range": [
+          361,
+          119
+        ],
+        "text": "I have heard of you, Mr. Holmes; I have heard of you from Mrs. Farintosh, whom you helped in the hour of her sore need."
+      }
+    },
+    {
+      "id": "4058:25",
+      "sentence": 4058,
+      "paragraph": 1507,
+      "range": [
+        25,
+        26
+      ],
+      "text": "The name is familiar to me",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3992,
+        "paragraph": 1485,
+        "range": [
+          439,
+          191
+        ],
+        "text": "Of all these varied cases, however, I cannot recall any which presented more singular features than that which was associated with the well-known Surrey family of the Roylotts of Stoke Moran."
+      }
+    },
+    {
+      "id": "4071:5",
+      "sentence": 4071,
+      "paragraph": 1510,
+      "range": [
+        5,
+        42
+      ],
+      "text": "a terrible change came over our stepfather",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4064,
+        "paragraph": 1508,
+        "range": [
+          1030,
+          116
+        ],
+        "text": "As it was, he suffered a long term of imprisonment and afterwards returned to England a morose and disappointed man."
+      }
+    },
+    {
+      "id": "4073:505",
+      "sentence": 4073,
+      "paragraph": 1510,
+      "range": [
+        505,
+        33
+      ],
+      "text": "his long residence in the tropics",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4062,
+        "paragraph": 1508,
+        "range": [
+          469,
+          390
+        ],
+        "text": "The last squire dragged out his existence there, living the horrible life of an aristocratic pauper; but his only son, my stepfather, seeing that he must adapt himself to the new conditions, obtained an advance from a relative, which enabled him to take a medical degree and went out to Calcutta, where, by his professional skill and his force of character, he established a large practice."
+      }
+    },
+    {
+      "id": "4075:11",
+      "sentence": 4075,
+      "paragraph": 1511,
+      "range": [
+        11,
+        59
+      ],
+      "text": "he hurled the local blacksmith over a parapet into a stream",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4074,
+        "paragraph": 1510,
+        "range": [
+          540,
+          255
+        ],
+        "text": "A series of disgraceful brawls took place, two of which ended in the police-court, until at last he became the terror of the village, and the folks would fly at his approach, for he is a man of immense strength, and absolutely uncontrollable in his anger."
+      }
+    },
+    {
+      "id": "4097:204",
+      "sentence": 4097,
+      "paragraph": 1519,
+      "range": [
+        204,
+        57
+      ],
+      "text": "the strong Indian cigars which it was his custom to smoke",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4062,
+        "paragraph": 1508,
+        "range": [
+          469,
+          390
+        ],
+        "text": "The last squire dragged out his existence there, living the horrible life of an aristocratic pauper; but his only son, my stepfather, seeing that he must adapt himself to the new conditions, obtained an advance from a relative, which enabled him to take a medical degree and went out to Calcutta, where, by his professional skill and his force of character, he established a large practice."
+      }
+    },
+    {
+      "id": "4110:29",
+      "sentence": 4110,
+      "paragraph": 1525,
+      "range": [
+        29,
+        40
+      ],
+      "text": "those wretched gipsies in the plantation",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4076,
+        "paragraph": 1511,
+        "range": [
+          197,
+          292
+        ],
+        "text": "He had no friends at all save the wandering gipsies, and he would give these vagabonds leave to encamp upon the few acres of bramble-covered land which represent the family estate, and would accept in return the hospitality of their tents, wandering away with them sometimes for weeks on end."
+      }
+    },
+    {
+      "id": "4120:38",
+      "sentence": 4120,
+      "paragraph": 1532,
+      "range": [
+        38,
+        38
+      ],
+      "text": "the Doctor kept a cheetah and a baboon",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4077,
+        "paragraph": 1511,
+        "range": [
+          490,
+          239
+        ],
+        "text": "He has a passion also for Indian animals, which are sent over to him by a correspondent, and he has at this moment a cheetah and a baboon, which wander freely over his grounds and are feared by the villagers almost as much as their master."
+      }
+    },
+    {
+      "id": "4132:585",
+      "sentence": 4132,
+      "paragraph": 1534,
+      "range": [
+        585,
+        42
+      ],
+      "text": "a low whistle, such as my sister described",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4105,
+        "paragraph": 1524,
+        "range": [
+          0,
+          107
+        ],
+        "text": "“‘Because during the last few nights I have always, about three in the morning, heard a low, clear whistle."
+      }
+    },
+    {
+      "id": "4142:1571",
+      "sentence": 4142,
+      "paragraph": 1534,
+      "range": [
+        1571,
+        37
+      ],
+      "text": "in the direction of the Doctor’s room",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4092,
+        "paragraph": 1517,
+        "range": [
+          297,
+          91
+        ],
+        "text": "Of these bedrooms the first is Dr. Roylott’s, the second my sister’s, and the third my own."
+      }
+    },
+    {
+      "id": "4146:47",
+      "sentence": 4146,
+      "paragraph": 1535,
+      "range": [
+        47,
+        31
+      ],
+      "text": "this whistle and metallic sound",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4132,
+        "paragraph": 1534,
+        "range": [
+          548,
+          156
+        ],
+        "text": "As I opened my door I seemed to hear a low whistle, such as my sister described, and a few moments later a clanging sound, as if a mass of metal had fallen."
+      }
+    },
+    {
+      "id": "4156:47",
+      "sentence": 4156,
+      "paragraph": 1540,
+      "range": [
+        47,
+        59
+      ],
+      "text": "Dr. Roylott’s conduct had long been notorious in the county",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4074,
+        "paragraph": 1510,
+        "range": [
+          540,
+          255
+        ],
+        "text": "A series of disgraceful brawls took place, two of which ended in the police-court, until at last he became the terror of the village, and the folks would fly at his approach, for he is a man of immense strength, and absolutely uncontrollable in his anger."
+      }
+    },
+    {
+      "id": "4168:34",
+      "sentence": 4168,
+      "paragraph": 1547,
+      "range": [
+        34,
+        39
+      ],
+      "text": "this allusion to a band—a speckled band",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4138,
+        "paragraph": 1534,
+        "range": [
+          1273,
+          195
+        ],
+        "text": "At first I thought that she had not recognised me, but as I bent over her she suddenly shrieked out in a voice which I shall never forget, ‘Oh, my God! Helen! It was the band! The speckled band!’"
+      }
+    },
+    {
+      "id": "4178:792",
+      "sentence": 4178,
+      "paragraph": 1551,
+      "range": [
+        792,
+        58
+      ],
+      "text": "the low whistle which had been the herald of her own death",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4132,
+        "paragraph": 1534,
+        "range": [
+          548,
+          156
+        ],
+        "text": "As I opened my door I seemed to hear a low whistle, such as my sister described, and a few moments later a clanging sound, as if a mass of metal had fallen."
+      }
+    },
+    {
+      "id": "4185:29",
+      "sentence": 4185,
+      "paragraph": 1554,
+      "range": [
+        29,
+        33
+      ],
+      "text": "You are screening your stepfather",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4073,
+        "paragraph": 1510,
+        "range": [
+          352,
+          187
+        ],
+        "text": "Violence of temper approaching to mania has been hereditary in the men of the family, and in my stepfather’s case it had, I believe, been intensified by his long residence in the tropics."
+      }
+    },
+    {
+      "id": "4218:86",
+      "sentence": 4218,
+      "paragraph": 1571,
+      "range": [
+        86,
+        44
+      ],
+      "text": "the door, window, and chimney are impassable",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4159,
+        "paragraph": 1540,
+        "range": [
+          495,
+          60
+        ],
+        "text": "The chimney is wide, but is barred up by four large staples."
+      }
+    },
+    {
+      "id": "4219:62",
+      "sentence": 4219,
+      "paragraph": 1572,
+      "range": [
+        62,
+        42
+      ],
+      "text": "the very peculiar words of the dying woman",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4138,
+        "paragraph": 1534,
+        "range": [
+          1273,
+          195
+        ],
+        "text": "At first I thought that she had not recognised me, but as I bent over her she suddenly shrieked out in a voice which I shall never forget, ‘Oh, my God! Helen! It was the band! The speckled band!’"
+      }
+    },
+    {
+      "id": "4221:183",
+      "sentence": 4221,
+      "paragraph": 1574,
+      "range": [
+        183,
+        68
+      ],
+      "text": "the doctor has an interest in preventing his stepdaughter’s marriage",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4067,
+        "paragraph": 1509,
+        "range": [
+          237,
+          243
+        ],
+        "text": "She had a considerable sum of money—not less than £ 1000 a year—and this she bequeathed to Dr. Roylott entirely while we resided with him, with a provision that a certain annual sum should be allowed to each of us in the event of our marriage."
+      }
+    },
+    {
+      "id": "4235:6",
+      "sentence": 4235,
+      "paragraph": 1582,
+      "range": [
+        6,
+        36
+      ],
+      "text": "Dr. Grimesby Roylott, of Stoke Moran",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4056,
+        "paragraph": 1506,
+        "range": [
+          0,
+          197
+        ],
+        "text": "“My name is Helen Stoner, and I am living with my stepfather, who is the last survivor of one of the oldest Saxon families in England, the Roylotts of Stoke Moran, on the western border of Surrey.”"
+      }
+    },
+    {
+      "id": "4265:229",
+      "sentence": 4265,
+      "paragraph": 1594,
+      "range": [
+        229,
+        46
+      ],
+      "text": "bent it into a curve with his huge brown hands",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4074,
+        "paragraph": 1510,
+        "range": [
+          540,
+          255
+        ],
+        "text": "A series of disgraceful brawls took place, two of which ended in the police-court, until at last he became the terror of the village, and the folks would fly at his approach, for he is a man of immense strength, and absolutely uncontrollable in his anger."
+      }
+    },
+    {
+      "id": "4270:35",
+      "sentence": 4270,
+      "paragraph": 1597,
+      "range": [
+        35,
+        45
+      ],
+      "text": "confound me with the official detective force",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4255,
+        "paragraph": 1592,
+        "range": [
+          0,
+          43
+        ],
+        "text": "“Holmes, the Scotland Yard Jack-in-office!”"
+      }
+    },
+    {
+      "id": "4275:13",
+      "sentence": 4275,
+      "paragraph": 1599,
+      "range": [
+        13,
+        29
+      ],
+      "text": "the will of the deceased wife",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4067,
+        "paragraph": 1509,
+        "range": [
+          237,
+          243
+        ],
+        "text": "She had a considerable sum of money—not less than £ 1000 a year—and this she bequeathed to Dr. Roylott entirely while we resided with him, with a provision that a certain annual sum should be allowed to each of us in the event of our marriage."
+      }
+    },
+    {
+      "id": "4315:28",
+      "sentence": 4315,
+      "paragraph": 1612,
+      "range": [
+        28,
+        24
+      ],
+      "text": "he has followed me, then",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4239,
+        "paragraph": 1584,
+        "range": [
+          32,
+          49
+        ],
+        "text": "My stepdaughter has been here. I have traced her."
+      }
+    },
+    {
+      "id": "4321:193",
+      "sentence": 4321,
+      "paragraph": 1615,
+      "range": [
+        193,
+        21
+      ],
+      "text": "your aunt’s at Harrow",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4084,
+        "paragraph": 1514,
+        "range": [
+          212,
+          174
+        ],
+        "text": "We had, however, an aunt, my mother’s maiden sister, Miss Honoria Westphail, who lives near Harrow, and we were occasionally allowed to pay short visits at this lady’s house."
+      }
+    },
+    {
+      "id": "4386:56",
+      "sentence": 4386,
+      "paragraph": 1641,
+      "range": [
+        56,
+        56
+      ],
+      "text": "dummy bell-ropes, and ventilators which do not ventilate",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4381,
+        "paragraph": 1637,
+        "range": [
+          114,
+          161
+        ],
+        "text": "For example, what a fool a builder must be to open a ventilator into another room, when, with the same trouble, he might have communicated with the outside air!”"
+      }
+    },
+    {
+      "id": "4469:1",
+      "sentence": 4469,
+      "paragraph": 1687,
+      "range": [
+        1,
+        43
+      ],
+      "text": "I saw nothing remarkable save the bell-rope",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4371,
+        "paragraph": 1633,
+        "range": [
+          0,
+          29
+        ],
+        "text": "“Why, it’s a dummy,” said he."
+      }
+    },
+    {
+      "id": "4476:61",
+      "sentence": 4476,
+      "paragraph": 1692,
+      "range": [
+        61,
+        42
+      ],
+      "text": "her sister could smell Dr. Roylott’s cigar",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4097,
+        "paragraph": 1519,
+        "range": [
+          56,
+          206
+        ],
+        "text": "That fatal night Dr. Roylott had gone to his room early, though we knew that he had not retired to rest, for my sister was troubled by the smell of the strong Indian cigars which it was his custom to smoke."
+      }
+    },
+    {
+      "id": "4502:1",
+      "sentence": 4502,
+      "paragraph": 1704,
+      "range": [
+        1,
+        18
+      ],
+      "text": "That is our signal",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4439,
+        "paragraph": 1668,
+        "range": [
+          101,
+          252
+        ],
+        "text": "Then when you hear him retire for the night, you must open the shutters of your window, undo the hasp, put your lamp there as a signal to us, and then withdraw quietly with everything which you are likely to want into the room which you used to occupy."
+      }
+    },
+    {
+      "id": "4512:40",
+      "sentence": 4512,
+      "paragraph": 1709,
+      "range": [
+        40,
+        18
+      ],
+      "text": "That is the baboon",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4506,
+        "paragraph": 1706,
+        "range": [
+          105,
+          316
+        ],
+        "text": "Making our way among the trees, we reached the lawn, crossed it, and were about to enter through the window when out from a clump of laurel bushes there darted what seemed to be a hideous and distorted child, who threw itself upon the grass with writhing limbs and then ran swiftly across the lawn into the darkness."
+      }
+    },
+    {
+      "id": "4565:400",
+      "sentence": 4565,
+      "paragraph": 1726,
+      "range": [
+        400,
+        70
+      ],
+      "text": "the short stock with the long lash which we had noticed during the day",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4413,
+        "paragraph": 1653,
+        "range": [
+          0,
+          87
+        ],
+        "text": "The object which had caught his eye was a small dog lash hung on one corner of the bed."
+      }
+    },
+    {
+      "id": "4570:11",
+      "sentence": 4570,
+      "paragraph": 1727,
+      "range": [
+        11,
+        17
+      ],
+      "text": "the speckled band",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4138,
+        "paragraph": 1534,
+        "range": [
+          1273,
+          195
+        ],
+        "text": "At first I thought that she had not recognised me, but as I bent over her she suddenly shrieked out in a voice which I shall never forget, ‘Oh, my God! Helen! It was the band! The speckled band!’"
+      }
+    },
+    {
+      "id": "4575:38",
+      "sentence": 4575,
+      "paragraph": 1729,
+      "range": [
+        38,
+        28
+      ],
+      "text": "the deadliest snake in India",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4573,
+        "paragraph": 1728,
+        "range": [
+          23,
+          163
+        ],
+        "text": "In an instant his strange headgear began to move, and there reared itself from among his hair the squat diamond-shaped head and puffed neck of a loathsome serpent."
+      }
+    },
+    {
+      "id": "4581:280",
+      "sentence": 4581,
+      "paragraph": 1731,
+      "range": [
+        280,
+        35
+      ],
+      "text": "the care of her good aunt at Harrow",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4084,
+        "paragraph": 1514,
+        "range": [
+          212,
+          174
+        ],
+        "text": "We had, however, an aunt, my mother’s maiden sister, Miss Honoria Westphail, who lives near Harrow, and we were occasionally allowed to pay short visits at this lady’s house."
+      }
+    },
+    {
+      "id": "4587:801",
+      "sentence": 4587,
+      "paragraph": 1732,
+      "range": [
+        801,
+        32
+      ],
+      "text": "the bed was clamped to the floor",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4487,
+        "paragraph": 1698,
+        "range": [
+          0,
+          29
+        ],
+        "text": "“It was clamped to the floor."
+      }
+    },
+    {
+      "id": "4594:1788",
+      "sentence": 4594,
+      "paragraph": 1732,
+      "range": [
+        1788,
+        21
+      ],
+      "text": "the milk which we saw",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4402,
+        "paragraph": 1649,
+        "range": [
+          22,
+          63
+        ],
+        "text": "He took up a small saucer of milk which stood on the top of it."
+      }
+    },
+    {
+      "id": "4598:69",
+      "sentence": 4598,
+      "paragraph": 1733,
+      "range": [
+        69,
+        26
+      ],
+      "text": "An inspection of his chair",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4408,
+        "paragraph": 1651,
+        "range": [
+          192,
+          102
+        ],
+        "text": "He squatted down in front of the wooden chair and examined the seat of it with the greatest attention."
+      }
+    }
+  ]
+}

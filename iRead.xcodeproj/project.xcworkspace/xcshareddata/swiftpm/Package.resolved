@@ -1,5 +1,5 @@
 {
-  "originHash" : "be48195d9cca6788cbea5fa925a5728b691d8186a2250295b33683917f01961f",
+  "originHash" : "da6595ca12283c9ddd91d0eb0ccf649ade5622bfcbba7cc231ae1c4d71f954ba",
   "pins" : [
     {
       "identity" : "swiftlintplugins",
@@ -15,7 +15,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AftrHours/UnderlineEngine",
       "state" : {
-        "revision" : "a70465ed9c11e34eaf6e779d3b1ff43d5a75b47f"
+        "revision" : "25e0ff6c10b8037f1212702a6e114985002ba4d0"
       }
     },
     {

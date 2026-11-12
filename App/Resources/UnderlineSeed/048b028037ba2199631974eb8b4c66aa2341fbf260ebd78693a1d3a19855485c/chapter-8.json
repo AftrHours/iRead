@@ -1,0 +1,1077 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "1759:419",
+      "sentence": 1759,
+      "paragraph": 666,
+      "range": [
+        419,
+        18
+      ],
+      "text": "Mr. James McCarthy",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1747,
+        "paragraph": 664,
+        "range": [
+          665,
+          127
+        ],
+        "text": "McCarthy had one son, a lad of eighteen, and Turner had an only daughter of the same age, but neither of them had wives living."
+      }
+    },
+    {
+      "id": "1772:1435",
+      "sentence": 1772,
+      "paragraph": 667,
+      "range": [
+        1435,
+        29
+      ],
+      "text": "the butt-end of his son’s gun",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1759,
+        "paragraph": 666,
+        "range": [
+          319,
+          164
+        ],
+        "text": "The game-keeper adds that within a few minutes of his seeing Mr. McCarthy pass he had seen his son, Mr. James McCarthy, going the same way with a gun under his arm."
+      }
+    },
+    {
+      "id": "1780:492",
+      "sentence": 1780,
+      "paragraph": 669,
+      "range": [
+        492,
+        11
+      ],
+      "text": "Miss Turner",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1747,
+        "paragraph": 664,
+        "range": [
+          665,
+          127
+        ],
+        "text": "McCarthy had one son, a lad of eighteen, and Turner had an only daughter of the same age, but neither of them had wives living."
+      }
+    },
+    {
+      "id": "1796:17",
+      "sentence": 1796,
+      "paragraph": 675,
+      "range": [
+        17,
+        37
+      ],
+      "text": "his arrest did not take place at once",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1773,
+        "paragraph": 667,
+        "range": [
+          1533,
+          252
+        ],
+        "text": "Under these circumstances the young man was instantly arrested, and a verdict of ‘wilful murder’ having been returned at the inquest on Tuesday, he was on Wednesday brought before the magistrates at Ross, who have referred the case to the next Assizes."
+      }
+    },
+    {
+      "id": "1799:1",
+      "sentence": 1799,
+      "paragraph": 676,
+      "range": [
+        1,
+        19
+      ],
+      "text": "It was a confession",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1797,
+        "paragraph": 675,
+        "range": [
+          96,
+          162
+        ],
+        "text": "On the inspector of constabulary informing him that he was a prisoner, he remarked that he was not surprised to hear it, and that it was no more than his deserts."
+      }
+    },
+    {
+      "id": "1806:905",
+      "sentence": 1806,
+      "paragraph": 679,
+      "range": [
+        905,
+        46
+      ],
+      "text": "the little girl whose evidence is so important",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1764,
+        "paragraph": 667,
+        "range": [
+          203,
+          147
+        ],
+        "text": "A girl of fourteen, Patience Moran, who is the daughter of the lodge-keeper of the Boscombe Valley estate, was in one of the woods picking flowers."
+      }
+    },
+    {
+      "id": "1822:745",
+      "sentence": 1822,
+      "paragraph": 685,
+      "range": [
+        745,
+        32
+      ],
+      "text": "William Crowder, the game-keeper",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1759,
+        "paragraph": 666,
+        "range": [
+          319,
+          164
+        ],
+        "text": "The game-keeper adds that within a few minutes of his seeing Mr. McCarthy pass he had seen his son, Mr. James McCarthy, going the same way with a gun under his arm."
+      }
+    },
+    {
+      "id": "1841:40",
+      "sentence": 1841,
+      "paragraph": 689,
+      "range": [
+        40,
+        31
+      ],
+      "text": "I thought that he was delirious",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1838,
+        "paragraph": 687,
+        "range": [
+          0,
+          80
+        ],
+        "text": "“Witness: He mumbled a few words, but I could only catch some allusion to a rat."
+      }
+    },
+    {
+      "id": "1842:68",
+      "sentence": 1842,
+      "paragraph": 690,
+      "range": [
+        68,
+        18
+      ],
+      "text": "this final quarrel",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1828,
+        "paragraph": 685,
+        "range": [
+          1198,
+          116
+        ],
+        "text": "A conversation ensued which led to high words and almost to blows, for my father was a man of a very violent temper."
+      }
+    },
+    {
+      "id": "1850:32",
+      "sentence": 1850,
+      "paragraph": 696,
+      "range": [
+        32,
+        18
+      ],
+      "text": "the cry of ‘Cooee’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1825,
+        "paragraph": 685,
+        "range": [
+          985,
+          54
+        ],
+        "text": "which was a usual signal between my father and myself."
+      }
+    },
+    {
+      "id": "1852:74",
+      "sentence": 1852,
+      "paragraph": 698,
+      "range": [
+        74,
+        54
+      ],
+      "text": "before he even knew that you had returned from Bristol",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1818,
+        "paragraph": 685,
+        "range": [
+          0,
+          219
+        ],
+        "text": "“Mr. James McCarthy, the only son of the deceased, was then called and gave evidence as follows: ‘I had been away from home for three days at Bristol, and had only just returned upon the morning of last Monday, the 3rd."
+      }
+    },
+    {
+      "id": "1873:169",
+      "sentence": 1873,
+      "paragraph": 715,
+      "range": [
+        169,
+        74
+      ],
+      "text": "the discrepancy about his father having signalled to him before seeing him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1852,
+        "paragraph": 698,
+        "range": [
+          0,
+          129
+        ],
+        "text": "“The Coroner: How was it, then, that he uttered it before he saw you, and before he even knew that you had returned from Bristol?"
+      }
+    },
+    {
+      "id": "1873:322",
+      "sentence": 1873,
+      "paragraph": 715,
+      "range": [
+        322,
+        48
+      ],
+      "text": "his singular account of his father’s dying words",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1838,
+        "paragraph": 687,
+        "range": [
+          0,
+          80
+        ],
+        "text": "“Witness: He mumbled a few words, but I could only catch some allusion to a rat."
+      }
+    },
+    {
+      "id": "1878:523",
+      "sentence": 1878,
+      "paragraph": 716,
+      "range": [
+        523,
+        35
+      ],
+      "text": "the incident of the vanishing cloth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1860,
+        "paragraph": 703,
+        "range": [
+          313,
+          66
+        ],
+        "text": "When I rose from my father I looked round for it, but it was gone."
+      }
+    },
+    {
+      "id": "1900:224",
+      "sentence": 1900,
+      "paragraph": 722,
+      "range": [
+        224,
+        23
+      ],
+      "text": "one can’t refuse a lady",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1780,
+        "paragraph": 669,
+        "range": [
+          421,
+          291
+        ],
+        "text": "There are several people in the neighbourhood, however, and among them Miss Turner, the daughter of the neighbouring landowner, who believe in his innocence, and who have retained Lestrade, whom you may recollect in connection with the Study in Scarlet, to work out the case in his interest."
+      }
+    },
+    {
+      "id": "1909:219",
+      "sentence": 1909,
+      "paragraph": 724,
+      "range": [
+        219,
+        30
+      ],
+      "text": "I know that James didn’t do it",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1780,
+        "paragraph": 669,
+        "range": [
+          421,
+          291
+        ],
+        "text": "There are several people in the neighbourhood, however, and among them Miss Turner, the daughter of the neighbouring landowner, who believe in his innocence, and who have retained Lestrade, whom you may recollect in connection with the Study in Scarlet, to work out the case in his interest."
+      }
+    },
+    {
+      "id": "1931:121",
+      "sentence": 1931,
+      "paragraph": 730,
+      "range": [
+        121,
+        57
+      ],
+      "text": "the reason why he would not speak about it to the coroner",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1849,
+        "paragraph": 695,
+        "range": [
+          0,
+          30
+        ],
+        "text": "“Witness: I must still refuse."
+      }
+    },
+    {
+      "id": "1952:278",
+      "sentence": 1952,
+      "paragraph": 738,
+      "range": [
+        278,
+        27
+      ],
+      "text": "in the old days in Victoria",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1745,
+        "paragraph": 664,
+        "range": [
+          341,
+          159
+        ],
+        "text": "The men had known each other in the colonies, so that it was not unnatural that when they came to settle down they should do so as near each other as possible."
+      }
+    },
+    {
+      "id": "1999:1940",
+      "sentence": 1999,
+      "paragraph": 753,
+      "range": [
+        1940,
+        53
+      ],
+      "text": "the incident of the grey cloth seen by young McCarthy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1859,
+        "paragraph": 703,
+        "range": [
+          224,
+          88
+        ],
+        "text": "It seemed to me to be something grey in colour, a coat of some sort, or a plaid perhaps."
+      }
+    },
+    {
+      "id": "2005:1",
+      "sentence": 2005,
+      "paragraph": 755,
+      "range": [
+        1,
+        31
+      ],
+      "text": "The glass still keeps very high",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1892,
+        "paragraph": 721,
+        "range": [
+          0,
+          75
+        ],
+        "text": "“How is the glass? Twenty-nine, I see. No wind, and not a cloud in the sky."
+      }
+    },
+    {
+      "id": "2015:77",
+      "sentence": 2015,
+      "paragraph": 760,
+      "range": [
+        77,
+        20
+      ],
+      "text": "averse to a marriage",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1937,
+        "paragraph": 732,
+        "range": [
+          168,
+          197
+        ],
+        "text": "James and I have always loved each other as brother and sister; but of course he is young and has seen very little of life yet, and—and—well, he naturally did not wish to do anything like that yet."
+      }
+    },
+    {
+      "id": "2019:665",
+      "sentence": 2019,
+      "paragraph": 761,
+      "range": [
+        665,
+        40
+      ],
+      "text": "goading him on to propose to Miss Turner",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1936,
+        "paragraph": 732,
+        "range": [
+          94,
+          73
+        ],
+        "text": "Mr. McCarthy was very anxious that there should be a marriage between us."
+      }
+    },
+    {
+      "id": "2021:922",
+      "sentence": 2021,
+      "paragraph": 761,
+      "range": [
+        922,
+        36
+      ],
+      "text": "spent the last three days in Bristol",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1818,
+        "paragraph": 685,
+        "range": [
+          0,
+          219
+        ],
+        "text": "“Mr. James McCarthy, the only son of the deceased, was then called and gave evidence as follows: ‘I had been away from home for three days at Bristol, and had only just returned upon the morning of last Monday, the 3rd."
+      }
+    },
+    {
+      "id": "2030:100",
+      "sentence": 2030,
+      "paragraph": 763,
+      "range": [
+        100,
+        43
+      ],
+      "text": "had an appointment with someone at the pool",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1754,
+        "paragraph": 665,
+        "range": [
+          244,
+          161
+        ],
+        "text": "He had been out with his serving-man in the morning at Ross, and he had told the man that he must hurry, as he had an appointment of importance to keep at three."
+      }
+    },
+    {
+      "id": "2031:278",
+      "sentence": 2031,
+      "paragraph": 763,
+      "range": [
+        278,
+        42
+      ],
+      "text": "the murdered man was heard to cry ‘Cooee!’",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1852,
+        "paragraph": 698,
+        "range": [
+          0,
+          129
+        ],
+        "text": "“The Coroner: How was it, then, that he uttered it before he saw you, and before he even knew that you had returned from Bristol?"
+      }
+    },
+    {
+      "id": "2035:0",
+      "sentence": 2035,
+      "paragraph": 764,
+      "range": [
+        0,
+        41
+      ],
+      "text": "There was no rain, as Holmes had foretold",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2006,
+        "paragraph": 755,
+        "range": [
+          63,
+          86
+        ],
+        "text": "“It is of importance that it should not rain before we are able to go over the ground."
+      }
+    },
+    {
+      "id": "2043:276",
+      "sentence": 2043,
+      "paragraph": 767,
+      "range": [
+        276,
+        36
+      ],
+      "text": "he gave him Hatherley Farm rent free",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1744,
+        "paragraph": 664,
+        "range": [
+          226,
+          114
+        ],
+        "text": "One of the farms which he held, that of Hatherley, was let to Mr. Charles McCarthy, who was also an ex-Australian."
+      }
+    },
+    {
+      "id": "2051:423",
+      "sentence": 2051,
+      "paragraph": 770,
+      "range": [
+        423,
+        37
+      ],
+      "text": "Turner himself was averse to the idea",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1942,
+        "paragraph": 734,
+        "range": [
+          0,
+          30
+        ],
+        "text": "“No, he was averse to it also."
+      }
+    },
+    {
+      "id": "2109:1073",
+      "sentence": 2109,
+      "paragraph": 782,
+      "range": [
+        1073,
+        22
+      ],
+      "text": "that was for the cloak",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1859,
+        "paragraph": 703,
+        "range": [
+          224,
+          88
+        ],
+        "text": "It seemed to me to be something grey in colour, a coat of some sort, or a plaid perhaps."
+      }
+    },
+    {
+      "id": "2118:185",
+      "sentence": 2118,
+      "paragraph": 783,
+      "range": [
+        185,
+        22
+      ],
+      "text": "have a word with Moran",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1764,
+        "paragraph": 667,
+        "range": [
+          203,
+          147
+        ],
+        "text": "A girl of fourteen, Patience Moran, who is the daughter of the lodge-keeper of the Boscombe Valley estate, was in one of the woods picking flowers."
+      }
+    },
+    {
+      "id": "2121:109",
+      "sentence": 2121,
+      "paragraph": 784,
+      "range": [
+        109,
+        44
+      ],
+      "text": "the stone which he had picked up in the wood",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2114,
+        "paragraph": 782,
+        "range": [
+          1681,
+          90
+        ],
+        "text": "A jagged stone was lying among the moss, and this also he carefully examined and retained."
+      }
+    },
+    {
+      "id": "2133:55",
+      "sentence": 2133,
+      "paragraph": 791,
+      "range": [
+        55,
+        32
+      ],
+      "text": "wears thick-soled shooting-boots",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2108,
+        "paragraph": 782,
+        "range": [
+          993,
+          33
+        ],
+        "text": "Square, too, quite unusual boots!"
+      }
+    },
+    {
+      "id": "2151:133",
+      "sentence": 2151,
+      "paragraph": 802,
+      "range": [
+        133,
+        39
+      ],
+      "text": "a left-handed gentleman with a game leg",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2133,
+        "paragraph": 791,
+        "range": [
+          0,
+          193
+        ],
+        "text": "“Is a tall man, left-handed, limps with the right leg, wears thick-soled shooting-boots and a grey cloak, smokes Indian cigars, uses a cigar-holder, and carries a blunt pen-knife in his pocket."
+      }
+    },
+    {
+      "id": "2173:68",
+      "sentence": 2173,
+      "paragraph": 809,
+      "range": [
+        68,
+        33
+      ],
+      "text": "as far as he knew, was in Bristol",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2021,
+        "paragraph": 761,
+        "range": [
+          881,
+          120
+        ],
+        "text": "It was with his barmaid wife that he had spent the last three days in Bristol, and his father did not know where he was."
+      }
+    },
+    {
+      "id": "2181:96",
+      "sentence": 2181,
+      "paragraph": 811,
+      "range": [
+        96,
+        31
+      ],
+      "text": "a map of the Colony of Victoria",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1952,
+        "paragraph": 738,
+        "range": [
+          224,
+          83
+        ],
+        "text": "Mr. McCarthy was the only man alive who had known dad in the old days in Victoria.”"
+      }
+    },
+    {
+      "id": "2200:46",
+      "sentence": 2200,
+      "paragraph": 819,
+      "range": [
+        46,
+        60
+      ],
+      "text": "the pool can only be approached by the farm or by the estate",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2077,
+        "paragraph": 779,
+        "range": [
+          0,
+          189
+        ],
+        "text": "The Boscombe Pool, which is a little reed-girt sheet of water some fifty yards across, is situated at the boundary between the Hatherley Farm and the private park of the wealthy Mr. Turner."
+      }
+    },
+    {
+      "id": "2216:29",
+      "sentence": 2216,
+      "paragraph": 829,
+      "range": [
+        29,
+        66
+      ],
+      "text": "the nature of the injury as recorded by the surgeon at the inquest",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1986,
+        "paragraph": 753,
+        "range": [
+          1046,
+          188
+        ],
+        "text": "In the surgeon’s deposition it was stated that the posterior third of the left parietal bone and the left half of the occipital bone had been shattered by a heavy blow from a blunt weapon."
+      }
+    },
+    {
+      "id": "2219:232",
+      "sentence": 2219,
+      "paragraph": 829,
+      "range": [
+        232,
+        29
+      ],
+      "text": "He had stood behind that tree",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2111,
+        "paragraph": 782,
+        "range": [
+          1128,
+          190
+        ],
+        "text": "He ran up and down, sometimes losing, sometimes finding the track until we were well within the edge of the wood and under the shadow of a great beech, the largest tree in the neighbourhood."
+      }
+    },
+    {
+      "id": "2232:1",
+      "sentence": 2232,
+      "paragraph": 833,
+      "range": [
+        1,
+        15
+      ],
+      "text": "Mr. John Turner",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2038,
+        "paragraph": 765,
+        "range": [
+          57,
+          83
+        ],
+        "text": "“It is said that Mr. Turner, of the Hall, is so ill that his life is despaired of.”"
+      }
+    },
+    {
+      "id": "2238:50",
+      "sentence": 2238,
+      "paragraph": 835,
+      "range": [
+        50,
+        16
+      ],
+      "text": "You had my note?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2118,
+        "paragraph": 783,
+        "range": [
+          155,
+          86
+        ],
+        "text": "I think that I will go in and have a word with Moran, and perhaps write a little note."
+      }
+    },
+    {
+      "id": "2253:45",
+      "sentence": 2253,
+      "paragraph": 842,
+      "range": [
+        45,
+        12
+      ],
+      "text": "my dear girl",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1965,
+        "paragraph": 746,
+        "range": [
+          0,
+          77
+        ],
+        "text": "“I must go home now, for dad is very ill, and he misses me so if I leave him."
+      }
+    },
+    {
+      "id": "2258:43",
+      "sentence": 2258,
+      "paragraph": 845,
+      "range": [
+        43,
+        50
+      ],
+      "text": "it was your daughter who required my presence here",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1901,
+        "paragraph": 722,
+        "range": [
+          284,
+          151
+        ],
+        "text": "She has heard of you, and would have your opinion, though I repeatedly told her that there was nothing which you could do which I had not already done."
+      }
+    },
+    {
+      "id": "2261:38",
+      "sentence": 2261,
+      "paragraph": 846,
+      "range": [
+        38,
+        29
+      ],
+      "text": "I have had diabetes for years",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2236,
+        "paragraph": 834,
+        "range": [
+          531,
+          90
+        ],
+        "text": "It was clear to me at a glance that he was in the grip of some deadly and chronic disease."
+      }
+    },
+    {
+      "id": "2270:137",
+      "sentence": 2270,
+      "paragraph": 848,
+      "range": [
+        137,
+        21
+      ],
+      "text": "spare Alice the shock",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2254,
+        "paragraph": 842,
+        "range": [
+          59,
+          84
+        ],
+        "text": "It would break her heart—it will break her heart when she hears that I am arrested.”"
+      }
+    },
+    {
+      "id": "2281:438",
+      "sentence": 2281,
+      "paragraph": 850,
+      "range": [
+        438,
+        22
+      ],
+      "text": "Black Jack of Ballarat",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2192,
+        "paragraph": 815,
+        "range": [
+          152,
+          24
+        ],
+        "text": "So and so, of Ballarat.”"
+      }
+    },
+    {
+      "id": "2298:78",
+      "sentence": 2298,
+      "paragraph": 854,
+      "range": [
+        78,
+        47
+      ],
+      "text": "there they have lived rent free on my best land",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2043,
+        "paragraph": 767,
+        "range": [
+          173,
+          141
+        ],
+        "text": "He was an old friend of McCarthy’s, and, I may add, a great benefactor to him, for I have learned that he gave him Hatherley Farm rent free.”"
+      }
+    },
+    {
+      "id": "2309:399",
+      "sentence": 2309,
+      "paragraph": 855,
+      "range": [
+        399,
+        53
+      ],
+      "text": "We were to meet at the pool midway between our houses",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2030,
+        "paragraph": 763,
+        "range": [
+          71,
+          187
+        ],
+        "text": "One is that the murdered man had an appointment with someone at the pool, and that the someone could not have been his son, for his son was away, and he did not know when he would return."
+      }
+    },
+    {
+      "id": "2310:63",
+      "sentence": 2310,
+      "paragraph": 856,
+      "range": [
+        63,
+        39
+      ],
+      "text": "smoked a cigar and waited behind a tree",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2219,
+        "paragraph": 829,
+        "range": [
+          232,
+          78
+        ],
+        "text": "He had stood behind that tree during the interview between the father and son."
+      }
+    },
+    {
+      "id": "2324:1118",
+      "sentence": 2324,
+      "paragraph": 856,
+      "range": [
+        1118,
+        48
+      ],
+      "text": "fetch the cloak which I had dropped in my flight",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1859,
+        "paragraph": 703,
+        "range": [
+          224,
+          88
+        ],
+        "text": "It seemed to me to be something grey in colour, a coat of some sort, or a plaid perhaps."
+      }
+    },
+    {
+      "id": "2332:141",
+      "sentence": 2332,
+      "paragraph": 859,
+      "range": [
+        141,
+        27
+      ],
+      "text": "I will keep your confession",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2268,
+        "paragraph": 847,
+        "range": [
+          211,
+          82
+        ],
+        "text": "Then I could produce your confession at the last extremity to save young McCarthy."
+      }
+    },
+    {
+      "id": "2342:269",
+      "sentence": 2342,
+      "paragraph": 862,
+      "range": [
+        269,
+        54
+      ],
+      "text": "the son and daughter may come to live happily together",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2017,
+        "paragraph": 761,
+        "range": [
+          42,
+          292
+        ],
+        "text": "This fellow is madly, insanely, in love with her, but some two years ago, when he was only a lad, and before he really knew her, for she had been away five years at a boarding-school, what does the idiot do but get into the clutches of a barmaid in Bristol and marry her at a registry office?"
+      }
+    }
+  ]
+}

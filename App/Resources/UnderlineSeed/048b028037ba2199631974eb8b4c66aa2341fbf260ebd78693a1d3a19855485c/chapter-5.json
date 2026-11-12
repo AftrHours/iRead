@@ -1,0 +1,363 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "618:102",
+      "sentence": 618,
+      "paragraph": 246,
+      "range": [
+        102,
+        40
+      ],
+      "text": "the King of Bohemia rushed into the room",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 603,
+        "paragraph": 238,
+        "range": [
+          36,
+          80
+        ],
+        "text": "I shall call with the King to-morrow, and with you, if you care to come with us."
+      }
+    },
+    {
+      "id": "627:5",
+      "sentence": 627,
+      "paragraph": 253,
+      "range": [
+        5,
+        22
+      ],
+      "text": "my brougham is waiting",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 159,
+        "paragraph": 63,
+        "range": [
+          82,
+          47
+        ],
+        "text": "“A nice little brougham and a pair of beauties."
+      }
+    },
+    {
+      "id": "630:1",
+      "sentence": 630,
+      "paragraph": 255,
+      "range": [
+        1,
+        22
+      ],
+      "text": "Irene Adler is married",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 417,
+        "paragraph": 171,
+        "range": [
+          0,
+          283
+        ],
+        "text": "“I was half-dragged up to the altar, and before I knew where I was I found myself mumbling responses which were whispered in my ear, and vouching for things of which I knew nothing, and generally assisting in the secure tying up of Irene Adler, spinster, to Godfrey Norton, bachelor."
+      }
+    },
+    {
+      "id": "635:4",
+      "sentence": 635,
+      "paragraph": 259,
+      "range": [
+        4,
+        30
+      ],
+      "text": "an English lawyer named Norton",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 372,
+        "paragraph": 160,
+        "range": [
+          70,
+          16
+        ],
+        "text": "He was a lawyer."
+      }
+    },
+    {
+      "id": "639:37",
+      "sentence": 639,
+      "paragraph": 263,
+      "range": [
+        37,
+        28
+      ],
+      "text": "all fear of future annoyance",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 289,
+        "paragraph": 127,
+        "range": [
+          0,
+          39
+        ],
+        "text": "“Threatens to send them the photograph."
+      }
+    },
+    {
+      "id": "655:59",
+      "sentence": 655,
+      "paragraph": 268,
+      "range": [
+        59,
+        38
+      ],
+      "text": "She left this morning with her husband",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 609,
+        "paragraph": 240,
+        "range": [
+          83,
+          96
+        ],
+        "text": "Besides, we must be prompt, for this marriage may mean a complete change in her life and habits."
+      }
+    },
+    {
+      "id": "666:269",
+      "sentence": 666,
+      "paragraph": 272,
+      "range": [
+        269,
+        30
+      ],
+      "text": "Holmes rushed at the bell-pull",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 594,
+        "paragraph": 236,
+        "range": [
+          699,
+          84
+        ],
+        "text": "The photograph is in a recess behind a sliding panel just above the right bell-pull."
+      }
+    },
+    {
+      "id": "673:86",
+      "sentence": 673,
+      "paragraph": 273,
+      "range": [
+        86,
+        29
+      ],
+      "text": "Until after the alarm of fire",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 554,
+        "paragraph": 223,
+        "range": [
+          137,
+          117
+        ],
+        "text": "At the same instant I saw him raise his hand and at the signal I tossed my rocket into the room with a cry of “Fire!”"
+      }
+    },
+    {
+      "id": "679:495",
+      "sentence": 679,
+      "paragraph": 273,
+      "range": [
+        495,
+        31
+      ],
+      "text": "such a dear, kind old clergyman",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 478,
+        "paragraph": 200,
+        "range": [
+          0,
+          135
+        ],
+        "text": "He disappeared into his bedroom and returned in a few minutes in the character of an amiable and simple-minded Nonconformist clergyman."
+      }
+    },
+    {
+      "id": "685:160",
+      "sentence": 685,
+      "paragraph": 274,
+      "range": [
+        160,
+        21
+      ],
+      "text": "wished you good-night",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 613,
+        "paragraph": 242,
+        "range": [
+          0,
+          37
+        ],
+        "text": "“Good-night, Mister Sherlock Holmes.”"
+      }
+    },
+    {
+      "id": "685:187",
+      "sentence": 685,
+      "paragraph": 274,
+      "range": [
+        187,
+        40
+      ],
+      "text": "started for the Temple to see my husband",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 425,
+        "paragraph": 173,
+        "range": [
+          174,
+          101
+        ],
+        "text": "At the church door, however, they separated, he driving back to the Temple, and she to her own house."
+      }
+    },
+    {
+      "id": "690:384",
+      "sentence": 690,
+      "paragraph": 275,
+      "range": [
+        384,
+        36
+      ],
+      "text": "a weapon which will always secure me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 489,
+        "paragraph": 202,
+        "range": [
+          116,
+          49
+        ],
+        "text": "The photograph becomes a double-edged weapon now."
+      }
+    },
+    {
+      "id": "691:471",
+      "sentence": 691,
+      "paragraph": 275,
+      "range": [
+        471,
+        51
+      ],
+      "text": "I leave a photograph which he might care to possess",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 667,
+        "paragraph": 272,
+        "range": [
+          401,
+          113
+        ],
+        "text": "The photograph was of Irene Adler herself in evening dress, the letter was superscribed to “Sherlock Holmes, Esq."
+      }
+    },
+    {
+      "id": "696:102",
+      "sentence": 696,
+      "paragraph": 278,
+      "range": [
+        102,
+        50
+      ],
+      "text": "Did I not tell you how quick and resolute she was?",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 293,
+        "paragraph": 127,
+        "range": [
+          138,
+          90
+        ],
+        "text": "She has the face of the most beautiful of women, and the mind of the most resolute of men."
+      }
+    },
+    {
+      "id": "703:118",
+      "sentence": 703,
+      "paragraph": 280,
+      "range": [
+        118,
+        55
+      ],
+      "text": "The photograph is now as safe as if it were in the fire",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 690,
+        "paragraph": 275,
+        "range": [
+          332,
+          138
+        ],
+        "text": "I keep it only to safeguard myself, and to preserve a weapon which will always secure me from any steps which he might take in the future."
+      }
+    },
+    {
+      "id": "710:1",
+      "sentence": 710,
+      "paragraph": 285,
+      "range": [
+        1,
+        16
+      ],
+      "text": "This photograph!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 667,
+        "paragraph": 272,
+        "range": [
+          401,
+          113
+        ],
+        "text": "The photograph was of Irene Adler herself in evening dress, the letter was superscribed to “Sherlock Holmes, Esq."
+      }
+    },
+    {
+      "id": "721:337",
+      "sentence": 721,
+      "paragraph": 289,
+      "range": [
+        337,
+        33
+      ],
+      "text": "the honourable title of the woman",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 41,
+        "paragraph": 29,
+        "range": [
+          0,
+          43
+        ],
+        "text": "To Sherlock Holmes she is always the woman."
+      }
+    }
+  ]
+}

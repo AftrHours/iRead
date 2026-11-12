@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// After a Jump: ✕ and Return to Reading. After returning: a short toast. Otherwise nothing.
+/// After a Jump: Stay On This Page and Back to Latest Read. After returning: a short toast. Otherwise nothing.
 struct ReturnControls: View {
     let canReturn: Bool
     let toastText: String?
@@ -9,28 +9,38 @@ struct ReturnControls: View {
 
     var body: some View {
         if canReturn {
-            HStack(spacing: 0) {
-                Button(action: onDismiss) {
-                    Image(systemName: "xmark")
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(.white)
-                        .frame(width: 44, height: 44)
-                        .background(Color(.systemGray2), in: .circle)
-                }
-                .accessibilityLabel("Dismiss")
-                Button("Return to Reading", systemImage: "arrow.uturn.backward", action: onReturn)
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.capsule)
-                    .controlSize(.large)
+            HStack(spacing: 16) {
+                Button("Stay On This Page", action: onDismiss)
+                    .buttonStyle(ReturnPillStyle(fill: AppColors.settingsBackground, text: AppColors.textSecondary))
+                Button("Back to Latest Read", action: onReturn)
+                    .buttonStyle(ReturnPillStyle(fill: AppColors.actionPrimary, text: Color(white: 0.1)))
             }
         } else if let toastText {
             Text(toastText)
+                .font(AppTypography.body())
                 .foregroundStyle(.white)
-                .padding(.horizontal, 24)
+                .padding(.horizontal, 28)
                 .frame(minHeight: 44)
-                .background(Color(.systemGray2), in: .capsule)
+                .background(Color(red: 0xC4 / 255, green: 0xC3 / 255, blue: 0xDA / 255), in: .capsule)
                 .transition(.opacity)
         }
+    }
+}
+
+/// A capsule with a soft shadow, as in the design's Component 6.
+private struct ReturnPillStyle: ButtonStyle {
+    let fill: Color
+    let text: Color
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(AppTypography.body())
+            .foregroundStyle(text)
+            .padding(.horizontal, 28)
+            .frame(minHeight: 44)
+            .background(fill, in: .capsule)
+            .shadow(color: .black.opacity(0.12), radius: 8, y: 2)
+            .opacity(configuration.isPressed ? 0.7 : 1)
     }
 }
 

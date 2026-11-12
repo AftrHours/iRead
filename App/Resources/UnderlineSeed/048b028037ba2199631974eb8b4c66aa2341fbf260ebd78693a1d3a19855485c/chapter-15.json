@@ -1,0 +1,804 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "5712:1",
+      "sentence": 5712,
+      "paragraph": 2147,
+      "range": [
+        1,
+        41
+      ],
+      "text": "What on earth can be the matter with him?",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5711,
+        "paragraph": 2146,
+        "range": [
+          470,
+          122
+        ],
+        "text": "As he ran he jerked his hands up and down, waggled his head, and writhed his face into the most extraordinary contortions."
+      }
+    },
+    {
+      "id": "5732:1",
+      "sentence": 5732,
+      "paragraph": 2154,
+      "range": [
+        1,
+        26
+      ],
+      "text": "No doubt you think me mad?",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5724,
+        "paragraph": 2151,
+        "range": [
+          350,
+          161
+        ],
+        "text": "Then, suddenly springing to his feet, he beat his head against the wall with such force that we both rushed upon him and tore him away to the centre of the room."
+      }
+    },
+    {
+      "id": "5748:262",
+      "sentence": 5748,
+      "paragraph": 2160,
+      "range": [
+        262,
+        34
+      ],
+      "text": "That is why I was so out of breath",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5721,
+        "paragraph": 2150,
+        "range": [
+          128,
+          135
+        ],
+        "text": "As he spoke, the man, puffing and blowing, rushed at our door and pulled at our bell until the whole house resounded with the clanging."
+      }
+    },
+    {
+      "id": "5759:52",
+      "sentence": 5759,
+      "paragraph": 2165,
+      "range": [
+        52,
+        30
+      ],
+      "text": "I should have £ 50,000 at once",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5751,
+        "paragraph": 2161,
+        "range": [
+          230,
+          114
+        ],
+        "text": "One of our most lucrative means of laying out money is in the shape of loans, where the security is unimpeachable."
+      }
+    },
+    {
+      "id": "5776:81",
+      "sentence": 5776,
+      "paragraph": 2172,
+      "range": [
+        81,
+        21
+      ],
+      "text": "my illustrious client",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5754,
+        "paragraph": 2162,
+        "range": [
+          112,
+          245
+        ],
+        "text": "I started when I saw the name, for it was that of none other than—well, perhaps even to you I had better say no more than that it was a name which is a household word all over the earth—one of the highest, noblest, most exalted names in England."
+      }
+    },
+    {
+      "id": "5783:155",
+      "sentence": 5783,
+      "paragraph": 2175,
+      "range": [
+        155,
+        31
+      ],
+      "text": "able in four days to reclaim it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5764,
+        "paragraph": 2167,
+        "range": [
+          0,
+          152
+        ],
+        "text": "“‘Next Monday I have a large sum due to me, and I shall then most certainly repay what you advance, with whatever interest you think it right to charge."
+      }
+    },
+    {
+      "id": "5791:89",
+      "sentence": 5791,
+      "paragraph": 2178,
+      "range": [
+        89,
+        44
+      ],
+      "text": "I ordered him to pay over fifty £ 1000 notes",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5759,
+        "paragraph": 2165,
+        "range": [
+          0,
+          83
+        ],
+        "text": "“‘It is absolutely essential to me,’ said he, ‘that I should have £ 50,000 at once."
+      }
+    },
+    {
+      "id": "5800:493",
+      "sentence": 5800,
+      "paragraph": 2179,
+      "range": [
+        493,
+        26
+      ],
+      "text": "carrying the jewel with me",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5773,
+        "paragraph": 2171,
+        "range": [
+          145,
+          101
+        ],
+        "text": "‘There are thirty-nine enormous beryls,’ said he, ‘and the price of the gold chasing is incalculable."
+      }
+    },
+    {
+      "id": "5825:38",
+      "sentence": 5825,
+      "paragraph": 2183,
+      "range": [
+        38,
+        33
+      ],
+      "text": "such a man as Sir George Burnwell",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5824,
+        "paragraph": 2182,
+        "range": [
+          612,
+          185
+        ],
+        "text": "He tried more than once to break away from the dangerous company which he was keeping, but each time the influence of his friend, Sir George Burnwell, was enough to draw him back again."
+      }
+    },
+    {
+      "id": "5840:209",
+      "sentence": 5840,
+      "paragraph": 2186,
+      "range": [
+        209,
+        40
+      ],
+      "text": "Lucy Parr, who had brought in the coffee",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5805,
+        "paragraph": 2180,
+        "range": [
+          305,
+          86
+        ],
+        "text": "Another, Lucy Parr, the second waiting-maid, has only been in my service a few months."
+      }
+    },
+    {
+      "id": "5851:53",
+      "sentence": 5851,
+      "paragraph": 2193,
+      "range": [
+        53,
+        26
+      ],
+      "text": "can you let me have £ 200?",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5823,
+        "paragraph": 2182,
+        "range": [
+          398,
+          213
+        ],
+        "text": "He learned to play heavily at cards and to squander money on the turf, until he had again and again to come to me and implore me to give him an advance upon his allowance, that he might settle his debts of honour."
+      }
+    },
+    {
+      "id": "5855:74",
+      "sentence": 5855,
+      "paragraph": 2195,
+      "range": [
+        74,
+        46
+      ],
+      "text": "I can never show my face inside the club again",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5822,
+        "paragraph": 2182,
+        "range": [
+          217,
+          180
+        ],
+        "text": "When he was young he became a member of an aristocratic club, and there, having charming manners, he was soon the intimate of a number of men with long purses and expensive habits."
+      }
+    },
+    {
+      "id": "5868:2",
+      "sentence": 5868,
+      "paragraph": 2202,
+      "range": [
+        2,
+        37
+      ],
+      "text": "She came in just now by the back door",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5807,
+        "paragraph": 2180,
+        "range": [
+          477,
+          96
+        ],
+        "text": "She is a very pretty girl and has attracted admirers who have occasionally hung about the place."
+      }
+    },
+    {
+      "id": "5878:115",
+      "sentence": 5878,
+      "paragraph": 2208,
+      "range": [
+        115,
+        22
+      ],
+      "text": "the anxiety in my mind",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5794,
+        "paragraph": 2178,
+        "range": [
+          464,
+          63
+        ],
+        "text": "I already regretted having ever consented to take charge of it."
+      }
+    },
+    {
+      "id": "5920:603",
+      "sentence": 5920,
+      "paragraph": 2219,
+      "range": [
+        603,
+        40
+      ],
+      "text": "the ruined coronet was national property",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5793,
+        "paragraph": 2178,
+        "range": [
+          332,
+          131
+        ],
+        "text": "There could be no doubt that, as it was a national possession, a horrible scandal would ensue if any misfortune should occur to it."
+      }
+    },
+    {
+      "id": "5931:200",
+      "sentence": 5931,
+      "paragraph": 2223,
+      "range": [
+        200,
+        51
+      ],
+      "text": "I called in the inspector and gave him into custody",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5919,
+        "paragraph": 2219,
+        "range": [
+          344,
+          169
+        ],
+        "text": "When the inspector and a constable entered the house, Arthur, who had stood sullenly with his arms folded, asked me whether it was my intention to charge him with theft."
+      }
+    },
+    {
+      "id": "5945:76",
+      "sentence": 5945,
+      "paragraph": 2227,
+      "range": [
+        76,
+        49
+      ],
+      "text": "Sir George Burnwell has been several times lately",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5825,
+        "paragraph": 2183,
+        "range": [
+          0,
+          235
+        ],
+        "text": "“And, indeed, I could not wonder that such a man as Sir George Burnwell should gain an influence over him, for he has frequently brought him to my house, and I have found myself that I could hardly resist the fascination of his manner."
+      }
+    },
+    {
+      "id": "5957:11",
+      "sentence": 5957,
+      "paragraph": 2233,
+      "range": [
+        11,
+        32
+      ],
+      "text": "She is even more affected than I",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5917,
+        "paragraph": 2219,
+        "range": [
+          80,
+          175
+        ],
+        "text": "Mary was the first to rush into my room, and, at the sight of the coronet and of Arthur’s face, she read the whole story and, with a scream, fell down senseless on the ground."
+      }
+    },
+    {
+      "id": "5985:507",
+      "sentence": 5985,
+      "paragraph": 2246,
+      "range": [
+        507,
+        43
+      ],
+      "text": "concealed three gems out of the thirty-nine",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5892,
+        "paragraph": 2210,
+        "range": [
+          339,
+          69
+        ],
+        "text": "One of the gold corners, with three of the beryls in it, was missing."
+      }
+    },
+    {
+      "id": "6002:888",
+      "sentence": 6002,
+      "paragraph": 2250,
+      "range": [
+        888,
+        20
+      ],
+      "text": "a young lady came in",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5830,
+        "paragraph": 2184,
+        "range": [
+          44,
+          155
+        ],
+        "text": "She is my niece; but when my brother died five years ago and left her alone in the world I adopted her, and have looked upon her ever since as my daughter."
+      }
+    },
+    {
+      "id": "6017:39",
+      "sentence": 6017,
+      "paragraph": 2256,
+      "range": [
+        39,
+        47
+      ],
+      "text": "I actually saw him with the coronet in his hand",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5888,
+        "paragraph": 2210,
+        "range": [
+          0,
+          164
+        ],
+        "text": "“The gas was half up, as I had left it, and my unhappy boy, dressed only in his shirt and trousers, was standing beside the light, holding the coronet in his hands."
+      }
+    },
+    {
+      "id": "6048:1",
+      "sentence": 6048,
+      "paragraph": 2270,
+      "range": [
+        1,
+        37
+      ],
+      "text": "You have a maid who has a sweetheart?",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5869,
+        "paragraph": 2202,
+        "range": [
+          41,
+          130
+        ],
+        "text": "I have no doubt that she has only been to the side gate to see someone, but I think that it is hardly safe and should be stopped.’"
+      }
+    },
+    {
+      "id": "6050:63",
+      "sentence": 6050,
+      "paragraph": 2271,
+      "range": [
+        63,
+        52
+      ],
+      "text": "who may have heard uncle’s remarks about the coronet",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5840,
+        "paragraph": 2186,
+        "range": [
+          209,
+          117
+        ],
+        "text": "Lucy Parr, who had brought in the coffee, had, I am sure, left the room; but I cannot swear that the door was closed."
+      }
+    },
+    {
+      "id": "6074:63",
+      "sentence": 6074,
+      "paragraph": 2283,
+      "range": [
+        63,
+        61
+      ],
+      "text": "the large one which looked from the hall onto the stable lane",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5865,
+        "paragraph": 2199,
+        "range": [
+          257,
+          123
+        ],
+        "text": "As I came down the stairs I saw Mary herself at the side window of the hall, which she closed and fastened as I approached."
+      }
+    },
+    {
+      "id": "6081:37",
+      "sentence": 6081,
+      "paragraph": 2286,
+      "range": [
+        37,
+        39
+      ],
+      "text": "that of the cupboard of the lumber-room",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5848,
+        "paragraph": 2191,
+        "range": [
+          40,
+          86
+        ],
+        "text": "When I was a youngster I have opened it myself with the key of the box-room cupboard.’"
+      }
+    },
+    {
+      "id": "6142:77",
+      "sentence": 6142,
+      "paragraph": 2312,
+      "range": [
+        77,
+        46
+      ],
+      "text": "swinging an old elastic-sided boot in his hand",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6135,
+        "paragraph": 2310,
+        "range": [
+          397,
+          89
+        ],
+        "text": "He hurried to his chamber and was down again in a few minutes dressed as a common loafer."
+      }
+    },
+    {
+      "id": "6177:176",
+      "sentence": 6177,
+      "paragraph": 2325,
+      "range": [
+        176,
+        59
+      ],
+      "text": "if she had married my boy all might have been well with him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5835,
+        "paragraph": 2184,
+        "range": [
+          469,
+          103
+        ],
+        "text": "Twice my boy has asked her to marry him, for he loves her devotedly, but each time she has refused him."
+      }
+    },
+    {
+      "id": "6226:239",
+      "sentence": 6226,
+      "paragraph": 2346,
+      "range": [
+        239,
+        27
+      ],
+      "text": "They have now fled together",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6181,
+        "paragraph": 2326,
+        "range": [
+          153,
+          118
+        ],
+        "text": "I cannot, with this thought in my mind, ever again be happy under your roof, and I feel that I must leave you forever."
+      }
+    },
+    {
+      "id": "6238:142",
+      "sentence": 6238,
+      "paragraph": 2350,
+      "range": [
+        142,
+        71
+      ],
+      "text": "talked to her lover through the window which leads into the stable lane",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5865,
+        "paragraph": 2199,
+        "range": [
+          257,
+          123
+        ],
+        "text": "As I came down the stairs I saw Mary herself at the side window of the hall, which she closed and fastened as I approached."
+      }
+    },
+    {
+      "id": "6243:690",
+      "sentence": 6243,
+      "paragraph": 2350,
+      "range": [
+        690,
+        58
+      ],
+      "text": "one of the servants’ escapade with her wooden-legged lover",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6066,
+        "paragraph": 2280,
+        "range": [
+          0,
+          36
+        ],
+        "text": "“And he is a man with a wooden leg?”"
+      }
+    },
+    {
+      "id": "6244:93",
+      "sentence": 6244,
+      "paragraph": 2351,
+      "range": [
+        93,
+        35
+      ],
+      "text": "his uneasiness about his club debts",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5855,
+        "paragraph": 2195,
+        "range": [
+          0,
+          122
+        ],
+        "text": "“‘You have been very kind,’ said he, ‘but I must have this money, or else I can never show my face inside the club again.’"
+      }
+    },
+    {
+      "id": "6252:291",
+      "sentence": 6252,
+      "paragraph": 2352,
+      "range": [
+        291,
+        16
+      ],
+      "text": "in his bare feet",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6108,
+        "paragraph": 2297,
+        "range": [
+          0,
+          56
+        ],
+        "text": "“Your son had no shoes or slippers on when you saw him?”"
+      }
+    },
+    {
+      "id": "6264:136",
+      "sentence": 6264,
+      "paragraph": 2355,
+      "range": [
+        136,
+        51
+      ],
+      "text": "his asking to be allowed to go out for five minutes",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5923,
+        "paragraph": 2220,
+        "range": [
+          62,
+          91
+        ],
+        "text": "It would be to your advantage as well as mine if I might leave the house for five minutes.’"
+      }
+    },
+    {
+      "id": "6282:33",
+      "sentence": 6282,
+      "paragraph": 2358,
+      "range": [
+        33,
+        83
+      ],
+      "text": "I examined, as you remember, the sill and framework of the hall window with my lens",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6075,
+        "paragraph": 2283,
+        "range": [
+          126,
+          97
+        ],
+        "text": "This he opened and made a very careful examination of the sill with his powerful magnifying lens."
+      }
+    },
+    {
+      "id": "6299:308",
+      "sentence": 6299,
+      "paragraph": 2360,
+      "range": [
+        308,
+        36
+      ],
+      "text": "a man of evil reputation among women",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5827,
+        "paragraph": 2183,
+        "range": [
+          402,
+          213
+        ],
+        "text": "Yet when I think of him in cold blood, far away from the glamour of his presence, I am convinced from his cynical speech and the look which I have caught in his eyes that he is one who should be deeply distrusted."
+      }
+    },
+    {
+      "id": "6303:296",
+      "sentence": 6303,
+      "paragraph": 2361,
+      "range": [
+        296,
+        35
+      ],
+      "text": "buying a pair of his cast-off shoes",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6142,
+        "paragraph": 2312,
+        "range": [
+          0,
+          124
+        ],
+        "text": "I had just finished my tea when he returned, evidently in excellent spirits, swinging an old elastic-sided boot in his hand."
+      }
+    },
+    {
+      "id": "6305:7",
+      "sentence": 6305,
+      "paragraph": 2362,
+      "range": [
+        7,
+        53
+      ],
+      "text": "an ill-dressed vagabond in the lane yesterday evening",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6153,
+        "paragraph": 2317,
+        "range": [
+          36,
+          83
+        ],
+        "text": "I have been out to Streatham since I saw you last, but I did not call at the house."
+      }
+    },
+    {
+      "id": "6317:766",
+      "sentence": 6317,
+      "paragraph": 2363,
+      "range": [
+        766,
+        45
+      ],
+      "text": "I’ve let them go at six hundred for the three",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6194,
+        "paragraph": 2331,
+        "range": [
+          0,
+          62
+        ],
+        "text": "“You would not think £ 1000 apiece an excessive sum for them?”"
+      }
+    }
+  ]
+}

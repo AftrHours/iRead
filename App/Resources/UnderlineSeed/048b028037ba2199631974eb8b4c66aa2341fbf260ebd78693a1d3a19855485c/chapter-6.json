@@ -1,0 +1,699 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "760:113",
+      "sentence": 760,
+      "paragraph": 308,
+      "range": [
+        113,
+        24
+      ],
+      "text": "that I did manual labour",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 756,
+        "paragraph": 306,
+        "range": [
+          123,
+          232
+        ],
+        "text": "“Beyond the obvious facts that he has at some time done manual labour, that he takes snuff, that he is a Freemason, that he has been in China, and that he has done a considerable amount of writing lately, I can deduce nothing else.”"
+      }
+    },
+    {
+      "id": "765:7",
+      "sentence": 765,
+      "paragraph": 310,
+      "range": [
+        7,
+        36
+      ],
+      "text": "the snuff, then, and the Freemasonry",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 756,
+        "paragraph": 306,
+        "range": [
+          123,
+          232
+        ],
+        "text": "“Beyond the obvious facts that he has at some time done manual labour, that he takes snuff, that he is a Freemason, that he has been in China, and that he has done a considerable amount of writing lately, I can deduce nothing else.”"
+      }
+    },
+    {
+      "id": "770:1",
+      "sentence": 770,
+      "paragraph": 314,
+      "range": [
+        1,
+        16
+      ],
+      "text": "Well, but China?",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 756,
+        "paragraph": 306,
+        "range": [
+          123,
+          232
+        ],
+        "text": "“Beyond the obvious facts that he has at some time done manual labour, that he takes snuff, that he is a Freemason, that he has been in China, and that he has done a considerable amount of writing lately, I can deduce nothing else.”"
+      }
+    },
+    {
+      "id": "781:206",
+      "sentence": 781,
+      "paragraph": 317,
+      "range": [
+        206,
+        34
+      ],
+      "text": "Can you not find the advertisement",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 749,
+        "paragraph": 304,
+        "range": [
+          162,
+          275
+        ],
+        "text": "As he glanced down the advertisement column, with his head thrust forward and the paper flattened out upon his knee, I took a good look at the man and endeavoured, after the fashion of my companion, to read the indications which might be presented by his dress or appearance."
+      }
+    },
+    {
+      "id": "804:21",
+      "sentence": 804,
+      "paragraph": 326,
+      "range": [
+        21,
+        19
+      ],
+      "text": "this obliging youth",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 803,
+        "paragraph": 325,
+        "range": [
+          277,
+          176
+        ],
+        "text": "I used to be able to keep two assistants, but now I only keep one; and I would have a job to pay him but that he is willing to come for half wages so as to learn the business.”"
+      }
+    },
+    {
+      "id": "811:48",
+      "sentence": 811,
+      "paragraph": 328,
+      "range": [
+        48,
+        48
+      ],
+      "text": "an employé who comes under the full market price",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 808,
+        "paragraph": 327,
+        "range": [
+          93,
+          143
+        ],
+        "text": "I should not wish a smarter assistant, Mr. Holmes; and I know very well that he could better himself and earn twice what I am able to give him."
+      }
+    },
+    {
+      "id": "828:25",
+      "sentence": 828,
+      "paragraph": 335,
+      "range": [
+        25,
+        51
+      ],
+      "text": "another vacancy on the League of the Red-headed Men",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 787,
+        "paragraph": 320,
+        "range": [
+          0,
+          242
+        ],
+        "text": "“TO THE RED-HEADED LEAGUE: On account of the bequest of the late Ezekiah Hopkins, of Lebanon, Pennsylvania, U.S.A., there is now another vacancy open which entitles a member of the League to a salary of £ 4 a week for purely nominal services."
+      }
+    },
+    {
+      "id": "838:29",
+      "sentence": 838,
+      "paragraph": 339,
+      "range": [
+        29,
+        50
+      ],
+      "text": "you are eligible yourself for one of the vacancies",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 754,
+        "paragraph": 305,
+        "range": [
+          493,
+          170
+        ],
+        "text": "Altogether, look as I would, there was nothing remarkable about the man save his blazing red head, and the expression of extreme chagrin and discontent upon his features."
+      }
+    },
+    {
+      "id": "845:222",
+      "sentence": 845,
+      "paragraph": 344,
+      "range": [
+        222,
+        40
+      ],
+      "text": "an American millionaire, Ezekiah Hopkins",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 787,
+        "paragraph": 320,
+        "range": [
+          0,
+          242
+        ],
+        "text": "“TO THE RED-HEADED LEAGUE: On account of the bequest of the late Ezekiah Hopkins, of Lebanon, Pennsylvania, U.S.A., there is now another vacancy open which entitles a member of the League to a salary of £ 4 a week for purely nominal services."
+      }
+    },
+    {
+      "id": "859:245",
+      "sentence": 859,
+      "paragraph": 348,
+      "range": [
+        245,
+        49
+      ],
+      "text": "Pope’s Court looked like a coster’s orange barrow",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 789,
+        "paragraph": 320,
+        "range": [
+          346,
+          122
+        ],
+        "text": "Apply in person on Monday, at eleven o’clock, to Duncan Ross, at the offices of the League, 7 Pope’s Court, Fleet Street.”"
+      }
+    },
+    {
+      "id": "886:102",
+      "sentence": 886,
+      "paragraph": 354,
+      "range": [
+        102,
+        20
+      ],
+      "text": "our noble benefactor",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 846,
+        "paragraph": 344,
+        "range": [
+          299,
+          282
+        ],
+        "text": "He was himself red-headed, and he had a great sympathy for all red-headed men; so, when he died, it was found that he had left his enormous fortune in the hands of trustees, with instructions to apply the interest to the providing of easy berths to men whose hair is of that colour."
+      }
+    },
+    {
+      "id": "895:234",
+      "sentence": 895,
+      "paragraph": 357,
+      "range": [
+        234,
+        24
+      ],
+      "text": "you should be a bachelor",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 821,
+        "paragraph": 331,
+        "range": [
+          11,
+          162
+        ],
+        "text": "He and a girl of fourteen, who does a bit of simple cooking and keeps the place clean—that’s all I have in the house, for I am a widower and never had any family."
+      }
+    },
+    {
+      "id": "915:138",
+      "sentence": 915,
+      "paragraph": 370,
+      "range": [
+        138,
+        38
+      ],
+      "text": "The will is very clear upon that point",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 846,
+        "paragraph": 344,
+        "range": [
+          299,
+          282
+        ],
+        "text": "He was himself red-headed, and he had a great sympathy for all red-headed men; so, when he died, it was found that he had left his enormous fortune in the hands of trustees, with instructions to apply the interest to the providing of easy berths to men whose hair is of that colour."
+      }
+    },
+    {
+      "id": "941:60",
+      "sentence": 941,
+      "paragraph": 380,
+      "range": [
+        60,
+        57
+      ],
+      "text": "Abbots and Archery and Armour and Architecture and Attica",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 934,
+        "paragraph": 378,
+        "range": [
+          172,
+          131
+        ],
+        "text": "He started me off upon the letter A, and then he left me; but he would drop in from time to time to see that all was right with me."
+      }
+    },
+    {
+      "id": "960:299",
+      "sentence": 960,
+      "paragraph": 387,
+      "range": [
+        299,
+        22
+      ],
+      "text": "the card upon the door",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 947,
+        "paragraph": 382,
+        "range": [
+          43,
+          162
+        ],
+        "text": "I went to my work as usual at ten o’clock, but the door was shut and locked, with a little square of cardboard hammered on to the middle of the panel with a tack."
+      }
+    },
+    {
+      "id": "972:17",
+      "sentence": 972,
+      "paragraph": 392,
+      "range": [
+        17,
+        27
+      ],
+      "text": "his name was William Morris",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 966,
+        "paragraph": 388,
+        "range": [
+          347,
+          41
+        ],
+        "text": "Then I asked him who Mr. Duncan Ross was."
+      }
+    },
+    {
+      "id": "993:45",
+      "sentence": 993,
+      "paragraph": 399,
+      "range": [
+        45,
+        29
+      ],
+      "text": "I have lost four pound a week",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 909,
+        "paragraph": 366,
+        "range": [
+          0,
+          17
+        ],
+        "text": "“‘Is £ 4 a week.’"
+      }
+    },
+    {
+      "id": "1001:100",
+      "sentence": 1001,
+      "paragraph": 402,
+      "range": [
+        100,
+        23
+      ],
+      "text": "This assistant of yours",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 824,
+        "paragraph": 332,
+        "range": [
+          57,
+          113
+        ],
+        "text": "Spaulding, he came down into the office just this day eight weeks, with this very paper in his hand, and he says:"
+      }
+    },
+    {
+      "id": "1009:1",
+      "sentence": 1009,
+      "paragraph": 410,
+      "range": [
+        1,
+        13
+      ],
+      "text": "At half wages",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 803,
+        "paragraph": 325,
+        "range": [
+          277,
+          176
+        ],
+        "text": "I used to be able to keep two assistants, but now I only keep one; and I would have a job to pay him but that he is willing to come for half wages so as to learn the business.”"
+      }
+    },
+    {
+      "id": "1058:1058",
+      "sentence": 1058,
+      "paragraph": 429,
+      "range": [
+        1058,
+        43
+      ],
+      "text": "a bright-looking, clean-shaven young fellow",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1012,
+        "paragraph": 413,
+        "range": [
+          0,
+          98
+        ],
+        "text": "“Small, stout-built, very quick in his ways, no hair on his face, though he’s not short of thirty."
+      }
+    },
+    {
+      "id": "1071:13",
+      "sentence": 1071,
+      "paragraph": 439,
+      "range": [
+        13,
+        17
+      ],
+      "text": "beat the pavement",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1057,
+        "paragraph": 429,
+        "range": [
+          870,
+          160
+        ],
+        "text": "Finally he returned to the pawnbroker’s, and, having thumped vigorously upon the pavement with his stick two or three times, he went up to the door and knocked."
+      }
+    },
+    {
+      "id": "1100:115",
+      "sentence": 1100,
+      "paragraph": 448,
+      "range": [
+        115,
+        48
+      ],
+      "text": "to-day being Saturday rather complicates matters",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1028,
+        "paragraph": 420,
+        "range": [
+          115,
+          75
+        ],
+        "text": "To-day is Saturday, and I hope that by Monday we may come to a conclusion.”"
+      }
+    },
+    {
+      "id": "1110:579",
+      "sentence": 1110,
+      "paragraph": 453,
+      "range": [
+        579,
+        50
+      ],
+      "text": "the ominous words with which he had parted from me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1106,
+        "paragraph": 452,
+        "range": [
+          12,
+          102
+        ],
+        "text": "And, I say, Doctor, there may be some little danger, so kindly put your army revolver in your pocket.”"
+      }
+    },
+    {
+      "id": "1113:771",
+      "sentence": 1113,
+      "paragraph": 453,
+      "range": [
+        771,
+        61
+      ],
+      "text": "this smooth-faced pawnbroker’s assistant was a formidable man",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1062,
+        "paragraph": 432,
+        "range": [
+          57,
+          124
+        ],
+        "text": "“He is, in my judgment, the fourth smartest man in London, and for daring I am not sure that he has not a claim to be third."
+      }
+    },
+    {
+      "id": "1171:306",
+      "sentence": 1171,
+      "paragraph": 470,
+      "range": [
+        306,
+        66
+      ],
+      "text": "the cellar of the City branch of one of the principal London banks",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1082,
+        "paragraph": 442,
+        "range": [
+          201,
+          181
+        ],
+        "text": "There is Mortimer’s, the tobacconist, the little newspaper shop, the Coburg branch of the City and Suburban Bank, the Vegetarian Restaurant, and McFarlane’s carriage-building depot."
+      }
+    },
+    {
+      "id": "1199:56",
+      "sentence": 1199,
+      "paragraph": 478,
+      "range": [
+        56,
+        46
+      ],
+      "text": "back through the house into Saxe-Coburg Square",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1079,
+        "paragraph": 441,
+        "range": [
+          453,
+          201
+        ],
+        "text": "It was difficult to realise as we looked at the line of fine shops and stately business premises that they really abutted on the other side upon the faded and stagnant square which we had just quitted."
+      }
+    },
+    {
+      "id": "1216:572",
+      "sentence": 1216,
+      "paragraph": 483,
+      "range": [
+        572,
+        24
+      ],
+      "text": "a shock of very red hair",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 867,
+        "paragraph": 350,
+        "range": [
+          0,
+          153
+        ],
+        "text": "“There was nothing in the office but a couple of wooden chairs and a deal table, behind which sat a small man with a head that was even redder than mine."
+      }
+    },
+    {
+      "id": "1224:1",
+      "sentence": 1224,
+      "paragraph": 486,
+      "range": [
+        1,
+        22
+      ],
+      "text": "It’s no use, John Clay",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1134,
+        "paragraph": 461,
+        "range": [
+          0,
+          53
+        ],
+        "text": "“John Clay, the murderer, thief, smasher, and forger."
+      }
+    },
+    {
+      "id": "1238:152",
+      "sentence": 1238,
+      "paragraph": 492,
+      "range": [
+        152,
+        30
+      ],
+      "text": "I have royal blood in my veins",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1137,
+        "paragraph": 461,
+        "range": [
+          250,
+          77
+        ],
+        "text": "His grandfather was a royal duke, and he himself has been to Eton and Oxford."
+      }
+    },
+    {
+      "id": "1246:12",
+      "sentence": 1246,
+      "paragraph": 496,
+      "range": [
+        12,
+        44
+      ],
+      "text": "one or two little scores of my own to settle",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1142,
+        "paragraph": 462,
+        "range": [
+          66,
+          120
+        ],
+        "text": "I’ve had one or two little turns also with Mr. John Clay, and I agree with you that he is at the head of his profession."
+      }
+    },
+    {
+      "id": "1260:366",
+      "sentence": 1260,
+      "paragraph": 499,
+      "range": [
+        366,
+        40
+      ],
+      "text": "the assistant’s fondness for photography",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 815,
+        "paragraph": 329,
+        "range": [
+          47,
+          41
+        ],
+        "text": "“Never was such a fellow for photography."
+      }
+    },
+    {
+      "id": "1274:388",
+      "sentence": 1274,
+      "paragraph": 500,
+      "range": [
+        388,
+        35
+      ],
+      "text": "His knees were what I wished to see",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1068,
+        "paragraph": 436,
+        "range": [
+          0,
+          28
+        ],
+        "text": "“The knees of his trousers.”"
+      }
+    },
+    {
+      "id": "1282:7",
+      "sentence": 1282,
+      "paragraph": 502,
+      "range": [
+        7,
+        37
+      ],
+      "text": "when they closed their League offices",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 951,
+        "paragraph": 384,
+        "range": [
+          0,
+          36
+        ],
+        "text": "“THE RED-HEADED LEAGUE IS DISSOLVED."
+      }
+    }
+  ]
+}

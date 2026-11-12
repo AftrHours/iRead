@@ -1,0 +1,741 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "5126:9",
+      "sentence": 5126,
+      "paragraph": 1918,
+      "range": [
+        9,
+        26
+      ],
+      "text": "a very fashionable epistle",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5125,
+        "paragraph": 1917,
+        "range": [
+          447,
+          337
+        ],
+        "text": "With my body in one easy-chair and my legs upon another, I had surrounded myself with a cloud of newspapers until at last, saturated with the news of the day, I tossed them all aside and lay listless, watching the huge crest and monogram upon the envelope upon the table and wondering lazily who my friend’s noble correspondent could be."
+      }
+    },
+    {
+      "id": "5134:5",
+      "sentence": 5134,
+      "paragraph": 1924,
+      "range": [
+        5,
+        19
+      ],
+      "text": "from a noble client",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5125,
+        "paragraph": 1917,
+        "range": [
+          447,
+          337
+        ],
+        "text": "With my body in one easy-chair and my legs upon another, I had surrounded myself with a cloud of newspapers until at last, saturated with the news of the day, I tossed them all aside and lay listless, watching the huge crest and monogram upon the envelope upon the table and wondering lazily who my friend’s noble correspondent could be."
+      }
+    },
+    {
+      "id": "5140:37",
+      "sentence": 5140,
+      "paragraph": 1928,
+      "range": [
+        37,
+        39
+      ],
+      "text": "pointing to a huge bundle in the corner",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5125,
+        "paragraph": 1917,
+        "range": [
+          447,
+          337
+        ],
+        "text": "With my body in one easy-chair and my legs upon another, I had surrounded myself with a cloud of newspapers until at last, saturated with the news of the day, I tossed them all aside and lay listless, watching the huge crest and monogram upon the envelope upon the table and wondering lazily who my friend’s noble correspondent could be."
+      }
+    },
+    {
+      "id": "5161:1",
+      "sentence": 5161,
+      "paragraph": 1935,
+      "range": [
+        1,
+        20
+      ],
+      "text": "He says four o’clock",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5156,
+        "paragraph": 1932,
+        "range": [
+          472,
+          178
+        ],
+        "text": "I will call at four o’clock in the afternoon, and, should you have any other engagement at that time, I hope that you will postpone it, as this matter is of paramount importance."
+      }
+    },
+    {
+      "id": "5207:1",
+      "sentence": 5207,
+      "paragraph": 1944,
+      "range": [
+        1,
+        16
+      ],
+      "text": "Before the what?",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5206,
+        "paragraph": 1943,
+        "range": [
+          538,
+          80
+        ],
+        "text": "Those are all the notices which appeared before the disappearance of the bride.”"
+      }
+    },
+    {
+      "id": "5228:322",
+      "sentence": 5228,
+      "paragraph": 1955,
+      "range": [
+        322,
+        90
+      ],
+      "text": "The whole party proceeded afterwards to the house of Mr. Aloysius Doran, at Lancaster Gate",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5202,
+        "paragraph": 1943,
+        "range": [
+          0,
+          348
+        ],
+        "text": "“Oh, yes; plenty. Then there is another note in the Morning Post to say that the marriage would be an absolutely quiet one, that it would be at St. George’s, Hanover Square, that only half a dozen intimate friends would be invited, and that the party would return to the furnished house at Lancaster Gate which has been taken by Mr. Aloysius Doran."
+      }
+    },
+    {
+      "id": "5241:6",
+      "sentence": 5241,
+      "paragraph": 1959,
+      "range": [
+        6,
+        58
+      ],
+      "text": "Miss Flora Millar, the lady who had caused the disturbance",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5229,
+        "paragraph": 1955,
+        "range": [
+          449,
+          221
+        ],
+        "text": "It appears that some little trouble was caused by a woman, whose name has not been ascertained, who endeavoured to force her way into the house after the bridal party, alleging that she had some claim upon Lord St. Simon."
+      }
+    },
+    {
+      "id": "5246:208",
+      "sentence": 5246,
+      "paragraph": 1960,
+      "range": [
+        208,
+        38
+      ],
+      "text": "this will prove to be our noble client",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5156,
+        "paragraph": 1932,
+        "range": [
+          472,
+          178
+        ],
+        "text": "I will call at four o’clock in the afternoon, and, should you have any other engagement at that time, I hope that you will postpone it, as this matter is of paramount importance."
+      }
+    },
+    {
+      "id": "5265:1",
+      "sentence": 5265,
+      "paragraph": 1966,
+      "range": [
+        1,
+        37
+      ],
+      "text": "My last client of the sort was a king",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5262,
+        "paragraph": 1963,
+        "range": [
+          105,
+          156
+        ],
+        "text": "I understand that you have already managed several delicate cases of this sort, sir, though I presume that they were hardly from the same class of society.”"
+      }
+    },
+    {
+      "id": "5280:123",
+      "sentence": 5280,
+      "paragraph": 1972,
+      "range": [
+        123,
+        63
+      ],
+      "text": "this article, for example, as to the disappearance of the bride",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5219,
+        "paragraph": 1953,
+        "range": [
+          0,
+          116
+        ],
+        "text": "“Such as they are, they are set forth in a single article of a morning paper of yesterday, which I will read to you."
+      }
+    },
+    {
+      "id": "5296:18",
+      "sentence": 5296,
+      "paragraph": 1985,
+      "range": [
+        18,
+        36
+      ],
+      "text": "the richest man on the Pacific slope",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5195,
+        "paragraph": 1941,
+        "range": [
+          528,
+          229
+        ],
+        "text": "Lord St. Simon, who has shown himself for over twenty years proof against the little god’s arrows, has now definitely announced his approaching marriage with Miss Hatty Doran, the fascinating daughter of a California millionaire."
+      }
+    },
+    {
+      "id": "5320:28",
+      "sentence": 5320,
+      "paragraph": 1994,
+      "range": [
+        28,
+        20
+      ],
+      "text": "a considerable dowry",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5197,
+        "paragraph": 1941,
+        "range": [
+          758,
+          254
+        ],
+        "text": "Miss Doran, whose graceful figure and striking face attracted much attention at the Westbury House festivities, is an only child, and it is currently reported that her dowry will run to considerably over the six figures, with expectancies for the future."
+      }
+    },
+    {
+      "id": "5380:121",
+      "sentence": 5380,
+      "paragraph": 2026,
+      "range": [
+        121,
+        29
+      ],
+      "text": "put on a bonnet, and went out",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5233,
+        "paragraph": 1955,
+        "range": [
+          969,
+          222
+        ],
+        "text": "Her prolonged absence having caused some comment, her father followed her, but learned from her maid that she had only come up to her chamber for an instant, caught up an ulster and bonnet, and hurried down to the passage."
+      }
+    },
+    {
+      "id": "5382:92",
+      "sentence": 5382,
+      "paragraph": 2027,
+      "range": [
+        92,
+        29
+      ],
+      "text": "a woman who is now in custody",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5241,
+        "paragraph": 1959,
+        "range": [
+          0,
+          93
+        ],
+        "text": "“That Miss Flora Millar, the lady who had caused the disturbance, has actually been arrested."
+      }
+    },
+    {
+      "id": "5388:152",
+      "sentence": 5388,
+      "paragraph": 2029,
+      "range": [
+        152,
+        29
+      ],
+      "text": "She used to be at the Allegro",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5242,
+        "paragraph": 1959,
+        "range": [
+          94,
+          113
+        ],
+        "text": "It appears that she was formerly a danseuse at the Allegro, and that she has known the bridegroom for some years."
+      }
+    },
+    {
+      "id": "5398:6",
+      "sentence": 5398,
+      "paragraph": 2033,
+      "range": [
+        6,
+        69
+      ],
+      "text": "That is what Mr. Lestrade, of Scotland Yard, looks upon as so serious",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5382,
+        "paragraph": 2027,
+        "range": [
+          11,
+          186
+        ],
+        "text": "And she was afterwards seen walking into Hyde Park in company with Flora Millar, a woman who is now in custody, and who had already made a disturbance at Mr. Doran’s house that morning.”"
+      }
+    },
+    {
+      "id": "5410:16",
+      "sentence": 5410,
+      "paragraph": 2040,
+      "range": [
+        16,
+        32
+      ],
+      "text": "she had become suddenly deranged",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5409,
+        "paragraph": 2039,
+        "range": [
+          93,
+          246
+        ],
+        "text": "Since you ask me, however, I may say that it has occurred to me as possible that the excitement of this affair, the consciousness that she had made so immense a social stride, had the effect of causing some little nervous disturbance in my wife.”"
+      }
+    },
+    {
+      "id": "5421:1",
+      "sentence": 5421,
+      "paragraph": 2046,
+      "range": [
+        1,
+        16
+      ],
+      "text": "I have solved it",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5420,
+        "paragraph": 2045,
+        "range": [
+          0,
+          80
+        ],
+        "text": "“Should you be fortunate enough to solve this problem,” said our client, rising."
+      }
+    },
+    {
+      "id": "5431:35",
+      "sentence": 5431,
+      "paragraph": 2052,
+      "range": [
+        35,
+        55
+      ],
+      "text": "to honour my head by putting it on a level with his own",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5429,
+        "paragraph": 2051,
+        "range": [
+          31,
+          135
+        ],
+        "text": "“I am afraid that it will take wiser heads than yours or mine,” he remarked, and bowing in a stately, old-fashioned manner he departed."
+      }
+    },
+    {
+      "id": "5435:47",
+      "sentence": 5435,
+      "paragraph": 2054,
+      "range": [
+        47,
+        54
+      ],
+      "text": "none, as I remarked before, which were quite as prompt",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5215,
+        "paragraph": 1950,
+        "range": [
+          0,
+          138
+        ],
+        "text": "“They often vanish before the ceremony, and occasionally during the honeymoon; but I cannot call to mind anything quite so prompt as this."
+      }
+    },
+    {
+      "id": "5468:9",
+      "sentence": 5468,
+      "paragraph": 2069,
+      "range": [
+        9,
+        78
+      ],
+      "text": "you have just as good a chance of finding this lady in the one as in the other",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5461,
+        "paragraph": 2065,
+        "range": [
+          0,
+          42
+        ],
+        "text": "“In search of the body of Lady St. Simon.”"
+      }
+    },
+    {
+      "id": "5476:75",
+      "sentence": 5476,
+      "paragraph": 2074,
+      "range": [
+        75,
+        29
+      ],
+      "text": "He opened his bag as he spoke",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5444,
+        "paragraph": 2057,
+        "range": [
+          0,
+          157
+        ],
+        "text": "The official detective was attired in a pea-jacket and cravat, which gave him a decidedly nautical appearance, and he carried a black canvas bag in his hand."
+      }
+    },
+    {
+      "id": "5487:1",
+      "sentence": 5487,
+      "paragraph": 2078,
+      "range": [
+        1,
+        62
+      ],
+      "text": "At some evidence implicating Flora Millar in the disappearance",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5399,
+        "paragraph": 2033,
+        "range": [
+          77,
+          82
+        ],
+        "text": "It is thought that Flora decoyed my wife out and laid some terrible trap for her.”"
+      }
+    },
+    {
+      "id": "5522:37",
+      "sentence": 5522,
+      "paragraph": 2089,
+      "range": [
+        37,
+        28
+      ],
+      "text": "the fragment of a hotel bill",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5510,
+        "paragraph": 2083,
+        "range": [
+          96,
+          125
+        ],
+        "text": "He took up the paper in a listless way, but his attention instantly became riveted, and he gave a little cry of satisfaction."
+      }
+    },
+    {
+      "id": "5541:103",
+      "sentence": 5541,
+      "paragraph": 2095,
+      "range": [
+        103,
+        39
+      ],
+      "text": "what the fellow says about outdoor work",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5531,
+        "paragraph": 2092,
+        "range": [
+          50,
+          78
+        ],
+        "text": "“I believe in hard work and not in sitting by the fire spinning fine theories."
+      }
+    },
+    {
+      "id": "5550:29",
+      "sentence": 5550,
+      "paragraph": 2099,
+      "range": [
+        29,
+        23
+      ],
+      "text": "They have laid for five",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5543,
+        "paragraph": 2096,
+        "range": [
+          170,
+          215
+        ],
+        "text": "This he unpacked with the help of a youth whom he had brought with him, and presently, to my very great astonishment, a quite epicurean little cold supper began to be laid out upon our humble lodging-house mahogany."
+      }
+    },
+    {
+      "id": "5559:25",
+      "sentence": 5559,
+      "paragraph": 2103,
+      "range": [
+        25,
+        39
+      ],
+      "text": "the contents startled me beyond measure",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5535,
+        "paragraph": 2093,
+        "range": [
+          126,
+          25
+        ],
+        "text": "Lady St. Simon is a myth."
+      }
+    },
+    {
+      "id": "5582:334",
+      "sentence": 5582,
+      "paragraph": 2113,
+      "range": [
+        334,
+        32
+      ],
+      "text": "Mr. and Mrs. Francis Hay Moulton",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5500,
+        "paragraph": 2082,
+        "range": [
+          164,
+          245
+        ],
+        "text": "“Listen to this: ‘You will see me when all is ready. Come at once. F. H. M.’ Now my theory all along has been that Lady St. Simon was decoyed away by Flora Millar, and that she, with confederates, no doubt, was responsible for her disappearance."
+      }
+    },
+    {
+      "id": "5591:133",
+      "sentence": 5591,
+      "paragraph": 2117,
+      "range": [
+        133,
+        41
+      ],
+      "text": "from the time when I saw Frank here again",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5580,
+        "paragraph": 2113,
+        "range": [
+          222,
+          55
+        ],
+        "text": "He opened the door and ushered in a lady and gentleman."
+      }
+    },
+    {
+      "id": "5626:1001",
+      "sentence": 5626,
+      "paragraph": 2122,
+      "range": [
+        1001,
+        67
+      ],
+      "text": "As I passed his pew on the way out I dropped my bouquet over to him",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5340,
+        "paragraph": 2007,
+        "range": [
+          21,
+          54
+        ],
+        "text": "She dropped her bouquet as we went towards the vestry."
+      }
+    },
+    {
+      "id": "5629:1",
+      "sentence": 5629,
+      "paragraph": 2123,
+      "range": [
+        1,
+        63
+      ],
+      "text": "When I got back I told my maid, who had known him in California",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5368,
+        "paragraph": 2021,
+        "range": [
+          0,
+          100
+        ],
+        "text": "“Lady St. Simon said something about ‘jumping a claim.’ She was accustomed to use slang of the kind."
+      }
+    },
+    {
+      "id": "5645:486",
+      "sentence": 5645,
+      "paragraph": 2125,
+      "range": [
+        486,
+        56
+      ],
+      "text": "dropped them away somewhere where no one could find them",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5476,
+        "paragraph": 2074,
+        "range": [
+          75,
+          186
+        ],
+        "text": "He opened his bag as he spoke, and tumbled onto the floor a wedding-dress of watered silk, a pair of white satin shoes and a bride’s wreath and veil, all discoloured and soaked in water."
+      }
+    },
+    {
+      "id": "5679:1316",
+      "sentence": 5679,
+      "paragraph": 2135,
+      "range": [
+        1316,
+        46
+      ],
+      "text": "her very significant allusion to claim-jumping",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5368,
+        "paragraph": 2021,
+        "range": [
+          0,
+          100
+        ],
+        "text": "“Lady St. Simon said something about ‘jumping a claim.’ She was accustomed to use slang of the kind."
+      }
+    },
+    {
+      "id": "5683:125",
+      "sentence": 5683,
+      "paragraph": 2137,
+      "range": [
+        125,
+        55
+      ],
+      "text": "The initials were, of course, of the highest importance",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5529,
+        "paragraph": 2091,
+        "range": [
+          54,
+          97
+        ],
+        "text": "As to the note, it is important also, or at least the initials are, so I congratulate you again.”"
+      }
+    },
+    {
+      "id": "5686:23",
+      "sentence": 5686,
+      "paragraph": 2139,
+      "range": [
+        23,
+        62
+      ],
+      "text": "Eight shillings for a bed and eightpence for a glass of sherry",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5525,
+        "paragraph": 2090,
+        "range": [
+          63,
+          89
+        ],
+        "text": "“‘Oct. 4th, rooms 8s., breakfast 2s. 6d., cocktail 1s., lunch 2s. 6d., glass sherry, 8d.’"
+      }
+    }
+  ]
+}

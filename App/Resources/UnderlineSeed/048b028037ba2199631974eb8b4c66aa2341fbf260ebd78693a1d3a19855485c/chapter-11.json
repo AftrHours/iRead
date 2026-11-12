@@ -1,0 +1,972 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "3438:155",
+      "sentence": 3438,
+      "paragraph": 1271,
+      "range": [
+        155,
+        11
+      ],
+      "text": "the old hat",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3433,
+        "paragraph": 1269,
+        "range": [
+          330,
+          171
+        ],
+        "text": "Beside the couch was a wooden chair, and on the angle of the back hung a very seedy and disreputable hard-felt hat, much the worse for wear, and cracked in several places."
+      }
+    },
+    {
+      "id": "3467:128",
+      "sentence": 3467,
+      "paragraph": 1281,
+      "range": [
+        128,
+        19
+      ],
+      "text": "the bird’s left leg",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3464,
+        "paragraph": 1279,
+        "range": [
+          1276,
+          224
+        ],
+        "text": "The roughs had also fled at the appearance of Peterson, so that he was left in possession of the field of battle, and also of the spoils of victory in the shape of this battered hat and a most unimpeachable Christmas goose.”"
+      }
+    },
+    {
+      "id": "3472:419",
+      "sentence": 3472,
+      "paragraph": 1283,
+      "range": [
+        419,
+        51
+      ],
+      "text": "the unknown gentleman who lost his Christmas dinner",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3463,
+        "paragraph": 1279,
+        "range": [
+          949,
+          326
+        ],
+        "text": "Peterson had rushed forward to protect the stranger from his assailants; but the man, shocked at having broken the window, and seeing an official-looking person in uniform rushing towards him, dropped his goose, took to his heels, and vanished amid the labyrinth of small streets which lie at the back of Tottenham Court Road."
+      }
+    },
+    {
+      "id": "3513:123",
+      "sentence": 3513,
+      "paragraph": 1302,
+      "range": [
+        123,
+        34
+      ],
+      "text": "It is a question of cubic capacity",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3498,
+        "paragraph": 1296,
+        "range": [
+          309,
+          189
+        ],
+        "text": "That the man was highly intellectual is of course obvious upon the face of it, and also that he was fairly well-to-do within the last three years, although he has now fallen upon evil days."
+      }
+    },
+    {
+      "id": "3519:275",
+      "sentence": 3519,
+      "paragraph": 1304,
+      "range": [
+        275,
+        39
+      ],
+      "text": "he has assuredly gone down in the world",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3498,
+        "paragraph": 1296,
+        "range": [
+          309,
+          189
+        ],
+        "text": "That the man was highly intellectual is of course obvious upon the face of it, and also that he was fairly well-to-do within the last three years, although he has now fallen upon evil days."
+      }
+    },
+    {
+      "id": "3523:82",
+      "sentence": 3523,
+      "paragraph": 1306,
+      "range": [
+        82,
+        43
+      ],
+      "text": "the little disc and loop of the hat-securer",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3489,
+        "paragraph": 1292,
+        "range": [
+          340,
+          74
+        ],
+        "text": "It was pierced in the brim for a hat-securer, but the elastic was missing."
+      }
+    },
+    {
+      "id": "3527:582",
+      "sentence": 3527,
+      "paragraph": 1306,
+      "range": [
+        582,
+        21
+      ],
+      "text": "daubing them with ink",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3490,
+        "paragraph": 1292,
+        "range": [
+          415,
+          186
+        ],
+        "text": "For the rest, it was cracked, exceedingly dusty, and spotted in several places, although there seemed to have been some attempt to hide the discoloured patches by smearing them with ink."
+      }
+    },
+    {
+      "id": "3531:347",
+      "sentence": 3531,
+      "paragraph": 1308,
+      "range": [
+        347,
+        30
+      ],
+      "text": "a distinct odour of lime-cream",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3503,
+        "paragraph": 1298,
+        "range": [
+          101,
+          205
+        ],
+        "text": "“He is a man who leads a sedentary life, goes out little, is out of training entirely, is middle-aged, has grizzled hair which he has had cut within the last few days, and which he anoints with lime-cream."
+      }
+    },
+    {
+      "id": "3535:240",
+      "sentence": 3535,
+      "paragraph": 1310,
+      "range": [
+        240,
+        26
+      ],
+      "text": "lose your wife’s affection",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3500,
+        "paragraph": 1296,
+        "range": [
+          709,
+          81
+        ],
+        "text": "This may account also for the obvious fact that his wife has ceased to love him.”"
+      }
+    },
+    {
+      "id": "3538:79",
+      "sentence": 3538,
+      "paragraph": 1312,
+      "range": [
+        79,
+        28
+      ],
+      "text": "the card upon the bird’s leg",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3467,
+        "paragraph": 1281,
+        "range": [
+          41,
+          149
+        ],
+        "text": "It is true that ‘For Mrs. Henry Baker’ was printed upon a small card which was tied to the bird’s left leg, and it is also true that the initials ‘H."
+      }
+    },
+    {
+      "id": "3542:308",
+      "sentence": 3542,
+      "paragraph": 1314,
+      "range": [
+        308,
+        41
+      ],
+      "text": "he never got tallow-stains from a gas-jet",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3505,
+        "paragraph": 1298,
+        "range": [
+          377,
+          88
+        ],
+        "text": "Also, by the way, that it is extremely improbable that he has gas laid on in his house.”"
+      }
+    },
+    {
+      "id": "3554:20",
+      "sentence": 3554,
+      "paragraph": 1319,
+      "range": [
+        20,
+        30
+      ],
+      "text": "what my wife found in its crop",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3472,
+        "paragraph": 1283,
+        "range": [
+          296,
+          176
+        ],
+        "text": "Its finder has carried it off, therefore, to fulfil the ultimate destiny of a goose, while I continue to retain the hat of the unknown gentleman who lost his Christmas dinner.”"
+      }
+    },
+    {
+      "id": "3565:5",
+      "sentence": 3565,
+      "paragraph": 1323,
+      "range": [
+        5,
+        39
+      ],
+      "text": "the Countess of Morcar’s blue carbuncle",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3555,
+        "paragraph": 1319,
+        "range": [
+          53,
+          242
+        ],
+        "text": "He held out his hand and displayed upon the centre of the palm a brilliantly scintillating blue stone, rather smaller than a bean in size, but of such purity and radiance that it twinkled like an electric point in the dark hollow of his hand."
+      }
+    },
+    {
+      "id": "3570:1",
+      "sentence": 3570,
+      "paragraph": 1325,
+      "range": [
+        1,
+        18
+      ],
+      "text": "A thousand pounds!",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3569,
+        "paragraph": 1324,
+        "range": [
+          133,
+          159
+        ],
+        "text": "It is absolutely unique, and its value can only be conjectured, but the reward offered of £ 1000 is certainly not within a twentieth part of the market price.”"
+      }
+    },
+    {
+      "id": "3592:161",
+      "sentence": 3592,
+      "paragraph": 1330,
+      "range": [
+        161,
+        19
+      ],
+      "text": "a rifled jewel-case",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3584,
+        "paragraph": 1329,
+        "range": [
+          560,
+          250
+        ],
+        "text": "On returning, he found that Horner had disappeared, that the bureau had been forced open, and that the small morocco casket in which, as it afterwards transpired, the Countess was accustomed to keep her jewel, was lying empty upon the dressing-table."
+      }
+    },
+    {
+      "id": "3594:453",
+      "sentence": 3594,
+      "paragraph": 1330,
+      "range": [
+        453,
+        30
+      ],
+      "text": "the gentleman with the bad hat",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3467,
+        "paragraph": 1281,
+        "range": [
+          41,
+          354
+        ],
+        "text": "It is true that ‘For Mrs. Henry Baker’ was printed upon a small card which was tied to the bird’s left leg, and it is also true that the initials ‘H. B.’ are legible upon the lining of this hat, but as there are some thousands of Bakers, and some hundreds of Henry Bakers in this city of ours, it is not easy to restore lost property to any one of them.”"
+      }
+    },
+    {
+      "id": "3600:54",
+      "sentence": 3600,
+      "paragraph": 1332,
+      "range": [
+        54,
+        36
+      ],
+      "text": "Found at the corner of Goodge Street",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3461,
+        "paragraph": 1279,
+        "range": [
+          679,
+          109
+        ],
+        "text": "As he reached the corner of Goodge Street, a row broke out between this stranger and a little knot of roughs."
+      }
+    },
+    {
+      "id": "3606:124",
+      "sentence": 3606,
+      "paragraph": 1334,
+      "range": [
+        124,
+        36
+      ],
+      "text": "his mischance in breaking the window",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3462,
+        "paragraph": 1279,
+        "range": [
+          789,
+          159
+        ],
+        "text": "One of the latter knocked off the man’s hat, on which he raised his stick to defend himself and, swinging it over his head, smashed the shop window behind him."
+      }
+    },
+    {
+      "id": "3616:67",
+      "sentence": 3616,
+      "paragraph": 1338,
+      "range": [
+        67,
+        33
+      ],
+      "text": "just buy a goose on your way back",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3471,
+        "paragraph": 1283,
+        "range": [
+          128,
+          167
+        ],
+        "text": "The goose we retained until this morning, when there were signs that, in spite of the slight frost, it would be well that it should be eaten without unnecessary delay."
+      }
+    },
+    {
+      "id": "3630:19",
+      "sentence": 3630,
+      "paragraph": 1340,
+      "range": [
+        19,
+        15
+      ],
+      "text": "this man Horner",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3576,
+        "paragraph": 1328,
+        "range": [
+          53,
+          87
+        ],
+        "text": "John Horner, a plumber, was accused of having abstracted it from the lady’s jewel-case."
+      }
+    },
+    {
+      "id": "3642:150",
+      "sentence": 3642,
+      "paragraph": 1347,
+      "range": [
+        150,
+        19
+      ],
+      "text": "to examine its crop",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3554,
+        "paragraph": 1319,
+        "range": [
+          16,
+          36
+        ],
+        "text": "See what my wife found in its crop!”"
+      }
+    },
+    {
+      "id": "3644:149",
+      "sentence": 3644,
+      "paragraph": 1348,
+      "range": [
+        149,
+        29
+      ],
+      "text": "a tall man in a Scotch bonnet",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3601,
+        "paragraph": 1332,
+        "range": [
+          122,
+          90
+        ],
+        "text": "Mr. Henry Baker can have the same by applying at 6:30 this evening at 221B, Baker Street.’"
+      }
+    },
+    {
+      "id": "3653:219",
+      "sentence": 3653,
+      "paragraph": 1351,
+      "range": [
+        219,
+        41
+      ],
+      "text": "recalled Holmes’ surmise as to his habits",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3499,
+        "paragraph": 1296,
+        "range": [
+          499,
+          209
+        ],
+        "text": "He had foresight, but has less now than formerly, pointing to a moral retrogression, which, when taken with the decline of his fortunes, seems to indicate some evil influence, probably drink, at work upon him."
+      }
+    },
+    {
+      "id": "3660:144",
+      "sentence": 3660,
+      "paragraph": 1353,
+      "range": [
+        144,
+        35
+      ],
+      "text": "the gang of roughs who assaulted me",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3461,
+        "paragraph": 1279,
+        "range": [
+          679,
+          109
+        ],
+        "text": "As he reached the corner of Goodge Street, a row broke out between this stranger and a little knot of roughs."
+      }
+    },
+    {
+      "id": "3667:84",
+      "sentence": 3667,
+      "paragraph": 1356,
+      "range": [
+        84,
+        35
+      ],
+      "text": "this other goose upon the sideboard",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3616,
+        "paragraph": 1338,
+        "range": [
+          45,
+          186
+        ],
+        "text": "And, I say, Peterson, just buy a goose on your way back and leave it here with me, for we must have one to give to this gentleman in place of the one which your family is now devouring.”"
+      }
+    },
+    {
+      "id": "3673:16",
+      "sentence": 3673,
+      "paragraph": 1360,
+      "range": [
+        16,
+        65
+      ],
+      "text": "glanced sharply across at me with a slight shrug of his shoulders",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3634,
+        "paragraph": 1343,
+        "range": [
+          201,
+          98
+        ],
+        "text": "That, however, I shall determine by a very simple test if we have an answer to our advertisement.”"
+      }
+    },
+    {
+      "id": "3684:109",
+      "sentence": 3684,
+      "paragraph": 1363,
+      "range": [
+        109,
+        42
+      ],
+      "text": "he knows nothing whatever about the matter",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3633,
+        "paragraph": 1343,
+        "range": [
+          0,
+          200
+        ],
+        "text": "“It is, I think, much more likely that Henry Baker is an absolutely innocent man, who had no idea that the bird which he was carrying was of considerably more value than if it were made of solid gold."
+      }
+    },
+    {
+      "id": "3698:71",
+      "sentence": 3698,
+      "paragraph": 1370,
+      "range": [
+        71,
+        27
+      ],
+      "text": "a member of your goose club",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3679,
+        "paragraph": 1362,
+        "range": [
+          235,
+          170
+        ],
+        "text": "This year our good host, Windigate by name, instituted a goose club, by which, on consideration of some few pence every week, we were each to receive a bird at Christmas."
+      }
+    },
+    {
+      "id": "3714:214",
+      "sentence": 3714,
+      "paragraph": 1377,
+      "range": [
+        214,
+        57
+      ],
+      "text": "a man who will certainly get seven years’ penal servitude",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3576,
+        "paragraph": 1328,
+        "range": [
+          53,
+          87
+        ],
+        "text": "John Horner, a plumber, was accused of having abstracted it from the lady’s jewel-case."
+      }
+    },
+    {
+      "id": "3719:135",
+      "sentence": 3719,
+      "paragraph": 1378,
+      "range": [
+        135,
+        24
+      ],
+      "text": "the name of Breckinridge",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3704,
+        "paragraph": 1373,
+        "range": [
+          0,
+          61
+        ],
+        "text": "“Well, I got the two dozen from a salesman in Covent Garden.”"
+      }
+    },
+    {
+      "id": "3729:1",
+      "sentence": 3729,
+      "paragraph": 1387,
+      "range": [
+        1,
+        25
+      ],
+      "text": "The landlord of the Alpha",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3693,
+        "paragraph": 1367,
+        "range": [
+          552,
+          124
+        ],
+        "text": "Holmes pushed open the door of the private bar and ordered two glasses of beer from the ruddy-faced, white-aproned landlord."
+      }
+    },
+    {
+      "id": "3788:41",
+      "sentence": 3788,
+      "paragraph": 1418,
+      "range": [
+        41,
+        35
+      ],
+      "text": "He drew a sovereign from his pocket",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3759,
+        "paragraph": 1404,
+        "range": [
+          60,
+          78
+        ],
+        "text": "But I’ll have a sovereign on with you, just to teach you not to be obstinate.”"
+      }
+    },
+    {
+      "id": "3793:589",
+      "sentence": 3793,
+      "paragraph": 1419,
+      "range": [
+        589,
+        67
+      ],
+      "text": "there are others besides ourselves who are anxious about the matter",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3743,
+        "paragraph": 1395,
+        "range": [
+          65,
+          112
+        ],
+        "text": "When I pay good money for a good article there should be an end of the business; but it’s ‘Where are the geese?’"
+      }
+    },
+    {
+      "id": "3809:22",
+      "sentence": 3809,
+      "paragraph": 1426,
+      "range": [
+        22,
+        23
+      ],
+      "text": "a visit to Brixton Road",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3774,
+        "paragraph": 1410,
+        "range": [
+          0,
+          52
+        ],
+        "text": "“Mrs. Oakshott, 117, Brixton Road—249,” read Holmes."
+      }
+    },
+    {
+      "id": "3836:75",
+      "sentence": 3836,
+      "paragraph": 1437,
+      "range": [
+        75,
+        27
+      ],
+      "text": "my real name is James Ryder",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3582,
+        "paragraph": 1329,
+        "range": [
+          226,
+          253
+        ],
+        "text": "James Ryder, upper-attendant at the hotel, gave his evidence to the effect that he had shown Horner up to the dressing-room of the Countess of Morcar upon the day of the robbery in order that he might solder the second bar of the grate, which was loose."
+      }
+    },
+    {
+      "id": "3860:132",
+      "sentence": 3860,
+      "paragraph": 1446,
+      "range": [
+        132,
+        39
+      ],
+      "text": "the bonniest, brightest little blue egg",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3555,
+        "paragraph": 1319,
+        "range": [
+          53,
+          242
+        ],
+        "text": "He held out his hand and displayed upon the centre of the palm a brilliantly scintillating blue stone, rather smaller than a bean in size, but of such purity and radiance that it twinkled like an electric point in the dark hollow of his hand."
+      }
+    },
+    {
+      "id": "3863:84",
+      "sentence": 3863,
+      "paragraph": 1447,
+      "range": [
+        84,
+        30
+      ],
+      "text": "Holmes unlocked his strong-box",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3629,
+        "paragraph": 1339,
+        "range": [
+          858,
+          93
+        ],
+        "text": "I’ll lock it up in my strong box now and drop a line to the Countess to say that we have it.”"
+      }
+    },
+    {
+      "id": "3877:8",
+      "sentence": 3877,
+      "paragraph": 1451,
+      "range": [
+        8,
+        16
+      ],
+      "text": "Catherine Cusack",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3586,
+        "paragraph": 1329,
+        "range": [
+          958,
+          207
+        ],
+        "text": "Catherine Cusack, maid to the Countess, deposed to having heard Ryder’s cry of dismay on discovering the robbery, and to having rushed into the room, where she found matters as described by the last witness."
+      }
+    },
+    {
+      "id": "3881:338",
+      "sentence": 3881,
+      "paragraph": 1452,
+      "range": [
+        338,
+        45
+      ],
+      "text": "had been concerned in some such matter before",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3588,
+        "paragraph": 1329,
+        "range": [
+          1321,
+          176
+        ],
+        "text": "Evidence of a previous conviction for robbery having been given against the prisoner, the magistrate refused to deal summarily with the offence, but referred it to the Assizes."
+      }
+    },
+    {
+      "id": "3884:642",
+      "sentence": 3884,
+      "paragraph": 1452,
+      "range": [
+        642,
+        16
+      ],
+      "text": "raised the alarm",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3585,
+        "paragraph": 1329,
+        "range": [
+          811,
+          146
+        ],
+        "text": "Ryder instantly gave the alarm, and Horner was arrested the same evening; but the stone could not be found either upon his person or in his rooms."
+      }
+    },
+    {
+      "id": "3900:124",
+      "sentence": 3900,
+      "paragraph": 1454,
+      "range": [
+        124,
+        28
+      ],
+      "text": "this poor Horner in the dock",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3588,
+        "paragraph": 1329,
+        "range": [
+          1321,
+          176
+        ],
+        "text": "Evidence of a previous conviction for robbery having been given against the prisoner, the magistrate refused to deal summarily with the offence, but referred it to the Assizes."
+      }
+    },
+    {
+      "id": "3928:308",
+      "sentence": 3928,
+      "paragraph": 1459,
+      "range": [
+        308,
+        41
+      ],
+      "text": "a fine big one, white, with a barred tail",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3853,
+        "paragraph": 1442,
+        "range": [
+          36,
+          97
+        ],
+        "text": "It was one bird, I imagine in which you were interested—white, with a black bar across the tail.”"
+      }
+    },
+    {
+      "id": "3951:281",
+      "sentence": 3951,
+      "paragraph": 1469,
+      "range": [
+        281,
+        30
+      ],
+      "text": "there was no sign of the stone",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3932,
+        "paragraph": 1459,
+        "range": [
+          639,
+          85
+        ],
+        "text": "As I turned to speak to her the brute broke loose and fluttered off among the others."
+      }
+    },
+    {
+      "id": "3963:205",
+      "sentence": 3963,
+      "paragraph": 1476,
+      "range": [
+        205,
+        33
+      ],
+      "text": "You heard him yourselves to-night",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3796,
+        "paragraph": 1421,
+        "range": [
+          0,
+          52
+        ],
+        "text": "“I’ve had enough of you and your geese,” he shouted."
+      }
+    },
+    {
+      "id": "3982:193",
+      "sentence": 3982,
+      "paragraph": 1482,
+      "range": [
+        193,
+        39
+      ],
+      "text": "this fellow will not appear against him",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3902,
+        "paragraph": 1455,
+        "range": [
+          25,
+          30
+        ],
+        "text": "I will leave the country, sir."
+      }
+    },
+    {
+      "id": "3988:732",
+      "sentence": 3988,
+      "paragraph": 1482,
+      "range": [
+        732,
+        32
+      ],
+      "text": "a bird will be the chief feature",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3641,
+        "paragraph": 1347,
+        "range": [
+          40,
+          31
+        ],
+        "text": "There is a woodcock, I believe."
+      }
+    }
+  ]
+}
