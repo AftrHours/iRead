@@ -1,0 +1,741 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "4619:312",
+      "sentence": 4619,
+      "paragraph": 1740,
+      "range": [
+        312,
+        22
+      ],
+      "text": "my old ally, the guard",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4616,
+        "paragraph": 1739,
+        "range": [
+          502,
+          196
+        ],
+        "text": "One of these, whom I had cured of a painful and lingering disease, was never weary of advertising my virtues and of endeavouring to send me on every sufferer over whom he might have any influence."
+      }
+    },
+    {
+      "id": "4632:61",
+      "sentence": 4632,
+      "paragraph": 1745,
+      "range": [
+        61,
+        51
+      ],
+      "text": "I have had a very serious accident during the night",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4630,
+        "paragraph": 1744,
+        "range": [
+          182,
+          98
+        ],
+        "text": "Round one of his hands he had a handkerchief wrapped, which was mottled all over with bloodstains."
+      }
+    },
+    {
+      "id": "4674:7",
+      "sentence": 4674,
+      "paragraph": 1762,
+      "range": [
+        7,
+        18
+      ],
+      "text": "a murderous attack",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4670,
+        "paragraph": 1759,
+        "range": [
+          0,
+          34
+        ],
+        "text": "“A thing like a cleaver,” said he."
+      }
+    },
+    {
+      "id": "4731:118",
+      "sentence": 4731,
+      "paragraph": 1786,
+      "range": [
+        118,
+        37
+      ],
+      "text": "you are both an orphan and a bachelor",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4710,
+        "paragraph": 1781,
+        "range": [
+          0,
+          100
+        ],
+        "text": "“You must know,” said he, “that I am an orphan and a bachelor, residing alone in lodgings in London."
+      }
+    },
+    {
+      "id": "4763:35",
+      "sentence": 4763,
+      "paragraph": 1802,
+      "range": [
+        35,
+        18
+      ],
+      "text": "the pay munificent",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4756,
+        "paragraph": 1799,
+        "range": [
+          0,
+          65
+        ],
+        "text": "“‘How would fifty guineas for a night’s work suit you?’ he asked."
+      }
+    },
+    {
+      "id": "4788:36",
+      "sentence": 4788,
+      "paragraph": 1815,
+      "range": [
+        36,
+        52
+      ],
+      "text": "the pledge of secrecy which we have exacted from you",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4742,
+        "paragraph": 1793,
+        "range": [
+          0,
+          58
+        ],
+        "text": "“‘Absolute and complete silence before, during, and after?"
+      }
+    },
+    {
+      "id": "4801:1006",
+      "sentence": 4801,
+      "paragraph": 1819,
+      "range": [
+        1006,
+        28
+      ],
+      "text": "we erected a hydraulic press",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4760,
+        "paragraph": 1801,
+        "range": [
+          64,
+          88
+        ],
+        "text": "I simply want your opinion about a hydraulic stamping machine which has got out of gear."
+      }
+    },
+    {
+      "id": "4806:113",
+      "sentence": 4806,
+      "paragraph": 1820,
+      "range": [
+        113,
+        46
+      ],
+      "text": "a hydraulic press in excavating fuller’s-earth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4793,
+        "paragraph": 1817,
+        "range": [
+          31,
+          125
+        ],
+        "text": "You are probably aware that fuller’s-earth is a valuable product, and that it is only found in one or two places in England?’"
+      }
+    },
+    {
+      "id": "4817:108",
+      "sentence": 4817,
+      "paragraph": 1824,
+      "range": [
+        108,
+        53
+      ],
+      "text": "this sudden commission which had been intrusted to me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4760,
+        "paragraph": 1801,
+        "range": [
+          64,
+          88
+        ],
+        "text": "I simply want your opinion about a hydraulic stamping machine which has got out of gear."
+      }
+    },
+    {
+      "id": "4824:366",
+      "sentence": 4824,
+      "paragraph": 1825,
+      "range": [
+        366,
+        30
+      ],
+      "text": "my acquaintance of the morning",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4719,
+        "paragraph": 1783,
+        "range": [
+          157,
+          86
+        ],
+        "text": "He brought up a card, too, with the name of ‘Colonel Lysander Stark’ engraved upon it."
+      }
+    },
+    {
+      "id": "4839:55",
+      "sentence": 4839,
+      "paragraph": 1833,
+      "range": [
+        55,
+        60
+      ],
+      "text": "Colonel Lysander Stark had said that it was only seven miles",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4774,
+        "paragraph": 1809,
+        "range": [
+          53,
+          46
+        ],
+        "text": "It is a good seven miles from Eyford Station.’"
+      }
+    },
+    {
+      "id": "4863:521",
+      "sentence": 4863,
+      "paragraph": 1836,
+      "range": [
+        521,
+        28
+      ],
+      "text": "Who were these German people",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4855,
+        "paragraph": 1835,
+        "range": [
+          115,
+          127
+        ],
+        "text": "It was a quiet, little, plainly furnished room, with a round table in the centre, on which several German books were scattered."
+      }
+    },
+    {
+      "id": "4870:117",
+      "sentence": 4870,
+      "paragraph": 1837,
+      "range": [
+        117,
+        38
+      ],
+      "text": "The woman was standing in the aperture",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4850,
+        "paragraph": 1834,
+        "range": [
+          234,
+          137
+        ],
+        "text": "It grew broader, and a woman appeared with a lamp in her hand, which she held above her head, pushing her face forward and peering at us."
+      }
+    },
+    {
+      "id": "4901:8",
+      "sentence": 4901,
+      "paragraph": 1848,
+      "range": [
+        8,
+        35
+      ],
+      "text": "you dig fuller’s-earth in the house",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4796,
+        "paragraph": 1819,
+        "range": [
+          94,
+          98
+        ],
+        "text": "I was fortunate enough to discover that there was a deposit of fuller’s-earth in one of my fields."
+      }
+    },
+    {
+      "id": "4903:10",
+      "sentence": 4903,
+      "paragraph": 1849,
+      "range": [
+        10,
+        33
+      ],
+      "text": "This is only where we compress it",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4809,
+        "paragraph": 1821,
+        "range": [
+          53,
+          88
+        ],
+        "text": "We compress the earth into bricks, so as to remove them without revealing what they are."
+      }
+    },
+    {
+      "id": "4909:551",
+      "sentence": 4909,
+      "paragraph": 1850,
+      "range": [
+        551,
+        24
+      ],
+      "text": "the warnings of the lady",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4881,
+        "paragraph": 1840,
+        "range": [
+          247,
+          84
+        ],
+        "text": "‘For the love of Heaven!’ she whispered, ‘get away from here before it is too late!’"
+      }
+    },
+    {
+      "id": "4925:919",
+      "sentence": 4925,
+      "paragraph": 1853,
+      "range": [
+        919,
+        58
+      ],
+      "text": "the story of the fuller’s-earth was the merest fabrication",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4796,
+        "paragraph": 1819,
+        "range": [
+          94,
+          98
+        ],
+        "text": "I was fortunate enough to discover that there was a deposit of fuller’s-earth in one of my fields."
+      }
+    },
+    {
+      "id": "4931:92",
+      "sentence": 4931,
+      "paragraph": 1855,
+      "range": [
+        92,
+        34
+      ],
+      "text": "I was admiring your fuller’s-earth",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4926,
+        "paragraph": 1853,
+        "range": [
+          1087,
+          154
+        ],
+        "text": "The walls were of wood, but the floor consisted of a large iron trough, and when I came to examine it I could see a crust of metallic deposit all over it."
+      }
+    },
+    {
+      "id": "4946:295",
+      "sentence": 4946,
+      "paragraph": 1858,
+      "range": [
+        295,
+        41
+      ],
+      "text": "the black ceiling was coming down upon me",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4915,
+        "paragraph": 1852,
+        "range": [
+          147,
+          146
+        ],
+        "text": "The ceiling of this small chamber is really the end of the descending piston, and it comes down with the force of many tons upon this metal floor."
+      }
+    },
+    {
+      "id": "4960:238",
+      "sentence": 4960,
+      "paragraph": 1860,
+      "range": [
+        238,
+        62
+      ],
+      "text": "the same good friend whose warning I had so foolishly rejected",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4888,
+        "paragraph": 1841,
+        "range": [
+          429,
+          168
+        ],
+        "text": "With a stout bearing, therefore, though her manner had shaken me more than I cared to confess, I still shook my head and declared my intention of remaining where I was."
+      }
+    },
+    {
+      "id": "4974:173",
+      "sentence": 4974,
+      "paragraph": 1864,
+      "range": [
+        173,
+        33
+      ],
+      "text": "a weapon like a butcher’s cleaver",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4670,
+        "paragraph": 1759,
+        "range": [
+          0,
+          34
+        ],
+        "text": "“A thing like a cleaver,” said he."
+      }
+    },
+    {
+      "id": "4991:197",
+      "sentence": 4991,
+      "paragraph": 1866,
+      "range": [
+        197,
+        31
+      ],
+      "text": "cut at me with his heavy weapon",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4974,
+        "paragraph": 1864,
+        "range": [
+          0,
+          220
+        ],
+        "text": "“As she spoke a light sprang into view at the further end of the passage, and I saw the lean figure of Colonel Lysander Stark rushing forward with a lantern in one hand and a weapon like a butcher’s cleaver in the other."
+      }
+    },
+    {
+      "id": "4996:352",
+      "sentence": 4996,
+      "paragraph": 1867,
+      "range": [
+        352,
+        25
+      ],
+      "text": "my thumb had been cut off",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4991,
+        "paragraph": 1866,
+        "range": [
+          142,
+          87
+        ],
+        "text": "He dashed her to one side, and, rushing to the window, cut at me with his heavy weapon."
+      }
+    },
+    {
+      "id": "5003:701",
+      "sentence": 5003,
+      "paragraph": 1868,
+      "range": [
+        701,
+        63
+      ],
+      "text": "the very station at which I had arrived upon the previous night",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4822,
+        "paragraph": 1825,
+        "range": [
+          65,
+          115
+        ],
+        "text": "However, I was in time for the last train to Eyford, and I reached the little dim-lit station after eleven o’clock."
+      }
+    },
+    {
+      "id": "5026:336",
+      "sentence": 5026,
+      "paragraph": 1872,
+      "range": [
+        336,
+        68
+      ],
+      "text": "the last time that the colonel needed to have his machine overhauled",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4980,
+        "paragraph": 1865,
+        "range": [
+          0,
+          82
+        ],
+        "text": "“‘Fritz! Fritz!’ she cried in English, ‘remember your promise after the last time."
+      }
+    },
+    {
+      "id": "5029:40",
+      "sentence": 5029,
+      "paragraph": 1873,
+      "range": [
+        40,
+        32
+      ],
+      "text": "that explains what the girl said",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4983,
+        "paragraph": 1865,
+        "range": [
+          83,
+          32
+        ],
+        "text": "You said it should not be again."
+      }
+    },
+    {
+      "id": "5058:90",
+      "sentence": 5058,
+      "paragraph": 1887,
+      "range": [
+        90,
+        40
+      ],
+      "text": "he did not notice the carriage go up any",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4841,
+        "paragraph": 1833,
+        "range": [
+          399,
+          105
+        ],
+        "text": "The country roads seem to be not very good in that part of the world, for we lurched and jolted terribly."
+      }
+    },
+    {
+      "id": "5068:5",
+      "sentence": 5068,
+      "paragraph": 1892,
+      "range": [
+        5,
+        21
+      ],
+      "text": "the twelve-mile drive",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4839,
+        "paragraph": 1833,
+        "range": [
+          55,
+          187
+        ],
+        "text": "Colonel Lysander Stark had said that it was only seven miles, but I should think, from the rate that we seemed to go, and from the time that we took, that it must have been nearer twelve."
+      }
+    },
+    {
+      "id": "5072:62",
+      "sentence": 5072,
+      "paragraph": 1893,
+      "range": [
+        62,
+        30
+      ],
+      "text": "the horse was fresh and glossy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4834,
+        "paragraph": 1831,
+        "range": [
+          0,
+          23
+        ],
+        "text": "“Oh, fresh and glossy.”"
+      }
+    },
+    {
+      "id": "5077:68",
+      "sentence": 5077,
+      "paragraph": 1895,
+      "range": [
+        68,
+        41
+      ],
+      "text": "have used the machine to form the amalgam",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4926,
+        "paragraph": 1853,
+        "range": [
+          1087,
+          154
+        ],
+        "text": "The walls were of wood, but the floor consisted of a large iron trough, and when I came to examine it I could see a crust of metallic deposit all over it."
+      }
+    },
+    {
+      "id": "5092:35",
+      "sentence": 5092,
+      "paragraph": 1904,
+      "range": [
+        35,
+        58
+      ],
+      "text": "is Dr. Becher a German, very thin, with a long, sharp nose",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4722,
+        "paragraph": 1783,
+        "range": [
+          406,
+          126
+        ],
+        "text": "His whole face sharpened away into nose and chin, and the skin of his cheeks was drawn quite tense over his outstanding bones."
+      }
+    },
+    {
+      "id": "5100:85",
+      "sentence": 5100,
+      "paragraph": 1907,
+      "range": [
+        85,
+        37
+      ],
+      "text": "there are the rose-bushes where I lay",
+      "kind": "place",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4997,
+        "paragraph": 1867,
+        "range": [
+          424,
+          152
+        ],
+        "text": "I endeavoured to tie my handkerchief round it, but there came a sudden buzzing in my ears, and next moment I fell in a dead faint among the rose-bushes."
+      }
+    },
+    {
+      "id": "5103:106",
+      "sentence": 5103,
+      "paragraph": 1908,
+      "range": [
+        106,
+        53
+      ],
+      "text": "your oil-lamp which, when it was crushed in the press",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4958,
+        "paragraph": 1859,
+        "range": [
+          431,
+          169
+        ],
+        "text": "The panel had closed again behind me, but the crash of the lamp, and a few moments afterwards the clang of the two slabs of metal, told me how narrow had been my escape."
+      }
+    },
+    {
+      "id": "5105:148",
+      "sentence": 5105,
+      "paragraph": 1909,
+      "range": [
+        148,
+        21
+      ],
+      "text": "the morose Englishman",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4910,
+        "paragraph": 1850,
+        "range": [
+          655,
+          135
+        ],
+        "text": "Ferguson appeared to be a morose and silent man, but I could see from the little that he said that he was at least a fellow-countryman."
+      }
+    },
+    {
+      "id": "5107:126",
+      "sentence": 5107,
+      "paragraph": 1910,
+      "range": [
+        126,
+        66
+      ],
+      "text": "a newly severed human thumb upon a window-sill of the second floor",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4992,
+        "paragraph": 1866,
+        "range": [
+          230,
+          82
+        ],
+        "text": "I had let myself go, and was hanging by the hands to the sill, when his blow fell."
+      }
+    }
+  ]
+}

@@ -1,0 +1,657 @@
+{
+  "parserVersion": 1,
+  "engineVersion": 4,
+  "underlines": [
+    {
+      "id": "1340:1",
+      "sentence": 1340,
+      "paragraph": 521,
+      "range": [
+        1,
+        33
+      ],
+      "text": "I have seen those symptoms before",
+      "kind": "reaction",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1338,
+        "paragraph": 520,
+        "range": [
+          385,
+          189
+        ],
+        "text": "From under this great panoply she peeped up in a nervous, hesitating fashion at our windows, while her body oscillated backward and forward, and her fingers fidgeted with her glove buttons."
+      }
+    },
+    {
+      "id": "1364:29",
+      "sentence": 1364,
+      "paragraph": 529,
+      "range": [
+        29,
+        23
+      ],
+      "text": "your stepfather, surely",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1362,
+        "paragraph": 528,
+        "range": [
+          83,
+          142
+        ],
+        "text": "“Yes, I did bang out of the house,” she said, “for it made me angry to see the easy way in which Mr. Windibank—that is, my father—took it all."
+      }
+    },
+    {
+      "id": "1379:62",
+      "sentence": 1379,
+      "paragraph": 536,
+      "range": [
+        62,
+        34
+      ],
+      "text": "so large a sum as a hundred a year",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1377,
+        "paragraph": 535,
+        "range": [
+          128,
+          84
+        ],
+        "text": "Two thousand five hundred pounds was the amount, but I can only touch the interest.”"
+      }
+    },
+    {
+      "id": "1383:369",
+      "sentence": 1383,
+      "paragraph": 537,
+      "range": [
+        369,
+        26
+      ],
+      "text": "what I earn at typewriting",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1349,
+        "paragraph": 523,
+        "range": [
+          0,
+          105
+        ],
+        "text": "“Do you not find,” he said, “that with your short sight it is a little trying to do so much typewriting?”"
+      }
+    },
+    {
+      "id": "1397:754",
+      "sentence": 1397,
+      "paragraph": 539,
+      "range": [
+        754,
+        51
+      ],
+      "text": "he went off to France upon the business of the firm",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1370,
+        "paragraph": 532,
+        "range": [
+          185,
+          255
+        ],
+        "text": "Father was a plumber in the Tottenham Court Road, and he left a tidy business behind him, which mother carried on with Mr. Hardy, the foreman; but when Mr. Windibank came he made her sell the business, for he was very superior, being a traveller in wines."
+      }
+    },
+    {
+      "id": "1397:839",
+      "sentence": 1397,
+      "paragraph": 539,
+      "range": [
+        839,
+        37
+      ],
+      "text": "Mr. Hardy, who used to be our foreman",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1370,
+        "paragraph": 532,
+        "range": [
+          185,
+          255
+        ],
+        "text": "Father was a plumber in the Tottenham Court Road, and he left a tidy business behind him, which mother carried on with Mr. Hardy, the foreman; but when Mr. Windibank came he made her sell the business, for he was very superior, being a traveller in wines."
+      }
+    },
+    {
+      "id": "1398:80",
+      "sentence": 1398,
+      "paragraph": 540,
+      "range": [
+        80,
+        44
+      ],
+      "text": "very annoyed at your having gone to the ball",
+      "kind": "feeling",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1391,
+        "paragraph": 539,
+        "range": [
+          268,
+          36
+        ],
+        "text": "Mr. Windibank did not wish us to go."
+      }
+    },
+    {
+      "id": "1426:190",
+      "sentence": 1426,
+      "paragraph": 557,
+      "range": [
+        190,
+        30
+      ],
+      "text": "so I offered to typewrite them",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1383,
+        "paragraph": 537,
+        "range": [
+          253,
+          143
+        ],
+        "text": "Mr. Windibank draws my interest every quarter and pays it over to mother, and I find that I can do pretty well with what I earn at typewriting."
+      }
+    },
+    {
+      "id": "1462:121",
+      "sentence": 1462,
+      "paragraph": 567,
+      "range": [
+        121,
+        16
+      ],
+      "text": "I was to be true",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1439,
+        "paragraph": 561,
+        "range": [
+          101,
+          131
+        ],
+        "text": "He was in dreadful earnest and made me swear, with my hands on the Testament, that whatever happened I would always be true to him."
+      }
+    },
+    {
+      "id": "1477:155",
+      "sentence": 1477,
+      "paragraph": 575,
+      "range": [
+        155,
+        59
+      ],
+      "text": "bringing me to the doors of the church, and then leaving me",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1456,
+        "paragraph": 565,
+        "range": [
+          325,
+          188
+        ],
+        "text": "We got to the church first, and when the four-wheeler drove up we waited for him to step out, but he never did, and when the cabman got down from the box and looked there was no one there!"
+      }
+    },
+    {
+      "id": "1499:37",
+      "sentence": 1499,
+      "paragraph": 585,
+      "range": [
+        37,
+        26
+      ],
+      "text": "the great claret importers",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1370,
+        "paragraph": 532,
+        "range": [
+          185,
+          255
+        ],
+        "text": "Father was a plumber in the Tottenham Court Road, and he left a tidy business behind him, which mother carried on with Mr. Hardy, the foreman; but when Mr. Windibank came he made her sell the business, for he was very superior, being a traveller in wines."
+      }
+    },
+    {
+      "id": "1522:63",
+      "sentence": 1522,
+      "paragraph": 593,
+      "range": [
+        63,
+        27
+      ],
+      "text": "a feather of a brickish red",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1337,
+        "paragraph": 520,
+        "range": [
+          127,
+          257
+        ],
+        "text": "Looking over his shoulder, I saw that on the pavement opposite there stood a large woman with a heavy fur boa round her neck, and a large curling red feather in a broad-brimmed hat which was tilted in a coquettish Duchess of Devonshire fashion over her ear."
+      }
+    },
+    {
+      "id": "1538:938",
+      "sentence": 1538,
+      "paragraph": 595,
+      "range": [
+        938,
+        52
+      ],
+      "text": "I ventured a remark upon short sight and typewriting",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1349,
+        "paragraph": 523,
+        "range": [
+          0,
+          105
+        ],
+        "text": "“Do you not find,” he said, “that with your short sight it is a little trying to do so much typewriting?”"
+      }
+    },
+    {
+      "id": "1543:532",
+      "sentence": 1543,
+      "paragraph": 597,
+      "range": [
+        532,
+        24
+      ],
+      "text": "she came away in a hurry",
+      "kind": "outcome",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1362,
+        "paragraph": 528,
+        "range": [
+          83,
+          142
+        ],
+        "text": "“Yes, I did bang out of the house,” she said, “for it made me angry to see the easy way in which Mr. Windibank—that is, my father—took it all."
+      }
+    },
+    {
+      "id": "1551:504",
+      "sentence": 1551,
+      "paragraph": 599,
+      "range": [
+        504,
+        46
+      ],
+      "text": "the advertised description of Mr. Hosmer Angel",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1491,
+        "paragraph": 581,
+        "range": [
+          0,
+          62
+        ],
+        "text": "“I advertised for him in last Saturday’s Chronicle,” said she."
+      }
+    },
+    {
+      "id": "1554:286",
+      "sentence": 1554,
+      "paragraph": 600,
+      "range": [
+        286,
+        42
+      ],
+      "text": "tinted glasses, slight infirmity of speech",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1435,
+        "paragraph": 559,
+        "range": [
+          212,
+          157
+        ],
+        "text": "He’d had the quinsy and swollen glands when he was young, he told me, and it had left him with a weak throat, and a hesitating, whispering fashion of speech."
+      }
+    },
+    {
+      "id": "1559:30",
+      "sentence": 1559,
+      "paragraph": 601,
+      "range": [
+        30,
+        17
+      ],
+      "text": "As to the letters",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1492,
+        "paragraph": 581,
+        "range": [
+          63,
+          54
+        ],
+        "text": "“Here is the slip and here are four letters from him.”"
+      }
+    },
+    {
+      "id": "1563:20",
+      "sentence": 1563,
+      "paragraph": 603,
+      "range": [
+        20,
+        28
+      ],
+      "text": "the signature is typewritten",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1426,
+        "paragraph": 557,
+        "range": [
+          67,
+          346
+        ],
+        "text": "He said that if they were sent to the office he would be chaffed by all the other clerks about having letters from a lady, so I offered to typewrite them, like he did his, but he wouldn’t have that, for he said that when I wrote them they seemed to come from me, but when they were typewritten he always felt that the machine had come between us."
+      }
+    },
+    {
+      "id": "1572:97",
+      "sentence": 1572,
+      "paragraph": 607,
+      "range": [
+        97,
+        28
+      ],
+      "text": "One is to a firm in the City",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1499,
+        "paragraph": 585,
+        "range": [
+          0,
+          85
+        ],
+        "text": "“He travels for Westhouse & Marbank, the great claret importers of Fenchurch Street.”"
+      }
+    },
+    {
+      "id": "1572:143",
+      "sentence": 1572,
+      "paragraph": 607,
+      "range": [
+        143,
+        42
+      ],
+      "text": "the young lady’s stepfather, Mr. Windibank",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1364,
+        "paragraph": 529,
+        "range": [
+          0,
+          83
+        ],
+        "text": "“Your father,” said Holmes, “your stepfather, surely, since the name is different.”"
+      }
+    },
+    {
+      "id": "1576:332",
+      "sentence": 1576,
+      "paragraph": 608,
+      "range": [
+        332,
+        53
+      ],
+      "text": "the King of Bohemia and of the Irene Adler photograph",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1324,
+        "paragraph": 515,
+        "range": [
+          65,
+          116
+        ],
+        "text": "It is a little souvenir from the King of Bohemia in return for my assistance in the case of the Irene Adler papers.”"
+      }
+    },
+    {
+      "id": "1577:210",
+      "sentence": 1577,
+      "paragraph": 609,
+      "range": [
+        210,
+        51
+      ],
+      "text": "the disappearing bridegroom of Miss Mary Sutherland",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1456,
+        "paragraph": 565,
+        "range": [
+          325,
+          188
+        ],
+        "text": "We got to the church first, and when the four-wheeler drove up we waited for him to step out, but he never did, and when the cabman got down from the box and looked there was no one there!"
+      }
+    },
+    {
+      "id": "1585:13",
+      "sentence": 1585,
+      "paragraph": 612,
+      "range": [
+        13,
+        24
+      ],
+      "text": "the bisulphate of baryta",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1581,
+        "paragraph": 610,
+        "range": [
+          487,
+          179
+        ],
+        "text": "A formidable array of bottles and test-tubes, with the pungent cleanly smell of hydrochloric acid, told me that he had spent his day in the chemical work which was so dear to him."
+      }
+    },
+    {
+      "id": "1619:284",
+      "sentence": 1619,
+      "paragraph": 625,
+      "range": [
+        284,
+        55
+      ],
+      "text": "four letters which purport to come from the missing man",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1492,
+        "paragraph": 581,
+        "range": [
+          63,
+          54
+        ],
+        "text": "“Here is the slip and here are four letters from him.”"
+      }
+    },
+    {
+      "id": "1626:101",
+      "sentence": 1626,
+      "paragraph": 627,
+      "range": [
+        101,
+        17
+      ],
+      "text": "I have caught him",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1624,
+        "paragraph": 626,
+        "range": [
+          138,
+          77
+        ],
+        "text": "“If you can catch the man, catch him, and let me know when you have done it.”"
+      }
+    },
+    {
+      "id": "1636:99",
+      "sentence": 1636,
+      "paragraph": 630,
+      "range": [
+        99,
+        19
+      ],
+      "text": "it’s not actionable",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1591,
+        "paragraph": 614,
+        "range": [
+          173,
+          81
+        ],
+        "text": "The only drawback is that there is no law, I fear, that can touch the scoundrel.”"
+      }
+    },
+    {
+      "id": "1649:936",
+      "sentence": 1649,
+      "paragraph": 633,
+      "range": [
+        936,
+        14
+      ],
+      "text": "a certain ball",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1389,
+        "paragraph": 539,
+        "range": [
+          97,
+          52
+        ],
+        "text": "“I met him first at the gasfitters’ ball,” she said."
+      }
+    },
+    {
+      "id": "1661:664",
+      "sentence": 1661,
+      "paragraph": 635,
+      "range": [
+        664,
+        34
+      ],
+      "text": "These pretended journeys to France",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1411,
+        "paragraph": 547,
+        "range": [
+          0,
+          155
+        ],
+        "text": "“Well, father was going off to France again in a week, and Hosmer wrote and said that it would be safer and better not to see each other until he had gone."
+      }
+    },
+    {
+      "id": "1663:957",
+      "sentence": 1663,
+      "paragraph": 635,
+      "range": [
+        957,
+        47
+      ],
+      "text": "those vows of fidelity exacted upon a Testament",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1439,
+        "paragraph": 561,
+        "range": [
+          101,
+          131
+        ],
+        "text": "He was in dreadful earnest and made me swear, with my hands on the Testament, that whatever happened I would always be true to him."
+      }
+    },
+    {
+      "id": "1681:386",
+      "sentence": 1681,
+      "paragraph": 641,
+      "range": [
+        386,
+        43
+      ],
+      "text": "the tinted spectacles and the curious voice",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1435,
+        "paragraph": 559,
+        "range": [
+          212,
+          157
+        ],
+        "text": "He’d had the quinsy and swollen glands when he was young, he told me, and it had left him with a weak throat, and a hesitating, whispering fashion of speech."
+      }
+    },
+    {
+      "id": "1682:550",
+      "sentence": 1682,
+      "paragraph": 641,
+      "range": [
+        550,
+        25
+      ],
+      "text": "typewriting his signature",
+      "kind": "action",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1563,
+        "paragraph": 603,
+        "range": [
+          0,
+          49
+        ],
+        "text": "“Not only that, but the signature is typewritten."
+      }
+    }
+  ]
+}
