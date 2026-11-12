@@ -4,12 +4,13 @@ import UIKit
 @MainActor
 @Observable
 final class LibVM {
-    enum ViewMode {
+    enum ViewMode: Hashable {
         case grid
         case list
     }
 
     var searchText = ""
+    private(set) var isSearchActive = false
     var isImportPickerPresented = false
     private(set) var isSelectionMode = false
     private(set) var selectedBookIDs: Set<UUID> = []
@@ -100,8 +101,21 @@ final class LibVM {
         await refreshCloudAccount()
     }
 
-    func toggleViewMode() {
-        viewMode = viewMode == .grid ? .list : .grid
+    func searchTapped() {
+        isSearchActive = true
+    }
+
+    func searchFocusChanged(_ focused: Bool) {
+        if focused { isSearchActive = true }
+    }
+
+    func searchDismissed() {
+        searchText = ""
+        isSearchActive = false
+    }
+
+    func viewModeSelected(_ mode: ViewMode) {
+        viewMode = mode
     }
 
     func selectionModeTapped() {
@@ -223,15 +237,8 @@ final class LibVM {
             selectionTapped(book)
             return
         }
+        isSearchActive = false
         appNav.openReader(book: book)
-    }
-
-    func finishedActionTitle(for book: BookRecord) -> String {
-        book.isFinished ? "Mark as Still Reading" : "Mark as Finished"
-    }
-
-    func finishedActionSymbol(for book: BookRecord) -> String {
-        book.isFinished ? "book" : "checkmark.circle"
     }
 
     func finishedToggled(_ book: BookRecord) {

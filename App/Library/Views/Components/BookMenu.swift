@@ -2,45 +2,41 @@ import SwiftUI
 
 /// Context actions available for one library book.
 struct BookMenu: View {
-    let book: BookRecord
-    let libVM: LibVM
-    var isHidden = false
+    let item: LibraryBookItemVM
+    let onFinished: () -> Void
+    let onRename: () -> Void
+    let onRemove: () -> Void
 
     var body: some View {
         Menu {
             Button(
-                libVM.finishedActionTitle(for: book),
-                systemImage: libVM.finishedActionSymbol(for: book)
-            ) {
-                libVM.finishedToggled(book)
-            }
-            Button("Rename…", systemImage: "textformat") {
-                libVM.renameTapped(book)
-            }
+                item.finishedActionTitle,
+                systemImage: item.finishedActionSymbol,
+                action: onFinished
+            )
+            Button("Rename…", systemImage: "textformat", action: onRename)
             Divider()
-            Button("Remove…", systemImage: "trash", role: .destructive) {
-                libVM.removeTapped(book)
-            }
+            Button("Remove…", systemImage: "trash", role: .destructive, action: onRemove)
         } label: {
             Group {
-                if isHidden {
+                if item.isMenuHidden {
                     Color.clear
                 } else {
                     Image(systemName: "ellipsis")
-                        .foregroundStyle(LibraryPalette.secondaryText)
+                        .foregroundStyle(AppColors.cardTextSecondary)
                 }
             }
             .frame(width: 30, height: 44)
             .contentShape(.rect)
         }
         .tint(.secondary)
-        .disabled(isHidden)
-        .accessibilityLabel("More options for \(book.title)")
+        .disabled(item.isMenuHidden)
+        .accessibilityLabel(item.menuAccessibilityLabel)
     }
 }
 
 #Preview("Book Actions") {
     let book = BookRecord.samples[0].book
-    BookMenu(book: book, libVM: PreviewFixtures.libraryVM())
+    BookMenu(item: LibraryBookItemVM(book: book), onFinished: {}, onRename: {}, onRemove: {})
         .padding()
 }

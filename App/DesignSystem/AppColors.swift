@@ -4,9 +4,13 @@ import UIKit
 /// Semantic color tokens shared across app features.
 enum AppColors {
     static let backgroundPrimary = adaptive(light: 0xF3F4FF, dark: 0x0C0C24)
+    static let cardBackground = Color(hex: 0xFFFDFB)
+    static let cardProgressTrack = Color(hex: 0xFFD6B2)
     static let readerBackground = adaptive(light: 0xFFFFFF, dark: 0x000000)
     static let readerReferencePanel = adaptive(light: 0xFFF6ED, dark: 0xFFF6ED)
     static let actionPrimary = Color(hex: 0xFFA248)
+    static let cardTextPrimary = Color(hex: 0x0C0C24)
+    static let cardTextSecondary = Color(hex: 0x4F5297)
     static let menuBackground = adaptive(light: 0xF3F4FF, dark: 0x1E1E48)
     static let popoverBackground = adaptive(light: 0xFFFFFF, dark: 0x1E1E48)
     static let popoverQuoteBackground = adaptive(light: 0xFFF6ED, dark: 0x1E1E48)
