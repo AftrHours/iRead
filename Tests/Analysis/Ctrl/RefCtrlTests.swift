@@ -63,6 +63,18 @@ struct RefCtrlTests {
         #expect(marks.filter { $0.kind == .highlight } == [Mark(range: expected, kind: .highlight)])
     }
 
+    @Test("AN-28 highlighting an underline whose passage is in an earlier chapter marks the passage on that chapter's page")
+    func highlightInEarlierChapter() async throws {
+        let refCtrl = makeRefCtrl()
+        let rainAfterClock = SavedUnderline.make("The rain", paragraph: 4, passage: "Then Anna saw the old clock in the hall.",
+                                                 passageParagraph: 0, in: content)
+        try await load([rainAfterClock], into: refCtrl)
+        let marks = try await refCtrl.marks(on: wholeChapter(0), highlighting: rainAfterClock.id)
+        let reference = rainAfterClock.reference
+        let expected = NSRange(location: content.paragraphs[reference.paragraph].range.location + reference.range.location, length: reference.range.length)
+        #expect(marks == [Mark(range: expected, kind: .highlight)])
+    }
+
     @Test("AN-09 an unknown underline isn't found")
     func unknownUnderline() async {
         await #expect(throws: ContentError.notFound) { try await makeRefCtrl().underline(withID: "99:0") }

@@ -139,3 +139,4 @@ The app's only AI feature: phrases worth underlining, each with the earlier pass
 | AN-25 | P1 | `RatingCtrl.rate` | Underline not loaded | `ContentError.notFound` |
 | AN-26 | P0 | `UnderlineRepo` | Chapter in the app's bundled seeds with the same / older engine version | Used without the engine or iCloud, nothing saved on disk / underlined again, saved and sent to iCloud |
 | AN-27 | P0 | `App/Resources/UnderlineSeed` | Every bundled seed file | Folder matches a sample book's fingerprint; chapter exists; current parser and engine version |
+| AN-28 | P0 | `RefCtrl.marks` | `highlighting:` an underline in ch 2 whose passage is in ch 1, on a ch 1 page | `.highlight` on the passage, no underline mark |
