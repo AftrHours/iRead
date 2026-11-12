@@ -35,6 +35,7 @@ struct EPUBDocumentPicker: UIViewControllerRepresentable {
         }
     }
 
+    /// UIKit presentation lifecycle only; import decisions and errors are handled by LibVM.
     @MainActor
     final class Coordinator: NSObject, UIDocumentPickerDelegate {
         var isPresented: Binding<Bool>
@@ -62,18 +63,18 @@ struct EPUBDocumentPicker: UIViewControllerRepresentable {
 }
 
 private struct EPUBPickerPreviewHost: View {
-    @State private var isPresented = false
+    @Bindable var libVM: LibVM
 
     var body: some View {
-        Button("Import EPUB") { isPresented = true }
+        Button("Import EPUB", action: libVM.importTapped)
             .buttonStyle(.borderedProminent)
             .background {
-                EPUBDocumentPicker(isPresented: $isPresented) { _ in }
+                EPUBDocumentPicker(isPresented: $libVM.isImportPickerPresented, onPick: libVM.importPickerCompleted)
             }
             .padding()
     }
 }
 
 #Preview("EPUB Picker") {
-    EPUBPickerPreviewHost()
+    EPUBPickerPreviewHost(libVM: PreviewFixtures.libraryVM())
 }
