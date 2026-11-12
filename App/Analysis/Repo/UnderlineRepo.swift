@@ -3,7 +3,7 @@ import OSLog
 import UnderlineEngine
 
 enum UnderlineRepoKnobs {
-    static let engineVersion = 1
+    static let engineVersion = 4
 }
 
 actor UnderlineRepo {
