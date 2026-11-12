@@ -32,7 +32,8 @@ struct AppContainer {
         progRepo = ProgRepo()
         bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc)
         libRepo = LibRepo(epubParseSvc: epubParseSvc)
-        underlineRepo = UnderlineRepo(modelCheckSvc: modelCheckSvc, cloudSvc: cloudSvc)
+        underlineRepo = UnderlineRepo(seedFolder: Bundle.main.url(forResource: "UnderlineSeed", withExtension: nil),
+                                      modelCheckSvc: modelCheckSvc, cloudSvc: cloudSvc)
         ratingRepo = RatingRepo(cloudSvc: cloudSvc)
         self.cloudSvc = cloudSvc
     }

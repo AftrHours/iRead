@@ -117,6 +117,24 @@ struct UnderlineRepoTests {
         #endif
     }
 
+    @Test("AN-26 a chapter that comes with the app is used without running the engine or asking iCloud, if the engine version matches",
+          arguments: [(UnderlineRepoKnobs.engineVersion, true), (UnderlineRepoKnobs.engineVersion - 1, false)])
+    func seededChapter(stored version: Int, isReused: Bool) async throws {
+        let seeds = TempFolder()
+        try StoredUnderlines.write([marker], chapter: 0, of: book, parserVersion: content.parserVersion, engineVersion: version, in: seeds.url)
+        let cloud = CloudSvcFake()
+        let repo = UnderlineRepo(folder: folder.url, seedFolder: seeds.url, cloudSvc: cloud)
+        for await _ in await underline(0, in: repo) {}
+        #expect(await repo.underlines(inChapter: 0, of: book).contains(marker) == isReused)
+        // A seed stays in the app; only a chapter underlined here is saved on the device and in iCloud.
+        #expect(storedFileExists(chapter: 0) == !isReused)
+        #expect((cloud.records(in: .reader)["\(book)-0"] != nil) == !isReused)
+        #if DEBUG
+        let expected = isReused ? "Comes with the app, so iCloud wasn't asked" : "Underlined here and saved to iCloud"
+        #expect(await repo.cloudResult(inChapter: 0, of: book) == expected)
+        #endif
+    }
+
     @Test("AN-23 the iCloud account is reported for the reader menu: signed in, signed out, or nil without iCloud")
     func account() async {
         let cloud = CloudSvcFake()
@@ -125,5 +143,34 @@ struct UnderlineRepoTests {
         cloud.isOffline = true
         #expect(await repo.cloudAccount == .signedOut)
         #expect(await UnderlineRepo(folder: folder.url).cloudAccount == nil)
+    }
+}
+
+@Suite("Bundled underline seeds", .timeLimit(.minutes(2)))
+struct UnderlineSeedTests {
+    @Test("AN-27 every bundled seed belongs to a sample book and was made by the current parser and engine")
+    func seedsAreCurrent() async throws {
+        let seeds = try #require(Bundle.main.url(forResource: "UnderlineSeed", withExtension: nil))
+        let manager = FileManager.default
+        let books = try manager.contentsOfDirectory(at: seeds, includingPropertiesForKeys: nil)
+            .filter { $0.hasDirectoryPath || (try? $0.resourceValues(forKeys: [.isDirectoryKey]).isDirectory) == true }
+        #expect(!books.isEmpty)
+        var samples: [String: BookContent] = [:]
+        for (_, fileName) in BookRecord.samples {
+            let url = try #require(Bundle.main.url(forResource: fileName, withExtension: "epub"))
+            let content = try await EPUBParseSvcEPUBKit().parse(url)
+            samples[content.fingerprint] = content
+        }
+        for book in books {
+            // A fingerprint no sample has means the book's text changed, so the seed would never be found.
+            let content = try #require(samples[book.lastPathComponent], "No sample book has fingerprint \(book.lastPathComponent)")
+            for file in try manager.contentsOfDirectory(at: book, includingPropertiesForKeys: nil) {
+                let stored = try JSONDecoder().decode(StoredUnderlines.File.self, from: Data(contentsOf: file))
+                let chapter = try #require(Int(file.deletingPathExtension().lastPathComponent.replacingOccurrences(of: "chapter-", with: "")))
+                #expect(content.chapters.indices.contains(chapter), "\(file.lastPathComponent) is past the book's last chapter")
+                #expect(stored.parserVersion == content.parserVersion, "\(file.lastPathComponent) is from another parser")
+                #expect(stored.engineVersion == UnderlineRepoKnobs.engineVersion, "\(file.lastPathComponent) is from another engine")
+            }
+        }
     }
 }

@@ -19,6 +19,8 @@ actor UnderlineRepo {
 
     private static let recordType = "ChapterUnderlines"
     private let folder: URL
+    /// Chapters worked out ahead and bundled with the app, laid out like `folder`. nil: none, as in tests.
+    private let seedFolder: URL?
     private let logger = Logger(subsystem: Logger.appSubsystem, category: "storage")
     /// nil: rules only, as in tests.
     private let modelCheckSvc: ModelCheckSvc?
@@ -35,9 +37,10 @@ actor UnderlineRepo {
     private var bookTask: Task<Void, Never>?
     #endif
 
-    init(folder: URL = .applicationSupportDirectory.appending(path: "Underlines"),
+    init(folder: URL = .applicationSupportDirectory.appending(path: "Underlines"), seedFolder: URL? = nil,
          modelCheckSvc: ModelCheckSvc? = nil, cloudSvc: (any CloudSvc)? = nil) {
         self.folder = folder
+        self.seedFolder = seedFolder
         self.modelCheckSvc = modelCheckSvc
         self.cloudSvc = cloudSvc
     }
@@ -247,14 +250,30 @@ actor UnderlineRepo {
         return made
     }
 
+    /// A chapter is finished when this device saved it, or when the app comes with it: the bundled books are worked out
+    /// ahead, so a reader never waits on the engine for them. Either way iCloud isn't asked.
     private func isFinished(_ chapter: Int, of book: String, parserVersion: Int) -> Bool {
         if finishedChapters[book]?.contains(chapter) == true { return true }
-        guard let data = try? Data(contentsOf: fileURL(chapter: chapter, of: book)),
+        if let stored = storedChapter(at: fileURL(chapter: chapter, of: book, in: folder), parserVersion: parserVersion) {
+            use(stored, chapter: chapter, of: book)
+            noteCloud("Saved on this device, so iCloud wasn't asked", chapter: chapter, of: book)
+            return true
+        }
+        if let seedFolder,
+           let stored = storedChapter(at: fileURL(chapter: chapter, of: book, in: seedFolder), parserVersion: parserVersion) {
+            use(stored, chapter: chapter, of: book)
+            noteCloud("Comes with the app, so iCloud wasn't asked", chapter: chapter, of: book)
+            return true
+        }
+        return false
+    }
+
+    /// nil when there's no file, or it was made by another parser or engine version.
+    private func storedChapter(at url: URL, parserVersion: Int) -> StoredChapter? {
+        guard let data = try? Data(contentsOf: url),
               let stored = try? JSONDecoder().decode(StoredChapter.self, from: data),
-              isCurrent(stored, parserVersion: parserVersion) else { return false }
-        use(stored, chapter: chapter, of: book)
-        noteCloud("Saved on this device, so iCloud wasn't asked", chapter: chapter, of: book)
-        return true
+              isCurrent(stored, parserVersion: parserVersion) else { return nil }
+        return stored
     }
 
     private func isCurrent(_ stored: StoredChapter, parserVersion: Int) -> Bool {
@@ -276,8 +295,8 @@ actor UnderlineRepo {
         }
     }
 
-    private func fileURL(chapter: Int, of book: String) -> URL {
-        folder.appending(path: "\(book)/chapter-\(chapter).json")
+    private func fileURL(chapter: Int, of book: String, in folder: URL? = nil) -> URL {
+        (folder ?? self.folder).appending(path: "\(book)/chapter-\(chapter).json")
     }
 
     /// nil when iCloud has no current copy or can't be reached.
