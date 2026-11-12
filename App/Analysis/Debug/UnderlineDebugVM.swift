@@ -1,6 +1,7 @@
 #if DEBUG
 import Foundation
 import Observation
+import UIKit
 import UnderlineEngine
 
 @MainActor
@@ -17,6 +18,10 @@ final class UnderlineDebugVM {
     private(set) var note: String?
     private(set) var rows: [Row] = []
     private(set) var cloudLines: [String] = []
+    private(set) var bookLine = ""
+    private(set) var bookIsRunning = false
+    private(set) var bookFolder = ""
+    private(set) var exportLine: String?
     private let refCtrl: RefCtrl
     private let ratingCtrl: RatingCtrl
     private let chapterIndex: Int?
@@ -32,6 +37,7 @@ final class UnderlineDebugVM {
         guard let chapterIndex else { return }
         let account = Self.text(of: await ratingCtrl.cloudAccount())
         while !Task.isCancelled {
+            await refreshBook()
             cloudLines = await cloudStatus(chapterIndex, account: account)
             let model = await refCtrl.underlinesUseModel() ? "Foundation Models" : "Rules only"
             let records = await refCtrl.underlineRecords(inChapter: chapterIndex)
@@ -54,6 +60,61 @@ final class UnderlineDebugVM {
             }
             try? await Task.sleep(for: .seconds(1))
         }
+    }
+
+    /// Underlines every chapter of the book in order. The screen stays on while it works, because the engine only works
+    /// with the app in front. It keeps going after the sheet is closed.
+    func startBook() {
+        UIApplication.shared.isIdleTimerDisabled = true
+        Task {
+            await refCtrl.startWholeBook()
+            repeat {
+                await refreshBook()
+                try? await Task.sleep(for: .seconds(1))
+            } while bookIsRunning
+            await refreshBook()
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
+    }
+
+    func stopBook() {
+        Task { await refCtrl.stopWholeBook() }
+    }
+
+    /// Copies every book's saved chapters into a folder picked in the system picker, such as the repo's App/Resources,
+    /// because the app may only write outside its own container to a folder the user picked.
+    func export(to destination: URL) async {
+        let access = destination.startAccessingSecurityScopedResource()
+        defer { if access { destination.stopAccessingSecurityScopedResource() } }
+        do {
+            let export = try await refCtrl.exportSavedChapters(to: destination)
+            let thisBook = await refCtrl.wholeBookFolder().map { URL(filePath: $0).lastPathComponent }
+            var lines = export.chapters.sorted { $0.key < $1.key }.map { book, count in
+                "\(book.prefix(12))…: \(count) chapters" + (book == thisBook ? " (this book)" : "")
+            }
+            if lines.isEmpty { lines.append("Nothing saved yet, so nothing was copied.") }
+            if export.outdated > 0 { lines.append("\(export.outdated) chapters from an older engine left out") }
+            exportLine = "Copied to \(destination.lastPathComponent):\n" + lines.joined(separator: "\n")
+        } catch {
+            exportLine = "Couldn't copy: \(error.localizedDescription)"
+        }
+    }
+
+    private func refreshBook() async {
+        let run = await refCtrl.wholeBookRun()
+        bookIsRunning = run?.isRunning ?? false
+        bookLine = Self.text(of: run)
+        bookFolder = await refCtrl.wholeBookFolder() ?? ""
+    }
+
+    private static func text(of run: UnderlineRepo.BookRun?) -> String {
+        guard let run else { return "Not started since the app opened." }
+        var parts = ["\(run.finished) of \(run.total) chapters"]
+        if let current = run.current, run.isRunning { parts.append("working on chapter \(current)") }
+        if run.skippedPhrases > 0 { parts.append("\(run.skippedPhrases) phrases the model failed on") }
+        if !run.leftOut.isEmpty { parts.append("left out: \(run.leftOut.map(String.init).joined(separator: ", "))") }
+        parts.append(run.isRunning ? "running" : "stopped or done")
+        return parts.joined(separator: " · ")
     }
 
     private static func text(of account: CloudAccount?) -> String {
@@ -107,6 +168,29 @@ extension RefCtrl {
     func cloudResult(inChapter chapter: Int) async -> String? {
         guard let content = try? await bookContentRepo.content(for: bookID) else { return nil }
         return await underlineRepo.cloudResult(inChapter: chapter, of: content.fingerprint)
+    }
+
+    func startWholeBook() async {
+        guard let content = try? await bookContentRepo.content(for: bookID) else { return }
+        await underlineRepo.startBook(content)
+    }
+
+    func stopWholeBook() async {
+        await underlineRepo.stopBook()
+    }
+
+    func wholeBookFolder() async -> String? {
+        guard let content = try? await bookContentRepo.content(for: bookID) else { return nil }
+        return await underlineRepo.savedFolder(of: content.fingerprint)
+    }
+
+    func exportSavedChapters(to destination: URL) async throws -> UnderlineRepo.Export {
+        try await underlineRepo.exportSaved(to: destination)
+    }
+
+    func wholeBookRun() async -> UnderlineRepo.BookRun? {
+        guard let content = try? await bookContentRepo.content(for: bookID) else { return nil }
+        return await underlineRepo.bookRun(of: content.fingerprint)
     }
 }
 

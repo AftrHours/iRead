@@ -4,6 +4,9 @@ import UnderlineEngine
 
 enum UnderlineRepoKnobs {
     static let engineVersion = 4
+    /// "Underline whole book" saves a chapter when at most this share of its phrases failed in the model (it refuses some
+    /// ordinary words, like "hate"), and leaves it out when more did, so a model that isn't answering saves nothing.
+    static let bookMaxFailureShare = 0.1
 }
 
 actor UnderlineRepo {
@@ -28,6 +31,8 @@ actor UnderlineRepo {
     #if DEBUG
     private var foundRecords: [String: [Int: [UnderlineRecord]]] = [:]
     private var cloudResults: [String: [Int: String]] = [:]
+    private var bookRuns: [String: BookRun] = [:]
+    private var bookTask: Task<Void, Never>?
     #endif
 
     init(folder: URL = .applicationSupportDirectory.appending(path: "Underlines"),
@@ -79,10 +84,111 @@ actor UnderlineRepo {
     func cloudResult(inChapter chapter: Int, of book: String) -> String? {
         cloudResults[book]?[chapter]
     }
+
+    /// Progress of "Underline whole book", for the debug sheet.
+    struct BookRun: Sendable, Equatable {
+        let total: Int
+        var finished = 0
+        var current: Int?
+        /// Phrases the model failed on, in chapters that were saved anyway.
+        var skippedPhrases = 0
+        /// Chapters with too many failures, left for the next run.
+        var leftOut: [Int] = []
+        var isRunning = true
+    }
+
+    func bookRun(of book: String) -> BookRun? {
+        bookRuns[book]
+    }
+
+    /// Where a book's chapters are saved. The folder appears once the first chapter is done.
+    func savedFolder(of book: String) -> String {
+        folder.appending(path: book).path(percentEncoded: false)
+    }
+
+    /// Underlines every chapter in order and saves each one, so a whole book can be worked out in one go. Chapters already
+    /// saved are skipped, so a stopped run carries on where it was. The chapter being read is not touched.
+    func startBook(_ content: BookContent) {
+        guard bookTask == nil else { return }
+        bookRuns[content.fingerprint] = BookRun(total: content.chapters.count)
+        logger.info("Whole book: chapters are saved in \(self.savedFolder(of: content.fingerprint), privacy: .public)")
+        bookTask = Task { await self.runBook(content) }
+    }
+
+    func stopBook() {
+        bookTask?.cancel()
+    }
+
+    /// What "Export saved chapters" copied: chapter files per book fingerprint, and files left behind because an older
+    /// engine made them.
+    struct Export: Sendable {
+        var chapters: [String: Int] = [:]
+        var outdated = 0
+    }
+
+    /// Copies the saved chapters of every book into `destination`, one folder per book named by its fingerprint, the way
+    /// the seeds bundled with the app are laid out. A file already there is replaced; nothing else in `destination` is
+    /// touched. Chapters from an older engine are left out.
+    func exportSaved(to destination: URL) throws -> Export {
+        let manager = FileManager.default
+        var export = Export()
+        let books = try manager.contentsOfDirectory(at: folder, includingPropertiesForKeys: [.isDirectoryKey])
+            .filter { (try? $0.resourceValues(forKeys: [.isDirectoryKey]).isDirectory) == true }
+        for book in books {
+            let files = try manager.contentsOfDirectory(at: book, includingPropertiesForKeys: nil)
+                .filter { $0.lastPathComponent.hasPrefix("chapter-") && $0.pathExtension == "json" }
+            let current = files.filter { file in
+                let stored = (try? Data(contentsOf: file)).flatMap { try? JSONDecoder().decode(StoredChapter.self, from: $0) }
+                return stored?.engineVersion == UnderlineRepoKnobs.engineVersion
+            }
+            export.outdated += files.count - current.count
+            guard !current.isEmpty else { continue }
+            let target = destination.appending(path: book.lastPathComponent)
+            try manager.createDirectory(at: target, withIntermediateDirectories: true)
+            for file in current {
+                let copy = target.appending(path: file.lastPathComponent)
+                if manager.fileExists(atPath: copy.path(percentEncoded: false)) { try manager.removeItem(at: copy) }
+                try manager.copyItem(at: file, to: copy)
+            }
+            export.chapters[book.lastPathComponent] = current.count
+        }
+        logger.info("Exported \(export.chapters.values.reduce(0, +)) chapters of \(export.chapters.count) books to \(destination.path(percentEncoded: false), privacy: .public)")
+        return export
+    }
+
+    private func runBook(_ content: BookContent) async {
+        let book = content.fingerprint
+        defer {
+            let left = (bookRuns[book]?.leftOut ?? []).map(String.init).joined(separator: ", ")
+            logger.info("Whole book ended: \(self.bookRuns[book]?.finished ?? 0) of \(content.chapters.count) chapters done, left out: \(left.isEmpty ? "none" : left)")
+            bookRuns[book]?.isRunning = false
+            bookRuns[book]?.current = nil
+            bookTask = nil
+        }
+        for chapter in content.chapters.indices {
+            if Task.isCancelled { return }
+            if !isFinished(chapter, of: book, parserVersion: content.parserVersion) {
+                let paragraphs = content.chapters[chapter].paragraphs
+                // A chapter without sentences has nothing to underline.
+                if let first = content.sentences.firstIndex(where: { paragraphs.contains($0.paragraph) }) {
+                    bookRuns[book]?.current = chapter
+                    logger.info("Whole book: starting chapter \(chapter) of \(content.chapters.count)")
+                    let (_, continuation) = AsyncStream<Void>.makeStream()
+                    await run(chapter, of: content, startingAt: first, continuation: continuation, toleratesFailures: true)
+                    if Task.isCancelled { return }
+                    guard finishedChapters[book]?.contains(chapter) == true else {
+                        bookRuns[book]?.leftOut.append(chapter)
+                        continue
+                    }
+                }
+            }
+            bookRuns[book]?.finished += 1
+        }
+    }
     #endif
 
     private func run(_ index: Int, of content: BookContent, startingAt sentence: Int,
-                     continuation: AsyncStream<Void>.Continuation) async {
+                     continuation: AsyncStream<Void>.Continuation, toleratesFailures: Bool = false) async {
         defer { continuation.finish() }
         let book = content.fingerprint
         let parserVersion = content.parserVersion
@@ -98,9 +204,11 @@ actor UnderlineRepo {
         #if DEBUG
         foundRecords[book, default: [:]][index] = []
         #endif
-        var hadModelFailure = false
+        var phraseCount = 0
+        var failedCount = 0
         for await result in underlineCtrl.paragraphResults(in: indexed, startingAt: sentence) {
-            hadModelFailure = hadModelFailure || result.records.contains { $0.dropped == .modelFailed }
+            phraseCount += result.records.count
+            failedCount += result.records.filter { $0.dropped == .modelFailed }.count
             // A chapter stopped and started again finds some underlines twice.
             let known = Set(underlines(inChapter: index, of: book).map(\.id))
             foundUnderlines[book, default: [:]][index, default: []] += result.underlines.filter { !known.contains($0.id) }.map(SavedUnderline.init)
@@ -109,12 +217,21 @@ actor UnderlineRepo {
             #endif
             if !result.underlines.isEmpty { continuation.yield() }
         }
-        // A model failure means missed underlines, so the chapter is tried again next time.
-        guard !Task.isCancelled, !hadModelFailure else { return }
+        // A model failure means missed underlines, so the chapter is tried again next time. A whole-book run accepts a few.
+        let failedShare = phraseCount == 0 ? 0 : Double(failedCount) / Double(phraseCount)
+        let acceptable = failedCount == 0 || (toleratesFailures && failedShare <= UnderlineRepoKnobs.bookMaxFailureShare)
+        if !acceptable, !Task.isCancelled {
+            logger.notice("Chapter \(index) not saved: the model failed on \(failedCount) of \(phraseCount) phrases")
+        }
+        guard !Task.isCancelled, acceptable else { return }
+        #if DEBUG
+        if toleratesFailures { bookRuns[book]?.skippedPhrases += failedCount }
+        #endif
         finishedChapters[book, default: []].insert(index)
         let stored = StoredChapter(parserVersion: parserVersion, engineVersion: UnderlineRepoKnobs.engineVersion,
                                    underlines: underlines(inChapter: index, of: book))
         save(stored, chapter: index, of: book)
+        logger.info("Chapter \(index) saved: \(stored.underlines.count) underlines, the model failed on \(failedCount) of \(phraseCount) phrases")
         // Its own task, so starting another chapter doesn't cancel the upload.
         await Task { await self.upload(stored, chapter: index, of: book) }.value
     }
