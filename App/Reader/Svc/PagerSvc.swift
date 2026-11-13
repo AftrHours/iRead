@@ -8,8 +8,7 @@ protocol PagerSvc: Sendable {
 struct PagerSvcTextKit: PagerSvc {
     func pageRanges(for text: String, viewport: Viewport, settings: ReadingSettings) async -> [NSRange] {
         let pageSize = Viewport.textFrame(in: CGRect(origin: .zero, size: viewport.size), horizontalMargin: viewport.horizontalMargin).size
-        let attributes = PageTextStyle.attributes(settings: settings)
-        let storage = NSTextStorage(string: text, attributes: attributes)
+        let storage = NSTextStorage(attributedString: PageTextStyle.attributedText(text, settings: settings))
         let layoutManager = NSLayoutManager()
         storage.addLayoutManager(layoutManager)
         var ranges: [NSRange] = []
