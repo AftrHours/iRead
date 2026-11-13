@@ -6,12 +6,13 @@ struct LibraryHeaderView: View {
     let searchFocus: FocusState<Bool>.Binding
 
     private var showsFocusedPhoneSearch: Bool { !layout.isPad && libVM.isSearchActive }
+    private var showsEmptyPhoneLibrary: Bool { !layout.isPad && libVM.isLibraryEmpty && !libVM.isSearchActive }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             topBar
-                .padding(.horizontal, 20)
-                .padding(.top, 8)
+                .padding(.horizontal, showsFocusedPhoneSearch ? 8 : showsEmptyPhoneLibrary ? 16 : 20)
+                .padding(.top, showsFocusedPhoneSearch || showsEmptyPhoneLibrary ? 0 : 8)
                 .padding(.bottom, showsFocusedPhoneSearch ? 16 : 0)
 
             if !showsFocusedPhoneSearch {
@@ -20,9 +21,11 @@ struct LibraryHeaderView: View {
                         .padding(.horizontal, layout.sideMargin)
                         .padding(.top, 10)
                         .padding(.bottom, 12)
-                }
-
-                if !layout.isPad {
+                } else if showsEmptyPhoneLibrary {
+                    libraryTitle
+                        .padding(.horizontal, layout.sideMargin)
+                        .padding(.top, 0.5)
+                } else {
                     LibrarySearchBar(libVM: libVM, focus: searchFocus)
                         .padding(.horizontal, layout.sideMargin)
                         .padding(.top, 12)
@@ -33,23 +36,26 @@ struct LibraryHeaderView: View {
     }
 
     private var topBar: some View {
-        HStack(spacing: 12) {
+        Group {
             if libVM.isSelectionMode {
-                selectionControls
+                HStack(spacing: 12) { selectionControls }
             } else if showsFocusedPhoneSearch {
-                LibrarySearchBar(libVM: libVM, focus: searchFocus)
-                    .frame(maxWidth: .infinity)
-                searchCloseButton(size: 44, foreground: AppColors.textPrimary)
+                LibraryActiveSearchHeader(libVM: libVM, searchFocus: searchFocus)
             } else {
-                if !layout.isPad { libraryTitle }
-                Spacer()
-                if layout.isPad {
-                    padSearchControls
-                    LibraryMainMenu(libVM: libVM)
-                    AddBookButton(action: libVM.importTapped)
-                } else {
-                    AddBookButton(action: libVM.importTapped)
-                    LibraryMainMenu(libVM: libVM)
+                HStack(spacing: 12) {
+                    if !layout.isPad && !showsEmptyPhoneLibrary { libraryTitle }
+                    Spacer()
+                    if layout.isPad {
+                        padSearchControls
+                        LibraryMainMenu(libVM: libVM)
+                        AddBookButton(action: libVM.importTapped)
+                    } else if showsEmptyPhoneLibrary {
+                        AddBookButton(size: 48, iconFont: .system(size: 19, weight: .semibold), action: libVM.importTapped)
+                        LibraryMainMenu(libVM: libVM, iconFont: AppTypography.title2(.medium))
+                    } else {
+                        AddBookButton(action: libVM.importTapped)
+                        LibraryMainMenu(libVM: libVM)
+                    }
                 }
             }
         }
@@ -81,20 +87,24 @@ struct LibraryHeaderView: View {
     @ViewBuilder
     private var padSearchControls: some View {
         if libVM.isSearchActive {
-            LibrarySearchBar(libVM: libVM, focus: searchFocus, focusesOnContainerTap: false)
+            LibrarySearchBar(libVM: libVM, focus: searchFocus, style: .pad, focusesOnContainerTap: false)
                 .frame(width: 280)
             searchCloseButton(size: 36, foreground: AppColors.textSecondary)
         } else {
-            Button(action: libVM.searchTapped) {
-                Image(systemName: "magnifyingglass")
-                    .font(AppTypography.callout())
-                    .foregroundStyle(AppColors.textPrimary)
-                    .frame(width: 44, height: 44)
-                    .glassEffect(.regular, in: .circle)
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel("Search books")
+            searchButton(size: 44)
         }
+    }
+
+    private func searchButton(size: CGFloat) -> some View {
+        Button(action: libVM.searchTapped) {
+            Image(systemName: "magnifyingglass")
+                .font(AppTypography.callout())
+                .foregroundStyle(AppColors.textPrimary)
+                .frame(width: size, height: size)
+                .glassEffect(.regular.interactive(), in: .circle)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Search books")
     }
 
     private func searchCloseButton(size: CGFloat, foreground: Color) -> some View {

@@ -2,7 +2,16 @@ import SwiftUI
 
 /// Context actions available for one library book.
 struct BookMenu: View {
+    enum Style {
+        case card
+        case list
+
+        var iconColor: Color { self == .card ? AppColors.cardMenuIcon : AppColors.cardTextSecondary }
+        var iconAlignment: Alignment { self == .card ? .trailing : .center }
+    }
+
     let item: LibraryBookItemVM
+    var style: Style = .list
     let onFinished: () -> Void
     let onRename: () -> Void
     let onRemove: () -> Void
@@ -23,10 +32,10 @@ struct BookMenu: View {
                     Color.clear
                 } else {
                     Image(systemName: "ellipsis")
-                        .foregroundStyle(AppColors.cardTextSecondary)
+                        .foregroundStyle(style.iconColor)
                 }
             }
-            .frame(width: 30, height: 44)
+            .frame(width: 30, height: 44, alignment: style.iconAlignment)
             .contentShape(.rect)
         }
         .tint(.secondary)
@@ -37,6 +46,6 @@ struct BookMenu: View {
 
 #Preview("Book Actions") {
     let book = BookRecord.samples[0].book
-    BookMenu(item: LibraryBookItemVM(book: book), onFinished: {}, onRename: {}, onRemove: {})
+    BookMenu(item: LibraryBookItemVM(book: book), style: .card, onFinished: {}, onRename: {}, onRemove: {})
         .padding()
 }

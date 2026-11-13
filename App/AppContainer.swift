@@ -77,7 +77,8 @@ enum PreviewFixtures {
 
     static func searchResultsVM() -> LibVM {
         let viewModel = libraryVM()
-        viewModel.searchText = "No matching book"
+        viewModel.searchText = "Sunrise on the reaping"
+        viewModel.searchTapped()
         return viewModel
     }
 

@@ -4,7 +4,7 @@ import SwiftUI
 struct LibView: View {
     @Bindable var libVM: LibVM
     @FocusState private var isSearchFocused: Bool
-    private let layout = LibraryLayout()
+    private var layout: LibraryLayout { LibraryLayout(isSearching: libVM.isSearchActive) }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -78,4 +78,5 @@ struct LibView: View {
 
 #Preview("No Search Results") {
     LibView(libVM: PreviewFixtures.searchResultsVM())
+        .preferredColorScheme(.dark)
 }
