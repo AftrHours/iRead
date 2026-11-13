@@ -5,7 +5,12 @@ import UIKit
 enum AppColors {
     static let backgroundPrimary = adaptive(light: 0xF3F4FF, dark: 0x0C0C24)
     static let cardBackground = Color(hex: 0xFFFDFB)
-    static let cardProgressTrack = Color(hex: 0xFFD6B2)
+    static let cardProgressTrack = Color(hex: 0xFFD4AD)
+    static let cardMenuIcon = Color(hex: 0xB2B5E8)
+    static let searchBackground = adaptive(light: 0xE0E0EA, dark: 0x32324B)
+    static let searchMutedForeground = Color(hex: 0x6A6A83)
+    static let libraryEmptyMessageText = adaptive(light: 0x6E73B6, dark: 0xCDD2F4)
+    static let searchEmptyMessageText = adaptive(light: 0x6E73B6, dark: 0xB1B6E6)
     static let readerBackground = adaptive(light: 0xFFFFFF, dark: 0x000000)
     static let readerReferencePanel = adaptive(light: 0xFFF6ED, dark: 0xFFF6ED)
     static let actionPrimary = Color(hex: 0xFFA248)

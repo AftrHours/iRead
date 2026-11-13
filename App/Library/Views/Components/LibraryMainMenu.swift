@@ -3,6 +3,7 @@ import SwiftUI
 /// Native ellipsis menu for selection, layout, sorting, and account actions.
 struct LibraryMainMenu: View {
     @Bindable var libVM: LibVM
+    var iconFont: Font = AppTypography.body(.medium)
 
     var body: some View {
         Menu {
@@ -24,9 +25,9 @@ struct LibraryMainMenu: View {
             }
         } label: {
             Image(systemName: "ellipsis")
-                .font(AppTypography.callout(.semibold))
+                .font(iconFont)
                 .foregroundStyle(AppColors.textPrimary)
-                .frame(width: 44, height: 44)
+                .frame(width: 48, height: 48)
                 .glassEffect(.regular, in: .circle)
         }
         .buttonStyle(.plain)

@@ -21,19 +21,21 @@ extension LibVM {
     }
 
     var isCollectionEmpty: Bool { visibleBooks.isEmpty }
+    var hasSearchQuery: Bool { !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+    var showsSearchEmptyState: Bool { hasSearchQuery && isCollectionEmpty }
     var searchResultsTitle: String? {
-        guard !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return nil }
+        guard hasSearchQuery else { return nil }
         let count = visibleBooks.count
         guard count > 0 else { return nil }
         return count == 1 ? "1 Result" : "\(count) Results"
     }
 
-    var showsImportInEmptyState: Bool { allBooks.isEmpty }
+    var isLibraryEmpty: Bool { allBooks.isEmpty }
     var emptyStateImage: UIImage? {
-        allBooks.isEmpty ? Self.libraryEmptyIllustration : Self.searchEmptyIllustration
+        showsSearchEmptyState ? Self.searchEmptyIllustration : Self.libraryEmptyIllustration
     }
     var selectionTitle: String { "\(selectedBookIDs.count) Selected" }
-    var voiceSearchSymbol: String { isVoiceSearchActive ? "waveform" : "mic" }
+    var voiceSearchSymbol: String { isVoiceSearchActive ? "waveform" : "mic.fill" }
     var voiceSearchAccessibilityLabel: String { isVoiceSearchActive ? "Stop voice search" : "Search by voice" }
     var isAccountSignedIn: Bool { cloudAccount == .signedIn }
     var importErrorMessage: String { importError ?? "Please try another EPUB file." }

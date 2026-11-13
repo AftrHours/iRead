@@ -16,7 +16,7 @@ struct LibraryBookCollection: View {
                 case .grid:
                     LazyVGrid(columns: layout.gridColumns, spacing: layout.gridRowSpacing) {
                         ForEach(items) { item in
-                            BookGridView(item: item, menu: bookMenu(for: item))
+                            BookGridView(item: item, menu: bookMenu(for: item, style: .card))
                                 .overlay(alignment: .topTrailing) { LibrarySelectionBadge(item: item) }
                                 .contentShape(.rect)
                                 .onTapGesture { onBookTapped(item.book) }
@@ -41,8 +41,8 @@ struct LibraryBookCollection: View {
         }
     }
 
-    private func bookMenu(for item: LibraryBookItemVM) -> BookMenu {
-        BookMenu(item: item, onFinished: { onFinished(item.book) },
+    private func bookMenu(for item: LibraryBookItemVM, style: BookMenu.Style = .list) -> BookMenu {
+        BookMenu(item: item, style: style, onFinished: { onFinished(item.book) },
                  onRename: { onRename(item.book) }, onRemove: { onRemove(item.book) })
     }
 }

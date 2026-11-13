@@ -43,13 +43,14 @@ final class LibVM {
     }
 
     var emptyStateTitle: String {
+        if showsSearchEmptyState { return "Oopsiee we can’t find that :(" }
         if allBooks.isEmpty { return "Let’s add your first book!" }
-        return searchText.isEmpty ? "No books found" : "No Results"
+        return "No books found"
     }
 
     var emptyStateMessage: String {
-        if allBooks.isEmpty { return "Tap the + button to import an EPUB file." }
-        return "Try searching by title or author again."
+        if allBooks.isEmpty && !showsSearchEmptyState { return "Tap the “+” button to import an EPUB file." }
+        return "Try searching by title or author name."
     }
 
     var isImportAlertPresented: Bool {
