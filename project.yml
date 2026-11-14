@@ -87,6 +87,12 @@ targets:
             LSItemContentTypes:
               - org.idpf.epub-container
         LSSupportsOpeningDocumentsInPlace: false
+        # The app only uses the system's HTTPS and CloudKit, so it is exempt. Without this key, every upload to
+        # App Store Connect asks the export-compliance question again.
+        ITSAppUsesNonExemptEncryption: false
+        # Read from the build settings below, so the app and its extension always carry the same version.
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
     settings:
       base:
         # App identity. Renaming is a one-line edit here.
@@ -133,6 +139,8 @@ targets:
       path: ShareExtension/Info.plist
       properties:
         CFBundleDisplayName: Refrn
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         NSExtension:
           NSExtensionPointIdentifier: com.apple.share-services
           NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShareViewController
