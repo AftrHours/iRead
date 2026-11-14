@@ -9,7 +9,7 @@ enum ImportError: LocalizedError, Equatable {
 
     var errorDescription: String? {
         switch self {
-        case .unreachable: "iRead couldn’t reach Project Gutenberg. Try again later."
+        case .unreachable: "Refrn couldn’t reach Project Gutenberg. Try again later."
         case .tooLarge: "This book is larger than 100 MB."
         case .alreadyInLibrary(let title): "“\(title)” is already in your library."
         }
