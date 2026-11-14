@@ -67,4 +67,3 @@ Do these in order. The first two decide whether the ratings arrive at all.
 - **Apple Intelligence.** The underlines are better on a device that has it turned on. Elsewhere the app falls back to rules only,
   and each rating records which of the two made the underline (`decidedBy`), so the two can be counted apart.
 - **Reading the ratings.** CloudKit Console, or `cktool` as in [ICLOUD.md](ICLOUD.md), with `--environment production`.
-- **The rating buttons are for the beta.** The App Store version is meant to hide them. That switch is not built yet.
