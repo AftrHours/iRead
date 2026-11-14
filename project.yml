@@ -95,11 +95,13 @@ targets:
         #   Keep it a literal value (not $(VAR) or an .xcconfig): Xcode Cloud reads it from the project as written.
         #   iReadTests uses this ID + ".tests".
         PRODUCT_BUNDLE_IDENTIFIER: com.aftrhours.reader
-        INFOPLIST_KEY_CFBundleDisplayName: iRead
+        INFOPLIST_KEY_CFBundleDisplayName: Refrn
+        # The home screen icon: AppIcon in Assets.xcassets, with a light (Any) and a dark version.
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
-        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "iRead uses speech recognition to search your library by voice."
-        INFOPLIST_KEY_NSMicrophoneUsageDescription: "iRead uses the microphone when you tap voice search."
+        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "Refrn uses speech recognition to search your library by voice."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Refrn uses the microphone when you tap voice search."
         # Universal: 1 = iPhone, 2 = iPad.
         TARGETED_DEVICE_FAMILY: "1,2"
         # iPhone: portrait only, like a book held in one hand.
@@ -130,7 +132,7 @@ targets:
     info:
       path: ShareExtension/Info.plist
       properties:
-        CFBundleDisplayName: iRead
+        CFBundleDisplayName: Refrn
         NSExtension:
           NSExtensionPointIdentifier: com.apple.share-services
           NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShareViewController

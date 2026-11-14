@@ -1,7 +1,7 @@
 import Foundation
 import OSLog
 
-/// Adds books from outside the app (the picker, "Open in iRead", the Share extension), keeping the same book out twice,
+/// Adds books from outside the app (the picker, "Open in Refrn", the Share extension), keeping the same book out twice,
 /// and writes the library index the Share extension checks.
 struct ImportCtrl {
     let libRepo: LibRepo

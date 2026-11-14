@@ -49,7 +49,7 @@ final class ShareVM {
             try shareCtrl.saveForApp(edition, file: downloadedFile)
             onFinish()
         } catch {
-            state = .failed("iRead couldn’t save this book. Try again.")
+            state = .failed("Refrn couldn’t save this book. Try again.")
         }
     }
 
@@ -61,12 +61,12 @@ final class ShareVM {
     private static func sheetText(for outcome: ShareOutcome) -> String {
         switch outcome {
         case .found: ""
-        case .unsupportedLink: "Only Apple Books links can be shared to iRead for now."
+        case .unsupportedLink: "Only Apple Books links can be shared to Refrn for now."
         case .notFound(let title?):
-            "“\(title)” isn’t available as a free Project Gutenberg book, so it can’t be opened in iRead."
-        case .notFound(nil): "This book isn’t available as a free Project Gutenberg book, so it can’t be opened in iRead."
-        case .alreadyInLibrary(let title): "“\(title)” is already in your iRead library."
-        case .unreachable: "iRead couldn’t reach Project Gutenberg. Try again later."
+            "“\(title)” isn’t available as a free Project Gutenberg book, so it can’t be opened in Refrn."
+        case .notFound(nil): "This book isn’t available as a free Project Gutenberg book, so it can’t be opened in Refrn."
+        case .alreadyInLibrary(let title): "“\(title)” is already in your Refrn library."
+        case .unreachable: "Refrn couldn’t reach Project Gutenberg. Try again later."
         case .tooLarge: "This book is larger than 100 MB."
         }
     }

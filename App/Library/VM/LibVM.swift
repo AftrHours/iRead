@@ -110,7 +110,7 @@ final class LibVM {
         await oneAtATime { await self.importPending() }
     }
 
-    /// An EPUB opened with iRead from another app ("Open in iRead").
+    /// An EPUB opened with Refrn from another app ("Open in Refrn").
     func fileOpened(_ url: URL) async {
         await oneAtATime { await self.importOpenedFile(url) }
     }

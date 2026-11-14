@@ -19,7 +19,7 @@ struct LibraryMainMenu: View {
 
             LibrarySortMenu(libVM: libVM)
 
-            Section("iRead Account") {
+            Section("Refrn Account") {
                 Button(libVM.accountActionTitle, systemImage: "person.crop.circle", action: libVM.accountSettingsTapped)
                     .foregroundStyle(libVM.isAccountSignedIn ? AppColors.accountSignOut : AppColors.accountSignIn)
             }
