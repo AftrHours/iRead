@@ -8,7 +8,6 @@ final class LibVM {
         case grid
         case list
     }
-
     var searchText = ""
     private(set) var isSearchActive = false
     var isImportPickerPresented = false

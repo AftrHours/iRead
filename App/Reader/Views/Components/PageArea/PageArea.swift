@@ -2,8 +2,7 @@ import SwiftUI
 
 struct PageArea: View {
     let readerVM: ReaderVM
-    /// Space between the screen edge and the text on each side, as a share of the page's width,
-    /// so it suits an iPhone and an iPad alike. The page itself still fills the width.
+
     let textMarginRatio: CGFloat
     private var referenceVM: ReferenceVM { readerVM.referenceVM }
     private var readerSettingsVM: ReaderSettingsVM { readerVM.readerSettingsVM }
@@ -21,7 +20,7 @@ struct PageArea: View {
                         shownPage: shownPage,
                         settings: readerSettingsVM.layoutSettings,
                         horizontalMargin: horizontalMargin,
-                        marks: referenceVM.marks,
+                        marks: readerVM.visibleMarks,
                         onPageChanged: { readerVM.pageChanged($0) },
                         onCenterTapped: { readerVM.pageCenterTapped() },
                         onMarkTapped: { referenceVM.markTapped($0, at: $1) }

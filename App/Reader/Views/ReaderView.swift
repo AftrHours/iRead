@@ -1,9 +1,11 @@
 import SwiftUI
+import UIKit
 
 struct ReaderView: View {
     @Bindable private var readerVM: ReaderVM
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     private let readerSettingsVM: ReaderSettingsVM
     private let referenceVM: ReferenceVM
@@ -11,12 +13,29 @@ struct ReaderView: View {
 
     private var pageTextColor: Color { Color(PageTextStyle.textColor(for: theme)) }
 
+    /// The reading mode's choice, or the device's for Match Device.
+    private var isDarkMode: Bool {
+        readerSettingsVM.isDarkMode ?? (colorScheme == .dark)
+    }
+
     private var pageColorScheme: ColorScheme {
-        switch theme {
-        case .original: colorScheme
-        case .quiet: .dark
-        case .paper, .bold, .calm, .focus: .light
-        }
+        PageTextStyle.isDarkPage(theme, isDarkMode: isDarkMode) ? .dark : .light
+    }
+
+    /// On a full-width iPad the settings are a panel attached to the bottom edge, not iOS's floating form sheet.
+    private var isSettingsPanelShown: Bool {
+        guard horizontalSizeClass == .regular, case .themeSettings = readerVM.sheet else { return false }
+        return true
+    }
+
+    /// The sheet to present: everything but the iPad's settings panel.
+    private var presentedSheet: ReaderVM.Sheet? {
+        isSettingsPanelShown ? nil : readerVM.sheet
+    }
+
+    /// nil leaves the device's light or dark style alone.
+    private var readingColorScheme: ColorScheme? {
+        readerSettingsVM.isDarkMode.map { $0 ? .dark : .light }
     }
 
     init(readerVM: ReaderVM) {
@@ -60,6 +79,11 @@ struct ReaderView: View {
             .padding(.trailing)
         }
         .background(Color(PageTextStyle.backgroundColor(for: theme)))
+        // The reading mode applies to the page, its controls and the sheets, and ends when the reader closes.
+        .preferredColorScheme(readingColorScheme)
+        .onReceive(NotificationCenter.default.publisher(for: UIScreen.brightnessDidChangeNotification)) { _ in
+            readerSettingsVM.screenBrightnessChanged()
+        }
         .animation(.easeInOut, value: referenceVM.toastText)
         .animation(.easeInOut(duration: 0.2), value: readerVM.isFocusMode)
         .onChange(of: scenePhase) { _, scenePhase in
@@ -69,7 +93,24 @@ struct ReaderView: View {
                 readerVM.appForegrounded()
             }
         }
-        .sheet(item: Binding(get: { readerVM.sheet }, set: { _ in readerVM.sheetDismissed() })) { sheet in
+        .overlay {
+            if isSettingsPanelShown {
+                Color.black.opacity(0.3)
+                    .ignoresSafeArea()
+                    .onTapGesture(perform: readerVM.sheetDismissed)
+                    .accessibilityAddTraits(.isButton)
+                    .accessibilityLabel("Close Reading Theme & Settings")
+                    .transition(.opacity)
+            }
+        }
+        .overlay {
+            if isSettingsPanelShown {
+                ThemeSettingsPanel(readerSettingsVM: readerSettingsVM, onClose: readerVM.sheetDismissed)
+                    .transition(.move(edge: .bottom))
+            }
+        }
+        .animation(.smooth(duration: 0.35), value: isSettingsPanelShown)
+        .sheet(item: Binding(get: { presentedSheet }, set: { _ in readerVM.sheetDismissed() })) { sheet in
             switch sheet {
             case .contents:
                 ContentsSheet(
@@ -80,7 +121,7 @@ struct ReaderView: View {
             case .search(let searchVM):
                 SearchView(searchVM: searchVM)
             case .themeSettings:
-                ThemeSettingsView(readerSettingsVM: readerSettingsVM)
+                ThemeSettingsView(readerSettingsVM: readerSettingsVM, onClose: readerVM.sheetDismissed)
             }
         }
         #if DEBUG

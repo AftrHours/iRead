@@ -47,6 +47,12 @@ final class ReaderVM {
         shownPage.map { chapterTitles[$0.chapterIndex] } ?? ""
     }
 
+    /// The marks to draw: underlines disappear in focus mode, with the bars. A highlight stays: it is the passage a jump landed on.
+    var visibleMarks: [Int: [Mark]] {
+        guard isFocusMode else { return referenceVM.marks }
+        return referenceVM.marks.mapValues { $0.filter { !$0.isUnderline } }
+    }
+
     var pageLabel: String {
         guard let shownPage else { return "" }
         guard !isFocusMode, let pageCount else { return "Page \(shownPage.number)" }

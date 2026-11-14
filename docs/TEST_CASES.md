@@ -110,6 +110,11 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | RD-28 | P0 | `SearchVM` | Slow search for "Anna", then "Darcy" from recent searches | "Darcy" results stay after the "Anna" search returns |
 | RD-29 | P0 | `RatingVM` | Thumbs up on a card; answer "Don't Share"; thumbs down; thumbs down again | Filled and asked once; switches without asking; rating taken back |
 | RD-30 | P1 | `RatingVM.cardShown` | Thumbs up, then show the same card again at once | Thumbs up shown, read back after the save |
+| RD-31 | P1 | `ReaderSettingsVM` spacing | Line 156.9, character 42, word 12.6; then line 10 | 155, 10, 15; label "1.55" in the reader's locale; line clamped to 80 |
+| RD-32 | P0 | `ReaderSettingsVM.resetTapped` | Change size, theme, spacing, page turn and mode; Reset to Default | Size, theme and spacing back to defaults; page turn and mode kept |
+| RD-33 | P1 | `ReadingMode.isDark` | Each mode, screen brightness 0.1 and 0.8 | Light false, Dark true, Match Device nil, Match Surroundings dark below 0.3 |
+| RD-34 | P0 | `ReadingSettings` decoding | Settings file from an older build, without the new keys | Saved values kept; spacing 0, mode Match Device |
+| RD-35 | P0 | `PageTextStyle.attributedText` | Character 5%, word 50% on "ab cd" | Letters kerned 5% of the text size; the space kerned more; no spacing gives kern 0 |
 
 ## Underlines and references
 

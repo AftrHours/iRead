@@ -45,10 +45,7 @@ final class PageTextView: UIView {
     }
 
     private func attributedText() -> NSAttributedString {
-        let text = NSMutableAttributedString(
-            string: page.text,
-            attributes: PageTextStyle.attributes(settings: settings)
-        )
+        let text = PageTextStyle.attributedText(page.text, settings: settings)
         for mark in marks {
             switch mark.kind {
             case .underline:
