@@ -96,6 +96,8 @@ targets:
         #   iReadTests uses this ID + ".tests".
         PRODUCT_BUNDLE_IDENTIFIER: com.aftrhours.reader
         INFOPLIST_KEY_CFBundleDisplayName: iRead
+        # The home screen icon: AppIcon in Assets.xcassets, with a light (Any) and a dark version.
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "iRead uses speech recognition to search your library by voice."
