@@ -12,6 +12,8 @@ struct BottomBar<MenuItems: View>: View {
     let toastText: String?
     let onReturnDismissed: () -> Void
     let onReturnTapped: () -> Void
+    /// Off in the reader: each page draws its own label there, so it turns with it.
+    var showsPageLabel = true
     @ViewBuilder let menuItems: () -> MenuItems
 
     var body: some View {
@@ -19,6 +21,8 @@ struct BottomBar<MenuItems: View>: View {
             Text(pageLabel)
                 .font(.caption)
                 .foregroundStyle(foreground)
+                .opacity(showsPageLabel ? 1 : 0)
+                .accessibilityHidden(!showsPageLabel)
             Spacer()
             ToolbarMenu(
                 foreground: foreground,

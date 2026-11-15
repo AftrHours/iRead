@@ -54,9 +54,17 @@ final class ReaderVM {
     }
 
     var pageLabel: String {
-        guard let shownPage else { return "" }
-        guard !isFocusMode, let pageCount else { return "Page \(shownPage.number)" }
-        return "Page \(shownPage.number) of \(pageCount)"
+        shownPage.map(pageLabel(for:)) ?? ""
+    }
+
+    /// What a page shows above and below its text. Each page carries its own, so it turns with the page.
+    func chrome(for page: Page) -> PageChrome {
+        PageChrome(title: title, chapterTitle: chapterTitles.indices.contains(page.chapterIndex) ? chapterTitles[page.chapterIndex] : "", pageLabel: pageLabel(for: page))
+    }
+
+    private func pageLabel(for page: Page) -> String {
+        guard !isFocusMode, let pageCount else { return "Page \(page.number)" }
+        return "Page \(page.number) of \(pageCount)"
     }
 
     init(book: BookRecord, readerCtrl: ReaderCtrl, progressCtrl: ProgressCtrl, readerStateCtrl: ReaderStateCtrl, appNav: AppNav,

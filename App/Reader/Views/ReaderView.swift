@@ -7,6 +7,9 @@ struct ReaderView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
+    /// Where the bars put the titles, the text and the page label, so the full-screen pages draw them in the same places.
+    @State private var pageFrames = PageFrames()
+
     private let readerSettingsVM: ReaderSettingsVM
     private let referenceVM: ReferenceVM
     private var theme: ReadingTheme { readerSettingsVM.layoutSettings.theme }
@@ -45,38 +48,49 @@ struct ReaderView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            TopBar(
-                title: readerVM.title,
-                chapterTitle: readerVM.chapterTitle,
-                foreground: pageTextColor,
-                colorScheme: pageColorScheme,
-                isFocusMode: readerVM.isFocusMode,
-                onBack: readerVM.backTapped,
-                onUnderlineDebug: underlineDebugAction
-            )
-            .padding(.horizontal)
-            .padding(.top)
-            
-            // 9.5% of the width each side, like Apple Books: about 78pt on an iPad in portrait, 38pt on an iPhone.
-            PageArea(readerVM: readerVM, textMarginRatio: 0.09)
+        ZStack {
+            PageArea(readerVM: readerVM, textMarginRatio: 0.09, screenFrames: pageFrames)
+                .ignoresSafeArea()
+
+            VStack(spacing: 0) {
+                TopBar(
+                    title: readerVM.title,
+                    chapterTitle: readerVM.chapterTitle,
+                    foreground: pageTextColor,
+                    colorScheme: pageColorScheme,
+                    isFocusMode: readerVM.isFocusMode,
+                    onBack: readerVM.backTapped,
+                    onUnderlineDebug: underlineDebugAction,
+                    showsTitles: false
+                )
+                .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { pageFrames.header = $0 }
+                .padding(.horizontal)
                 .padding(.top)
-                .padding(.bottom)
-            
-            BottomBar(
-                pageLabel: readerVM.pageLabel,
-                foreground: pageTextColor,
-                colorScheme: pageColorScheme,
-                isFocusMode: readerVM.isFocusMode,
-                canReturn: referenceVM.canReturn,
-                toastText: referenceVM.toastText,
-                onReturnDismissed: referenceVM.returnDismissed,
-                onReturnTapped: referenceVM.returnToReadingTapped
-            ) {
-                ToolbarList(readerVM: readerVM)
+
+                // Where the text goes.
+                Color.clear
+                    .allowsHitTesting(false)
+                    .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { pageFrames.text = $0 }
+                    .padding(.top)
+                    .padding(.bottom)
+
+                BottomBar(
+                    pageLabel: readerVM.pageLabel,
+                    foreground: pageTextColor,
+                    colorScheme: pageColorScheme,
+                    isFocusMode: readerVM.isFocusMode,
+                    canReturn: referenceVM.canReturn,
+                    toastText: referenceVM.toastText,
+                    onReturnDismissed: referenceVM.returnDismissed,
+                    onReturnTapped: referenceVM.returnToReadingTapped,
+                    showsPageLabel: false
+                ) {
+                    ToolbarList(readerVM: readerVM)
+                }
+                .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { pageFrames.footer = $0 }
+                .padding(.leading, 36)
+                .padding(.trailing)
             }
-            .padding(.leading,36)
-            .padding(.trailing)
         }
         .background(Color(PageTextStyle.backgroundColor(for: theme)))
         // The reading mode applies to the page, its controls and the sheets, and ends when the reader closes.

@@ -10,6 +10,8 @@ struct TopBar: View {
     let onBack: () -> Void
     /// nil hides the debug button (always nil in release builds).
     var onUnderlineDebug: (() -> Void)?
+    /// Off in the reader: each page draws its own titles there, so they turn with it. Still laid out, so the bar keeps its height.
+    var showsTitles = true
 
     var body: some View {
         ZStack {
@@ -23,6 +25,8 @@ struct TopBar: View {
             }
             .lineLimit(1)
             .foregroundStyle(foreground)
+            .opacity(showsTitles ? 1 : 0)
+            .accessibilityHidden(!showsTitles)
 //            .padding(.horizontal, 64)
             HStack {
                 BackButton(
