@@ -7,36 +7,33 @@ final class PageTextView: UIView {
     let horizontalMargin: CGFloat
     let marks: [Mark]
     /// Labels only, so they change in place (focus mode shortens the page label) without laying the text out again.
-    var chrome: PageChrome {
+    private(set) var chrome: PageChrome {
         didSet { showChrome() }
     }
-    var frames: PageFrames {
+    private(set) var frames: PageFrames {
         didSet { setNeedsLayout() }
     }
+    private var actions: PageActions
     private let textView = UITextView(usingTextLayoutManager: false)
     private let titleLabel = UILabel()
     private let chapterLabel = UILabel()
     private let pageLabel = UILabel()
     private let onEdgeTapped: (_ isForward: Bool) -> Void
-    private let onCenterTapped: () -> Void
-    private let onMarkTapped: (Mark, CGRect) -> Void
 
     private static let minTapSize: CGFloat = 44
     /// The top bar's title-to-chapter spacing.
     private static let titleSpacing: CGFloat = 10
 
-    init(page: Page, settings: ReadingSettings, horizontalMargin: CGFloat, marks: [Mark], chrome: PageChrome, frames: PageFrames,
-         onEdgeTapped: @escaping (_ isForward: Bool) -> Void,
-         onCenterTapped: @escaping () -> Void, onMarkTapped: @escaping (Mark, CGRect) -> Void) {
+    /// `page` as `content` shows it. The pager that owns the view says what its edge taps do.
+    init(page: Page, content: PageContent, actions: PageActions, onEdgeTapped: @escaping (_ isForward: Bool) -> Void) {
         self.page = page
-        self.settings = settings
-        self.horizontalMargin = horizontalMargin
-        self.marks = marks
-        self.chrome = chrome
-        self.frames = frames
+        settings = content.settings
+        horizontalMargin = content.horizontalMargin
+        marks = content.marks(on: page)
+        chrome = content.chrome(page)
+        frames = content.frames
+        self.actions = actions
         self.onEdgeTapped = onEdgeTapped
-        self.onCenterTapped = onCenterTapped
-        self.onMarkTapped = onMarkTapped
         super.init(frame: .zero)
         backgroundColor = PageTextStyle.backgroundColor(for: settings.theme)
         textView.attributedText = attributedText()
@@ -69,6 +66,21 @@ final class PageTextView: UIView {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         nil
+    }
+
+    /// Whether this view already shows `page` as `content` has it, so it can stay on screen instead of being built again.
+    func isShowing(_ page: Page, in content: PageContent) -> Bool {
+        self.page == page
+            && settings == content.settings
+            && horizontalMargin == content.horizontalMargin
+            && marks == content.marks(on: page)
+    }
+
+    /// Brings what changes without a new layout (the labels, where they sit, what a tap does) up to date with `content`.
+    func refresh(from content: PageContent, actions: PageActions) {
+        chrome = content.chrome(page)
+        frames = content.frames
+        self.actions = actions
     }
 
     private func showChrome() {
@@ -123,13 +135,13 @@ final class PageTextView: UIView {
         let x = tap.location(in: self).x
         // Underlines first: on an iPhone the margin is under 44pt, so the edge zones reach into the text.
         if let (mark, rect) = underline(at: tap.location(in: textView)) {
-            onMarkTapped(mark, textView.convert(rect, to: self))
+            actions.onMarkTapped(mark, textView.convert(rect, to: self))
         } else if x < max(textView.frame.minX, Self.minTapSize) {
             onEdgeTapped(false)
         } else if x > min(textView.frame.maxX, bounds.width - Self.minTapSize) {
             onEdgeTapped(true)
         } else {
-            onCenterTapped()
+            actions.onCenterTapped()
         }
     }
 

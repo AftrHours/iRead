@@ -23,58 +23,54 @@ struct PageArea: View {
         }
     }
 
+    /// The pages in the style that's chosen: Curl on UIPageViewController's curl, Slide and Fast Fade on our own pager.
+    @ViewBuilder
+    private func turningPages(shownPage: Page, horizontalMargin: CGFloat, frames: PageFrames) -> some View {
+        let content = PageContent(
+            pages: readerVM.pages,
+            shownPage: shownPage,
+            settings: readerSettingsVM.layoutSettings,
+            horizontalMargin: horizontalMargin,
+            marks: readerVM.visibleMarks,
+            chrome: readerVM.chrome(for:),
+            frames: frames
+        )
+        let actions = PageActions(
+            onPageChanged: { readerVM.pageChanged($0) },
+            onCenterTapped: { readerVM.pageCenterTapped() },
+            onMarkTapped: { referenceVM.markTapped($0, at: $1) }
+        )
+        if content.settings.pageTurnStyle == .curl {
+            PageTurnView(content: content, actions: actions)
+        } else {
+            PageSlideView(content: content, actions: actions)
+        }
+    }
+
     private func pages(frames: PageFrames) -> some View {
         let horizontalMargin = (frames.text.width * textMarginRatio).rounded()
         let viewport = Viewport(size: frames.text.size, horizontalMargin: horizontalMargin)
         return Group {
             if let shownPage = readerVM.shownPage {
-                Group {
-                    if readerSettingsVM.layoutSettings.pageTurnStyle == .curl {
-                        PageTurnView(
-                            pages: readerVM.pages,
-                            shownPage: shownPage,
-                            settings: readerSettingsVM.layoutSettings,
-                            horizontalMargin: horizontalMargin,
-                            marks: readerVM.visibleMarks,
-                            chrome: readerVM.chrome(for:),
-                            frames: frames,
-                            onPageChanged: { readerVM.pageChanged($0) },
-                            onCenterTapped: { readerVM.pageCenterTapped() },
-                            onMarkTapped: { referenceVM.markTapped($0, at: $1) }
+                turningPages(shownPage: shownPage, horizontalMargin: horizontalMargin, frames: frames)
+                    .popover(
+                        item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
+                        attachmentAnchor: .rect(.rect(referenceVM.cardAnchor)),
+                        // Below the underline when the card fits there, else above it. SwiftUI only takes one fixed
+                        // edge, or nil to let the system pick the roomiest side, which puts the card above mid-page underlines.
+                        arrowEdge: frames.text.maxY - referenceVM.cardAnchor.maxY >= Self.popoverHeight ? .top : .bottom
+                    ) { referenceCard in
+                        RefPopover(
+                            card: referenceCard,
+                            verdict: readerVM.ratingVM.verdict,
+                            isAskingToShare: readerVM.ratingVM.isAskingToShare,
+                            onVerdictTapped: readerVM.ratingVM.verdictTapped,
+                            onSharingChosen: readerVM.ratingVM.sharingChosen,
+                            onJumpTapped: referenceVM.jumpToPassageTapped
                         )
-                    } else {
-                        PageSlideView(
-                            pages: readerVM.pages,
-                            shownPage: shownPage,
-                            settings: readerSettingsVM.layoutSettings,
-                            horizontalMargin: horizontalMargin,
-                            marks: readerVM.visibleMarks,
-                            chrome: readerVM.chrome(for:),
-                            frames: frames,
-                            onPageChanged: { readerVM.pageChanged($0) },
-                            onCenterTapped: { readerVM.pageCenterTapped() },
-                            onMarkTapped: { referenceVM.markTapped($0, at: $1) }
-                        )
+                        // Reads this underline's saved rating each time the card opens.
+                        .task(id: referenceCard.underlineID) { await readerVM.ratingVM.cardShown(underlineID: referenceCard.underlineID) }
                     }
-                }
-                .popover(
-                    item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
-                    attachmentAnchor: .rect(.rect(referenceVM.cardAnchor)),
-                    // Below the underline when the card fits there, else above it. SwiftUI only takes one fixed
-                    // edge, or nil to let the system pick the roomiest side, which puts the card above mid-page underlines.
-                    arrowEdge: frames.text.maxY - referenceVM.cardAnchor.maxY >= Self.popoverHeight ? .top : .bottom
-                ) { referenceCard in
-                    RefPopover(
-                        card: referenceCard,
-                        verdict: readerVM.ratingVM.verdict,
-                        isAskingToShare: readerVM.ratingVM.isAskingToShare,
-                        onVerdictTapped: readerVM.ratingVM.verdictTapped,
-                        onSharingChosen: readerVM.ratingVM.sharingChosen,
-                        onJumpTapped: referenceVM.jumpToPassageTapped
-                    )
-                    // Reads this underline's saved rating each time the card opens.
-                    .task(id: referenceCard.underlineID) { await readerVM.ratingVM.cardShown(underlineID: referenceCard.underlineID) }
-                }
             } else if readerVM.hasFailedToOpen {
                 ContentUnavailableView("Can't Open Book", systemImage: "book.closed")
             } else {

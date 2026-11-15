@@ -3,16 +3,8 @@ import UIKit
 
 /// The Curl style, on UIPageViewController's own page curl. Slide and Fast Fade use `PageSlideView`.
 struct PageTurnView: UIViewControllerRepresentable {
-    let pages: [Page]
-    let shownPage: Page
-    let settings: ReadingSettings
-    let horizontalMargin: CGFloat
-    let marks: [Int: [Mark]]
-    let chrome: (Page) -> PageChrome
-    let frames: PageFrames
-    let onPageChanged: (Page) -> Void
-    let onCenterTapped: () -> Void
-    let onMarkTapped: (Mark, CGRect) -> Void
+    let content: PageContent
+    let actions: PageActions
 
     func makeCoordinator() -> Coordinator {
         Coordinator(pageTurnView: self)
@@ -51,75 +43,59 @@ struct PageTurnView: UIViewControllerRepresentable {
         }
 
         private var isShownPageDisplayed: Bool {
-            displayedView.map {
-                $0.page == pageTurnView.shownPage
-                    && $0.settings == pageTurnView.settings
-                    && $0.horizontalMargin == pageTurnView.horizontalMargin
-                    && $0.marks == pageTurnView.marks[pageTurnView.shownPage.number, default: []]
-            } ?? false
+            let content = pageTurnView.content
+            return displayedView?.isShowing(content.shownPage, in: content) ?? false
         }
 
         func showShownPage() {
-            if let displayedView {
-                displayedView.chrome = pageTurnView.chrome(displayedView.page)
-                displayedView.frames = pageTurnView.frames
-            }
-            let hasLoadedMissingPage = pageTurnView.pages.contains { missingPageNumbers.contains($0.number) }
+            displayedView?.refresh(from: pageTurnView.content, actions: pageTurnView.actions)
+            let hasLoadedMissingPage = pageTurnView.content.pages.contains { missingPageNumbers.contains($0.number) }
             guard !isTurning, !isShownPageDisplayed || hasLoadedMissingPage else { return }
             missingPageNumbers = []
             // UIPageViewController remembers a missing neighbor until it is given a page again.
-            pageViewController?.setViewControllers([pageController(for: pageTurnView.shownPage)], direction: .forward, animated: false)
+            pageViewController?.setViewControllers([pageController(for: pageTurnView.content.shownPage)], direction: .forward, animated: false)
         }
 
         func pageViewController(_ pageViewController: UIPageViewController,
                                 viewControllerBefore viewController: UIViewController) -> UIViewController? {
-            page(next: (viewController.view as? PageTextView)?.page, by: -1).map(pageController)
+            page(next: (viewController.view as? PageTextView)?.page, isForward: false).map(pageController)
         }
 
         func pageViewController(_ pageViewController: UIPageViewController,
                                 viewControllerAfter viewController: UIViewController) -> UIViewController? {
-            page(next: (viewController.view as? PageTextView)?.page, by: 1).map(pageController)
+            page(next: (viewController.view as? PageTextView)?.page, isForward: true).map(pageController)
         }
 
         func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
                                 previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
             guard completed, let displayedPage else { return }
-            pageTurnView.onPageChanged(displayedPage)
+            pageTurnView.actions.onPageChanged(displayedPage)
         }
 
-        private func page(next page: Page?, by offset: Int) -> Page? {
+        /// The loaded page after or before `page`. A page that isn't loaded yet is remembered, to be asked for again once it is.
+        private func page(next page: Page?, isForward: Bool) -> Page? {
             guard let page else { return nil }
-            let number = page.number + offset
-            let nextPage = pageTurnView.pages.first { $0.number == number }
+            let nextPage = pageTurnView.content.neighbor(of: page, isForward: isForward)
             if nextPage == nil {
-                missingPageNumbers.insert(number)
+                missingPageNumbers.insert(page.number + (isForward ? 1 : -1))
             }
             return nextPage
         }
 
         private func pageController(for page: Page) -> UIViewController {
             let controller = UIViewController()
-            controller.view = PageTextView(
-                page: page,
-                settings: pageTurnView.settings,
-                horizontalMargin: pageTurnView.horizontalMargin,
-                marks: pageTurnView.marks[page.number, default: []],
-                chrome: pageTurnView.chrome(page),
-                frames: pageTurnView.frames,
-                onEdgeTapped: { [weak self] isForward in self?.turnPage(isForward: isForward) },
-                onCenterTapped: { [weak self] in self?.pageTurnView.onCenterTapped() },
-                onMarkTapped: { [weak self] mark, rect in self?.pageTurnView.onMarkTapped(mark, rect) }
-            )
+            controller.view = PageTextView(page: page, content: pageTurnView.content, actions: pageTurnView.actions,
+                                           onEdgeTapped: { [weak self] isForward in self?.turnPage(isForward: isForward) })
             return controller
         }
 
         private func turnPage(isForward: Bool) {
-            guard !isTurning, let pageViewController, let page = page(next: displayedPage, by: isForward ? 1 : -1) else { return }
+            guard !isTurning, let pageViewController, let page = page(next: displayedPage, isForward: isForward) else { return }
             isTurning = true
             let direction: UIPageViewController.NavigationDirection = isForward ? .forward : .reverse
             pageViewController.setViewControllers([pageController(for: page)], direction: direction, animated: true) { [weak self] _ in
                 self?.isTurning = false
-                self?.pageTurnView.onPageChanged(page)
+                self?.pageTurnView.actions.onPageChanged(page)
             }
         }
     }

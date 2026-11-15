@@ -5,20 +5,6 @@ import UIKit
 /// (going back, the previous page slides in over it); Fast Fade cross-fades in place.
 /// Curl stays with UIPageViewController (`PageTurnView`).
 final class PageSlider: UIView, UIGestureRecognizerDelegate {
-    struct Content {
-        var pages: [Page]
-        var shownPage: Page
-        var settings: ReadingSettings
-        var horizontalMargin: CGFloat
-        var marks: [Int: [Mark]]
-        var chrome: (Page) -> PageChrome
-        var frames: PageFrames
-    }
-
-    var onPageChanged: (Page) -> Void = { _ in }
-    var onCenterTapped: () -> Void = {}
-    var onMarkTapped: (Mark, CGRect) -> Void = { _, _ in }
-
     /// Measured from Apple Books: a tap turn takes about 0.42s, quick at first, then a long settle.
     private static let slideDuration: TimeInterval = 0.42
     /// Apple Books' Fast Fade takes 150–180 ms.
@@ -34,7 +20,8 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
     private static let turnDistance: CGFloat = 36
     private static let turnVelocity: CGFloat = 400
 
-    private var content: Content?
+    private var content: PageContent?
+    private var actions = PageActions.none
     private var currentView: PageTextView?
     /// Built ahead of time, so a turn never waits for a page to lay out. Keyed by page number.
     private var preparedViews: [Int: PageTextView] = [:]
@@ -64,8 +51,9 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
 
     // MARK: Content
 
-    func update(_ content: Content) {
+    func update(_ content: PageContent, actions: PageActions) {
         self.content = content
+        self.actions = actions
         // Mid-turn, the turn decides what is shown; it reads the new content when it ends.
         guard !isTurning else { return }
         showShownPage()
@@ -73,9 +61,8 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
 
     private func showShownPage() {
         guard let content else { return }
-        if let currentView, matches(currentView, content.shownPage) {
-            currentView.chrome = content.chrome(currentView.page)
-            currentView.frames = content.frames
+        if let currentView, currentView.isShowing(content.shownPage, in: content) {
+            currentView.refresh(from: content, actions: actions)
             return
         }
         show(pageView(for: content.shownPage, content: content))
@@ -104,46 +91,23 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
         currentView?.frame = bounds
     }
 
-    private func matches(_ view: PageTextView, _ page: Page) -> Bool {
-        guard let content else { return false }
-        return view.page == page
-            && view.settings == content.settings
-            && view.horizontalMargin == content.horizontalMargin
-            && view.marks == content.marks[page.number, default: []]
-    }
-
     /// A prepared page when one still fits the content, else a new one.
-    private func pageView(for page: Page, content: Content) -> PageTextView {
-        if let view = preparedViews[page.number], matches(view, page) {
-            view.chrome = content.chrome(page)
-            view.frames = content.frames
+    private func pageView(for page: Page, content: PageContent) -> PageTextView {
+        if let view = preparedViews[page.number], view.isShowing(page, in: content) {
+            view.refresh(from: content, actions: actions)
             return view
         }
-        let view = PageTextView(
-            page: page,
-            settings: content.settings,
-            horizontalMargin: content.horizontalMargin,
-            marks: content.marks[page.number, default: []],
-            chrome: content.chrome(page),
-            frames: content.frames,
-            onEdgeTapped: { [weak self] isForward in self?.turnPage(isForward: isForward) },
-            onCenterTapped: { [weak self] in self?.onCenterTapped() },
-            onMarkTapped: { [weak self] mark, rect in self?.onMarkTapped(mark, rect) }
-        )
+        let view = PageTextView(page: page, content: content, actions: actions,
+                                onEdgeTapped: { [weak self] isForward in self?.turnPage(isForward: isForward) })
         preparedViews[page.number] = view
         return view
-    }
-
-    private func neighbor(of page: Page, isForward: Bool) -> Page? {
-        let number = page.number + (isForward ? 1 : -1)
-        return content?.pages.first { $0.number == number }
     }
 
     /// After the screen settles, so building them never lands in the middle of a turn.
     private func prepareNeighborsLater() {
         DispatchQueue.main.async { [weak self] in
             guard let self, !isTurning, bounds.width > 0, let content, let page = currentView?.page else { return }
-            let neighbors = [neighbor(of: page, isForward: true), neighbor(of: page, isForward: false)].compactMap { $0 }
+            let neighbors = [content.neighbor(of: page, isForward: true), content.neighbor(of: page, isForward: false)].compactMap { $0 }
             let keep = Set([page.number] + neighbors.map(\.number))
             preparedViews = preparedViews.filter { keep.contains($0.key) }
             for neighbor in neighbors {
@@ -159,7 +123,7 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
     private func turnPage(isForward: Bool) {
         // A tap during a turn ends it at once and starts the next, so quick taps keep up.
         finishRunningTurn()
-        guard let content, let currentView, let page = neighbor(of: currentView.page, isForward: isForward) else { return }
+        guard let content, let currentView, let page = content.neighbor(of: currentView.page, isForward: isForward) else { return }
         let next = pageView(for: page, content: content)
         switch style {
         case .fastFade:
@@ -205,7 +169,7 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
             previous?.removeFromSuperview()
         }
         next.frame = bounds
-        onPageChanged(next.page)
+        actions.onPageChanged(next.page)
         refreshCurrentPage()
         prepareNeighborsLater()
     }
@@ -316,7 +280,7 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
         case .changed:
             if turn == nil {
                 guard translation != 0, let content, let currentView,
-                      let page = neighbor(of: currentView.page, isForward: translation < 0) else { return }
+                      let page = content.neighbor(of: currentView.page, isForward: translation < 0) else { return }
                 beginSlide(to: pageView(for: page, content: content), isForward: translation < 0)
             }
             guard let turn else { return }
