@@ -5,20 +5,31 @@ import UIKit
 /// (going back, the previous page slides in over it); Fast Fade cross-fades in place.
 /// Curl stays with UIPageViewController (`PageTurnView`).
 final class PageSlider: UIView, UIGestureRecognizerDelegate {
-    /// Measured from Apple Books: a tap turn takes about 0.42s, quick at first, then a long settle.
-    private static let slideDuration: TimeInterval = 0.42
-    /// Apple Books' Fast Fade takes 150–180 ms.
-    private static let fadeDuration: TimeInterval = 0.18
-    /// The moving page's shadow, which also has to leave the screen before the turn ends.
-    private static let shadowRadius: CGFloat = 12
-    /// The page beneath starts this share of the width off to the right, so it seems to come in from there:
-    /// 80% in when the turn starts, all the way in when it ends.
-    private static let beneathOffset: CGFloat = 0.2
-    /// About the screen's own corners, as the cards fill it: an iPhone's are round, an iPad's much less so.
-    private var cardCornerRadius: CGFloat { traitCollection.userInterfaceIdiom == .pad ? 18 : 55 }
-    /// A swipe this far, or this fast, turns the page.
-    private static let turnDistance: CGFloat = 36
-    private static let turnVelocity: CGFloat = 400
+    /// The feel of a turn, in one place.
+    private enum Metrics {
+        /// Measured from Apple Books: a tap turn takes about 0.42s, quick at first, then a long settle.
+        static let slideDuration: TimeInterval = 0.42
+        /// Apple Books' Fast Fade takes 150–180 ms.
+        static let fadeDuration: TimeInterval = 0.18
+        /// The lifted page's shadow, which also has to leave the screen before the turn ends.
+        static let shadowRadius: CGFloat = 12
+        static let shadowOpacity: Float = 0.22
+        /// The page beneath starts this share of the width off to the right, so it seems to come in from there:
+        /// 80% in when the turn starts, all the way in when it ends.
+        static let beneathOffset: CGFloat = 0.2
+        /// About the screen's own corners, as the cards fill it: an iPhone's are round, an iPad's much less so.
+        static let phoneCornerRadius: CGFloat = 55
+        static let padCornerRadius: CGFloat = 18
+        /// A swipe this far, or this fast (points and points per second), turns the page.
+        static let turnDistance: CGFloat = 36
+        static let turnVelocity: CGFloat = 400
+        /// A released Slide carries on once it is this share of the way.
+        static let completionProgress: CGFloat = 0.3
+    }
+
+    private var cardCornerRadius: CGFloat {
+        traitCollection.userInterfaceIdiom == .pad ? Metrics.padCornerRadius : Metrics.phoneCornerRadius
+    }
 
     private var content: PageContent?
     private var actions = PageActions.none
@@ -32,9 +43,16 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
     private var endTurn: (() -> Void)?
 
     private var isTurning: Bool { turn != nil || endTurn != nil }
-    private var style: PageTurnStyle { content?.settings.pageTurnStyle ?? .slide }
+    /// Fast Fade, or else Slide (Curl never gets here: it has its own pager).
+    private var isFade: Bool { content?.settings.pageTurnStyle == .fastFade }
     /// Far enough for the moving page and its shadow to clear the screen.
-    private var slideDistance: CGFloat { bounds.width + Self.shadowRadius * 2 }
+    private var slideDistance: CGFloat { bounds.width + Metrics.shadowRadius * 2 }
+
+    /// Whether a released Slide carries on to the next page, or goes back. `velocity` is toward the next page.
+    /// Far enough or fast enough carries on, unless it is flicked back.
+    static func completes(progress: CGFloat, velocity: CGFloat) -> Bool {
+        velocity > -Metrics.turnVelocity && (progress > Metrics.completionProgress || velocity > Metrics.turnVelocity)
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -125,10 +143,9 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
         finishRunningTurn()
         guard let content, let currentView, let page = content.neighbor(of: currentView.page, isForward: isForward) else { return }
         let next = pageView(for: page, content: content)
-        switch style {
-        case .fastFade:
+        if isFade {
             fade(to: next)
-        case .slide, .curl:
+        } else {
             beginSlide(to: next, isForward: isForward)
             runSlide(toEnd: true, initialVelocity: 0)
         }
@@ -155,7 +172,7 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
         next.frame = bounds
         next.alpha = 0
         addSubview(next)
-        let animator = UIViewPropertyAnimator(duration: Self.fadeDuration, curve: .easeOut) { next.alpha = 1 }
+        let animator = UIViewPropertyAnimator(duration: Metrics.fadeDuration, curve: .easeOut) { next.alpha = 1 }
         run(animator) { [weak self] in
             next.alpha = 1
             self?.turnEnded(on: next)
@@ -188,7 +205,7 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
             addSubview(next)
         }
         turn = (next, isForward)
-        liftCard(movingView, true)
+        lift(movingView)
         setSlideProgress(0)
     }
 
@@ -200,24 +217,31 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
 
     /// A lifted page is a rounded card with a shadow on the page beneath. Not masked, so the shadow shows;
     /// the text never reaches the corners, so only the background needs rounding.
-    private func liftCard(_ view: PageTextView?, _ isLifted: Bool) {
+    private func lift(_ view: PageTextView?) {
         guard let layer = view?.layer else { return }
-        layer.cornerRadius = isLifted ? cardCornerRadius : 0
+        layer.cornerRadius = cardCornerRadius
         layer.cornerCurve = .continuous
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = isLifted ? 0.22 : 0
-        layer.shadowRadius = Self.shadowRadius
+        layer.shadowOpacity = Metrics.shadowOpacity
+        layer.shadowRadius = Metrics.shadowRadius
         layer.shadowOffset = .zero
-        layer.shadowPath = isLifted ? UIBezierPath(roundedRect: CGRect(origin: .zero, size: bounds.size),
-                                                   cornerRadius: cardCornerRadius).cgPath : nil
+        layer.shadowPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: bounds.size), cornerRadius: cardCornerRadius).cgPath
+    }
+
+    /// Puts a lifted page flat again.
+    private func drop(_ view: PageTextView?) {
+        guard let layer = view?.layer else { return }
+        layer.cornerRadius = 0
+        layer.shadowOpacity = 0
+        layer.shadowPath = nil
     }
 
     /// How far a Slide has gone, from 0 (the current page) to 1 (the next one). The lifted page covers the whole way;
     /// the page beneath it moves the last 20%, from the right, at the same pace.
     private func setSlideProgress(_ progress: CGFloat) {
         guard let turn, let currentView else { return }
-        let beneathShift = Self.beneathOffset * bounds.width
+        let beneathShift = Metrics.beneathOffset * bounds.width
         if turn.isForward {
             currentView.frame.origin.x = -progress * slideDistance
             turn.view.frame.origin.x = (1 - progress) * beneathShift
@@ -230,12 +254,12 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
 
     private func runSlide(toEnd: Bool, initialVelocity: CGFloat) {
         let timing = UISpringTimingParameters(dampingRatio: 1, initialVelocity: CGVector(dx: initialVelocity, dy: 0))
-        let animator = UIViewPropertyAnimator(duration: Self.slideDuration, timingParameters: timing)
+        let animator = UIViewPropertyAnimator(duration: Metrics.slideDuration, timingParameters: timing)
         animator.addAnimations { [weak self] in self?.setSlideProgress(toEnd ? 1 : 0) }
         run(animator) { [weak self] in
             guard let self, let turn else { return }
             setSlideProgress(toEnd ? 1 : 0)
-            liftCard(movingView, false)
+            drop(movingView)
             self.turn = nil
             if toEnd {
                 turnEnded(on: turn.view)
@@ -256,9 +280,10 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
     }
 
     @objc private func panned(_ pan: UIPanGestureRecognizer) {
-        switch style {
-        case .fastFade: fadePanned(pan)
-        case .slide, .curl: slidePanned(pan)
+        if isFade {
+            fadePanned(pan)
+        } else {
+            slidePanned(pan)
         }
     }
 
@@ -267,9 +292,15 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
         guard pan.state == .ended else { return }
         let translation = pan.translation(in: self).x
         let velocity = pan.velocity(in: self).x
-        let distance = abs(translation) >= Self.turnDistance ? translation : (abs(velocity) >= Self.turnVelocity ? velocity : 0)
+        let distance = abs(translation) >= Metrics.turnDistance ? translation : (abs(velocity) >= Metrics.turnVelocity ? velocity : 0)
         guard distance != 0 else { return }
         turnPage(isForward: distance < 0)
+    }
+
+    /// How far a drag of `translation` has taken the turn, from 0 to 1.
+    private func dragProgress(_ translation: CGFloat, isForward: Bool) -> CGFloat {
+        let travelled = isForward ? -translation : translation
+        return min(max(travelled / slideDistance, 0), 1)
     }
 
     private func slidePanned(_ pan: UIPanGestureRecognizer) {
@@ -284,13 +315,12 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
                 beginSlide(to: pageView(for: page, content: content), isForward: translation < 0)
             }
             guard let turn else { return }
-            let progress = (turn.isForward ? -translation : translation) / slideDistance
-            setSlideProgress(min(max(progress, 0), 1))
+            setSlideProgress(dragProgress(translation, isForward: turn.isForward))
         case .ended, .cancelled, .failed:
             guard let turn else { return }
             let velocity = pan.velocity(in: self).x * (turn.isForward ? -1 : 1)
-            let progress = min(max((turn.isForward ? -translation : translation) / slideDistance, 0), 1)
-            let completes = pan.state == .ended && velocity > -Self.turnVelocity && (progress > 0.3 || velocity > Self.turnVelocity)
+            let progress = dragProgress(translation, isForward: turn.isForward)
+            let completes = pan.state == .ended && Self.completes(progress: progress, velocity: velocity)
             let remaining = (completes ? 1 - progress : progress) * slideDistance
             // The spring's velocity is relative to the distance left, so the cards leave the finger at its speed.
             let relativeVelocity = remaining > 1 ? abs(velocity) / remaining : 0

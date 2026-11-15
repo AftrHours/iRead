@@ -115,6 +115,8 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | RD-33 | P1 | `ReadingMode.isDark` | Each mode, screen brightness 0.1 and 0.8 | Light false, Dark true, Match Device nil, Match Surroundings dark below 0.3 |
 | RD-34 | P0 | `ReadingSettings` decoding | Settings file from an older build, without the new keys | Saved values kept; spacing 0, mode Match Device |
 | RD-35 | P0 | `PageTextStyle.attributedText` | Character 5%, word 50% on "ab cd" | Letters kerned 5% of the text size; the space kerned more; no spacing gives kern 0 |
+| RD-36 | P1 | `PageContent.neighbor` | Pages 4–6 loaded, page 5 shown | Page 6 after, page 4 before; nil after 6 and before 4 |
+| RD-37 | P0 | `PageSlider.completes` | Release a Slide at 31% and 29%; flick forward at 401 and 399; flick back at -401 and -399 after 90% | Carries on at 31% and at 401; goes back at 29%, 399 and -401; carries on at -399 |
 
 ## Underlines and references
 
