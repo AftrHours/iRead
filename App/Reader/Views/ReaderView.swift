@@ -9,6 +9,9 @@ struct ReaderView: View {
 
     /// Where the bars put the titles, the text and the page label, so the full-screen pages draw them in the same places.
     @State private var pageFrames = PageFrames()
+    /// The return pills' underside, above the bottom bar: the ••• button's height and 9pt between, less the 5pt of tap area
+    /// under each pill.
+    private static let returnControlsBottom: CGFloat = 44 + 9 - 5
 
     private let readerSettingsVM: ReaderSettingsVM
     private let referenceVM: ReferenceVM
@@ -54,43 +57,44 @@ struct ReaderView: View {
 
             VStack(spacing: 0) {
                 TopBar(
-                    title: readerVM.title,
-                    chapterTitle: readerVM.chapterTitle,
                     foreground: pageTextColor,
                     colorScheme: pageColorScheme,
                     isFocusMode: readerVM.isFocusMode,
                     onBack: readerVM.backTapped,
-                    onUnderlineDebug: underlineDebugAction,
-                    showsTitles: false
+                    onUnderlineDebug: underlineDebugAction
                 )
                 .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { pageFrames.header = $0 }
+                // The × button sits right under the status bar, as in the design.
                 .padding(.horizontal)
-                .padding(.top)
 
-                // Where the text goes.
+                // Where the text goes. Its top gap includes the 16pt the buttons gave up, so the text stays where it was.
                 Color.clear
                     .allowsHitTesting(false)
                     .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { pageFrames.text = $0 }
-                    .padding(.top)
+                    .padding(.top, 32)
                     .padding(.bottom)
 
                 BottomBar(
-                    pageLabel: readerVM.pageLabel,
                     foreground: pageTextColor,
                     colorScheme: pageColorScheme,
-                    isFocusMode: readerVM.isFocusMode,
-                    canReturn: referenceVM.canReturn,
-                    toastText: referenceVM.toastText,
-                    onReturnDismissed: referenceVM.returnDismissed,
-                    onReturnTapped: referenceVM.returnToReadingTapped,
-                    showsPageLabel: false
+                    isFocusMode: readerVM.isFocusMode
                 ) {
                     ToolbarList(readerVM: readerVM)
                 }
                 .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { pageFrames.footer = $0 }
-                .padding(.leading, 36)
-                .padding(.trailing)
+                .padding(.horizontal)
             }
+        }
+        // Centred on the screen, whatever the bars' margins, and just above the ••• button.
+        .overlay {
+            ReturnControls(
+                canReturn: referenceVM.canReturn,
+                toastText: referenceVM.toastText,
+                onDismiss: referenceVM.returnDismissed,
+                onReturn: referenceVM.returnToReadingTapped
+            )
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+            .padding(.bottom, Self.returnControlsBottom)
         }
         .background(Color(PageTextStyle.backgroundColor(for: theme)))
         // The reading mode applies to the page, its controls and the sheets, and ends when the reader closes.

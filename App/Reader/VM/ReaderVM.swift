@@ -43,23 +43,19 @@ final class ReaderVM {
     private let readerStateCtrl: ReaderStateCtrl
     private let appNav: AppNav
 
-    var chapterTitle: String {
-        shownPage.map { chapterTitles[$0.chapterIndex] } ?? ""
-    }
-
     /// The marks to draw: underlines disappear in focus mode, with the bars. A highlight stays: it is the passage a jump landed on.
     var visibleMarks: [Int: [Mark]] {
         guard isFocusMode else { return referenceVM.marks }
         return referenceVM.marks.mapValues { $0.filter { !$0.isUnderline } }
     }
 
-    var pageLabel: String {
-        shownPage.map(pageLabel(for:)) ?? ""
-    }
-
     /// What a page shows above and below its text. Each page carries its own, so it turns with the page.
     func chrome(for page: Page) -> PageChrome {
-        PageChrome(title: title, chapterTitle: chapterTitles.indices.contains(page.chapterIndex) ? chapterTitles[page.chapterIndex] : "", pageLabel: pageLabel(for: page))
+        PageChrome(title: title, chapterTitle: chapterTitle(of: page), pageLabel: pageLabel(for: page))
+    }
+
+    private func chapterTitle(of page: Page) -> String {
+        chapterTitles.indices.contains(page.chapterIndex) ? chapterTitles[page.chapterIndex] : ""
     }
 
     private func pageLabel(for page: Page) -> String {
