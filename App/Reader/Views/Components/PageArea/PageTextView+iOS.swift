@@ -14,6 +14,12 @@ final class PageTextView: UIView {
         didSet { setNeedsLayout() }
     }
     private var actions: PageActions
+    /// Changes in place, with no new layout: the underline last tapped gets a highlight behind it.
+    private(set) var selectedUnderlineID: String? {
+        didSet {
+            if oldValue != selectedUnderlineID { showBackgrounds() }
+        }
+    }
     private let textView = UITextView(usingTextLayoutManager: false)
     private let titleLabel = UILabel()
     private let chapterLabel = UILabel()
@@ -21,8 +27,10 @@ final class PageTextView: UIView {
     private let onEdgeTapped: (_ isForward: Bool) -> Void
 
     private static let minTapSize: CGFloat = 44
-    /// The top bar's title-to-chapter spacing.
+    /// Between the book title and the chapter title under it.
     private static let titleSpacing: CGFloat = 10
+    /// The chapter title is the book title's colour, faded.
+    private static let chapterTitleAlpha: CGFloat = 0.5
 
     /// `page` as `content` shows it. The pager that owns the view says what its edge taps do.
     init(page: Page, content: PageContent, actions: PageActions, onEdgeTapped: @escaping (_ isForward: Bool) -> Void) {
@@ -33,10 +41,24 @@ final class PageTextView: UIView {
         chrome = content.chrome(page)
         frames = content.frames
         self.actions = actions
+        selectedUnderlineID = content.selectedUnderlineID
         self.onEdgeTapped = onEdgeTapped
         super.init(frame: .zero)
         backgroundColor = PageTextStyle.backgroundColor(for: settings.theme)
+        configureTextView()
+        configureLabels()
+        showChrome()
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapped)))
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        nil
+    }
+
+    private func configureTextView() {
         textView.attributedText = attributedText()
+        showBackgrounds()
         textView.isEditable = false
         textView.isSelectable = false
         textView.isScrollEnabled = false
@@ -44,13 +66,15 @@ final class PageTextView: UIView {
         textView.textContainerInset = .zero
         textView.textContainer.lineFragmentPadding = 0
         addSubview(textView)
-        // The same type as the top and bottom bars had.
+    }
+
+    /// The book title over the chapter title on top, the page label below: subheadline semibold, a faded caption, a caption.
+    private func configureLabels() {
         let textColor = PageTextStyle.textColor(for: settings.theme)
-        let subheadline = UIFont.preferredFont(forTextStyle: .subheadline)
-        titleLabel.font = .systemFont(ofSize: subheadline.pointSize, weight: .semibold)
+        titleLabel.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .subheadline).pointSize, weight: .semibold)
         titleLabel.textColor = textColor
         chapterLabel.font = .preferredFont(forTextStyle: .caption2)
-        chapterLabel.textColor = textColor.withAlphaComponent(0.5)
+        chapterLabel.textColor = textColor.withAlphaComponent(Self.chapterTitleAlpha)
         pageLabel.font = .preferredFont(forTextStyle: .caption1)
         pageLabel.textColor = textColor
         for label in [titleLabel, chapterLabel] {
@@ -59,13 +83,6 @@ final class PageTextView: UIView {
             addSubview(label)
         }
         addSubview(pageLabel)
-        showChrome()
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapped)))
-    }
-
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        nil
     }
 
     /// Whether this view already shows `page` as `content` has it, so it can stay on screen instead of being built again.
@@ -81,6 +98,7 @@ final class PageTextView: UIView {
         chrome = content.chrome(page)
         frames = content.frames
         self.actions = actions
+        selectedUnderlineID = content.selectedUnderlineID
     }
 
     private func showChrome() {
@@ -102,11 +120,10 @@ final class PageTextView: UIView {
         titleLabel.frame = CGRect(x: header.minX, y: titlesTop, width: header.width, height: titleHeight)
         chapterLabel.frame = CGRect(x: header.minX, y: titlesTop + titleHeight + Self.titleSpacing,
                                     width: header.width, height: chapterHeight)
-        // At the footer's leading edge, centred in its height like the bottom bar's.
-        let footer = frames.footer
+        // Level with the text's left edge, centred in the footer's height, level with the ••• button.
         let pageLabelSize = pageLabel.intrinsicContentSize
-        pageLabel.frame = CGRect(x: footer.minX, y: footer.midY - pageLabelSize.height / 2,
-                                 width: min(pageLabelSize.width, footer.width), height: pageLabelSize.height)
+        pageLabel.frame = CGRect(x: textView.frame.minX, y: frames.footer.midY - pageLabelSize.height / 2,
+                                 width: min(pageLabelSize.width, textView.frame.width), height: pageLabelSize.height)
     }
 
     /// Lays the text out now, so showing the page later costs nothing.
@@ -117,18 +134,26 @@ final class PageTextView: UIView {
 
     private func attributedText() -> NSAttributedString {
         let text = PageTextStyle.attributedText(page.text, settings: settings)
-        for mark in marks {
-            switch mark.kind {
-            case .underline:
-                text.addAttributes([
-                    .underlineStyle: NSUnderlineStyle.single.union(.patternDot).rawValue,
-                    .underlineColor: UIColor.secondaryLabel
-                ], range: mark.range)
-            case .highlight:
-                text.addAttribute(.backgroundColor, value: UIColor.systemYellow.withAlphaComponent(0.3), range: mark.range)
-            }
+        for mark in marks where mark.isUnderline {
+            text.addAttributes([
+                .underlineStyle: NSUnderlineStyle.single.union(.patternDot).rawValue,
+                .underlineColor: UIColor.secondaryLabel
+            ], range: mark.range)
         }
         return text
+    }
+
+    /// The highlights behind the text: a search result or jumped-to passage, and the underline last tapped, in one purple.
+    /// Edited in the text storage, so changing them never lays the page out again.
+    private func showBackgrounds() {
+        let storage = textView.textStorage
+        storage.beginEditing()
+        storage.removeAttribute(.backgroundColor, range: NSRange(location: 0, length: storage.length))
+        let selected = selectedUnderlineID.flatMap { id in marks.first { $0.underlineID == id } }
+        for mark in marks.filter({ $0.kind == .highlight }) + [selected].compactMap({ $0 }) {
+            storage.addAttribute(.backgroundColor, value: AppColors.readerHighlight, range: mark.range)
+        }
+        storage.endEditing()
     }
 
     @objc private func tapped(_ tap: UITapGestureRecognizer) {

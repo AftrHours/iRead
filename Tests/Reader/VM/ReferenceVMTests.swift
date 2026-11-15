@@ -39,6 +39,7 @@ struct ReferenceVMTests {
 
         referenceVM.markTapped(Mark(range: NSRange(), kind: .underline(id: underline.id)), at: .zero)
         #expect(await eventually { referenceVM.card != nil })
+        #expect(referenceVM.selectedUnderlineID == underline.id)
         referenceVM.jumpToPassageTapped()
         let jumped = try #require(await nextShown.next(isolation: MainActor.shared))
         #expect(jumped.underlineID == underline.id)
@@ -53,6 +54,9 @@ struct ReferenceVMTests {
         #expect(returned.page == readingPage)
         #expect(returned.underlineID == nil)
         #expect(await readerStateCtrl.returnPosition() == nil)
+        // The tapped underline is still selected: closing its card, jumping away and coming back don't clear it.
+        #expect(referenceVM.card == nil)
+        #expect(referenceVM.selectedUnderlineID == underline.id)
     }
 
     @Test("RD-24 closing the reader cancels the chapter's underlining for good, and lets the ReferenceVM go", .timeLimit(.minutes(1)))

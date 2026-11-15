@@ -33,6 +33,8 @@ struct PageContent {
     var marks: [Int: [Mark]]
     var chrome: (Page) -> PageChrome
     var frames: PageFrames
+    /// The underline last tapped, if any: it stays highlighted.
+    var selectedUnderlineID: String?
 
     func marks(on page: Page) -> [Mark] {
         marks[page.number, default: []]

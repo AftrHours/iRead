@@ -33,7 +33,8 @@ struct PageArea: View {
             horizontalMargin: horizontalMargin,
             marks: readerVM.visibleMarks,
             chrome: readerVM.chrome(for:),
-            frames: frames
+            frames: frames,
+            selectedUnderlineID: referenceVM.selectedUnderlineID
         )
         let actions = PageActions(
             onPageChanged: { readerVM.pageChanged($0) },
