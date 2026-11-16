@@ -6,6 +6,11 @@ enum ReadingTheme: String, Codable, CaseIterable, Sendable {
     var title: String {
         rawValue.capitalized
     }
+
+    /// Whether the page is dark, so its controls are light. Quiet's light page is dark grey, so its controls stay light on it either way.
+    func isDarkPage(isDarkMode: Bool) -> Bool {
+        isDarkMode || self == .quiet
+    }
 }
 
 enum PageTurnStyle: String, Codable, CaseIterable, Sendable, Identifiable {

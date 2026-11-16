@@ -15,6 +15,14 @@ struct ReadingSettingsTests {
         #expect(settings.textSize == 56)
     }
 
+    @Test("RD-44 a page is dark in the dark reading mode, and Quiet's page is dark in any")
+    func darkPage() {
+        #expect(!ReadingTheme.original.isDarkPage(isDarkMode: false))
+        #expect(ReadingTheme.original.isDarkPage(isDarkMode: true))
+        #expect(ReadingTheme.quiet.isDarkPage(isDarkMode: false))
+        #expect(ReadingTheme.paper.isDarkPage(isDarkMode: true))
+    }
+
     @Test("RD-22 ReadingSettingsRepo gives defaults with no file, then what was saved")
     func repo() async {
         let repo = ReadingSettingsRepo(folder: folder.url)

@@ -16,6 +16,9 @@ final class ReferenceVM {
     private(set) var marks: [Int: [Mark]] = [:]
     private(set) var card: ReferenceCard?
     private(set) var cardAnchor = CGRect.zero
+    /// The underline last tapped. Kept, highlighted, after its card closes and through a jump to its passage and the way back,
+    /// until another underline is tapped.
+    private(set) var selectedUnderlineID: String?
     private(set) var canReturn = false
     private(set) var toastText: String?
 
@@ -99,6 +102,7 @@ final class ReferenceVM {
             let passagePage = await readerCtrl.page(containing: underline.reference.start)
             let chapterTitles = await readerCtrl.chapterTitles()
             cardAnchor = anchor
+            selectedUnderlineID = id
             card = ReferenceCard(
                 underlineID: id,
                 phrase: underline.text,
@@ -120,6 +124,12 @@ final class ReferenceVM {
 
     func cardDismissed() {
         card = nil
+    }
+
+    /// For the popover's binding: setting it to nil closes the card.
+    var presentedCard: ReferenceCard? {
+        get { card }
+        set { if newValue == nil { cardDismissed() } }
     }
 
     func jumpToPassageTapped() {

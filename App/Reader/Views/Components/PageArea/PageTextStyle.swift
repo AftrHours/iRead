@@ -43,11 +43,6 @@ enum PageTextStyle {
         }
     }
 
-    /// Quiet's light page is dark grey, so its controls stay light on it either way.
-    static func isDarkPage(_ theme: ReadingTheme, isDarkMode: Bool) -> Bool {
-        isDarkMode || theme == .quiet
-    }
-
     /// The page's text with every setting applied. The pager and the page view both use it, so pages break where they are drawn.
     static func attributedText(_ string: String, settings: ReadingSettings) -> NSMutableAttributedString {
         let text = NSMutableAttributedString(string: string, attributes: attributes(settings: settings))
@@ -62,6 +57,18 @@ enum PageTextStyle {
             guard space.location != NSNotFound else { break }
             text.addAttribute(.kern, value: wordKern, range: space)
             searchRange = NSRange(location: NSMaxRange(space), length: nsString.length - NSMaxRange(space))
+        }
+        return text
+    }
+
+    /// The page's text with every setting applied, and the dotted line under each underline.
+    static func attributedText(_ string: String, settings: ReadingSettings, marks: [Mark]) -> NSAttributedString {
+        let text = attributedText(string, settings: settings)
+        for mark in marks where mark.isUnderline {
+            text.addAttributes([
+                .underlineStyle: NSUnderlineStyle.single.union(.patternDot).rawValue,
+                .underlineColor: UIColor.secondaryLabel
+            ], range: mark.range)
         }
         return text
     }

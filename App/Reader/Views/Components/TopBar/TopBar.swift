@@ -1,9 +1,9 @@
 import SwiftUI
 
-/// The reader's top bar: the back button, and the book title over the chapter title, centred.
+/// The reader's top bar: the back button on the left and, in debug builds, the underline debug button on the right.
+/// As tall as `PageLayoutKnobs.barHeight`, which is where the titles drawn on each page are centred.
+/// The book and chapter titles are not part of it: each page draws its own, so they turn with the page.
 struct TopBar: View {
-    let title: String
-    let chapterTitle: String
     let foreground: Color
     let colorScheme: ColorScheme
     let isFocusMode: Bool
@@ -12,48 +12,34 @@ struct TopBar: View {
     var onUnderlineDebug: (() -> Void)?
 
     var body: some View {
-        ZStack {
-            VStack(spacing: 10) {
-                Text(title)
-                    .font(.subheadline.weight(.semibold))
-                Text(chapterTitle)
-                    .font(.caption2)
-                    .textCase(.uppercase)
-                    .foregroundStyle(.secondary)
-            }
-            .lineLimit(1)
-            .foregroundStyle(foreground)
-//            .padding(.horizontal, 64)
-            HStack {
+        HStack {
+            BackButton(
+                systemImage: "xmark",
+                accessibilityLabel: "Back",
+                foreground: foreground,
+                colorScheme: colorScheme,
+                isVisible: !isFocusMode,
+                action: onBack
+            )
+            Spacer()
+            if let onUnderlineDebug {
                 BackButton(
-                    systemImage: "xmark",
-                    accessibilityLabel: "Back",
+                    systemImage: "ladybug",
+                    accessibilityLabel: "Underline Debug",
                     foreground: foreground,
                     colorScheme: colorScheme,
                     isVisible: !isFocusMode,
-                    action: onBack
+                    action: onUnderlineDebug
                 )
-                Spacer()
-                if let onUnderlineDebug {
-                    BackButton(
-                        systemImage: "ladybug",
-                        accessibilityLabel: "Underline Debug",
-                        foreground: foreground,
-                        colorScheme: colorScheme,
-                        isVisible: !isFocusMode,
-                        action: onUnderlineDebug
-                    )
-                    .keyboardShortcut("d", modifiers: [.command, .shift])
-                }
+                .keyboardShortcut("d", modifiers: [.command, .shift])
             }
         }
+        .frame(height: PageLayoutKnobs.barHeight)
     }
 }
 
 #Preview("Top Bar") {
     TopBar(
-        title: "Little Women",
-        chapterTitle: "Chapter 3",
         foreground: .primary,
         colorScheme: .light,
         isFocusMode: false,
@@ -63,8 +49,6 @@ struct TopBar: View {
 
 #Preview("Top Bar – Debug Button") {
     TopBar(
-        title: "Little Women",
-        chapterTitle: "Chapter 3",
         foreground: .primary,
         colorScheme: .light,
         isFocusMode: false,
@@ -75,8 +59,6 @@ struct TopBar: View {
 
 #Preview("Top Bar – Focus Mode") {
     TopBar(
-        title: "Little Women",
-        chapterTitle: "Chapter 3",
         foreground: .primary,
         colorScheme: .light,
         isFocusMode: true,

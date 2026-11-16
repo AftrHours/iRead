@@ -22,6 +22,9 @@ enum AppColors {
     static let settingsBackground = adaptive(light: 0xF8F8F8, dark: 0x0C0C24)
     static let settingsControlBackground = adaptive(light: 0xF3F4FF, dark: 0x1E1E48)
     static let popoverQuoteIconBackground = adaptive(light: 0x333375, dark: 0xCDD2F4)
+    /// A highlighted passage on the page: the underline last tapped, a search result, a jumped-to passage. The design's purple-200
+    /// (popover/quote-icon-bg in dark), softened so the page's text stays readable on it. A UIColor, because the page is drawn in UIKit.
+    static let readerHighlight = adaptiveUIColor(light: 0xCDD2F4, dark: 0xCDD2F4, lightAlpha: 0.6, darkAlpha: 0.3)
     static let popoverQuoteIcon = adaptive(light: 0xFFF6ED, dark: 0x1E1E48)
 
     static let textPrimary = adaptive(light: 0x0C0C24, dark: 0xF3F4FF)
@@ -64,9 +67,13 @@ enum AppColors {
     }
 
     private static func adaptive(light: UInt32, dark: UInt32, lightAlpha: CGFloat = 1, darkAlpha: CGFloat = 1) -> Color {
-        Color(uiColor: UIColor { traits in
+        Color(uiColor: adaptiveUIColor(light: light, dark: dark, lightAlpha: lightAlpha, darkAlpha: darkAlpha))
+    }
+
+    private static func adaptiveUIColor(light: UInt32, dark: UInt32, lightAlpha: CGFloat = 1, darkAlpha: CGFloat = 1) -> UIColor {
+        UIColor { traits in
             traits.userInterfaceStyle == .dark ? UIColor(hex: dark, alpha: darkAlpha) : UIColor(hex: light, alpha: lightAlpha)
-        })
+        }
     }
 }
 

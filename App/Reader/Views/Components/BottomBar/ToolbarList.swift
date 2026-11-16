@@ -15,3 +15,9 @@ struct ToolbarList: View {
         }
     }
 }
+
+#Preview("Toolbar List") {
+    List {
+        ToolbarList(readerVM: PreviewFixtures.readerVM())
+    }
+}
