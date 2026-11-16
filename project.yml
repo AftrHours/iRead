@@ -64,7 +64,6 @@ targets:
         package: SwiftLintPlugins
     # iCloud through CloudKit: the reader's saved underlines (their private database) and the ratings they share (the public one).
     # The container ID must match CloudSvcCloudKit.containerID. See docs/ICLOUD.md for the CloudKit Console steps.
-    # The App Group is the folder the app shares with the Share extension: books waiting to be imported, and the library index.
     entitlements:
       path: App/iRead.entitlements
       properties:
@@ -72,8 +71,6 @@ targets:
           - iCloud.com.aftrhours.reader
         com.apple.developer.icloud-services:
           - CloudKit
-        com.apple.security.application-groups:
-          - group.com.aftrhours.reader
     # "Open in iRead" for EPUB files from Files, Safari, Mail and AirDrop. Alternate: Apple Books stays the default.
     # Not opened in place: iOS copies the file into Documents/Inbox, the same copy-in import as the picker.
     # Xcode merges this file with the INFOPLIST_KEY_* settings below (GENERATE_INFOPLIST_FILE).
