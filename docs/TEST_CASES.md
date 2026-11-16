@@ -116,7 +116,17 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | RD-34 | P0 | `ReadingSettings` decoding | Settings file from an older build, without the new keys | Saved values kept; spacing 0, mode Match Device |
 | RD-35 | P0 | `PageTextStyle.attributedText` | Character 5%, word 50% on "ab cd" | Letters kerned 5% of the text size; the space kerned more; no spacing gives kern 0 |
 | RD-36 | P1 | `PageContent.neighbor` | Pages 4–6 loaded, page 5 shown | Page 6 after, page 4 before; nil after 6 and before 4 |
-| RD-37 | P0 | `PageSlider.completes` | Release a Slide at 31% and 29%; flick forward at 401 and 399; flick back at -401 and -399 after 90% | Carries on at 31% and at 401; goes back at 29%, 399 and -401; carries on at -399 |
+| RD-37 | P0 | `PageTurnRules.completes` | Release a Slide at 31% and 29%; flick forward at 401 and 399; flick back at -401 and -399 after 90% | Carries on at 31% and at 401; goes back at 29%, 399 and -401; carries on at -399 |
+| RD-38 | P1 | `PageContent.highlights` | A page with a jumped-to passage and two underlines; one underline tapped, none, or one on another page | The passage, plus the tapped underline; only the passage when none or another page's; none on a page without marks |
+| RD-39 | P2 | `PageContent.chrome` | Chrome built for page 5 only | Page 5's label; an empty chrome for page 6 |
+| RD-40 | P0 | `PageLayout` | iPhone 17 Pro Max, then the same screen again and a rotated one | Header 44 high at the top inset, footer 44 high at the bottom inset, text between them with 32 and 16 gaps and a 9% margin; the viewport changes only when the text's room does |
+| RD-41 | P1 | `PageTurnRules.fadeTurnsForward` | Swipes of -36, 36, -35 points; short flicks at ±401 and ±399 | Left is forward; 36 and 401 turn; 35 and 399 don't |
+| RD-42 | P1 | `PageTurnRules.dragProgress` / `springVelocity` | Drags of -100, 100 and -1000 over 400; no distance; -800 over 200 and over 1 | 0.25, 0 and 1, clamped; 0 with no distance; spring velocity 4, and 0 when almost there |
+| RD-43 | P0 | `PageTurnRules.tapZone` | Taps across an iPhone page (text 40–400 of 440) and an iPad page (text 78–742 of 820) | Edges turn the page, at least 44 wide; the middle toggles the bars |
+| RD-44 | P1 | `ReadingTheme.isDarkPage` | Each combination of theme and dark mode | Dark in dark mode; Quiet is dark in any |
+| RD-45 | P0 | `ReaderVM.screenChanged` | Measure the screen before the book opens | The layout is the screen's; no page content yet |
+| RD-46 | P0 | `ReaderVM` settings panel | Open Theme & Settings on a narrow, then a full-width screen; dismiss | Sheet on a narrow screen, panel on a full-width one (no sheet); setting the sheet to nil closes it |
+| RD-47 | P1 | `ReaderVM.isDarkPage` | Match Device; the device goes dark | Light, then dark |
 
 ## Underlines and references
 

@@ -100,3 +100,11 @@ struct PageTurnView: UIViewControllerRepresentable {
         }
     }
 }
+
+#Preview("Page Curl") {
+    PagePreview { readerVM in
+        if let content = readerVM.pageContent {
+            PageTurnView(content: content, actions: .none)
+        }
+    }
+}

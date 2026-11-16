@@ -1,32 +1,31 @@
 import UIKit
 
 /// A whole screen's page: the book and chapter on top, the text, and the page label at the bottom, so all of it turns together.
+/// It only draws what `PageContent` says and reports taps; where things go, what to highlight and what a tap means are decided elsewhere.
 final class PageTextView: UIView {
     let page: Page
     let settings: ReadingSettings
     let horizontalMargin: CGFloat
     let marks: [Mark]
-    /// Labels only, so they change in place (focus mode shortens the page label) without laying the text out again.
+    /// What changes without laying the text out again (focus mode shortens the page label), and is set in place.
     private(set) var chrome: PageChrome {
         didSet { showChrome() }
     }
-    private(set) var frames: PageFrames {
+    private(set) var layout: PageLayout {
         didSet { setNeedsLayout() }
     }
-    private var actions: PageActions
-    /// Changes in place, with no new layout: the underline last tapped gets a highlight behind it.
-    private(set) var selectedUnderlineID: String? {
+    private(set) var highlights: [NSRange] {
         didSet {
-            if oldValue != selectedUnderlineID { showBackgrounds() }
+            if oldValue != highlights { showBackgrounds() }
         }
     }
+    private var actions: PageActions
     private let textView = UITextView(usingTextLayoutManager: false)
     private let titleLabel = UILabel()
     private let chapterLabel = UILabel()
     private let pageLabel = UILabel()
     private let onEdgeTapped: (_ isForward: Bool) -> Void
 
-    private static let minTapSize: CGFloat = 44
     /// Between the book title and the chapter title under it.
     private static let titleSpacing: CGFloat = 10
     /// The chapter title is the book title's colour, faded.
@@ -38,10 +37,10 @@ final class PageTextView: UIView {
         settings = content.settings
         horizontalMargin = content.horizontalMargin
         marks = content.marks(on: page)
-        chrome = content.chrome(page)
-        frames = content.frames
+        chrome = content.chrome(of: page)
+        layout = content.layout
+        highlights = content.highlights(on: page)
         self.actions = actions
-        selectedUnderlineID = content.selectedUnderlineID
         self.onEdgeTapped = onEdgeTapped
         super.init(frame: .zero)
         backgroundColor = PageTextStyle.backgroundColor(for: settings.theme)
@@ -57,7 +56,7 @@ final class PageTextView: UIView {
     }
 
     private func configureTextView() {
-        textView.attributedText = attributedText()
+        textView.attributedText = PageTextStyle.attributedText(page.text, settings: settings, marks: marks)
         showBackgrounds()
         textView.isEditable = false
         textView.isSelectable = false
@@ -93,27 +92,26 @@ final class PageTextView: UIView {
             && marks == content.marks(on: page)
     }
 
-    /// Brings what changes without a new layout (the labels, where they sit, what a tap does) up to date with `content`.
+    /// Brings what changes without a new layout (the labels, where they sit, the highlights, what a tap does) up to date with `content`.
     func refresh(from content: PageContent, actions: PageActions) {
-        chrome = content.chrome(page)
-        frames = content.frames
+        chrome = content.chrome(of: page)
+        layout = content.layout
+        highlights = content.highlights(on: page)
         self.actions = actions
-        selectedUnderlineID = content.selectedUnderlineID
     }
 
     private func showChrome() {
         titleLabel.text = chrome.title
-        chapterLabel.text = chrome.chapterTitle.uppercased()
+        chapterLabel.text = chrome.chapterTitle
         pageLabel.text = chrome.pageLabel
         setNeedsLayout()
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let textBounds = frames.text.isEmpty ? bounds : frames.text
-        textView.frame = Viewport.textFrame(in: textBounds, horizontalMargin: horizontalMargin)
-        // Title over chapter, centred in the header like the top bar's.
-        let header = frames.header
+        textView.frame = Viewport.textFrame(in: layout.text, horizontalMargin: horizontalMargin)
+        // Title over chapter, centred in the header.
+        let header = layout.header
         let titleHeight = titleLabel.intrinsicContentSize.height
         let chapterHeight = chapterLabel.intrinsicContentSize.height
         let titlesTop = header.midY - (titleHeight + Self.titleSpacing + chapterHeight) / 2
@@ -122,7 +120,7 @@ final class PageTextView: UIView {
                                     width: header.width, height: chapterHeight)
         // Level with the text's left edge, centred in the footer's height, level with the ••• button.
         let pageLabelSize = pageLabel.intrinsicContentSize
-        pageLabel.frame = CGRect(x: textView.frame.minX, y: frames.footer.midY - pageLabelSize.height / 2,
+        pageLabel.frame = CGRect(x: textView.frame.minX, y: layout.footer.midY - pageLabelSize.height / 2,
                                  width: min(pageLabelSize.width, textView.frame.width), height: pageLabelSize.height)
     }
 
@@ -132,44 +130,32 @@ final class PageTextView: UIView {
         textView.layoutManager.ensureLayout(for: textView.textContainer)
     }
 
-    private func attributedText() -> NSAttributedString {
-        let text = PageTextStyle.attributedText(page.text, settings: settings)
-        for mark in marks where mark.isUnderline {
-            text.addAttributes([
-                .underlineStyle: NSUnderlineStyle.single.union(.patternDot).rawValue,
-                .underlineColor: UIColor.secondaryLabel
-            ], range: mark.range)
-        }
-        return text
-    }
-
-    /// The highlights behind the text: a search result or jumped-to passage, and the underline last tapped, in one purple.
-    /// Edited in the text storage, so changing them never lays the page out again.
+    /// The highlights behind the text, in one purple. Edited in the text storage, so changing them never lays the page out again.
     private func showBackgrounds() {
         let storage = textView.textStorage
         storage.beginEditing()
         storage.removeAttribute(.backgroundColor, range: NSRange(location: 0, length: storage.length))
-        let selected = selectedUnderlineID.flatMap { id in marks.first { $0.underlineID == id } }
-        for mark in marks.filter({ $0.kind == .highlight }) + [selected].compactMap({ $0 }) {
-            storage.addAttribute(.backgroundColor, value: AppColors.readerHighlight, range: mark.range)
+        for range in highlights {
+            storage.addAttribute(.backgroundColor, value: AppColors.readerHighlight, range: range)
         }
         storage.endEditing()
     }
 
     @objc private func tapped(_ tap: UITapGestureRecognizer) {
-        let x = tap.location(in: self).x
-        // Underlines first: on an iPhone the margin is under 44pt, so the edge zones reach into the text.
+        // Underlines first: the edge zones reach into the text.
         if let (mark, rect) = underline(at: tap.location(in: textView)) {
             actions.onMarkTapped(mark, textView.convert(rect, to: self))
-        } else if x < max(textView.frame.minX, Self.minTapSize) {
-            onEdgeTapped(false)
-        } else if x > min(textView.frame.maxX, bounds.width - Self.minTapSize) {
-            onEdgeTapped(true)
-        } else {
-            actions.onCenterTapped()
+            return
+        }
+        switch PageTurnRules.tapZone(x: tap.location(in: self).x, textMinX: textView.frame.minX, textMaxX: textView.frame.maxX,
+                                     width: bounds.width) {
+        case .previous: onEdgeTapped(false)
+        case .next: onEdgeTapped(true)
+        case .center: actions.onCenterTapped()
         }
     }
 
+    /// The underline under `point`, with the line it is on. Each line counts as at least a finger tall.
     private func underline(at point: CGPoint) -> (Mark, CGRect)? {
         let layoutManager = textView.layoutManager
         for mark in marks where mark.isUnderline {
@@ -180,7 +166,7 @@ final class PageTextView: UIView {
                 withinSelectedGlyphRange: NSRange(location: NSNotFound, length: 0),
                 in: textView.textContainer
             ) { rect, stop in
-                let padding = max(0, (Self.minTapSize - rect.height) / 2)
+                let padding = max(0, (PageTurnKnobs.minTapSize - rect.height) / 2)
                 if rect.insetBy(dx: 0, dy: -padding).contains(point) {
                     tappedLine = rect
                     stop.pointee = true

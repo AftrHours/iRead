@@ -126,6 +126,12 @@ final class ReferenceVM {
         card = nil
     }
 
+    /// For the popover's binding: setting it to nil closes the card.
+    var presentedCard: ReferenceCard? {
+        get { card }
+        set { if newValue == nil { cardDismissed() } }
+    }
+
     func jumpToPassageTapped() {
         guard let referenceCard = card, let shownPage else { return }
         card = nil

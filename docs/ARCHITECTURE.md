@@ -98,7 +98,7 @@ Names that are easy to mix up:
 | `ReaderCtrl` | Book content, current position, pages, page counts, search, position ↔ page | `BookContentRepo`, `PagerSvc` |
 | `ProgressCtrl` | Restore and save progress, log restore and finished events | `ProgRepo`, `EventSvc` |
 | `ReaderStateCtrl` | Reading settings, brightness, the "return to reading" position, recent searches | `ReadingSettingsRepo`, `BrightnessSvc`, `BookStateRepo` |
-| `ReaderVM` (parent) | Pages, shown page, viewport, labels, show/hide controls, sheets, menu, back, contents, search, saving progress in page-turn order | `ReaderCtrl`, `ProgressCtrl`, `ReaderStateCtrl` (handed to `SearchVM`), `AppNav` + 3 children |
+| `ReaderVM` (parent) | Pages, shown page, the screen's `PageLayout`, what the pagers draw (`PageContent`), light or dark page, settings panel or sheet, show/hide controls, menu, back, contents, search, saving progress in page-turn order | `ReaderCtrl`, `ProgressCtrl`, `ReaderStateCtrl` (handed to `SearchVM`), `AppNav` + 3 children |
 | `ReaderSettingsVM` | Settings, layout settings, brightness, text size, line spacing, theme | `ReaderStateCtrl` |
 | `ReferenceVM` | Marks, following underlines for the shown chapter, reference cards, highlight, jump and return, toast | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
 | `RatingVM` | Thumbs on the shown card, the share question, the Share Ratings switch, the iCloud row in the menu | `RatingCtrl` |
@@ -108,6 +108,25 @@ Names that are easy to mix up:
 `RefCtrl` (underlines and marks: `BookContentRepo`, `UnderlineRepo`) and `RatingCtrl` (ratings: `BookContentRepo`, `UnderlineRepo`
 to look up the rated underline, `RatingRepo`) share one `UnderlineRepo` for the whole app.
 `RefCardView` and `ReaderMenuView` get `RatingVM` directly.
+
+### The page on screen
+
+Pages fill the whole screen, and each carries its own book and chapter titles and page label, so all of it turns together.
+Nothing is decided in a view: `ReaderVM` holds the state and the views draw it.
+
+| Type | Layer | Job |
+|---|---|---|
+| `ScreenGeometry` | Models | The screen's size and safe area. `ReaderView` reads it (only a view can) and hands it to `ReaderVM.screenChanged` |
+| `PageLayout` | Models | Where the header, text and footer go, from the screen alone. Its `viewport` is what pagination uses. Sizes are in `PageLayoutKnobs`, which the bars use too |
+| `PageContent`, `PageChrome` | Models | Everything the pagers draw: pages, shown page, settings, layout, marks, titles and labels, the underline last tapped. Plain data, so a pager can tell nothing changed |
+| `PageTurnRules`, `PageTurnKnobs` | Rules | Whether a released Slide carries on, which way a Fast Fade swipe points, how far a drag has gone, where a tap lands; and how long and how far a turn feels |
+| `PageArea` | View | Shows the pager of the chosen style and hosts the reference card |
+| `PageSlideView` → `PageSlider` | View (UIKit) | Slide and Fast Fade: moves the pages and runs the animation (one `Turn` state: idle, dragging, animating) |
+| `PageTurnView` | View (UIKit) | Curl, on `UIPageViewController` |
+| `PageViewCache`, `PageTextView` | View (UIKit) | Built pages kept ready; one page drawn, tapped and highlighted |
+
+The two pagers take one input, `PageContent`, and report through `PageActions` (page turned, middle tapped, underline tapped).
+What stays in the UIKit views is drawing and animation: the gestures, the animators and the text layout.
 
 State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 `ReferenceVM.update(shownPage:loadedPages:)`. Underlines and highlights always show, whether or not the controls do
@@ -164,7 +183,7 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 **Open a book**
 1. `LibVM.bookTapped` → `AppNav.openReader(book:)`.
 2. `iReadApp` sees the route change → `AppContainer.makeReaderVM(book:)` (once per open) → `ReaderView`.
-3. `ReaderView.task` → `ReaderVM.onAppear`:
+3. `ReaderView.task` → `ReaderVM.onAppear` (the book opens, and the first page waits for the screen to be measured):
    1. `ReaderCtrl.openBook` → `BookContentRepo.content(for:)` → `EPUBParseSvc.parse`
       (imported `book.epub` first, then the bundled EPUB named in `BookRecord.samples`; one parse per book even with concurrent callers;
       only the 2 most recently used books stay parsed in memory).
@@ -172,7 +191,7 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
    3. `ProgressCtrl.savedProgress` → `ReaderCtrl.restorePosition(from:)` → `ProgressCtrl.positionRestored`.
    4. `ReferenceVM.bookOpened` → `ReaderStateCtrl.load`. `RatingVM.bookOpened` → `RatingCtrl.sharesRatings`, then in the background
       `RatingCtrl.cloudAccount` and `RatingCtrl.sendUnsentRatings` (again on `appForegrounded`).
-   5. `ReaderVM.showCurrentPage` → `ReaderCtrl.currentPage` → `PagerSvc.pageRanges`.
+   5. `ReaderVM.showCurrentPage` (once the screen has been measured: `ReaderVM.screenChanged`) → `ReaderCtrl.currentPage(viewport: layout.viewport)` → `PagerSvc.pageRanges`.
    6. `ReferenceVM.update` sees a new chapter → `RefCtrl.underlineUpdates(from:)` → `UnderlineRepo.underline(chapter:of:startingAt:)`
       (a finished chapter loads from `Underlines/<fingerprint>/`, or else from the reader's iCloud; otherwise `ChapterInputMapper`
       → UnderlineEngine runs from the page's first sentence, then wraps, and each result becomes `SavedUnderline`). Books are named by `BookContent.fingerprint`, so the same book matches on every device.

@@ -1,6 +1,7 @@
 import SwiftUI
 
 /// The reader's top bar: the back button on the left and, in debug builds, the underline debug button on the right.
+/// As tall as `PageLayoutKnobs.barHeight`, which is where the titles drawn on each page are centred.
 /// The book and chapter titles are not part of it: each page draws its own, so they turn with the page.
 struct TopBar: View {
     let foreground: Color
@@ -33,6 +34,7 @@ struct TopBar: View {
                 .keyboardShortcut("d", modifiers: [.command, .shift])
             }
         }
+        .frame(height: PageLayoutKnobs.barHeight)
     }
 }
 

@@ -33,9 +33,14 @@ final class ReaderVM {
     private(set) var isUnderlineDebugShown = false
     #endif
 
+    /// Where the page's parts go. nil until the screen has been measured.
+    private(set) var layout: PageLayout?
+
     private var chapterStartPages: [Int] = []
     private var pageCount: Int?
-    private var requestedViewport = Viewport(size: .zero)
+    private var isBookOpen = false
+    private var systemIsDark = false
+    private var isRegularWidth = false
     private var progressTask: Task<Void, Never>?
     private let book: BookRecord
     private let readerCtrl: ReaderCtrl
@@ -49,9 +54,53 @@ final class ReaderVM {
         return referenceVM.marks.mapValues { $0.filter { !$0.isUnderline } }
     }
 
+    var theme: ReadingTheme {
+        readerSettingsVM.layoutSettings.theme
+    }
+
+    /// Whether the page is dark, so its controls are light: the reading mode's choice, or the device's for Match Device.
+    var isDarkPage: Bool {
+        theme.isDarkPage(isDarkMode: readerSettingsVM.isDarkMode ?? systemIsDark)
+    }
+
+    /// The reading mode's choice of light or dark, nil to leave the device's style alone.
+    var forcedDarkMode: Bool? {
+        readerSettingsVM.isDarkMode
+    }
+
+    /// On a full-width iPad the settings are a panel attached to the bottom edge, not iOS's floating form sheet.
+    var isSettingsPanelShown: Bool {
+        guard isRegularWidth, case .themeSettings = sheet else { return false }
+        return true
+    }
+
+    /// The sheet to present: everything but the iPad's settings panel. Setting it to nil closes the sheet.
+    var presentedSheet: Sheet? {
+        get { isSettingsPanelShown ? nil : sheet }
+        set { if newValue == nil { sheetDismissed() } }
+    }
+
+    /// Everything the pagers draw, nil until there is a page and the screen has been measured.
+    var pageContent: PageContent? {
+        guard let layout, let shownPage else { return nil }
+        let chromes = Dictionary((pages + [shownPage]).map { ($0.number, chrome(for: $0)) }, uniquingKeysWith: { first, _ in first })
+        return PageContent(pages: pages, shownPage: shownPage, settings: readerSettingsVM.layoutSettings, layout: layout,
+                           marks: visibleMarks, chromes: chromes, selectedUnderlineID: referenceVM.selectedUnderlineID)
+    }
+
+    /// Whether the reference card opens below its underline: when it fits there, else above it. A popover only takes one fixed edge,
+    /// or nil to let the system pick the roomiest side, which puts the card above mid-page underlines.
+    var isCardBelowUnderline: Bool {
+        guard let layout else { return true }
+        return layout.text.maxY - referenceVM.cardAnchor.maxY >= Self.cardHeight
+    }
+
+    /// Room the reference card needs below an underline. About the tallest card (a long quote on an iPhone), plus a margin.
+    private static let cardHeight: CGFloat = 400
+
     /// What a page shows above and below its text. Each page carries its own, so it turns with the page.
-    func chrome(for page: Page) -> PageChrome {
-        PageChrome(title: title, chapterTitle: chapterTitle(of: page), pageLabel: pageLabel(for: page))
+    private func chrome(for page: Page) -> PageChrome {
+        PageChrome(title: title, chapterTitle: chapterTitle(of: page).uppercased(), pageLabel: pageLabel(for: page))
     }
 
     private func chapterTitle(of page: Page) -> String {
@@ -83,8 +132,24 @@ final class ReaderVM {
         chapterStartPages.indices.contains(index) ? "\(chapterStartPages[index])" : ""
     }
 
-    func onAppear(viewport: Viewport) async {
-        requestedViewport = viewport
+    /// The screen was measured, or changed (a rotation, a split view). Pages are laid out again when the text's room changed.
+    func screenChanged(_ screen: ScreenGeometry) {
+        let previousViewport = layout?.viewport
+        let newLayout = PageLayout(screen)
+        layout = newLayout
+        guard isBookOpen, newLayout.viewport != previousViewport else { return }
+        Task { await showCurrentPage() }
+    }
+
+    func systemAppearanceChanged(isDark: Bool) {
+        systemIsDark = isDark
+    }
+
+    func widthClassChanged(isRegular: Bool) {
+        isRegularWidth = isRegular
+    }
+
+    func onAppear() async {
         do {
             try await readerCtrl.openBook()
             await readerSettingsVM.bookOpened()
@@ -96,16 +161,11 @@ final class ReaderVM {
             await ratingVM.bookOpened()
             title = book.title
             chapterTitles = await readerCtrl.chapterTitles()
+            isBookOpen = true
             await showCurrentPage()
         } catch {
             hasFailedToOpen = true
         }
-    }
-
-    func viewportChanged(_ viewport: Viewport) {
-        requestedViewport = viewport
-        guard shownPage != nil else { return }
-        Task { await showCurrentPage() }
     }
 
     /// Like Apple Books: turning the page turns focus mode on, tapping the middle of the page toggles it.
@@ -197,10 +257,10 @@ final class ReaderVM {
     }
 
     private func showCurrentPage() async {
-        let viewport = requestedViewport
+        guard let viewport = layout?.viewport else { return }
         let settings = readerSettingsVM.settings
         let page = await readerCtrl.currentPage(viewport: viewport, settings: settings)
-        guard viewport == requestedViewport, settings == readerSettingsVM.settings else { return }
+        guard viewport == layout?.viewport, settings == readerSettingsVM.settings else { return }
         readerSettingsVM.layoutChanged(to: settings)
         shownPage = page
         pages = [page]

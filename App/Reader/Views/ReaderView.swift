@@ -1,60 +1,43 @@
 import SwiftUI
 import UIKit
 
+/// The reading page: the pages across the whole screen, and the bars on top. It renders what `ReaderVM` says and forwards taps
+/// and the few facts only a view knows (the device's light or dark style, the width class).
 struct ReaderView: View {
     @Bindable private var readerVM: ReaderVM
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
-    /// Where the bars put the titles, the text and the page label, so the full-screen pages draw them in the same places.
-    @State private var pageFrames = PageFrames()
     /// The return pills' underside, above the bottom bar: the ••• button's height and 9pt between, less the 5pt of tap area
     /// under each pill.
-    private static let returnControlsBottom: CGFloat = 44 + 9 - 5
+    private static let returnControlsBottom: CGFloat = PageLayoutKnobs.barHeight + 9 - 5
 
     private let readerSettingsVM: ReaderSettingsVM
     private let referenceVM: ReferenceVM
-    private var theme: ReadingTheme { readerSettingsVM.layoutSettings.theme }
+    private let ratingVM: RatingVM
 
-    private var pageTextColor: Color { Color(PageTextStyle.textColor(for: theme)) }
-
-    /// The reading mode's choice, or the device's for Match Device.
-    private var isDarkMode: Bool {
-        readerSettingsVM.isDarkMode ?? (colorScheme == .dark)
+    private var pageTextColor: Color {
+        Color(PageTextStyle.textColor(for: readerVM.theme))
     }
 
     private var pageColorScheme: ColorScheme {
-        PageTextStyle.isDarkPage(theme, isDarkMode: isDarkMode) ? .dark : .light
-    }
-
-    /// On a full-width iPad the settings are a panel attached to the bottom edge, not iOS's floating form sheet.
-    private var isSettingsPanelShown: Bool {
-        guard horizontalSizeClass == .regular, case .themeSettings = readerVM.sheet else { return false }
-        return true
-    }
-
-    /// The sheet to present: everything but the iPad's settings panel.
-    private var presentedSheet: ReaderVM.Sheet? {
-        isSettingsPanelShown ? nil : readerVM.sheet
-    }
-
-    /// nil leaves the device's light or dark style alone.
-    private var readingColorScheme: ColorScheme? {
-        readerSettingsVM.isDarkMode.map { $0 ? .dark : .light }
+        readerVM.isDarkPage ? .dark : .light
     }
 
     init(readerVM: ReaderVM) {
         self.readerVM = readerVM
         readerSettingsVM = readerVM.readerSettingsVM
         referenceVM = readerVM.referenceVM
+        ratingVM = readerVM.ratingVM
     }
 
     var body: some View {
         ZStack {
-            PageArea(readerVM: readerVM, textMarginRatio: 0.09, screenFrames: pageFrames)
+            PageArea(readerVM: readerVM, referenceVM: referenceVM, ratingVM: ratingVM)
                 .ignoresSafeArea()
 
+            // The bars take their height and side margin from PageLayoutKnobs, as the titles and page label drawn on the pages do.
             VStack(spacing: 0) {
                 TopBar(
                     foreground: pageTextColor,
@@ -63,17 +46,7 @@ struct ReaderView: View {
                     onBack: readerVM.backTapped,
                     onUnderlineDebug: underlineDebugAction
                 )
-                .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { pageFrames.header = $0 }
-                // The × button sits right under the status bar, as in the design.
-                .padding(.horizontal)
-
-                // Where the text goes. Its top gap includes the 16pt the buttons gave up, so the text stays where it was.
-                Color.clear
-                    .allowsHitTesting(false)
-                    .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { pageFrames.text = $0 }
-                    .padding(.top, 32)
-                    .padding(.bottom)
-
+                Spacer()
                 BottomBar(
                     foreground: pageTextColor,
                     colorScheme: pageColorScheme,
@@ -81,11 +54,16 @@ struct ReaderView: View {
                 ) {
                     ToolbarList(readerVM: readerVM)
                 }
-                .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { pageFrames.footer = $0 }
-                .padding(.horizontal)
             }
+            .padding(.horizontal, PageLayoutKnobs.sideMargin)
         }
-        // Centred on the screen, whatever the bars' margins, and just above the ••• button.
+
+        .onGeometryChange(for: ScreenGeometry.self) {
+            ScreenGeometry(safeSize: $0.size, safeAreaTop: $0.safeAreaInsets.top, safeAreaBottom: $0.safeAreaInsets.bottom)
+        } action: {
+            readerVM.screenChanged($0)
+        }
+        .task { await readerVM.onAppear() }
         .overlay {
             ReturnControls(
                 canReturn: referenceVM.canReturn,
@@ -96,9 +74,14 @@ struct ReaderView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
             .padding(.bottom, Self.returnControlsBottom)
         }
-        .background(Color(PageTextStyle.backgroundColor(for: theme)))
-        // The reading mode applies to the page, its controls and the sheets, and ends when the reader closes.
-        .preferredColorScheme(readingColorScheme)
+        .background(Color(PageTextStyle.backgroundColor(for: readerVM.theme)))
+        .preferredColorScheme(readerVM.forcedDarkMode.map { $0 ? .dark : .light })
+        .onChange(of: colorScheme, initial: true) { _, colorScheme in
+            readerVM.systemAppearanceChanged(isDark: colorScheme == .dark)
+        }
+        .onChange(of: horizontalSizeClass, initial: true) { _, horizontalSizeClass in
+            readerVM.widthClassChanged(isRegular: horizontalSizeClass == .regular)
+        }
         .onReceive(NotificationCenter.default.publisher(for: UIScreen.brightnessDidChangeNotification)) { _ in
             readerSettingsVM.screenBrightnessChanged()
         }
@@ -112,7 +95,7 @@ struct ReaderView: View {
             }
         }
         .overlay {
-            if isSettingsPanelShown {
+            if readerVM.isSettingsPanelShown {
                 Color.black.opacity(0.3)
                     .ignoresSafeArea()
                     .onTapGesture(perform: readerVM.sheetDismissed)
@@ -122,13 +105,13 @@ struct ReaderView: View {
             }
         }
         .overlay {
-            if isSettingsPanelShown {
+            if readerVM.isSettingsPanelShown {
                 ThemeSettingsPanel(readerSettingsVM: readerSettingsVM, onClose: readerVM.sheetDismissed)
                     .transition(.move(edge: .bottom))
             }
         }
-        .animation(.smooth(duration: 0.35), value: isSettingsPanelShown)
-        .sheet(item: Binding(get: { presentedSheet }, set: { _ in readerVM.sheetDismissed() })) { sheet in
+        .animation(.smooth(duration: 0.35), value: readerVM.isSettingsPanelShown)
+        .sheet(item: $readerVM.presentedSheet) { sheet in
             switch sheet {
             case .contents:
                 ContentsSheet(

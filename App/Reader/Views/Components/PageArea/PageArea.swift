@@ -1,44 +1,48 @@
 import SwiftUI
 
 /// The pages, filling the whole screen like Apple Books, so the book and chapter titles and the page label turn with the text.
-/// The reader's bars stay on top with only their buttons.
+/// The reader's bars stay on top with only their buttons. It renders what `ReaderVM` says and forwards taps: it shows the pager
+/// of the chosen style, and hosts the reference card.
 struct PageArea: View {
     let readerVM: ReaderVM
-    let textMarginRatio: CGFloat
-    /// Where the titles, the text and the page label go, in global coordinates. Measured from the reader's bars,
-    /// so the text sits, and paginates, exactly where it did between them.
-    let screenFrames: PageFrames
-    private var referenceVM: ReferenceVM { readerVM.referenceVM }
-    private var readerSettingsVM: ReaderSettingsVM { readerVM.readerSettingsVM }
-    /// Room the reference popover needs below an underline. About the tallest card (a long quote on an iPhone), plus a margin.
-    private static let popoverHeight: CGFloat = 400
+    @Bindable var referenceVM: ReferenceVM
+    let ratingVM: RatingVM
 
     var body: some View {
-        GeometryReader { proxy in
-            let frames = screenFrames.relative(to: proxy.frame(in: .global).origin)
-            // Nothing until the bars are measured: paginating for an empty page would be wasted.
-            if !frames.text.isEmpty {
-                pages(frames: frames)
+        Group {
+            if let content = readerVM.pageContent {
+                pages(content)
+                    .popover(
+                        item: $referenceVM.presentedCard,
+                        attachmentAnchor: .rect(.rect(referenceVM.cardAnchor)),
+                        arrowEdge: readerVM.isCardBelowUnderline ? .top : .bottom
+                    ) { referenceCard in
+                        RefPopover(
+                            card: referenceCard,
+                            verdict: ratingVM.verdict,
+                            isAskingToShare: ratingVM.isAskingToShare,
+                            onVerdictTapped: ratingVM.verdictTapped,
+                            onSharingChosen: ratingVM.sharingChosen,
+                            onJumpTapped: referenceVM.jumpToPassageTapped
+                        )
+                        // Reads this underline's saved rating each time the card opens.
+                        .task(id: referenceCard.underlineID) { await ratingVM.cardShown(underlineID: referenceCard.underlineID) }
+                    }
+            } else if readerVM.hasFailedToOpen {
+                ContentUnavailableView("Can't Open Book", systemImage: "book.closed")
+            } else {
+                ProgressView()
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    /// The pages in the style that's chosen: Curl on UIPageViewController's curl, Slide and Fast Fade on our own pager.
+    /// Curl on UIPageViewController's own curl; Slide and Fast Fade on our pager.
     @ViewBuilder
-    private func turningPages(shownPage: Page, horizontalMargin: CGFloat, frames: PageFrames) -> some View {
-        let content = PageContent(
-            pages: readerVM.pages,
-            shownPage: shownPage,
-            settings: readerSettingsVM.layoutSettings,
-            horizontalMargin: horizontalMargin,
-            marks: readerVM.visibleMarks,
-            chrome: readerVM.chrome(for:),
-            frames: frames,
-            selectedUnderlineID: referenceVM.selectedUnderlineID
-        )
+    private func pages(_ content: PageContent) -> some View {
         let actions = PageActions(
-            onPageChanged: { readerVM.pageChanged($0) },
-            onCenterTapped: { readerVM.pageCenterTapped() },
+            onPageChanged: readerVM.pageChanged,
+            onCenterTapped: readerVM.pageCenterTapped,
             onMarkTapped: { referenceVM.markTapped($0, at: $1) }
         )
         if content.settings.pageTurnStyle == .curl {
@@ -47,42 +51,29 @@ struct PageArea: View {
             PageSlideView(content: content, actions: actions)
         }
     }
+}
 
-    private func pages(frames: PageFrames) -> some View {
-        let horizontalMargin = (frames.text.width * textMarginRatio).rounded()
-        let viewport = Viewport(size: frames.text.size, horizontalMargin: horizontalMargin)
-        return Group {
-            if let shownPage = readerVM.shownPage {
-                turningPages(shownPage: shownPage, horizontalMargin: horizontalMargin, frames: frames)
-                    .popover(
-                        item: Binding(get: { referenceVM.card }, set: { _ in referenceVM.cardDismissed() }),
-                        attachmentAnchor: .rect(.rect(referenceVM.cardAnchor)),
-                        // Below the underline when the card fits there, else above it. SwiftUI only takes one fixed
-                        // edge, or nil to let the system pick the roomiest side, which puts the card above mid-page underlines.
-                        arrowEdge: frames.text.maxY - referenceVM.cardAnchor.maxY >= Self.popoverHeight ? .top : .bottom
-                    ) { referenceCard in
-                        RefPopover(
-                            card: referenceCard,
-                            verdict: readerVM.ratingVM.verdict,
-                            isAskingToShare: readerVM.ratingVM.isAskingToShare,
-                            onVerdictTapped: readerVM.ratingVM.verdictTapped,
-                            onSharingChosen: readerVM.ratingVM.sharingChosen,
-                            onJumpTapped: referenceVM.jumpToPassageTapped
-                        )
-                        // Reads this underline's saved rating each time the card opens.
-                        .task(id: referenceCard.underlineID) { await readerVM.ratingVM.cardShown(underlineID: referenceCard.underlineID) }
-                    }
-            } else if readerVM.hasFailedToOpen {
-                ContentUnavailableView("Can't Open Book", systemImage: "book.closed")
-            } else {
-                ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
+/// For previews: a sample book opened in a reader, with the screen measured as `ReaderView` does.
+struct PagePreview<Content: View>: View {
+    @State private var readerVM = PreviewFixtures.readerVM()
+    @ViewBuilder let content: (ReaderVM) -> Content
+
+    var body: some View {
+        ZStack {
+            content(readerVM)
+                .ignoresSafeArea()
         }
-        .task { await readerVM.onAppear(viewport: viewport) }
-        .onChange(of: viewport) { _, viewport in readerVM.viewportChanged(viewport) }
+        .onGeometryChange(for: ScreenGeometry.self) {
+            ScreenGeometry(safeSize: $0.size, safeAreaTop: $0.safeAreaInsets.top, safeAreaBottom: $0.safeAreaInsets.bottom)
+        } action: {
+            readerVM.screenChanged($0)
+        }
+        .task { await readerVM.onAppear() }
     }
 }
 
-// No preview of its own: it needs the reader's bars to measure. The Reader preview shows it in place.
-
+#Preview("Page Area") {
+    PagePreview { readerVM in
+        PageArea(readerVM: readerVM, referenceVM: readerVM.referenceVM, ratingVM: readerVM.ratingVM)
+    }
+}

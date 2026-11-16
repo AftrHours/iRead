@@ -13,3 +13,11 @@ struct PageSlideView: UIViewRepresentable {
         slider.update(content, actions: actions)
     }
 }
+
+#Preview("Page Slide") {
+    PagePreview { readerVM in
+        if let content = readerVM.pageContent {
+            PageSlideView(content: content, actions: .none)
+        }
+    }
+}
