@@ -92,3 +92,31 @@ struct SearchView: View {
         }
     }
 }
+
+@MainActor
+private func previewSearchVM(query: String = "") -> SearchVM {
+    let folder = URL.temporaryDirectory.appending(path: "iRead-XcodePreview-\(UUID().uuidString)")
+    let readerStateCtrl = ReaderStateCtrl(
+        bookID: BookRecord.samples[0].book.id,
+        readingSettingsRepo: ReadingSettingsRepo(folder: folder),
+        brightnessSvc: BrightnessSvc(),
+        bookStateRepo: BookStateRepo(folder: folder)
+    )
+    let results = (1...5).map {
+        SearchResult(chapterTitle: "Chapter \($0)", snippet: "…\(query) said Jo, laying down her pen…",
+                     position: ReadingPosition(paragraph: $0, charOffset: 0), length: query.count, pageNumber: $0 * 12)
+    }
+    let searchVM = SearchVM(search: { _ in results }, readerStateCtrl: readerStateCtrl, onResultPicked: { _ in })
+    if !query.isEmpty {
+        searchVM.recentSearchTapped(query)
+    }
+    return searchVM
+}
+
+#Preview("Search – Empty") {
+    SearchView(searchVM: previewSearchVM())
+}
+
+#Preview("Search – Results") {
+    SearchView(searchVM: previewSearchVM(query: "Jo"))
+}
