@@ -10,31 +10,31 @@ enum UnderlineRepoKnobs {
 }
 
 actor UnderlineRepo {
-    private struct StoredChapter: Codable {
+    struct StoredChapter: Codable {
         let parserVersion: Int
         /// nil in files saved before this field existed.
         let engineVersion: Int?
         let underlines: [SavedUnderline]
     }
 
-    private static let recordType = "ChapterUnderlines"
-    private let folder: URL
+    static let recordType = "ChapterUnderlines"
+    let folder: URL
     /// Chapters worked out ahead and bundled with the app, laid out like `folder`. nil: none, as in tests.
-    private let seedFolder: URL?
-    private let logger = Logger(subsystem: Logger.appSubsystem, category: "storage")
+    let seedFolder: URL?
+    let logger = Logger(subsystem: Logger.appSubsystem, category: "storage")
     /// nil: rules only, as in tests.
-    private let modelCheckSvc: ModelCheckSvc?
+    let modelCheckSvc: ModelCheckSvc?
     /// nil: no iCloud, as in tests.
-    private let cloudSvc: (any CloudSvc)?
-    private var underlineCtrl: UnderlineCtrl?
-    private var foundUnderlines: [String: [Int: [SavedUnderline]]] = [:]
-    private var finishedChapters: [String: Set<Int>] = [:]
+    let cloudSvc: (any CloudSvc)?
+    var underlineCtrl: UnderlineCtrl?
+    var foundUnderlines: [String: [Int: [SavedUnderline]]] = [:]
+    var finishedChapters: [String: Set<Int>] = [:]
     private var running: Task<Void, Never>?
     #if DEBUG
-    private var foundRecords: [String: [Int: [UnderlineRecord]]] = [:]
-    private var cloudResults: [String: [Int: String]] = [:]
-    private var bookRuns: [String: BookRun] = [:]
-    private var bookTask: Task<Void, Never>?
+    var foundRecords: [String: [Int: [UnderlineRecord]]] = [:]
+    var cloudResults: [String: [Int: String]] = [:]
+    var bookRuns: [String: BookRun] = [:]
+    var bookTask: Task<Void, Never>?
     #endif
 
     init(folder: URL = .applicationSupportDirectory.appending(path: "Underlines"), seedFolder: URL? = nil,
@@ -79,140 +79,8 @@ actor UnderlineRepo {
         foundUnderlines[book]?.values.lazy.flatMap { $0 }.first { $0.id == id }
     }
 
-    #if DEBUG
-    func records(inChapter chapter: Int, of book: String) -> [UnderlineRecord] {
-        foundRecords[book]?[chapter] ?? []
-    }
 
-    func cloudResult(inChapter chapter: Int, of book: String) -> String? {
-        cloudResults[book]?[chapter]
-    }
-
-    /// Progress of "Underline whole book", for the debug sheet.
-    struct BookRun: Sendable, Equatable {
-        let total: Int
-        var finished = 0
-        var current: Int?
-        /// Phrases the model failed on, in chapters that were saved anyway.
-        var skippedPhrases = 0
-        /// Chapters with too many failures, left for the next run.
-        var leftOut: [Int] = []
-        var isRunning = true
-        /// Why the run didn't start, such as the model not answering.
-        var refusal: String?
-    }
-
-    func bookRun(of book: String) -> BookRun? {
-        bookRuns[book]
-    }
-
-    /// Where a book's chapters are saved. The folder appears once the first chapter is done.
-    func savedFolder(of book: String) -> String {
-        folder.appending(path: book).path(percentEncoded: false)
-    }
-
-    /// Underlines every chapter in order and saves each one, so a whole book can be worked out in one go. Chapters already
-    /// saved are skipped, so a stopped run carries on where it was. The chapter being read is not touched.
-    /// Only with Foundation Models: the chapters it saves become the seeds testers get, and rules alone underline far
-    /// less. When the app is on rules, the model is tried once more first.
-    func startBook(_ content: BookContent) async {
-        guard bookTask == nil else { return }
-        guard await modelEngine() != nil else {
-            bookRuns[content.fingerprint] = BookRun(total: content.chapters.count, isRunning: false,
-                                                    refusal: "Not started: Foundation Models isn't answering, try again in a moment")
-            logger.notice("Whole book not started: the on-device model isn't answering")
-            return
-        }
-        bookRuns[content.fingerprint] = BookRun(total: content.chapters.count)
-        logger.info("Whole book: chapters are saved in \(self.savedFolder(of: content.fingerprint), privacy: .public)")
-        bookTask = Task { await self.runBook(content) }
-    }
-
-    func stopBook() {
-        bookTask?.cancel()
-    }
-
-    /// The engine on Foundation Models, switching from rules when the model answers now. nil when it still doesn't.
-    private func modelEngine() async -> UnderlineCtrl? {
-        let current = await engine()
-        if current.usesModel { return current }
-        guard await modelAnswers() else { return nil }
-        let made = UnderlineCtrl(model: .automatic)
-        guard made.usesModel else { return nil }
-        underlineCtrl = made
-        logger.info("The on-device model answers now, so underlines use it")
-        return made
-    }
-
-    /// What "Export saved chapters" copied: chapter files per book fingerprint, and files left behind because an older
-    /// engine made them.
-    struct Export: Sendable {
-        var chapters: [String: Int] = [:]
-        var outdated = 0
-    }
-
-    /// Copies the saved chapters of every book into `destination`, one folder per book named by its fingerprint, the way
-    /// the seeds bundled with the app are laid out. A file already there is replaced; nothing else in `destination` is
-    /// touched. Chapters from an older engine are left out.
-    func exportSaved(to destination: URL) throws -> Export {
-        let manager = FileManager.default
-        var export = Export()
-        let books = try manager.contentsOfDirectory(at: folder, includingPropertiesForKeys: [.isDirectoryKey])
-            .filter { (try? $0.resourceValues(forKeys: [.isDirectoryKey]).isDirectory) == true }
-        for book in books {
-            let files = try manager.contentsOfDirectory(at: book, includingPropertiesForKeys: nil)
-                .filter { $0.lastPathComponent.hasPrefix("chapter-") && $0.pathExtension == "json" }
-            let current = files.filter { file in
-                let stored = (try? Data(contentsOf: file)).flatMap { try? JSONDecoder().decode(StoredChapter.self, from: $0) }
-                return stored?.engineVersion == UnderlineRepoKnobs.engineVersion
-            }
-            export.outdated += files.count - current.count
-            guard !current.isEmpty else { continue }
-            let target = destination.appending(path: book.lastPathComponent)
-            try manager.createDirectory(at: target, withIntermediateDirectories: true)
-            for file in current {
-                let copy = target.appending(path: file.lastPathComponent)
-                if manager.fileExists(atPath: copy.path(percentEncoded: false)) { try manager.removeItem(at: copy) }
-                try manager.copyItem(at: file, to: copy)
-            }
-            export.chapters[book.lastPathComponent] = current.count
-        }
-        logger.info("Exported \(export.chapters.values.reduce(0, +)) chapters of \(export.chapters.count) books to \(destination.path(percentEncoded: false), privacy: .public)")
-        return export
-    }
-
-    private func runBook(_ content: BookContent) async {
-        let book = content.fingerprint
-        defer {
-            let left = (bookRuns[book]?.leftOut ?? []).map(String.init).joined(separator: ", ")
-            logger.info("Whole book ended: \(self.bookRuns[book]?.finished ?? 0) of \(content.chapters.count) chapters done, left out: \(left.isEmpty ? "none" : left)")
-            bookRuns[book]?.isRunning = false
-            bookRuns[book]?.current = nil
-            bookTask = nil
-        }
-        for chapter in content.chapters.indices {
-            if Task.isCancelled { return }
-            if !isFinished(chapter, of: book, parserVersion: content.parserVersion) {
-                let paragraphs = content.chapters[chapter].paragraphs
-                // A chapter without sentences has nothing to underline.
-                if let first = content.sentences.firstIndex(where: { paragraphs.contains($0.paragraph) }) {
-                    bookRuns[book]?.current = chapter
-                    logger.info("Whole book: starting chapter \(chapter) of \(content.chapters.count)")
-                    let (_, continuation) = AsyncStream<Void>.makeStream()
-                    await run(chapter, of: content, startingAt: first, continuation: continuation, toleratesFailures: true)
-                    if Task.isCancelled { return }
-                    guard finishedChapters[book]?.contains(chapter) == true else {
-                        bookRuns[book]?.leftOut.append(chapter)
-                        continue
-                    }
-                }
-            }
-            bookRuns[book]?.finished += 1
-        }
-    }
-    #endif
-
-    private func run(_ index: Int, of content: BookContent, startingAt sentence: Int,
+    func run(_ index: Int, of content: BookContent, startingAt sentence: Int,
                      continuation: AsyncStream<Void>.Continuation, toleratesFailures: Bool = false) async {
         defer { continuation.finish() }
         let book = content.fingerprint
@@ -259,118 +127,6 @@ actor UnderlineRepo {
         logger.info("Chapter \(index) saved: \(stored.underlines.count) underlines, the model failed on \(failedCount) of \(phraseCount) phrases")
         // Its own task, so starting another chapter doesn't cancel the upload.
         await Task { await self.upload(stored, chapter: index, of: book) }.value
-    }
-
-    /// The system can report the model available while every call fails, and the engine then drops every phrase,
-    /// so the model is tried once first and the engine falls back to rules.
-    private func engine() async -> UnderlineCtrl {
-        if let underlineCtrl { return underlineCtrl }
-        let canUseModel = await modelAnswers()
-        if let underlineCtrl { return underlineCtrl }
-        let made = UnderlineCtrl(model: canUseModel ? .automatic : .rulesOnly)
-        underlineCtrl = made
-        return made
-    }
-
-    /// Its own task, so a chapter stopped while the model is tried (the reader turned to another chapter) doesn't cancel
-    /// the call and count as the model failing, which would leave the app on rules until it is opened again.
-    private func modelAnswers() async -> Bool {
-        guard let modelCheckSvc else { return false }
-        return await Task { await modelCheckSvc.modelAnswers() }.value
-    }
-
-    /// A chapter is finished when this device saved it, or when the app comes with it: the bundled books are worked out
-    /// ahead, so a reader never waits on the engine for them. Either way iCloud isn't asked.
-    private func isFinished(_ chapter: Int, of book: String, parserVersion: Int) -> Bool {
-        if finishedChapters[book]?.contains(chapter) == true { return true }
-        if let stored = storedChapter(at: fileURL(chapter: chapter, of: book, in: folder), parserVersion: parserVersion) {
-            use(stored, chapter: chapter, of: book)
-            noteCloud("Saved on this device, so iCloud wasn't asked", chapter: chapter, of: book)
-            return true
-        }
-        if let seedFolder,
-           let stored = storedChapter(at: fileURL(chapter: chapter, of: book, in: seedFolder), parserVersion: parserVersion) {
-            use(stored, chapter: chapter, of: book)
-            noteCloud("Comes with the app, so iCloud wasn't asked", chapter: chapter, of: book)
-            return true
-        }
-        return false
-    }
-
-    /// nil when there's no file, or it was made by another parser or engine version.
-    private func storedChapter(at url: URL, parserVersion: Int) -> StoredChapter? {
-        guard let data = try? Data(contentsOf: url),
-              let stored = try? JSONDecoder().decode(StoredChapter.self, from: data),
-              isCurrent(stored, parserVersion: parserVersion) else { return nil }
-        return stored
-    }
-
-    private func isCurrent(_ stored: StoredChapter, parserVersion: Int) -> Bool {
-        stored.parserVersion == parserVersion && stored.engineVersion == UnderlineRepoKnobs.engineVersion
-    }
-
-    private func use(_ stored: StoredChapter, chapter: Int, of book: String) {
-        foundUnderlines[book, default: [:]][chapter] = stored.underlines
-        finishedChapters[book, default: []].insert(chapter)
-    }
-
-    private func save(_ stored: StoredChapter, chapter: Int, of book: String) {
-        let url = fileURL(chapter: chapter, of: book)
-        do {
-            try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
-            try JSONEncoder().encode(stored).write(to: url, options: .atomic)
-        } catch {
-            logger.error("Couldn't save underlines for \(book, privacy: .public): \(error.localizedDescription, privacy: .public)")
-        }
-    }
-
-    private func fileURL(chapter: Int, of book: String, in folder: URL? = nil) -> URL {
-        (folder ?? self.folder).appending(path: "\(book)/chapter-\(chapter).json")
-    }
-
-    /// nil when iCloud has no current copy or can't be reached.
-    private func cloudChapter(_ chapter: Int, of book: String, parserVersion: Int) async -> StoredChapter? {
-        guard let cloudSvc else { return nil }
-        do {
-            guard case .bytes(let data)? = try await cloudSvc.record(named: recordName(chapter, of: book), in: .reader)?["chapter"] else {
-                noteCloud("Not in iCloud yet, so the engine ran", chapter: chapter, of: book)
-                return nil
-            }
-            let stored = try JSONDecoder().decode(StoredChapter.self, from: data)
-            guard isCurrent(stored, parserVersion: parserVersion) else {
-                noteCloud("In iCloud from an older engine, so the engine ran", chapter: chapter, of: book)
-                return nil
-            }
-            noteCloud("Loaded from iCloud", chapter: chapter, of: book)
-            return stored
-        } catch {
-            logger.info("No underlines from iCloud for \(book, privacy: .public): \(error.localizedDescription, privacy: .public)")
-            noteCloud("Couldn't ask iCloud: \(error.localizedDescription)", chapter: chapter, of: book)
-            return nil
-        }
-    }
-
-    private func upload(_ stored: StoredChapter, chapter: Int, of book: String) async {
-        guard let cloudSvc else { return }
-        do {
-            try await cloudSvc.save(["chapter": .bytes(JSONEncoder().encode(stored))], asRecord: recordName(chapter, of: book),
-                                    ofType: Self.recordType, in: .reader)
-            noteCloud("Underlined here and saved to iCloud", chapter: chapter, of: book)
-        } catch {
-            logger.info("Couldn't put underlines in iCloud for \(book, privacy: .public): \(error.localizedDescription, privacy: .public)")
-            noteCloud("Underlined here, but couldn't save to iCloud: \(error.localizedDescription)", chapter: chapter, of: book)
-        }
-    }
-
-    /// For the debug sheet only.
-    private func noteCloud(_ result: String, chapter: Int, of book: String) {
-        #if DEBUG
-        cloudResults[book, default: [:]][chapter] = result
-        #endif
-    }
-
-    private func recordName(_ chapter: Int, of book: String) -> String {
-        "\(book)-\(chapter)"
     }
 }
 
