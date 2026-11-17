@@ -102,7 +102,7 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | RD-19 | P0 | `ReaderStateCtrl` return position | Save A, save B, reload | A kept; survives reload; clear removes |
 | RD-21 | P1 | `ReadingSettings` | `textSizeIndex` -1 and 99 | 17 and 56 |
 | RD-22 | P1 | `ReadingSettingsRepo` | No file / save then read | Defaults / saved |
-| RD-23 | P1 | `ReferenceVM` | Jump to passage, then Return | Return position saved on jump; return shows original page and clears it |
+| RD-23 | P1 | `ReferenceVM` | Jump to passage, then Return | Return position saved on jump (`returnPrompt` is `.choice`); return shows original page, clears it and shows `.returned(message:)` |
 | RD-24 | P0 | `ReferenceVM.close` | Chapter underlining running; close the reader | Underline task cancelled and not restarted by a page update or `appForegrounded`; `ReferenceVM` released |
 | RD-25 | P0 | `ReaderCtrl.search` | Search cancelled before it runs | No results; no chapters laid out; a later search still finds matches |
 | RD-26 | P0 | `SearchVM` | Results shown; query changes to " A " | Results cleared; no search |
@@ -127,6 +127,7 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | RD-45 | P0 | `ReaderVM.screenChanged` | Measure the screen before the book opens | The layout is the screen's; no page content yet |
 | RD-46 | P0 | `ReaderVM` settings panel | Open Theme & Settings on a narrow, then a full-width screen; dismiss | Sheet on a narrow screen, panel on a full-width one (no sheet); setting the sheet to nil closes it |
 | RD-47 | P1 | `ReaderVM.isDarkPage` | Match Device; the device goes dark | Light, then dark |
+| RD-48 | P1 | `ReaderVM.isCardForPad` | A narrow, then a full-width screen | iPhone card, then iPad card |
 
 ## Underlines and references
 
