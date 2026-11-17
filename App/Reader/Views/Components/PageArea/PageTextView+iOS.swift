@@ -118,10 +118,10 @@ final class PageTextView: UIView {
         titleLabel.frame = CGRect(x: header.minX, y: titlesTop, width: header.width, height: titleHeight)
         chapterLabel.frame = CGRect(x: header.minX, y: titlesTop + titleHeight + Self.titleSpacing,
                                     width: header.width, height: chapterHeight)
-        // Level with the text's left edge, centred in the footer's height, level with the ••• button.
+        // Level with the × button's left edge (the bar's side margin), centred in the footer's height, level with the ••• button.
         let pageLabelSize = pageLabel.intrinsicContentSize
-        pageLabel.frame = CGRect(x: textView.frame.minX, y: layout.footer.midY - pageLabelSize.height / 2,
-                                 width: min(pageLabelSize.width, textView.frame.width), height: pageLabelSize.height)
+        pageLabel.frame = CGRect(x: layout.footer.minX, y: layout.footer.midY - pageLabelSize.height / 2,
+                                 width: min(pageLabelSize.width, layout.footer.width), height: pageLabelSize.height)
     }
 
     /// Lays the text out now, so showing the page later costs nothing.
