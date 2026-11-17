@@ -1,16 +1,13 @@
 import SwiftUI
 import UIKit
 
-/// The reading page: the pages across the whole screen, and the bars on top. It renders what `ReaderVM` says and forwards taps
-/// and the few facts only a view knows (the device's light or dark style, the width class).
+
 struct ReaderView: View {
     @Bindable private var readerVM: ReaderVM
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
-    /// The return pills' underside, above the bottom bar: the ••• button's height and 9pt between, less the 5pt of tap area
-    /// under each pill.
     private static let returnControlsBottom: CGFloat = PageLayoutKnobs.barHeight + 9 - 5
 
     private let readerSettingsVM: ReaderSettingsVM
@@ -37,7 +34,6 @@ struct ReaderView: View {
             PageArea(readerVM: readerVM, referenceVM: referenceVM, ratingVM: ratingVM)
                 .ignoresSafeArea()
 
-            // The bars take their height and side margin from PageLayoutKnobs, as the titles and page label drawn on the pages do.
             VStack(spacing: 0) {
                 TopBar(
                     foreground: pageTextColor,
@@ -65,9 +61,8 @@ struct ReaderView: View {
         }
         .task { await readerVM.onAppear() }
         .overlay {
-            ReturnControls(
-                canReturn: referenceVM.canReturn,
-                toastText: referenceVM.toastText,
+            ReferredButton(
+                prompt: referenceVM.returnPrompt,
                 onDismiss: referenceVM.returnDismissed,
                 onReturn: referenceVM.returnToReadingTapped
             )
@@ -85,7 +80,7 @@ struct ReaderView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIScreen.brightnessDidChangeNotification)) { _ in
             readerSettingsVM.screenBrightnessChanged()
         }
-        .animation(.easeInOut, value: referenceVM.toastText)
+        .animation(.easeInOut, value: referenceVM.returnPrompt)
         .animation(.easeInOut(duration: 0.2), value: readerVM.isFocusMode)
         .onChange(of: scenePhase) { _, scenePhase in
             if scenePhase == .background {
