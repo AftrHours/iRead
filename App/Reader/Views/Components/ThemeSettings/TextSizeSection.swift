@@ -11,7 +11,7 @@ struct TextSizeSection: View {
             HStack(spacing: layout.iconGap) {
                 Text("A")
                     .font(AppTypography.footnote(.medium))
-                    .foregroundStyle(AppColors.settingsSecondaryText)
+                    .foregroundStyle(AppColors.settingsSliderText)
                     .frame(width: layout.iconColumn)
                     .accessibilityHidden(true)
                 SettingsSlider(value: $value, range: range, step: 1, label: "Text Size")

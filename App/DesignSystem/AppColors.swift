@@ -1,64 +1,90 @@
 import SwiftUI
 import UIKit
 
-/// Semantic color tokens shared across app features.
+/// Semantic color tokens shared across app features. Each one points at a PrimaryColor for light and for dark.
+/// A value that isn't in the palette yet stays a hex until design adds it.
+/// Figma lists Background, Background — Dark, Text and Text — Dark separately. Here each token holds both modes
+/// (`light:` and `dark:`), so the Figma frames come out as two groups: Background and Text.
 enum AppColors {
-    static let backgroundPrimary = adaptive(light: 0xF3F4FF, dark: 0x0C0C24)
-    static let cardBackground = Color(hex: 0xFFFDFB)
-    static let cardProgressTrack = Color(hex: 0xFFD4AD)
+    // MARK: - Background (Figma: Background, Background — Dark)
+
+    static let bgPrimary = adaptive(light: PrimaryColor.purple50, dark: PrimaryColor.purple900)
+    static let readerBg=adaptive(light: PrimaryColor.white0, dark: PrimaryColor.black)
+    static let readerReferencePanel = adaptive(light: PrimaryColor.orange50, dark: PrimaryColor.orange50)
+    static let actionPrimary = Color(hex: PrimaryColor.orange500)
+    static let menuBg = adaptive(light: PrimaryColor.purple50, dark: PrimaryColor.purple800)
+    static let settingsBg = adaptive(light: PrimaryColor.neutral100, dark: PrimaryColor.purple900)
+    static let settingsControlBg = adaptive(light: PrimaryColor.purple50, dark: PrimaryColor.purple800)
+    static let settingSliderFill = adaptive(light: PrimaryColor.orange500, dark: PrimaryColor.orange500)
+    static let settingSliderTrack = adaptive(light: PrimaryColor.neutral500, dark: PrimaryColor.white0,
+                                             lightAlpha: 0.6, darkAlpha: 0.6)
+    // In the design, not drawn yet: SwiftUI's Slider doesn't let an app colour its step dots or its knob.
+    static let settingSliderTick = adaptive(light: PrimaryColor.neutral500, dark: PrimaryColor.white0,
+                                            lightAlpha: 0.6, darkAlpha: 0.6)
+    static let settingSliderKnob = adaptive(light: PrimaryColor.white0, dark: PrimaryColor.white0)
+    static let popoverQuoteIconBg = adaptive(light: PrimaryColor.purple700, dark: PrimaryColor.purple200)
+    /// Figma points this at popover/quote-bg, so it follows that token's light and dark.
+    static let popoverQuoteIcon = adaptive(light: PrimaryColor.orange50, dark: PrimaryColor.purple800)
+    static let cardBg = Color(hex: PrimaryColor.white50)
+
+    // MARK: - Text (Figma: Text, Text — Dark)
+
+    static let textPrimary = adaptive(light: PrimaryColor.purple900, dark: PrimaryColor.purple50)
+    static let textSecondary = adaptive(light: PrimaryColor.purple600, dark: PrimaryColor.purple200)
+    static let readerText = adaptive(light: PrimaryColor.neutral900, dark: PrimaryColor.white0)
+    static let readerReference = adaptive(light: PrimaryColor.neutral900, dark: PrimaryColor.white0)
+    static let textAccent = adaptive(light: PrimaryColor.orange700, dark: PrimaryColor.orange500)
+    static let menuText = adaptive(light: PrimaryColor.neutral900, dark: PrimaryColor.neutral50)
+    static let menuTextMuted = adaptive(light: PrimaryColor.neutral300, dark: PrimaryColor.purple400)
+    static let accountSignIn = adaptive(light: PrimaryColor.purple600, dark: PrimaryColor.purple400)
+    static let accountSignOut = adaptive(light: PrimaryColor.red500, dark: PrimaryColor.red400)
+    static let popoverQuoteText = adaptive(light: PrimaryColor.purple900, dark: PrimaryColor.white50)
+    static let settingsText = adaptive(light: PrimaryColor.neutral900, dark: PrimaryColor.white50)
+    //
+    static let settingsSliderText = adaptive(light: PrimaryColor.neutral700, dark: PrimaryColor.white0, lightAlpha: 0.8)
+    static let cardTextPrimary = Color(hex: PrimaryColor.purple900)
+    static let cardTextSecondary = Color(hex: PrimaryColor.purple600)
+
+    // MARK: - Not in Figma's Semantic tokens yet
+
+    // Library and Search
+    static let progressBarBg = adaptive(light: PrimaryColor.orange200, dark: PrimaryColor.orange200)
+    static let progressBarLine = adaptive(light: PrimaryColor.orange500, dark: PrimaryColor.orange500)
     static let cardMenuIcon = Color(hex: 0xB2B5E8)
     static let searchBackground = adaptive(light: 0xE0E0EA, dark: 0x32324B)
     static let searchMutedForeground = Color(hex: 0x6A6A83)
-    static let libraryEmptyMessageText = adaptive(light: 0x6E73B6, dark: 0xCDD2F4)
-    static let searchEmptyMessageText = adaptive(light: 0x6E73B6, dark: 0xB1B6E6)
-    static let readerBackground = adaptive(light: 0xFFFFFF, dark: 0x000000)
-    static let readerReferencePanel = adaptive(light: 0xFFF6ED, dark: 0xFFF6ED)
-    static let actionPrimary = Color(hex: 0xFFA248)
-    static let cardTextPrimary = Color(hex: 0x0C0C24)
-    static let cardTextSecondary = Color(hex: 0x4F5297)
-    static let menuBackground = adaptive(light: 0xF3F4FF, dark: 0x1E1E48)
-    static let popoverBackground = adaptive(light: 0xFFFFFF, dark: 0x1E1E48)
-    static let popoverQuoteBackground = adaptive(light: 0xFFF6ED, dark: 0x1E1E48)
-    static let settingsBackground = adaptive(light: 0xF8F8F8, dark: 0x0C0C24)
-    static let settingsControlBackground = adaptive(light: 0xF3F4FF, dark: 0x1E1E48)
-    static let popoverQuoteIconBackground = adaptive(light: 0x333375, dark: 0xCDD2F4)
-    /// A highlighted passage on the page: the underline last tapped, a search result, a jumped-to passage. The design's purple-200
-    /// (popover/quote-icon-bg in dark), softened so the page's text stays readable on it. A UIColor, because the page is drawn in UIKit.
-    static let readerHighlight = adaptiveUIColor(light: 0xCDD2F4, dark: 0xCDD2F4, lightAlpha: 0.6, darkAlpha: 0.3)
-    static let popoverQuoteIcon = adaptive(light: 0xFFF6ED, dark: 0x1E1E48)
+    static let libraryEmptyMessageText = adaptive(light: PrimaryColor.purple500, dark: PrimaryColor.purple200)
+    static let searchEmptyMessageText = adaptive(light: PrimaryColor.purple500, dark: PrimaryColor.purple300)
 
-    static let textPrimary = adaptive(light: 0x0C0C24, dark: 0xF3F4FF)
-    static let textSecondary = adaptive(light: 0x4F5297, dark: 0xCDD2F4)
-    static let readerText = adaptive(light: 0x1A1A1A, dark: 0xFFFFFF)
-    static let readerReference = adaptive(light: 0x1A1A1A, dark: 0xFFFFFF)
-    static let textAccent = adaptive(light: 0xB57333, dark: 0xFFA248)
-    static let menuText = adaptive(light: 0x1A1A1A, dark: 0xF5F5F5)
-    static let menuTextMuted = adaptive(light: 0xBFBFBF, dark: 0x9096D1)
-    static let accountSignIn = adaptive(light: 0x4F5297, dark: 0x9096D1)
-    static let accountSignOut = adaptive(light: 0xFF383C, dark: 0xFF4245)
-    static let popoverQuoteText = adaptive(light: 0x0C0C24, dark: 0xFFFDFB)
+    // Reader
+    static let readerHighlight = adaptiveUIColor(light: PrimaryColor.purple200, dark: PrimaryColor.purple200,
+                                                 lightAlpha: 0.6, darkAlpha: 0.3)
 
-    static let settingsText = adaptive(light: 0x1A1A1A, dark: 0xFFFDFB)
+    // Reference popover tokens that the Semantic tokens frame doesn't list yet, from the popover design's color list.
+    static let popoverBg = adaptive(light: PrimaryColor.white0, dark: PrimaryColor.purple800)
+    static let popoverQuoteBg = adaptive(light: PrimaryColor.orange50, dark: PrimaryColor.purple800)
+    static let popoverLocationBg = adaptive(light: PrimaryColor.purple200, dark: PrimaryColor.purple300)
+    static let popoverPassageBg = adaptive(light: PrimaryColor.purple50, dark: PrimaryColor.purple600)
+    static let popoverPassageText = adaptive(light: PrimaryColor.purple900, dark: PrimaryColor.white50)
+    static let popoverLocationText = adaptive(light: PrimaryColor.purple900, dark: PrimaryColor.purple900)
+    static let popoverFeedbackIcon = adaptive(light: PrimaryColor.purple600, dark: PrimaryColor.purple50)
+    static let actionPrimaryText = adaptive(light: PrimaryColor.neutral900, dark: PrimaryColor.neutral900)
+    
 
-    // Reading Theme & Settings sheet.
-    static let settingsSheetBackground = adaptive(light: 0xFBFBFF, dark: 0x0C0C24)
-    static let settingsSecondaryText = adaptive(light: 0x3C3C43, dark: 0xFFFFFF, lightAlpha: 0.8, darkAlpha: 0.8)
-    static let settingsSliderTrack = adaptive(light: 0x787878, dark: 0xFFFFFF, lightAlpha: 0.6, darkAlpha: 0.6)
-    // In the design, not drawn yet: SwiftUI's Slider doesn't let an app colour its step dots or its knob.
-    static let settingsSliderTick = adaptive(light: 0x787878, dark: 0xFFFFFF, lightAlpha: 0.6, darkAlpha: 0.6)
-    static let settingsSliderKnob = adaptive(light: 0xFFFFFF, dark: 0xFFFFFF)
+    // Reading Theme & Settings sheet
+    static let sheetbg = adaptive(light: 0xFBFBFF, dark: PrimaryColor.purple900)
     static let settingsMenuButtonFill = adaptive(light: 0x444444, dark: 0x999999, lightAlpha: 0.6, darkAlpha: 0.17)
     /// The design uses the same grey in light and dark.
     static let settingsResetFill = adaptive(light: 0x444444, dark: 0x444444, lightAlpha: 0.17, darkAlpha: 0.17)
-    static let settingsResetText = adaptive(light: 0x1A1A1A, dark: 0xF5F5F5)
+    static let settingsResetText = adaptive(light: PrimaryColor.neutral900, dark: PrimaryColor.neutral50)
     /// The hairline between the Layout Options rows.
-    static let settingsDivider = adaptive(light: 0xE6E6E6, dark: 0x1A1A1A)
+    static let settingsDivider = adaptive(light: 0xE6E6E6, dark: PrimaryColor.neutral900)
     /// The iPad panel's drag handle. Faint on purpose, as in the design.
     static let settingsGrabber = adaptive(light: 0xCCCCCC, dark: 0x333333)
     /// The outline around the chosen theme tile.
-    static let settingsTileSelectedBorder = adaptive(light: 0x000000, dark: 0xFFFDFB)
+    static let settingsTileSelectedBorder = adaptive(light: PrimaryColor.black, dark: PrimaryColor.white50)
     /// The Original theme's tile. Its page is the system background, which would vanish into the sheet.
-    static let settingsOriginalTile = adaptive(light: 0xF2F1F1, dark: 0x000000)
+    static let settingsOriginalTile = adaptive(light: 0xF2F1F1, dark: PrimaryColor.black)
 
     /// A theme's swatch in Reading Theme & Settings: the page's own colour, except Original, whose page is the system
     /// background and would vanish into the sheet, so it gets settingsOriginalTile.

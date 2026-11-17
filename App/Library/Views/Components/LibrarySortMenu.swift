@@ -22,5 +22,5 @@ struct LibrarySortMenu: View {
         LibrarySortMenu(libVM: PreviewFixtures.libraryVM())
     }
     .padding()
-    .background(AppColors.menuBackground)
+    .background(AppColors.menuBg)
 }

@@ -17,7 +17,7 @@ struct ThemeSettingsPanel: View {
                 .safeAreaPadding(.top, 12)
                 .frame(width: min(Self.size.width, proxy.size.width - 40),
                        height: min(Self.size.height, proxy.size.height * 0.8))
-                .background(AppColors.settingsSheetBackground)
+                .background(AppColors.sheetbg)
                 .overlay(alignment: .top) { handle }
                 .clipShape(UnevenRoundedRectangle(topLeadingRadius: 34, topTrailingRadius: 34))
                 .shadow(color: .black.opacity(0.25), radius: 24)

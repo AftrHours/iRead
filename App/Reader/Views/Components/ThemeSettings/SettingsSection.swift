@@ -50,7 +50,7 @@ struct SettingsSlider: View {
             }
         }
         // The part you've dragged over is orange on every slider, as in the design.
-        .tint(AppColors.actionPrimary)
+        .tint(AppColors.settingSliderFill)
     }
 }
 

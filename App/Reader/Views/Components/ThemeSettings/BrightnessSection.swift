@@ -9,13 +9,13 @@ struct BrightnessSection: View {
         SettingsSection(title: "Brightness", systemImage: "sun.max") {
             HStack(spacing: layout.iconGap) {
                 Image(systemName: "sun.min")
-                    .foregroundStyle(AppColors.settingsSecondaryText)
+                    .foregroundStyle(AppColors.settingsSliderText)
                     .frame(width: layout.iconColumn)
                     .accessibilityHidden(true)
                 SettingsSlider(value: $value, range: 0...1, label: "Brightness")
                 Image(systemName: "sun.min.fill")
                     .font(.title3)
-                    .foregroundStyle(AppColors.settingsSecondaryText)
+                    .foregroundStyle(AppColors.settingsSliderText)
                     .accessibilityHidden(true)
             }
         }

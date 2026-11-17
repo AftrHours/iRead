@@ -106,5 +106,5 @@ struct ThemeTile: View {
                  onThemeTapped: { theme = $0 })
         .padding()
         .foregroundStyle(AppColors.settingsText)
-        .background(AppColors.settingsSheetBackground)
+        .background(AppColors.sheetbg)
 }

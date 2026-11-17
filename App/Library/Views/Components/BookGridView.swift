@@ -17,7 +17,7 @@ struct BookGridView<MenuButton: View>: View {
                 .padding(.horizontal, 12)
                 .padding(.bottom, 15)
         }
-        .background(AppColors.cardBackground)
+        .background(AppColors.cardBg)
         .clipShape(.rect(cornerRadius: 16))
     }
 
@@ -57,7 +57,7 @@ private struct BookGridPreview: View {
         BookGridView(item: item, menu: BookMenu(item: item, style: .card, onFinished: {}, onRename: {}, onRemove: {}))
             .frame(width: 171, height: 340)
             .padding()
-            .background(AppColors.backgroundPrimary)
+            .background(AppColors.bgPrimary)
     }
 }
 
