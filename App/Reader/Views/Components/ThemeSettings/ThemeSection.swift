@@ -12,7 +12,6 @@ struct ThemeSection: View {
         VStack(alignment: .leading, spacing: layout.themeHeaderGap) {
             HStack {
                 SettingsSectionHeader(title: "Theme", systemImage: "slider.horizontal.3")
-                    .padding(.leading, layout.themeHeaderInset)
                 Spacer()
                 HStack(spacing: layout.menuGroupGap) {
                     pageTurnMenu
@@ -63,7 +62,8 @@ struct ThemeSection: View {
         Image(systemName: systemImage)
             .font(.title3)
             .foregroundStyle(AppColors.settingsText)
-            .frame(width: layout.menuIconSize, height: layout.menuIconSize)
+            .padding(.horizontal, 10)
+            .frame(height: layout.menuIconSize)
             .contentShape(.rect)
     }
 }
@@ -79,12 +79,13 @@ struct ThemeTile: View {
         Button(action: action) {
             VStack(spacing: 1) {
                 Text("Aa")
-                    .font(Font(PageTextStyle.font(for: theme, size: 24)))
+                    .font(Font(PageTextStyle.font(for: theme, size: 20)))
                 Text(theme.title)
                     .font(Font(PageTextStyle.font(for: theme, size: 12)))
             }
             .foregroundStyle(Color(PageTextStyle.textColor(for: theme)))
-            .frame(maxWidth: .infinity, minHeight: layout.tileHeight, maxHeight: layout.tileHeight)
+            .padding(.vertical, layout.tilePadding)
+            .frame(maxWidth: .infinity, minHeight: layout.tileHeightMin, maxHeight: layout.tileHeightMax)
             .background(AppColors.settingsThemeTile(for: theme), in: .rect(cornerRadius: layout.tileCornerRadius))
             .overlay {
                 RoundedRectangle(cornerRadius: layout.tileCornerRadius)

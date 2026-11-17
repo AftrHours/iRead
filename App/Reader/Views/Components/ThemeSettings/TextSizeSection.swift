@@ -17,7 +17,7 @@ struct TextSizeSection: View {
                 SettingsSlider(value: $value, range: range, step: 1, label: "Text Size")
                 Text("A")
                     .font(AppTypography.title1(.medium))
-                    .foregroundStyle(AppColors.settingsText)
+                    .foregroundStyle(AppColors.settingsSliderText)
                     .accessibilityHidden(true)
             }
         }
