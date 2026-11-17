@@ -37,7 +37,7 @@ private struct ActiveSearchPreview: View {
     var body: some View {
         LibraryActiveSearchHeader(libVM: libVM, searchFocus: $isFocused)
             .padding(8)
-            .background(AppColors.backgroundPrimary)
+            .background(AppColors.bgPrimary)
     }
 }
 

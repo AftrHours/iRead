@@ -86,7 +86,7 @@ private struct LibrarySearchPreview: View {
     var body: some View {
         LibrarySearchBar(libVM: libVM, focus: $isFocused)
             .padding()
-            .background(AppColors.backgroundPrimary)
+            .background(AppColors.bgPrimary)
     }
 }
 

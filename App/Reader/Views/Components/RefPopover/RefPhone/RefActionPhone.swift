@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Bottom of the reference card: thumbs up and down to rate the underline, and Jump to Passage.
 /// Takes the chosen verdict and actions only, so it previews without a RatingVM.
-struct RefAction: View {
+struct RefActionPhone: View {
     /// The thumb the reader picked, filled in; nil when the underline isn't rated yet.
     let verdict: Verdict?
     let onVerdictTapped: (Verdict) -> Void
@@ -15,15 +15,13 @@ struct RefAction: View {
             Spacer(minLength: 8)
             Button(action: onJumpTapped) {
                 Label("Jump to Passage", systemImage: "arrow.up.left")
-                    .font(.body.weight(.medium))
-
+                    .font(AppTypography.footnote(.regular))
                     .lineLimit(1)
-                    .minimumScaleFactor(0.85)
-                    .foregroundStyle(RefPalette.onJump)
-                    .padding(.horizontal, 16)
-                    .frame(minHeight: 52)
-                    .background(RefPalette.jumpFill, in: .capsule)
-                    .contentShape(.capsule)
+                    .foregroundStyle(AppColors.actionPrimaryText)
+                    .frame(width: 145, height: 34)
+                    .background(AppColors.actionPrimary, in: .capsule)
+                    .padding(.vertical, 5)
+                    .contentShape(.rect)
             }
             .buttonStyle(.plain)
         }
@@ -36,12 +34,12 @@ struct RefAction: View {
             onVerdictTapped(thumbVerdict)
         } label: {
             Image(systemName: isChosen ? "\(symbol).fill" : symbol)
-                .font(.title)
+                .font(AppTypography.title2(.semibold))
                 .frame(width: 44, height: 44)
                 .contentShape(.rect)
         }
         .buttonStyle(.plain)
-        .foregroundStyle(RefPalette.control)
+        .foregroundStyle(AppColors.popoverFeedbackIcon)
         .accessibilityLabel(thumbVerdict == .up ? "Helpful Passage" : "Unhelpful Passage")
         .accessibilityAddTraits(isChosen ? .isSelected : [])
     }
@@ -49,12 +47,12 @@ struct RefAction: View {
 
 #Preview {
     @Previewable @State var verdict: Verdict?
-    RefAction(
+    RefActionPhone(
         verdict: verdict,
         onVerdictTapped: { verdict = verdict == $0 ? nil : $0 },
         onJumpTapped: { print("Jump ditekan") }
     )
-    .frame(width: 520)
+    .frame(width: 50)
     .padding()
-    .background(RefPalette.card)
+    .background(AppColors.popoverBg)
 }

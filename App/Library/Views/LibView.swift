@@ -43,7 +43,7 @@ struct LibView: View {
         .onChange(of: isSearchFocused) { _, focused in libVM.searchFocusChanged(focused) }
         .onChange(of: libVM.isSearchActive) { _, active in isSearchFocused = active }
         .animation(layout.isPad ? nil : .easeInOut(duration: 0.2), value: libVM.isSearchActive)
-        .background(AppColors.backgroundPrimary.ignoresSafeArea())
+        .background(AppColors.bgPrimary.ignoresSafeArea())
         .background {
             EPUBDocumentPicker(isPresented: $libVM.isImportPickerPresented, onPick: libVM.importPickerCompleted)
         }

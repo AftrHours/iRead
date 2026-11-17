@@ -17,9 +17,9 @@ struct ProgressBar: View {
         GeometryReader { geometry in
             let barWidth = max(0, geometry.size.width - style.horizontalInset * 2)
             ZStack(alignment: .leading) {
-                Capsule().fill(AppColors.cardProgressTrack)
+                Capsule().fill(AppColors.progressBarBg)
                 Capsule()
-                    .fill(AppColors.actionPrimary)
+                    .fill(AppColors.progressBarLine)
                     .frame(width: barWidth * progress.fraction)
             }
             .frame(width: barWidth, height: style.height, alignment: .leading)

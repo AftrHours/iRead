@@ -32,7 +32,7 @@ struct ThemeSettingsView: View {
             }
             .onGeometryChange(for: CGFloat.self) { $0.safeAreaInsets.top } action: { barHeight = $0 }
             .scrollBounceBehavior(.basedOnSize)
-            .background(AppColors.settingsSheetBackground)
+            .background(AppColors.sheetbg)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -48,7 +48,7 @@ struct ThemeSettingsView: View {
         .foregroundStyle(AppColors.settingsText)
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
-        .presentationBackground(AppColors.settingsSheetBackground)
+        .presentationBackground(AppColors.sheetbg)
     }
 
     private var layoutRows: [LayoutOptionsSection.Row] {

@@ -46,13 +46,14 @@ struct ReferenceVMTests {
         #expect(jumped.page.range.location == 0)
         #expect(jumped.page != readingPage)
         #expect(await readerStateCtrl.returnPosition() == (await readerCtrl.startPosition(of: readingPage)))
-        #expect(referenceVM.canReturn)
+        #expect(referenceVM.returnPrompt == .choice)
 
         referenceVM.update(shownPage: jumped.page, loadedPages: [jumped.page])
         referenceVM.returnToReadingTapped()
         let returned = try #require(await nextShown.next(isolation: MainActor.shared))
         #expect(returned.page == readingPage)
         #expect(returned.underlineID == nil)
+        #expect(referenceVM.returnPrompt == .returned(message: "Returned to page \(readingPage.number)"))
         #expect(await readerStateCtrl.returnPosition() == nil)
         // The tapped underline is still selected: closing its card, jumping away and coming back don't clear it.
         #expect(referenceVM.card == nil)

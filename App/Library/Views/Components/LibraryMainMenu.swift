@@ -39,5 +39,5 @@ struct LibraryMainMenu: View {
 #Preview("Library Menu") {
     LibraryMainMenu(libVM: PreviewFixtures.libraryVM())
         .padding()
-        .background(AppColors.backgroundPrimary)
+        .background(AppColors.bgPrimary)
 }

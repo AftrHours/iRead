@@ -28,7 +28,7 @@ struct LayoutOptionsSection: View {
                     LayoutRow(row: row)
                 }.padding(12)
             }
-            .background(AppColors.settingsControlBackground, in: .rect(cornerRadius: layout.cardCornerRadius))
+            .background(AppColors.settingsControlBg, in: .rect(cornerRadius: layout.cardCornerRadius))
         }
     }
 }
@@ -44,7 +44,7 @@ private struct LayoutRow: View {
             HStack(spacing: layout.rowIconGap) {
                 Image(systemName: row.systemImage)
                     .frame(width: layout.rowIconWidth)
-                    .foregroundStyle(AppColors.settingsSecondaryText)
+                    .foregroundStyle(AppColors.settingsSliderText)
                     .accessibilityHidden(true)
                 SettingsSlider(value: row.value, range: row.range, label: row.title)
                     .accessibilityValue(row.valueLabel)

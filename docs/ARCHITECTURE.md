@@ -100,7 +100,7 @@ Names that are easy to mix up:
 | `ReaderStateCtrl` | Reading settings, brightness, the "return to reading" position, recent searches | `ReadingSettingsRepo`, `BrightnessSvc`, `BookStateRepo` |
 | `ReaderVM` (parent) | Pages, shown page, the screen's `PageLayout`, what the pagers draw (`PageContent`), light or dark page, settings panel or sheet, show/hide controls, menu, back, contents, search, saving progress in page-turn order | `ReaderCtrl`, `ProgressCtrl`, `ReaderStateCtrl` (handed to `SearchVM`), `AppNav` + 3 children |
 | `ReaderSettingsVM` | Settings, layout settings, brightness, text size, line spacing, theme | `ReaderStateCtrl` |
-| `ReferenceVM` | Marks, following underlines for the shown chapter, reference cards, highlight, jump and return, toast | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
+| `ReferenceVM` | Marks, following underlines for the shown chapter, reference cards, highlight, jump and return (`returnPrompt`: none, the choice, or "Returned to page N") | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
 | `RatingVM` | Thumbs on the shown card, the share question, the Share Ratings switch, the iCloud row in the menu | `RatingCtrl` |
 | `SearchVM` | Search query (searched once typing pauses for 300 ms, 2 characters or more), results and recent searches | `ReaderCtrl.search` (passed in as a closure, so tests can count searches), `ReaderStateCtrl` |
 
