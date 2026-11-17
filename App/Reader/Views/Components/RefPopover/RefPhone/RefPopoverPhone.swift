@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum RefPopoverPhoneKnobs {
-    /// Fixed, whatever the passage says: the passage takes the room that is left.
+
     static let size = CGSize(width: 325, height: 204)
 }
 

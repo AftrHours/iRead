@@ -88,15 +88,21 @@ final class ReaderVM {
                            marks: visibleMarks, chromes: chromes, selectedUnderlineID: referenceVM.selectedUnderlineID)
     }
 
+    /// The iPad's reference card on a full-width screen, the iPhone's on a narrow one.
+    var isCardForPad: Bool {
+        isRegularWidth
+    }
+
+    private var cardHeight: CGFloat {
+        isCardForPad ? RefPopoverPadKnobs.size.height : RefPopoverPhoneKnobs.size.height
+    }
+
     /// Whether the reference card opens below its underline: when it fits there, else above it. A popover only takes one fixed edge,
     /// or nil to let the system pick the roomiest side, which puts the card above mid-page underlines.
     var isCardBelowUnderline: Bool {
         guard let layout else { return true }
-        return layout.text.maxY - referenceVM.cardAnchor.maxY >= Self.cardHeight
+        return layout.text.maxY - referenceVM.cardAnchor.maxY >= cardHeight
     }
-
-    /// Room the reference card needs below an underline. About the tallest card (a long quote on an iPhone), plus a margin.
-    private static let cardHeight: CGFloat = 400
 
     /// What a page shows above and below its text. Each page carries its own, so it turns with the page.
     private func chrome(for page: Page) -> PageChrome {

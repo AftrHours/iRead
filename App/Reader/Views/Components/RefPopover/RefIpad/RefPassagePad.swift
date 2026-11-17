@@ -6,12 +6,12 @@ struct RefPassagePad: View {
 
     var body: some View {
         Text(quote)
-            .font(AppTypography.caption1())
+            .font(AppTypography.body(.regular))
             .lineLimit(4)
             .foregroundStyle(AppColors.popoverPassageText)
-            .padding(6)
+            .padding(10)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .background(AppColors.popoverPassageBg, in: .rect(cornerRadius: 4.8))
+            .background(AppColors.popoverPassageBg, in: .rect(cornerRadius: 8))
     }
 }
 

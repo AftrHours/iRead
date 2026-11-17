@@ -63,6 +63,15 @@ struct ReaderVMTests {
         #expect(!readerVM.isSettingsPanelShown)
     }
 
+    @Test("RD-48 the reference card is the iPhone's on a narrow screen and the iPad's on a full-width one")
+    func cardSize() {
+        let readerVM = makeVM()
+        readerVM.widthClassChanged(isRegular: false)
+        #expect(!readerVM.isCardForPad)
+        readerVM.widthClassChanged(isRegular: true)
+        #expect(readerVM.isCardForPad)
+    }
+
     @Test("RD-47 the page is dark when the device is, in Match Device")
     func darkPage() {
         let readerVM = makeVM()

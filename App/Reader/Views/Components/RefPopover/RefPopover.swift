@@ -1,29 +1,29 @@
 import SwiftUI
 
-/// The card shown when an underline is tapped. Takes plain values and closures, so it previews without any VM.
+/// The card shown when an underline is tapped: the iPhone's or the iPad's, and the parts they share, the accessibility label,
+/// the popover's look and the question about sharing ratings. Takes plain values and closures, so it previews without any VM.
 struct RefPopover: View {
     let card: ReferenceVM.ReferenceCard
+
+    let isPad: Bool
     let verdict: Verdict?
     let isAskingToShare: Bool
     let onVerdictTapped: (Verdict) -> Void
     let onSharingChosen: (Bool) -> Void
     let onJumpTapped: () -> Void
-    private var cardWidth: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 480 : 340 }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            RefHeader(location: card.location)
-            RefQuote(quote: card.quote)
-            RefAction(verdict: verdict, onVerdictTapped: onVerdictTapped, onJumpTapped: onJumpTapped)
+        Group {
+            if isPad {
+                RefPopoverPad(card: card, verdict: verdict, onVerdictTapped: onVerdictTapped, onJumpTapped: onJumpTapped)
+            } else {
+                RefPopoverPhone(card: card, verdict: verdict, onVerdictTapped: onVerdictTapped, onJumpTapped: onJumpTapped)
+            }
         }
-        .padding(24)
-        .frame(width: cardWidth)
-        .fixedSize(horizontal: false, vertical: true)
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Mentioned earlier: \(card.phrase)")
         .presentationCompactAdaptation(.popover)
-        .presentationBackground(RefPalette.card)
-        // The alert sits here, not on the page: a page can't present an alert while this popover is open.
+        .presentationBackground(AppColors.popoverBg)
         .alert("Share Your Ratings?", isPresented: Binding(get: { isAskingToShare }, set: { _ in })) {
             Button("Share") { onSharingChosen(true) }
             Button("Don't Share", role: .cancel) { onSharingChosen(false) }
@@ -34,35 +34,44 @@ struct RefPopover: View {
     }
 }
 
-private let previewCard = ReferenceVM.ReferenceCard(
-    underlineID: "preview",
-    phrase: "Mother",
-    location: "Chapter 1 • Page 8",
-    quote: "…‘Curly black hair, brown skin, big black eyes, handsome nose, fine teeth, small hands and feet, "
-        + "taller than I am, very polite, for a boy, and altogether jolly. Wonder how old he is?’…"
-)
-
-#Preview("Ref Popover") {
-    RefPopover(
-        card: previewCard,
-        verdict: nil,
-        isAskingToShare: false,
-        onVerdictTapped: { _ in },
-        onSharingChosen: { _ in },
-        onJumpTapped: {}
+extension ReferenceVM.ReferenceCard {
+    /// A card for previews.
+    static let preview = ReferenceVM.ReferenceCard(
+        underlineID: "preview",
+        phrase: "Mother",
+        location: "Chapter 1 • Page 8",
+        quote: "…‘Curly black hair, brown skin, big black eyes, handsome nose, fine teeth, small hands and feet taller than I am, very polite, for a boy, and altogether jolly. Wonder how old he is?’…"
     )
-    .padding()
 }
 
-/// As in the reader: a popover with its arrow pointing at the underline.
-#Preview("Ref Popover – Popover") {
+#Preview("Ref Popover iPad – Popover") {
     @Previewable @State var isShown = true
     Text("Mother")
         .underline(pattern: .dot)
         .onTapGesture { isShown = true }
         .popover(isPresented: $isShown) {
             RefPopover(
-                card: previewCard,
+                card: .preview,
+                isPad: true,
+                verdict: .up,
+                isAskingToShare: false,
+                onVerdictTapped: { _ in },
+                onSharingChosen: { _ in },
+                onJumpTapped: {}
+            )
+        }
+}
+
+/// As in the reader: a popover with its arrow pointing at the underline.
+#Preview("Ref Popover iPhone – Popover") {
+    @Previewable @State var isShown = true
+    Text("Mother")
+        .underline(pattern: .dot)
+        .onTapGesture { isShown = true }
+        .popover(isPresented: $isShown) {
+            RefPopover(
+                card: .preview,
+                isPad: false,
                 verdict: .up,
                 isAskingToShare: false,
                 onVerdictTapped: { _ in },

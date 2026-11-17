@@ -6,18 +6,18 @@ struct RefLocation: View {
 
     var body: some View {
         Text(location)
-            .font(.caption2.weight(.bold))
+            .font(AppTypography.caption2(.regular))
             .textCase(.uppercase)
             .lineLimit(1)
-            .foregroundStyle(RefPalette.onChip)
+            .foregroundStyle(AppColors.popoverLocationText)
             .padding(.horizontal, 12)
-            .padding(.vertical, 7)
-            .background(RefPalette.chipFill, in: .rect(cornerRadius: 8))
+            .padding(.vertical, 4)
+            .background(AppColors.popoverLocationBg, in: .rect(cornerRadius: 5))
     }
 }
 
 #Preview {
     RefLocation(location: "Chapter 1 • Page 8")
         .padding()
-        .background(RefPalette.card)
+        .background(AppColors.popoverBg)
 }

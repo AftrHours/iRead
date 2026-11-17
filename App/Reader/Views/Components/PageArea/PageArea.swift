@@ -19,6 +19,7 @@ struct PageArea: View {
                     ) { referenceCard in
                         RefPopover(
                             card: referenceCard,
+                            isPad: readerVM.isCardForPad,
                             verdict: ratingVM.verdict,
                             isAskingToShare: ratingVM.isAskingToShare,
                             onVerdictTapped: ratingVM.verdictTapped,
