@@ -1,6 +1,7 @@
 enum PrimaryColor {
     // MARK: Purple (brand primary)
 
+    static let purple25: UInt32 = 0xFBFBFF
     static let purple50: UInt32 = 0xF3F4FF
     static let purple100: UInt32 = 0xE3E6FC
     static let purple200: UInt32 = 0xCDD2F4

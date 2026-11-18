@@ -12,7 +12,7 @@ struct SettingsSectionHeader: View {
                 .frame(width: layout.iconColumn)
                 .accessibilityHidden(true)
             Text(title)
-                .font(AppTypography.headline(.semibold))
+                .font(AppTypography.body(.semibold))
         }
         .accessibilityElement(children: .combine)
         .accessibilityAddTraits(.isHeader)
