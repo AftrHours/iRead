@@ -13,8 +13,9 @@ struct LibraryLayout {
     }
 
     var sideMargin: CGFloat { isPad ? 34 : isSearching ? 20 : 16 }
-    var gridColumnSpacing: CGFloat { isPad ? 18 : isSearching ? 20 : 12 }
-    var gridRowSpacing: CGFloat { isPad ? 22 : isSearching ? 18 : 12 }
+    var collectionSideMargin: CGFloat { isPad ? 30 : 20 }
+    var gridColumnSpacing: CGFloat { isPad ? 30 : 20 }
+    var gridRowSpacing: CGFloat { 18 }
     var emptySearchImageSize: CGSize { CGSize(width: isPad ? 270 : 210, height: isPad ? 210 : 164) }
     var emptySearchImageSpacing: CGFloat { isPad ? 32 : 26 }
     var emptyLibraryImageSize: CGSize {

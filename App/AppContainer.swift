@@ -85,6 +85,20 @@ enum PreviewFixtures {
         return libraryVM(folder: folder)
     }
 
+    /// Extra sample copies in an isolated folder, so iPad previews have enough rows to scroll.
+    static func scrollingLibraryVM() -> LibVM {
+        let folder = temporaryFolder()
+        let libRepo = LibRepo(epubParseSvc: EPUBParseSvcEPUBKit(), folder: folder)
+        for _ in 0..<3 {
+            for sample in BookRecord.samples {
+                guard let url = Bundle.main.url(forResource: sample.fileName, withExtension: "epub") else { continue }
+                let candidate = ImportCandidate(title: sample.book.title, author: sample.book.author, identity: sample.book.identity)
+                _ = try? libRepo.saveBook(from: url, as: candidate)
+            }
+        }
+        return libraryVM(folder: folder)
+    }
+
     static func emptyLibraryVM() -> LibVM {
         let folder = temporaryFolder()
         try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
@@ -106,7 +120,8 @@ enum PreviewFixtures {
         let bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc, folder: folder)
         let libRepo = LibRepo(epubParseSvc: epubParseSvc, folder: folder)
         let libCtrl = LibCtrl(libRepo: libRepo, bookContentRepo: bookContentRepo, progRepo: progRepo)
-        let importCtrl = ImportCtrl(libRepo: libRepo, pendingImportRepo: PendingImportRepo(), libraryIndexRepo: LibraryIndexRepo())
+        let importCtrl = ImportCtrl(libRepo: libRepo, pendingImportRepo: PendingImportRepo(folder: folder.appending(path: "PendingImports")),
+                                    libraryIndexRepo: LibraryIndexRepo(folder: folder))
         return LibVM(libCtrl: libCtrl, importCtrl: importCtrl, appNav: AppNav())
     }
 

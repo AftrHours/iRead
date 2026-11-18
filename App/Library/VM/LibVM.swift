@@ -10,6 +10,7 @@ final class LibVM {
     }
     var searchText = ""
     private(set) var isSearchActive = false
+    private(set) var isLibraryScrolled = false
     var isImportPickerPresented = false
     private(set) var isSelectionMode = false
     private(set) var selectedBookIDs: Set<UUID> = []
@@ -150,6 +151,13 @@ final class LibVM {
 
     func searchTapped() {
         isSearchActive = true
+    }
+
+    func libraryScrolled(to offset: CGFloat) {
+        // The inline search field occupies 44 pt, with 12 pt above and 20 pt below.
+        let isScrolled = offset >= 76
+        guard isLibraryScrolled != isScrolled else { return }
+        isLibraryScrolled = isScrolled
     }
 
     func searchFocusChanged(_ focused: Bool) {

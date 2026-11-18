@@ -21,6 +21,9 @@ extension LibVM {
     }
 
     var isCollectionEmpty: Bool { visibleBooks.isEmpty }
+    var showsScrolledLibraryControls: Bool {
+        isLibraryScrolled && !isSearchActive && !isSelectionMode && !isCollectionEmpty
+    }
     var hasSearchQuery: Bool { !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
     var showsSearchEmptyState: Bool { hasSearchQuery && isCollectionEmpty }
     var searchResultsTitle: String? {
