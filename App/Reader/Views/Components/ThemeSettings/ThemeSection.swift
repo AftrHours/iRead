@@ -39,7 +39,7 @@ struct ThemeSection: View {
             }
             .pickerStyle(.inline)
         } label: {
-            menuIcon("doc")
+            menuIcon(pageTurnStyle.systemImage)
         }
         .accessibilityLabel("Reading animation")
     }
@@ -53,7 +53,7 @@ struct ThemeSection: View {
             }
             .pickerStyle(.inline)
         } label: {
-            menuIcon("moon.stars")
+            menuIcon(readingMode.systemImage)
         }
         .accessibilityLabel("Reading mode")
     }
