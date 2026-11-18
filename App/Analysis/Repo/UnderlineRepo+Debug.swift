@@ -27,6 +27,11 @@ extension UnderlineRepo {
         var refusal: String?
     }
 
+    /// The chapters a whole-book run goes through: from `firstReadableChapterIndex` to the end.
+    static func storyChapterCount(of content: BookContent) -> Int {
+        content.chapters.count - content.firstReadableChapterIndex
+    }
+
     func bookRun(of book: String) -> BookRun? {
         bookRuns[book]
     }
@@ -36,19 +41,20 @@ extension UnderlineRepo {
         folder.appending(path: book).path(percentEncoded: false)
     }
 
-    /// Underlines every chapter in order and saves each one, so a whole book can be worked out in one go. Chapters already
+    /// Underlines every chapter from where the story starts (not the cover or copyright page), in order, and saves each
+    /// one, so a whole book can be worked out in one go. Chapters already
     /// saved are skipped, so a stopped run carries on where it was. The chapter being read is not touched.
     /// Only with Foundation Models: the chapters it saves become the seeds testers get, and rules alone underline far
     /// less. When the app is on rules, the model is tried once more first.
     func startBook(_ content: BookContent) async {
         guard bookTask == nil else { return }
         guard await modelEngine() != nil else {
-            bookRuns[content.fingerprint] = BookRun(total: content.chapters.count, isRunning: false,
+            bookRuns[content.fingerprint] = BookRun(total: Self.storyChapterCount(of: content), isRunning: false,
                                                     refusal: "Not started: Foundation Models isn't answering, try again in a moment")
             logger.notice("Whole book not started: the on-device model isn't answering")
             return
         }
-        bookRuns[content.fingerprint] = BookRun(total: content.chapters.count)
+        bookRuns[content.fingerprint] = BookRun(total: Self.storyChapterCount(of: content))
         logger.info("Whole book: chapters are saved in \(self.savedFolder(of: content.fingerprint), privacy: .public)")
         bookTask = Task { await self.runBook(content) }
     }
@@ -110,12 +116,12 @@ extension UnderlineRepo {
         let book = content.fingerprint
         defer {
             let left = (bookRuns[book]?.leftOut ?? []).map(String.init).joined(separator: ", ")
-            logger.info("Whole book ended: \(self.bookRuns[book]?.finished ?? 0) of \(content.chapters.count) chapters done, left out: \(left.isEmpty ? "none" : left)")
+            logger.info("Whole book ended: \(self.bookRuns[book]?.finished ?? 0) of \(Self.storyChapterCount(of: content)) chapters done, left out: \(left.isEmpty ? "none" : left)")
             bookRuns[book]?.isRunning = false
             bookRuns[book]?.current = nil
             bookTask = nil
         }
-        for chapter in content.chapters.indices {
+        for chapter in content.chapters.indices.dropFirst(content.firstReadableChapterIndex) {
             if Task.isCancelled { return }
             if !isFinished(chapter, of: book, parserVersion: content.parserVersion) {
                 let paragraphs = content.chapters[chapter].paragraphs

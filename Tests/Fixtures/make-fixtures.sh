@@ -179,6 +179,73 @@ png "$book/OEBPS/cover.png"
 chapter "$book/OEBPS/ch1.xhtml" "A book with an EPUB 3 cover."
 pack "$book" epub3-cover.epub
 
+# labeled.epub: files that say what they are with epub:type. Titles say nothing, so only the labels can tell the front from the body.
+book="$work/labeled"
+container "$book"
+mkdir -p "$book/OEBPS"
+cat > "$book/OEBPS/content.opf" <<'EOF2'
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="id">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:title>Labeled Book</dc:title>
+    <dc:identifier id="id">labeled</dc:identifier>
+  </metadata>
+  <manifest>
+    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+    <item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/>
+    <item id="legal" href="legal.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch1" href="ch1.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch2" href="ch2.xhtml" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine toc="ncx"><itemref idref="cover"/><itemref idref="legal"/><itemref idref="ch1"/><itemref idref="ch2"/></spine>
+</package>
+EOF2
+toc "$book/OEBPS/toc.ncx" "Welcome|cover.xhtml" "Legal Notes|legal.xhtml" "The Door|ch1.xhtml" "The Letter|ch2.xhtml"
+labeled() {
+    file="$1"
+    type="$2"
+    shift 2
+    {
+        echo '<?xml version="1.0" encoding="UTF-8"?>'
+        echo "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:epub=\"http://www.idpf.org/2007/ops\"><head><title>Page</title></head><body epub:type=\"$type\">"
+        for paragraph in "$@"; do
+            echo "<p>$paragraph</p>"
+        done
+        echo '</body></html>'
+    } > "$file"
+}
+labeled "$book/OEBPS/cover.xhtml" "frontmatter" "Labeled Book" "By a test author"
+labeled "$book/OEBPS/legal.xhtml" "copyright-page" "All rights reserved."
+labeled "$book/OEBPS/ch1.xhtml" "bodymatter chapter" "Anna opened the door. The hall was dark and cold."
+labeled "$book/OEBPS/ch2.xhtml" "chapter" "Morning came slowly over the hills."
+pack "$book" labeled.epub
+
+# preamble.epub: a license file that the table of contents skips, then 2 numbered chapters. No epub:type anywhere.
+book="$work/preamble"
+container "$book"
+mkdir -p "$book/OEBPS"
+cat > "$book/OEBPS/content.opf" <<'EOF2'
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="id">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:title>Preamble Book</dc:title>
+    <dc:identifier id="id">preamble</dc:identifier>
+  </metadata>
+  <manifest>
+    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+    <item id="license" href="license.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch1" href="ch1.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch2" href="ch2.xhtml" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine toc="ncx"><itemref idref="license"/><itemref idref="ch1"/><itemref idref="ch2"/></spine>
+</package>
+EOF2
+toc "$book/OEBPS/toc.ncx" "Chapter I. The Door|ch1.xhtml" "Chapter II. The Letter|ch2.xhtml"
+chapter "$book/OEBPS/license.xhtml" "This eBook is for the use of anyone anywhere at no cost." "Please read the license before you go on."
+chapter "$book/OEBPS/ch1.xhtml" "Anna opened the door. The hall was dark and cold."
+chapter "$book/OEBPS/ch2.xhtml" "Morning came slowly over the hills."
+pack "$book" preamble.epub
+
 # corrupt.epub: the first half of minimal.epub, like a download that stopped part way.
 size=$(wc -c < "$out/minimal.epub")
 head -c $((size / 2)) "$out/minimal.epub" > "$out/corrupt.epub"

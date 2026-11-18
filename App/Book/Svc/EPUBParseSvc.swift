@@ -25,7 +25,7 @@ struct EPUBParseSvcEPUBKit: EPUBParseSvc {
     func parse(_ url: URL) async throws -> BookContent {
         let chapters = try readingEPUB { try reader.chapters(from: url) }
         guard !chapters.isEmpty else { throw ContentError.unreadable }
-        return Self.content(of: chapters.map { ($0.title, $0.paragraphs) })
+        return Self.content(of: chapters.map { ($0.title, $0.paragraphs) }, parts: chapters.map(\.part))
     }
 
     /// EPUBKit and ZIPFoundation (for a file that isn't a zip) report a broken file with their own errors;
@@ -41,7 +41,8 @@ struct EPUBParseSvcEPUBKit: EPUBParseSvc {
     }
 
     /// Global paragraph and sentence indexes, with UTF-16 ranges inside each chapter's text (paragraphs joined by "\n").
-    static func content(of rawChapters: [(title: String, paragraphs: [String])]) -> BookContent {
+    /// `parts` is what each chapter's file says about being front, body or back matter, in chapter order; it may be shorter.
+    static func content(of rawChapters: [(title: String, paragraphs: [String])], parts: [EPUBPart?] = []) -> BookContent {
         let tokenizer = NLTokenizer(unit: .sentence)
         var chapters: [Chapter] = []
         var paragraphs: [Paragraph] = []
@@ -65,8 +66,13 @@ struct EPUBParseSvcEPUBKit: EPUBParseSvc {
                 paragraphs: firstParagraph..<paragraphs.count
             ))
         }
+        let firstChapter = FirstChapter.index(
+            titles: chapters.map(\.title),
+            wordCounts: chapters.map { $0.paragraphs.reduce(0) { $0 + paragraphs[$1].wordCount } },
+            parts: parts
+        )
         return BookContent(chapters: chapters, paragraphs: paragraphs, sentences: sentences, parserVersion: 1,
-                           fingerprint: BookFingerprint.of(chapters))
+                           fingerprint: BookFingerprint.of(chapters), firstReadableChapterIndex: firstChapter)
     }
 
     private static func sentenceRanges(in text: String, tokenizer: NLTokenizer) -> [NSRange] {

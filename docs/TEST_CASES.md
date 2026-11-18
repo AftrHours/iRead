@@ -54,7 +54,16 @@ Test setup this list assumes:
 | BK-13 | P1 | Golden (Full plan) | Parse all 5 bundled samples | No throw; chapter counts match stored snapshot (a change means bump `parserVersion`) |
 | BK-14 | P0 | `BookContentRepo.content` | Open books A, B, C, then B, C, then A twice at once, then C, then B | Only 2 books kept: A parsed again once (shared by both callers), then B parsed again |
 | BK-15 | P1 | `BookContentRepo.forget` | Book parsed and cover read; forget | Parsed again on next call; cover not served from memory |
+| BK-17 | P0 | `EPUBParseSvc.parse` | `labeled.epub`: cover and copyright files labeled front matter, chapter files body matter | `firstReadableChapterIndex` is the first body chapter (2) |
+| BK-18 | P0 | `EPUBParseSvc.parse` | `preamble.epub`: a file the table of contents skips, then numbered chapters | Preamble is chapter 0, marked front; `firstReadableChapterIndex` 1 |
+| BK-19 | P1 | `EPUBParseSvc.parse` | `minimal.epub` | `firstReadableChapterIndex` 0; `parserVersion` still 1, so stored underlines stay valid |
 | BK-16 | P0 | `BookFingerprint` | Same chapters twice; one word changed; same text in other chapter breaks | Same fingerprint; different; different |
+| FC-01 | P0 | `FirstChapter.index` | A chapter's file is labeled body matter (even after a "Chapter 1" title) | That chapter |
+| FC-02 | P0 | `FirstChapter.index` | Titles like "Chapter 1", "Prologue", "Part One: …", "I. …" after front matter | The first of them |
+| FC-03 | P0 | `FirstChapter.index` | Long text before the table of contents, marked front matter | Skipped |
+| FC-04 | P1 | `FirstChapter.index` | No number or label; front-matter titles, and chapters under 300 words | First chapter that is neither; "Discovery" is not "cover" |
+| FC-05 | P1 | `FirstChapter.index` | Nothing qualifies, or no chapters | 0 |
+| FC-06 | P1 | `FirstChapter.index` | A chapter marked back matter | Never chosen |
 
 ## Reading progress
 
@@ -85,6 +94,10 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | RD-01 | P0 | `ReaderCtrl.restorePosition` | Valid saved position | true; `currentPage` contains it |
 | RD-02 | P0 | `ReaderCtrl.restorePosition` | Paragraph past end, or `charOffset` past length | false; opens at start of saved chapter |
 | RD-03 | P0 | `ReaderCtrl.restorePosition` | Invalid position and `chapterIndex` | Chapter 0, no crash |
+| RD-20 | P0 | `ReaderCtrl.openBook` | No saved progress; book has a copyright page before chapter 1 | Opens at the first page of chapter 1 |
+| RD-21 | P0 | `ReaderCtrl.restorePosition` | Saved at paragraph 0 (a reset book) with front matter | false; opens at the story start |
+| RD-22 | P1 | `ReaderCtrl.restorePosition` | Position saved inside the front matter | true; kept |
+| RD-23 | P1 | `ReaderCtrl.restorePosition` | Invalid position and `chapterIndex` with front matter | false; opens at the story start |
 | RD-04 | P0 | `ReaderCtrl.pages(around:)` | Middle / first / last page | 5 pages / first + 2 after / 2 before + last |
 | RD-05 | P0 | `ReaderCtrl` | Last page of ch 1 → next | Ch 2 first page; page numbers continue |
 | RD-06 | P0 | `ReaderCtrl.currentPage` | Change text size, spacing, theme or viewport | Re-laid out; page still contains position |
