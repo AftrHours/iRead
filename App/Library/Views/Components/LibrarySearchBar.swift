@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// Renders search input and forwards voice-search events; focus remains a SwiftUI concern.
 struct LibrarySearchBar: View {
     enum Style {
         case phone
@@ -8,14 +7,6 @@ struct LibrarySearchBar: View {
         case pad
 
         var height: CGFloat { self == .phone ? 44 : 48 }
-        var microphoneWidth: CGFloat { self == .phone ? 40 : 32 }
-        var trailingInset: CGFloat {
-            switch self {
-            case .phone: 0
-            case .phoneActive: 8
-            case .pad: 14
-            }
-        }
         var placeholder: String { self == .phoneActive ? "Search Title or Author" : "Search" }
         var placeholderColor: Color { self == .pad ? AppColors.textSecondary : AppColors.searchMutedForeground }
         var iconColor: Color {
@@ -63,18 +54,8 @@ struct LibrarySearchBar: View {
                 .autocorrectionDisabled()
                 .submitLabel(.search)
                 .focused(focus)
-            Button(action: libVM.voiceSearchTapped) {
-                Image(systemName: libVM.voiceSearchSymbol)
-                    .font(AppTypography.body())
-                    .foregroundStyle(libVM.isVoiceSearchActive ? AppColors.actionPrimary : style.iconColor)
-                    .frame(width: style.microphoneWidth, height: 40)
-                    .contentShape(.rect)
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel(libVM.voiceSearchAccessibilityLabel)
         }
-        .padding(.leading, 14)
-        .padding(.trailing, style.trailingInset)
+        .padding(.horizontal, 14)
         .frame(height: style.height)
     }
 }

@@ -6,7 +6,7 @@ struct ProgressBar: View {
         case card
         case list
 
-        var horizontalInset: CGFloat { self == .card ? 12 : 0 }
+        var horizontalInset: CGFloat { self == .card ? 11 : 0 }
         var height: CGFloat { self == .card ? 8 : 4 }
     }
 

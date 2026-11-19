@@ -49,7 +49,7 @@ struct LibraryEmptyStateView: View {
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                AddBookButton(size: 48, iconFont: .system(size: 19, weight: .semibold), action: libVM.importTapped)
+                AddBookButton(action: libVM.importTapped)
             }
         }
         .padding(.horizontal, 16)

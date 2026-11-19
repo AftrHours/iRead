@@ -31,7 +31,7 @@ struct BookGridView<MenuButton: View>: View {
             }
         } else {
             bookDetails
-                .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                .frame(maxWidth: .infinity, minHeight: 42, alignment: .leading)
                 .overlay(alignment: .trailing) { menu }
         }
     }

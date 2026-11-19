@@ -4,6 +4,7 @@ import SwiftUI
 struct LibraryMainMenu: View {
     @Bindable var libVM: LibVM
     var iconFont: Font = AppTypography.body(.medium)
+    var isGrouped = false
 
     var body: some View {
         Menu {
@@ -24,15 +25,23 @@ struct LibraryMainMenu: View {
                     .foregroundStyle(libVM.isAccountSignedIn ? AppColors.accountSignOut : AppColors.accountSignIn)
             }
         } label: {
-            Image(systemName: "ellipsis")
-                .font(iconFont)
-                .foregroundStyle(AppColors.textPrimary)
-                .frame(width: 48, height: 48)
-                .glassEffect(.regular, in: .circle)
+            if isGrouped {
+                menuIcon
+            } else {
+                menuIcon.glassEffect(.regular, in: .circle)
+            }
         }
         .buttonStyle(.plain)
         .menuOrder(.fixed)
         .accessibilityLabel("Library options")
+    }
+
+    private var menuIcon: some View {
+        Image(systemName: "ellipsis")
+            .font(iconFont)
+            .foregroundStyle(AppColors.textPrimary)
+            .frame(width: 48, height: 48)
+            .contentShape(.rect)
     }
 }
 

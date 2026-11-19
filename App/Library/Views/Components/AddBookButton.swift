@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Dedicated add-book control, shared by the header and empty state.
 struct AddBookButton: View {
-    var size: CGFloat = 44
+    var size: CGFloat = 48
     var iconFont: Font = .system(size: 19, weight: .semibold)
     let action: () -> Void
 
