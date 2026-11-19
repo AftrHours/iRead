@@ -38,11 +38,6 @@ struct LibView: View {
         } message: {
             Text(libVM.importErrorMessage)
         }
-        .alert("Voice Search", isPresented: $libVM.isVoiceSearchAlertPresented) {
-            Button("OK", role: .cancel, action: libVM.dismissVoiceSearchError)
-        } message: {
-            Text(libVM.voiceSearchErrorMessage)
-        }
         .alert("Something went wrong", isPresented: $libVM.isBookActionAlertPresented) {
             Button("OK", role: .cancel, action: libVM.dismissBookActionError)
         } message: {

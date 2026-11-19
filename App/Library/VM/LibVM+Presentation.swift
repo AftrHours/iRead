@@ -38,11 +38,8 @@ extension LibVM {
         showsSearchEmptyState ? Self.searchEmptyIllustration : Self.libraryEmptyIllustration
     }
     var selectionTitle: String { "\(selectedBookIDs.count) Selected" }
-    var voiceSearchSymbol: String { isVoiceSearchActive ? "waveform" : "mic.fill" }
-    var voiceSearchAccessibilityLabel: String { isVoiceSearchActive ? "Stop voice search" : "Search by voice" }
     var isAccountSignedIn: Bool { cloudAccount == .signedIn }
     var importErrorMessage: String { importError ?? "Please try another EPUB file." }
-    var voiceSearchErrorMessage: String { voiceSearchError ?? "Voice search is unavailable." }
     var bookActionErrorMessage: String { bookActionError ?? "" }
 
     var menuSortOptions: [LibrarySortOption] { LibrarySortOption.menuOptions }
