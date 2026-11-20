@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct RefHeaderPhone: View {
     let location: String
 
@@ -9,7 +8,7 @@ struct RefHeaderPhone: View {
             Image(systemName: "quote.opening")
                 .font(.title2.weight(.black))
                 .foregroundStyle(AppColors.popoverQuoteIcon)
-                .frame(width: 47, height:47)
+                .readerIconFrame(47)
                 .background(AppColors.popoverQuoteIconBg, in: .rect(cornerRadius: 5.6))
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 0) {

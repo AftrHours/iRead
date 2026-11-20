@@ -28,6 +28,7 @@ final class ReferenceVM {
     /// until another underline is tapped.
     private(set) var selectedUnderlineID: String?
     /// What the return controls show: nothing, the choice after a jump, or the note after returning.
+    private(set) var jumpedPassageText: String?
     private(set) var returnPrompt = ReturnPrompt.none
 
     @ObservationIgnored var onShowPage: (Page, String?) -> Void = { _, _ in }
@@ -95,6 +96,7 @@ final class ReferenceVM {
     }
 
     func pageShown(highlighting underlineID: String?, searchResult: SearchResult? = nil) {
+        if underlineID == nil { jumpedPassageText = nil }
         highlightedUnderlineID = underlineID
         highlightedSearchResult = searchResult
     }
@@ -143,11 +145,13 @@ final class ReferenceVM {
     func jumpToPassageTapped() {
         guard let referenceCard = card, let shownPage else { return }
         card = nil
-        returnPrompt = .choice
         Task {
             await readerStateCtrl.saveReturnPosition(await readerCtrl.startPosition(of: shownPage))
             guard let underline = try? await refCtrl.underline(withID: referenceCard.underlineID) else { return }
-            onShowPage(await readerCtrl.page(containing: underline.reference.start), referenceCard.underlineID)
+            let destination = await readerCtrl.page(containing: underline.reference.start)
+            jumpedPassageText = underline.reference.text
+            returnPrompt = .choice
+            onShowPage(destination, referenceCard.underlineID)
         }
     }
 
@@ -166,6 +170,7 @@ final class ReferenceVM {
     }
 
     func returnDismissed() {
+        jumpedPassageText = nil
         returnPrompt = .none
         highlightedUnderlineID = nil
         Task {

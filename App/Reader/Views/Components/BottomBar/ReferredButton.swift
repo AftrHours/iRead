@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ReferredButton: View {
     let prompt: ReferenceVM.ReturnPrompt
+    var waitingForPassage = false
+    var completedPassage: UUID?
     let onDismiss: () -> Void
     let onReturn: () -> Void
 
@@ -10,7 +12,8 @@ struct ReferredButton: View {
         case .none:
             EmptyView()
         case .choice:
-            ReferredChoice(onDismiss: onDismiss, onReturn: onReturn)
+            ReferredChoice(waitingForPassage: waitingForPassage, completedPassage: completedPassage,
+                           onDismiss: onDismiss, onReturn: onReturn)
         case .returned(let message):
             ReferredToast(text: message)
         }

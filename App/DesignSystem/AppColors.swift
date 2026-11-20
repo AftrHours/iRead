@@ -41,7 +41,7 @@ enum AppColors {
     static let popoverQuoteText = adaptive(light: PrimaryColor.purple900, dark: PrimaryColor.white50)
     static let settingsText = adaptive(light: PrimaryColor.neutral900, dark: PrimaryColor.white50)
     //
-    static let settingsSliderText = adaptive(light: PrimaryColor.neutral700, dark: PrimaryColor.white0, lightAlpha: 0.8)
+    static let settingsSliderText = adaptive(light: PrimaryColor.neutral700, dark: PrimaryColor.white0, lightAlpha: 0.8, darkAlpha: 0.8)
     static let cardTextPrimary = Color(hex: PrimaryColor.purple900)
     static let cardTextSecondary = Color(hex: PrimaryColor.purple600)
 
@@ -72,7 +72,7 @@ enum AppColors {
     
 
     // Reading Theme & Settings sheet
-    static let sheetbg = adaptive(light: 0xFBFBFF, dark: PrimaryColor.purple900)
+    static let sheetbg = adaptive(light: PrimaryColor.purple25, dark: PrimaryColor.purple900)
     static let settingsMenuButtonFill = adaptive(light: 0x444444, dark: 0x999999, lightAlpha: 0.6, darkAlpha: 0.17)
     /// The design uses the same grey in light and dark.
     static let settingsResetFill = adaptive(light: 0x444444, dark: 0x444444, lightAlpha: 0.17, darkAlpha: 0.17)

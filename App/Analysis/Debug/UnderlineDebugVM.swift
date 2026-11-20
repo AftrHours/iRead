@@ -39,7 +39,8 @@ final class UnderlineDebugVM {
         while !Task.isCancelled {
             await refreshBook()
             cloudLines = await cloudStatus(chapterIndex, account: account)
-            let model = await refCtrl.underlinesUseModel() ? "Foundation Models" : "Rules only"
+            let model = (await refCtrl.underlinesUseModel() ? "Foundation Models" : "Rules only")
+                + " · \(await refCtrl.underlineEmbedding().rawValue) embedding"
             let records = await refCtrl.underlineRecords(inChapter: chapterIndex)
             if records.isEmpty {
                 // A chapter loaded from disk has its underlines but not the dropped phrases.
@@ -154,6 +155,10 @@ final class UnderlineDebugVM {
 extension RefCtrl {
     func underlinesUseModel() async -> Bool {
         await underlineRepo.usesModel
+    }
+
+    func underlineEmbedding() async -> EmbeddingEngine {
+        await underlineRepo.embeddingEngine
     }
 
     func underlineRecords(inChapter chapter: Int) async -> [UnderlineRecord] {

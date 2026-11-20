@@ -11,7 +11,7 @@ struct ToolbarMenu<Items: View>: View {
             Image(systemName: "ellipsis")
                 .font(.title3.weight(.medium))
                 .foregroundStyle(foreground)
-                .frame(width: 44, height: 44)
+                .readerIconFrame()
                 .contentShape(.circle)
                 .glassEffect(.regular.interactive(), in: .circle)
                 .environment(\.colorScheme, colorScheme)

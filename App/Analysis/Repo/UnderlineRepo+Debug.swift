@@ -44,35 +44,16 @@ extension UnderlineRepo {
     /// Underlines every chapter from where the story starts (not the cover or copyright page), in order, and saves each
     /// one, so a whole book can be worked out in one go. Chapters already
     /// saved are skipped, so a stopped run carries on where it was. The chapter being read is not touched.
-    /// Only with Foundation Models: the chapters it saves become the seeds testers get, and rules alone underline far
-    /// less. When the app is on rules, the model is tried once more first.
+    /// The chapters it saves become the seeds testers get.
     func startBook(_ content: BookContent) async {
         guard bookTask == nil else { return }
-        guard await modelEngine() != nil else {
-            bookRuns[content.fingerprint] = BookRun(total: Self.storyChapterCount(of: content), isRunning: false,
-                                                    refusal: "Not started: Foundation Models isn't answering, try again in a moment")
-            logger.notice("Whole book not started: the on-device model isn't answering")
-            return
-        }
-        bookRuns[content.fingerprint] = BookRun(total: Self.storyChapterCount(of: content))
+        bookRuns[content.fingerprint] = BookRun(total: content.chapters.count)
         logger.info("Whole book: chapters are saved in \(self.savedFolder(of: content.fingerprint), privacy: .public)")
         bookTask = Task { await self.runBook(content) }
     }
 
     func stopBook() {
         bookTask?.cancel()
-    }
-
-    /// The engine on Foundation Models, switching from rules when the model answers now. nil when it still doesn't.
-    private func modelEngine() async -> UnderlineCtrl? {
-        let current = await engine()
-        if current.usesModel { return current }
-        guard await modelAnswers() else { return nil }
-        let made = UnderlineCtrl(model: .automatic)
-        guard made.usesModel else { return nil }
-        underlineCtrl = made
-        logger.info("The on-device model answers now, so underlines use it")
-        return made
     }
 
     /// What "Export saved chapters" copied: chapter files per book fingerprint, and files left behind because an older

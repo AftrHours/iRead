@@ -72,6 +72,7 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
 
     private func showShownPage() {
         guard let content else { return }
+        defer { currentView?.focusWhenVisible(content.readingFocus) }
         if let currentView, currentView.isShowing(content.shownPage, in: content) {
             currentView.refresh(from: content, actions: actions)
             return

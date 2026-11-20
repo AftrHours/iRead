@@ -10,6 +10,7 @@ struct BookMenu: View {
         var iconAlignment: Alignment { self == .card ? .trailing : .center }
     }
 
+    @Environment(\.libraryBookMenuPriority) private var menuPriority
     let item: LibraryBookItemVM
     var style: Style = .list
     let onFinished: () -> Void
@@ -27,20 +28,16 @@ struct BookMenu: View {
             Divider()
             Button("Remove…", systemImage: "trash", role: .destructive, action: onRemove)
         } label: {
-            Group {
-                if item.isMenuHidden {
-                    Color.clear
-                } else {
-                    Image(systemName: "ellipsis")
-                        .foregroundStyle(style.iconColor)
-                }
-            }
-            .frame(width: 30, height: 44, alignment: style.iconAlignment)
-            .contentShape(.rect)
+            Image(systemName: "ellipsis")
+                .font(.body)
+                .foregroundStyle(style.iconColor)
+                .libraryIconFrame(44, alignment: style.iconAlignment)
+                .contentShape(.rect)
         }
         .tint(.secondary)
-        .disabled(item.isMenuHidden)
         .accessibilityLabel(item.menuAccessibilityLabel)
+        .accessibilitySortPriority(menuPriority)
+        .accessibilityShowsLargeContentViewer { Label(item.menuAccessibilityLabel, systemImage: "ellipsis") }
     }
 }
 

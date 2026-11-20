@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// Renders search input and forwards voice-search events; focus remains a SwiftUI concern.
 struct LibrarySearchBar: View {
     enum Style {
         case phone
@@ -8,14 +7,6 @@ struct LibrarySearchBar: View {
         case pad
 
         var height: CGFloat { self == .phone ? 44 : 48 }
-        var microphoneWidth: CGFloat { self == .phone ? 40 : 32 }
-        var trailingInset: CGFloat {
-            switch self {
-            case .phone: 0
-            case .phoneActive: 8
-            case .pad: 14
-            }
-        }
         var placeholder: String { self == .phoneActive ? "Search Title or Author" : "Search" }
         var placeholderColor: Color { self == .pad ? AppColors.textSecondary : AppColors.searchMutedForeground }
         var iconColor: Color {
@@ -55,6 +46,8 @@ struct LibrarySearchBar: View {
             Image(systemName: "magnifyingglass")
                 .font(AppTypography.body())
                 .foregroundStyle(style.iconColor)
+                .libraryIconFrame(style.height, square: false)
+                .accessibilityHidden(true)
             TextField(style.placeholder, text: $libVM.searchText,
                       prompt: Text(style.placeholder).foregroundStyle(style.placeholderColor))
                 .font(AppTypography.body(style == .phone ? .medium : .regular))
@@ -62,20 +55,11 @@ struct LibrarySearchBar: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .submitLabel(.search)
+                .padding(.vertical, 4)
                 .focused(focus)
-            Button(action: libVM.voiceSearchTapped) {
-                Image(systemName: libVM.voiceSearchSymbol)
-                    .font(AppTypography.body())
-                    .foregroundStyle(libVM.isVoiceSearchActive ? AppColors.actionPrimary : style.iconColor)
-                    .frame(width: style.microphoneWidth, height: 40)
-                    .contentShape(.rect)
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel(libVM.voiceSearchAccessibilityLabel)
+                .accessibilityLabel("Search by title or author")
         }
-        .padding(.leading, 14)
-        .padding(.trailing, style.trailingInset)
-        .frame(height: style.height)
+        .padding(.horizontal, 14)
     }
 }
 

@@ -8,13 +8,33 @@ struct RefActionPhone: View {
     let onVerdictTapped: (Verdict) -> Void
     let onJumpTapped: () -> Void
 
+    @Environment(\.dynamicTypeSize) private var textSize
+
     var body: some View {
+        if textSize > .large {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack { thumb(.up); thumb(.down) }
+                Button("Jump to Passage", systemImage: "arrow.up.left", action: onJumpTapped)
+                    .buttonStyle(.borderedProminent)
+                    .tint(AppColors.actionPrimary)
+                    .foregroundStyle(AppColors.actionPrimaryText)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        } else {
+            compactActions
+        }
+    }
+
+    private var compactActions: some View {
         HStack(spacing: 4) {
             thumb(.up)
             thumb(.down)
             Spacer(minLength: 8)
             Button(action: onJumpTapped) {
-                Label("Jump to Passage", systemImage: "arrow.up.left")
+                Label { Text("Jump to Passage") } icon: {
+                    Image(systemName: "arrow.up.left")
+                        .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
+                }
                     .font(AppTypography.footnote(.regular))
                     .lineLimit(1)
                     .foregroundStyle(AppColors.actionPrimaryText)
@@ -35,7 +55,7 @@ struct RefActionPhone: View {
         } label: {
             Image(systemName: isChosen ? "\(symbol).fill" : symbol)
                 .font(AppTypography.title2(.semibold))
-                .frame(width: 44, height: 44)
+                .readerIconFrame(44)
                 .contentShape(.rect)
         }
         .buttonStyle(.plain)

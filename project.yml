@@ -32,7 +32,7 @@ packages:
   UnderlineEngine:
     url: https://github.com/AftrHours/UnderlineEngine
     # Bump UnderlineRepoKnobs.engineVersion when you change this revision.
-    revision: 25e0ff6c10b8037f1212702a6e114985002ba4d0
+    revision: 628f644ac9efa49f5a8b1287217c2e3c39c21b98 # 1.2.0
   # Runs SwiftLint on every build, using the rules in .swiftlint.yml. Xcode asks once to "Trust & Enable" it.
   SwiftLintPlugins:
     url: https://github.com/SimplyDanny/SwiftLintPlugins
@@ -103,8 +103,6 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
-        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "Refrn uses speech recognition to search your library by voice."
-        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Refrn uses the microphone when you tap voice search."
         # Universal: 1 = iPhone, 2 = iPad.
         TARGETED_DEVICE_FAMILY: "1,2"
         # iPhone: portrait only, like a book held in one hand.

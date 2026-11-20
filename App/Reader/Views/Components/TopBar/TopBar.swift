@@ -34,7 +34,7 @@ struct TopBar: View {
                 .keyboardShortcut("d", modifiers: [.command, .shift])
             }
         }
-        .frame(height: PageLayoutKnobs.barHeight)
+        .frame(minHeight: PageLayoutKnobs.barHeight)
     }
 }
 

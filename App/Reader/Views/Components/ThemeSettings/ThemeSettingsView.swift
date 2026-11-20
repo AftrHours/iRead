@@ -26,7 +26,7 @@ struct ThemeSettingsView: View {
                     resetButton
                 }
                 .padding(.horizontal, layout.sideMargin)
-                .padding(.top, max(0, layout.topGap - barHeight))
+                .padding(.top, max(layout.topGapMin, layout.topGap - barHeight))
                 .environment(\.settingsLayout, layout)
                 .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { width = $0 }
             }
@@ -37,10 +37,11 @@ struct ThemeSettingsView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(role: .close, action: onClose)
+                        .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                 }
                 ToolbarItem(placement: .principal) {
                     Text("Reading Theme & Settings")
-                        .font(AppTypography.headline(.semibold))
+                        .font(AppTypography.headline(.bold))
                         .foregroundStyle(AppColors.settingsText)
                 }
             }
@@ -68,7 +69,7 @@ struct ThemeSettingsView: View {
     private var resetButton: some View {
         Button(action: readerSettingsVM.resetTapped) {
             Text("Reset to Default")
-                .font(AppTypography.subheadline(.medium))
+                .font(AppTypography.callout(.medium))
                 .foregroundStyle(AppColors.settingsResetText)
                 .padding(.horizontal, layout.resetHorizontalPadding)
                 .frame(minHeight: layout.resetMinHeight)
@@ -76,6 +77,7 @@ struct ThemeSettingsView: View {
                 .contentShape(.capsule)
         }
         .buttonStyle(.plain)
+        .glassEffect()
     }
 }
 

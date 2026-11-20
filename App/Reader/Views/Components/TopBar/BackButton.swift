@@ -1,5 +1,23 @@
 import SwiftUI
 
+extension View {
+    func readerIconFrame(_ base: CGFloat = PageLayoutKnobs.barHeight) -> some View {
+        modifier(ReaderIconFrame(base: base))
+    }
+}
+
+private struct ReaderIconFrame: ViewModifier {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    let base: CGFloat
+
+    func body(content: Content) -> some View {
+        let side = PageLayoutKnobs.controlSize(base, at: dynamicTypeSize)
+        content
+            .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
+            .frame(width: side, height: side)
+    }
+}
+
 /// Reusable glass action button for the reading controls.
 struct BackButton: View {
     let systemImage: String
@@ -14,8 +32,7 @@ struct BackButton: View {
             Image(systemName: systemImage)
                 .font(.title3.weight(.medium))
                 .foregroundStyle(foreground)
-                .frame(width: 44, height: 44)
-           
+                .readerIconFrame()
                 .environment(\.colorScheme, colorScheme)
         }
         .glassEffect(.regular.interactive(), in: .circle)

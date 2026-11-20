@@ -10,7 +10,9 @@ struct LibrarySelectionBadge: View {
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.white, item.isSelected ? AppColors.actionPrimary : AppColors.menuTextMuted)
                 .padding(8)
-                .accessibilityLabel(item.selectionAccessibilityLabel)
+                .dynamicTypeSize(...LibraryLayout.maximumIconSize)
+                .accessibilityHidden(true)
+                .allowsHitTesting(false)
         }
     }
 }

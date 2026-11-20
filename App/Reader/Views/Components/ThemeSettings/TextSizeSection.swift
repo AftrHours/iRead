@@ -11,13 +11,15 @@ struct TextSizeSection: View {
             HStack(spacing: layout.iconGap) {
                 Text("A")
                     .font(AppTypography.footnote(.medium))
+                    .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                     .foregroundStyle(AppColors.settingsSliderText)
                     .frame(width: layout.iconColumn)
                     .accessibilityHidden(true)
                 SettingsSlider(value: $value, range: range, step: 1, label: "Text Size")
                 Text("A")
                     .font(AppTypography.title1(.medium))
-                    .foregroundStyle(AppColors.settingsText)
+                    .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
+                    .foregroundStyle(AppColors.settingsSliderText)
                     .accessibilityHidden(true)
             }
         }

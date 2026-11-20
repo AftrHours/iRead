@@ -6,6 +6,7 @@ struct ScreenGeometry: Equatable, Sendable {
     var safeSize: CGSize
     var safeAreaTop: CGFloat
     var safeAreaBottom: CGFloat
+    var barHeight = PageLayoutKnobs.barHeight
 
     /// The whole screen, with the safe area. Only the top and bottom have insets: the app is for an iPhone in portrait and an iPad.
     var size: CGSize {

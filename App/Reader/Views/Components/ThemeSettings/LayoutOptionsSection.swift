@@ -17,8 +17,9 @@ struct LayoutOptionsSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: layout.layoutHeaderGap) {
-            SettingsSectionHeader(title: "Layout Options", systemImage: "text.below.photo")
-            VStack(alignment: .leading, spacing: 0) {
+            SettingsSectionHeader(title: "Layout Options", systemImage: "widget.large")
+            
+            VStack(alignment: .leading, spacing: layout.layoutOptionsGap) {
                 ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
                     if index > 0 {
                         Rectangle()
@@ -26,8 +27,9 @@ struct LayoutOptionsSection: View {
                             .frame(height: layout.dividerHeight)
                     }
                     LayoutRow(row: row)
-                }.padding(12)
+                }
             }
+            .padding(layout.layoutCardPadding)
             .background(AppColors.settingsControlBg, in: .rect(cornerRadius: layout.cardCornerRadius))
         }
     }
@@ -40,16 +42,18 @@ private struct LayoutRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: layout.rowTitleGap) {
             Text(row.title)
-                .font(AppTypography.callout())
+                .font(AppTypography.callout(.medium))
             HStack(spacing: layout.rowIconGap) {
                 Image(systemName: row.systemImage)
                     .frame(width: layout.rowIconWidth)
+                    .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                     .foregroundStyle(AppColors.settingsSliderText)
                     .accessibilityHidden(true)
                 SettingsSlider(value: row.value, range: row.range, label: row.title)
                     .accessibilityValue(row.valueLabel)
                 Text(row.valueLabel)
-                    .font(AppTypography.callout(.medium))
+                    .font(AppTypography.callout(.semibold))
+                    .foregroundStyle(AppColors.settingsSliderText)
                     .monospacedDigit()
                     .frame(minWidth: layout.valueLabelMinWidth, alignment: .trailing)
                     .accessibilityHidden(true)

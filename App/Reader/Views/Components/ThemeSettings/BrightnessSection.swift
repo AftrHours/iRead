@@ -6,15 +6,17 @@ struct BrightnessSection: View {
     @Environment(\.settingsLayout) private var layout
 
     var body: some View {
-        SettingsSection(title: "Brightness", systemImage: "sun.max") {
+        SettingsSection(title: "Brightness", systemImage: "sun.lefthalf.filled") {
             HStack(spacing: layout.iconGap) {
                 Image(systemName: "sun.min")
                     .foregroundStyle(AppColors.settingsSliderText)
                     .frame(width: layout.iconColumn)
+                    .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                     .accessibilityHidden(true)
                 SettingsSlider(value: $value, range: 0...1, label: "Brightness")
-                Image(systemName: "sun.min.fill")
+                Image(systemName: "sun.max.fill")
                     .font(.title3)
+                    .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                     .foregroundStyle(AppColors.settingsSliderText)
                     .accessibilityHidden(true)
             }

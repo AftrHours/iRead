@@ -10,11 +10,10 @@ final class LibVM {
     }
     var searchText = ""
     private(set) var isSearchActive = false
+    private(set) var isLibraryScrolled = false
     var isImportPickerPresented = false
     private(set) var isSelectionMode = false
     private(set) var selectedBookIDs: Set<UUID> = []
-    private(set) var isVoiceSearchActive = false
-    private(set) var voiceSearchError: String?
     var renameDraft = ""
     private(set) var allBooks: [BookRecord] = []
     private(set) var viewMode = ViewMode.grid
@@ -72,11 +71,6 @@ final class LibVM {
         set { if !newValue { renameCancelled() } }
     }
 
-    var isVoiceSearchAlertPresented: Bool {
-        get { voiceSearchError != nil }
-        set { if !newValue { voiceSearchError = nil } }
-    }
-
     var accountActionTitle: String {
         cloudAccount == .signedIn ? "Sign out from Apple Account" : "Sign in from Apple Account"
     }
@@ -85,16 +79,12 @@ final class LibVM {
     private let libCtrl: LibCtrl
     private let importCtrl: ImportCtrl
     private let appNav: AppNav
-    private let speechSearchSvc: SpeechSearchSvc
     private let cloudSvc: (any CloudSvc)?
-    private var voiceSearchSessionID: UUID?
 
-    init(libCtrl: LibCtrl, importCtrl: ImportCtrl, appNav: AppNav, speechSearchSvc: SpeechSearchSvc = SpeechSearchSvc(),
-         cloudSvc: (any CloudSvc)? = nil) {
+    init(libCtrl: LibCtrl, importCtrl: ImportCtrl, appNav: AppNav, cloudSvc: (any CloudSvc)? = nil) {
         self.libCtrl = libCtrl
         self.importCtrl = importCtrl
         self.appNav = appNav
-        self.speechSearchSvc = speechSearchSvc
         self.cloudSvc = cloudSvc
     }
 
@@ -152,6 +142,12 @@ final class LibVM {
         isSearchActive = true
     }
 
+    func libraryScrolled(to offset: CGFloat, headerHeight: CGFloat) {
+        let isScrolled = offset >= headerHeight
+        guard isLibraryScrolled != isScrolled else { return }
+        isLibraryScrolled = isScrolled
+    }
+
     func searchFocusChanged(_ focused: Bool) {
         if focused { isSearchActive = true }
     }
@@ -192,47 +188,6 @@ final class LibVM {
     func accountSettingsTapped() {
         guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(settingsURL)
-    }
-
-    func voiceSearchTapped() {
-        if isVoiceSearchActive {
-            voiceSearchSessionID = nil
-            speechSearchSvc.stop()
-            isVoiceSearchActive = false
-            return
-        }
-
-        let sessionID = UUID()
-        voiceSearchSessionID = sessionID
-        isVoiceSearchActive = true
-        Task {
-            do {
-                try await speechSearchSvc.start { [weak self] transcript in
-                    guard self?.voiceSearchSessionID == sessionID else { return }
-                    self?.searchText = transcript
-                } onFailure: { [weak self] message in
-                    guard self?.voiceSearchSessionID == sessionID else { return }
-                    self?.voiceSearchError = message
-                } onFinished: { [weak self] in
-                    guard self?.voiceSearchSessionID == sessionID else { return }
-                    self?.voiceSearchSessionID = nil
-                    self?.isVoiceSearchActive = false
-                }
-                guard voiceSearchSessionID == sessionID else {
-                    speechSearchSvc.stop()
-                    return
-                }
-            } catch {
-                guard voiceSearchSessionID == sessionID else { return }
-                voiceSearchSessionID = nil
-                isVoiceSearchActive = false
-                voiceSearchError = error.localizedDescription
-            }
-        }
-    }
-
-    func dismissVoiceSearchError() {
-        voiceSearchError = nil
     }
 
     func importTapped() {
