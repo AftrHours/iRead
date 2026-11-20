@@ -20,7 +20,7 @@ struct BottomBar<MenuItems: View>: View {
                 items: menuItems
             )
         }
-        .frame(height: PageLayoutKnobs.barHeight)
+        .frame(minHeight: PageLayoutKnobs.barHeight)
     }
 }
 

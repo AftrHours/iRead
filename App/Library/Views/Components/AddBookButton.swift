@@ -3,20 +3,19 @@ import SwiftUI
 /// Dedicated add-book control, shared by the header and empty state.
 struct AddBookButton: View {
     var size: CGFloat = 48
-    var iconFont: Font = .system(size: 19, weight: .semibold)
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Image(systemName: "plus")
-                .font(iconFont)
+                .font(.system(.title3, weight: .semibold))
                 .foregroundStyle(.black)
-                .frame(width: size, height: size)
+                .libraryIconFrame(size)
                 .contentShape(.circle)
                 .glassEffect(.regular.tint(AppColors.actionPrimary).interactive())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Import EPUB")
+        .libraryControlLabel("Import EPUB", symbol: "plus")
     }
 }
 

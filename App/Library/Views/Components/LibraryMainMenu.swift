@@ -33,14 +33,14 @@ struct LibraryMainMenu: View {
         }
         .buttonStyle(.plain)
         .menuOrder(.fixed)
-        .accessibilityLabel("Library options")
+        .libraryControlLabel("Library options", symbol: "ellipsis")
     }
 
     private var menuIcon: some View {
         Image(systemName: "ellipsis")
             .font(iconFont)
             .foregroundStyle(AppColors.textPrimary)
-            .frame(width: 48, height: 48)
+            .libraryIconFrame()
             .contentShape(.rect)
     }
 }

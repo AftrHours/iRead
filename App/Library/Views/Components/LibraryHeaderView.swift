@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct LibraryHeaderView: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     let libVM: LibVM
     let layout: LibraryLayout
     let searchFocus: FocusState<Bool>.Binding
@@ -26,17 +28,26 @@ struct LibraryHeaderView: View {
         return EdgeInsets(top: 8, leading: 20, bottom: 0, trailing: 20)
     }
 
+    private var showsSeparatePadSearch: Bool {
+        layout.isPad && libVM.isSearchActive && !libVM.isSelectionMode && horizontalSizeClass == .compact
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             topBar
                 .padding(topBarInsets)
 
+            if showsSeparatePadSearch {
+                HStack { padSearchControls }
+                    .padding(.horizontal, 12)
+            }
             if !layout.isPad && !showsFocusedPhoneSearch {
                 if showsEmptyPhoneLibrary {
                     libraryTitle
                         .padding(.horizontal, layout.sideMargin)
                         .padding(.top, 0.5)
-                } else if includesPhoneSearchField {
+                }
+                if includesPhoneSearchField && !showsEmptyPhoneLibrary {
                     LibrarySearchBar(libVM: libVM, focus: searchFocus)
                         .padding(.horizontal, layout.sideMargin)
                         .padding(.top, 12)
@@ -50,31 +61,29 @@ struct LibraryHeaderView: View {
     private var topBar: some View {
         Group {
             if libVM.isSelectionMode {
-                HStack(spacing: 12) { selectionControls }
+                selectionControls
             } else if showsFocusedPhoneSearch {
                 LibraryActiveSearchHeader(libVM: libVM, searchFocus: searchFocus)
             } else {
                 HStack(spacing: 12) {
-                    if !layout.isPad && !showsEmptyPhoneLibrary && !libVM.showsScrolledLibraryControls { libraryTitle }
+                    if !layout.isPad && !showsEmptyPhoneLibrary && !libVM.showsScrolledLibraryControls && !dynamicTypeSize.isAccessibilitySize { libraryTitle }
                     Spacer()
                     if layout.isPad {
-                        padSearchControls
+                        if !showsSeparatePadSearch { padSearchControls }
                         LibraryMainMenu(libVM: libVM)
                         AddBookButton(action: libVM.importTapped)
-                    } else if libVM.showsScrolledLibraryControls {
-                        AddBookButton(action: libVM.importTapped)
-                        LibraryPhoneMenuGroup(libVM: libVM)
-                    } else if showsEmptyPhoneLibrary {
-                        AddBookButton(action: libVM.importTapped)
-                        LibraryMainMenu(libVM: libVM, iconFont: AppTypography.title2(.medium))
                     } else {
                         AddBookButton(action: libVM.importTapped)
-                        LibraryMainMenu(libVM: libVM)
+                        if libVM.showsScrolledLibraryControls {
+                            LibraryPhoneMenuGroup(libVM: libVM)
+                        } else {
+                            LibraryMainMenu(libVM: libVM, iconFont: showsEmptyPhoneLibrary ? AppTypography.title2(.medium) : AppTypography.body(.medium))
+                        }
                     }
                 }
             }
         }
-        .frame(height: 48)
+        .frame(minHeight: 48)
     }
 
     private var libraryTitle: some View {
@@ -82,18 +91,32 @@ struct LibraryHeaderView: View {
     }
 
     private var selectionControls: some View {
-        Group {
-            Button("Cancel", action: libVM.selectionModeDismissed)
-                .font(AppTypography.callout())
-                .foregroundStyle(AppColors.textSecondary)
-            Spacer()
-            Text(libVM.selectionTitle)
-                .font(AppTypography.callout(.semibold))
-                .foregroundStyle(AppColors.textPrimary)
-            Spacer()
-            Button("Done", action: libVM.selectionModeDismissed)
-                .font(AppTypography.callout(.semibold))
-                .foregroundStyle(AppColors.textSecondary)
+        let cancel = Button("Cancel", action: libVM.selectionModeDismissed)
+            .font(AppTypography.callout())
+            .foregroundStyle(AppColors.textSecondary)
+        let done = Button("Done", action: libVM.selectionModeDismissed)
+            .font(AppTypography.callout(.semibold))
+            .foregroundStyle(AppColors.textSecondary)
+        let count = Text(libVM.selectionTitle)
+            .font(AppTypography.callout(.semibold))
+            .foregroundStyle(AppColors.textPrimary)
+
+        return ViewThatFits(in: .horizontal) {
+            HStack {
+                cancel
+                Spacer()
+                count
+                Spacer()
+                done
+            }
+            VStack {
+                count
+                HStack {
+                    cancel
+                    Spacer()
+                    done
+                }
+            }
         }
     }
 
@@ -101,35 +124,23 @@ struct LibraryHeaderView: View {
     private var padSearchControls: some View {
         if libVM.isSearchActive {
             LibrarySearchBar(libVM: libVM, focus: searchFocus, style: .pad, focusesOnContainerTap: false)
-                .frame(width: 280)
-            searchCloseButton(size: 36, foreground: AppColors.textSecondary)
+                .frame(maxWidth: 280)
+            searchCloseButton
         } else {
-            searchButton(size: 48)
+            LibraryFloatingSearchButton(action: libVM.searchTapped)
         }
     }
 
-    private func searchButton(size: CGFloat) -> some View {
-        Button(action: libVM.searchTapped) {
-            Image(systemName: "magnifyingglass")
-                .font(AppTypography.title2(.regular))
-                .foregroundStyle(AppColors.textPrimary)
-                .frame(width: size, height: size)
-                .glassEffect(.regular.interactive(), in: .circle)
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel("Search books")
-    }
-
-    private func searchCloseButton(size: CGFloat, foreground: Color) -> some View {
+    private var searchCloseButton: some View {
         Button(action: libVM.searchDismissed) {
             Image(systemName: "xmark")
                 .font(AppTypography.callout(.semibold))
-                .foregroundStyle(foreground)
-                .frame(width: size, height: 44)
+                .foregroundStyle(AppColors.textSecondary)
+                .libraryIconFrame(44)
                 .glassEffect(.regular, in: .circle)
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Close search")
+        .libraryControlLabel("Close search", symbol: "xmark")
     }
 }
 

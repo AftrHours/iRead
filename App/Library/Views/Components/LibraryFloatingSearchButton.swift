@@ -9,12 +9,12 @@ struct LibraryFloatingSearchButton: View {
             Image(systemName: "magnifyingglass")
                 .font(AppTypography.title2(.regular))
                 .foregroundStyle(AppColors.textPrimary)
-                .frame(width: 48, height: 48)
+                .libraryIconFrame()
                 .contentShape(.circle)
                 .glassEffect(.regular.interactive(), in: .circle)
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Search books")
+        .libraryControlLabel("Search books", symbol: "magnifyingglass")
     }
 }
 

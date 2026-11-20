@@ -11,10 +11,12 @@ struct BrightnessSection: View {
                 Image(systemName: "sun.min")
                     .foregroundStyle(AppColors.settingsSliderText)
                     .frame(width: layout.iconColumn)
+                    .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                     .accessibilityHidden(true)
                 SettingsSlider(value: $value, range: 0...1, label: "Brightness")
                 Image(systemName: "sun.max.fill")
                     .font(.title3)
+                    .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                     .foregroundStyle(AppColors.settingsSliderText)
                     .accessibilityHidden(true)
             }

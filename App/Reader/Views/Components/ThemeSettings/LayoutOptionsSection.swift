@@ -46,6 +46,7 @@ private struct LayoutRow: View {
             HStack(spacing: layout.rowIconGap) {
                 Image(systemName: row.systemImage)
                     .frame(width: layout.rowIconWidth)
+                    .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                     .foregroundStyle(AppColors.settingsSliderText)
                     .accessibilityHidden(true)
                 SettingsSlider(value: row.value, range: row.range, label: row.title)

@@ -40,6 +40,7 @@ struct LibraryEmptyStateView: View {
             VStack(spacing: layout.emptyLibraryButtonSpacing) {
                 VStack(spacing: layout.emptyLibraryTextSpacing) {
                     Text(libVM.emptyStateTitle)
+                        .accessibilityAddTraits(.isHeader)
                         .font(AppTypography.title3(.semibold))
                         .foregroundStyle(AppColors.textPrimary)
                         .multilineTextAlignment(.center)
@@ -71,6 +72,7 @@ struct LibraryEmptyStateView: View {
             illustration(size: layout.emptySearchImageSize)
             VStack(spacing: 8) {
                 Text(libVM.emptyStateTitle)
+                    .accessibilityAddTraits(.isHeader)
                     .font(AppTypography.title3(.semibold))
                     .foregroundStyle(AppColors.textPrimary)
                     .multilineTextAlignment(.center)

@@ -28,6 +28,7 @@ struct SearchView: View {
                     Button(role: .close) {
                         dismiss()
                     }
+                    .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                 }
             }
         }
@@ -80,7 +81,10 @@ struct SearchView: View {
                     Button {
                         searchVM.recentSearchTapped(query)
                     } label: {
-                        Label(query, systemImage: "magnifyingglass")
+                        Label { Text(query) } icon: {
+                            Image(systemName: "magnifyingglass")
+                                .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
+                        }
                             .font(.body.weight(.semibold))
                             .foregroundStyle(.primary)
                             .frame(maxWidth: .infinity, minHeight: 36, alignment: .leading)

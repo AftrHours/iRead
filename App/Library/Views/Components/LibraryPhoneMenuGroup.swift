@@ -12,12 +12,12 @@ struct LibraryPhoneMenuGroup: View {
                 Image(systemName: "line.3.horizontal.decrease")
                     .font(AppTypography.title3(.regular))
                     .foregroundStyle(AppColors.textPrimary)
-                    .frame(width: 48, height: 48)
+                    .libraryIconFrame()
                     .contentShape(.rect)
             }
             .buttonStyle(.plain)
             .menuOrder(.fixed)
-            .accessibilityLabel("Sort books")
+            .libraryControlLabel("Sort books", symbol: "line.3.horizontal.decrease")
 
             LibraryMainMenu(libVM: libVM, iconFont: AppTypography.title3(.semibold), isGrouped: true)
         }

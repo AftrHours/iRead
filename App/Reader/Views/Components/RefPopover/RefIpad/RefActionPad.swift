@@ -14,7 +14,10 @@ struct RefActionPad: View {
             thumb(.down)
             Spacer(minLength: 8)
             Button(action: onJumpTapped) {
-                Label("Jump to Passage", systemImage: "arrow.up.left")
+                Label { Text("Jump to Passage") } icon: {
+                    Image(systemName: "arrow.up.left")
+                        .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
+                }
                     .font(AppTypography.body(.regular))
                     .lineLimit(1)
                     .foregroundStyle(AppColors.actionPrimaryText)
@@ -35,7 +38,7 @@ struct RefActionPad: View {
         } label: {
             Image(systemName: isChosen ? "\(symbol).fill" : symbol)
                 .font(AppTypography.title1(.semibold))
-                .frame(width: 50, height: 50)
+                .readerIconFrame(50)
                 .contentShape(.rect)
         }
         .buttonStyle(.plain)

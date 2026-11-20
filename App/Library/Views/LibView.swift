@@ -4,6 +4,8 @@ import SwiftUI
 struct LibView: View {
     @Bindable var libVM: LibVM
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @State private var inlineHeaderHeight: CGFloat = 76
     @FocusState private var isSearchFocused: Bool
     private var layout: LibraryLayout { LibraryLayout(isSearching: libVM.isSearchActive) }
 
@@ -66,6 +68,7 @@ struct LibView: View {
             VStack(alignment: .leading, spacing: 0) {
                 if let resultsTitle = libVM.searchResultsTitle {
                     Text(resultsTitle)
+                        .accessibilityAddTraits(.isHeader)
                         .font(AppTypography.title3(.semibold))
                         .foregroundStyle(AppColors.textPrimary)
                         .padding(.horizontal, layout.sideMargin)
@@ -104,13 +107,19 @@ struct LibView: View {
             showsLibraryTitle: layout.isPad,
             resultsTitle: layout.isPad ? libVM.searchResultsTitle : nil,
             onScrolled: { offset in
-                if !layout.isPad { libVM.libraryScrolled(to: offset) }
+                if !layout.isPad { libVM.libraryScrolled(to: offset, headerHeight: inlineHeaderHeight) }
             }
         ) {
             if !layout.isPad && !libVM.isSearchActive {
-                LibrarySearchBar(libVM: libVM, focus: $isSearchFocused)
-                    .padding(.top, 12)
-                    .padding(.bottom, 20)
+                VStack(alignment: .leading, spacing: 0) {
+                    if dynamicTypeSize.isAccessibilitySize && !libVM.isSelectionMode {
+                        LibraryTitleView()
+                    }
+                    LibrarySearchBar(libVM: libVM, focus: $isSearchFocused)
+                        .padding(.top, 12)
+                        .padding(.bottom, 20)
+                }
+                .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { inlineHeaderHeight = $0 }
             }
         }
     }

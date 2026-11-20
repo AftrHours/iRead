@@ -6,6 +6,7 @@ import SwiftUI
 struct PageArea: View {
     let readerVM: ReaderVM
     @Bindable var referenceVM: ReferenceVM
+    @Environment(\.dynamicTypeSize) private var textSize
     let ratingVM: RatingVM
 
     var body: some View {
@@ -13,22 +14,13 @@ struct PageArea: View {
             if let content = readerVM.pageContent {
                 pages(content)
                     .popover(
-                        item: $referenceVM.presentedCard,
+                        item: presentedCard(sheet: false),
                         attachmentAnchor: .rect(.rect(referenceVM.cardAnchor)),
                         arrowEdge: readerVM.isCardBelowUnderline ? .top : .bottom
                     ) { referenceCard in
-                        RefPopover(
-                            card: referenceCard,
-                            isPad: readerVM.isCardForPad,
-                            verdict: ratingVM.verdict,
-                            isAskingToShare: ratingVM.isAskingToShare,
-                            onVerdictTapped: ratingVM.verdictTapped,
-                            onSharingChosen: ratingVM.sharingChosen,
-                            onJumpTapped: referenceVM.jumpToPassageTapped
-                        )
-                        // Reads this underline's saved rating each time the card opens.
-                        .task(id: referenceCard.underlineID) { await ratingVM.cardShown(underlineID: referenceCard.underlineID) }
+                        cardView(referenceCard)
                     }
+                    .sheet(item: presentedCard(sheet: true)) { cardView($0) }
             } else if readerVM.hasFailedToOpen {
                 ContentUnavailableView("Can't Open Book", systemImage: "book.closed")
             } else {
@@ -38,12 +30,37 @@ struct PageArea: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
+    private func presentedCard(sheet: Bool) -> Binding<ReferenceVM.ReferenceCard?> {
+        Binding {
+            (textSize > .large) == sheet ? referenceVM.presentedCard : nil
+        } set: { value in
+            if (textSize > .large) == sheet { referenceVM.presentedCard = value }
+        }
+    }
+
+    private func cardView(_ referenceCard: ReferenceVM.ReferenceCard) -> some View {
+        RefPopover(
+            card: referenceCard,
+            isPad: readerVM.isCardForPad,
+            verdict: ratingVM.verdict,
+            isAskingToShare: ratingVM.isAskingToShare,
+            onVerdictTapped: ratingVM.verdictTapped,
+            onSharingChosen: ratingVM.sharingChosen,
+            onJumpTapped: referenceVM.jumpToPassageTapped
+        )
+        // Reads this underline's saved rating each time the card opens.
+        .task(id: referenceCard.underlineID) {
+            await ratingVM.cardShown(underlineID: referenceCard.underlineID)
+        }
+    }
+
     /// Curl on UIPageViewController's own curl; Slide and Fast Fade on our pager.
     @ViewBuilder
     private func pages(_ content: PageContent) -> some View {
         let actions = PageActions(
             onPageChanged: readerVM.pageChanged,
             onCenterTapped: readerVM.pageCenterTapped,
+            claimReadingFocus: readerVM.claimReadingFocus,
             onMarkTapped: { referenceVM.markTapped($0, at: $1) }
         )
         if content.settings.pageTurnStyle == .curl {

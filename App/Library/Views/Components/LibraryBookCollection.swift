@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LibraryBookCollection<Header: View>: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let items: [LibraryBookItemVM]
     let viewMode: LibVM.ViewMode
     let layout: LibraryLayout
@@ -10,7 +11,7 @@ struct LibraryBookCollection<Header: View>: View {
     let onRemove: (BookRecord) -> Void
     var showsLibraryTitle = false
     var resultsTitle: String?
-    var onScrolled: ((CGFloat) -> Void)? = nil
+    var onScrolled: ((CGFloat) -> Void)?
     @ViewBuilder let header: () -> Header
 
     var body: some View {
@@ -30,12 +31,14 @@ struct LibraryBookCollection<Header: View>: View {
 
                 if let resultsTitle {
                     Text(resultsTitle)
+                        .accessibilityAddTraits(.isHeader)
                         .font(AppTypography.title3(.semibold))
                         .foregroundStyle(AppColors.textPrimary)
                         .padding(.bottom, 16)
                 }
 
                 books
+                    .accessibilityElement(children: .contain)
             }
             .padding(.horizontal, layout.collectionSideMargin)
             .padding(.bottom, 28)
@@ -51,24 +54,27 @@ struct LibraryBookCollection<Header: View>: View {
     private var books: some View {
         switch viewMode {
         case .grid:
-            LazyVGrid(columns: layout.gridColumns, spacing: layout.gridRowSpacing) {
-                ForEach(items) { item in
-                    BookGridView(item: item, menu: bookMenu(for: item, style: .card))
-                        .overlay(alignment: .topTrailing) { LibrarySelectionBadge(item: item) }
-                        .contentShape(.rect)
-                        .onTapGesture { onBookTapped(item.book) }
+            LazyVGrid(columns: layout.gridColumns(for: dynamicTypeSize), spacing: layout.gridRowSpacing) {
+                ForEach(items.enumerated(), id: \.element.id) { index, item in
+                    BookGridView(item: item, menu: bookMenu(for: item, style: .card)) {
+                        onBookTapped(item.book)
+                    }
+                    .accessibilityElement(children: .contain)
+                    .environment(\.libraryBookMenuPriority, Double(items.count - index) * 2)
                 }
             }
         case .list:
             LazyVStack(spacing: 12) {
-                ForEach(items) { item in
-                    BookRowView(item: item, menu: bookMenu(for: item))
-                        .overlay(alignment: .trailing) { LibrarySelectionBadge(item: item) }
-                        .contentShape(.rect)
-                        .onTapGesture { onBookTapped(item.book) }
+                ForEach(items.enumerated(), id: \.element.id) { index, item in
+                    BookRowView(item: item, menu: bookMenu(for: item)) {
+                        onBookTapped(item.book)
+                    }
+                    .accessibilityElement(children: .contain)
+                    .environment(\.libraryBookMenuPriority, Double(items.count - index) * 2)
                     Rectangle()
                         .fill(LibraryPalette.divider)
                         .frame(height: 1)
+                        .accessibilityHidden(true)
                 }
             }
         }

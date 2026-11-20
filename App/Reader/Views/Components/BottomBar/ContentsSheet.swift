@@ -31,6 +31,7 @@ struct ContentsSheet: View {
                     Button(role: .close) {
                         dismiss()
                     }
+                    .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                 }
             }
         }

@@ -37,6 +37,7 @@ struct ThemeSettingsView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(role: .close, action: onClose)
+                        .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                 }
                 ToolbarItem(placement: .principal) {
                     Text("Reading Theme & Settings")
