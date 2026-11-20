@@ -28,7 +28,7 @@ struct FirstChapterTests {
     @Test("FC-03 text before the table of contents, marked front matter, is skipped however long it is")
     func marked() {
         #expect(index(["Alice", "Down the Rabbit-Hole", "The Pool of Tears"], words: [3000, 400, 500], parts: [.front, nil, nil]) == 1)
-        #expect(index(["Chapter 1", "Chapter 2"], parts: [.front, nil]) == 1)
+        #expect(index(["Chapter 1", "Chapter 2"], words: [3000, 400], parts: [.front, nil]) == 1)
     }
 
     @Test("FC-04 without a number or label, the first chapter that isn't front matter by title and has enough words starts it")
