@@ -19,15 +19,26 @@ actor ReaderCtrl {
 
     func openBook() async throws {
         content = try await bookContentRepo.content(for: bookID)
+        position = startPosition()
     }
 
     func restorePosition(from readingProgress: ReadingProgress) -> Bool {
-        let isRestored = isValid(readingProgress.position)
-        let chapterIndex = content.chapters.indices.contains(readingProgress.chapterIndex) ? readingProgress.chapterIndex : 0
+        let start = startPosition()
+        let isUnread = readingProgress.position == ReadingPosition(paragraph: 0, charOffset: 0) && start != readingProgress.position
+        let isRestored = isValid(readingProgress.position) && !isUnread
+        let chapterIndex = content.chapters.indices.contains(readingProgress.chapterIndex)
+            ? readingProgress.chapterIndex
+            : content.firstReadableChapterIndex
         position = isRestored
             ? readingProgress.position
-            : ReadingPosition(paragraph: content.chapters[chapterIndex].paragraphs.lowerBound, charOffset: 0)
+            : (isUnread ? start : ReadingPosition(paragraph: content.chapters[chapterIndex].paragraphs.lowerBound, charOffset: 0))
         return isRestored
+    }
+
+    private func startPosition() -> ReadingPosition {
+        let chapterIndex = content.chapters.indices.contains(content.firstReadableChapterIndex) ? content.firstReadableChapterIndex : 0
+        guard content.chapters.indices.contains(chapterIndex) else { return ReadingPosition(paragraph: 0, charOffset: 0) }
+        return ReadingPosition(paragraph: content.chapters[chapterIndex].paragraphs.lowerBound, charOffset: 0)
     }
 
     func chapterTitles() -> [String] {

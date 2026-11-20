@@ -49,6 +49,7 @@ public struct EPUBReader: Sendable {
         let bookTitle = normalized(opf.first { $0.name == "dc:title" }?.text ?? "")
 
         var chapters: [RawChapter] = []
+        var hasPreamble = false
         for path in spine {
             let entries = tocEntries.filter { $0.path == path }
             let reader = try parseXML(data(path, in: archive), with: ChapterReader(anchorIDs: Set(entries.compactMap(\.fragment))))
@@ -61,14 +62,19 @@ public struct EPUBReader: Sendable {
             }
             for (index, paragraph) in reader.paragraphs.enumerated() {
                 if let title = titles[index] {
-                    chapters.append(RawChapter(title: title))
+                    chapters.append(RawChapter(title: title, part: reader.part))
                 } else if chapters.isEmpty {
-                    chapters.append(RawChapter(title: bookTitle))
+                    chapters.append(RawChapter(title: bookTitle, part: reader.part))
+                    hasPreamble = true
                 }
                 chapters[chapters.count - 1].paragraphs.append(paragraph)
             }
         }
-        return chapters.map { EPUBChapter(title: $0.title, paragraphs: $0.paragraphs) }
+        // The text before the first entry is the book's opening pages, unless that entry is all there is.
+        if hasPreamble, chapters.count > 1, chapters[0].part == nil {
+            chapters[0].part = .front
+        }
+        return chapters.map { EPUBChapter(title: $0.title, paragraphs: $0.paragraphs, part: $0.part) }
     }
 
     private func tocEntries(at tocPath: String, in archive: Archive) throws -> [TocEntry] {
@@ -123,6 +129,7 @@ public struct EPUBReader: Sendable {
 
     private struct RawChapter {
         let title: String
+        var part: EPUBPart?
         var paragraphs: [String] = []
     }
 
@@ -155,9 +162,27 @@ public struct EPUBReader: Sendable {
     private final class ChapterReader: NSObject, XMLParserDelegate {
         private(set) var paragraphs: [String] = []
         private(set) var anchorParagraphs: [String: Int] = [:]
+        /// The first part the file names with an `epub:type`.
+        private(set) var part: EPUBPart?
         private let anchorIDs: Set<String>
         private var paragraph = ""
         private var isInBody = false
+
+        private static let frontTypes: Set = [
+            "frontmatter", "cover", "titlepage", "halftitlepage", "copyright-page", "dedication", "toc", "foreword", "preface",
+            "acknowledgments"
+        ]
+        private static let bodyTypes: Set = ["bodymatter", "chapter", "prologue"]
+        private static let backTypes: Set = ["backmatter", "afterword", "appendix", "colophon", "index", "glossary", "bibliography"]
+
+        private static func part(of epubType: String) -> EPUBPart? {
+            for type in epubType.split(whereSeparator: \.isWhitespace).map(String.init) {
+                if frontTypes.contains(type) { return .front }
+                if bodyTypes.contains(type) { return .body }
+                if backTypes.contains(type) { return .back }
+            }
+            return nil
+        }
 
         private static let blocks: Set = [
             "p", "div", "section", "article", "header", "footer", "blockquote", "li", "tr", "br",
@@ -172,6 +197,9 @@ public struct EPUBReader: Sendable {
                     qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
             if elementName == "body" {
                 isInBody = true
+            }
+            if part == nil, let epubType = attributeDict["epub:type"] {
+                part = Self.part(of: epubType)
             }
             if Self.blocks.contains(elementName) {
                 endParagraph()

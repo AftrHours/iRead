@@ -51,6 +51,45 @@ struct ReaderCtrlTests {
         #expect(current.range.location == 0)
     }
 
+    /// A copyright page of 2 paragraphs, then 2 chapters.
+    private let frontMatterContent = BookContent.make(
+        chapters: [
+            ["All rights reserved.", "Printed somewhere."],
+            ["Chapter one opens with this line of text.", "And a second line follows it."],
+            ["Chapter two opens here."]
+        ],
+        titles: ["Copyright", "Chapter 1", "Chapter 2"]
+    )
+
+    @Test("RD-20 a book with no saved progress opens where the story starts")
+    func firstOpenSkipsFrontMatter() async throws {
+        let (ctrl, _) = try await makeReader(content: frontMatterContent)
+        let current = await ctrl.currentPage(viewport: iPadViewport, settings: ReadingSettings())
+        #expect(current.chapterIndex == 1)
+        #expect(current.range.location == 0)
+    }
+
+    @Test("RD-21 a reset book, saved at the very start, opens where the story starts and counts as not restored")
+    func resetOpensAtStory() async throws {
+        let (ctrl, _) = try await makeReader(content: frontMatterContent)
+        #expect(await !ctrl.restorePosition(from: .make(paragraph: 0, charOffset: 0, chapterIndex: 0)))
+        #expect(await ctrl.currentPage(viewport: iPadViewport, settings: ReadingSettings()).chapterIndex == 1)
+    }
+
+    @Test("RD-22 a position saved inside the front matter is kept")
+    func savedFrontMatterKept() async throws {
+        let (ctrl, _) = try await makeReader(content: frontMatterContent)
+        #expect(await ctrl.restorePosition(from: .make(paragraph: 1, charOffset: 3, chapterIndex: 0)))
+        #expect(await ctrl.currentPage(viewport: iPadViewport, settings: ReadingSettings()).chapterIndex == 0)
+    }
+
+    @Test("RD-23 an invalid chapter opens where the story starts")
+    func invalidChapterOpensAtStory() async throws {
+        let (ctrl, _) = try await makeReader(content: frontMatterContent)
+        #expect(await !ctrl.restorePosition(from: .make(paragraph: 99, chapterIndex: 99)))
+        #expect(await ctrl.currentPage(viewport: iPadViewport, settings: ReadingSettings()).chapterIndex == 1)
+    }
+
     @Test("RD-04 pages(around:) loads 2 pages on each side when there are any")
     func pagesAround() async throws {
         let (ctrl, _) = try await makeReader()

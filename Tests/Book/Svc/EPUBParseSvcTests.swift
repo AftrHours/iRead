@@ -1,3 +1,4 @@
+import EPUBKit
 import Foundation
 import Testing
 @testable import iRead
@@ -54,6 +55,29 @@ struct EPUBParseSvcTests {
                 #expect(!text.isEmpty)
             }
         }
+    }
+
+    @Test("BK-17 labeled.epub starts at its first body chapter, past the cover and copyright page")
+    func labeledStart() async throws {
+        let content = try await svc.parse(Fixture.url("labeled"))
+        #expect(content.chapters.map(\.title) == ["Welcome", "Legal Notes", "The Door", "The Letter"])
+        #expect(content.firstReadableChapterIndex == 2)
+    }
+
+    @Test("BK-18 text before the table of contents is front matter, and the story starts at the first chapter")
+    func preambleStart() async throws {
+        let url = try Fixture.url("preamble")
+        let content = try await svc.parse(url)
+        #expect(content.chapters.map(\.title) == ["Preamble Book", "Chapter I. The Door", "Chapter II. The Letter"])
+        #expect(content.firstReadableChapterIndex == 1)
+        #expect(try EPUBReader().chapters(from: url).map(\.part) == [.front, nil, nil])
+    }
+
+    @Test("BK-19 a book that starts at chapter 1 opens at chapter 0, and the parse version is unchanged")
+    func minimalStart() async throws {
+        let content = try await svc.parse(Fixture.url("minimal"))
+        #expect(content.firstReadableChapterIndex == 0)
+        #expect(content.parserVersion == 1)
     }
 
     @Test("BK-04 a title like Mr. doesn't end a sentence", arguments: [" ", "\u{00A0}"])
