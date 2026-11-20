@@ -36,6 +36,37 @@ final class ReaderVM {
     /// Where the page's parts go. nil until the screen has been measured.
     private(set) var layout: PageLayout?
 
+    private var readingFocus: ReaderFocusRequest?
+    @ObservationIgnored private var lastDeliveredFocus: UUID?
+
+    private(set) var completedPassageSpeech: UUID?
+
+    var isPassageSpeechPending: Bool {
+        guard case .passage? = readingFocus?.target, referenceVM.jumpedPassageText != nil else { return false }
+        return completedPassageSpeech != readingFocus?.id
+    }
+
+    func passageSpeechEnded(text: String, finished: Bool, isActive: Bool) {
+        guard isPassageSpeechPending, let request = readingFocus, lastDeliveredFocus == request.id,
+              case .passage(text) = request.target else { return }
+        if finished {
+            completedPassageSpeech = request.id
+        } else if isActive {
+            replayPendingPassage()
+        }
+    }
+
+    func replayPendingPassage() {
+        guard isPassageSpeechPending, let shownPage else { return }
+        readingFocus = ReaderFocusRequest(from: shownPage, to: shownPage, passage: referenceVM.jumpedPassageText)
+    }
+
+    func claimReadingFocus(_ id: UUID) -> Bool {
+        guard readingFocus?.id == id, lastDeliveredFocus != id else { return false }
+        lastDeliveredFocus = id
+        return true
+    }
+
     private var chapterStartPages: [Int] = []
     private var pageCount: Int?
     private var isBookOpen = false
@@ -85,7 +116,7 @@ final class ReaderVM {
         guard let layout, let shownPage else { return nil }
         let chromes = Dictionary((pages + [shownPage]).map { ($0.number, chrome(for: $0)) }, uniquingKeysWith: { first, _ in first })
         return PageContent(pages: pages, shownPage: shownPage, settings: readerSettingsVM.layoutSettings, layout: layout,
-                           marks: visibleMarks, chromes: chromes, selectedUnderlineID: referenceVM.selectedUnderlineID)
+                           marks: visibleMarks, chromes: chromes, selectedUnderlineID: referenceVM.selectedUnderlineID, readingFocus: readingFocus)
     }
 
     /// The iPad's reference card on a full-width screen, the iPhone's on a narrow one.
@@ -106,7 +137,7 @@ final class ReaderVM {
 
     /// What a page shows above and below its text. Each page carries its own, so it turns with the page.
     private func chrome(for page: Page) -> PageChrome {
-        PageChrome(title: title, chapterTitle: chapterTitle(of: page).uppercased(), pageLabel: pageLabel(for: page))
+        PageChrome(title: title, chapterTitle: chapterTitle(of: page), pageLabel: pageLabel(for: page), isReadingMode: isFocusMode)
     }
 
     private func chapterTitle(of page: Page) -> String {
@@ -268,6 +299,7 @@ final class ReaderVM {
         let page = await readerCtrl.currentPage(viewport: viewport, settings: settings)
         guard viewport == layout?.viewport, settings == readerSettingsVM.settings else { return }
         readerSettingsVM.layoutChanged(to: settings)
+        if shownPage == nil { readingFocus = ReaderFocusRequest(from: nil, to: page) }
         shownPage = page
         pages = [page]
         referenceVM.layoutChanged()
@@ -278,6 +310,8 @@ final class ReaderVM {
 
     private func show(_ page: Page, highlighting underlineID: String? = nil, searchResult: SearchResult? = nil) {
         referenceVM.pageShown(highlighting: underlineID, searchResult: searchResult)
+        completedPassageSpeech = nil
+        readingFocus = ReaderFocusRequest(from: shownPage, to: page, passage: referenceVM.jumpedPassageText)
         shownPage = page
         updateReferenceVM()
         loadPages(around: page)

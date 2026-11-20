@@ -24,6 +24,12 @@ final class PageTextView: UIView {
     private let titleLabel = UILabel()
     private let chapterLabel = UILabel()
     private let pageLabel = UILabel()
+    private lazy var modeControl = ReaderAccessibilityButton(container: self) { [weak self] in
+        self?.actions.onCenterTapped()
+    }
+    private var referenceButtons: [(mark: Mark, button: ReaderAccessibilityButton)] = []
+    private var focusRequest: ReaderFocusRequest?
+    private var focusTask: Task<Void, Never>?
     private let onEdgeTapped: (_ isForward: Bool) -> Void
 
     /// Between the book title and the chapter title under it.
@@ -58,6 +64,9 @@ final class PageTextView: UIView {
     private func configureTextView() {
         textView.attributedText = PageTextStyle.attributedText(page.text, settings: settings, marks: marks)
         showBackgrounds()
+        textView.isAccessibilityElement = true
+        textView.accessibilityTraits = .staticText
+        textView.accessibilityValue = page.text
         textView.isEditable = false
         textView.isSelectable = false
         textView.isScrollEnabled = false
@@ -70,9 +79,13 @@ final class PageTextView: UIView {
     /// The book title over the chapter title on top, the page label below: subheadline semibold, a faded caption, a caption.
     private func configureLabels() {
         let textColor = PageTextStyle.textColor(for: settings.theme)
-        titleLabel.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .subheadline).pointSize, weight: .semibold)
+        let standardSize = UITraitCollection(preferredContentSizeCategory: .large)
+        let titleFont = UIFont.preferredFont(forTextStyle: .subheadline, compatibleWith: standardSize)
+        titleLabel.font = .systemFont(ofSize: titleFont.pointSize, weight: .semibold)
+        titleLabel.accessibilityTraits = [.header, .staticText]
+        chapterLabel.isAccessibilityElement = false
         titleLabel.textColor = textColor
-        chapterLabel.font = .preferredFont(forTextStyle: .caption2)
+        chapterLabel.font = .preferredFont(forTextStyle: .caption2, compatibleWith: standardSize)
         chapterLabel.textColor = textColor.withAlphaComponent(Self.chapterTitleAlpha)
         pageLabel.font = .preferredFont(forTextStyle: .caption1)
         pageLabel.textColor = textColor
@@ -82,6 +95,18 @@ final class PageTextView: UIView {
             addSubview(label)
         }
         addSubview(pageLabel)
+        let source = page.text as NSString
+        for mark in marks.sorted(by: { $0.range.location < $1.range.location }) where mark.isUnderline {
+            guard mark.range.length > 0, NSMaxRange(mark.range) <= source.length else { continue }
+            let button = ReaderAccessibilityButton(container: self) { [weak self] in
+                guard let self else { return }
+                actions.onMarkTapped(mark, referenceRect(for: mark))
+            }
+            button.accessibilityLabel = "Reference: " + source.substring(with: mark.range)
+            button.accessibilityHint = "Opens the earlier passage."
+            referenceButtons.append((mark, button))
+        }
+        accessibilityElements = [titleLabel, textView] + referenceButtons.map { $0.button as NSObject } + [modeControl, pageLabel]
     }
 
     /// Whether this view already shows `page` as `content` has it, so it can stay on screen instead of being built again.
@@ -102,16 +127,66 @@ final class PageTextView: UIView {
 
     private func showChrome() {
         titleLabel.text = chrome.title
-        chapterLabel.text = chrome.chapterTitle
+        chapterLabel.text = chrome.chapterTitle.uppercased()
+        titleLabel.accessibilityLabel = [chrome.title, chrome.chapterTitle].filter { !$0.isEmpty }.joined(separator: ", ")
+        titleLabel.accessibilityValue = chrome.readingModeDescription
+        modeControl.accessibilityLabel = "Reading mode"
+        modeControl.accessibilityValue = chrome.readingModeDescription
+        modeControl.accessibilityHint = chrome.isReadingMode ? "Double-tap to show references." : "Double-tap to hide references."
+        let modeAction = chrome.isReadingMode ? "Turn reading mode off and show references" : "Turn reading mode on and hide references"
+        textView.accessibilityCustomActions = [UIAccessibilityCustomAction(name: modeAction) { [weak self] _ in
+            guard let self else { return false }
+            actions.onCenterTapped()
+            return true
+        }]
         pageLabel.text = chrome.pageLabel
         setNeedsLayout()
+    }
+
+    // Only the pager's displayed view receives this call. Preparing a neighbouring page must stay silent.
+    func focusWhenVisible(_ request: ReaderFocusRequest?) {
+        guard UIAccessibility.isVoiceOverRunning, focusRequest != request else { return }
+        focusTask?.cancel()
+        focusRequest = request
+        textView.accessibilityLabel = request?.target == .chapterAndContent ? chrome.chapterTitle : nil
+        scheduleFocus()
+    }
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        focusTask?.cancel()
+        if window != nil { scheduleFocus() }
+    }
+
+    private func scheduleFocus() {
+        guard window != nil, let request = focusRequest else { return }
+        focusTask = Task { @MainActor [weak self] in
+            await Task.yield()
+            // A Contents sheet or reference popover owns VoiceOver focus until dismissal finishes.
+            while self?.window?.rootViewController?.presentedViewController != nil {
+                do { try await Task.sleep(for: .milliseconds(100)) } catch { return }
+            }
+            guard let self, !Task.isCancelled, window != nil, UIAccessibility.isVoiceOverRunning,
+                  actions.claimReadingFocus(request.id) else { return }
+            layoutIfNeeded()
+            if case let .passage(text) = request.target {
+                let announcement = NSAttributedString(
+                    string: text, attributes: [.accessibilitySpeechAnnouncementPriority: UIAccessibilityPriority.high]
+                )
+                UIAccessibility.post(notification: .announcement, argument: announcement)
+                return
+            }
+            let isOpening = request.target == .heading
+            let target: UIView = isOpening ? titleLabel : textView
+            UIAccessibility.post(notification: isOpening ? .screenChanged : .layoutChanged, argument: target)
+        }
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         textView.frame = Viewport.textFrame(in: layout.text, horizontalMargin: horizontalMargin)
         // Title over chapter, centred in the header.
-        let header = layout.header
+        let header = layout.header.insetBy(dx: layout.header.height + 4, dy: 0)
         let titleHeight = titleLabel.intrinsicContentSize.height
         let chapterHeight = chapterLabel.intrinsicContentSize.height
         let titlesTop = header.midY - (titleHeight + Self.titleSpacing + chapterHeight) / 2
@@ -122,6 +197,16 @@ final class PageTextView: UIView {
         let pageLabelSize = pageLabel.intrinsicContentSize
         pageLabel.frame = CGRect(x: layout.footer.minX, y: layout.footer.midY - pageLabelSize.height / 2,
                                  width: min(pageLabelSize.width, layout.footer.width), height: pageLabelSize.height)
+        modeControl.accessibilityFrameInContainerSpace = CGRect(x: bounds.midX - 22, y: layout.footer.midY - 22, width: 44, height: 44)
+        for (mark, button) in referenceButtons {
+            button.accessibilityFrameInContainerSpace = referenceRect(for: mark)
+        }
+    }
+
+    private func referenceRect(for mark: Mark) -> CGRect {
+        let manager = textView.layoutManager
+        let glyphs = manager.glyphRange(forCharacterRange: mark.range, actualCharacterRange: nil)
+        return textView.convert(manager.boundingRect(forGlyphRange: glyphs, in: textView.textContainer), to: self)
     }
 
     /// Lays the text out now, so showing the page later costs nothing.
@@ -177,5 +262,20 @@ final class PageTextView: UIView {
             }
         }
         return nil
+    }
+}
+
+private final class ReaderAccessibilityButton: UIAccessibilityElement {
+    private let perform: () -> Void
+
+    init(container: UIView, perform: @escaping () -> Void) {
+        self.perform = perform
+        super.init(accessibilityContainer: container)
+        accessibilityTraits = .button
+    }
+
+    override func accessibilityActivate() -> Bool {
+        perform()
+        return true
     }
 }

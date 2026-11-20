@@ -1,14 +1,13 @@
 import SwiftUI
 import UIKit
 
-
 struct ReaderView: View {
     @Bindable private var readerVM: ReaderVM
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
-    private static let returnControlsBottom: CGFloat = PageLayoutKnobs.barHeight + 9 - 5
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     private let readerSettingsVM: ReaderSettingsVM
     private let referenceVM: ReferenceVM
@@ -30,6 +29,7 @@ struct ReaderView: View {
     }
 
     var body: some View {
+        let barHeight = PageLayoutKnobs.controlSize(PageLayoutKnobs.barHeight, at: dynamicTypeSize)
         ZStack {
             PageArea(readerVM: readerVM, referenceVM: referenceVM, ratingVM: ratingVM)
                 .ignoresSafeArea()
@@ -55,7 +55,7 @@ struct ReaderView: View {
         }
 
         .onGeometryChange(for: ScreenGeometry.self) {
-            ScreenGeometry(safeSize: $0.size, safeAreaTop: $0.safeAreaInsets.top, safeAreaBottom: $0.safeAreaInsets.bottom)
+            ScreenGeometry(safeSize: $0.size, safeAreaTop: $0.safeAreaInsets.top, safeAreaBottom: $0.safeAreaInsets.bottom, barHeight: barHeight)
         } action: {
             readerVM.screenChanged($0)
         }
@@ -63,11 +63,13 @@ struct ReaderView: View {
         .overlay {
             ReferredButton(
                 prompt: referenceVM.returnPrompt,
+                waitingForPassage: readerVM.isPassageSpeechPending,
+                completedPassage: readerVM.completedPassageSpeech,
                 onDismiss: referenceVM.returnDismissed,
                 onReturn: referenceVM.returnToReadingTapped
             )
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-            .padding(.bottom, Self.returnControlsBottom)
+            .padding(.bottom, barHeight + 4)
         }
         .background(Color(PageTextStyle.backgroundColor(for: readerVM.theme)))
         .preferredColorScheme(readerVM.forcedDarkMode.map { $0 ? .dark : .light })
@@ -80,13 +82,30 @@ struct ReaderView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIScreen.brightnessDidChangeNotification)) { _ in
             readerSettingsVM.screenBrightnessChanged()
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIAccessibility.announcementDidFinishNotification)) { event in
+            guard let text = event.userInfo?[UIAccessibility.announcementStringValueUserInfoKey] as? String,
+                  let finished = event.userInfo?[UIAccessibility.announcementWasSuccessfulUserInfoKey] as? Bool,
+                  UIAccessibility.isVoiceOverRunning else { return }
+            readerVM.passageSpeechEnded(text: text, finished: finished, isActive: scenePhase == .active)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIAccessibility.voiceOverStatusDidChangeNotification)) { _ in
+            if UIAccessibility.isVoiceOverRunning { readerVM.replayPendingPassage() }
+        }
+        .onChange(of: readerVM.isFocusMode) {
+            guard UIAccessibility.isVoiceOverRunning, let content = readerVM.pageContent else { return }
+            let message = content.chrome(of: content.shownPage).readingModeDescription
+            UIAccessibility.post(notification: .announcement, argument: NSAttributedString(
+                string: message, attributes: [.accessibilitySpeechQueueAnnouncement: true]
+            ))
+        }
         .animation(.easeInOut, value: referenceVM.returnPrompt)
         .animation(.easeInOut(duration: 0.2), value: readerVM.isFocusMode)
-        .onChange(of: scenePhase) { _, scenePhase in
+        .onChange(of: scenePhase, initial: true) { _, scenePhase in
             if scenePhase == .background {
                 readerVM.appBackgrounded()
             } else if scenePhase == .active {
                 readerVM.appForegrounded()
+                if UIAccessibility.isVoiceOverRunning { readerVM.replayPendingPassage() }
             }
         }
         .overlay {

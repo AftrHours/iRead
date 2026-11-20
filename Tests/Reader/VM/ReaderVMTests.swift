@@ -30,6 +30,42 @@ struct ReaderVMTests {
         )
     }
 
+    @Test("VoiceOver focuses the opening heading once, then the page text on a turn")
+    func voiceOverReadingOrder() async throws {
+        let reader = makeVM()
+        reader.screenChanged(phone)
+        await reader.onAppear()
+        let opening = try #require(reader.pageContent?.readingFocus)
+        #expect(opening.target == .heading)
+        #expect(reader.claimReadingFocus(opening.id))
+        #expect(!reader.claimReadingFocus(opening.id))
+        let next = try #require(await eventually { reader.pages.count > 1 } ? reader.pages.last : nil)
+        reader.pageChanged(next)
+        let turn = try #require(reader.pageContent?.readingFocus)
+        #expect(turn.target == .content)
+        #expect(!reader.claimReadingFocus(opening.id))
+        #expect(reader.claimReadingFocus(turn.id))
+    }
+
+    @Test("Crossing chapters announces the destination chapter before its content in either direction")
+    func chapterFocus() {
+        let one = Page(number: 1, chapterIndex: 0, range: NSRange(location: 0, length: 1), text: "A")
+        let two = Page(number: 2, chapterIndex: 1, range: NSRange(location: 0, length: 1), text: "B")
+        #expect(ReaderFocusRequest(from: one, to: two).target == .chapterAndContent)
+        #expect(ReaderFocusRequest(from: two, to: one).target == .chapterAndContent)
+        #expect(ReaderFocusRequest(from: nil, to: two).target == .heading)
+    }
+
+    @Test("Reader controls grow to AX1 and keep a minimum 44-point target")
+    func iconSizeLimit() {
+        let normal = PageLayoutKnobs.controlSize(44, at: .large)
+        let limit = PageLayoutKnobs.controlSize(44, at: .accessibility1)
+        #expect(normal == 44)
+        #expect(limit > normal)
+        #expect(PageLayoutKnobs.controlSize(44, at: .accessibility5) == limit)
+        #expect(PageLayoutKnobs.controlSize(44, at: .xSmall) >= 44)
+    }
+
     @Test("RD-45 the pages' layout comes from the measured screen, and there is no page content before it")
     func layoutFromScreen() {
         let readerVM = makeVM()

@@ -10,6 +10,7 @@ struct SettingsSectionHeader: View {
         HStack(spacing: layout.iconGap) {
             Image(systemName: systemImage)
                 .frame(width: layout.iconColumn)
+                .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                 .accessibilityHidden(true)
             Text(title)
                 .font(AppTypography.body(.semibold))
@@ -33,7 +34,6 @@ struct SettingsSection<Content: View>: View {
         }
     }
 }
-
 
 struct SettingsSlider: View {
     @Binding var value: Double

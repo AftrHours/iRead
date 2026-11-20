@@ -46,6 +46,8 @@ struct LibrarySearchBar: View {
             Image(systemName: "magnifyingglass")
                 .font(AppTypography.body())
                 .foregroundStyle(style.iconColor)
+                .libraryIconFrame(style.height, square: false)
+                .accessibilityHidden(true)
             TextField(style.placeholder, text: $libVM.searchText,
                       prompt: Text(style.placeholder).foregroundStyle(style.placeholderColor))
                 .font(AppTypography.body(style == .phone ? .medium : .regular))
@@ -53,10 +55,11 @@ struct LibrarySearchBar: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .submitLabel(.search)
+                .padding(.vertical, 4)
                 .focused(focus)
+                .accessibilityLabel("Search by title or author")
         }
         .padding(.horizontal, 14)
-        .frame(height: style.height)
     }
 }
 

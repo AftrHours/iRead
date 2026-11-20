@@ -4,6 +4,8 @@ import UIKit
 /// Rendering metrics shared by the header, empty state, and collection.
 @MainActor
 struct LibraryLayout {
+    static let maximumIconSize = DynamicTypeSize.accessibility1
+
     let isPad: Bool
     let isSearching: Bool
 
@@ -28,7 +30,10 @@ struct LibraryLayout {
     var emptyLibraryTextSpacing: CGFloat { isPad ? 8 : 8.5 }
     var emptyLibraryButtonSpacing: CGFloat { isPad ? 24 : 25 }
     var emptyLibraryBottomInset: CGFloat { isPad ? 0 : 68.5 }
-    var gridColumns: [GridItem] {
-        Array(repeating: GridItem(.flexible(), spacing: gridColumnSpacing, alignment: .top), count: isPad ? 4 : 2)
+    func gridColumns(for size: DynamicTypeSize) -> [GridItem] {
+        if size.isAccessibilitySize {
+            return [GridItem(.adaptive(minimum: 260), spacing: gridColumnSpacing, alignment: .top)]
+        }
+        return Array(repeating: GridItem(.flexible(), spacing: gridColumnSpacing, alignment: .top), count: isPad ? 4 : 2)
     }
 }

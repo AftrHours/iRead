@@ -4,6 +4,7 @@ import SwiftUI
 struct LibraryTitleView: View {
     var body: some View {
         Text("Library")
+            .accessibilityAddTraits(.isHeader)
             .font(AppTypography.largeTitle(.bold))
             .foregroundStyle(AppColors.textPrimary)
     }

@@ -142,9 +142,8 @@ final class LibVM {
         isSearchActive = true
     }
 
-    func libraryScrolled(to offset: CGFloat) {
-        // The inline search field occupies 44 pt, with 12 pt above and 20 pt below.
-        let isScrolled = offset >= 76
+    func libraryScrolled(to offset: CGFloat, headerHeight: CGFloat) {
+        let isScrolled = offset >= headerHeight
         guard isLibraryScrolled != isScrolled else { return }
         isLibraryScrolled = isScrolled
     }

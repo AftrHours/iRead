@@ -4,9 +4,30 @@ import Foundation
 /// Each page carries its own, so they turn with the page, like Apple Books.
 struct PageChrome: Equatable, Sendable {
     var title = ""
-    /// Already in capitals, as it is drawn.
     var chapterTitle = ""
     var pageLabel = ""
+    var isReadingMode = false
+
+    var readingModeDescription: String {
+        isReadingMode ? "Reading mode on. References hidden." : "Reading mode off. Available references are underlined."
+    }
+}
+
+/// A navigation event creates one focus request shared by both page renderers.
+struct ReaderFocusRequest: Equatable {
+    enum Target: Equatable { case heading, content, chapterAndContent, passage(String) }
+    let id = UUID()
+    let target: Target
+
+    init(from previous: Page?, to page: Page, passage: String? = nil) {
+        if let passage, !passage.isEmpty {
+            target = .passage(passage)
+        } else if let previous {
+            target = previous.chapterIndex == page.chapterIndex ? .content : .chapterAndContent
+        } else {
+            target = .heading
+        }
+    }
 }
 
 /// Everything the pagers need to draw the pages: the one input of both `PageTurnView` (Curl) and `PageSlideView`
@@ -21,6 +42,7 @@ struct PageContent: Equatable {
     var chromes: [Int: PageChrome]
     /// The underline last tapped, if any: it stays highlighted.
     var selectedUnderlineID: String?
+    var readingFocus: ReaderFocusRequest?
 
     var horizontalMargin: CGFloat {
         layout.horizontalMargin

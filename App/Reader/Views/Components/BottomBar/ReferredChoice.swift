@@ -2,8 +2,13 @@ import SwiftUI
 
 /// The two pills after a Jump, sized as in the design (Component 6). They come and go at once; only the toast fades.
 struct ReferredChoice: View {
+    var waitingForPassage = false
+    var completedPassage: UUID?
     let onDismiss: () -> Void
     let onReturn: () -> Void
+
+    @Environment(\.accessibilityVoiceOverEnabled) private var voiceOverEnabled
+    @AccessibilityFocusState(for: .voiceOver) private var stayFocused: Bool
 
     var body: some View {
         HStack(spacing: 12) {
@@ -19,6 +24,7 @@ struct ReferredChoice: View {
                     .padding(.vertical, 8)
                     .contentShape(.rect)
             }
+            .accessibilityFocused($stayFocused)
             Button(action: onReturn) {
                 Text("Back to Latest Read")
                     .font(AppTypography.footnote(.regular))
@@ -31,6 +37,13 @@ struct ReferredChoice: View {
                     .padding(.vertical, 8)
                     .contentShape(.rect)
             }
+        }
+        .accessibilityElement(children: .contain)
+        .accessibilityHidden(voiceOverEnabled && waitingForPassage)
+        .task(id: completedPassage) {
+            guard completedPassage != nil, voiceOverEnabled else { return }
+            await Task.yield()
+            if !Task.isCancelled { stayFocused = true }
         }
         .buttonStyle(.plain)
         .transition(.identity)

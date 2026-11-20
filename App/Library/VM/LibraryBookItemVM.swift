@@ -11,10 +11,14 @@ struct LibraryBookItemVM: Identifiable {
     var title: String { book.title }
     var author: String { book.author }
     var progress: LibraryProgressVM { LibraryProgressVM(progress: book.progress) }
-    var isMenuHidden: Bool { showsSelection }
     var menuAccessibilityLabel: String { "More options for \(title)" }
     var selectionSymbol: String { isSelected ? "checkmark.circle.fill" : "circle" }
-    var selectionAccessibilityLabel: String { isSelected ? "Selected" : "Not selected" }
+    var accessibilityLabel: String { "\(title), \(author)" }
+    var accessibilityValue: String {
+        let status = book.isFinished ? "Finished" : progress.accessibilityLabel
+        return showsSelection && !isSelected ? "Not selected, \(status)" : status
+    }
+    var accessibilityHint: String { showsSelection ? "Toggles selection." : "Opens the book." }
     var finishedActionTitle: String { book.isFinished ? "Mark as Still Reading" : "Mark as Finished" }
     var finishedActionSymbol: String { book.isFinished ? "book" : "checkmark.circle" }
 }

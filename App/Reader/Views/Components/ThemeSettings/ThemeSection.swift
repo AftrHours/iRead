@@ -8,6 +8,8 @@ struct ThemeSection: View {
     let onThemeTapped: (ReadingTheme) -> Void
     @Environment(\.settingsLayout) private var layout
 
+    @Environment(\.dynamicTypeSize) private var textSize
+
     var body: some View {
         VStack(alignment: .leading, spacing: layout.themeHeaderGap) {
             HStack {
@@ -21,10 +23,11 @@ struct ThemeSection: View {
                 .padding(.horizontal, layout.menuGroupPadding)
                 .glassEffect()
             }
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: layout.tileColumnGap), count: layout.tileColumns),
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: layout.tileColumnGap), count: textSize.isAccessibilitySize ? max(2, layout.tileColumns / 2) : layout.tileColumns),
                       spacing: layout.tileRowGap) {
                 ForEach(ReadingTheme.allCases, id: \.self) { theme in
                     ThemeTile(theme: theme, isSelected: theme == selectedTheme) { onThemeTapped(theme) }
+                        .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                 }
             }
         }
@@ -62,8 +65,7 @@ struct ThemeSection: View {
         Image(systemName: systemImage)
             .font(.title3)
             .foregroundStyle(AppColors.settingsText)
-            .padding(.horizontal, 10)
-            .frame(height: layout.menuIconSize)
+            .readerIconFrame(layout.menuIconSize)
             .contentShape(.rect)
     }
 }
@@ -75,17 +77,20 @@ struct ThemeTile: View {
     let action: () -> Void
     @Environment(\.settingsLayout) private var layout
 
+    @ScaledMetric(relativeTo: .title3) private var sampleSize: CGFloat = 20
+    @ScaledMetric(relativeTo: .caption) private var labelSize: CGFloat = 12
+
     var body: some View {
         Button(action: action) {
             VStack(spacing: 1) {
                 Text("Aa")
-                    .font(Font(PageTextStyle.font(for: theme, size: 20)))
+                    .font(Font(PageTextStyle.font(for: theme, size: sampleSize)))
                 Text(theme.title)
-                    .font(Font(PageTextStyle.font(for: theme, size: 12)))
+                    .font(Font(PageTextStyle.font(for: theme, size: labelSize)))
             }
             .foregroundStyle(Color(PageTextStyle.textColor(for: theme)))
             .padding(.vertical, layout.tilePadding)
-            .frame(maxWidth: .infinity, minHeight: layout.tileHeightMin, maxHeight: layout.tileHeightMax)
+            .frame(maxWidth: .infinity, minHeight: layout.tileHeightMin)
             .background(AppColors.settingsThemeTile(for: theme), in: .rect(cornerRadius: layout.tileCornerRadius))
             .overlay {
                 RoundedRectangle(cornerRadius: layout.tileCornerRadius)

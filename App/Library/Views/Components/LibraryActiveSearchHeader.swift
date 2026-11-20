@@ -14,14 +14,13 @@ struct LibraryActiveSearchHeader: View {
                     Image(systemName: "xmark")
                         .font(AppTypography.title2(.regular))
                         .foregroundStyle(.primary)
-                        .frame(width: 48, height: 48)
+                        .libraryIconFrame()
                         .glassEffect(.regular.interactive(), in: .circle)
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("Close search")
+                .libraryControlLabel("Close search", symbol: "xmark")
             }
         }
-        .frame(height: 48)
         .task {
             await Task.yield()
             guard !Task.isCancelled else { return }

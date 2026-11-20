@@ -48,6 +48,11 @@ struct PageTurnView: UIViewControllerRepresentable {
         }
 
         func showShownPage() {
+            defer {
+                if displayedPage == pageTurnView.content.shownPage {
+                    displayedView?.focusWhenVisible(pageTurnView.content.readingFocus)
+                }
+            }
             displayedView?.refresh(from: pageTurnView.content, actions: pageTurnView.actions)
             let hasLoadedMissingPage = pageTurnView.content.pages.contains { missingPageNumbers.contains($0.number) }
             guard !isTurning, !isShownPageDisplayed || hasLoadedMissingPage else { return }

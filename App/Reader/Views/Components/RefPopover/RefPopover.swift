@@ -5,6 +5,8 @@ import SwiftUI
 struct RefPopover: View {
     let card: ReferenceVM.ReferenceCard
 
+    @Environment(\.dynamicTypeSize) private var textSize
+    @Environment(\.dismiss) private var dismiss
     let isPad: Bool
     let verdict: Verdict?
     let isAskingToShare: Bool
@@ -14,7 +16,24 @@ struct RefPopover: View {
 
     var body: some View {
         Group {
-            if isPad {
+            if textSize > .large {
+                NavigationStack {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 16) {
+                            Text(card.location).font(.subheadline)
+                            Text(card.quote).font(AppTypography.body()).fixedSize(horizontal: false, vertical: true)
+                            RefActionPhone(verdict: verdict, onVerdictTapped: onVerdictTapped, onJumpTapped: onJumpTapped)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
+                    }
+                    .navigationTitle("Mentioned earlier")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
+                    }
+                }
+            } else if isPad {
                 RefPopoverPad(card: card, verdict: verdict, onVerdictTapped: onVerdictTapped, onJumpTapped: onJumpTapped)
             } else {
                 RefPopoverPhone(card: card, verdict: verdict, onVerdictTapped: onVerdictTapped, onJumpTapped: onJumpTapped)
@@ -22,7 +41,7 @@ struct RefPopover: View {
         }
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Mentioned earlier: \(card.phrase)")
-        .presentationCompactAdaptation(.popover)
+        .presentationCompactAdaptation(textSize > .large ? .automatic : .popover)
         .presentationBackground(AppColors.popoverBg)
         .alert("Share Your Ratings?", isPresented: Binding(get: { isAskingToShare }, set: { _ in })) {
             Button("Share") { onSharingChosen(true) }
