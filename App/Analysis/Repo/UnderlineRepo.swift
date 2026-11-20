@@ -3,7 +3,8 @@ import OSLog
 import UnderlineEngine
 
 enum UnderlineRepoKnobs {
-    static let engineVersion = 4
+    /// 5: UnderlineEngine R8 (rules only, contextual embedding, whole-book word rarity). Chapters saved by 4 are worked out again.
+    static let engineVersion = 5
     /// "Underline whole book" saves a chapter when at most this share of its phrases failed in the model (it refuses some
     /// ordinary words, like "hate"), and leaves it out when more did, so a model that isn't answering saves nothing.
     static let bookMaxFailureShare = 0.1
@@ -26,6 +27,8 @@ actor UnderlineRepo {
     let modelCheckSvc: ModelCheckSvc?
     /// nil: no iCloud, as in tests.
     let cloudSvc: (any CloudSvc)?
+    /// `.contextual` in the app. Tests keep `.automatic` (`NLEmbedding`), which needs no download.
+    let embedding: EmbeddingChoice
     var underlineCtrl: UnderlineCtrl?
     var foundUnderlines: [String: [Int: [SavedUnderline]]] = [:]
     var finishedChapters: [String: Set<Int>] = [:]
@@ -38,11 +41,12 @@ actor UnderlineRepo {
     #endif
 
     init(folder: URL = .applicationSupportDirectory.appending(path: "Underlines"), seedFolder: URL? = nil,
-         modelCheckSvc: ModelCheckSvc? = nil, cloudSvc: (any CloudSvc)? = nil) {
+         modelCheckSvc: ModelCheckSvc? = nil, cloudSvc: (any CloudSvc)? = nil, embedding: EmbeddingChoice = .automatic) {
         self.folder = folder
         self.seedFolder = seedFolder
         self.modelCheckSvc = modelCheckSvc
         self.cloudSvc = cloudSvc
+        self.embedding = embedding
     }
 
     var cloudAccount: CloudAccount? {
@@ -51,6 +55,11 @@ actor UnderlineRepo {
 
     var usesModel: Bool {
         get async { await engine().usesModel }
+    }
+
+    /// The embedding the engine ended up with: contextual, or sentence when the contextual model didn't arrive in time.
+    var embeddingEngine: EmbeddingEngine {
+        get async { await engine().embeddingEngine }
     }
 
     /// Underlines from `sentence` to the chapter's end, then from its start. Yields after each paragraph that adds
@@ -78,8 +87,7 @@ actor UnderlineRepo {
     func underline(withID id: String, of book: String) -> SavedUnderline? {
         foundUnderlines[book]?.values.lazy.flatMap { $0 }.first { $0.id == id }
     }
-
-
+    
     func run(_ index: Int, of content: BookContent, startingAt sentence: Int,
                      continuation: AsyncStream<Void>.Continuation, toleratesFailures: Bool = false) async {
         defer { continuation.finish() }
@@ -93,7 +101,10 @@ actor UnderlineRepo {
             return
         }
         let underlineCtrl = await engine()
-        let indexed = await underlineCtrl.prepare(ChapterInputMapper.input(chapter: index, in: content))
+        // Word rarity and the embedding centre come from the whole book, worked out once per book by the engine.
+        let indexed = await underlineCtrl.prepare(ChapterInputMapper.input(chapter: index, in: content), ofBook: book) {
+            content.chapters.indices.map { ChapterInputMapper.input(chapter: $0, in: content) }
+        }
         #if DEBUG
         foundRecords[book, default: [:]][index] = []
         #endif
