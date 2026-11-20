@@ -41,6 +41,7 @@ packages:
 fileGroups:
   - Unit.xctestplan
   - Full.xctestplan
+  - Smoke.xctestplan
 targets:
   iRead:
     type: application
@@ -67,10 +68,10 @@ targets:
     entitlements:
       path: App/iRead.entitlements
       properties:
-        com.apple.developer.icloud-container-identifiers:
-          - iCloud.com.aftrhours.reader
-        com.apple.developer.icloud-services:
-          - CloudKit
+        # com.apple.developer.icloud-container-identifiers:
+        #   - iCloud.com.aftrhours.reader
+        # com.apple.developer.icloud-services:
+        #   - CloudKit
     # "Open in iRead" for EPUB files from Files, Safari, Mail and AirDrop. Alternate: Apple Books stays the default.
     # Not opened in place: iOS copies the file into Documents/Inbox, the same copy-in import as the picker.
     # Xcode merges this file with the INFOPLIST_KEY_* settings below (GENERATE_INFOPLIST_FILE).
@@ -171,6 +172,20 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.aftrhours.reader.tests
         GENERATE_INFOPLIST_FILE: YES
         TARGETED_DEVICE_FAMILY: "1,2"
+  # UI smoke tests: launch the app with -uiTesting (see AppFolders) and tap through it like a reader. Run by the Smoke plan only,
+  # because they are slow. Kept outside Tests/, which the unit target takes whole.
+  iReadUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: UITests
+    dependencies:
+      - target: iRead
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aftrhours.reader.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
 # Shared, so Xcode Cloud sees it. It keeps the default Archive action: Xcode Cloud only lists products whose scheme can archive.
 schemes:
   iRead:
@@ -178,13 +193,28 @@ schemes:
       targets:
         iRead: all
         iReadTests: [test]
+        iReadUITests: [test]
     test:
       # Listed here as well as in the plans, the way Xcode itself writes a scheme: Xcode's Test navigator reads it from here.
       targets:
         - name: iReadTests
           parallelizable: true
+        - name: iReadUITests
       # Unit (the default) skips tests tagged .golden; Full runs everything. Code coverage is set in the plans.
       testPlans:
         - path: Unit.xctestplan
           defaultPlan: true
         - path: Full.xctestplan
+        - path: Smoke.xctestplan
+  # Just the UI smoke test: pick this scheme in Xcode's toolbar and press Cmd+U, with no test plan to choose.
+  iReadSmoke:
+    build:
+      targets:
+        iRead: all
+        iReadUITests: [test]
+    test:
+      targets:
+        - name: iReadUITests
+      testPlans:
+        - path: Smoke.xctestplan
+          defaultPlan: true

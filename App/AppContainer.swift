@@ -8,34 +8,37 @@ struct AppContainer {
     private let underlineRepo: UnderlineRepo
     private let ratingRepo: RatingRepo
     private let progRepo: ProgRepo
-    private let readingSettingsRepo = ReadingSettingsRepo()
-    private let bookStateRepo = BookStateRepo()
+    private let readingSettingsRepo: ReadingSettingsRepo
+    private let bookStateRepo: BookStateRepo
     private let pagerSvc = PagerSvcTextKit()
     private let eventSvc = EventSvcOSLog()
     private let brightnessSvc = BrightnessSvc()
-    private let pendingImportRepo = PendingImportRepo()
-    private let libraryIndexRepo = LibraryIndexRepo()
+    private let pendingImportRepo: PendingImportRepo
+    private let libraryIndexRepo: LibraryIndexRepo
     private let cloudSvc: (any CloudSvc)?
 
+    /// A UI test (see AppFolders) runs on rules and the bundled seeds, in its own folders, with nothing sent to iCloud.
     init() {
 //        self.init(modelCheckSvc: ModelCheckSvc(), cloudSvc: CloudSvcCloudKit())
-        self.init(modelCheckSvc: ModelCheckSvc(), cloudSvc: nil)
+        self.init(modelCheckSvc: AppFolders.isUITesting ? nil : ModelCheckSvc(), cloudSvc: nil, folders: .current)
     }
 
-    /// For SwiftUI previews: underlines from rules only, and nothing goes to iCloud.
-    /// Not limited to debug builds, so a #Preview without #if DEBUG still builds for TestFlight. The app never calls it.
     static func forPreviews() -> AppContainer {
         AppContainer(modelCheckSvc: nil, cloudSvc: nil)
     }
 
-    private init(modelCheckSvc: ModelCheckSvc?, cloudSvc: (any CloudSvc)?) {
+    private init(modelCheckSvc: ModelCheckSvc?, cloudSvc: (any CloudSvc)?, folders: AppFolders = .standard) {
         let epubParseSvc = EPUBParseSvcEPUBKit()
-        progRepo = ProgRepo()
-        bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc)
-        libRepo = LibRepo(epubParseSvc: epubParseSvc)
-        underlineRepo = UnderlineRepo(seedFolder: Bundle.main.url(forResource: "UnderlineSeed", withExtension: nil),
+        progRepo = ProgRepo(folder: folders.books)
+        bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc, folder: folders.books)
+        libRepo = LibRepo(epubParseSvc: epubParseSvc, folder: folders.books)
+        underlineRepo = UnderlineRepo(folder: folders.underlines, seedFolder: Bundle.main.url(forResource: "UnderlineSeed", withExtension: nil),
                                       modelCheckSvc: modelCheckSvc, cloudSvc: cloudSvc, embedding: .contextual)
-        ratingRepo = RatingRepo(cloudSvc: cloudSvc)
+        ratingRepo = RatingRepo(folder: folders.settings, cloudSvc: cloudSvc)
+        readingSettingsRepo = ReadingSettingsRepo(folder: folders.settings)
+        bookStateRepo = BookStateRepo(folder: folders.books)
+        pendingImportRepo = PendingImportRepo(folder: folders.pendingImports)
+        libraryIndexRepo = LibraryIndexRepo(folder: folders.libraryIndex)
         self.cloudSvc = cloudSvc
     }
 
