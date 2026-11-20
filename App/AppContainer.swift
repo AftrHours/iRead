@@ -18,7 +18,8 @@ struct AppContainer {
     private let cloudSvc: (any CloudSvc)?
 
     init() {
-        self.init(modelCheckSvc: ModelCheckSvc(), cloudSvc: CloudSvcCloudKit())
+//        self.init(modelCheckSvc: ModelCheckSvc(), cloudSvc: CloudSvcCloudKit())
+        self.init(modelCheckSvc: ModelCheckSvc(), cloudSvc: nil)
     }
 
     /// For SwiftUI previews: underlines from rules only, and nothing goes to iCloud.
@@ -33,7 +34,7 @@ struct AppContainer {
         bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc)
         libRepo = LibRepo(epubParseSvc: epubParseSvc)
         underlineRepo = UnderlineRepo(seedFolder: Bundle.main.url(forResource: "UnderlineSeed", withExtension: nil),
-                                      modelCheckSvc: modelCheckSvc, cloudSvc: cloudSvc)
+                                      modelCheckSvc: modelCheckSvc, cloudSvc: cloudSvc, embedding: .contextual)
         ratingRepo = RatingRepo(cloudSvc: cloudSvc)
         self.cloudSvc = cloudSvc
     }
