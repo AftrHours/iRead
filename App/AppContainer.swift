@@ -18,8 +18,7 @@ struct AppContainer {
     private let cloudSvc: (any CloudSvc)?
 
     init() {
-//        self.init(modelCheckSvc: ModelCheckSvc(), cloudSvc: CloudSvcCloudKit())
-        self.init(modelCheckSvc: ModelCheckSvc(), cloudSvc: nil)
+        self.init(modelCheckSvc: ModelCheckSvc(), cloudSvc: CloudSvcCloudKit())
     }
 
     /// For SwiftUI previews: underlines from rules only, and nothing goes to iCloud.
