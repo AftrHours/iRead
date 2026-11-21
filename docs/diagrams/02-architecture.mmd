@@ -37,11 +37,10 @@ flowchart TB
     PagerSvc
     BrightnessSvc
     EventSvc
-    ModelCheckSvc
     CloudSvc
   end
 
-  Engine[[UnderlineEngine package]]
+  Engine[[UnderlineKit · UnderlineEngine package]]
   iCloud[(iCloud)]
 
   LibView --> LibVM
@@ -80,7 +79,6 @@ flowchart TB
 
   LibRepo --> EPUBParseSvc
   BookContentRepo --> EPUBParseSvc
-  UnderlineRepo --> ModelCheckSvc
   UnderlineRepo --> Engine
   UnderlineRepo --> CloudSvc
   RatingRepo --> CloudSvc

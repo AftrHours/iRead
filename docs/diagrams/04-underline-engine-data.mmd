@@ -1,57 +1,79 @@
 classDiagram
   direction LR
 
-  class ChapterInput {
-    +Int chapterIndex
-    +List~ParagraphInput~ paragraphs
-    +List~SentenceInput~ sentences
+  %% In: the book, as the engine reads it
+  class BookSource {
+    <<protocol>>
+    +String id
+    +Int chapterCount
+    +chapterText(Int) ChapterText
   }
-  class ParagraphInput {
+  class BookContent {
+    id = fingerprint
+  }
+  class ChapterText {
+    +List~Paragraph~ paragraphs
+    +List~Sentence~ sentences
+  }
+  class Paragraph {
     +Int index
     +String text
   }
-  class SentenceInput {
+  class Sentence {
     +Int index
     +Int paragraph
     +NSRange range
   }
 
-  class UnderlineCtrl {
-    +prepare(ChapterInput) IndexedChapter
-    +paragraphResults(IndexedChapter, Int startingAt) AsyncStream~ParagraphResult~
+  %% The door: the only thing the app calls
+  class Underlining {
+    <<protocol>>
+    +Int version
+    +String summary
+    +underlines(inChapter Int, of BookSource, startingAt Int) AsyncStream~UnderlineBatch~
+  }
+  class Underliner {
+    +make(Preset) Underliner$
+    +Int releaseVersion$
+  }
+  class StubUnderliner {
+    test fake, no engine
+  }
+  class Preset {
+    <<enumeration>>
+    release
+    testing
   }
 
-  class ParagraphResult {
-    +List~Underline~ underlines
-    +List~UnderlineRecord~ records
+  %% Out: one batch per paragraph
+  class UnderlineBatch {
+    +List~UnderlineResult~ underlines
+    +List~ConsideredPhrase~ considered
   }
-  class Underline {
+  class UnderlineResult {
     +String id
     +Int sentence
     +Int paragraph
     +NSRange range
     +String text
-    +UnderlineKind kind
-    +EventRole role
-    +AnswerPassage reference
-    +AnswerPath decidedBy
+    +String kind
+    +String decidedBy
+    +Passage reference
   }
-  class AnswerPassage {
+  class Passage {
     +Int sentence
     +Int paragraph
     +NSRange range
     +String text
   }
-  class UnderlineRecord {
+  class ConsideredPhrase {
     +Int sentence
     +String phrase
-    +UnderlineKind kind
-    +AnswerPath path
-    +Int pickedSentence
-    +Bool kept
-    +DropReason dropped
+    +String detail
+    +Bool isUnderlined
   }
 
+  %% In iRead
   class SavedUnderline {
     +String id
     +Int sentence
@@ -63,68 +85,22 @@ classDiagram
     +ContextPassage reference
   }
 
-  class UnderlineKind {
-    <<enumeration>>
-    action
-    reaction
-    feeling
-    outcome
-    place
-    thing
-    person
-  }
-  class EventRole {
-    <<enumeration>>
-    setting
-    initiatingEvent
-    internalResponse
-    goal
-    attempt
-    reaction
-    outcome
-  }
-  class AnswerPath {
-    <<enumeration>>
-    model
-    rules
-  }
-  class DropReason {
-    <<enumeration>>
-    noCandidate
-    pickedNone
-    confirmRejected
-    guardRejected
-    densityLimit
-    modelFailed
-    explainedInParagraph
-  }
+  BookContent ..|> BookSource : conforms, in ChapterInputMapper
+  BookSource ..> ChapterText : one chapter, when asked
+  ChapterText "1" *-- "1..*" Paragraph : paragraphs
+  ChapterText "1" *-- "1..*" Sentence : sentences
+  Paragraph "1" <-- "0..*" Sentence : belongs to (paragraph = index)
 
-  %% Input: what a chapter is made of
-  ChapterInput "1" *-- "1..*" ParagraphInput : paragraphs
-  ChapterInput "1" *-- "1..*" SentenceInput : sentences
-  ParagraphInput "1" <-- "0..*" SentenceInput : belongs to (paragraph = index)
+  Underliner ..|> Underlining : release engine
+  StubUnderliner ..|> Underlining : test fake
+  Underliner ..> Preset : made from
+  Underlining ..> BookSource : reads
+  Underlining ..> UnderlineBatch : yields, from the reader's paragraph, then wraps
 
-  %% Engine: one chapter in, one result per paragraph out
-  UnderlineCtrl "1" ..> "1" ChapterInput : prepares
-  UnderlineCtrl "1" ..> "0..*" ParagraphResult : yields
-  ParagraphInput "1" -- "0..1" ParagraphResult : result for
+  UnderlineBatch "1" *-- "0..*" UnderlineResult : underlines
+  UnderlineBatch "1" *-- "0..*" ConsideredPhrase : considered (debug only)
+  UnderlineResult "1" *-- "1" Passage : reference
+  UnderlineResult "0..*" --> "1" Sentence : sentence (global index)
+  Passage "0..*" --> "1" Sentence : sentence (always earlier)
 
-  %% Output: what a result holds
-  ParagraphResult "1" *-- "0..*" Underline : underlines
-  ParagraphResult "1" *-- "0..*" UnderlineRecord : records
-  UnderlineRecord "1" -- "0..1" Underline : becomes (when kept)
-  Underline "1" *-- "1" AnswerPassage : reference
-
-  %% Output points back at the input by global index
-  Underline "0..*" --> "1" SentenceInput : sentence
-  AnswerPassage "0..*" --> "1" SentenceInput : sentence (always earlier)
-
-  %% In iRead: UnderlineRepo copies each Underline into the app's own model
-  Underline "1" ..> "1" SavedUnderline : copied into, in UnderlineRepo
-
-  %% Enum values
-  Underline "0..*" --> "1" UnderlineKind : kind
-  Underline "0..*" --> "0..1" EventRole : role
-  Underline "0..*" --> "1" AnswerPath : decidedBy
-  UnderlineRecord "0..*" --> "0..1" AnswerPath : path
-  UnderlineRecord "0..*" --> "0..1" DropReason : dropped
+  UnderlineResult "1" ..> "1" SavedUnderline : copied into, in UnderlineRepo
