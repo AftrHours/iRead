@@ -1,19 +1,14 @@
 import Foundation
-import UnderlineEngine
+import UnderlineKit
 
-/// The engine as measured (UnderlineEngine R8): rules only, with `embedding` (`.contextual` in the app).
+/// The engine behind `Underlining`: the app asks for underlines and doesn't know which method finds them.
 extension UnderlineRepo {
-    func engine() async -> UnderlineCtrl {
-        if let underlineCtrl { return underlineCtrl }
-        let made = await UnderlineCtrl.make(model: .rulesOnly, embedding: embedding)
-        if let underlineCtrl { return underlineCtrl }
-        underlineCtrl = made
-        logger.info("Underlines use rules with the \(made.embeddingEngine.rawValue, privacy: .public) embedding")
+    func engine() async -> any Underlining {
+        if let underliner { return underliner }
+        let made = await makeUnderliner()
+        if let underliner { return underliner }
+        underliner = made
+        logger.info("Underlines use: \(made.summary, privacy: .public)")
         return made
-    }
-
-    func modelAnswers() async -> Bool {
-        guard let modelCheckSvc else { return false }
-        return await Task { await modelCheckSvc.modelAnswers() }.value
     }
 }

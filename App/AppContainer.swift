@@ -1,4 +1,5 @@
 import Foundation
+import UnderlineKit
 
 @MainActor
 struct AppContainer {
@@ -18,22 +19,22 @@ struct AppContainer {
     private let cloudSvc: (any CloudSvc)?
 
     init() {
-        self.init(modelCheckSvc: ModelCheckSvc(), cloudSvc: CloudSvcCloudKit())
+        self.init(cloudSvc: CloudSvcCloudKit())
     }
 
-    /// For SwiftUI previews: underlines from rules only, and nothing goes to iCloud.
+    /// For SwiftUI previews: nothing goes to iCloud.
     /// Not limited to debug builds, so a #Preview without #if DEBUG still builds for TestFlight. The app never calls it.
     static func forPreviews() -> AppContainer {
-        AppContainer(modelCheckSvc: nil, cloudSvc: nil)
+        AppContainer(cloudSvc: nil)
     }
 
-    private init(modelCheckSvc: ModelCheckSvc?, cloudSvc: (any CloudSvc)?) {
+    private init(cloudSvc: (any CloudSvc)?) {
         let epubParseSvc = EPUBParseSvcEPUBKit()
         progRepo = ProgRepo()
         bookContentRepo = BookContentRepo(epubParseSvc: epubParseSvc)
         libRepo = LibRepo(epubParseSvc: epubParseSvc)
         underlineRepo = UnderlineRepo(seedFolder: Bundle.main.url(forResource: "UnderlineSeed", withExtension: nil),
-                                      modelCheckSvc: modelCheckSvc, cloudSvc: cloudSvc, embedding: .contextual)
+                                      cloudSvc: cloudSvc, makeUnderliner: { await Underliner.make(.release) })
         ratingRepo = RatingRepo(cloudSvc: cloudSvc)
         self.cloudSvc = cloudSvc
     }

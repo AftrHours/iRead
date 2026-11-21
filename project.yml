@@ -32,7 +32,7 @@ packages:
   UnderlineEngine:
     url: https://github.com/AftrHours/UnderlineEngine
     # Bump UnderlineRepoKnobs.engineVersion when you change this revision.
-    revision: 628f644ac9efa49f5a8b1287217c2e3c39c21b98 # 1.2.0
+    revision: 3a2efb57dac193084ce2711d07a816fd62988b07 # 1.2.0
   # Runs SwiftLint on every build, using the rules in .swiftlint.yml. Xcode asks once to "Trust & Enable" it.
   SwiftLintPlugins:
     url: https://github.com/SimplyDanny/SwiftLintPlugins
@@ -58,6 +58,7 @@ targets:
     dependencies:
       - package: EPUBKit
       - package: UnderlineEngine
+        product: UnderlineKit
       - target: iReadShare
     buildToolPlugins:
       - plugin: SwiftLintBuildToolPlugin
