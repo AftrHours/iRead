@@ -13,7 +13,7 @@ struct RefPopoverPhone: View {
     let onJumpTapped: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 10) {
             RefHeaderPhone(location: card.location)
             RefPassagePhone(quote: card.quote)
             RefActionPhone(verdict: verdict, onVerdictTapped: onVerdictTapped, onJumpTapped: onJumpTapped)

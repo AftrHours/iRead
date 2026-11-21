@@ -1,23 +1,23 @@
 import SwiftUI
 
 /// Where the earlier passage is, as a small chip: CHAPTER • PAGE.
-struct RefLocation: View {
+struct RefLocationPhone: View {
     let location: String
 
     var body: some View {
         Text(location)
-            .font(AppTypography.caption2(.regular))
+            .font(AppTypography.caption2(.medium))
             .textCase(.uppercase)
             .lineLimit(1)
             .foregroundStyle(AppColors.popoverLocationText)
             .padding(.horizontal, 12)
-            .padding(.vertical, 4)
+            .padding(.vertical, 5)
             .background(AppColors.popoverLocationBg, in: .rect(cornerRadius: 5))
     }
 }
 
 #Preview {
-    RefLocation(location: "Chapter 1 • Page 8")
+    RefLocationPhone(location: "Chapter 1 • Page 8")
         .padding()
         .background(AppColors.popoverBg)
 }

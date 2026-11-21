@@ -4,21 +4,19 @@ struct RefHeaderPad: View {
     let location: String
 
     var body: some View {
-        HStack(alignment: .top, spacing: 16) {
-            Image(systemName: "quote.opening")
-                .font(.title2.weight(.black))
-                .foregroundStyle(AppColors.popoverQuoteIcon)
-                .readerIconFrame(47)
-                .background(AppColors.popoverQuoteIconBg, in: .rect(cornerRadius: 5.6))
+        HStack(alignment: .center, spacing: 16) {
+            Image("quotationIcon")
+                .resizable()
+                .frame(width: 68, height: 68)
                 .accessibilityHidden(true)
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text("Mentioned earlier")
-                    .font(AppTypography.subheadline(.semibold   ))
+                    .font(AppTypography.title2(.bold))
                     .foregroundStyle(AppColors.textPrimary)
                 Spacer(minLength: 0)
-                RefLocation(location: location)
+                RefLocationPad(location: location)
             }
-            .frame(height: 47)
+            .frame(height: 68)
         }
     }
 }

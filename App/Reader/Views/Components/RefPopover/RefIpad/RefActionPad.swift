@@ -18,7 +18,7 @@ struct RefActionPad: View {
                     Image(systemName: "arrow.up.left")
                         .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                 }
-                    .font(AppTypography.body(.regular))
+                    .font(AppTypography.body(.medium))
                     .lineLimit(1)
                     .foregroundStyle(AppColors.actionPrimaryText)
                     .frame(width: 213, height: 50)
