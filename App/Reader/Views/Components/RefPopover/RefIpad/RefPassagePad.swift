@@ -6,7 +6,7 @@ struct RefPassagePad: View {
 
     var body: some View {
         Text(quote)
-            .font(AppTypography.body(.regular))
+            .font(AppTypography.body(.medium))
             .lineLimit(4)
             .foregroundStyle(AppColors.popoverPassageText)
             .padding(10)

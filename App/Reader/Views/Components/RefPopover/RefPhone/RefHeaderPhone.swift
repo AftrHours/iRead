@@ -4,19 +4,17 @@ struct RefHeaderPhone: View {
     let location: String
 
     var body: some View {
-        HStack(alignment: .top, spacing: 16) {
-            Image(systemName: "quote.opening")
-                .font(.title2.weight(.black))
-                .foregroundStyle(AppColors.popoverQuoteIcon)
-                .readerIconFrame(47)
-                .background(AppColors.popoverQuoteIconBg, in: .rect(cornerRadius: 5.6))
+        HStack(alignment: .center, spacing: 10) {
+            Image("quotationIcon")
+                .resizable()
+                .frame(width: 47, height: 47)
                 .accessibilityHidden(true)
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text("Mentioned earlier")
-                    .font(AppTypography.subheadline(.semibold   ))
+                    .font(AppTypography.subheadline(.semibold))
                     .foregroundStyle(AppColors.textPrimary)
                 Spacer(minLength: 0)
-                RefLocation(location: location)
+                RefLocationPhone(location: location)
             }
             .frame(height: 47)
         }

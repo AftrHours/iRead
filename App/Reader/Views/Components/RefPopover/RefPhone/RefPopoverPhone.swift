@@ -2,7 +2,7 @@ import SwiftUI
 
 enum RefPopoverPhoneKnobs {
 
-    static let size = CGSize(width: 325, height: 204)
+    static let size = CGSize(width: 325, height: 235)
 }
 
 /// The reference card on an iPhone: 325 × 204, the passage in the room left between the header and the actions.
@@ -13,7 +13,7 @@ struct RefPopoverPhone: View {
     let onJumpTapped: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 10) {
             RefHeaderPhone(location: card.location)
             RefPassagePhone(quote: card.quote)
             RefActionPhone(verdict: verdict, onVerdictTapped: onVerdictTapped, onJumpTapped: onJumpTapped)

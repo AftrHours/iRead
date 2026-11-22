@@ -35,10 +35,10 @@ struct RefActionPhone: View {
                     Image(systemName: "arrow.up.left")
                         .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                 }
-                    .font(AppTypography.footnote(.regular))
+                    .font(AppTypography.subheadline(.medium))
                     .lineLimit(1)
                     .foregroundStyle(AppColors.actionPrimaryText)
-                    .frame(width: 145, height: 34)
+                    .frame(width: 163, height: 34)
                     .background(AppColors.actionPrimary, in: .capsule)
                     .padding(.vertical, 5)
                     .contentShape(.rect)

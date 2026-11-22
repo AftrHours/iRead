@@ -6,7 +6,7 @@ struct RefPassagePhone: View {
 
     var body: some View {
         Text(quote)
-            .font(AppTypography.caption1())
+            .font(AppTypography.subheadline())
             .lineLimit(4)
             .foregroundStyle(AppColors.popoverPassageText)
             .padding(6)
