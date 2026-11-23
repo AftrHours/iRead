@@ -2,6 +2,7 @@ import SwiftUI
 
 @main
 struct iReadApp: App {
+    @Environment(\.scenePhase) private var scenePhase
     private let appContainer: AppContainer
     @State private var libVM: LibVM
     @State private var readerVM: ReaderVM?
@@ -9,6 +10,7 @@ struct iReadApp: App {
     @AppStorage("hasCompletedHiFiOnboarding") private var hasCompletedOnboarding = false
 
     init() {
+        _ = BetaAnalytics.shared
         let appContainer = AppContainer()
         self.appContainer = appContainer
         let libVM = appContainer.makeLibVM()
@@ -33,6 +35,9 @@ struct iReadApp: App {
                         hasCompletedOnboarding = true
                     }
                 }
+            }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active { BetaAnalytics.shared.cloudDelivery.flush() }
             }
             .onOpenURL { url in
                 Task { await libVM.fileOpened(url) }

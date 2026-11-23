@@ -4,6 +4,7 @@ import Foundation
 struct PageActions {
     var onPageChanged: (Page) -> Void
     var onCenterTapped: () -> Void
+    var onTurnBegan: () -> Void = {}
     var claimReadingFocus: (UUID) -> Bool = { _ in false }
     var onMarkTapped: (Mark, CGRect) -> Void
 

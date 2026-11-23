@@ -26,6 +26,32 @@ struct ProgRepoTests {
         expectSame(await repo.progress(for: bookID), saved)
     }
 
+    @Test("Resume analytics distinguishes first open, a saved position, corrupt data, and a lost save")
+    func resumeOutcomes() async throws {
+        let repo = ProgRepo(folder: folder.url)
+        guard case .firstOpen = await repo.resumeCandidate(for: bookID) else {
+            Issue.record("A new book should have no resume attempt")
+            return
+        }
+        await repo.saveNow(.make(bookID: bookID, paragraph: 7))
+        guard case .saved(let progress) = await repo.resumeCandidate(for: bookID) else {
+            Issue.record("Expected the existing save")
+            return
+        }
+        #expect(progress.position.paragraph == 7)
+        let url = folder.url.appending(path: "\(bookID.uuidString)/progress.json")
+        try Data("broken".utf8).write(to: url)
+        guard case .failed("invalid") = await repo.resumeCandidate(for: bookID) else {
+            Issue.record("Expected invalid progress")
+            return
+        }
+        try FileManager.default.removeItem(at: url)
+        guard case .failed("missing") = await repo.resumeCandidate(for: bookID) else {
+            Issue.record("Expected a previously saved position to be missing")
+            return
+        }
+    }
+
     @Test("PR-09 quick saves leave the last one on disk")
     func quickSaves() async {
         let repo = ProgRepo(folder: folder.url)

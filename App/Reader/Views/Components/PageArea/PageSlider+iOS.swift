@@ -130,6 +130,7 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
         finishRunningTurn()
         guard case .idle = turn, let content, let currentView,
               let page = content.neighbor(of: currentView.page, isForward: isForward) else { return }
+        actions.onTurnBegan()
         let next = pageView(for: page, content: content)
         if isFade {
             fade(to: next)
@@ -310,6 +311,7 @@ final class PageSlider: UIView, UIGestureRecognizerDelegate {
         guard translation != 0, case .idle = turn, let content, let currentView,
               let page = content.neighbor(of: currentView.page, isForward: translation < 0),
               let slide = beginSlide(to: pageView(for: page, content: content), isForward: translation < 0) else { return nil }
+        actions.onTurnBegan()
         turn = .dragging(slide)
         return slide
     }

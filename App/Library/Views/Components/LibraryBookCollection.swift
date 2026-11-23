@@ -3,7 +3,6 @@ import SwiftUI
 struct LibraryBookCollection<Header: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let items: [LibraryBookItemVM]
-    let viewMode: LibVM.ViewMode
     let layout: LibraryLayout
     let onBookTapped: (BookRecord) -> Void
     let onFinished: (BookRecord) -> Void
@@ -23,24 +22,27 @@ struct LibraryBookCollection<Header: View>: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 header()
+                    .padding(.horizontal, layout.sideMargin)
                 if showsLibraryTitle {
                     LibraryTitleView()
+                        .padding(.horizontal, layout.sideMargin)
                         .padding(.top, 10)
                         .padding(.bottom, 12)
                 }
 
                 if let resultsTitle {
                     Text(resultsTitle)
+                        .padding(.horizontal, layout.sideMargin)
                         .accessibilityAddTraits(.isHeader)
-                        .font(AppTypography.title3(.semibold))
+                        .font(AppTypography.title2(.bold))
                         .foregroundStyle(AppColors.textPrimary)
                         .padding(.bottom, 16)
                 }
 
                 books
+                    .padding(.horizontal, layout.collectionSideMargin)
                     .accessibilityElement(children: .contain)
             }
-            .padding(.horizontal, layout.collectionSideMargin)
             .padding(.bottom, 28)
         }
         .onScrollGeometryChange(for: CGFloat.self) { geometry in
@@ -52,11 +54,11 @@ struct LibraryBookCollection<Header: View>: View {
 
     @ViewBuilder
     private var books: some View {
-        switch viewMode {
+        switch layout.viewMode {
         case .grid:
-            LazyVGrid(columns: layout.gridColumns(for: dynamicTypeSize), spacing: layout.gridRowSpacing) {
+            LazyVGrid(columns: layout.gridColumns(for: dynamicTypeSize), spacing: layout.rowSpacing) {
                 ForEach(items.enumerated(), id: \.element.id) { index, item in
-                    BookGridView(item: item, menu: bookMenu(for: item, style: .card)) {
+                    BookGridView(item: item, isSearchResult: layout.isSearching, menu: bookMenu(for: item, style: .card)) {
                         onBookTapped(item.book)
                     }
                     .accessibilityElement(children: .contain)
@@ -64,7 +66,7 @@ struct LibraryBookCollection<Header: View>: View {
                 }
             }
         case .list:
-            LazyVStack(spacing: 12) {
+            LazyVStack(spacing: layout.rowSpacing) {
                 ForEach(items.enumerated(), id: \.element.id) { index, item in
                     BookRowView(item: item, menu: bookMenu(for: item)) {
                         onBookTapped(item.book)
@@ -72,7 +74,7 @@ struct LibraryBookCollection<Header: View>: View {
                     .accessibilityElement(children: .contain)
                     .environment(\.libraryBookMenuPriority, Double(items.count - index) * 2)
                     Rectangle()
-                        .fill(LibraryPalette.divider)
+                        .fill(AppColors.libraryListDivider)
                         .frame(height: 1)
                         .accessibilityHidden(true)
                 }

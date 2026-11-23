@@ -71,6 +71,10 @@ struct PageTurnView: UIViewControllerRepresentable {
             page(next: (viewController.view as? PageTextView)?.page, isForward: true).map(pageController)
         }
 
+        func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+            pageTurnView.actions.onTurnBegan()
+        }
+
         func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
                                 previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
             guard completed, let displayedPage else { return }
@@ -96,6 +100,7 @@ struct PageTurnView: UIViewControllerRepresentable {
 
         private func turnPage(isForward: Bool) {
             guard !isTurning, let pageViewController, let page = page(next: displayedPage, isForward: isForward) else { return }
+            pageTurnView.actions.onTurnBegan()
             isTurning = true
             let direction: UIPageViewController.NavigationDirection = isForward ? .forward : .reverse
             pageViewController.setViewControllers([pageController(for: page)], direction: direction, animated: true) { [weak self] _ in

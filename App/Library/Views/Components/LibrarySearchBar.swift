@@ -7,7 +7,7 @@ struct LibrarySearchBar: View {
         case pad
 
         var height: CGFloat { self == .phone ? 44 : 48 }
-        var placeholder: String { self == .phoneActive ? "Search Title or Author" : "Search" }
+        var placeholder: String { self == .phone ? "Search" : "Search Title or Author" }
         var placeholderColor: Color { self == .pad ? AppColors.textSecondary : AppColors.searchMutedForeground }
         var iconColor: Color {
             switch self {
@@ -48,7 +48,7 @@ struct LibrarySearchBar: View {
                 .foregroundStyle(style.iconColor)
                 .libraryIconFrame(style.height, square: false)
                 .accessibilityHidden(true)
-            TextField(style.placeholder, text: $libVM.searchText,
+            TextField(style.placeholder, text: Binding(get: { libVM.searchText }, set: libVM.editQuery),
                       prompt: Text(style.placeholder).foregroundStyle(style.placeholderColor))
                 .font(AppTypography.body(style == .phone ? .medium : .regular))
                 .foregroundStyle(AppColors.textPrimary)
@@ -58,8 +58,31 @@ struct LibrarySearchBar: View {
                 .padding(.vertical, 4)
                 .focused(focus)
                 .accessibilityLabel("Search by title or author")
+            if libVM.isDictating {
+                fieldButton("stop.fill", label: "Stop dictation", action: libVM.stopDictation)
+            } else if !libVM.searchText.isEmpty {
+                fieldButton("xmark.circle", label: "Clear search") {
+                    libVM.editQuery("")
+                    focus.wrappedValue = true
+                }
+            } else {
+                fieldButton("mic.fill", label: "Search by voice", action: libVM.voiceSearchTapped)
+            }
         }
-        .padding(.horizontal, 14)
+        .padding(.leading, 14)
+        .padding(.trailing, 2)
+    }
+
+    private func fieldButton(_ symbol: String, label: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: symbol)
+                .font(AppTypography.body())
+                .foregroundStyle(style.iconColor)
+                .libraryIconFrame(44)
+                .contentShape(.rect)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text(label))
     }
 }
 

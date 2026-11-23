@@ -9,6 +9,8 @@ final class OnboardingVM {
     private(set) var importError: String?
     private(set) var shouldFinish = false
 
+    var onPickerStarted: () -> Void = {}
+    var onPickerFailed: (Error) -> Void = { _ in }
     private let importBooks: @MainActor ([URL]) async -> Bool
 
     var primaryActionTitle: String { page == 0 ? "Next" : "Start Reading" }
@@ -37,12 +39,18 @@ final class OnboardingVM {
     }
 
     func importTapped() {
+        onPickerStarted()
         isPickingBook = true
+    }
+
+    func importPickerCancelled() {
+        importPickerCompleted(.failure(CocoaError(.userCancelled)))
     }
 
     func importPickerCompleted(_ result: Result<[URL], any Error>) {
         isPickingBook = false
         guard case .success(let urls) = result else {
+            if case .failure(let error) = result { onPickerFailed(error) }
             if case .failure(let error) = result,
                (error as? CocoaError)?.code != .userCancelled {
                 importError = error.localizedDescription

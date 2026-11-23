@@ -3,6 +3,7 @@ import SwiftUI
 struct BookGridView<MenuButton: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let item: LibraryBookItemVM
+    var isSearchResult = false
     let menu: MenuButton
     let onTap: () -> Void
 
@@ -10,7 +11,9 @@ struct BookGridView<MenuButton: View>: View {
         LibraryBookButton(item: item, action: onTap) {
             VStack(alignment: .leading, spacing: 0) {
                 BookCoverView(image: item.cover)
+                    .overlay(.black.opacity(item.showsSelection && !item.isSelected ? 0.5 : 0))
                 ProgressBar(progress: item.progress)
+                    .opacity(item.showsSelection && !item.isSelected ? 0.5 : 1)
                     .padding(.top, 10)
                 HStack(spacing: 4) {
                     bookDetails
@@ -18,6 +21,7 @@ struct BookGridView<MenuButton: View>: View {
                     if !item.showsSelection {
                         Color.clear
                             .libraryIconFrame(44)
+                            .frame(height: 0)
                             .anchorPreference(key: BookMenuCenter.self, value: .center) { $0 }
                     }
                 }
@@ -36,17 +40,21 @@ struct BookGridView<MenuButton: View>: View {
                 }
             }
         }
-        .overlay(alignment: .topTrailing) { LibrarySelectionBadge(item: item) }
+        .overlay(alignment: .topTrailing) {
+            LibrarySelectionBadge(item: item)
+                .dynamicTypeSize(...LibraryLayout.maximumIconSize)
+                .padding(8)
+        }
     }
 
     private var bookDetails: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(item.title)
-                .font(AppTypography.caption1(.semibold))
+                .font(isSearchResult ? AppTypography.subheadline(.semibold) : AppTypography.footnote(.semibold))
                 .foregroundStyle(AppColors.cardTextPrimary)
                 .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 1)
             Text(item.author)
-                .font(AppTypography.caption1(.medium))
+                .font(isSearchResult ? AppTypography.footnote(.medium) : AppTypography.caption1(.medium))
                 .foregroundStyle(AppColors.cardTextSecondary)
                 .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 1)
         }

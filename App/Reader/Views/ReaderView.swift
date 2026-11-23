@@ -100,7 +100,9 @@ struct ReaderView: View {
         }
         .animation(.easeInOut, value: referenceVM.returnPrompt)
         .animation(.easeInOut(duration: 0.2), value: readerVM.isFocusMode)
+        .onDisappear { readerVM.analytics.setActive(false) }
         .onChange(of: scenePhase, initial: true) { _, scenePhase in
+            readerVM.analytics.setActive(scenePhase == .active)
             if scenePhase == .background {
                 readerVM.appBackgrounded()
             } else if scenePhase == .active {

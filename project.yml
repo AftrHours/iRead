@@ -78,6 +78,8 @@ targets:
     info:
       path: App/Info.plist
       properties:
+        NSSpeechRecognitionUsageDescription: Convert your speech into a library search for a book title or author.
+        NSMicrophoneUsageDescription: Use the microphone when you tap voice search to find books in your library.
         CFBundleDocumentTypes:
           - CFBundleTypeName: EPUB
             CFBundleTypeRole: Viewer

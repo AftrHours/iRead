@@ -3,14 +3,16 @@ import SwiftUI
 struct LibrarySelectionBadge: View {
     let item: LibraryBookItemVM
 
+    @ScaledMetric(relativeTo: .body) private var diameter: CGFloat = 24
+
     var body: some View {
         if item.showsSelection {
             Image(systemName: item.selectionSymbol)
-                .font(AppTypography.title3(.semibold))
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: diameter, height: diameter)
                 .symbolRenderingMode(.palette)
-                .foregroundStyle(.white, item.isSelected ? AppColors.actionPrimary : AppColors.menuTextMuted)
-                .padding(8)
-                .dynamicTypeSize(...LibraryLayout.maximumIconSize)
+                .foregroundStyle(item.isSelected ? AppColors.bgPrimary : AppColors.textSecondary, AppColors.textPrimary)
                 .accessibilityHidden(true)
                 .allowsHitTesting(false)
         }

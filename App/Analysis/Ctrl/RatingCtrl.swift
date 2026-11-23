@@ -13,10 +13,11 @@ struct RatingCtrl {
     }
 
     /// `verdict: nil` takes the rating back.
-    func rate(underline id: String, _ verdict: Verdict?) async throws {
+    @discardableResult
+    func rate(underline id: String, _ verdict: Verdict?) async throws -> Bool {
         let content = try await bookContentRepo.content(for: bookID)
         guard let underline = await underlineRepo.underline(withID: id, of: content.fingerprint) else { throw ContentError.notFound }
-        await ratingRepo.save(rating(of: underline, verdict: verdict, in: content))
+        return await ratingRepo.save(rating(of: underline, verdict: verdict, in: content))
     }
 
     /// nil until the reader answers.

@@ -37,6 +37,7 @@ struct AppContainer {
                                       cloudSvc: cloudSvc, makeUnderliner: { await Underliner.make(.release) })
         ratingRepo = RatingRepo(cloudSvc: cloudSvc)
         self.cloudSvc = cloudSvc
+        if let cloudSvc { BetaAnalytics.shared.cloudDelivery.connect(cloudSvc) }
     }
 
     func makeLibVM() -> LibVM {
@@ -49,7 +50,10 @@ struct AppContainer {
     }
 
     func makeOnboardingVM(using libVM: LibVM) -> OnboardingVM {
-        OnboardingVM { urls in await libVM.importFiles(.success(urls)) }
+        let onboarding = OnboardingVM { urls in await libVM.importFiles(.success(urls)) }
+        onboarding.onPickerStarted = { libVM.pickerStarted(source: "onboarding") }
+        onboarding.onPickerFailed = libVM.pickerFailed
+        return onboarding
     }
 
     func makeReaderVM(book: BookRecord) -> ReaderVM {

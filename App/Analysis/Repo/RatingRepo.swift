@@ -49,12 +49,14 @@ actor RatingRepo {
         await sendUnsent()
     }
 
-    func save(_ rating: UnderlineRating) async {
+    @discardableResult
+    func save(_ rating: UnderlineRating) async -> Bool {
         let key = Self.key(rating.underlineID, of: rating.book)
         stored.ratings[key] = rating
         if stored.sharesRatings != false { stored.unsent.insert(key) }
-        write()
+        let saved = write()
         await sendUnsent()
+        return saved
     }
 
     /// One send at a time. Ratings changed during a send are picked up by the same loop.
@@ -83,6 +85,7 @@ actor RatingRepo {
                 lastSendResult = "Sent to Development at \(Date.now.formatted(date: .omitted, time: .standard))"
                 #endif
             } catch {
+                BetaAnalytics.shared.record(.recoverableError, category: BetaAnalytics.category(error), feature: "rating_sync")
                 logger.info("Couldn't send a rating, will try later: \(error.localizedDescription, privacy: .public)")
                 #if DEBUG
                 lastSendResult = "Couldn't send: \(error.localizedDescription)"
@@ -92,12 +95,16 @@ actor RatingRepo {
         }
     }
 
-    private func write() {
+    @discardableResult
+    private func write() -> Bool {
         do {
             try FileManager.default.createDirectory(at: fileURL.deletingLastPathComponent(), withIntermediateDirectories: true)
             try JSONEncoder().encode(stored).write(to: fileURL, options: .atomic)
+            return true
         } catch {
+            BetaAnalytics.shared.record(.recoverableError, category: BetaAnalytics.category(error), feature: "rating_save")
             logger.error("Couldn't save ratings: \(error.localizedDescription, privacy: .public)")
+            return false
         }
     }
 
