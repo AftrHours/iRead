@@ -1,6 +1,6 @@
 # iRead diagrams
 
-Author: Shanon Giuly Istanto · Updated 2026-11-06 (after the RatingVM / SavedUnderline split)
+Author: Shanon Giuly Istanto · Updated 2026-11-22 (after the switch to UnderlineKit)
 
 Every diagram is Mermaid. GitHub draws them on this page. To edit one in Miro, copy its file from `docs/diagrams/` and paste it into Diagram → Build with code.
 
@@ -183,10 +183,9 @@ flowchart TB
     RatingRepo
   end
   subgraph Service["Service · wraps an Apple API"]
-    ModelCheckSvc
     CloudSvc
   end
-  Engine[[UnderlineEngine package]]
+  Engine[[UnderlineKit · UnderlineEngine package]]
   iCloud[(iCloud)]
 
   ReaderVM --> ReferenceVM
@@ -202,7 +201,6 @@ flowchart TB
   RatingCtrl -. rated underline .-> UnderlineRepo
   RatingCtrl --> RatingRepo
 
-  UnderlineRepo --> ModelCheckSvc
   UnderlineRepo --> Engine
   UnderlineRepo --> CloudSvc
   RatingRepo --> CloudSvc
@@ -394,9 +392,9 @@ classDiagram
   SearchResult "0..*" --> "1" ReadingPosition : where
 ```
 
-## 4. UnderlineEngine input and output
+## 4. UnderlineKit: what goes in and what comes out
 
-What iRead sends the engine (one chapter) and what it gets back (one result per paragraph). `UnderlineRepo` copies each `Underline` into the app's own `SavedUnderline` right away, so nothing else in the app depends on the engine's types. Indexes are global; ranges are UTF-16 inside a paragraph.
+The engine's contract, `UnderlineKit`: the only part of the UnderlineEngine package the app links. The app hands over the book as a `BookSource` (`BookContent` conforms, so the engine reads a chapter only when it asks for one) and gets back one `UnderlineBatch` per paragraph, starting at the reader's paragraph. `UnderlineRepo` copies each `UnderlineResult` into the app's own `SavedUnderline` right away, so nothing else in the app depends on the engine's types. Indexes are global; ranges are UTF-16 inside a paragraph. `kind` is one of action, reaction, feeling, outcome, place, thing, person; `decidedBy` is model or rules. `ConsideredPhrase` is for the debug sheet only. The engine's internals (`UnderlineCtrl`, `Linker`, the rules) sit behind `Underliner` and don't appear here; `CONTRACT.md` in the engine repo says what each value means and which changes break iRead.
 
 File: `docs/diagrams/04-underline-engine-data.mmd`
 
@@ -404,57 +402,79 @@ File: `docs/diagrams/04-underline-engine-data.mmd`
 classDiagram
   direction LR
 
-  class ChapterInput {
-    +Int chapterIndex
-    +List~ParagraphInput~ paragraphs
-    +List~SentenceInput~ sentences
+  %% In: the book, as the engine reads it
+  class BookSource {
+    <<protocol>>
+    +String id
+    +Int chapterCount
+    +chapterText(Int) ChapterText
   }
-  class ParagraphInput {
+  class BookContent {
+    id = fingerprint
+  }
+  class ChapterText {
+    +List~Paragraph~ paragraphs
+    +List~Sentence~ sentences
+  }
+  class Paragraph {
     +Int index
     +String text
   }
-  class SentenceInput {
+  class Sentence {
     +Int index
     +Int paragraph
     +NSRange range
   }
 
-  class UnderlineCtrl {
-    +prepare(ChapterInput) IndexedChapter
-    +paragraphResults(IndexedChapter, Int startingAt) AsyncStream~ParagraphResult~
+  %% The door: the only thing the app calls
+  class Underlining {
+    <<protocol>>
+    +Int version
+    +String summary
+    +underlines(inChapter Int, of BookSource, startingAt Int) AsyncStream~UnderlineBatch~
+  }
+  class Underliner {
+    +make(Preset) Underliner$
+    +Int releaseVersion$
+  }
+  class StubUnderliner {
+    test fake, no engine
+  }
+  class Preset {
+    <<enumeration>>
+    release
+    testing
   }
 
-  class ParagraphResult {
-    +List~Underline~ underlines
-    +List~UnderlineRecord~ records
+  %% Out: one batch per paragraph
+  class UnderlineBatch {
+    +List~UnderlineResult~ underlines
+    +List~ConsideredPhrase~ considered
   }
-  class Underline {
+  class UnderlineResult {
     +String id
     +Int sentence
     +Int paragraph
     +NSRange range
     +String text
-    +UnderlineKind kind
-    +EventRole role
-    +AnswerPassage reference
-    +AnswerPath decidedBy
+    +String kind
+    +String decidedBy
+    +Passage reference
   }
-  class AnswerPassage {
+  class Passage {
     +Int sentence
     +Int paragraph
     +NSRange range
     +String text
   }
-  class UnderlineRecord {
+  class ConsideredPhrase {
     +Int sentence
     +String phrase
-    +UnderlineKind kind
-    +AnswerPath path
-    +Int pickedSentence
-    +Bool kept
-    +DropReason dropped
+    +String detail
+    +Bool isUnderlined
   }
 
+  %% In iRead
   class SavedUnderline {
     +String id
     +Int sentence
@@ -466,71 +486,25 @@ classDiagram
     +ContextPassage reference
   }
 
-  class UnderlineKind {
-    <<enumeration>>
-    action
-    reaction
-    feeling
-    outcome
-    place
-    thing
-    person
-  }
-  class EventRole {
-    <<enumeration>>
-    setting
-    initiatingEvent
-    internalResponse
-    goal
-    attempt
-    reaction
-    outcome
-  }
-  class AnswerPath {
-    <<enumeration>>
-    model
-    rules
-  }
-  class DropReason {
-    <<enumeration>>
-    noCandidate
-    pickedNone
-    confirmRejected
-    guardRejected
-    densityLimit
-    modelFailed
-    explainedInParagraph
-  }
+  BookContent ..|> BookSource : conforms, in ChapterInputMapper
+  BookSource ..> ChapterText : one chapter, when asked
+  ChapterText "1" *-- "1..*" Paragraph : paragraphs
+  ChapterText "1" *-- "1..*" Sentence : sentences
+  Paragraph "1" <-- "0..*" Sentence : belongs to (paragraph = index)
 
-  %% Input: what a chapter is made of
-  ChapterInput "1" *-- "1..*" ParagraphInput : paragraphs
-  ChapterInput "1" *-- "1..*" SentenceInput : sentences
-  ParagraphInput "1" <-- "0..*" SentenceInput : belongs to (paragraph = index)
+  Underliner ..|> Underlining : release engine
+  StubUnderliner ..|> Underlining : test fake
+  Underliner ..> Preset : made from
+  Underlining ..> BookSource : reads
+  Underlining ..> UnderlineBatch : yields, from the reader's paragraph, then wraps
 
-  %% Engine: one chapter in, one result per paragraph out
-  UnderlineCtrl "1" ..> "1" ChapterInput : prepares
-  UnderlineCtrl "1" ..> "0..*" ParagraphResult : yields
-  ParagraphInput "1" -- "0..1" ParagraphResult : result for
+  UnderlineBatch "1" *-- "0..*" UnderlineResult : underlines
+  UnderlineBatch "1" *-- "0..*" ConsideredPhrase : considered (debug only)
+  UnderlineResult "1" *-- "1" Passage : reference
+  UnderlineResult "0..*" --> "1" Sentence : sentence (global index)
+  Passage "0..*" --> "1" Sentence : sentence (always earlier)
 
-  %% Output: what a result holds
-  ParagraphResult "1" *-- "0..*" Underline : underlines
-  ParagraphResult "1" *-- "0..*" UnderlineRecord : records
-  UnderlineRecord "1" -- "0..1" Underline : becomes (when kept)
-  Underline "1" *-- "1" AnswerPassage : reference
-
-  %% Output points back at the input by global index
-  Underline "0..*" --> "1" SentenceInput : sentence
-  AnswerPassage "0..*" --> "1" SentenceInput : sentence (always earlier)
-
-  %% In iRead: UnderlineRepo copies each Underline into the app's own model
-  Underline "1" ..> "1" SavedUnderline : copied into, in UnderlineRepo
-
-  %% Enum values
-  Underline "0..*" --> "1" UnderlineKind : kind
-  Underline "0..*" --> "0..1" EventRole : role
-  Underline "0..*" --> "1" AnswerPath : decidedBy
-  UnderlineRecord "0..*" --> "0..1" AnswerPath : path
-  UnderlineRecord "0..*" --> "0..1" DropReason : dropped
+  UnderlineResult "1" ..> "1" SavedUnderline : copied into, in UnderlineRepo
 ```
 
 ## 5. Where data lives
@@ -748,7 +722,7 @@ sequenceDiagram
   participant RefCtrl
   participant UnderlineRepo
   participant CloudSvc as CloudSvc (reader's iCloud)
-  participant Engine as UnderlineEngine
+  participant Engine as UnderlineKit (Underlining)
 
   ReferenceVM->>RefCtrl: underlineUpdates for this page
   RefCtrl->>UnderlineRepo: underline this chapter (by book fingerprint)
@@ -759,10 +733,10 @@ sequenceDiagram
     CloudSvc-->>UnderlineRepo: saved underlines
     UnderlineRepo->>UnderlineRepo: save on this phone
   else not saved anywhere
-    UnderlineRepo->>UnderlineRepo: ChapterInputMapper builds the input
-    UnderlineRepo->>Engine: prepare, paragraphResults
-    Engine-->>UnderlineRepo: underlines, one paragraph at a time
-    UnderlineRepo->>UnderlineRepo: turn each into SavedUnderline
+    UnderlineRepo->>Engine: underlines(inChapter, of: book, startingAt: first sentence on the page)
+    Engine->>UnderlineRepo: chapterText (BookContent as BookSource)
+    Engine-->>UnderlineRepo: UnderlineBatch, one paragraph at a time
+    UnderlineRepo->>UnderlineRepo: turn each UnderlineResult into SavedUnderline
     UnderlineRepo->>UnderlineRepo: save on this phone
     UnderlineRepo->>CloudSvc: save to iCloud
   end

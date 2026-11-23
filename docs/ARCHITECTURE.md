@@ -1,6 +1,6 @@
 # iRead architecture
 
-iPhone and iPad reader app (iPhone in portrait only). SwiftUI, Swift 6, iOS 26, XcodeGen (`project.yml` → `iRead.xcodeproj`). Packages: EPUBKit (local, in `Packages/EPUBKit`, on ZIPFoundation) reads EPUB files; [UnderlineEngine](https://github.com/AftrHours/UnderlineEngine) (from GitHub, pinned to one commit in `project.yml`) finds the phrases to underline.
+iPhone and iPad reader app (iPhone in portrait only). SwiftUI, Swift 6, iOS 26, XcodeGen (`project.yml` → `iRead.xcodeproj`). Packages: EPUBKit (local, in `Packages/EPUBKit`, on ZIPFoundation) reads EPUB files; [UnderlineEngine](https://github.com/AftrHours/UnderlineEngine) (from GitHub, pinned to one commit in `project.yml`) finds the phrases to underline. The app links only its `UnderlineKit` library, the engine's contract (see `CONTRACT.md` in that repo).
 
 ## Folders and dependency direction
 
@@ -16,10 +16,9 @@ App/
               BookContentRepo, ProgRepo, EPUBParseSvc, BookFingerprint: names a book by its text)
   Onboarding/ first-launch introduction, with an EPUB import
   Library/    library page: list, search, sort, grid/list, EPUB import
-  Analysis/   the AI feature: underlines with their reference passages (UnderlineEngine), and the readers' ratings of them
+  Analysis/   the AI feature: underlines with their reference passages (UnderlineKit), and the readers' ratings of them
     Models/   SavedUnderline: the app's own copy of an underline the engine found; UnderlineRating; ContextPassage; Mark
-    Svc/      ModelCheckSvc: one test call to the on-device model before the first chapter
-              CloudSvc: iCloud records through CloudKit (the reader's private database, and the developers' public one)
+    Svc/      CloudSvc: iCloud records through CloudKit (the reader's private database, and the developers' public one)
     Debug/    DEBUG-only underline debug sheet
   Reader/     reading page: paging, progress, settings, search, contents, reference cards
 
@@ -54,8 +53,9 @@ Arrows point at what a feature may use. No cycles. Inside a feature, folders are
 - Only `AppContainer` knows every type.
 - A View is handed the VMs it uses and never reaches one through another (no `readerVM.referenceVM.x`).
   `ReaderView` takes its children from `ReaderVM` once, in `init`, and passes each one down.
-- Only `UnderlineRepo`, `ChapterInputMapper` and the DEBUG files in `Analysis/Debug/` import UnderlineEngine.
-  Everything else uses `SavedUnderline`, so an engine update only touches those files.
+- Only `UnderlineRepo`, `ChapterInputMapper`, the DEBUG files in `Analysis/Debug/` and `AppContainer` (which picks the engine)
+  import `UnderlineKit`. Nothing imports `UnderlineEngine`: its types are the engine's internals, behind the contract.
+  Everything else uses `SavedUnderline`, so an engine update only touches those files, and usually none of them.
 - Add a layer or type only when it does real work. A protocol is added when a test needs one.
 
 ## Naming
@@ -68,7 +68,7 @@ A type's last word says its layer:
 | `VM`    | UI state, `@MainActor @Observable`. Receives intents (`xTapped`, `xChanged`, `onAppear`). |
 | `Ctrl`  | One use case, orchestrating repos and services. |
 | `Repo`  | Persists or caches data (files in Application Support, in-memory caches). Failed writes are logged to OSLog category `storage`. |
-| `Svc`   | Wraps a system or framework API (EPUBKit, UIKit, OSLog, Foundation Models, CloudKit). |
+| `Svc`   | Wraps a system or framework API (EPUBKit, UIKit, OSLog, CloudKit). |
 | `Rules` | Pure functions, no state, no I/O. |
 | `Models`| Plain data. |
 | `Knobs` | Constants worth tuning, next to the type that uses them (`UnderlineRepoKnobs.engineVersion`). |
@@ -78,8 +78,9 @@ Names that are easy to mix up:
 - **Ref = Reference.** `RefCtrl`, `RefCardView`, `ReferenceVM` and `ReferenceCard` are all about the reference: the earlier
   passage that explains an underline. **Rating** is the reader's thumbs up / down on that reference (`RatingVM`, `RatingCtrl`,
   `RatingRepo`, `UnderlineRating`, `Verdict`).
-- **Ours or the engine's.** `SavedUnderline` and `ContextPassage` are the app's. `Underline`, `AnswerPassage`, `UnderlineRecord`
-  and `UnderlineCtrl` come from the UnderlineEngine package: `UnderlineCtrl` is the engine's entry point, not one of our Ctrls.
+- **Ours or the engine's.** `SavedUnderline` and `ContextPassage` are the app's. `Underlining`, `Underliner`, `BookSource`,
+  `ChapterText`, `UnderlineResult`, `UnderlineBatch` and `ConsideredPhrase` come from `UnderlineKit`: `Underliner` is the
+  engine's entry point, not one of our types.
 - **Book ID vs fingerprint.** `BookRecord.id` is a random UUID for one copy in the library. `BookContent.fingerprint` is a hash of
   the book's text, the same on every device, so underlines and ratings are kept under it.
 - **Short forms.** `Lib` = Library, `Prog` = Progress (`ProgRepo` saves what `ProgressCtrl` decides).
@@ -193,8 +194,9 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
       `RatingCtrl.cloudAccount` and `RatingCtrl.sendUnsentRatings` (again on `appForegrounded`).
    5. `ReaderVM.showCurrentPage` (once the screen has been measured: `ReaderVM.screenChanged`) → `ReaderCtrl.currentPage(viewport: layout.viewport)` → `PagerSvc.pageRanges`.
    6. `ReferenceVM.update` sees a new chapter → `RefCtrl.underlineUpdates(from:)` → `UnderlineRepo.underline(chapter:of:startingAt:)`
-      (a finished chapter loads from `Underlines/<fingerprint>/`, or else from the reader's iCloud; otherwise `ChapterInputMapper`
-      → UnderlineEngine runs from the page's first sentence, then wraps, and each result becomes `SavedUnderline`). Books are named by `BookContent.fingerprint`, so the same book matches on every device.
+      (a finished chapter loads from `Underlines/<fingerprint>/`, or else from the reader's iCloud; otherwise the engine's
+      `underlines(inChapter:of:startingAt:)` runs from the page's first sentence, then wraps, reading the book through
+      `BookContent`'s `BookSource` conformance, and each `UnderlineResult` becomes `SavedUnderline`). Books are named by `BookContent.fingerprint`, so the same book matches on every device.
       Each update → `ReferenceVM.loadMarks`.
 
 **Turn a page and save progress**
@@ -222,17 +224,19 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 
 ## Analysis
 
-- `Repo/UnderlineRepo`: runs UnderlineEngine's `UnderlineCtrl` one chapter at a time (starting another stops the running one),
-  and turns each `Underline` it returns into `SavedUnderline` (only what the app uses: phrase, kind, decided by, its reference
-  passage). Only `SavedUnderline` is kept in memory, saved and uploaded. A finished chapter is saved on disk (`Underlines/<fingerprint>/`) and in the reader's iCloud (private database, record type
-  `ChapterUnderlines`, named `<fingerprint>-<chapter>`), with the parser and engine versions (`UnderlineRepoKnobs.engineVersion`,
-  bumped with the UnderlineEngine pin in `project.yml` or when `SavedUnderline` changes). A chapter not on disk is looked for in iCloud before the engine runs,
-  so another device, a reinstall or a re-import doesn't underline it again. A chapter from another version is underlined again.
-  Without iCloud everything still works on the device.
-- `Svc/ModelCheckSvc`: one tiny call to Apple's on-device model before the first chapter. The system can say the model is
-  available while every call fails (the Simulator does this), and UnderlineEngine drops a phrase whose model call fails, so then
-  the engine uses its rules only. A chapter where a model call still fails isn't saved. AppContainer passes it in; tests don't,
-  so they never call the model.
+- `Repo/UnderlineRepo`: asks the engine for one chapter at a time (starting another stops the running one) through
+  `UnderlineKit`'s `Underlining`, and turns each `UnderlineResult` it returns into `SavedUnderline` (only what the app uses:
+  phrase, kind, decided by, its reference passage). Only `SavedUnderline` is kept in memory, saved and uploaded.
+  The engine is made once, the first time a chapter needs it, by the `makeUnderliner` closure: `AppContainer` passes
+  `Underliner.make(.release)`; tests get the default `.testing`, the same method with an embedding that needs no download.
+  Which method and embedding `.release` means (today rules only, contextual embedding) is decided inside the engine; the app
+  doesn't ask Apple's on-device model.
+  A finished chapter is saved on disk (`Underlines/<fingerprint>/`) and in the reader's iCloud (private database, record type
+  `ChapterUnderlines`, named `<fingerprint>-<chapter>`), with the parser and engine versions. `UnderlineRepoKnobs.engineVersion`
+  is the engine's own `Underliner.releaseVersion`, so an engine release that changes the underlines redoes chapters by itself,
+  and the bundled seeds in `App/Resources/UnderlineSeed/` are ignored until they are regenerated. A chapter not on disk is looked for in iCloud
+  before the engine runs, so another device, a reinstall or a re-import doesn't underline it again. A chapter from another
+  version is underlined again. Without iCloud everything still works on the device.
 - `Svc/CloudSvc`: CloudKit records, with a 10-second timeout so the app never waits long for iCloud. The reader menu shows
   `CloudSvc.account` (checked in the background when a book opens and when the app comes back; only Settings can sign in).
 - `Repo/RatingRepo`: the reader's thumbs up / down, in `ratings.json`. The first rating asks whether to share. Shared ratings go to
@@ -241,12 +245,14 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
   what can't be sent yet is retried when a book opens. See `docs/ICLOUD.md` for the CloudKit Console.
 - `Ctrl/RefCtrl`: underline updates for a page, marks, and an underline by ID. `Ctrl/RatingCtrl`: builds an `UnderlineRating`
   from a `SavedUnderline` and the book's text, and the share answer, unsent ratings and iCloud account.
-- `Debug/UnderlineDebugView` (DEBUG; ladybug button or ⌘⇧D, made by `ReaderVM.makeUnderlineDebugVM`): every phrase the engine
-  considered, kept or dropped and why, plus an iCloud section: the account, where this chapter's underlines came from or went,
+- `Debug/UnderlineDebugView` (DEBUG; ladybug button or ⌘⇧D, made by `ReaderVM.makeUnderlineDebugVM`): the engine's one-line
+  `summary`, every phrase it considered, kept or dropped and why (its `ConsideredPhrase` lines, shown as they come: their wording
+  is the engine's and isn't parsed), plus an iCloud section: the account, where this chapter's underlines came from or went,
   and the ratings waiting to be sent. Its `RefCtrl` and `RatingCtrl` reads live in `UnderlineDebugVM.swift`, as they use
-  UnderlineEngine's records.
-- `Rules/ChapterInputMapper`: one chapter of `BookContent` → UnderlineEngine's `ChapterInput` (same indexes and ranges), for
-  `UnderlineRepo`; and the first sentence on a page, for `RefCtrl`.
+  `UnderlineKit`'s debug types.
+- `Rules/ChapterInputMapper`: `BookContent`'s conformance to `UnderlineKit`'s `BookSource`, so the engine reads one chapter's
+  paragraphs and sentences when it asks for them (same global indexes and UTF-16 ranges, nothing converted); and
+  `firstSentence(on:in:)`, the first sentence on a page, for `RefCtrl`.
 
 ## Testing & CI
 
@@ -266,7 +272,8 @@ Each test is named by its ID in `docs/TEST_CASES.md`. A real bug the tests found
 - Every test gets its own temp folder (`TempFolder` in `Tests/Support/`); repos take it as `init(folder:)`.
 - `EventSvc`, `EPUBParseSvc`, `PagerSvc` and `CloudSvc` are protocols so tests can use the fakes in `Tests/Support/Fakes.swift`.
   The app uses `EventSvcOSLog`, `EPUBParseSvcEPUBKit`, `PagerSvcTextKit` and `CloudSvcCloudKit`. Tests never reach iCloud.
-- Tests never call Foundation Models directly (CI simulators don't have it).
+- Tests never call Foundation Models (CI simulators don't have it). Tests that underline use the engine's `.testing` preset;
+  `UnderlineKit`'s `StubUnderliner` is there for a test that needs no engine at all.
 
 **Fixtures** are small EPUBs in `Tests/Fixtures/`, made by `sh Tests/Fixtures/make-fixtures.sh` (the `.epub` files are committed too).
 `BookContent.make(chapters:)` builds book content with the parser's own code, so its ranges match a parsed book.

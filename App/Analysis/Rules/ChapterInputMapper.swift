@@ -1,22 +1,27 @@
 import Foundation
-import UnderlineEngine
+import UnderlineKit
 
-/// Turns one chapter of the app's BookContent into UnderlineEngine's input. Both use the same global paragraph
-/// and sentence indexes and UTF-16 ranges, so nothing is converted, only copied.
-enum ChapterInputMapper {
-    static func input(chapter chapterIndex: Int, in content: BookContent) -> ChapterInput {
-        let chapter = content.chapters[chapterIndex]
-        let paragraphs = chapter.paragraphs.map { index in
-            ParagraphInput(index: index, text: (chapter.text as NSString).substring(with: content.paragraphs[index].range))
+/// The book as UnderlineEngine reads it. Both use the same global paragraph and sentence indexes and UTF-16 ranges, so
+/// nothing is converted, only copied, and only for the chapters the engine asks for.
+extension BookContent: BookSource {
+    var id: String { fingerprint }
+    var chapterCount: Int { chapters.count }
+
+    func chapterText(_ index: Int) -> ChapterText {
+        let chapter = chapters[index]
+        let paragraphTexts = chapter.paragraphs.map { paragraph in
+            ChapterText.Paragraph(index: paragraph, text: (chapter.text as NSString).substring(with: paragraphs[paragraph].range))
         }
-        let sentences = content.sentences.indices.compactMap { index -> SentenceInput? in
-            let sentence = content.sentences[index]
-            guard chapter.paragraphs.contains(sentence.paragraph) else { return nil }
-            return SentenceInput(index: index, paragraph: sentence.paragraph, range: sentence.range)
+        let sentenceRanges = sentences.indices.compactMap { sentence -> ChapterText.Sentence? in
+            let found = sentences[sentence]
+            guard chapter.paragraphs.contains(found.paragraph) else { return nil }
+            return ChapterText.Sentence(index: sentence, paragraph: found.paragraph, range: found.range)
         }
-        return ChapterInput(chapterIndex: chapterIndex, paragraphs: paragraphs, sentences: sentences)
+        return ChapterText(paragraphs: paragraphTexts, sentences: sentenceRanges)
     }
+}
 
+enum ChapterInputMapper {
     /// The global index of the first sentence on a page, so underlining starts where the reader is.
     static func firstSentence(on page: Page, in content: BookContent) -> Int {
         content.sentences.firstIndex { sentence in

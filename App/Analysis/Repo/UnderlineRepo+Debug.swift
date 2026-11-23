@@ -1,12 +1,12 @@
 import Foundation
 import OSLog
-import UnderlineEngine
+import UnderlineKit
 
 #if DEBUG
 /// What the debug sheet shows and does: underlining a whole book, exporting the saved chapters, and why a chapter came out as it did.
 extension UnderlineRepo {
-    func records(inChapter chapter: Int, of book: String) -> [UnderlineRecord] {
-        foundRecords[book]?[chapter] ?? []
+    func considered(inChapter chapter: Int, of book: String) -> [ConsideredPhrase] {
+        foundConsidered[book]?[chapter] ?? []
     }
 
     func cloudResult(inChapter chapter: Int, of book: String) -> String? {
@@ -18,9 +18,7 @@ extension UnderlineRepo {
         let total: Int
         var finished = 0
         var current: Int?
-        /// Phrases the model failed on, in chapters that were saved anyway.
-        var skippedPhrases = 0
-        /// Chapters with too many failures, left for the next run.
+        /// Chapters that weren't saved (stopped), left for the next run.
         var leftOut: [Int] = []
         var isRunning = true
         /// Why the run didn't start, such as the model not answering.
@@ -111,7 +109,7 @@ extension UnderlineRepo {
                     bookRuns[book]?.current = chapter
                     logger.info("Whole book: starting chapter \(chapter) of \(content.chapters.count)")
                     let (_, continuation) = AsyncStream<Void>.makeStream()
-                    await run(chapter, of: content, startingAt: first, continuation: continuation, toleratesFailures: true)
+                    await run(chapter, of: content, startingAt: first, continuation: continuation)
                     if Task.isCancelled { return }
                     guard finishedChapters[book]?.contains(chapter) == true else {
                         bookRuns[book]?.leftOut.append(chapter)

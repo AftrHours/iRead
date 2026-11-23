@@ -16,10 +16,9 @@ flowchart TB
     RatingRepo
   end
   subgraph Service["Service · wraps an Apple API"]
-    ModelCheckSvc
     CloudSvc
   end
-  Engine[[UnderlineEngine package]]
+  Engine[[UnderlineKit · UnderlineEngine package]]
   iCloud[(iCloud)]
 
   ReaderVM --> ReferenceVM
@@ -35,7 +34,6 @@ flowchart TB
   RatingCtrl -. rated underline .-> UnderlineRepo
   RatingCtrl --> RatingRepo
 
-  UnderlineRepo --> ModelCheckSvc
   UnderlineRepo --> Engine
   UnderlineRepo --> CloudSvc
   RatingRepo --> CloudSvc

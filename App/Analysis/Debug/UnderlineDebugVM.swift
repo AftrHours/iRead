@@ -2,7 +2,7 @@
 import Foundation
 import Observation
 import UIKit
-import UnderlineEngine
+import UnderlineKit
 
 @MainActor
 @Observable
@@ -39,10 +39,9 @@ final class UnderlineDebugVM {
         while !Task.isCancelled {
             await refreshBook()
             cloudLines = await cloudStatus(chapterIndex, account: account)
-            let model = (await refCtrl.underlinesUseModel() ? "Foundation Models" : "Rules only")
-                + " · \(await refCtrl.underlineEmbedding().rawValue) embedding"
-            let records = await refCtrl.underlineRecords(inChapter: chapterIndex)
-            if records.isEmpty {
+            let model = await refCtrl.underlineSummary()
+            let considered = await refCtrl.consideredPhrases(inChapter: chapterIndex)
+            if considered.isEmpty {
                 // A chapter loaded from disk has its underlines but not the dropped phrases.
                 let underlines = await refCtrl.underlines(inChapter: chapterIndex)
                 summary = "\(model) · \(underlines.count) underlined"
@@ -53,10 +52,10 @@ final class UnderlineDebugVM {
                         isUnderlined: true)
                 }
             } else {
-                summary = "\(model) · \(records.filter(\.kept).count) underlined · \(records.filter { !$0.kept }.count) dropped"
+                summary = "\(model) · \(considered.filter(\.isUnderlined).count) underlined · \(considered.filter { !$0.isUnderlined }.count) dropped"
                 note = nil
-                rows = records.sorted { $0.sentence < $1.sentence }.enumerated().map { index, record in
-                    Row(id: index, phrase: record.phrase, detail: Self.detail(of: record), isUnderlined: record.kept)
+                rows = considered.sorted { $0.sentence < $1.sentence }.enumerated().map { index, phrase in
+                    Row(id: index, phrase: phrase.phrase, detail: phrase.detail, isUnderlined: phrase.isUnderlined)
                 }
             }
             try? await Task.sleep(for: .seconds(1))
@@ -113,7 +112,6 @@ final class UnderlineDebugVM {
         if let refusal = run.refusal { return refusal }
         var parts = ["\(run.finished) of \(run.total) chapters"]
         if let current = run.current, run.isRunning { parts.append("working on chapter \(current)") }
-        if run.skippedPhrases > 0 { parts.append("\(run.skippedPhrases) phrases the model failed on") }
         if !run.leftOut.isEmpty { parts.append("left out: \(run.leftOut.map(String.init).joined(separator: ", "))") }
         parts.append(run.isRunning ? "running" : "stopped or done")
         return parts.joined(separator: " · ")
@@ -142,28 +140,17 @@ final class UnderlineDebugVM {
             "Ratings: sharing \(sharing) · \(ratings.unsent) waiting to send" + (ratings.lastSend.map { " · \($0)" } ?? "")
         ]
     }
-
-    private static func detail(of record: UnderlineRecord) -> String {
-        let outcome = record.kept
-            ? "explained by s\(record.pickedSentence.map(String.init) ?? "?")"
-            : "dropped: \(record.dropped?.rawValue ?? "unknown")"
-        return ["s\(record.sentence)", record.kind.rawValue, record.path?.rawValue, outcome].compactMap { $0 }.joined(separator: " · ")
-    }
 }
 
-/// The debug sheet's reads, kept here so only debug code sees UnderlineEngine's records.
+/// The debug sheet's reads. They are the engine's own text (`summary`, `considered`), so they don't change when the engine does.
 extension RefCtrl {
-    func underlinesUseModel() async -> Bool {
-        await underlineRepo.usesModel
+    func underlineSummary() async -> String {
+        await underlineRepo.engineSummary
     }
 
-    func underlineEmbedding() async -> EmbeddingEngine {
-        await underlineRepo.embeddingEngine
-    }
-
-    func underlineRecords(inChapter chapter: Int) async -> [UnderlineRecord] {
+    func consideredPhrases(inChapter chapter: Int) async -> [ConsideredPhrase] {
         guard let content = try? await bookContentRepo.content(for: bookID) else { return [] }
-        return await underlineRepo.records(inChapter: chapter, of: content.fingerprint)
+        return await underlineRepo.considered(inChapter: chapter, of: content.fingerprint)
     }
 
     func underlines(inChapter chapter: Int) async -> [SavedUnderline] {

@@ -1,5 +1,6 @@
 import Foundation
 import Testing
+import UnderlineKit
 @testable import iRead
 
 @Suite("ChapterInputMapper")
@@ -10,12 +11,13 @@ struct ChapterInputMapperTests {
         ["The last chapter."]
     ])
 
-    @Test("AN-01 a chapter's input keeps only its own paragraphs and sentences, with global indexes")
+    @Test("AN-01 a chapter's text keeps only its own paragraphs and sentences, with global indexes")
     func input() {
-        let input = ChapterInputMapper.input(chapter: 1, in: content)
+        let input = content.chapterText(1)
         let paragraphs = Array(content.chapters[1].paragraphs)
         let sentences = content.sentences.indices.filter { paragraphs.contains(content.sentences[$0].paragraph) }
-        #expect(input.chapterIndex == 1)
+        #expect(content.id == content.fingerprint)
+        #expect(content.chapterCount == 3)
         #expect(input.paragraphs.map(\.index) == paragraphs)
         #expect(input.paragraphs.map(\.text) == paragraphs.map(content.text(ofParagraph:)))
         #expect(input.sentences.map(\.index) == sentences)
