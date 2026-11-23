@@ -8,16 +8,18 @@ struct LibraryLayout {
 
     let isPad: Bool
     let isSearching: Bool
+    let viewMode: LibVM.ViewMode
 
-    init(isPad: Bool = UIDevice.current.userInterfaceIdiom == .pad, isSearching: Bool = false) {
-        self.isPad = isPad
+    init(isPad: Bool = UIDevice.current.userInterfaceIdiom == .pad, viewMode: LibVM.ViewMode, isSearching: Bool = false) {
         self.isSearching = isSearching
+        self.viewMode = viewMode
+        self.isPad = isPad
     }
 
-    var sideMargin: CGFloat { isPad ? 34 : isSearching ? 20 : 16 }
-    var collectionSideMargin: CGFloat { isPad ? 30 : 20 }
-    var gridColumnSpacing: CGFloat { isPad ? 30 : 20 }
-    var gridRowSpacing: CGFloat { 18 }
+    var sideMargin: CGFloat { isPad ? 30 : 16 }
+    var collectionSideMargin: CGFloat { isPad ? 30 : viewMode == .grid ? (isSearching ? 20 : 25) : 16 }
+    var gridColumnSpacing: CGFloat { isPad ? 30 : (isSearching ? 18 : 26) }
+    let rowSpacing: CGFloat = 16
     var emptySearchImageSize: CGSize { CGSize(width: isPad ? 270 : 210, height: isPad ? 210 : 164) }
     var emptySearchImageSpacing: CGFloat { isPad ? 32 : 26 }
     var emptyLibraryImageSize: CGSize {

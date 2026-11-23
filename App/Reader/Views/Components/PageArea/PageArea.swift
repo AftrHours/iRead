@@ -6,6 +6,7 @@ import SwiftUI
 struct PageArea: View {
     let readerVM: ReaderVM
     @Bindable var referenceVM: ReferenceVM
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dynamicTypeSize) private var textSize
     let ratingVM: RatingVM
 
@@ -13,6 +14,18 @@ struct PageArea: View {
         Group {
             if let content = readerVM.pageContent {
                 pages(content)
+                    .task(id: content.shownPage) {
+                        if scenePhase == .active { await readerVM.pageVisible(content.shownPage) }
+                        recordVisibleMarks(content)
+                    }
+                    .onChange(of: content.marks[content.shownPage.number]) { recordVisibleMarks(content) }
+                    .onChange(of: scenePhase) { _, phase in
+                        guard phase == .active else { return }
+                        Task {
+                            await readerVM.pageVisible(content.shownPage)
+                            recordVisibleMarks(content)
+                        }
+                    }
                     .popover(
                         item: presentedCard(sheet: false),
                         attachmentAnchor: .rect(.rect(referenceVM.cardAnchor)),
@@ -50,8 +63,15 @@ struct PageArea: View {
         )
         // Reads this underline's saved rating each time the card opens.
         .task(id: referenceCard.underlineID) {
+            referenceVM.cardAppeared(referenceCard)
             await ratingVM.cardShown(underlineID: referenceCard.underlineID)
         }
+    }
+
+    private func recordVisibleMarks(_ content: PageContent) {
+        guard scenePhase == .active, content.shownPage == readerVM.shownPage else { return }
+        readerVM.analytics.setActive(true)
+        readerVM.analytics.visible((readerVM.visibleMarks[content.shownPage.number] ?? []).compactMap(\.underlineID))
     }
 
     /// Curl on UIPageViewController's own curl; Slide and Fast Fade on our pager.
@@ -60,6 +80,7 @@ struct PageArea: View {
         let actions = PageActions(
             onPageChanged: readerVM.pageChanged,
             onCenterTapped: readerVM.pageCenterTapped,
+            onTurnBegan: readerVM.analytics.turnBegan,
             claimReadingFocus: readerVM.claimReadingFocus,
             onMarkTapped: { referenceVM.markTapped($0, at: $1) }
         )

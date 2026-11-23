@@ -28,7 +28,8 @@ struct OnboardingView: View {
             isPresented: $onboardingVM.isPickingBook,
             allowedContentTypes: [.epub],
             allowsMultipleSelection: true,
-            onCompletion: onboardingVM.importPickerCompleted
+            onCompletion: onboardingVM.importPickerCompleted,
+            onCancellation: onboardingVM.importPickerCancelled
         )
         .alert("Couldn’t add book", isPresented: $onboardingVM.isImportAlertPresented) {
             Button("OK", role: .cancel) { onboardingVM.dismissImportError() }

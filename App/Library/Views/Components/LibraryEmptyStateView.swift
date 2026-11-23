@@ -41,11 +41,11 @@ struct LibraryEmptyStateView: View {
                 VStack(spacing: layout.emptyLibraryTextSpacing) {
                     Text(libVM.emptyStateTitle)
                         .accessibilityAddTraits(.isHeader)
-                        .font(AppTypography.title3(.semibold))
+                        .font(AppTypography.body(.semibold))
                         .foregroundStyle(AppColors.textPrimary)
                         .multilineTextAlignment(.center)
                     Text(libVM.emptyStateMessage)
-                        .font(AppTypography.subheadline(.medium))
+                        .font(AppTypography.callout())
                         .foregroundStyle(AppColors.libraryEmptyMessageText)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)

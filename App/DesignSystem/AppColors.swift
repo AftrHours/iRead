@@ -48,6 +48,7 @@ enum AppColors {
     // MARK: - Not in Figma's Semantic tokens yet
 
     // Library and Search
+    static let libraryListDivider = adaptive(light: PrimaryColor.purple200, dark: PrimaryColor.purple200, darkAlpha: 0.16)
     static let progressBarBg = adaptive(light: PrimaryColor.orange200, dark: PrimaryColor.orange200)
     static let progressBarLine = adaptive(light: PrimaryColor.orange500, dark: PrimaryColor.orange500)
     static let cardMenuIcon = Color(hex: 0xB2B5E8)
@@ -70,7 +71,6 @@ enum AppColors {
     static let popoverFeedbackIcon = adaptive(light: PrimaryColor.purple600, dark: PrimaryColor.purple50)
     static let actionPrimaryText = adaptive(light: PrimaryColor.neutral900, dark: PrimaryColor.neutral900)
     
-
     // Reading Theme & Settings sheet
     static let sheetbg = adaptive(light: PrimaryColor.purple25, dark: PrimaryColor.purple900)
     static let settingsMenuButtonFill = adaptive(light: 0x444444, dark: 0x999999, lightAlpha: 0.6, darkAlpha: 0.17)

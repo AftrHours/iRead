@@ -9,6 +9,45 @@ final class LibVM {
         case list
     }
     var searchText = ""
+    private let speech = LibrarySpeechSearch()
+    private var speechSession: UUID?
+    @ObservationIgnored private var speechStart: Task<Void, Never>?
+    var isDictating: Bool { speechSession != nil }
+    var voiceSearchError: String?
+
+    func voiceSearchTapped() {
+        guard !isDictating else { stopDictation(); return }
+        searchTapped()
+        let id = UUID()
+        speechSession = id
+        speechStart = Task { [self] in
+            do {
+                try await speech.start { [weak self] text, final, failed in
+                    guard let self, speechSession == id else { return }
+                    if let text { searchText = text }
+                    if final || failed { stopDictation() }
+                    if failed && searchText.isEmpty { voiceSearchError = LibrarySpeechSearch.Failure.unavailable.localizedDescription }
+                }
+            } catch {
+                guard speechSession == id else { return }
+                stopDictation()
+                voiceSearchError = error.localizedDescription
+            }
+        }
+    }
+
+    func stopDictation() {
+        guard speechSession != nil else { return }
+        speechSession = nil
+        speechStart?.cancel()
+        speechStart = nil
+        speech.stop()
+    }
+
+    func editQuery(_ text: String) {
+        stopDictation()
+        searchText = text
+    }
     private(set) var isSearchActive = false
     private(set) var isLibraryScrolled = false
     var isImportPickerPresented = false
@@ -20,10 +59,59 @@ final class LibVM {
     private(set) var sortOption = LibrarySortOption.latestRead
     private(set) var importError: String?
     private(set) var covers: [UUID: UIImage] = [:]
-    private(set) var bookToRemove: BookRecord?
+    private(set) var pendingRemoval: [BookRecord] = []
+    private(set) var isRemovingBooks = false
     private(set) var bookToRename: BookRecord?
     private(set) var bookActionError: String?
     private(set) var cloudAccount: CloudAccount = .unknown
+    private var pickerFlow: String?
+    var betaReport: BetaReportDocument?
+    var isExportingBetaReport = false
+
+    private(set) var sharesBetaAnalytics = BetaAnalytics.shared.cloudDelivery.isSharing
+    var isBetaConsentPresented = false
+
+    func betaSharingTapped() {
+        if sharesBetaAnalytics {
+            setBetaSharing(false)
+        } else if BetaAnalytics.shared.cloudDelivery.isAvailable {
+            isBetaConsentPresented = true
+        } else {
+            bookActionError = "This build can export beta analytics locally. CloudKit sharing requires an iCloud-enabled build."
+        }
+    }
+
+    func allowBetaSharing() {
+        setBetaSharing(true)
+    }
+
+    private func setBetaSharing(_ enabled: Bool) {
+        do {
+            try BetaAnalytics.shared.cloudDelivery.setSharing(enabled)
+        } catch {
+            bookActionError = "Couldn’t update beta analytics sharing."
+        }
+        sharesBetaAnalytics = BetaAnalytics.shared.cloudDelivery.isSharing
+    }
+
+    func exportBetaReport() {
+        Task {
+            do {
+                betaReport = try await BetaReportDocument(data: BetaAnalytics.shared.export())
+                isExportingBetaReport = true
+            } catch {
+                bookActionError = "Couldn’t prepare the beta analytics report."
+            }
+        }
+    }
+
+    func exportCompleted(_ result: Result<URL, Error>) {
+        betaReport = nil
+        if case .failure(let error) = result, (error as? CocoaError)?.code != .userCancelled {
+            bookActionError = "Couldn’t save the beta analytics report."
+        }
+    }
+
     private var newestImportedBookID: UUID?
     private var lastImport: Task<Void, Never>?
 
@@ -57,7 +145,7 @@ final class LibVM {
     }
 
     var isRemoveAlertPresented: Bool {
-        get { bookToRemove != nil }
+        get { !pendingRemoval.isEmpty }
         set { if !newValue { removeCancelled() } }
     }
 
@@ -153,7 +241,7 @@ final class LibVM {
     }
 
     func searchDismissed() {
-        searchText = ""
+        editQuery("")
         isSearchActive = false
     }
 
@@ -162,6 +250,8 @@ final class LibVM {
     }
 
     func selectionModeTapped() {
+        stopDictation()
+        isSearchActive = false
         isSelectionMode = true
         selectedBookIDs.removeAll()
     }
@@ -176,6 +266,7 @@ final class LibVM {
     }
 
     func selectionModeDismissed() {
+        searchDismissed()
         isSelectionMode = false
         selectedBookIDs.removeAll()
     }
@@ -191,7 +282,22 @@ final class LibVM {
     }
 
     func importTapped() {
+        pickerStarted(source: "library")
         isImportPickerPresented = true
+    }
+
+    func pickerStarted(source: String) {
+        guard pickerFlow == nil else { return }
+        pickerFlow = UUID().uuidString
+        BetaAnalytics.shared.record(.pickerStarted, flow: pickerFlow, category: source)
+    }
+
+    func pickerFailed(_ error: Error) {
+        guard let pickerFlow else { return }
+        self.pickerFlow = nil
+        let cancelled = (error as? CocoaError)?.code == .userCancelled
+        BetaAnalytics.shared.record(cancelled ? .pickerCancelled : .pickerFailed, flow: pickerFlow,
+                                    category: cancelled ? nil : BetaAnalytics.category(error), feature: "picker")
     }
 
     func importPickerCompleted(_ result: Result<[URL], any Error>) {
@@ -210,8 +316,11 @@ final class LibVM {
         isImportPickerPresented = false
         switch result {
         case .success(let urls):
-            return await oneAtATime { await self.importPicked(urls) }
+            let flow = pickerFlow
+            pickerFlow = nil
+            return await oneAtATime { await self.importPicked(urls, flow: flow) }
         case .failure(let error):
+            pickerFailed(error)
             // User cancellation is a normal document picker outcome.
             if (error as? CocoaError)?.code != .userCancelled {
                 importError = error.localizedDescription
@@ -220,12 +329,12 @@ final class LibVM {
         }
     }
 
-    private func importPicked(_ urls: [URL]) async -> Bool {
+    private func importPicked(_ urls: [URL], flow: String?) async -> Bool {
         var problems: [String] = []
         var allInLibrary = true
         for url in urls {
             do {
-                newestImportedBookID = try await importCtrl.importBook(from: url).id
+                newestImportedBookID = try await importCtrl.importBook(from: url, source: "picker", picker: flow).id
             } catch ImportError.alreadyInLibrary(let title) {
                 problems.append(ImportError.alreadyInLibrary(title: title).localizedDescription)
             } catch {
@@ -252,6 +361,7 @@ final class LibVM {
             return
         }
         isSearchActive = false
+        stopDictation()
         appNav.openReader(book: book)
     }
 
@@ -270,7 +380,32 @@ final class LibVM {
     }
 
     func removeTapped(_ book: BookRecord) {
-        bookToRemove = book
+        pendingRemoval = [book]
+    }
+
+    private var visibleBookIDs: Set<UUID> { Set(visibleBooks.map(\.id)) }
+
+    var areVisibleBooksSelected: Bool {
+        let visible = visibleBookIDs
+        return !visible.isEmpty && visible.isSubset(of: selectedBookIDs)
+    }
+
+    func toggleVisibleSelection() {
+        let visible = visibleBookIDs
+        if visible.isSubset(of: selectedBookIDs) {
+            selectedBookIDs.subtract(visible)
+        } else {
+            selectedBookIDs.formUnion(visible)
+        }
+    }
+
+    func removeSelectionTapped() {
+        pendingRemoval = allBooks.filter { selectedBookIDs.contains($0.id) }
+    }
+
+    var removalQuestion: String {
+        let subject = pendingRemoval.count > 1 ? "these \(pendingRemoval.count) books" : "this book"
+        return "Do you want to delete \(subject) from iCloud and all your iCloud devices?"
     }
 
     func renameTapped(_ book: BookRecord) {
@@ -294,26 +429,37 @@ final class LibVM {
                 try libCtrl.rename(book, to: title)
                 await reloadLibrary()
             } catch {
+                BetaAnalytics.shared.record(.recoverableError, category: BetaAnalytics.category(error), feature: "rename")
                 bookActionError = error.localizedDescription
             }
         }
     }
 
     func removeCancelled() {
-        bookToRemove = nil
+        pendingRemoval.removeAll()
     }
 
     func removeConfirmed() {
-        guard let book = bookToRemove else { return }
-        bookToRemove = nil
+        let books = pendingRemoval
+        guard !books.isEmpty, !isRemovingBooks else { return }
+        pendingRemoval.removeAll()
+        isRemovingBooks = true
         Task {
-            do {
-                try await libCtrl.remove(book)
-            } catch {
-                bookActionError = error.localizedDescription
+            defer { isRemovingBooks = false }
+            var failures: [String] = []
+            for book in books {
+                do {
+                    try await libCtrl.remove(book)
+                    selectedBookIDs.remove(book.id)
+                } catch {
+                    BetaAnalytics.shared.record(.recoverableError, category: BetaAnalytics.category(error), feature: "remove")
+                    failures.append("\(book.title): \(error.localizedDescription)")
+                }
             }
             await reloadLibrary()
             try? importCtrl.refreshIndex()
+            if allBooks.isEmpty && isSelectionMode { selectionModeDismissed() }
+            if !failures.isEmpty { bookActionError = failures.joined(separator: "\n") }
         }
     }
 

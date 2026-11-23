@@ -17,6 +17,12 @@ actor ProgressCtrl {
         return readingProgress
     }
 
+    func resumeCandidate() async -> ResumeCandidate {
+        let candidate = await progRepo.resumeCandidate(for: bookID)
+        if case .saved(let progress) = candidate { readingProgress = progress }
+        return candidate
+    }
+
     func positionRestored(_ isRestored: Bool) async {
         await eventSvc.log(.positionRestore(bookID: bookID, isRestored: isRestored))
     }
