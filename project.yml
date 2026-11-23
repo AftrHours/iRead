@@ -67,11 +67,11 @@ targets:
     # The container ID must match CloudSvcCloudKit.containerID. See docs/ICLOUD.md for the CloudKit Console steps.
     entitlements:
       path: App/iRead.entitlements
-      properties:
-        com.apple.developer.icloud-container-identifiers:
-          - iCloud.com.aftrhours.reader
-        com.apple.developer.icloud-services:
-          - CloudKit
+#      properties:
+#        com.apple.developer.icloud-container-identifiers:
+#          - iCloud.com.aftrhours.reader
+#        com.apple.developer.icloud-services:
+#          - CloudKit
     # "Open in iRead" for EPUB files from Files, Safari, Mail and AirDrop. Alternate: Apple Books stays the default.
     # Not opened in place: iOS copies the file into Documents/Inbox, the same copy-in import as the picker.
     # Xcode merges this file with the INFOPLIST_KEY_* settings below (GENERATE_INFOPLIST_FILE).

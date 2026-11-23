@@ -25,7 +25,7 @@ struct AppContainer {
     /// For SwiftUI previews: nothing goes to iCloud.
     /// Not limited to debug builds, so a #Preview without #if DEBUG still builds for TestFlight. The app never calls it.
     static func forPreviews() -> AppContainer {
-        AppContainer(cloudSvc: nil)
+        AppContainer(cloudSvc: CloudSvcCloudKit())
     }
 
     private init(cloudSvc: (any CloudSvc)?) {
