@@ -18,7 +18,7 @@ struct LayoutOptionsSection: View {
     var body: some View {
         VStack(alignment: .leading, spacing: layout.layoutHeaderGap) {
             SettingsSectionHeader(title: "Layout Options", systemImage: "widget.large")
-            
+
             VStack(alignment: .leading, spacing: layout.layoutOptionsGap) {
                 ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
                     if index > 0 {

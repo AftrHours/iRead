@@ -9,7 +9,7 @@ enum ChapterNumber {
         if let chapterIndex = words.firstIndex(of: "chapter"), chapterIndex + 1 < words.count {
             return number(in: words[chapterIndex + 1])
         }
-    
+
         guard let first = words.first else { return nil }
         if let digits = Int(first) { return digits }
         let firstToken = title.split(whereSeparator: \.isWhitespace).first.map(String.init) ?? ""

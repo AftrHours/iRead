@@ -22,7 +22,7 @@ struct SettingsLayout: Equatable, Sendable {
     var iconColumn: CGFloat = 24
     /// The header's text and the slider both start this far after the symbol column, so they share one left edge.
     var iconGap: CGFloat = 10
-    
+
     // MARK: Theme
     // Measured from the hi-fi Theme section (an iPhone-width frame).
 

@@ -115,7 +115,7 @@ Use a fake `PagerSvc` that splits every N characters for `ReaderCtrl`; test the 
 | RD-19 | P0 | `ReaderStateCtrl` return position | Save A, save B, reload | A kept; survives reload; clear removes |
 | RD-21 | P1 | `ReadingSettings` | `textSizeIndex` -1 and 99 | 17 and 56 |
 | RD-22 | P1 | `ReadingSettingsRepo` | No file / save then read | Defaults / saved |
-| RD-23 | P1 | `ReferenceVM` | Jump to passage, then Return | Return position saved on jump (`returnPrompt` is `.choice`); return shows original page, clears it and shows `.returned(message:)` |
+| RD-23 | P1 | `ReferenceVM` | Jump to passage, then Return | Return position saved on jump (`returnPrompt` is `.canReturn`); the card's underline is no longer selected; `passageDismissed` clears the highlight and keeps the return; return shows original page, clears it and shows `.returned(message:)` |
 | RD-24 | P0 | `ReferenceVM.close` | Chapter underlining running; close the reader | Underline task cancelled and not restarted by a page update or `appForegrounded`; `ReferenceVM` released |
 | RD-25 | P0 | `ReaderCtrl.search` | Search cancelled before it runs | No results; no chapters laid out; a later search still finds matches |
 | RD-26 | P0 | `SearchVM` | Results shown; query changes to " A " | Results cleared; no search |
@@ -171,3 +171,7 @@ The app's only AI feature: phrases worth underlining, each with the earlier pass
 | AN-26 | P0 | `UnderlineRepo` | Chapter in the app's bundled seeds with the same / older engine version | Used without the engine or iCloud, nothing saved on disk / underlined again, saved and sent to iCloud |
 | AN-27 | P0 | `App/Resources/UnderlineSeed` | Every bundled seed file | Folder matches a sample book's fingerprint; chapter exists; current parser and engine version |
 | AN-28 | P0 | `RefCtrl.marks` | `highlighting:` an underline in ch 2 whose passage is in ch 1, on a ch 1 page | `.highlight` on the passage, no underline mark |
+| CH-01 | P0 | `CharacterRules.characters` | "Jo", "Josephine March", "Laurie", "Laurence", "Beth", "Beth March" | "Laurie/Laurence", "Jo/Josephine March", "Beth March", latest mentioned first |
+| CH-02 | P1 | `CharacterRules.characters` | Names under 3 mentions, "Christmas", "CHAPTER", "I’m", "Father", "Mr. Laurence" | Noise left out; "Mr. Laurence" kept apart from Laurie |
+| CH-03 | P0 | `CharacterRules.characters` | Underlines naming Laurie in the passage, in the paragraph only, and none for Amy | The passage that names him, the latest on a tie; Amy has no passage |
+| CH-04 | P1 | `CharacterRules.matches` | "laur", "LAURENCE", "Lauire", "", "Haymitch", "Lx" | Found, found, found (one typo), all, not found, not found |

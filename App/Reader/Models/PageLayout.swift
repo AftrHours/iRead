@@ -23,6 +23,10 @@ enum PageLayoutKnobs {
     /// Space between the screen edge and the text on each side, as a share of the page's width: about 36pt on an iPhone,
     /// 70pt on an iPad in portrait.
     static let textMarginRatio: CGFloat = 0.09
+    static let progressBarWidth: CGFloat = 148
+    static let progressBarHeight: CGFloat = 8
+    static let progressBarGap: CGFloat = 8
+    static let returnMarkWidth: CGFloat = 3
 }
 
 /// Where a full-screen page puts its header (the book and chapter titles), its text and its footer (the page label),

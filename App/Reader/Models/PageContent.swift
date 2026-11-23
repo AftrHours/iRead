@@ -1,12 +1,16 @@
 import Foundation
 
-/// What a page shows above and below its text: the book and chapter on top, the page label at the bottom.
+/// What a page shows above and below its text: the book and chapter on top, the progress bar and page label at the bottom.
 /// Each page carries its own, so they turn with the page, like Apple Books.
 struct PageChrome: Equatable, Sendable {
     var title = ""
     var chapterTitle = ""
     var pageLabel = ""
     var isReadingMode = false
+    /// 0 to 1. nil hides the progress bar.
+    var progress: Double?
+    /// The return page, 0 to 1.
+    var returnMark: Double?
 
     var readingModeDescription: String {
         isReadingMode ? "Reading mode on. References hidden." : "Reading mode off. Available references are underlined."
@@ -42,6 +46,7 @@ struct PageContent: Equatable {
     var chromes: [Int: PageChrome]
     /// The underline last tapped, if any: it stays highlighted.
     var selectedUnderlineID: String?
+    var showsMentionTag = false
     var readingFocus: ReaderFocusRequest?
 
     var horizontalMargin: CGFloat {
@@ -57,6 +62,11 @@ struct PageContent: Equatable {
     }
 
     /// The loaded page before or after `page`, nil when it isn't loaded (or there is none).
+    func mentionedRange(on page: Page) -> NSRange? {
+        guard showsMentionTag else { return nil }
+        return marks(on: page).first { $0.kind == .highlight }?.range
+    }
+
     func neighbor(of page: Page, isForward: Bool) -> Page? {
         let number = page.number + (isForward ? 1 : -1)
         return pages.first { $0.number == number }

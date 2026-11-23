@@ -75,10 +75,18 @@ actor UnderlineRepo {
         foundUnderlines[book]?[chapter] ?? []
     }
 
+    /// For the character list. Doesn't run the engine, so unopened chapters give none.
+    func underlines(throughChapter chapter: Int, of content: BookContent) -> [SavedUnderline] {
+        (0...chapter).flatMap { index in
+            _ = isFinished(index, of: content.fingerprint, parserVersion: content.parserVersion)
+            return underlines(inChapter: index, of: content.fingerprint)
+        }
+    }
+
     func underline(withID id: String, of book: String) -> SavedUnderline? {
         foundUnderlines[book]?.values.lazy.flatMap { $0 }.first { $0.id == id }
     }
-    
+
     func run(_ index: Int, of content: BookContent, startingAt sentence: Int,
              continuation: AsyncStream<Void>.Continuation) async {
         defer { continuation.finish() }

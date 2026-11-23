@@ -73,7 +73,11 @@ struct AppContainer {
                 readerCtrl: readerCtrl
             ),
             ratingVM: RatingVM(ratingCtrl: RatingCtrl(bookID: book.id, bookTitle: book.title, bookContentRepo: bookContentRepo,
-                                                      underlineRepo: underlineRepo, ratingRepo: ratingRepo))
+                                                      underlineRepo: underlineRepo, ratingRepo: ratingRepo)),
+            characterVM: CharacterVM(
+                characterCtrl: CharacterCtrl(bookID: book.id, bookContentRepo: bookContentRepo, underlineRepo: underlineRepo),
+                readerStateCtrl: readerStateCtrl
+            )
         )
     }
 }
@@ -165,9 +169,19 @@ enum PreviewFixtures {
                 bookContentRepo: bookContentRepo,
                 underlineRepo: underlineRepo,
                 ratingRepo: ratingRepo
-            ))
+            )),
+            characterVM: CharacterVM(
+                characterCtrl: CharacterCtrl(bookID: book.id, bookContentRepo: bookContentRepo, underlineRepo: underlineRepo),
+                readerStateCtrl: readerStateCtrl
+            )
         )
         return readerVM
+    }
+
+    static func characterVM() -> CharacterVM {
+        let characterVM = readerVM().characterVM
+        characterVM.sheetOpened(at: nil)
+        return characterVM
     }
 
     static func readerSettingsVM() -> ReaderSettingsVM {

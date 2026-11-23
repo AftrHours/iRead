@@ -4,6 +4,7 @@ struct BookState: Codable, Sendable {
     var returnPosition: ReadingPosition?
     /// Newest first.
     var recentSearches: [String] = []
+    var recentCharacterSearches: [String] = []
 
     init() {}
 
@@ -12,5 +13,6 @@ struct BookState: Codable, Sendable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         returnPosition = try container.decodeIfPresent(ReadingPosition.self, forKey: .returnPosition)
         recentSearches = try container.decodeIfPresent([String].self, forKey: .recentSearches) ?? []
+        recentCharacterSearches = try container.decodeIfPresent([String].self, forKey: .recentCharacterSearches) ?? []
     }
 }

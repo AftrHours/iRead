@@ -7,6 +7,9 @@ struct ToolbarList: View {
         Button("Contents", systemImage: "list.bullet") {
             readerVM.contentsTapped()
         }
+        Button("Characters", systemImage: "person.2") {
+            readerVM.charactersTapped()
+        }
         Button("Search in Book", systemImage: "magnifyingglass") {
             readerVM.searchTapped()
         }

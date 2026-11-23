@@ -7,7 +7,7 @@ import Testing
 struct ReferenceVMTests {
     private let folder = TempFolder()
 
-    @Test("RD-23 jumping to a passage saves where the reader was; returning goes back there and clears it", .timeLimit(.minutes(1)))
+    @Test("RD-23 jumping to a passage saves where the reader was; a tap clears its highlight; returning goes back and clears it", .timeLimit(.minutes(1)))
     func jumpAndReturn() async throws {
         let content = BookContent.make(chapters: [[
             "The old clock stood in the hall for years.",
@@ -46,7 +46,14 @@ struct ReferenceVMTests {
         #expect(jumped.page.range.location == 0)
         #expect(jumped.page != readingPage)
         #expect(await readerStateCtrl.returnPosition() == (await readerCtrl.startPosition(of: readingPage)))
-        #expect(referenceVM.returnPrompt == .choice)
+        #expect(referenceVM.returnPrompt == .canReturn)
+        #expect(referenceVM.selectedUnderlineID == nil)
+        #expect(referenceVM.hasPassageHighlight)
+
+        // A tap on the page clears the passage's highlight; the return button stays.
+        referenceVM.passageDismissed()
+        #expect(!referenceVM.hasPassageHighlight)
+        #expect(referenceVM.returnPrompt == .canReturn)
 
         referenceVM.update(shownPage: jumped.page, loadedPages: [jumped.page])
         referenceVM.returnToReadingTapped()
@@ -55,9 +62,7 @@ struct ReferenceVMTests {
         #expect(returned.underlineID == nil)
         #expect(referenceVM.returnPrompt == .returned(message: "Returned to page \(readingPage.number)"))
         #expect(await readerStateCtrl.returnPosition() == nil)
-        // The tapped underline is still selected: closing its card, jumping away and coming back don't clear it.
         #expect(referenceVM.card == nil)
-        #expect(referenceVM.selectedUnderlineID == underline.id)
     }
 
     @Test("RD-24 closing the reader cancels the chapter's underlining for good, and lets the ReferenceVM go", .timeLimit(.minutes(1)))

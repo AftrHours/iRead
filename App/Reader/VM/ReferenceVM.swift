@@ -15,8 +15,8 @@ final class ReferenceVM {
 
     enum ReturnPrompt: Equatable {
         case none
-        /// After a jump: Stay On This Page, or Back to Latest Read.
-        case choice
+        /// After a jump: the return button is on.
+        case canReturn
         /// After returning, for a moment: "Returned to page 66".
         case returned(message: String)
     }
@@ -24,12 +24,12 @@ final class ReferenceVM {
     private(set) var marks: [Int: [Mark]] = [:]
     private(set) var card: ReferenceCard?
     private(set) var cardAnchor = CGRect.zero
-    /// The underline last tapped. Kept, highlighted, after its card closes and through a jump to its passage and the way back,
-    /// until another underline is tapped.
+    /// The underline whose card is open, highlighted until the card closes.
     private(set) var selectedUnderlineID: String?
-    /// What the return controls show: nothing, the choice after a jump, or the note after returning.
+    /// The passage a jump landed on, highlighted with "Mentioned here" until the page is tapped or turned.
     private(set) var jumpedPassageText: String?
     private(set) var returnPrompt = ReturnPrompt.none
+    private(set) var returnPageNumber: Int?
 
     @ObservationIgnored var onShowPage: (Page, String?) -> Void = { _, _ in }
 
@@ -84,7 +84,16 @@ final class ReferenceVM {
 
     func bookOpened() async {
         await readerStateCtrl.load()
-        returnPrompt = await readerStateCtrl.hasReturnPosition() ? .choice : .none
+        returnPrompt = await readerStateCtrl.hasReturnPosition() ? .canReturn : .none
+    }
+
+    /// Page numbers change when the book is laid out again.
+    func refreshReturnPage() async {
+        guard let position = await readerStateCtrl.returnPosition() else {
+            returnPageNumber = nil
+            return
+        }
+        returnPageNumber = await readerCtrl.page(ifValid: position)?.number
     }
 
     func update(shownPage: Page?, loadedPages: [Page]) {
@@ -107,6 +116,7 @@ final class ReferenceVM {
 
     func markTapped(_ mark: Mark, at anchor: CGRect) {
         guard case .underline(let id) = mark.kind else { return }
+        passageDismissed()
         Task {
             guard let underline = try? await refCtrl.underline(withID: id) else { return }
             let passagePage = await readerCtrl.page(containing: underline.reference.start)
@@ -134,6 +144,19 @@ final class ReferenceVM {
 
     func cardDismissed() {
         card = nil
+        selectedUnderlineID = nil
+    }
+
+    var hasPassageHighlight: Bool {
+        jumpedPassageText != nil || highlightedSearchResult != nil
+    }
+
+    func passageDismissed() {
+        guard hasPassageHighlight else { return }
+        jumpedPassageText = nil
+        highlightedUnderlineID = nil
+        highlightedSearchResult = nil
+        Task { await loadMarks() }
     }
 
     /// For the popover's binding: setting it to nil closes the card.
@@ -143,15 +166,22 @@ final class ReferenceVM {
     }
 
     func jumpToPassageTapped() {
-        guard let referenceCard = card, let shownPage else { return }
-        card = nil
+        guard let referenceCard = card else { return }
+        cardDismissed()
+        jumpToPassage(ofUnderline: referenceCard.underlineID)
+    }
+
+    /// Used by the reference card and the character list.
+    func jumpToPassage(ofUnderline underlineID: String) {
+        guard let shownPage else { return }
         Task {
             await readerStateCtrl.saveReturnPosition(await readerCtrl.startPosition(of: shownPage))
-            guard let underline = try? await refCtrl.underline(withID: referenceCard.underlineID) else { return }
+            await refreshReturnPage()
+            guard let underline = try? await refCtrl.underline(withID: underlineID) else { return }
             let destination = await readerCtrl.page(containing: underline.reference.start)
             jumpedPassageText = underline.reference.text
-            returnPrompt = .choice
-            onShowPage(destination, referenceCard.underlineID)
+            returnPrompt = .canReturn
+            onShowPage(destination, underlineID)
         }
     }
 
@@ -160,22 +190,13 @@ final class ReferenceVM {
         Task {
             guard let position = await readerStateCtrl.returnPosition(), let page = await readerCtrl.page(ifValid: position) else { return }
             await readerStateCtrl.clearReturnPosition()
+            returnPageNumber = nil
             onShowPage(page, nil)
             let message = "Returned to page \(page.number)"
             returnPrompt = .returned(message: message)
             try? await Task.sleep(for: .seconds(2))
             // Not if a new jump has asked for the choice meanwhile.
             if returnPrompt == .returned(message: message) { returnPrompt = .none }
-        }
-    }
-
-    func returnDismissed() {
-        jumpedPassageText = nil
-        returnPrompt = .none
-        highlightedUnderlineID = nil
-        Task {
-            await readerStateCtrl.clearReturnPosition()
-            await loadMarks()
         }
     }
 
