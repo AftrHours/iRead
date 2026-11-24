@@ -25,10 +25,6 @@ struct LibraryHeaderView: View {
         if showsEmptyPhoneLibrary {
             return EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
         }
-        if !layout.isPad && libVM.showsScrolledLibraryControls {
-            // Preserve the bar's total height to avoid shifting the scroll threshold.
-            return EdgeInsets(top: 0, leading: 16, bottom: 8, trailing: 16)
-        }
         return EdgeInsets(top: 0, leading: layout.sideMargin, bottom: 0, trailing: layout.sideMargin)
     }
 
@@ -80,17 +76,12 @@ struct LibraryHeaderView: View {
                 HStack(spacing: 12) {
                     if !layout.isPad && !showsEmptyPhoneLibrary && !libVM.showsScrolledLibraryControls && !dynamicTypeSize.isAccessibilitySize { libraryTitle }
                     Spacer()
+                    if layout.isPad && !showsSeparatePadSearch { padSearchControls }
+                    AddBookButton(action: libVM.importTapped)
                     if layout.isPad {
-                        if !showsSeparatePadSearch { padSearchControls }
                         LibraryMainMenu(libVM: libVM)
-                        AddBookButton(action: libVM.importTapped)
                     } else {
-                        AddBookButton(action: libVM.importTapped)
-                        if libVM.showsScrolledLibraryControls {
-                            LibraryPhoneMenuGroup(libVM: libVM)
-                        } else {
-                            LibraryMainMenu(libVM: libVM, iconFont: showsEmptyPhoneLibrary ? AppTypography.title2(.medium) : AppTypography.body(.medium))
-                        }
+                        LibraryMainMenu(libVM: libVM, iconFont: showsEmptyPhoneLibrary ? AppTypography.title2(.medium) : AppTypography.body(.medium))
                     }
                 }
             }

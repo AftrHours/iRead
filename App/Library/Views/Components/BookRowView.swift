@@ -2,6 +2,8 @@ import SwiftUI
 
 struct BookRowView<MenuButton: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.isBrowsingLibraryOnPhone) private var isPhoneBrowse
+    @Environment(\.isSelectingLibraryOnPhone) private var isPhoneSelection
     let item: LibraryBookItemVM
     let menu: MenuButton
     let onTap: () -> Void
@@ -9,15 +11,21 @@ struct BookRowView<MenuButton: View>: View {
     private let coverWidth: CGFloat = 64
 
     var body: some View {
-        HStack(spacing: 16) {
+        let selectionCenterOffset: CGFloat = isPhoneSelection ? 3.5 : 0
+        HStack(spacing: isPhoneBrowse ? 4 : 16) {
             LibraryBookButton(item: item, action: onTap) {
                 HStack(spacing: 16) {
-                    VStack(spacing: 6) {
-                        BookCoverView(image: item.cover)
+                    VStack(spacing: isPhoneBrowse || isPhoneSelection ? 8 : 6) {
+                        BookCoverView(image: item.cover, bookID: item.id)
                             .frame(width: coverWidth, height: coverWidth / BookCoverView.aspectRatio)
                             .clipShape(.rect(cornerRadius: 4))
+                            .shadow(color: item.showsSelection && item.isSelected ? .white.opacity(0.65) : .clear, radius: 6)
                         ProgressBar(progress: item.progress, style: .list)
                             .frame(width: coverWidth)
+                    }
+                    .scaleEffect(isPhoneSelection && !item.isSelected ? 0.95 : 1)
+                    .alignmentGuide(VerticalAlignment.center) { dimensions in
+                        dimensions[VerticalAlignment.center] - selectionCenterOffset
                     }
                     .opacity(item.showsSelection && !item.isSelected ? 0.5 : 1)
 

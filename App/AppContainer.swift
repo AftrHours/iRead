@@ -50,10 +50,7 @@ struct AppContainer {
     }
 
     func makeOnboardingVM(using libVM: LibVM) -> OnboardingVM {
-        let onboarding = OnboardingVM { urls in await libVM.importFiles(.success(urls)) }
-        onboarding.onPickerStarted = { libVM.pickerStarted(source: "onboarding") }
-        onboarding.onPickerFailed = libVM.pickerFailed
-        return onboarding
+        OnboardingVM(library: libVM)
     }
 
     func makeReaderVM(book: BookRecord) -> ReaderVM {
@@ -131,7 +128,7 @@ enum PreviewFixtures {
     }
 
     static func onboardingVM() -> OnboardingVM {
-        OnboardingVM { _ in true }
+        OnboardingVM(library: libraryVM())
     }
 
     static func readerVM() -> ReaderVM {

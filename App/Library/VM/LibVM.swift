@@ -112,11 +112,11 @@ final class LibVM {
         }
     }
 
-    private var newestImportedBookID: UUID?
+    private(set) var newestImportedBookID: UUID?
     private var lastImport: Task<Void, Never>?
 
     var books: [BookRecord] {
-        LibrarySorter.sorted(allBooks, by: sortOption, pinning: newestImportedBookID)
+        LibrarySorter.sorted(allBooks, by: sortOption, pinning: sortOption == .latestRead ? newestImportedBookID : nil)
     }
 
     var visibleBooks: [BookRecord] {
@@ -312,13 +312,13 @@ final class LibVM {
     /// True when every file is now in the library: imported, or already there. Each problem is listed once at the end,
     /// and a duplicate never stops the files after it.
     @discardableResult
-    func importFiles(_ result: Result<[URL], any Error>) async -> Bool {
+    func importFiles(_ result: Result<[URL], any Error>, didImport: (([UUID]) -> Void)? = nil) async -> Bool {
         isImportPickerPresented = false
         switch result {
         case .success(let urls):
             let flow = pickerFlow
             pickerFlow = nil
-            return await oneAtATime { await self.importPicked(urls, flow: flow) }
+            return await oneAtATime { await self.importPicked(urls, flow: flow, didImport: didImport) }
         case .failure(let error):
             pickerFailed(error)
             // User cancellation is a normal document picker outcome.
@@ -329,12 +329,15 @@ final class LibVM {
         }
     }
 
-    private func importPicked(_ urls: [URL], flow: String?) async -> Bool {
+    private func importPicked(_ urls: [URL], flow: String?, didImport: (([UUID]) -> Void)?) async -> Bool {
+        var insertedIDs: [UUID] = []
         var problems: [String] = []
         var allInLibrary = true
         for url in urls {
             do {
-                newestImportedBookID = try await importCtrl.importBook(from: url, source: "picker", picker: flow).id
+                let book = try await importCtrl.importBook(from: url, source: "picker", picker: flow)
+                newestImportedBookID = book.id
+                insertedIDs.append(book.id)
             } catch ImportError.alreadyInLibrary(let title) {
                 problems.append(ImportError.alreadyInLibrary(title: title).localizedDescription)
             } catch {
@@ -348,6 +351,7 @@ final class LibVM {
         if !problems.isEmpty {
             importError = problems.joined(separator: "\n")
         }
+        didImport?(insertedIDs)
         return allInLibrary
     }
 
@@ -465,6 +469,11 @@ final class LibVM {
 
     func dismissBookActionError() {
         bookActionError = nil
+    }
+
+    func prepareOnboardingBooks() async {
+        await reloadLibrary()
+        await loadCovers()
     }
 
     private func reloadLibrary() async {

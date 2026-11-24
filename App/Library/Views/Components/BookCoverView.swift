@@ -4,6 +4,8 @@ import SwiftUI
 struct BookCoverView: View {
     static let aspectRatio: CGFloat = 2 / 3
     let image: UIImage?
+    var bookID: UUID?
+    @Environment(\.libraryImportDestination) private var destination
 
     var body: some View {
         Rectangle()
@@ -17,6 +19,23 @@ struct BookCoverView: View {
                 }
             }
             .clipped()
+            .opacity(isDestination ? 0 : 1)
+            .anchorPreference(key: LibraryImportCoverAnchor.self, value: .bounds) {
+                isDestination ? $0 : nil
+            }
+    }
+    private var isDestination: Bool { bookID != nil && bookID == destination }
+}
+
+extension EnvironmentValues {
+    @Entry var libraryImportDestination: UUID?
+}
+
+struct LibraryImportCoverAnchor: PreferenceKey {
+    static var defaultValue: Anchor<CGRect>? { nil }
+
+    static func reduce(value: inout Anchor<CGRect>?, nextValue: () -> Anchor<CGRect>?) {
+        value = nextValue() ?? value
     }
 }
 
