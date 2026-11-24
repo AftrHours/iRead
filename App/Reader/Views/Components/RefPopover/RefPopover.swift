@@ -48,7 +48,7 @@ struct RefPopover: View {
             Button("Don't Share", role: .cancel) { onSharingChosen(false) }
         } message: {
             Text("Ratings help the developers improve underlines. Each rating sends the underlined sentence and its passage, "
-                 + "without your name. You can change this in the reader menu.")
+                 + "without your name. To stop later, contact us through the privacy policy.")
         }
     }
 }

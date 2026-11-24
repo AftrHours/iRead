@@ -1,7 +1,7 @@
 import Foundation
 import Observation
 
-/// Thumbs on the shown reference card, the share question, the Share Ratings switch and how iCloud stands.
+/// Thumbs on the shown reference card, the share question and how iCloud stands.
 @MainActor
 @Observable
 final class RatingVM {
