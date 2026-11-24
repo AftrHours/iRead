@@ -55,6 +55,7 @@ enum AppColors {
     static let searchEmptyMessageText = adaptive(light: PrimaryColor.purple500, dark: PrimaryColor.purple300)
 
     // Reader
+    static let readerReturnMark = adaptiveUIColor(light: PrimaryColor.purple600, dark: PrimaryColor.purple600)
     static let readerHighlight = adaptiveUIColor(light: PrimaryColor.purple200, dark: PrimaryColor.purple200,
                                                  lightAlpha: 0.6, darkAlpha: 0.3)
     static let readingProgressBarbG = adaptive(light: PrimaryColor.purple200, dark: PrimaryColor.orange200)
@@ -70,7 +71,7 @@ enum AppColors {
     static let popoverLocationText = adaptive(light: PrimaryColor.purple900, dark: PrimaryColor.purple900)
     static let popoverFeedbackIcon = adaptive(light: PrimaryColor.purple600, dark: PrimaryColor.purple50)
     static let actionPrimaryText = adaptive(light: PrimaryColor.neutral900, dark: PrimaryColor.neutral900)
-    
+
     // Reading Theme & Settings sheet
     static let sheetbg = adaptive(light: PrimaryColor.purple25, dark: PrimaryColor.purple900)
     static let settingsMenuButtonFill = adaptive(light: 0x444444, dark: 0x999999, lightAlpha: 0.6, darkAlpha: 0.17)

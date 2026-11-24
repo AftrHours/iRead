@@ -5,14 +5,16 @@ import Observation
 @Observable
 final class ReaderVM {
     enum Sheet: Identifiable {
-    case contents
+        case contents
         case search(SearchVM)
+        case characters
         case themeSettings
 
         var id: String {
             switch self {
             case .contents: "contents"
             case .search: "search"
+            case .characters: "characters"
             case .themeSettings: "themeSettings"
             }
         }
@@ -23,6 +25,7 @@ final class ReaderVM {
     let readerSettingsVM: ReaderSettingsVM
     let referenceVM: ReferenceVM
     let ratingVM: RatingVM
+    let characterVM: CharacterVM
     private(set) var title = ""
     private(set) var chapterTitles: [String] = []
     private(set) var pages: [Page] = []
@@ -118,7 +121,8 @@ final class ReaderVM {
         guard let layout, let shownPage else { return nil }
         let chromes = Dictionary((pages + [shownPage]).map { ($0.number, chrome(for: $0)) }, uniquingKeysWith: { first, _ in first })
         return PageContent(pages: pages, shownPage: shownPage, settings: readerSettingsVM.layoutSettings, layout: layout,
-                           marks: visibleMarks, chromes: chromes, selectedUnderlineID: referenceVM.selectedUnderlineID, readingFocus: readingFocus)
+                           marks: visibleMarks, chromes: chromes, selectedUnderlineID: referenceVM.selectedUnderlineID,
+                           showsMentionTag: referenceVM.jumpedPassageText != nil, readingFocus: readingFocus)
     }
 
     /// The iPad's reference card on a full-width screen, the iPhone's on a narrow one.
@@ -139,20 +143,33 @@ final class ReaderVM {
 
     /// What a page shows above and below its text. Each page carries its own, so it turns with the page.
     private func chrome(for page: Page) -> PageChrome {
-        PageChrome(title: title, chapterTitle: chapterTitle(of: page), pageLabel: pageLabel(for: page), isReadingMode: isFocusMode)
+        PageChrome(title: title, chapterTitle: chapterTitle(of: page), pageLabel: pageLabel(for: page), isReadingMode: isFocusMode,
+                   progress: isFocusMode ? nil : share(of: page.number), returnMark: returnMark)
+    }
+
+    private var returnMark: Double? {
+        guard referenceVM.returnPrompt == .canReturn, let number = referenceVM.returnPageNumber else { return nil }
+        return share(of: number)
+    }
+
+    private func share(of number: Int) -> Double? {
+        guard let pageCount, pageCount > 0 else { return nil }
+        return min(1, max(0, Double(number) / Double(pageCount)))
     }
 
     private func chapterTitle(of page: Page) -> String {
         chapterTitles.indices.contains(page.chapterIndex) ? chapterTitles[page.chapterIndex] : ""
     }
 
+    /// "Page 12 of 300", or "Returned to page 12" for a moment after returning.
     private func pageLabel(for page: Page) -> String {
+        if case .returned(let message) = referenceVM.returnPrompt, page.number == shownPage?.number { return message }
         guard !isFocusMode, let pageCount else { return "Page \(page.number)" }
         return "Page \(page.number) of \(pageCount)"
     }
 
     init(book: BookRecord, readerCtrl: ReaderCtrl, progressCtrl: ProgressCtrl, readerStateCtrl: ReaderStateCtrl, appNav: AppNav,
-         readerSettingsVM: ReaderSettingsVM, referenceVM: ReferenceVM, ratingVM: RatingVM) {
+         readerSettingsVM: ReaderSettingsVM, referenceVM: ReferenceVM, ratingVM: RatingVM, characterVM: CharacterVM) {
         let analytics = ReadingAnalytics(book: book.id, attempt: appNav.openAttempt)
         self.analytics = analytics
         referenceVM.analytics = analytics
@@ -165,10 +182,12 @@ final class ReaderVM {
         self.readerSettingsVM = readerSettingsVM
         self.referenceVM = referenceVM
         self.ratingVM = ratingVM
+        self.characterVM = characterVM
         readerSettingsVM.onSettingsChanged = { [weak self] in
             Task { await self?.showCurrentPage() }
         }
-        referenceVM.onShowPage = { [weak self] page, underlineID in self?.show(page, highlighting: underlineID) }
+        referenceVM.onShowPage = { [weak self] page, passage in self?.show(page, highlighting: passage) }
+        characterVM.onJump = { [weak self] passage in self?.characterPassagePicked(passage) }
     }
 
     func startPageLabel(ofChapter index: Int) -> String {
@@ -246,8 +265,10 @@ final class ReaderVM {
         show(page)
     }
 
+    /// A tap first clears a jumped-to passage's highlight.
     func pageCenterTapped() {
         analytics.activity()
+        guard !referenceVM.hasPassageHighlight else { return referenceVM.passageDismissed() }
         isFocusMode.toggle()
     }
 
@@ -302,6 +323,12 @@ final class ReaderVM {
         ))
     }
 
+    func charactersTapped() {
+        analytics.activity()
+        sheet = .characters
+        characterVM.sheetOpened(at: shownPage)
+    }
+
     func themeSettingsTapped() {
         analytics.activity()
         sheet = .themeSettings
@@ -315,6 +342,11 @@ final class ReaderVM {
     func chapterTapped(_ index: Int) {
         sheet = nil
         Task { show(await readerCtrl.firstPage(ofChapter: index)) }
+    }
+
+    private func characterPassagePicked(_ passage: ContextPassage) {
+        sheet = nil
+        referenceVM.jumpToPassage(passage)
     }
 
     private func searchResultPicked(_ result: SearchResult) {
@@ -350,10 +382,11 @@ final class ReaderVM {
         updateReferenceVM()
         loadPages(around: page)
         loadPageTotals()
+        await referenceVM.refreshReturnPage()
     }
 
-    private func show(_ page: Page, highlighting underlineID: String? = nil, searchResult: SearchResult? = nil) {
-        referenceVM.pageShown(highlighting: underlineID, searchResult: searchResult)
+    private func show(_ page: Page, highlighting passage: ContextPassage? = nil, searchResult: SearchResult? = nil) {
+        referenceVM.pageShown(highlighting: passage, searchResult: searchResult)
         completedPassageSpeech = nil
         readingFocus = ReaderFocusRequest(from: shownPage, to: page, passage: referenceVM.jumpedPassageText)
         shownPage = page

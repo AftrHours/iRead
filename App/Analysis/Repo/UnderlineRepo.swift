@@ -78,7 +78,7 @@ actor UnderlineRepo {
     func underline(withID id: String, of book: String) -> SavedUnderline? {
         foundUnderlines[book]?.values.lazy.flatMap { $0 }.first { $0.id == id }
     }
-    
+
     func run(_ index: Int, of content: BookContent, startingAt sentence: Int,
              continuation: AsyncStream<Void>.Continuation) async {
         defer { continuation.finish() }

@@ -64,14 +64,33 @@ actor ReaderStateCtrl {
     }
 
     func saveRecentSearch(_ query: String) async {
-        bookState.recentSearches.removeAll { $0.caseInsensitiveCompare(query) == .orderedSame }
-        bookState.recentSearches.insert(query, at: 0)
-        bookState.recentSearches = Array(bookState.recentSearches.prefix(Self.maxRecentSearches))
+        bookState.recentSearches = Self.adding(query, to: bookState.recentSearches)
         await bookStateRepo.save(bookState, for: bookID)
     }
 
     func clearRecentSearches() async {
         bookState.recentSearches = []
         await bookStateRepo.save(bookState, for: bookID)
+    }
+
+    func recentCharacterSearches() -> [String] {
+        bookState.recentCharacterSearches
+    }
+
+    func saveRecentCharacterSearch(_ query: String) async {
+        bookState.recentCharacterSearches = Self.adding(query, to: bookState.recentCharacterSearches)
+        await bookStateRepo.save(bookState, for: bookID)
+    }
+
+    func clearRecentCharacterSearches() async {
+        bookState.recentCharacterSearches = []
+        await bookStateRepo.save(bookState, for: bookID)
+    }
+
+    private static func adding(_ query: String, to searches: [String]) -> [String] {
+        var searches = searches
+        searches.removeAll { $0.caseInsensitiveCompare(query) == .orderedSame }
+        searches.insert(query, at: 0)
+        return Array(searches.prefix(maxRecentSearches))
     }
 }

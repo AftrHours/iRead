@@ -15,8 +15,8 @@ final class ReferenceVM {
 
     enum ReturnPrompt: Equatable {
         case none
-        /// After a jump: Stay On This Page, or Back to Latest Read.
-        case choice
+        /// After a jump: the return button is on.
+        case canReturn
         /// After returning, for a moment: "Returned to page 66".
         case returned(message: String)
     }
@@ -24,21 +24,21 @@ final class ReferenceVM {
     private(set) var marks: [Int: [Mark]] = [:]
     private(set) var card: ReferenceCard?
     private(set) var cardAnchor = CGRect.zero
-    /// The underline last tapped. Kept, highlighted, after its card closes and through a jump to its passage and the way back,
-    /// until another underline is tapped.
+    /// The underline whose card is open, highlighted until the card closes.
     private(set) var selectedUnderlineID: String?
-    /// What the return controls show: nothing, the choice after a jump, or the note after returning.
+    /// The passage a jump landed on, highlighted with "Mentioned here" until the page is tapped or turned.
     private(set) var jumpedPassageText: String?
     private(set) var returnPrompt = ReturnPrompt.none
+    private(set) var returnPageNumber: Int?
 
-    @ObservationIgnored var onShowPage: (Page, String?) -> Void = { _, _ in }
+    @ObservationIgnored var onShowPage: (Page, ContextPassage?) -> Void = { _, _ in }
 
     @ObservationIgnored var analytics: ReadingAnalytics?
     private var pendingCard: (id: String, attempt: AnalyticsAttempt)?
     private var cardFlow: String?
     private var shownPage: Page?
     private var loadedPages: [Page] = []
-    private var highlightedUnderlineID: String?
+    private var highlightedPassage: ContextPassage?
     private var highlightedSearchResult: SearchResult?
     private var isClosed = false
     private var underlinedChapter: Int?
@@ -95,7 +95,16 @@ final class ReferenceVM {
 
     func bookOpened() async {
         await readerStateCtrl.load()
-        returnPrompt = await readerStateCtrl.hasReturnPosition() ? .choice : .none
+        returnPrompt = await readerStateCtrl.hasReturnPosition() ? .canReturn : .none
+    }
+
+    /// Page numbers change when the book is laid out again.
+    func refreshReturnPage() async {
+        guard let position = await readerStateCtrl.returnPosition() else {
+            returnPageNumber = nil
+            return
+        }
+        returnPageNumber = await readerCtrl.page(ifValid: position)?.number
     }
 
     func update(shownPage: Page?, loadedPages: [Page]) {
@@ -106,9 +115,9 @@ final class ReferenceVM {
         }
     }
 
-    func pageShown(highlighting underlineID: String?, searchResult: SearchResult? = nil) {
-        if underlineID == nil { jumpedPassageText = nil }
-        highlightedUnderlineID = underlineID
+    func pageShown(highlighting passage: ContextPassage?, searchResult: SearchResult? = nil) {
+        jumpedPassageText = passage?.text
+        highlightedPassage = passage
         highlightedSearchResult = searchResult
     }
 
@@ -118,6 +127,7 @@ final class ReferenceVM {
 
     func markTapped(_ mark: Mark, at anchor: CGRect) {
         guard case .underline(let id) = mark.kind else { return }
+        passageDismissed()
         analytics?.activity()
         let attempt = AnalyticsAttempt()
         let origin = shownPage
@@ -163,6 +173,19 @@ final class ReferenceVM {
 
     func cardDismissed() {
         card = nil
+        selectedUnderlineID = nil
+    }
+
+    var hasPassageHighlight: Bool {
+        jumpedPassageText != nil || highlightedSearchResult != nil
+    }
+
+    func passageDismissed() {
+        guard hasPassageHighlight else { return }
+        jumpedPassageText = nil
+        highlightedPassage = nil
+        highlightedSearchResult = nil
+        Task { await loadMarks() }
     }
 
     /// For the popover's binding: setting it to nil closes the card.
@@ -172,22 +195,36 @@ final class ReferenceVM {
     }
 
     func jumpToPassageTapped() {
-        guard let referenceCard = card, let shownPage else { return }
-        card = nil
-        analytics?.activity()
+        guard let referenceCard = card else { return }
+        let flow = cardFlow
         let attempt = AnalyticsAttempt()
-        let flow = cardFlow ?? attempt.id
+        cardDismissed()
         Task {
-            await readerStateCtrl.saveReturnPosition(await readerCtrl.startPosition(of: shownPage), flow: flow)
-            guard let underline = try? await refCtrl.underline(withID: referenceCard.underlineID),
-                  let destination = await readerCtrl.page(ifValid: underline.reference.start), !isClosed else {
+            guard let underline = try? await refCtrl.underline(withID: referenceCard.underlineID) else {
                 analytics?.record(.recoverableError, category: "invalid_destination", feature: "jump")
                 return
             }
-            analytics?.navigating(.jumpCompleted, to: destination, flow: flow, reference: referenceCard.id, attempt: attempt)
-            jumpedPassageText = underline.reference.text
-            returnPrompt = .choice
-            onShowPage(destination, referenceCard.underlineID)
+            jumpToPassage(underline.reference, flow: flow, reference: referenceCard.id, attempt: attempt)
+        }
+    }
+
+    /// Used by the reference card and the character list. `flow` ties the jump to the card it came from, for analytics.
+    func jumpToPassage(_ passage: ContextPassage, flow cardFlow: String? = nil, reference: String? = nil,
+                       attempt: AnalyticsAttempt = AnalyticsAttempt()) {
+        guard let shownPage else { return }
+        analytics?.activity()
+        let flow = cardFlow ?? attempt.id
+        Task {
+            await readerStateCtrl.saveReturnPosition(await readerCtrl.startPosition(of: shownPage), flow: flow)
+            await refreshReturnPage()
+            guard let destination = await readerCtrl.page(ifValid: passage.start), !isClosed else {
+                analytics?.record(.recoverableError, category: "invalid_destination", feature: "jump")
+                return
+            }
+            analytics?.navigating(.jumpCompleted, to: destination, flow: flow, reference: reference, attempt: attempt)
+            pageShown(highlighting: passage)
+            returnPrompt = .canReturn
+            onShowPage(destination, passage)
         }
     }
 
@@ -202,23 +239,14 @@ final class ReferenceVM {
             }
             let flow = await readerStateCtrl.returnFlow()
             await readerStateCtrl.clearReturnPosition()
+            returnPageNumber = nil
             analytics?.navigating(.returnCompleted, to: page, flow: flow, attempt: attempt)
             onShowPage(page, nil)
             let message = "Returned to page \(page.number)"
             returnPrompt = .returned(message: message)
             try? await Task.sleep(for: .seconds(2))
-            // Not if a new jump has asked for the choice meanwhile.
+            // Not if a new jump has turned the return button on meanwhile.
             if returnPrompt == .returned(message: message) { returnPrompt = .none }
-        }
-    }
-
-    func returnDismissed() {
-        jumpedPassageText = nil
-        returnPrompt = .none
-        highlightedUnderlineID = nil
-        Task {
-            await readerStateCtrl.clearReturnPosition()
-            await loadMarks()
         }
     }
 
@@ -226,7 +254,7 @@ final class ReferenceVM {
         let pages = loadedPages
         var marks: [Int: [Mark]] = [:]
         for page in pages {
-            var pageMarks = (try? await refCtrl.marks(on: page, highlighting: highlightedUnderlineID)) ?? []
+            var pageMarks = (try? await refCtrl.marks(on: page, highlighting: highlightedPassage)) ?? []
             if let searchResult = highlightedSearchResult,
                let range = await readerCtrl.range(from: searchResult.position, length: searchResult.length, on: page) {
                 // Same highlight as a jumped-to passage.

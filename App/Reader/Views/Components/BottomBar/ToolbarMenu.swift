@@ -28,6 +28,7 @@ struct ToolbarMenu<Items: View>: View {
 #Preview("Menu Button") {
     ToolbarMenu(foreground: .primary, colorScheme: .light, isVisible: true) {
         Button("Contents", systemImage: "list.bullet") {}
+        Button("Characters", systemImage: "person.2") {}
         Button("Search in Book", systemImage: "magnifyingglass") {}
         Button("Theme & Settings", systemImage: "textformat") {}
     }

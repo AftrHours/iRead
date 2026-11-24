@@ -12,6 +12,7 @@ struct ReaderView: View {
     private let readerSettingsVM: ReaderSettingsVM
     private let referenceVM: ReferenceVM
     private let ratingVM: RatingVM
+    private let characterVM: CharacterVM
 
     private var pageTextColor: Color {
         Color(PageTextStyle.textColor(for: readerVM.theme))
@@ -26,6 +27,7 @@ struct ReaderView: View {
         readerSettingsVM = readerVM.readerSettingsVM
         referenceVM = readerVM.referenceVM
         ratingVM = readerVM.ratingVM
+        characterVM = readerVM.characterVM
     }
 
     var body: some View {
@@ -46,7 +48,9 @@ struct ReaderView: View {
                 BottomBar(
                     foreground: pageTextColor,
                     colorScheme: pageColorScheme,
-                    isFocusMode: readerVM.isFocusMode
+                    isFocusMode: readerVM.isFocusMode,
+                    canReturn: referenceVM.returnPrompt == .canReturn,
+                    onReturn: referenceVM.returnToReadingTapped
                 ) {
                     ToolbarList(readerVM: readerVM)
                 }
@@ -60,17 +64,6 @@ struct ReaderView: View {
             readerVM.screenChanged($0)
         }
         .task { await readerVM.onAppear() }
-        .overlay {
-            ReferredButton(
-                prompt: referenceVM.returnPrompt,
-                waitingForPassage: readerVM.isPassageSpeechPending,
-                completedPassage: readerVM.completedPassageSpeech,
-                onDismiss: referenceVM.returnDismissed,
-                onReturn: referenceVM.returnToReadingTapped
-            )
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-            .padding(.bottom, barHeight + 4)
-        }
         .background(Color(PageTextStyle.backgroundColor(for: readerVM.theme)))
         .preferredColorScheme(readerVM.forcedDarkMode.map { $0 ? .dark : .light })
         .onChange(of: colorScheme, initial: true) { _, colorScheme in
@@ -137,6 +130,8 @@ struct ReaderView: View {
                 )
             case .search(let searchVM):
                 SearchView(searchVM: searchVM)
+            case .characters:
+                CharacterListSheet(characterVM: characterVM)
             case .themeSettings:
                 ThemeSettingsView(readerSettingsVM: readerSettingsVM, onClose: readerVM.sheetDismissed)
             }

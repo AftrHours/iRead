@@ -240,20 +240,21 @@ struct LibView: View {
             resultsTitle: layout.isPad && libVM.isSearchActive ? libVM.searchResultsTitle : nil,
             onScrolled: { offset in
                 if !layout.isPad { libVM.libraryScrolled(to: offset, headerHeight: inlineHeaderHeight) }
-            }
-        ) {
-            if !layout.isPad && !libVM.isSearchActive && !libVM.isSelectionMode {
-                VStack(alignment: .leading, spacing: 0) {
-                    if dynamicTypeSize.isAccessibilitySize {
-                        LibraryTitleView()
+            },
+            header: {
+                if !layout.isPad && !libVM.isSearchActive && !libVM.isSelectionMode {
+                    VStack(alignment: .leading, spacing: 0) {
+                        if dynamicTypeSize.isAccessibilitySize {
+                            LibraryTitleView()
+                        }
+                        LibrarySearchBar(libVM: libVM, focus: $isSearchFocused)
+                            .padding(.top, 16)
+                            .padding(.bottom, 20)
                     }
-                    LibrarySearchBar(libVM: libVM, focus: $isSearchFocused)
-                        .padding(.top, 16)
-                        .padding(.bottom, 20)
+                    .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { inlineHeaderHeight = $0 }
                 }
-                .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { inlineHeaderHeight = $0 }
             }
-        }
+        )
         .animation(libVM.isSelectionMode && !reduceSelectionMotion ? .smooth(duration: 0.5) : nil,
                    value: libVM.selectedBookIDs)
     }

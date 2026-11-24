@@ -18,14 +18,20 @@ struct AppContainer {
     private let libraryIndexRepo = LibraryIndexRepo()
     private let cloudSvc: (any CloudSvc)?
 
+    /// iCloud only when it's turned on in project.yml (ICLOUD and the entitlement): without the entitlement, CloudKit
+    /// stops the app at launch.
     init() {
+        #if ICLOUD
         self.init(cloudSvc: CloudSvcCloudKit())
+        #else
+        self.init(cloudSvc: nil)
+        #endif
     }
 
     /// For SwiftUI previews: nothing goes to iCloud.
     /// Not limited to debug builds, so a #Preview without #if DEBUG still builds for TestFlight. The app never calls it.
     static func forPreviews() -> AppContainer {
-        AppContainer(cloudSvc: CloudSvcCloudKit())
+        AppContainer(cloudSvc: nil)
     }
 
     private init(cloudSvc: (any CloudSvc)?) {
@@ -74,7 +80,11 @@ struct AppContainer {
                 readerCtrl: readerCtrl
             ),
             ratingVM: RatingVM(ratingCtrl: RatingCtrl(bookID: book.id, bookTitle: book.title, bookContentRepo: bookContentRepo,
-                                                      underlineRepo: underlineRepo, ratingRepo: ratingRepo))
+                                                      underlineRepo: underlineRepo, ratingRepo: ratingRepo)),
+            characterVM: CharacterVM(
+                characterCtrl: CharacterCtrl(bookID: book.id, bookContentRepo: bookContentRepo),
+                readerStateCtrl: readerStateCtrl
+            )
         )
     }
 }
@@ -166,9 +176,19 @@ enum PreviewFixtures {
                 bookContentRepo: bookContentRepo,
                 underlineRepo: underlineRepo,
                 ratingRepo: ratingRepo
-            ))
+            )),
+            characterVM: CharacterVM(
+                characterCtrl: CharacterCtrl(bookID: book.id, bookContentRepo: bookContentRepo),
+                readerStateCtrl: readerStateCtrl
+            )
         )
         return readerVM
+    }
+
+    static func characterVM() -> CharacterVM {
+        let characterVM = readerVM().characterVM
+        characterVM.sheetOpened(at: nil)
+        return characterVM
     }
 
     static func readerSettingsVM() -> ReaderSettingsVM {

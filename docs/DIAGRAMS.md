@@ -809,7 +809,7 @@ sequenceDiagram
   ReferenceVM->>ReaderCtrl: page at that position
   ReferenceVM->>ReaderStateCtrl: clearReturnPosition
   ReferenceVM->>ReaderVM: show that page
-  ReferenceVM-->>Reader: toast Returned to page N
+  ReferenceVM-->>Reader: page label Returned to page N
 ```
 
 ## 13. Screens (state)

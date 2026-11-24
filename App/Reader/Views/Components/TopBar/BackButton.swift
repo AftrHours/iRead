@@ -25,17 +25,19 @@ struct BackButton: View {
     let foreground: Color
     let colorScheme: ColorScheme
     let isVisible: Bool
+    var isEnabled = true
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Image(systemName: systemImage)
                 .font(.title3.weight(.medium))
-                .foregroundStyle(foreground)
+                .foregroundStyle(foreground.opacity(isEnabled ? 1 : 0.3))
                 .readerIconFrame()
                 .environment(\.colorScheme, colorScheme)
         }
         .glassEffect(.regular.interactive(), in: .circle)
+        .disabled(!isEnabled)
         .accessibilityLabel(accessibilityLabel)
         // Hidden in focus mode: invisible, and taps go through to the page instead.
         .opacity(isVisible ? 1 : 0)

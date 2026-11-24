@@ -1,3 +1,4 @@
+import SwiftUI
 import UIKit
 
 /// A whole screen's page: the book and chapter on top, the text, and the page label at the bottom, so all of it turns together.
@@ -16,14 +17,28 @@ final class PageTextView: UIView {
     }
     private(set) var highlights: [NSRange] {
         didSet {
-            if oldValue != highlights { showBackgrounds() }
+            guard oldValue != highlights else { return }
+            guard window != nil else { return showBackgrounds() }
+            UIView.transition(with: textView, duration: 0.25, options: [.transitionCrossDissolve, .allowUserInteraction]) {
+                self.showBackgrounds()
+            }
         }
     }
+    private(set) var mentionedRange: NSRange? {
+        didSet {
+            if oldValue != mentionedRange { setNeedsLayout() }
+        }
+    }
+    private var mentionTag: UIHostingController<MentionPopover>?
+    private var isMentionTagHiding = false
     private var actions: PageActions
     private let textView = UITextView(usingTextLayoutManager: false)
     private let titleLabel = UILabel()
     private let chapterLabel = UILabel()
     private let pageLabel = UILabel()
+    private let progressTrack = UIView()
+    private let progressFill = UIView()
+    private let returnMark = UIView()
     private lazy var modeControl = ReaderAccessibilityButton(container: self) { [weak self] in
         self?.actions.onCenterTapped()
     }
@@ -46,6 +61,7 @@ final class PageTextView: UIView {
         chrome = content.chrome(of: page)
         layout = content.layout
         highlights = content.highlights(on: page)
+        mentionedRange = content.mentionedRange(on: page)
         self.actions = actions
         self.onEdgeTapped = onEdgeTapped
         super.init(frame: .zero)
@@ -89,6 +105,16 @@ final class PageTextView: UIView {
         chapterLabel.textColor = textColor.withAlphaComponent(Self.chapterTitleAlpha)
         pageLabel.font = .preferredFont(forTextStyle: .caption1)
         pageLabel.textColor = textColor
+        pageLabel.textAlignment = .center
+        progressTrack.backgroundColor = UIColor(AppColors.progressBarBg)
+        progressFill.backgroundColor = UIColor(AppColors.progressBarLine)
+        returnMark.backgroundColor = AppColors.readerReturnMark
+        progressTrack.layer.cornerRadius = PageLayoutKnobs.progressBarHeight / 2
+        progressTrack.clipsToBounds = true
+        progressTrack.isAccessibilityElement = false
+        progressTrack.addSubview(progressFill)
+        progressTrack.addSubview(returnMark)
+        addSubview(progressTrack)
         for label in [titleLabel, chapterLabel] {
             label.textAlignment = .center
             label.lineBreakMode = .byTruncatingTail
@@ -110,11 +136,12 @@ final class PageTextView: UIView {
     }
 
     /// Whether this view already shows `page` as `content` has it, so it can stay on screen instead of being built again.
+    /// Highlights don't count: `refresh` changes them in place, so they can fade.
     func isShowing(_ page: Page, in content: PageContent) -> Bool {
         self.page == page
             && settings == content.settings
             && horizontalMargin == content.horizontalMargin
-            && marks == content.marks(on: page)
+            && marks.filter(\.isUnderline) == content.marks(on: page).filter(\.isUnderline)
     }
 
     /// Brings what changes without a new layout (the labels, where they sit, the highlights, what a tap does) up to date with `content`.
@@ -122,6 +149,7 @@ final class PageTextView: UIView {
         chrome = content.chrome(of: page)
         layout = content.layout
         highlights = content.highlights(on: page)
+        mentionedRange = content.mentionedRange(on: page)
         self.actions = actions
     }
 
@@ -139,7 +167,11 @@ final class PageTextView: UIView {
             actions.onCenterTapped()
             return true
         }]
-        pageLabel.text = chrome.pageLabel
+        // Crossfades, as "Page 12 of 300" turns into "Returned to page 12" and back.
+        let label = chrome.pageLabel
+        UIView.transition(with: pageLabel, duration: pageLabel.text == nil ? 0 : 0.25, options: .transitionCrossDissolve) { self.pageLabel.text = label }
+        progressTrack.isHidden = chrome.progress == nil
+        returnMark.isHidden = chrome.returnMark == nil
         setNeedsLayout()
     }
 
@@ -193,10 +225,8 @@ final class PageTextView: UIView {
         titleLabel.frame = CGRect(x: header.minX, y: titlesTop, width: header.width, height: titleHeight)
         chapterLabel.frame = CGRect(x: header.minX, y: titlesTop + titleHeight + Self.titleSpacing,
                                     width: header.width, height: chapterHeight)
-        // Level with the × button's left edge (the bar's side margin), centred in the footer's height, level with the ••• button.
-        let pageLabelSize = pageLabel.intrinsicContentSize
-        pageLabel.frame = CGRect(x: layout.footer.minX, y: layout.footer.midY - pageLabelSize.height / 2,
-                                 width: min(pageLabelSize.width, layout.footer.width), height: pageLabelSize.height)
+        layoutFooter()
+        layoutMentionTag()
         modeControl.accessibilityFrameInContainerSpace = CGRect(x: bounds.midX - 22, y: layout.footer.midY - 22, width: 44, height: 44)
         for (mark, button) in referenceButtons {
             button.accessibilityFrameInContainerSpace = referenceRect(for: mark)
@@ -262,6 +292,94 @@ final class PageTextView: UIView {
             }
         }
         return nil
+    }
+}
+
+private extension PageTextView {
+    func layoutFooter() {
+        typealias Knobs = PageLayoutKnobs
+        let footer = layout.footer
+        let labelHeight = pageLabel.intrinsicContentSize.height
+        let barHeight = progressTrack.isHidden ? 0 : Knobs.progressBarHeight + Knobs.progressBarGap
+        let top = footer.midY - (barHeight + labelHeight) / 2
+        let barWidth = min(Knobs.progressBarWidth, footer.width - 2 * footer.height)
+        progressTrack.frame = CGRect(x: footer.midX - barWidth / 2, y: top, width: barWidth, height: Knobs.progressBarHeight)
+        progressFill.frame = CGRect(x: 0, y: 0, width: barWidth * (chrome.progress ?? 0), height: Knobs.progressBarHeight)
+        returnMark.frame = CGRect(x: barWidth * (chrome.returnMark ?? 0) - Knobs.returnMarkWidth / 2, y: 0,
+                                  width: Knobs.returnMarkWidth, height: Knobs.progressBarHeight)
+        let labelInset = footer.height + 4
+        pageLabel.frame = CGRect(x: footer.minX + labelInset, y: top + barHeight,
+                                 width: footer.width - 2 * labelInset, height: labelHeight)
+    }
+
+    func layoutMentionTag() {
+        guard let range = mentionedRange, let firstLine = firstLineRect(of: range) else { return hideMentionTag() }
+        let tag = mentionTag ?? makeMentionTag()
+        let size = tag.sizeThatFits(in: bounds.size)
+        let preferredX = firstLine.minX - MentionPopoverKnobs.arrowInset + 4
+        let x = min(max(preferredX, PageLayoutKnobs.sideMargin), bounds.width - PageLayoutKnobs.sideMargin - size.width)
+        // Bounds and center, not frame: the transform animates.
+        tag.view.bounds = CGRect(origin: .zero, size: size)
+        tag.view.center = CGPoint(x: x + size.width / 2, y: firstLine.minY - size.height / 2)
+        guard tag.view.isHidden || isMentionTagHiding else { return }
+        isMentionTagHiding = false
+        tag.view.isHidden = false
+        guard window != nil else { return }
+        // Grows out of its arrow, like the reference card's popover.
+        tag.view.alpha = 0
+        tag.view.transform = UIAccessibility.isReduceMotionEnabled ? .identity : MentionPopoverKnobs.arrowScale(0.6, size: size)
+        UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0,
+                       options: [.allowUserInteraction, .beginFromCurrentState]) {
+            tag.view.alpha = 1
+            tag.view.transform = .identity
+        }
+    }
+
+    func hideMentionTag() {
+        guard let view = mentionTag?.view, !view.isHidden, !isMentionTagHiding else { return }
+        guard window != nil else { return view.isHidden = true }
+        isMentionTagHiding = true
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState]) {
+            view.alpha = 0
+            if !UIAccessibility.isReduceMotionEnabled { view.transform = MentionPopoverKnobs.arrowScale(0.8, size: view.bounds.size) }
+        } completion: { _ in
+            guard self.isMentionTagHiding else { return }
+            self.isMentionTagHiding = false
+            view.isHidden = true
+            view.alpha = 1
+            view.transform = .identity
+        }
+    }
+
+    func makeMentionTag() -> UIHostingController<MentionPopover> {
+        let tag = UIHostingController(rootView: MentionPopover())
+        // Otherwise the screen's safe area pushes it up.
+        tag.safeAreaRegions = []
+        tag.view.backgroundColor = .clear
+        tag.view.isUserInteractionEnabled = false
+        tag.view.accessibilityElementsHidden = true
+        tag.view.isHidden = true
+        addSubview(tag.view)
+        mentionTag = tag
+        return tag
+    }
+
+    /// Skips leading spaces: justified text stretches them onto the line before.
+    func firstLineRect(of range: NSRange) -> CGRect? {
+        let text = page.text as NSString
+        guard range.length > 0, NSMaxRange(range) <= text.length else { return nil }
+        var start = range.location
+        while start < NSMaxRange(range), let scalar = UnicodeScalar(text.character(at: start)),
+              CharacterSet.whitespacesAndNewlines.contains(scalar) {
+            start += 1
+        }
+        guard start < NSMaxRange(range) else { return nil }
+        let manager = textView.layoutManager
+        let glyph = manager.glyphIndexForCharacter(at: start)
+        let line = manager.lineFragmentUsedRect(forGlyphAt: glyph, effectiveRange: nil)
+        let character = manager.boundingRect(forGlyphRange: NSRange(location: glyph, length: 1), in: textView.textContainer)
+        let firstLine = CGRect(x: character.minX, y: line.minY, width: line.maxX - character.minX, height: line.height)
+        return textView.convert(firstLine, to: self)
     }
 }
 
