@@ -16,7 +16,7 @@ struct BookRowView<MenuButton: View>: View {
             LibraryBookButton(item: item, action: onTap) {
                 HStack(spacing: 16) {
                     VStack(spacing: isPhoneBrowse || isPhoneSelection ? 8 : 6) {
-                        BookCoverView(image: item.cover, bookID: item.id)
+                        BookCoverView(image: item.cover)
                             .frame(width: coverWidth, height: coverWidth / BookCoverView.aspectRatio)
                             .clipShape(.rect(cornerRadius: 4))
                             .shadow(color: item.showsSelection && item.isSelected ? .white.opacity(0.65) : .clear, radius: 6)

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct LibraryBookCollection<Header: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @Environment(\.libraryImportDestination) private var destination
+    @Binding var scrollToImportedBook: UUID?
     let items: [LibraryBookItemVM]
     let layout: LibraryLayout
     let onBookTapped: (BookRecord) -> Void
@@ -18,13 +18,14 @@ struct LibraryBookCollection<Header: View>: View {
         ScrollViewReader { reader in
             scrollingContent
                 .scrollEdgeEffectStyle(.soft, for: .top)
-                .task(id: destination) {
-                    guard let destination else { return }
+                .task(id: scrollToImportedBook) {
+                    guard let destination = scrollToImportedBook else { return }
                     if items.first?.id == destination {
                         reader.scrollTo("libraryTop", anchor: .top)
                     } else {
                         reader.scrollTo(destination, anchor: .center)
                     }
+                    scrollToImportedBook = nil
                 }
         }
     }

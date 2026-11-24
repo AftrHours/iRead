@@ -10,7 +10,7 @@ struct LibView: View {
     @State private var importSnapshot: [LibraryBookItemVM]?
     @State private var importPresentationID: UUID?
     @State private var importedIDs: [UUID] = []
-    @State private var destination: UUID?
+    @State private var scrollToImportedBook: UUID?
     @FocusState private var isSearchFocused: Bool
     private var layout: LibraryLayout {
         LibraryLayout(viewMode: libVM.viewMode, isSearching: libVM.isSearchActive, isSelecting: libVM.isSelectionMode)
@@ -20,7 +20,7 @@ struct LibView: View {
         if let importSnapshot { return importSnapshot }
         let items = libVM.bookItems
         guard !importedIDs.isEmpty else { return items }
-        let waiting = Set(importedIDs.dropFirst(destination == nil ? 0 : 1))
+        let waiting = Set(importedIDs)
         return items.filter { !waiting.contains($0.id) }
     }
 
@@ -30,24 +30,17 @@ struct LibView: View {
         .safeAreaInset(edge: .bottom, spacing: 0) {
             if libVM.isSelectionMode { selectionActions }
         }
-        .environment(\.libraryImportDestination, destination)
         .allowsHitTesting(importPresentationID == nil)
         .accessibilityHidden(importPresentationID != nil)
-        .overlayPreferenceValue(LibraryImportCoverAnchor.self) { anchor in
+        .overlay {
             if importPresentationID != nil {
                 ZStack {
                     Color.black.opacity(0.48).ignoresSafeArea()
                     if let id = importedIDs.first {
-                        GeometryReader { geometry in
-                            LibraryImportFlight(image: libVM.covers[id], viewport: geometry.size,
-                                                slot: anchor.map { geometry[$0] },
-                                                requestSlot: {
-                                                    importSnapshot = nil
-                                                    destination = id
-                                                },
-                                                finish: { finishReveal(id) })
-                                .id(id)
-                        }
+                        LibraryImportFlight(image: libVM.covers[id], finish: { finishReveal(id) })
+                            .id(id)
+                            .transition(.identity)
+                            .ignoresSafeArea()
                     }
                 }
                 .transition(.opacity)
@@ -66,6 +59,7 @@ struct LibView: View {
         }
         .onDisappear {
             libVM.stopDictation()
+            scrollToImportedBook = nil
             resetImportPresentation()
         }
         .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { _ in
@@ -142,17 +136,17 @@ struct LibView: View {
         if let book = libVM.allBooks.first(where: { $0.id == id }) {
             AccessibilityNotification.Announcement("Added \(book.title) to your library").post()
         }
+        importSnapshot = nil
+        scrollToImportedBook = id
         if importedIDs.count == 1 {
             withAnimation(.easeOut(duration: 0.22)) { resetImportPresentation() }
         } else {
-            destination = nil
             importedIDs.removeFirst()
         }
     }
 
     private func resetImportPresentation() {
         importSnapshot = nil
-        destination = nil
         importedIDs.removeAll()
         importPresentationID = nil
     }
@@ -234,6 +228,7 @@ struct LibView: View {
 
     private var bookCollection: some View {
         LibraryBookCollection(
+            scrollToImportedBook: $scrollToImportedBook,
             items: collectionItems,
             layout: layout,
             onBookTapped: libVM.bookTapped,
@@ -261,56 +256,42 @@ struct LibView: View {
     }
 }
 
-/// Resolves the destination from the real cover after the sorted collection has laid it out.
 private struct LibraryImportFlight: View {
     let image: UIImage?
-    let viewport: CGSize
-    let slot: CGRect?
-    let requestSlot: () -> Void
     let finish: () -> Void
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @State private var opacity = 0.0
-    @State private var landing = false
-
-    private var centeredCover: CGRect {
-        let width = min(viewport.width * 0.37, viewport.height * 0.4, 220)
-        let height = width / BookCoverView.aspectRatio
-        return CGRect(x: (viewport.width - width) / 2, y: (viewport.height - height) / 2,
-                      width: width, height: height)
-    }
-
-    private var hasVisibleSlot: Bool {
-        guard let slot, !slot.isEmpty else { return false }
-        return CGRect(origin: .zero, size: viewport).contains(CGPoint(x: slot.midX, y: slot.midY))
-    }
+    @State private var start = Date.now
 
     var body: some View {
-        let frame = landing && !reduceMotion ? slot ?? centeredCover : centeredCover
-        BookCoverView(image: image)
-            .frame(width: frame.width, height: frame.height)
-            .shadow(color: .white.opacity(landing ? 0 : 0.45), radius: 5)
-            .position(x: frame.midX, y: frame.midY)
-            .opacity(opacity)
-            .task {
-                withAnimation(.easeOut(duration: 0.22)) { opacity = 1 }
-                do {
-                    try await Task.sleep(for: .milliseconds(650))
-                    requestSlot()
-                    // If layout cannot supply a visible slot, always return control to the library.
-                    try await Task.sleep(for: .seconds(2))
-                    if !landing { finish() }
-                } catch { return }
+        GeometryReader { geometry in
+            let size = geometry.size
+            let width = min(size.width * 0.37, size.height * 0.4, 220)
+            let height = width / BookCoverView.aspectRatio
+            // Clear the screen with the entire cover, including its glow.
+            let travel = (size.height + height) / 2 + 30
+            let flight = KeyframeTimeline(initialValue: travel) {
+                CubicKeyframe(-12, duration: 0.68, startVelocity: 0, endVelocity: 0)
+                CubicKeyframe(3, duration: 0.20, endVelocity: 0)
+                CubicKeyframe(0, duration: 0.16, endVelocity: 0)
+                LinearKeyframe(0, duration: 0.24)
+                CubicKeyframe(-travel, duration: 0.66, startVelocity: 0, endVelocity: 0)
             }
-            .task(id: hasVisibleSlot) {
-                guard !landing, hasVisibleSlot else { return }
-                withAnimation(.easeInOut(duration: reduceMotion ? 0.22 : 0.65), completionCriteria: .logicallyComplete) {
-                    landing = true
-                    if reduceMotion { opacity = 0 }
-                } completion: {
-                    finish()
-                }
+            let duration = reduceMotion ? 0.8 : flight.duration
+            TimelineView(.animation) { tick in
+                let time = min(duration, max(0, tick.date.timeIntervalSince(start)))
+                let offset = reduceMotion ? 0 : flight.value(time: time)
+                let opacity = reduceMotion ? min(1, time / 0.2, (duration - time) / 0.2) : 1
+                BookCoverView(image: image)
+                    .frame(width: width, height: height)
+                    .shadow(color: .white.opacity(0.5), radius: 10)
+                    .position(x: size.width / 2, y: size.height / 2 + offset)
+                    .opacity(opacity)
+                    .onChange(of: time >= duration, initial: true) { _, completed in
+                        if completed { finish() }
+                    }
             }
+        }
     }
 }
 
