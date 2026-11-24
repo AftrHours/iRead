@@ -22,7 +22,7 @@ struct BookGridView<MenuButton: View>: View {
     private var card: some View {
         LibraryBookButton(item: item, action: onTap) {
             VStack(alignment: .leading, spacing: 0) {
-                BookCoverView(image: item.cover, bookID: item.id)
+                BookCoverView(image: item.cover)
                     .overlay(.black.opacity(item.showsSelection && !item.isSelected ? 0.5 : 0))
                 ProgressBar(progress: item.progress)
                     .opacity(item.showsSelection && !item.isSelected ? 0.5 : 1)
