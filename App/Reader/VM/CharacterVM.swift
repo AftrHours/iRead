@@ -56,7 +56,7 @@ final class CharacterVM {
     }
 
     func passage(of character: BookCharacter) -> String {
-        character.passage.map { ReferenceVM.quoted($0.text) } ?? "No passage describes this character yet. Keep reading!"
+        character.passage.map { ReferenceVM.quoted($0.text) } ?? "No passage describes this character yet."
     }
 
     func jumpTapped(_ character: BookCharacter) {
