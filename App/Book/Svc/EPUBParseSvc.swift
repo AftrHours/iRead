@@ -1,0 +1,92 @@
+import EPUBKit
+import Foundation
+import NaturalLanguage
+
+/// Reads EPUB files and turns their chapters into the app's BookContent. A protocol so tests can count parses.
+protocol EPUBParseSvc: Sendable {
+    func metadata(from url: URL) throws -> (title: String?, author: String?, identifiers: [String])
+    func cover(from url: URL) throws -> Data?
+    func parse(_ url: URL) async throws -> BookContent
+}
+
+struct EPUBParseSvcEPUBKit: EPUBParseSvc {
+    private let reader = EPUBReader()
+
+    func metadata(from url: URL) throws -> (title: String?, author: String?, identifiers: [String]) {
+        let metadata = try readingEPUB { try reader.metadata(from: url) }
+        return (metadata.title, metadata.author, metadata.identifiers)
+    }
+
+    /// The cover image file, found by the EPUB 3 `cover-image` property or the EPUB 2 `cover` meta tag.
+    func cover(from url: URL) throws -> Data? {
+        try readingEPUB { try reader.cover(from: url) }
+    }
+
+    func parse(_ url: URL) async throws -> BookContent {
+        let chapters = try readingEPUB { try reader.chapters(from: url) }
+        guard !chapters.isEmpty else { throw ContentError.unreadable }
+        return Self.content(of: chapters.map { ($0.title, $0.paragraphs) }, parts: chapters.map(\.part))
+    }
+
+    /// EPUBKit and ZIPFoundation (for a file that isn't a zip) report a broken file with their own errors;
+    /// the rest of the app expects ContentError.
+    private func readingEPUB<Result>(_ read: () throws -> Result) throws -> Result {
+        do {
+            return try read()
+        } catch let error as ContentError {
+            throw error
+        } catch {
+            throw ContentError.unreadable
+        }
+    }
+
+    /// Global paragraph and sentence indexes, with UTF-16 ranges inside each chapter's text (paragraphs joined by "\n").
+    /// `parts` is what each chapter's file says about being front, body or back matter, in chapter order; it may be shorter.
+    static func content(of rawChapters: [(title: String, paragraphs: [String])], parts: [EPUBPart?] = []) -> BookContent {
+        let tokenizer = NLTokenizer(unit: .sentence)
+        var chapters: [Chapter] = []
+        var paragraphs: [Paragraph] = []
+        var sentences: [Sentence] = []
+        for (chapterIndex, rawChapter) in rawChapters.enumerated() {
+            let firstParagraph = paragraphs.count
+            var location = 0
+            for text in rawChapter.paragraphs {
+                let length = text.utf16.count
+                sentences += sentenceRanges(in: text, tokenizer: tokenizer).map { Sentence(paragraph: paragraphs.count, range: $0) }
+                paragraphs.append(Paragraph(
+                    chapterIndex: chapterIndex,
+                    range: NSRange(location: location, length: length),
+                    wordCount: text.split(whereSeparator: \.isWhitespace).count
+                ))
+                location += length + 1
+            }
+            chapters.append(Chapter(
+                title: rawChapter.title,
+                text: rawChapter.paragraphs.joined(separator: "\n"),
+                paragraphs: firstParagraph..<paragraphs.count
+            ))
+        }
+        let firstChapter = FirstChapter.index(
+            titles: chapters.map(\.title),
+            wordCounts: chapters.map { $0.paragraphs.reduce(0) { $0 + paragraphs[$1].wordCount } },
+            parts: parts
+        )
+        return BookContent(chapters: chapters, paragraphs: paragraphs, sentences: sentences, parserVersion: 1,
+                           fingerprint: BookFingerprint.of(chapters), firstReadableChapterIndex: firstChapter)
+    }
+
+    private static func sentenceRanges(in text: String, tokenizer: NLTokenizer) -> [NSRange] {
+        // Ebooks often put a no-break space after "Mr." or "Dr.", which the tokenizer reads as a sentence end.
+        // A copy with plain spaces has the same UTF-16 length, so its ranges still match the original text.
+        let plain = text.replacingOccurrences(of: "\u{00A0}", with: " ")
+        tokenizer.string = plain
+        return tokenizer.tokens(for: plain.startIndex..<plain.endIndex).compactMap { tokenRange in
+            let range = NSRange(tokenRange, in: plain)
+            let token = (text as NSString).substring(with: range)
+            let sentence = token.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !sentence.isEmpty else { return nil }
+            let leadingSpaces = token.prefix(while: \.isWhitespace).utf16.count
+            return NSRange(location: range.location + leadingSpaces, length: sentence.utf16.count)
+        }
+    }
+}

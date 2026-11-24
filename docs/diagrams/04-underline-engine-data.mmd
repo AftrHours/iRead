@@ -1,0 +1,106 @@
+classDiagram
+  direction LR
+
+  %% In: the book, as the engine reads it
+  class BookSource {
+    <<protocol>>
+    +String id
+    +Int chapterCount
+    +chapterText(Int) ChapterText
+  }
+  class BookContent {
+    id = fingerprint
+  }
+  class ChapterText {
+    +List~Paragraph~ paragraphs
+    +List~Sentence~ sentences
+  }
+  class Paragraph {
+    +Int index
+    +String text
+  }
+  class Sentence {
+    +Int index
+    +Int paragraph
+    +NSRange range
+  }
+
+  %% The door: the only thing the app calls
+  class Underlining {
+    <<protocol>>
+    +Int version
+    +String summary
+    +underlines(inChapter Int, of BookSource, startingAt Int) AsyncStream~UnderlineBatch~
+  }
+  class Underliner {
+    +make(Preset) Underliner$
+    +Int releaseVersion$
+  }
+  class StubUnderliner {
+    test fake, no engine
+  }
+  class Preset {
+    <<enumeration>>
+    release
+    testing
+  }
+
+  %% Out: one batch per paragraph
+  class UnderlineBatch {
+    +List~UnderlineResult~ underlines
+    +List~ConsideredPhrase~ considered
+  }
+  class UnderlineResult {
+    +String id
+    +Int sentence
+    +Int paragraph
+    +NSRange range
+    +String text
+    +String kind
+    +String decidedBy
+    +Passage reference
+  }
+  class Passage {
+    +Int sentence
+    +Int paragraph
+    +NSRange range
+    +String text
+  }
+  class ConsideredPhrase {
+    +Int sentence
+    +String phrase
+    +String detail
+    +Bool isUnderlined
+  }
+
+  %% In iRead
+  class SavedUnderline {
+    +String id
+    +Int sentence
+    +Int paragraph
+    +NSRange range
+    +String text
+    +String kind
+    +String decidedBy
+    +ContextPassage reference
+  }
+
+  BookContent ..|> BookSource : conforms, in ChapterInputMapper
+  BookSource ..> ChapterText : one chapter, when asked
+  ChapterText "1" *-- "1..*" Paragraph : paragraphs
+  ChapterText "1" *-- "1..*" Sentence : sentences
+  Paragraph "1" <-- "0..*" Sentence : belongs to (paragraph = index)
+
+  Underliner ..|> Underlining : release engine
+  StubUnderliner ..|> Underlining : test fake
+  Underliner ..> Preset : made from
+  Underlining ..> BookSource : reads
+  Underlining ..> UnderlineBatch : yields, from the reader's paragraph, then wraps
+
+  UnderlineBatch "1" *-- "0..*" UnderlineResult : underlines
+  UnderlineBatch "1" *-- "0..*" ConsideredPhrase : considered (debug only)
+  UnderlineResult "1" *-- "1" Passage : reference
+  UnderlineResult "0..*" --> "1" Sentence : sentence (global index)
+  Passage "0..*" --> "1" Sentence : sentence (always earlier)
+
+  UnderlineResult "1" ..> "1" SavedUnderline : copied into, in UnderlineRepo

@@ -1,0 +1,58 @@
+flowchart LR
+  Reader[Reader]
+  Files[Files app]
+  Model[Apple on-device model]
+  Private[Reader's iCloud]
+  Public[Developers' CloudKit]
+
+  P1((1 Manage library))
+  P2((2 Show pages))
+  P3((3 Save progress))
+  P4((4 Underline and explain))
+  P5((5 Settings and search))
+  P6((6 Rate and share))
+
+  D1[(library.json, hidden-samples.json)]
+  D2[(book.epub, sample EPUBs)]
+  D3[(progress.json)]
+  D4[(state.json)]
+  D5[(reading-settings.json)]
+  D6[(Underlines chapter-N.json)]
+  D7[(ratings.json)]
+
+  Files -- EPUB --> P1
+  P1 -- book list --> D1
+  P1 -- EPUB copy --> D2
+  D1 -- books --> P1
+  D3 -- progress --> P1
+  P1 -- finished, reset --> D3
+  P1 -- library, covers --> Reader
+
+  Reader -- open a book --> P2
+  D2 -- chapters --> P2
+  D5 -- text size, theme --> P2
+  D3 -- last position --> P2
+  P2 -- pages --> Reader
+
+  Reader -- page turn --> P3
+  P3 -- position, percent read --> D3
+
+  P2 -- chapter text --> P4
+  D6 -- saved underlines --> P4
+  Private -- saved underlines --> P4
+  P4 -- phrases --> Model
+  Model -- answers --> P4
+  P4 -- new underlines --> D6
+  P4 -- new underlines --> Private
+  P4 -- underlines, cards --> Reader
+  P4 -- return spot --> D4
+
+  Reader -- settings, query --> P5
+  P5 -- settings --> D5
+  P5 -- recent searches --> D4
+  P5 -- results --> Reader
+
+  Reader -- thumb, share choice --> P6
+  D6 -- the rated underline --> P6
+  P6 -- ratings --> D7
+  P6 -- shared ratings --> Public

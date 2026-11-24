@@ -1,0 +1,40 @@
+flowchart TB
+  App[iReadApp]
+  Nav[AppNav · current screen]
+  Box[AppContainer · builds everything]
+
+  App -- watches --> Nav
+  App -- asks to build --> Box
+
+  subgraph LibraryScreen["Library screen · lives as long as the app"]
+    LibView --> LibVM
+  end
+
+  subgraph ReaderScreen["Reader screen · built new for each book"]
+    ReaderView --> ReaderVM
+    ContentsView --> ReaderVM
+    MenuView[ReaderMenuView] --> ReaderVM
+    MenuView --> RatingVM
+    CardView[RefCardView] --> RatingVM
+    ThemeView[ThemeSettingsView] --> ReaderSettingsVM
+    SearchView --> SearchVM
+    ReaderVM -. owns .-> ReaderSettingsVM
+    ReaderVM -. owns .-> ReferenceVM
+    ReaderVM -. owns .-> RatingVM
+    ReaderVM -. makes when search opens .-> SearchVM
+  end
+
+  Box --> LibVM
+  Box --> ReaderVM
+
+  LibVM -- openReader --> Nav
+  ReaderVM -- closeReader --> Nav
+
+  LibVM --> Ctrls[Controllers]
+  ReaderVM --> Ctrls
+  ReaderSettingsVM --> Ctrls
+  SearchVM --> Ctrls
+  ReferenceVM --> Ctrls
+  RatingVM --> Ctrls
+  Ctrls --> Data[Repos and Services]
+  Data --> Store[(Files, iCloud, Apple APIs)]

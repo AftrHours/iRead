@@ -1,0 +1,36 @@
+sequenceDiagram
+  actor Reader
+  participant ReaderView
+  participant ReaderVM
+  participant ReaderCtrl
+  participant ProgressCtrl
+  participant ReferenceVM
+  participant RatingVM
+  participant BookContentRepo
+  participant ProgRepo
+
+  Reader->>ReaderView: tap a book
+  ReaderView->>ReaderVM: onAppear
+  ReaderVM->>ReaderCtrl: openBook
+  ReaderCtrl->>BookContentRepo: content
+  BookContentRepo-->>ReaderCtrl: chapters, paragraphs, sentences
+  ReaderVM->>ProgressCtrl: savedProgress
+  ProgressCtrl->>ProgRepo: progress
+  ProgRepo-->>ReaderVM: last position
+  ReaderVM->>ReaderCtrl: restorePosition, currentPage
+  ReaderVM->>ReferenceVM: bookOpened
+  ReaderVM->>RatingVM: bookOpened
+  RatingVM->>RatingVM: check iCloud, resend unsent ratings
+  ReaderCtrl-->>ReaderView: page
+
+  Reader->>ReaderView: swipe
+  ReaderView->>ReaderVM: pageChanged
+  ReaderVM->>ReaderCtrl: pageChanged
+  ReaderCtrl-->>ReaderVM: new progress
+  ReaderVM->>ProgressCtrl: pageRead
+  ProgressCtrl->>ProgRepo: save
+
+  Reader->>ReaderView: Back
+  ReaderVM->>ProgressCtrl: saveNow
+  ReaderVM->>ReferenceVM: close
+  ReaderVM-->>Reader: show library
