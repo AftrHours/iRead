@@ -44,7 +44,7 @@ struct BetaRecord: Codable, Sendable {
     var pid: Int32?
 }
 
-/// One writer preserves event order and lets export take a consistent snapshot between appends.
+/// Records events and hands them to `BetaCloudDelivery`, which sends them without asking. One writer keeps them in order.
 final class BetaAnalytics: NSObject, MXMetricManagerSubscriber, @unchecked Sendable {
     static let shared = BetaAnalytics()
     private let queue = DispatchQueue(label: "iRead.beta.events", qos: .utility)
@@ -66,7 +66,10 @@ final class BetaAnalytics: NSObject, MXMetricManagerSubscriber, @unchecked Senda
         let tester = defaults.string(forKey: "betaAnalyticsInstall") ?? UUID().uuidString
         if enabled { defaults.set(tester, forKey: "betaAnalyticsInstall") }
         self.init(folder: URL.applicationSupportDirectory.appending(path: "BetaAnalytics"), tester: tester, enabled: enabled)
-        if enabled { MXMetricManager.shared.add(self) }
+        if enabled {
+            removeTestFlightFiles()
+            MXMetricManager.shared.add(self)
+        }
     }
 
     init(folder: URL, tester: String, enabled: Bool) {
@@ -122,56 +125,32 @@ final class BetaAnalytics: NSObject, MXMetricManagerSubscriber, @unchecked Senda
                 let key = Self.digest(canonical) + "-\(index)"
                 append(BetaRecord(id: key, event: BetaEvent.crash.rawValue, timestamp: payload.timeStampEnd,
                                   tester: tester, launch: "", build: metadata.applicationBuildVersion, device: metadata.deviceType,
-                                  os: metadata.osVersion, category: crash.signal?.stringValue, pid: metadata.pid),
-                       observedFrom: payload.timeStampBegin)
+                                  os: metadata.osVersion, category: crash.signal?.stringValue, pid: metadata.pid))
             }
         }
     }
 
-    private var journal: URL { folder.appending(path: "events.jsonl") }
-
-    private func append(_ record: BetaRecord, observedFrom: Date? = nil) {
+    private func append(_ record: BetaRecord) {
         queue.async { [self] in
             do {
                 let encoder = JSONEncoder()
                 encoder.dateEncodingStrategy = .millisecondsSince1970
-                let bytes = try encoder.encode(record)
-                try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
-                if !FileManager.default.fileExists(atPath: journal.path) {
-                    var directory = folder
-                    var flags = URLResourceValues()
-                    flags.isExcludedFromBackup = true
-                    try directory.setResourceValues(flags)
-                    try bytes.write(to: journal, options: .atomic)
-                } else {
-                    let file = try FileHandle(forWritingTo: journal)
-                    defer { try? file.close() }
-                    try file.seekToEnd()
-                    // Prefix each append so even an interrupted previous line stays isolated.
-                    try file.write(contentsOf: Data([10]) + bytes)
-                }
-                try cloudDelivery.append(bytes, observedFrom: observedFrom ?? record.timestamp)
+                try cloudDelivery.append(try encoder.encode(record))
             } catch {
-                logger.error("Could not persist a beta analytics event or queue it for sharing.")
+                logger.error("Could not queue a beta analytics event.")
             }
         }
     }
 
-    func export() async throws -> Data {
-        try await withCheckedThrowingContinuation { continuation in
-            queue.async { [self] in
-                do {
-                    let data = try Data(contentsOf: journal)
-                    // A process killed mid-append can leave an incomplete final line.
-                    let lines = data.split(separator: 10)
-                    let records = lines.compactMap { line in
-                        try? JSONSerialization.jsonObject(with: Data(line)) as? [String: Any]
-                    }
-                    let report: [String: Any] = ["schemaVersion": 1, "events": records, "unreadableRecords": lines.count - records.count]
-                    continuation.resume(returning: try JSONSerialization.data(withJSONObject: report, options: [.sortedKeys]))
-                } catch {
-                    continuation.resume(throwing: error)
-                }
+    /// TestFlight builds kept every event in events.jsonl for export, and asked before sharing (sharing.json, one outbox
+    /// folder per answer). Neither is used now.
+    private func removeTestFlightFiles() {
+        queue.async { [folder] in
+            let files = FileManager.default
+            let old = (try? files.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)) ?? []
+            for url in old where ["events.jsonl", "sharing.json"].contains(url.lastPathComponent)
+                || UUID(uuidString: url.lastPathComponent) != nil {
+                try? files.removeItem(at: url)
             }
         }
     }

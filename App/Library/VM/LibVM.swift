@@ -66,52 +66,6 @@ final class LibVM {
     private(set) var bookActionError: String?
     private(set) var cloudAccount: CloudAccount = .unknown
     private var pickerFlow: String?
-    var betaReport: BetaReportDocument?
-    var isExportingBetaReport = false
-
-    private(set) var sharesBetaAnalytics = BetaAnalytics.shared.cloudDelivery.isSharing
-    var isBetaConsentPresented = false
-
-    func betaSharingTapped() {
-        if sharesBetaAnalytics {
-            setBetaSharing(false)
-        } else if BetaAnalytics.shared.cloudDelivery.isAvailable {
-            isBetaConsentPresented = true
-        } else {
-            bookActionError = "This build can export beta analytics locally. CloudKit sharing requires an iCloud-enabled build."
-        }
-    }
-
-    func allowBetaSharing() {
-        setBetaSharing(true)
-    }
-
-    private func setBetaSharing(_ enabled: Bool) {
-        do {
-            try BetaAnalytics.shared.cloudDelivery.setSharing(enabled)
-        } catch {
-            bookActionError = "Couldn’t update beta analytics sharing."
-        }
-        sharesBetaAnalytics = BetaAnalytics.shared.cloudDelivery.isSharing
-    }
-
-    func exportBetaReport() {
-        Task {
-            do {
-                betaReport = try await BetaReportDocument(data: BetaAnalytics.shared.export())
-                isExportingBetaReport = true
-            } catch {
-                bookActionError = "Couldn’t prepare the beta analytics report."
-            }
-        }
-    }
-
-    func exportCompleted(_ result: Result<URL, Error>) {
-        betaReport = nil
-        if case .failure(let error) = result, (error as? CocoaError)?.code != .userCancelled {
-            bookActionError = "Couldn’t save the beta analytics report."
-        }
-    }
 
     private(set) var newestImportedBookID: UUID?
     private var lastImport: Task<Void, Never>?

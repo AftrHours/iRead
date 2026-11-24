@@ -26,33 +26,14 @@ struct BetaCloudDeliveryTests {
         let events: [Entry]
     }
 
-    @Test("Only events after explicit consent are uploaded, while export retains earlier events")
-    func consentBoundary() async throws {
+    @Test("Events are sent without asking, only to the developers' database")
+    func sentWithoutAsking() async throws {
         let recorder = recorder()
         recorder.record(.importStarted)
-        try recorder.cloudDelivery.setSharing(true)
         recorder.record(.readerReady)
         recorder.cloudDelivery.flush()
-        #expect(await eventually { (try? sharedEvents()) == ["readerReady"] })
+        #expect(await eventually { Set((try? sharedEvents()) ?? []).isSuperset(of: ["appStarted", "importStarted", "readerReady"]) })
         #expect(cloud.records(in: .reader).isEmpty)
-        let local = try await JSONDecoder().decode(Report.self, from: recorder.export())
-        #expect(local.events.map(\.event).contains("importStarted"))
-    }
-
-    @Test("Revoking consent discards queued events, including after opting in again")
-    func revokeAndReenable() async throws {
-        let recorder = recorder()
-        cloud.isOffline = true
-        try recorder.cloudDelivery.setSharing(true)
-        recorder.record(.importFailed)
-        recorder.cloudDelivery.flush()
-        try recorder.cloudDelivery.setSharing(false)
-        recorder.record(.referenceCardOpened)
-        cloud.isOffline = false
-        try recorder.cloudDelivery.setSharing(true)
-        recorder.record(.pageAdvanced)
-        recorder.cloudDelivery.flush()
-        #expect(await eventually { (try? sharedEvents()) == ["pageAdvanced"] })
     }
 
     private actor LostAcknowledgement: CloudSvc {
@@ -79,7 +60,6 @@ struct BetaCloudDeliveryTests {
         let destination = LostAcknowledgement()
         let recorder = recorder()
         recorder.cloudDelivery.connect(destination)
-        try recorder.cloudDelivery.setSharing(true)
         recorder.record(.referenceCardOpened)
         recorder.cloudDelivery.flush()
         #expect(await eventually { await destination.names.count == 1 })
@@ -92,24 +72,33 @@ struct BetaCloudDeliveryTests {
         #expect(destination.storage.records(in: .developers).count == 1)
     }
 
-    @Test("A signed-out batch survives restart and a later flush sends one copy")
+    @Test("A batch kept while signed out survives a restart and is sent once")
     func offlineRelaunch() async throws {
         cloud.isOffline = true
         do {
             let first = recorder()
-            try first.cloudDelivery.setSharing(true)
             first.record(.importSucceeded)
             first.cloudDelivery.flush()
-            _ = try await first.export()
-            #expect(cloud.records(in: .developers).isEmpty)
+            #expect(await eventually(within: 1) { !cloud.records(in: .developers).isEmpty } == false)
         }
         cloud.isOffline = false
         let second = recorder()
-        #expect(second.cloudDelivery.isSharing)
         second.cloudDelivery.flush()
         #expect(await eventually { (try? sharedEvents().filter { $0 == "importSucceeded" }.count) == 1 })
         second.cloudDelivery.flush()
-        #expect(await eventually { (try? sharedEvents().filter { $0 == "appStarted" }.count) == 1 })
+        #expect(await eventually { (try? sharedEvents().filter { $0 == "appStarted" }.count) == 2 })
         #expect(try sharedEvents().filter { $0 == "importSucceeded" }.count == 1)
+    }
+
+    @Test("While events can't be sent, only the newest batches are kept")
+    func queueLimit() async throws {
+        cloud.isOffline = true
+        let recorder = recorder()
+        let large = String(repeating: "x", count: BetaCloudDeliveryKnobs.batchBytes)
+        let batches = BetaCloudDeliveryKnobs.maxQueuedBatches + 5
+        for _ in 0..<batches { recorder.record(.recoverableError, category: large) }
+        let outbox = folder.url.appending(path: "outbox")
+        let sealed = { (try? FileManager.default.contentsOfDirectory(atPath: outbox.path))?.filter { $0.hasSuffix(".batch") }.count }
+        #expect(await eventually { sealed() == BetaCloudDeliveryKnobs.maxQueuedBatches })
     }
 }

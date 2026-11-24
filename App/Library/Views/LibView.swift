@@ -94,17 +94,6 @@ struct LibView: View {
             Button("Delete Everywhere", role: .destructive, action: libVM.removeConfirmed)
             Button("Cancel", role: .cancel, action: libVM.removeCancelled)
         }
-        .fileExporter(isPresented: $libVM.isExportingBetaReport, document: libVM.betaReport,
-                      contentType: .json, defaultFilename: "Refrn Beta Analytics", onCompletion: libVM.exportCompleted)
-        .alert("Share beta analytics?", isPresented: $libVM.isBetaConsentPresented) {
-            Button("Share", action: libVM.allowBetaSharing)
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            Text("""
-            Send new usage, performance, and crash events to the Refrn team through iCloud using a random installation ID. \
-            These reports exclude book titles, passages, and search terms.
-            """)
-        }
         .alert("Rename Book", isPresented: $libVM.isRenameAlertPresented) {
             TextField("Title", text: $libVM.renameDraft)
             Button("Save", action: libVM.renameConfirmed)

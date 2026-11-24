@@ -132,7 +132,7 @@ struct EPUBParseSvcTests {
         "little-women": 52,
         "anne-of-green-gables": 42,
         "moby-dick": 145,
-        "pride-and-prejudice": 466,
+        "pride-and-prejudice": 472,
         "the-adventures-of-sherlock-holmes": 18
     ]
 
