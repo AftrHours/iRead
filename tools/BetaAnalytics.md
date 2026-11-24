@@ -1,25 +1,26 @@
 # Beta analytics
 
-In the Library, open the ellipsis menu, choose **Export Beta Analytics**, then save the JSON file in Files. Each export contains this installation’s event history. From the iRead checkout, combine exports into one summary with Python 3. No packages or account are required.
+The app sends anonymous usage, performance and crash events to the team without asking. There is no export and no on-device
+history: events wait in a small queue until they are sent.
 
-```sh
-python3 tools/beta_report.py ~/Downloads/refrn-reports/*.json > beta-summary.json
-```
+## How events reach CloudKit
 
-Overlapping exports are deduplicated by installation and event ID. A tester is one random installation ID. A reinstall or a second device can count as a separate tester. The journal is local to the app and excluded from device backup. Exported fields include build, device model, OS, timestamps, durations, and opaque identifiers. Book titles, authors, filenames, searches, underlined text, quotes, and raw error messages are excluded. An export is cumulative. Uninstalling removes the journal and any batches still waiting on that device.
+Every event goes into an outbox on the device (`Application Support/BetaAnalytics/outbox`, excluded from backup). The app seals
+it into batches of up to 32 KB and sends each one to the public database of `iCloud.com.aftrhours.reader` as a
+`BetaAnalyticsBatch` record: about 10 seconds after new events, at launch, and when the app returns to the foreground. Each sealed
+batch has a stable record name across retries, and a failed send is retried later, waiting longer each time (up to 15 minutes).
+A device that isn't signed in to iCloud, or is offline, keeps at most 30 batches and drops the oldest. Uninstalling removes them.
 
-## Share beta analytics through CloudKit
-
-In an iCloud-enabled build, open **Library → … → Share Beta Analytics** and confirm. The choice is specific to this installation and independent of reference-rating consent. Only events observed from that point are eligible. Delayed crash diagnostics are eligible only when their reporting interval began after opt-in. Reports include a random installation ID, event timing, build, device model, and OS. They exclude book titles, passages, filenames, searches, and raw errors.
-
-The recorder seals small batches and sends them to the public database of `iCloud.com.aftrhours.reader`. Each sealed batch has a stable CloudKit record name across retries. A signed-out or offline device keeps eligible batches locally and retries while the app runs and when it returns to the foreground. **Stop Sharing Beta Analytics** discards queued batches and stops future uploads. A request already accepted by CloudKit may finish. Previously received records remain available to the team. Manual export still includes the full local journal.
+Reports include a random installation ID, event timing, build, device model and OS. They exclude book titles, passages,
+filenames, searches and raw errors. In debug builds, the reader's debug sheet (ladybug → iCloud → Analytics) shows how many
+batches are waiting and how the last send went.
 
 ### Enable the team build
 
 1. Use the container-owning team's signing configuration. The main app needs the `CloudKit` service and `iCloud.com.aftrhours.reader` entitlement. The app's normal `AppContainer` initializer supplies `CloudSvcCloudKit()`; a local build that explicitly supplies `nil` supports manual export only.
 2. In CloudKit Console, open the container's **Development → Schema**. Create the `BetaAnalyticsBatch` record type with one String field named `report`. Add a Queryable index on `recordName`.
 3. Configure record permissions before inviting testers. Allow Authenticated users to create and Creators to update their own records for retries. Remove general Read from both World and Authenticated. Use a team reporting account authorized to read across creators. Verify with two accounts that a tester cannot query another tester's batch and the reporting account can.
-4. On a signed-in device, opt in, open a book, and tap a reference. In CloudKit Console, check **Development → Public Database → _defaultZone → BetaAnalyticsBatch**. Then deploy the schema and permissions to Production for TestFlight, upload the team-signed build, and repeat the check under **Production**.
+4. On a signed-in device, run the app for about 10 seconds, open a book, and tap a reference. In CloudKit Console, check **Development → Public Database → _defaultZone → BetaAnalyticsBatch**. Then deploy the schema and permissions to Production, upload the team-signed build, and repeat the check under **Production**.
 
 ### Retrieve the team's report
 
@@ -30,7 +31,7 @@ xcrun cktool save-token --type user
 python3 tools/beta_report.py --cloudkit production > beta-summary.json
 ```
 
-Use `--cloudkit development` for Xcode test builds. The tool follows CloudKit's continuation tokens, combines batches, and deduplicates events by installation and event ID. You can also pass local JSON exports to the same command. Keep the reporting token on the team's Mac.
+Use `--cloudkit development` for Xcode test builds. The tool follows CloudKit's continuation tokens, combines batches, and deduplicates events by installation and event ID. Keep the reporting token on the team's Mac.
 
 | Measurement | Definition |
 | --- | --- |

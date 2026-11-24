@@ -137,7 +137,8 @@ final class UnderlineDebugVM {
         return [
             "Account: \(account)",
             "This chapter: \(await refCtrl.cloudResult(inChapter: chapterIndex) ?? "still underlining")",
-            "Ratings: sharing \(sharing) · \(ratings.unsent) waiting to send" + (ratings.lastSend.map { " · \($0)" } ?? "")
+            "Ratings: sharing \(sharing) · \(ratings.unsent) waiting to send" + (ratings.lastSend.map { " · \($0)" } ?? ""),
+            "Analytics: \(BetaAnalytics.shared.cloudDelivery.status)"
         ]
     }
 }
