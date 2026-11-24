@@ -33,6 +33,10 @@ packages:
     url: https://github.com/AftrHours/UnderlineEngine
     # Bump UnderlineRepoKnobs.engineVersion when you change this revision.
     revision: 3a2efb57dac193084ce2711d07a816fd62988b07 # 1.2.0
+  # Plays the splash screen animation (a .lottie file). The exact version used is in the committed Package.resolved.
+  Lottie:
+    url: https://github.com/airbnb/lottie-spm.git
+    from: 4.6.1
   # Runs SwiftLint on every build, using the rules in .swiftlint.yml. Xcode asks once to "Trust & Enable" it.
   SwiftLintPlugins:
     url: https://github.com/SimplyDanny/SwiftLintPlugins
@@ -59,6 +63,7 @@ targets:
       - package: EPUBKit
       - package: UnderlineEngine
         product: UnderlineKit
+      - package: Lottie
       - target: iReadShare
     buildToolPlugins:
       - plugin: SwiftLintBuildToolPlugin

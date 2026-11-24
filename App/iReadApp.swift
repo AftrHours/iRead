@@ -49,6 +49,7 @@ struct iReadApp: App {
                 }
                 readerVM = appContainer.makeReaderVM(book: book)
             }
+            .splashScreen()
         }
     }
 }
