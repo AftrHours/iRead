@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LibraryBookCollection<Header: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.libraryImportDestination) private var destination
     let items: [LibraryBookItemVM]
     let layout: LibraryLayout
     let onBookTapped: (BookRecord) -> Void
@@ -14,8 +15,18 @@ struct LibraryBookCollection<Header: View>: View {
     @ViewBuilder let header: () -> Header
 
     var body: some View {
-        scrollingContent
-            .scrollEdgeEffectStyle(.soft, for: .top)
+        ScrollViewReader { reader in
+            scrollingContent
+                .scrollEdgeEffectStyle(.soft, for: .top)
+                .task(id: destination) {
+                    guard let destination else { return }
+                    if items.first?.id == destination {
+                        reader.scrollTo("libraryTop", anchor: .top)
+                    } else {
+                        reader.scrollTo(destination, anchor: .center)
+                    }
+                }
+        }
     }
 
     private var scrollingContent: some View {
@@ -40,10 +51,13 @@ struct LibraryBookCollection<Header: View>: View {
                 }
 
                 books
+                    .environment(\.isBrowsingLibraryOnPhone, layout.isBrowsingOnPhone)
+                    .environment(\.isSelectingLibraryOnPhone, layout.isSelectingOnPhone)
                     .padding(.horizontal, layout.collectionSideMargin)
                     .accessibilityElement(children: .contain)
             }
             .padding(.bottom, 28)
+            .id("libraryTop")
         }
         .onScrollGeometryChange(for: CGFloat.self) { geometry in
             geometry.contentOffset.y + geometry.contentInsets.top
@@ -63,19 +77,23 @@ struct LibraryBookCollection<Header: View>: View {
                     }
                     .accessibilityElement(children: .contain)
                     .environment(\.libraryBookMenuPriority, Double(items.count - index) * 2)
+                    .id(item.id)
                 }
             }
         case .list:
-            LazyVStack(spacing: layout.rowSpacing) {
+            LazyVStack(spacing: layout.usesPhoneListSpacing ? 0 : layout.rowSpacing) {
                 ForEach(items.enumerated(), id: \.element.id) { index, item in
                     BookRowView(item: item, menu: bookMenu(for: item)) {
                         onBookTapped(item.book)
                     }
                     .accessibilityElement(children: .contain)
                     .environment(\.libraryBookMenuPriority, Double(items.count - index) * 2)
+                    .id(item.id)
                     Rectangle()
                         .fill(AppColors.libraryListDivider)
                         .frame(height: 1)
+                        .padding(.top, layout.usesPhoneListSpacing ? 15 : 0)
+                        .padding(.bottom, layout.usesPhoneListSpacing ? 16 : 0)
                         .accessibilityHidden(true)
                 }
             }

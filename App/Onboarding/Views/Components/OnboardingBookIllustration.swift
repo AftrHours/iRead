@@ -1,34 +1,67 @@
 import SwiftUI
 
-/// Decorative book tile used in the upload introduction.
 struct OnboardingBookIllustration: View {
-    let symbol: String
-    let tint: Color
-    let rotation: Double
+    let book: BookRecord
+    let image: UIImage?
+    let showsDetails: Bool
+
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
-        GeometryReader { proxy in
-            Image(systemName: symbol)
-                .font(.system(size: min(42, proxy.size.width * 0.46), weight: .regular))
-                .foregroundStyle(tint)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(LibraryPalette.card, in: .rect(cornerRadius: 12))
-                .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
-                .rotationEffect(.degrees(rotation))
+        VStack(alignment: .leading, spacing: 0) {
+            BookCoverView(image: image)
+            if showsDetails {
+                VStack(alignment: .leading, spacing: 4) {
+                    Capsule().fill(AppColors.progressBarBg).frame(height: 4)
+                    Text(book.title).font(AppTypography.footnote(.semibold))
+                        .foregroundStyle(AppColors.cardTextPrimary)
+                    Text(book.author).font(AppTypography.caption1())
+                        .foregroundStyle(AppColors.cardTextSecondary)
+                }
+                .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 1)
+                .padding(10)
+            }
         }
-        .frame(maxWidth: 90)
-        .aspectRatio(0.8, contentMode: .fit)
-        .accessibilityHidden(true)
+        .background(AppColors.cardBg)
+        .clipShape(.rect(cornerRadius: showsDetails ? 12 : 0))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(book.title), \(book.author)")
     }
 }
 
-#Preview("Book Illustrations") {
-    HStack(spacing: 12) {
-        OnboardingBookIllustration(symbol: "book.closed.fill", tint: LibraryPalette.addButton, rotation: -8)
-        OnboardingBookIllustration(symbol: "text.book.closed.fill", tint: LibraryPalette.secondaryText, rotation: 7)
-        OnboardingBookIllustration(symbol: "book.closed.fill", tint: LibraryPalette.controlFill, rotation: -3)
+/// Both onboarding carousels advance one book every three seconds.
+struct OnboardingBookCarousel<Card: View>: View {
+    let books: [BookRecord]
+    let spacingBetweenCenters: CGFloat
+    let centerIndex: Int
+    let isActive: Bool
+    @ViewBuilder let card: (BookRecord) -> Card
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var start = Date.now
+
+    var body: some View {
+        let playing = isActive && !reduceMotion && scenePhase == .active && books.count > 1
+        TimelineView(.animation(minimumInterval: 1.0 / 30, paused: !playing)) { timeline in
+            let position = playing ? max(0, timeline.date.timeIntervalSince(start)) / 3 : 0
+            let step = Int(position)
+            let fraction = CGFloat(position - Double(step))
+            ZStack {
+                if books.count == 1 {
+                    card(books[0])
+                } else if !books.isEmpty {
+                    // Include the next book just outside either edge for a seamless wrap.
+                    ForEach(-3...3, id: \.self) { slot in
+                        let index = (step + centerIndex + slot) % books.count
+                        card(books[(index + books.count) % books.count])
+                            .offset(x: (CGFloat(slot) - fraction) * spacingBetweenCenters)
+                    }
+                }
+            }
+        }
+        .onChange(of: playing, initial: true) { start = .now }
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
     }
-    .padding()
-    .frame(width: 360)
-    .background(LibraryPalette.page)
 }

@@ -5,28 +5,35 @@ struct ProgressBar: View {
     enum Style {
         case card
         case list
-
-        var horizontalInset: CGFloat { self == .card ? 11 : 0 }
-        var height: CGFloat { self == .card ? 8 : 4 }
     }
 
+    @Environment(\.isBrowsingLibraryOnPhone) private var isPhoneBrowse
+    @Environment(\.isSelectingLibraryOnPhone) private var isPhoneSelection
     let progress: LibraryProgressVM
     var style: Style = .card
 
+    private var inset: CGFloat { style == .card ? (isPhoneBrowse ? 12 : 11) : 0 }
+    private var height: CGFloat {
+        switch style {
+        case .card: isPhoneBrowse || isPhoneSelection ? 10 : 8
+        case .list: isPhoneBrowse || isPhoneSelection ? 5 : 4
+        }
+    }
+
     var body: some View {
         GeometryReader { geometry in
-            let barWidth = max(0, geometry.size.width - style.horizontalInset * 2)
+            let barWidth = max(0, geometry.size.width - inset * 2)
             ZStack(alignment: .leading) {
                 Capsule().fill(AppColors.progressBarBg)
                 Capsule()
                     .fill(AppColors.progressBarLine)
                     .frame(width: barWidth * progress.fraction)
             }
-            .frame(width: barWidth, height: style.height, alignment: .leading)
+            .frame(width: barWidth, height: height, alignment: .leading)
             .clipShape(Capsule())
-            .frame(width: geometry.size.width, height: style.height, alignment: .center)
+            .frame(width: geometry.size.width, height: height, alignment: .center)
         }
-        .frame(height: style.height)
+        .frame(height: height)
         .accessibilityElement()
         .accessibilityLabel(progress.accessibilityLabel)
     }

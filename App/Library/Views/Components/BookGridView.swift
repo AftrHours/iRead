@@ -2,20 +2,32 @@ import SwiftUI
 
 struct BookGridView<MenuButton: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.isBrowsingLibraryOnPhone) private var isPhoneBrowse
+    @Environment(\.isSelectingLibraryOnPhone) private var isPhoneSelection
     let item: LibraryBookItemVM
     var isSearchResult = false
     let menu: MenuButton
     let onTap: () -> Void
 
     var body: some View {
+        let selected = item.showsSelection && item.isSelected
+        let maximumScale: CGFloat = item.showsSelection ? 1.05 : 1
+        GridCardSlot(scale: maximumScale) {
+            card
+                .shadow(color: selected ? .white.opacity(0.65) : .clear, radius: 8)
+                .scaleEffect(selected ? maximumScale : 1)
+        }
+    }
+
+    private var card: some View {
         LibraryBookButton(item: item, action: onTap) {
             VStack(alignment: .leading, spacing: 0) {
-                BookCoverView(image: item.cover)
+                BookCoverView(image: item.cover, bookID: item.id)
                     .overlay(.black.opacity(item.showsSelection && !item.isSelected ? 0.5 : 0))
                 ProgressBar(progress: item.progress)
                     .opacity(item.showsSelection && !item.isSelected ? 0.5 : 1)
-                    .padding(.top, 10)
-                HStack(spacing: 4) {
+                    .padding(.top, isPhoneSelection ? 11 : (isPhoneBrowse ? 12 : 10))
+                HStack(spacing: isPhoneBrowse ? 0 : 4) {
                     bookDetails
                         .frame(maxWidth: .infinity, minHeight: 42, alignment: .leading)
                     if !item.showsSelection {
@@ -25,9 +37,10 @@ struct BookGridView<MenuButton: View>: View {
                             .anchorPreference(key: BookMenuCenter.self, value: .center) { $0 }
                     }
                 }
-                .padding(.top, 9)
-                .padding(.horizontal, 12)
-                .padding(.bottom, 15)
+                .padding(.top, isPhoneSelection ? 7 : 9)
+                .padding(.leading, 12)
+                .padding(.trailing, isPhoneBrowse ? 0 : 12)
+                .padding(.bottom, isPhoneSelection ? 11 : (isPhoneBrowse ? 12 : 15))
             }
             .background(AppColors.cardBg)
             .clipShape(.rect(cornerRadius: 16))
@@ -48,16 +61,32 @@ struct BookGridView<MenuButton: View>: View {
     }
 
     private var bookDetails: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: isPhoneBrowse ? 4 : 6) {
             Text(item.title)
-                .font(isSearchResult ? AppTypography.subheadline(.semibold) : AppTypography.footnote(.semibold))
+                .font(isSearchResult || isPhoneBrowse ? AppTypography.subheadline(.semibold) : AppTypography.footnote(.semibold))
                 .foregroundStyle(AppColors.cardTextPrimary)
                 .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 1)
             Text(item.author)
-                .font(isSearchResult ? AppTypography.footnote(.medium) : AppTypography.caption1(.medium))
+                .font(isSearchResult || isPhoneBrowse ? AppTypography.footnote(.medium) : AppTypography.caption1(.medium))
                 .foregroundStyle(AppColors.cardTextSecondary)
                 .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 1)
         }
+    }
+}
+
+/// Reserve the enlarged height before selection so checking a book never moves the next row.
+private struct GridCardSlot: Layout {
+    let scale: CGFloat
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        guard let card = subviews.first else { return .zero }
+        let size = card.sizeThatFits(ProposedViewSize(width: proposal.width, height: nil))
+        return CGSize(width: size.width, height: size.height * scale)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        subviews.first?.place(at: CGPoint(x: bounds.midX, y: bounds.midY), anchor: .center,
+                              proposal: ProposedViewSize(width: bounds.width, height: nil))
     }
 }
 

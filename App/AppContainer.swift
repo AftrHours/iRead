@@ -25,7 +25,7 @@ struct AppContainer {
     /// For SwiftUI previews: nothing goes to iCloud.
     /// Not limited to debug builds, so a #Preview without #if DEBUG still builds for TestFlight. The app never calls it.
     static func forPreviews() -> AppContainer {
-        AppContainer(cloudSvc: nil)
+        AppContainer(cloudSvc: CloudSvcCloudKit())
     }
 
     private init(cloudSvc: (any CloudSvc)?) {
@@ -50,10 +50,7 @@ struct AppContainer {
     }
 
     func makeOnboardingVM(using libVM: LibVM) -> OnboardingVM {
-        let onboarding = OnboardingVM { urls in await libVM.importFiles(.success(urls)) }
-        onboarding.onPickerStarted = { libVM.pickerStarted(source: "onboarding") }
-        onboarding.onPickerFailed = libVM.pickerFailed
-        return onboarding
+        OnboardingVM(library: libVM)
     }
 
     func makeReaderVM(book: BookRecord) -> ReaderVM {
@@ -131,7 +128,7 @@ enum PreviewFixtures {
     }
 
     static func onboardingVM() -> OnboardingVM {
-        OnboardingVM { _ in true }
+        OnboardingVM(library: libraryVM())
     }
 
     static func readerVM() -> ReaderVM {

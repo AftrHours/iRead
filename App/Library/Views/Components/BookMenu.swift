@@ -11,6 +11,7 @@ struct BookMenu: View {
     }
 
     @Environment(\.libraryBookMenuPriority) private var menuPriority
+    @Environment(\.isBrowsingLibraryOnPhone) private var isPhoneBrowse
     let item: LibraryBookItemVM
     var style: Style = .list
     let onFinished: () -> Void
@@ -31,7 +32,8 @@ struct BookMenu: View {
             Image(systemName: "ellipsis")
                 .font(.body)
                 .foregroundStyle(style.iconColor)
-                .libraryIconFrame(44, alignment: style.iconAlignment)
+                .padding(.trailing, isPhoneBrowse ? (style == .card ? 11 : 3) : 0)
+                .libraryIconFrame(44, alignment: isPhoneBrowse ? .trailing : style.iconAlignment)
                 .contentShape(.rect)
         }
         .tint(.secondary)
