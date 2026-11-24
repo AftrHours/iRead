@@ -31,6 +31,16 @@ struct LibView: View {
         .safeAreaInset(edge: .bottom, spacing: 0) {
             if libVM.isSelectionMode { selectionActions }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .allowsHitTesting(!libVM.isOptionsMenuPresented)
+        .accessibilityHidden(libVM.isOptionsMenuPresented)
+        .overlayPreferenceValue(LibraryMenuAnchor.self) { source in
+            GeometryReader { geometry in
+                LibraryMenuTransition(libVM: libVM, sourceFrame: source.map { geometry[$0.bounds] },
+                                      iconFont: source?.font ?? AppTypography.body(.medium), isPad: layout.isPad)
+            }
+            .allowsHitTesting(libVM.isOptionsMenuPresented)
+        }
         .allowsHitTesting(importPresentationID == nil)
         .accessibilityHidden(importPresentationID != nil)
         .overlay {
@@ -59,6 +69,7 @@ struct LibView: View {
             }
         }
         .onDisappear {
+            libVM.isOptionsMenuPresented = false
             libVM.stopDictation()
             scrollToImportedBook = nil
             resetImportPresentation()
