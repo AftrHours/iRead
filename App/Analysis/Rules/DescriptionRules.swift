@@ -4,13 +4,18 @@ enum DescriptionRulesKnobs {
     static let body: Set<String> = [
         "hair", "eyes", "eye", "face", "nose", "mouth", "lips", "chin", "cheeks", "skin", "complexion", "hands", "feet", "limbs",
         "figure", "shoulders", "voice", "smile", "features", "brow", "forehead", "teeth", "beard", "moustache", "mien", "countenance",
-        "freckles", "curls"
+        "freckles", "curls", "jaw", "neck", "brows", "eyebrows", "lashes", "eyelashes", "nostrils", "temples", "wrinkles", "scar",
+        "whiskers", "spectacles", "frame", "build", "stature", "physique", "gait", "bearing", "expression", "visage", "physiognomy",
+        "locks", "tresses", "braids", "plaits", "pigtails", "ringlets", "fingers"
     ]
     /// Half a point each: they describe rooms and gardens too.
     static let looks: Set<String> = [
         "tall", "short", "thin", "slender", "slim", "plump", "stout", "pretty", "handsome", "beautiful", "plain", "pale", "rosy",
         "fair", "dark", "brown", "blonde", "curly", "good-looking", "gentlemanlike", "ugly", "lovely", "freckled", "bald", "graceful",
-        "elegant", "awkward"
+        "elegant", "awkward", "lean", "gaunt", "wiry", "lanky", "bony", "burly", "portly", "sturdy", "muscular", "petite", "delicate",
+        "frail", "swarthy", "ruddy", "sallow", "tanned", "sunburnt", "wrinkled", "grizzled", "auburn", "red-haired", "white-haired",
+        "grey-haired", "gray-haired", "dark-haired", "fair-haired", "hook-nosed", "clean-shaven", "bearded", "homely", "comely",
+        "striking", "dapper", "shabby", "untidy"
     ]
     static let traits: Set<String> = [
         "shy", "timid", "proud", "vain", "gentle", "kind", "clever", "bold", "quiet", "lively", "merry", "cheerful", "generous",
@@ -18,19 +23,28 @@ enum DescriptionRulesKnobs {
         "fierce", "sweet", "tomboy", "dignified", "polite", "rude", "careless", "serious", "solemn", "grave", "affectionate",
         "mischievous", "obstinate", "stubborn", "honest", "amiable", "agreeable", "disagreeable", "sensible", "silly", "reserved",
         "reserve", "haughty", "conceited", "humour", "humor", "wit", "spirits", "temperament", "playful", "intelligent", "foolish",
-        "wise", "stern", "cruel", "brave", "cowardly", "curious", "loyal", "jealous"
+        "wise", "stern", "cruel", "brave", "cowardly", "curious", "loyal", "jealous", "shrewd", "cunning", "sly", "kind-hearted",
+        "warm-hearted", "good-natured", "ill-natured", "good-humoured", "good-humored", "eccentric", "melancholy", "moody", "sullen",
+        "gloomy", "irritable", "quick-tempered", "hot-tempered", "imaginative", "dreamy", "romantic", "talkative", "chatty",
+        "taciturn", "sociable", "ambitious", "energetic", "restless", "earnest", "sincere", "frank", "pious", "superstitious",
+        "prudent", "reckless", "daring", "fearless", "courageous", "modest", "humble", "arrogant", "pompous", "greedy", "miserly",
+        "resolute", "determined", "eloquent", "observant", "methodical", "monomaniac"
     ]
     /// "was a rosy, smooth-haired, bright-eyed girl of thirteen"
-    static let roles = "girl|boy|woman|man|lady|gentleman|child|person|servant|maid|fellow|creature|youth|widow|soldier"
-    static let describingVerbs = "was|is|had|has|looked|seemed|became|grew"
+    static let roles = "girl|boy|woman|man|lady|gentleman|child|person|servant|maid|fellow|creature|youth|widow|soldier|lad|lass|"
+        + "spinster|bachelor|orphan|sailor|captain|doctor|clergyman|governess|nurse|housekeeper|merchant|farmer|detective|officer|"
+        + "stranger|beauty|scholar|teacher|student"
+    static let describingVerbs = "was|is|had|has|looked|seemed|became|grew|appeared|wore"
     static let ageWords = "one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|"
-        + "eighteen|nineteen|twenty|\\d+"
+        + "eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|\\d+"
     /// A description often runs on: "…was very tall, thin, and brown… She had a decided mouth, a comical nose…"
     static let followingSentences = 2
-    static let maleTitles: Set<String> = ["mr", "sir", "lord", "captain", "colonel", "uncle", "master", "father", "monsieur"]
-    static let femaleTitles: Set<String> = ["mrs", "miss", "ms", "lady", "aunt", "madam", "madame", "mother", "mademoiselle"]
+    static let maleTitles: Set<String> = ["mr", "sir", "lord", "captain", "colonel", "uncle", "master", "father", "monsieur", "count",
+                                          "duke", "prince", "king", "baron", "signor", "senor", "herr"]
+    static let femaleTitles: Set<String> = ["mrs", "miss", "ms", "lady", "aunt", "madam", "madame", "mother", "mademoiselle", "countess",
+                                            "duchess", "princess", "queen", "baroness", "signora", "senora", "frau", "dame", "mistress"]
     static let male: Set<String> = ["he", "him", "his", "himself", "boy", "man", "gentleman", "lad", "fellow"]
-    static let female: Set<String> = ["she", "her", "hers", "herself", "girl", "woman", "lady"]
+    static let female: Set<String> = ["she", "her", "hers", "herself", "girl", "woman", "lady", "lass"]
     /// A description that names no one has to be a strong one to be given to the nearest character.
     static let unnamedMinimumCues: Double = 4
     /// How far back the nearest character is looked for.
