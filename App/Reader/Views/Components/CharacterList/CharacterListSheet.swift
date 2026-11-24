@@ -9,30 +9,20 @@ struct CharacterListSheet: View {
 
     var body: some View {
         NavigationStack {
-            content
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(AppColors.sheetbg)
-                .searchable(
-                    text: Binding(get: { characterVM.query }, set: { characterVM.queryChanged($0) }),
-                    isPresented: $isSearchPresented,
-                    prompt: "Search character"
-                )
-                .searchPresentationToolbarBehavior(.avoidHidingContent)
-                .onSubmit(of: .search) { characterVM.querySubmitted() }
-                .navigationTitle("Characters so far")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    // While searching, the search field has its own ×.
-                    if !isSearchPresented {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Button(role: .close) {
-                                dismiss()
-                            }
-                            .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
-                        }
-                    }
-                    DefaultToolbarItem(kind: .search, placement: .bottomBar)
-                }
+            // With no characters there is nothing to search.
+            if characterVM.showsEmptyState {
+                page(CharacterEmptyState(illustration: "CharacterEmptyState", title: "No character yet.\nKeep reading!"))
+            } else {
+                page(content)
+                    .searchable(
+                        text: Binding(get: { characterVM.query }, set: { characterVM.queryChanged($0) }),
+                        isPresented: $isSearchPresented,
+                        prompt: "Search character"
+                    )
+                    .searchPresentationToolbarBehavior(.avoidHidingContent)
+                    .onSubmit(of: .search) { characterVM.querySubmitted() }
+                    .toolbar { DefaultToolbarItem(kind: .search, placement: .bottomBar) }
+            }
         }
         .presentationDetents([.large])
         .presentationDragIndicator(.visible)
@@ -40,17 +30,34 @@ struct CharacterListSheet: View {
         .onDisappear(perform: characterVM.sheetClosed)
     }
 
+    private func page(_ content: some View) -> some View {
+        content
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(AppColors.sheetbg)
+            .navigationTitle("Characters so far")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                // While searching, the search field has its own ×.
+                if !isSearchPresented {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button(role: .close) {
+                            dismiss()
+                        }
+                        .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
+                    }
+                }
+            }
+    }
+
     @ViewBuilder
     private var content: some View {
         if !characterVM.hasLoaded {
             ProgressView()
-        } else if characterVM.showsEmptyState {
-            CharacterEmptyState(illustration: "LibraryEmptyState", title: "No character yet.\nKeep reading!")
         } else if isSearchPresented, characterVM.query.isEmpty, !characterVM.recentSearches.isEmpty {
             recentSearches
         } else if characterVM.showsNotFound {
-            CharacterEmptyState(illustration: "SearchEmptyState", title: "Uh oh we can’t find that here...",
-                                message: "Make sure you spell the name correctly.")
+            CharacterEmptyState(illustration: "CharacterSearchEmptyState", title: "Uh oh we can’t find that here...",
+                                message: "Make sure you spell the character correctly!")
         } else {
             characterList
         }
@@ -67,6 +74,7 @@ struct CharacterListSheet: View {
             )
             .listRowBackground(Color.clear)
             .listRowInsets(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+            .listRowSeparator(.hidden, edges: character.id == characterVM.shownCharacters.first?.id ? .top : [])
         }
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
@@ -88,6 +96,7 @@ struct CharacterListSheet: View {
                 .buttonStyle(.plain)
             }
             .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden, edges: .top)
             ForEach(characterVM.recentSearches, id: \.self) { query in
                 Button {
                     characterVM.recentSearchTapped(query)
@@ -98,11 +107,12 @@ struct CharacterListSheet: View {
                     }
                     .font(AppTypography.body(.medium))
                     .foregroundStyle(AppColors.textPrimary)
-                    .frame(maxWidth: .infinity, minHeight: 36, alignment: .leading)
+                    .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
                     .contentShape(.rect)
                 }
                 .buttonStyle(.plain)
                 .listRowBackground(Color.clear)
+                .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 .alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
             }
         }
@@ -185,35 +195,41 @@ private struct CharacterEmptyState: View {
     let title: String
     var message: String?
 
+    /// Centred in the space left above the search field; scrolls when it doesn't fit, as with large text.
     var body: some View {
-        ScrollView {
-            VStack(spacing: 26) {
-                if let image = UIImage(named: illustration) {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 250, height: 200)
-                        .accessibilityHidden(true)
-                }
-                VStack(spacing: 8) {
-                    Text(title)
-                        .font(AppTypography.title3(.semibold))
-                        .foregroundStyle(AppColors.textPrimary)
-                        .accessibilityAddTraits(.isHeader)
-                    if let message {
-                        Text(message)
-                            .font(AppTypography.subheadline(.medium))
-                            .foregroundStyle(AppColors.searchEmptyMessageText)
-                    }
-                }
-                .multilineTextAlignment(.center)
-                .fixedSize(horizontal: false, vertical: true)
+        ViewThatFits(in: .vertical) {
+            stack.frame(maxWidth: .infinity, maxHeight: .infinity)
+            ScrollView {
+                stack.padding(.vertical, 24)
             }
-            .padding(.horizontal, 16)
-            .padding(.top, 120)
-            .frame(maxWidth: .infinity)
         }
-        .scrollBounceBehavior(.basedOnSize)
+    }
+
+    private var stack: some View {
+        VStack(spacing: 26) {
+            if let image = UIImage(named: illustration) {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 250, height: 200)
+                    .accessibilityHidden(true)
+            }
+            VStack(spacing: 8) {
+                Text(title)
+                    .font(AppTypography.title3(.semibold))
+                    .foregroundStyle(AppColors.textPrimary)
+                    .accessibilityAddTraits(.isHeader)
+                if let message {
+                    Text(message)
+                        .font(AppTypography.subheadline(.medium))
+                        .foregroundStyle(AppColors.searchEmptyMessageText)
+                }
+            }
+            .multilineTextAlignment(.center)
+            .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(.horizontal, 16)
+        .frame(maxWidth: .infinity)
     }
 }
 
