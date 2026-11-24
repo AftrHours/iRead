@@ -6,6 +6,7 @@ struct LibView: View {
     @Bindable var libVM: LibVM
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.accessibilityReduceMotion) private var reduceSelectionMotion
     @State private var inlineHeaderHeight: CGFloat = 76
     @State private var importSnapshot: [LibraryBookItemVM]?
     @State private var importPresentationID: UUID?
@@ -90,7 +91,7 @@ struct LibView: View {
         } message: {
             Text("""
             Send new usage, performance, and crash events to the Refrn team through iCloud using a random installation ID. \
-            These reports exclude book titles, passages, and search terms. You can stop sharing from the Library menu.
+            These reports exclude book titles, passages, and search terms.
             """)
         }
         .alert("Rename Book", isPresented: $libVM.isRenameAlertPresented) {
@@ -253,6 +254,8 @@ struct LibView: View {
                 .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { inlineHeaderHeight = $0 }
             }
         }
+        .animation(libVM.isSelectionMode && !reduceSelectionMotion ? .smooth(duration: 0.5) : nil,
+                   value: libVM.selectedBookIDs)
     }
 }
 

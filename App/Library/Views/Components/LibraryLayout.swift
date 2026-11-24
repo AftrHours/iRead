@@ -51,10 +51,11 @@ struct LibraryLayout {
     var emptyLibraryButtonSpacing: CGFloat { isPad ? 24 : 25 }
     var emptyLibraryBottomInset: CGFloat { isPad ? 0 : 68.5 }
     func gridColumns(for size: DynamicTypeSize) -> [GridItem] {
+        let alignment: Alignment = isSelecting ? .center : .top
         if size.isAccessibilitySize {
-            return [GridItem(.adaptive(minimum: 260), spacing: gridColumnSpacing, alignment: .top)]
+            return [GridItem(.adaptive(minimum: 260), spacing: gridColumnSpacing, alignment: alignment)]
         }
-        return Array(repeating: GridItem(.flexible(), spacing: gridColumnSpacing, alignment: .top), count: isPad ? 4 : 2)
+        return Array(repeating: GridItem(.flexible(), spacing: gridColumnSpacing, alignment: alignment), count: isPad ? 4 : 2)
     }
 }
 

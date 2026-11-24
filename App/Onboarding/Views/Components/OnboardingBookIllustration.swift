@@ -29,7 +29,7 @@ struct OnboardingBookIllustration: View {
     }
 }
 
-/// Both onboarding carousels advance one book every three seconds.
+/// Both onboarding carousels advance one book every six seconds.
 struct OnboardingBookCarousel<Card: View>: View {
     let books: [BookRecord]
     let spacingBetweenCenters: CGFloat
@@ -44,7 +44,7 @@ struct OnboardingBookCarousel<Card: View>: View {
     var body: some View {
         let playing = isActive && !reduceMotion && scenePhase == .active && books.count > 1
         TimelineView(.animation(minimumInterval: 1.0 / 30, paused: !playing)) { timeline in
-            let position = playing ? max(0, timeline.date.timeIntervalSince(start)) / 3 : 0
+            let position = playing ? max(0, timeline.date.timeIntervalSince(start)) / 6 : 0
             let step = Int(position)
             let fraction = CGFloat(position - Double(step))
             ZStack {

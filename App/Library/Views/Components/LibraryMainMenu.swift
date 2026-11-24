@@ -20,12 +20,6 @@ struct LibraryMainMenu: View {
 
             LibrarySortMenu(libVM: libVM)
 
-            Section("Beta Analytics") {
-                Button(libVM.sharesBetaAnalytics ? "Stop Sharing Beta Analytics" : "Share Beta Analytics",
-                       systemImage: "icloud", action: libVM.betaSharingTapped)
-                Button("Export Beta Analytics", systemImage: "square.and.arrow.up", action: libVM.exportBetaReport)
-            }
-
             Section("Refrn Account") {
                 Button(libVM.accountActionTitle, systemImage: "person.crop.circle", action: libVM.accountSettingsTapped)
                     .foregroundStyle(libVM.isAccountSignedIn ? AppColors.accountSignOut : AppColors.accountSignIn)

@@ -4,6 +4,7 @@ struct BookGridView<MenuButton: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.isBrowsingLibraryOnPhone) private var isPhoneBrowse
     @Environment(\.isSelectingLibraryOnPhone) private var isPhoneSelection
+    @Environment(\.colorScheme) private var colorScheme
     let item: LibraryBookItemVM
     var isSearchResult = false
     let menu: MenuButton
@@ -11,11 +12,12 @@ struct BookGridView<MenuButton: View>: View {
 
     var body: some View {
         let selected = item.showsSelection && item.isSelected
-        let maximumScale: CGFloat = item.showsSelection ? 1.05 : 1
-        GridCardSlot(scale: maximumScale) {
+        let scale: CGFloat = selected ? 1.05 : 1
+        let shadow = colorScheme == .dark ? Color.white.opacity(0.65) : Color(white: 26.0 / 255).opacity(0.5)
+        GridCardSlot(scale: scale) {
             card
-                .shadow(color: selected ? .white.opacity(0.65) : .clear, radius: 8)
-                .scaleEffect(selected ? maximumScale : 1)
+                .scaleEffect(scale)
+                .shadow(color: selected ? shadow : .clear, radius: colorScheme == .dark ? 8 : 20)
         }
     }
 
@@ -74,9 +76,14 @@ struct BookGridView<MenuButton: View>: View {
     }
 }
 
-/// Reserve the enlarged height before selection so checking a book never moves the next row.
+/// Include the selected card’s visual height when the grid positions the next row.
 private struct GridCardSlot: Layout {
-    let scale: CGFloat
+    var scale: CGFloat
+
+    var animatableData: CGFloat {
+        get { scale }
+        set { scale = newValue }
+    }
 
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         guard let card = subviews.first else { return .zero }

@@ -19,7 +19,6 @@ struct BookRowView<MenuButton: View>: View {
                         BookCoverView(image: item.cover)
                             .frame(width: coverWidth, height: coverWidth / BookCoverView.aspectRatio)
                             .clipShape(.rect(cornerRadius: 4))
-                            .shadow(color: item.showsSelection && item.isSelected ? .white.opacity(0.65) : .clear, radius: 6)
                         ProgressBar(progress: item.progress, style: .list)
                             .frame(width: coverWidth)
                     }

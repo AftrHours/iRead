@@ -12,9 +12,9 @@ struct LibraryHeaderView: View {
     private var showsEmptyPhoneLibrary: Bool { !layout.isPad && libVM.isLibraryEmpty && !libVM.isSearchActive }
 
     private var topBarInsets: EdgeInsets {
-        if libVM.isSelectionMode && !showsFocusedPhoneSearch {
+        if libVM.isSelectionMode {
             let margin = layout.sideMargin
-            return EdgeInsets(top: 0, leading: margin, bottom: 0, trailing: margin)
+            return EdgeInsets(top: 0, leading: margin, bottom: 20, trailing: margin)
         }
         if layout.isPad {
             return EdgeInsets(top: 8, leading: 12, bottom: 0, trailing: 12)
@@ -41,15 +41,7 @@ struct LibraryHeaderView: View {
                 HStack { padSearchControls }
                     .padding(.horizontal, 12)
             }
-            if libVM.isSelectionMode && !showsFocusedPhoneSearch {
-                HStack {
-                    LibrarySearchBar(libVM: libVM, focus: searchFocus, style: libVM.isSearchActive ? .pad : .phone)
-                    if libVM.isSearchActive { searchCloseButton }
-                }
-                .padding(.horizontal, layout.sideMargin)
-                .padding(.top, 16)
-                .padding(.bottom, 20)
-            } else if !layout.isPad && !showsFocusedPhoneSearch {
+            if !libVM.isSelectionMode && !layout.isPad && !showsFocusedPhoneSearch {
                 if showsEmptyPhoneLibrary {
                     libraryTitle
                         .padding(.horizontal, layout.sideMargin)
@@ -68,10 +60,10 @@ struct LibraryHeaderView: View {
 
     private var topBar: some View {
         Group {
-            if showsFocusedPhoneSearch {
-                LibraryActiveSearchHeader(libVM: libVM, searchFocus: searchFocus)
-            } else if libVM.isSelectionMode {
+            if libVM.isSelectionMode {
                 selectionControls
+            } else if showsFocusedPhoneSearch {
+                LibraryActiveSearchHeader(libVM: libVM, searchFocus: searchFocus)
             } else {
                 HStack(spacing: 12) {
                     if !layout.isPad && !showsEmptyPhoneLibrary && !libVM.showsScrolledLibraryControls && !dynamicTypeSize.isAccessibilitySize { libraryTitle }

@@ -45,6 +45,7 @@ struct OnboardingView: View {
                                                         set: { if !$0 { onboardingVM.importError = nil } })) {
             Button("OK") { onboardingVM.importError = nil }
         } message: { Text(onboardingVM.importError ?? "") }
+        .preferredColorScheme(.dark)
     }
 
     private func page(_ index: Int) -> some View {
