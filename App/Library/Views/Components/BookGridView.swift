@@ -2,28 +2,47 @@ import SwiftUI
 
 struct BookGridView<MenuButton: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.isBrowsingLibraryOnPhone) private var isPhoneBrowse
+    @Environment(\.isSelectingLibraryOnPhone) private var isPhoneSelection
+    @Environment(\.colorScheme) private var colorScheme
     let item: LibraryBookItemVM
+    var isSearchResult = false
     let menu: MenuButton
     let onTap: () -> Void
 
     var body: some View {
+        let selected = item.showsSelection && item.isSelected
+        let scale: CGFloat = selected ? 1.05 : 1
+        let shadow = colorScheme == .dark ? Color.white.opacity(0.65) : Color(white: 26.0 / 255).opacity(0.5)
+        GridCardSlot(scale: scale) {
+            card
+                .scaleEffect(scale)
+                .shadow(color: selected ? shadow : .clear, radius: colorScheme == .dark ? 8 : 20)
+        }
+    }
+
+    private var card: some View {
         LibraryBookButton(item: item, action: onTap) {
             VStack(alignment: .leading, spacing: 0) {
                 BookCoverView(image: item.cover)
+                    .overlay(.black.opacity(item.showsSelection && !item.isSelected ? 0.5 : 0))
                 ProgressBar(progress: item.progress)
-                    .padding(.top, 10)
-                HStack(spacing: 4) {
+                    .opacity(item.showsSelection && !item.isSelected ? 0.5 : 1)
+                    .padding(.top, isPhoneSelection ? 11 : (isPhoneBrowse ? 12 : 10))
+                HStack(spacing: isPhoneBrowse ? 0 : 4) {
                     bookDetails
                         .frame(maxWidth: .infinity, minHeight: 42, alignment: .leading)
                     if !item.showsSelection {
                         Color.clear
                             .libraryIconFrame(44)
+                            .frame(height: 0)
                             .anchorPreference(key: BookMenuCenter.self, value: .center) { $0 }
                     }
                 }
-                .padding(.top, 9)
-                .padding(.horizontal, 12)
-                .padding(.bottom, 15)
+                .padding(.top, isPhoneSelection ? 7 : 9)
+                .padding(.leading, 12)
+                .padding(.trailing, isPhoneBrowse ? 0 : 12)
+                .padding(.bottom, isPhoneSelection ? 11 : (isPhoneBrowse ? 12 : 15))
             }
             .background(AppColors.cardBg)
             .clipShape(.rect(cornerRadius: 16))
@@ -36,20 +55,45 @@ struct BookGridView<MenuButton: View>: View {
                 }
             }
         }
-        .overlay(alignment: .topTrailing) { LibrarySelectionBadge(item: item) }
+        .overlay(alignment: .topTrailing) {
+            LibrarySelectionBadge(item: item)
+                .dynamicTypeSize(...LibraryLayout.maximumIconSize)
+                .padding(8)
+        }
     }
 
     private var bookDetails: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: isPhoneBrowse ? 4 : 6) {
             Text(item.title)
-                .font(AppTypography.caption1(.semibold))
+                .font(isSearchResult || isPhoneBrowse ? AppTypography.subheadline(.semibold) : AppTypography.footnote(.semibold))
                 .foregroundStyle(AppColors.cardTextPrimary)
                 .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 1)
             Text(item.author)
-                .font(AppTypography.caption1(.medium))
+                .font(isSearchResult || isPhoneBrowse ? AppTypography.footnote(.medium) : AppTypography.caption1(.medium))
                 .foregroundStyle(AppColors.cardTextSecondary)
                 .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 1)
         }
+    }
+}
+
+/// Include the selected card’s visual height when the grid positions the next row.
+private struct GridCardSlot: Layout {
+    var scale: CGFloat
+
+    var animatableData: CGFloat {
+        get { scale }
+        set { scale = newValue }
+    }
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        guard let card = subviews.first else { return .zero }
+        let size = card.sizeThatFits(ProposedViewSize(width: proposal.width, height: nil))
+        return CGSize(width: size.width, height: size.height * scale)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        subviews.first?.place(at: CGPoint(x: bounds.midX, y: bounds.midY), anchor: .center,
+                              proposal: ProposedViewSize(width: bounds.width, height: nil))
     }
 }
 

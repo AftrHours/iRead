@@ -1,52 +1,52 @@
+import ImageIO
 import SwiftUI
 
-/// Static sample passage and jump card shown during the onboarding introduction.
 struct OnboardingReferencePreview: View {
+    let isActive: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var frame: CGImage?
+
+    private static let source = NSDataAsset(name: "OnboardingReferenceLoop").flatMap {
+        CGImageSourceCreateWithData($0.data as CFData, nil)
+    }
+
+    private var isPlaying: Bool {
+        isActive && scenePhase == .active && !reduceMotion
+    }
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text("The Last Carriage")
-                .font(.headline)
-                .foregroundStyle(LibraryPalette.primaryText)
-            Text("At dusk, the carriage rolled past the old house, its familiar lanterns glowing in the rain.")
-                .font(.body)
-                .foregroundStyle(LibraryPalette.primaryText)
-                .lineSpacing(5)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(16)
-                .background(LibraryPalette.progressTrack.opacity(0.45), in: .rect(cornerRadius: 14))
-            HStack(alignment: .top, spacing: 12) {
-                Image(systemName: "quote.opening")
-                    .font(.title2.weight(.bold))
-                    .foregroundStyle(.white)
-                    .frame(width: 38, height: 38)
-                    .background(LibraryPalette.addButton, in: .rect(cornerRadius: 10))
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Earlier Mention")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(LibraryPalette.primaryText)
-                    Text("Let’s revisit where it all began.")
-                        .font(.caption)
-                        .foregroundStyle(LibraryPalette.secondaryText)
-                    Button("Jump to Passage", systemImage: "arrow.uturn.backward") {}
-                        .font(.caption.weight(.semibold))
-                        .buttonStyle(.borderedProminent)
-                        .buttonBorderShape(.capsule)
-                        .tint(LibraryPalette.secondaryText)
-                        .padding(.top, 4)
+        Color.clear
+            .aspectRatio(711.0 / 555.0, contentMode: .fit)
+            .overlay {
+                if let frame {
+                    Image(decorative: frame, scale: 1).resizable().scaledToFit()
                 }
-                Spacer(minLength: 0)
             }
-            .padding(16)
-            .background(LibraryPalette.card, in: .rect(cornerRadius: 16))
-            .shadow(color: .black.opacity(0.08), radius: 10, y: 4)
-        }
-        .padding(20)
-        .background(LibraryPalette.card, in: .rect(cornerRadius: 22))
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("In The Last Carriage, the underlined phrase “familiar tuft of red hair” opens the author’s earlier description without leaving the page.")
+            .task(id: isPlaying) { await displayFrames(animate: isPlaying) }
+    }
+
+    private func displayFrames(animate: Bool) async {
+        guard let source = Self.source else { return }
+        let count = CGImageSourceGetCount(source)
+        guard count > 0 else { return }
+        var index = 0
+        var deadline = ContinuousClock.now
+        repeat {
+            guard !Task.isCancelled else { return }
+            frame = CGImageSourceCreateImageAtIndex(source, index, nil)
+            guard animate, count > 1 else { return }
+            let properties = CGImageSourceCopyPropertiesAtIndex(source, index, nil) as? [CFString: Any]
+            let gif = properties?[kCGImagePropertyGIFDictionary] as? [CFString: Any]
+            let delay = gif?[kCGImagePropertyGIFUnclampedDelayTime] as? Double
+                ?? gif?[kCGImagePropertyGIFDelayTime] as? Double ?? 0.1
+            deadline += .seconds(delay > 0 ? delay : 0.1)
+            do { try await Task.sleep(until: deadline, clock: .continuous) } catch { return }
+            index = (index + 1) % count
+        } while !Task.isCancelled
     }
 }
 
-#Preview("Reference Preview Card") {
-    OnboardingReferencePreview()
-        .padding()
-        .background(LibraryPalette.page)
-}
+#Preview { OnboardingReferencePreview(isActive: true).padding() }

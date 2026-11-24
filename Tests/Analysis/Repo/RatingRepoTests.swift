@@ -78,10 +78,11 @@ struct RatingRepoTests {
         let slowCloud = CloudSvcFake(saveDelay: .milliseconds(200))
         let repo = RatingRepo(folder: folder.url, cloudSvc: slowCloud)
         await repo.setSharesRatings(true)
-        async let first: Void = repo.save(rating(.up))
+        async let firstSave = repo.save(rating(.up))
         try? await Task.sleep(for: .milliseconds(50))
         await repo.save(rating(.down))
-        await first
+        let saved = await firstSave
+        #expect(saved)
         #expect(slowCloud.records(in: .developers).values.map { $0["verdict"] } == [.text("down")])
         #expect(await repo.unsentCount == 0)
     }

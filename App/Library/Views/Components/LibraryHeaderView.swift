@@ -12,20 +12,20 @@ struct LibraryHeaderView: View {
     private var showsEmptyPhoneLibrary: Bool { !layout.isPad && libVM.isLibraryEmpty && !libVM.isSearchActive }
 
     private var topBarInsets: EdgeInsets {
+        if libVM.isSelectionMode {
+            let margin = layout.sideMargin
+            return EdgeInsets(top: 0, leading: margin, bottom: 20, trailing: margin)
+        }
         if layout.isPad {
             return EdgeInsets(top: 8, leading: 12, bottom: 0, trailing: 12)
         }
         if showsFocusedPhoneSearch {
-            return EdgeInsets(top: 0, leading: 8, bottom: 16, trailing: 8)
+            return EdgeInsets(top: 0, leading: 8, bottom: 20, trailing: 8)
         }
         if showsEmptyPhoneLibrary {
             return EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
         }
-        if !layout.isPad && libVM.showsScrolledLibraryControls {
-            // Preserve the bar's total height to avoid shifting the scroll threshold.
-            return EdgeInsets(top: 0, leading: 16, bottom: 8, trailing: 16)
-        }
-        return EdgeInsets(top: 8, leading: 20, bottom: 0, trailing: 20)
+        return EdgeInsets(top: 0, leading: layout.sideMargin, bottom: 0, trailing: layout.sideMargin)
     }
 
     private var showsSeparatePadSearch: Bool {
@@ -41,7 +41,7 @@ struct LibraryHeaderView: View {
                 HStack { padSearchControls }
                     .padding(.horizontal, 12)
             }
-            if !layout.isPad && !showsFocusedPhoneSearch {
+            if !libVM.isSelectionMode && !layout.isPad && !showsFocusedPhoneSearch {
                 if showsEmptyPhoneLibrary {
                     libraryTitle
                         .padding(.horizontal, layout.sideMargin)
@@ -50,7 +50,7 @@ struct LibraryHeaderView: View {
                 if includesPhoneSearchField && !showsEmptyPhoneLibrary {
                     LibrarySearchBar(libVM: libVM, focus: searchFocus)
                         .padding(.horizontal, layout.sideMargin)
-                        .padding(.top, 12)
+                        .padding(.top, 16)
                         .padding(.bottom, 20)
                 }
             }
@@ -68,17 +68,12 @@ struct LibraryHeaderView: View {
                 HStack(spacing: 12) {
                     if !layout.isPad && !showsEmptyPhoneLibrary && !libVM.showsScrolledLibraryControls && !dynamicTypeSize.isAccessibilitySize { libraryTitle }
                     Spacer()
+                    if layout.isPad && !showsSeparatePadSearch { padSearchControls }
+                    AddBookButton(action: libVM.importTapped)
                     if layout.isPad {
-                        if !showsSeparatePadSearch { padSearchControls }
                         LibraryMainMenu(libVM: libVM)
-                        AddBookButton(action: libVM.importTapped)
                     } else {
-                        AddBookButton(action: libVM.importTapped)
-                        if libVM.showsScrolledLibraryControls {
-                            LibraryPhoneMenuGroup(libVM: libVM)
-                        } else {
-                            LibraryMainMenu(libVM: libVM, iconFont: showsEmptyPhoneLibrary ? AppTypography.title2(.medium) : AppTypography.body(.medium))
-                        }
+                        LibraryMainMenu(libVM: libVM, iconFont: showsEmptyPhoneLibrary ? AppTypography.title2(.medium) : AppTypography.body(.medium))
                     }
                 }
             }
@@ -91,32 +86,19 @@ struct LibraryHeaderView: View {
     }
 
     private var selectionControls: some View {
-        let cancel = Button("Cancel", action: libVM.selectionModeDismissed)
-            .font(AppTypography.callout())
-            .foregroundStyle(AppColors.textSecondary)
-        let done = Button("Done", action: libVM.selectionModeDismissed)
-            .font(AppTypography.callout(.semibold))
-            .foregroundStyle(AppColors.textSecondary)
-        let count = Text(libVM.selectionTitle)
-            .font(AppTypography.callout(.semibold))
+        HStack {
+            libraryTitle
+            Spacer()
+            Button(action: libVM.selectionModeDismissed) {
+                Image(systemName: "checkmark")
+                    .font(AppTypography.title2(.medium))
+                    .libraryIconFrame()
+                    .glassEffect(.regular.interactive(), in: .circle)
+            }
+            .buttonStyle(.plain)
             .foregroundStyle(AppColors.textPrimary)
-
-        return ViewThatFits(in: .horizontal) {
-            HStack {
-                cancel
-                Spacer()
-                count
-                Spacer()
-                done
-            }
-            VStack {
-                count
-                HStack {
-                    cancel
-                    Spacer()
-                    done
-                }
-            }
+            .libraryControlLabel("Done selecting books", symbol: "checkmark")
+            .accessibilityValue(libVM.selectionTitle)
         }
     }
 

@@ -4,7 +4,6 @@ import SwiftUI
 struct BookCoverView: View {
     static let aspectRatio: CGFloat = 2 / 3
     let image: UIImage?
-
     var body: some View {
         Rectangle()
             .fill(AppColors.menuTextMuted.opacity(0.16))

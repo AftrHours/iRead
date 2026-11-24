@@ -23,6 +23,7 @@ struct BookStateRepo {
             try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
             try JSONEncoder().encode(state).write(to: url, options: .atomic)
         } catch {
+            BetaAnalytics.shared.record(.recoverableError, category: BetaAnalytics.category(error), feature: "reader_state")
             logger.error("Couldn't save book state for \(bookID.uuidString, privacy: .public): \(error.localizedDescription, privacy: .public)")
         }
     }

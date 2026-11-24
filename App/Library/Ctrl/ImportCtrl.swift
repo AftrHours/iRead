@@ -17,7 +17,22 @@ struct ImportCtrl {
 
     /// Throws `ImportError.alreadyInLibrary` for a book the reader can already see. A removed sample is shown again
     /// instead of copied. The copy iOS puts in Documents/Inbox is deleted either way.
-    func importBook(from url: URL) async throws -> BookRecord {
+    func importBook(from url: URL, source: String = "open_url", picker: String? = nil) async throws -> BookRecord {
+        let attempt = AnalyticsAttempt()
+        let analytics = BetaAnalytics.shared
+        analytics.record(.importStarted, flow: attempt.id, picker: picker, category: source)
+        do {
+            let book = try await processBook(from: url)
+            analytics.record(.importSucceeded, flow: attempt.id, milliseconds: attempt.milliseconds)
+            return book
+        } catch {
+            analytics.record(.importFailed, flow: attempt.id, category: BetaAnalytics.category(error),
+                             feature: "import", milliseconds: attempt.milliseconds)
+            throw error
+        }
+    }
+
+    private func processBook(from url: URL) async throws -> BookRecord {
         defer {
             if url.path.contains("/Documents/Inbox/") { try? FileManager.default.removeItem(at: url) }
         }
@@ -37,7 +52,7 @@ struct ImportCtrl {
         var added: [BookRecord] = []
         for pending in pendingImportRepo.readPending() {
             do {
-                added.append(try await importBook(from: pending.epubURL))
+                added.append(try await importBook(from: pending.epubURL, source: "share_extension"))
             } catch {
                 logger.info("Dropped shared book \(pending.edition.number, privacy: .public): \(error.localizedDescription, privacy: .public)")
             }

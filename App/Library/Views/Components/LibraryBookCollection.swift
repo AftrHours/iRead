@@ -2,8 +2,8 @@ import SwiftUI
 
 struct LibraryBookCollection<Header: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Binding var scrollToImportedBook: UUID?
     let items: [LibraryBookItemVM]
-    let viewMode: LibVM.ViewMode
     let layout: LibraryLayout
     let onBookTapped: (BookRecord) -> Void
     let onFinished: (BookRecord) -> Void
@@ -15,33 +15,50 @@ struct LibraryBookCollection<Header: View>: View {
     @ViewBuilder let header: () -> Header
 
     var body: some View {
-        scrollingContent
-            .scrollEdgeEffectStyle(.soft, for: .top)
+        ScrollViewReader { reader in
+            scrollingContent
+                .scrollEdgeEffectStyle(.soft, for: .top)
+                .task(id: scrollToImportedBook) {
+                    guard let destination = scrollToImportedBook else { return }
+                    if items.first?.id == destination {
+                        reader.scrollTo("libraryTop", anchor: .top)
+                    } else {
+                        reader.scrollTo(destination, anchor: .center)
+                    }
+                    scrollToImportedBook = nil
+                }
+        }
     }
 
     private var scrollingContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 header()
+                    .padding(.horizontal, layout.sideMargin)
                 if showsLibraryTitle {
                     LibraryTitleView()
+                        .padding(.horizontal, layout.sideMargin)
                         .padding(.top, 10)
                         .padding(.bottom, 12)
                 }
 
                 if let resultsTitle {
                     Text(resultsTitle)
+                        .padding(.horizontal, layout.sideMargin)
                         .accessibilityAddTraits(.isHeader)
-                        .font(AppTypography.title3(.semibold))
+                        .font(AppTypography.title2(.bold))
                         .foregroundStyle(AppColors.textPrimary)
                         .padding(.bottom, 16)
                 }
 
                 books
+                    .environment(\.isBrowsingLibraryOnPhone, layout.isBrowsingOnPhone)
+                    .environment(\.isSelectingLibraryOnPhone, layout.isSelectingOnPhone)
+                    .padding(.horizontal, layout.collectionSideMargin)
                     .accessibilityElement(children: .contain)
             }
-            .padding(.horizontal, layout.collectionSideMargin)
             .padding(.bottom, 28)
+            .id("libraryTop")
         }
         .onScrollGeometryChange(for: CGFloat.self) { geometry in
             geometry.contentOffset.y + geometry.contentInsets.top
@@ -52,28 +69,32 @@ struct LibraryBookCollection<Header: View>: View {
 
     @ViewBuilder
     private var books: some View {
-        switch viewMode {
+        switch layout.viewMode {
         case .grid:
-            LazyVGrid(columns: layout.gridColumns(for: dynamicTypeSize), spacing: layout.gridRowSpacing) {
+            LazyVGrid(columns: layout.gridColumns(for: dynamicTypeSize), spacing: layout.rowSpacing) {
                 ForEach(items.enumerated(), id: \.element.id) { index, item in
-                    BookGridView(item: item, menu: bookMenu(for: item, style: .card)) {
+                    BookGridView(item: item, isSearchResult: layout.isSearching, menu: bookMenu(for: item, style: .card)) {
                         onBookTapped(item.book)
                     }
                     .accessibilityElement(children: .contain)
                     .environment(\.libraryBookMenuPriority, Double(items.count - index) * 2)
+                    .id(item.id)
                 }
             }
         case .list:
-            LazyVStack(spacing: 12) {
+            LazyVStack(spacing: layout.usesPhoneListSpacing ? 0 : layout.rowSpacing) {
                 ForEach(items.enumerated(), id: \.element.id) { index, item in
                     BookRowView(item: item, menu: bookMenu(for: item)) {
                         onBookTapped(item.book)
                     }
                     .accessibilityElement(children: .contain)
                     .environment(\.libraryBookMenuPriority, Double(items.count - index) * 2)
+                    .id(item.id)
                     Rectangle()
-                        .fill(LibraryPalette.divider)
+                        .fill(AppColors.libraryListDivider)
                         .frame(height: 1)
+                        .padding(.top, layout.usesPhoneListSpacing ? 15 : 0)
+                        .padding(.bottom, layout.usesPhoneListSpacing ? 16 : 0)
                         .accessibilityHidden(true)
                 }
             }

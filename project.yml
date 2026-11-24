@@ -65,6 +65,8 @@ targets:
         package: SwiftLintPlugins
     # iCloud through CloudKit: the reader's saved underlines (their private database) and the ratings they share (the public one).
     # The container ID must match CloudSvcCloudKit.containerID. See docs/ICLOUD.md for the CloudKit Console steps.
+    # On: these properties and ICLOUD in the settings below go together. Turning one off without the other makes
+    # CloudKit stop the app at launch (entitlement off, ICLOUD on).
     entitlements:
       path: App/iRead.entitlements
       properties:
@@ -78,6 +80,8 @@ targets:
     info:
       path: App/Info.plist
       properties:
+        NSSpeechRecognitionUsageDescription: Convert your speech into a library search for a book title or author.
+        NSMicrophoneUsageDescription: Use the microphone when you tap voice search to find books in your library.
         CFBundleDocumentTypes:
           - CFBundleTypeName: EPUB
             CFBundleTypeRole: Viewer
@@ -106,6 +110,8 @@ targets:
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         # Universal: 1 = iPhone, 2 = iPad.
         TARGETED_DEVICE_FAMILY: "1,2"
+        # The app connects to iCloud only with ICLOUD, which needs the iCloud entitlement above.
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited) ICLOUD
         # iPhone: portrait only, like a book held in one hand.
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
         # iPad apps must support every orientation (required for iPad windowing and multitasking).

@@ -44,13 +44,17 @@ actor ReaderStateCtrl {
         bookState.returnPosition
     }
 
-    func saveReturnPosition(_ position: ReadingPosition) async {
+    func returnFlow() -> String? { bookState.returnFlow }
+
+    func saveReturnPosition(_ position: ReadingPosition, flow: String? = nil) async {
         guard bookState.returnPosition == nil else { return }
+        bookState.returnFlow = flow
         bookState.returnPosition = position
         await bookStateRepo.save(bookState, for: bookID)
     }
 
     func clearReturnPosition() async {
+        bookState.returnFlow = nil
         bookState.returnPosition = nil
         await bookStateRepo.save(bookState, for: bookID)
     }

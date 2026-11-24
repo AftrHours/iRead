@@ -12,6 +12,7 @@ final class RatingVM {
     /// Checked again when the app comes back, in case the reader signed in in Settings.
     private(set) var cloudAccount: CloudAccount?
 
+    @ObservationIgnored var analytics: ReadingAnalytics?
     private var underlineID: String?
     /// Ratings are saved one after another, so quick taps land in order.
     private var ratingTask: Task<Void, Never>?
@@ -53,12 +54,18 @@ final class RatingVM {
     /// Tapping the chosen thumb again takes the rating back. The first rating asks whether to share.
     func verdictTapped(_ tapped: Verdict) {
         guard let underlineID else { return }
+        analytics?.activity()
         let newVerdict = verdict == tapped ? nil : tapped
         verdict = newVerdict
         ratingTask = Task { [previous = ratingTask, ratingCtrl] in
             if newVerdict != nil, await ratingCtrl.sharesRatings() == nil { isAskingToShare = true }
             await previous?.value
-            try? await ratingCtrl.rate(underline: underlineID, newVerdict)
+            do {
+                guard try await ratingCtrl.rate(underline: underlineID, newVerdict) else { return }
+                analytics?.record(.ratingChanged, reference: underlineID, category: newVerdict?.rawValue ?? "removed")
+            } catch {
+                analytics?.record(.recoverableError, category: BetaAnalytics.category(error), feature: "rating")
+            }
         }
     }
 

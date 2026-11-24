@@ -18,8 +18,14 @@ struct AppContainer {
     private let libraryIndexRepo = LibraryIndexRepo()
     private let cloudSvc: (any CloudSvc)?
 
+    /// iCloud only when it's turned on in project.yml (ICLOUD and the entitlement): without the entitlement, CloudKit
+    /// stops the app at launch.
     init() {
+        #if ICLOUD
         self.init(cloudSvc: CloudSvcCloudKit())
+        #else
+        self.init(cloudSvc: nil)
+        #endif
     }
 
     /// For SwiftUI previews: nothing goes to iCloud.
@@ -37,6 +43,7 @@ struct AppContainer {
                                       cloudSvc: cloudSvc, makeUnderliner: { await Underliner.make(.release) })
         ratingRepo = RatingRepo(cloudSvc: cloudSvc)
         self.cloudSvc = cloudSvc
+        if let cloudSvc { BetaAnalytics.shared.cloudDelivery.connect(cloudSvc) }
     }
 
     func makeLibVM() -> LibVM {
@@ -49,7 +56,7 @@ struct AppContainer {
     }
 
     func makeOnboardingVM(using libVM: LibVM) -> OnboardingVM {
-        OnboardingVM { urls in await libVM.importFiles(.success(urls)) }
+        OnboardingVM(library: libVM)
     }
 
     func makeReaderVM(book: BookRecord) -> ReaderVM {
@@ -131,7 +138,7 @@ enum PreviewFixtures {
     }
 
     static func onboardingVM() -> OnboardingVM {
-        OnboardingVM { _ in true }
+        OnboardingVM(library: libraryVM())
     }
 
     static func readerVM() -> ReaderVM {

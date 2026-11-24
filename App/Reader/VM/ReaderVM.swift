@@ -20,6 +20,8 @@ final class ReaderVM {
         }
     }
 
+    let analytics: ReadingAnalytics
+    private var restoredProgress: ReadingProgress?
     let readerSettingsVM: ReaderSettingsVM
     let referenceVM: ReferenceVM
     let ratingVM: RatingVM
@@ -168,6 +170,10 @@ final class ReaderVM {
 
     init(book: BookRecord, readerCtrl: ReaderCtrl, progressCtrl: ProgressCtrl, readerStateCtrl: ReaderStateCtrl, appNav: AppNav,
          readerSettingsVM: ReaderSettingsVM, referenceVM: ReferenceVM, ratingVM: RatingVM, characterVM: CharacterVM) {
+        let analytics = ReadingAnalytics(book: book.id, attempt: appNav.openAttempt)
+        self.analytics = analytics
+        referenceVM.analytics = analytics
+        ratingVM.analytics = analytics
         self.book = book
         self.readerCtrl = readerCtrl
         self.progressCtrl = progressCtrl
@@ -209,10 +215,7 @@ final class ReaderVM {
         do {
             try await readerCtrl.openBook()
             await readerSettingsVM.bookOpened()
-            if let readingProgress = await progressCtrl.savedProgress() {
-                let isRestored = await readerCtrl.restorePosition(from: readingProgress)
-                await progressCtrl.positionRestored(isRestored)
-            }
+            await restoreSavedPosition()
             await referenceVM.bookOpened()
             await ratingVM.bookOpened()
             title = book.title
@@ -220,18 +223,51 @@ final class ReaderVM {
             isBookOpen = true
             await showCurrentPage()
         } catch {
+            analytics.openingFailed(error)
             hasFailedToOpen = true
+        }
+    }
+
+    private func restoreSavedPosition() async {
+        let result = await progressCtrl.resumeCandidate()
+        switch result {
+        case .firstOpen:
+            return
+        case .failed(let reason):
+            analytics.record(.resumeAttempted)
+            analytics.record(.resumeFailed, category: reason, feature: "resume")
+        case .saved(let progress):
+            analytics.record(.resumeAttempted)
+            let valid = await readerCtrl.restorePosition(from: progress)
+            await progressCtrl.positionRestored(valid)
+            if valid {
+                restoredProgress = progress
+            } else {
+                analytics.record(.resumeFailed, category: "invalid", feature: "resume")
+            }
+        }
+    }
+
+    func pageVisible(_ page: Page) async {
+        guard shownPage == page else { return }
+        analytics.pageVisible(page)
+        if let saved = restoredProgress {
+            restoredProgress = nil
+            let matches = await readerCtrl.page(ifValid: saved.position) == page && saved.chapterIndex == page.chapterIndex
+            analytics.record(matches ? .resumeSucceeded : .resumeFailed, category: matches ? nil : "mismatched", feature: "resume")
         }
     }
 
     /// Like Apple Books: turning the page turns focus mode on, tapping the middle of the page toggles it.
     func pageChanged(_ page: Page) {
+        if let shownPage, page != shownPage { analytics.turned(forward: page.number > shownPage.number) }
         isFocusMode = true
         show(page)
     }
 
     /// A tap first clears a jumped-to passage's highlight.
     func pageCenterTapped() {
+        analytics.activity()
         guard !referenceVM.hasPassageHighlight else { return referenceVM.passageDismissed() }
         isFocusMode.toggle()
     }
@@ -274,10 +310,12 @@ final class ReaderVM {
     #endif
 
     func contentsTapped() {
+        analytics.activity()
         sheet = .contents
     }
 
     func searchTapped() {
+        analytics.activity()
         sheet = .search(SearchVM(
             search: { [readerCtrl] in await readerCtrl.search($0) },
             readerStateCtrl: readerStateCtrl,
@@ -286,11 +324,13 @@ final class ReaderVM {
     }
 
     func charactersTapped() {
+        analytics.activity()
         sheet = .characters
         characterVM.sheetOpened(at: shownPage)
     }
 
     func themeSettingsTapped() {
+        analytics.activity()
         sheet = .themeSettings
         readerSettingsVM.themeSettingsShown()
     }
@@ -327,8 +367,13 @@ final class ReaderVM {
     private func showCurrentPage() async {
         guard let viewport = layout?.viewport else { return }
         let settings = readerSettingsVM.settings
+        let layoutAttempt = AnalyticsAttempt()
+        let wasShowingPage = shownPage != nil
         let page = await readerCtrl.currentPage(viewport: viewport, settings: settings)
         guard viewport == layout?.viewport, settings == readerSettingsVM.settings else { return }
+        if wasShowingPage {
+            analytics.record(.repagination, category: "current_page", milliseconds: layoutAttempt.milliseconds)
+        }
         readerSettingsVM.layoutChanged(to: settings)
         if shownPage == nil { readingFocus = ReaderFocusRequest(from: nil, to: page) }
         shownPage = page
@@ -369,7 +414,9 @@ final class ReaderVM {
         chapterStartPages = []
         pageCount = nil
         Task {
+            let attempt = AnalyticsAttempt()
             let counts = await readerCtrl.chapterPageCounts()
+            analytics.record(.repagination, category: "book_totals", milliseconds: attempt.milliseconds)
             chapterStartPages = counts.indices.map { index in counts[..<index].reduce(1, +) }
             pageCount = counts.reduce(0, +)
         }

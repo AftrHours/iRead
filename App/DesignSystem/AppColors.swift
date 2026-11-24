@@ -12,18 +12,17 @@ enum AppColors {
     static let readerBg=adaptive(light: PrimaryColor.white0, dark: PrimaryColor.black)
     static let readerReferencePanel = adaptive(light: PrimaryColor.orange50, dark: PrimaryColor.orange50)
     static let actionPrimary = Color(hex: PrimaryColor.orange500)
+    static let actionSecondary = adaptive(light: PrimaryColor.neutral100, dark: PrimaryColor.purple800)
     static let menuBg = adaptive(light: PrimaryColor.purple50, dark: PrimaryColor.purple800)
     static let settingsBg = adaptive(light: PrimaryColor.neutral100, dark: PrimaryColor.purple900)
     static let settingsControlBg = adaptive(light: PrimaryColor.purple50, dark: PrimaryColor.purple800)
     static let settingSliderFill = adaptive(light: PrimaryColor.orange500, dark: PrimaryColor.orange500)
     static let settingSliderTrack = adaptive(light: PrimaryColor.neutral500, dark: PrimaryColor.white0,
                                              lightAlpha: 0.6, darkAlpha: 0.6)
-    // In the design, not drawn yet: SwiftUI's Slider doesn't let an app colour its step dots or its knob.
     static let settingSliderTick = adaptive(light: PrimaryColor.neutral500, dark: PrimaryColor.white0,
                                             lightAlpha: 0.6, darkAlpha: 0.6)
     static let settingSliderKnob = adaptive(light: PrimaryColor.white0, dark: PrimaryColor.white0)
     static let popoverQuoteIconBg = adaptive(light: PrimaryColor.purple700, dark: PrimaryColor.purple200)
-    /// Figma points this at popover/quote-bg, so it follows that token's light and dark.
     static let popoverQuoteIcon = adaptive(light: PrimaryColor.orange50, dark: PrimaryColor.purple800)
     static let cardBg = Color(hex: PrimaryColor.white50)
 
@@ -45,9 +44,8 @@ enum AppColors {
     static let cardTextPrimary = Color(hex: PrimaryColor.purple900)
     static let cardTextSecondary = Color(hex: PrimaryColor.purple600)
 
-    // MARK: - Not in Figma's Semantic tokens yet
-
     // Library and Search
+    static let libraryListDivider = adaptive(light: PrimaryColor.purple200, dark: PrimaryColor.purple200, darkAlpha: 0.16)
     static let progressBarBg = adaptive(light: PrimaryColor.orange200, dark: PrimaryColor.orange200)
     static let progressBarLine = adaptive(light: PrimaryColor.orange500, dark: PrimaryColor.orange500)
     static let cardMenuIcon = Color(hex: 0xB2B5E8)
@@ -60,6 +58,9 @@ enum AppColors {
     static let readerReturnMark = adaptiveUIColor(light: PrimaryColor.purple600, dark: PrimaryColor.purple600)
     static let readerHighlight = adaptiveUIColor(light: PrimaryColor.purple200, dark: PrimaryColor.purple200,
                                                  lightAlpha: 0.6, darkAlpha: 0.3)
+    static let readingProgressBarbG = adaptive(light: PrimaryColor.purple200, dark: PrimaryColor.orange200)
+    static let readingProgressBarLine = adaptive(light: PrimaryColor.purple600, dark: PrimaryColor.orange500)
+    static let readingProgressBarMark = adaptive(light: PrimaryColor.orange500, dark: PrimaryColor.purple600)
 
     // Reference popover tokens that the Semantic tokens frame doesn't list yet, from the popover design's color list.
     static let popoverBg = adaptive(light: PrimaryColor.white0, dark: PrimaryColor.purple800)

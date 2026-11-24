@@ -33,6 +33,9 @@ final class ReferenceVM {
 
     @ObservationIgnored var onShowPage: (Page, ContextPassage?) -> Void = { _, _ in }
 
+    @ObservationIgnored var analytics: ReadingAnalytics?
+    private var pendingCard: (id: String, attempt: AnalyticsAttempt)?
+    private var cardFlow: String?
     private var shownPage: Page?
     private var loadedPages: [Page] = []
     private var highlightedPassage: ContextPassage?
@@ -62,7 +65,15 @@ final class ReferenceVM {
         underlinedChapter = page.chapterIndex
         underlineTask?.cancel()
         underlineTask = Task { [weak self, refCtrl] in
-            guard let updates = try? await refCtrl.underlineUpdates(from: page) else { return }
+            let updates: AsyncStream<Void>
+            do {
+                updates = try await refCtrl.underlineUpdates(from: page)
+            } catch {
+                if !Task.isCancelled {
+                    self?.analytics?.record(.recoverableError, category: BetaAnalytics.category(error), feature: "underlines")
+                }
+                return
+            }
             for await _ in updates {
                 guard let self else { return }
                 await loadMarks()
@@ -117,10 +128,21 @@ final class ReferenceVM {
     func markTapped(_ mark: Mark, at anchor: CGRect) {
         guard case .underline(let id) = mark.kind else { return }
         passageDismissed()
+        analytics?.activity()
+        let attempt = AnalyticsAttempt()
+        let origin = shownPage
+        pendingCard = (id, attempt)
         Task {
-            guard let underline = try? await refCtrl.underline(withID: id) else { return }
-            let passagePage = await readerCtrl.page(containing: underline.reference.start)
+            guard let underline = try? await refCtrl.underline(withID: id) else {
+                analytics?.record(.recoverableError, category: "missing_reference", feature: "reference_card")
+                return
+            }
+            guard let passagePage = await readerCtrl.page(ifValid: underline.reference.start) else {
+                analytics?.record(.recoverableError, category: "invalid_destination", feature: "reference_card")
+                return
+            }
             let chapterTitles = await readerCtrl.chapterTitles()
+            guard !isClosed, shownPage == origin, pendingCard?.attempt.id == attempt.id else { return }
             cardAnchor = anchor
             selectedUnderlineID = id
             card = ReferenceCard(
@@ -140,6 +162,13 @@ final class ReferenceVM {
 
     static func quoted(_ text: String) -> String {
         "…\(text.trimmingCharacters(in: .whitespacesAndNewlines))…"
+    }
+
+    func cardAppeared(_ card: ReferenceCard) {
+        guard let pendingCard, pendingCard.id == card.id else { return }
+        self.pendingCard = nil
+        cardFlow = pendingCard.attempt.id
+        analytics?.record(.referenceCardOpened, flow: cardFlow, reference: card.id, milliseconds: pendingCard.attempt.milliseconds)
     }
 
     func cardDismissed() {
@@ -167,24 +196,32 @@ final class ReferenceVM {
 
     func jumpToPassageTapped() {
         guard let referenceCard = card else { return }
+        let flow = cardFlow
+        let attempt = AnalyticsAttempt()
         cardDismissed()
-        jumpToPassage(ofUnderline: referenceCard.underlineID)
-    }
-
-    func jumpToPassage(ofUnderline underlineID: String) {
         Task {
-            guard let underline = try? await refCtrl.underline(withID: underlineID) else { return }
-            jumpToPassage(underline.reference)
+            guard let underline = try? await refCtrl.underline(withID: referenceCard.underlineID) else {
+                analytics?.record(.recoverableError, category: "invalid_destination", feature: "jump")
+                return
+            }
+            jumpToPassage(underline.reference, flow: flow, reference: referenceCard.id, attempt: attempt)
         }
     }
 
-    /// Used by the reference card and the character list.
-    func jumpToPassage(_ passage: ContextPassage) {
+    /// Used by the reference card and the character list. `flow` ties the jump to the card it came from, for analytics.
+    func jumpToPassage(_ passage: ContextPassage, flow cardFlow: String? = nil, reference: String? = nil,
+                       attempt: AnalyticsAttempt = AnalyticsAttempt()) {
         guard let shownPage else { return }
+        analytics?.activity()
+        let flow = cardFlow ?? attempt.id
         Task {
-            await readerStateCtrl.saveReturnPosition(await readerCtrl.startPosition(of: shownPage))
+            await readerStateCtrl.saveReturnPosition(await readerCtrl.startPosition(of: shownPage), flow: flow)
             await refreshReturnPage()
-            let destination = await readerCtrl.page(containing: passage.start)
+            guard let destination = await readerCtrl.page(ifValid: passage.start), !isClosed else {
+                analytics?.record(.recoverableError, category: "invalid_destination", feature: "jump")
+                return
+            }
+            analytics?.navigating(.jumpCompleted, to: destination, flow: flow, reference: reference, attempt: attempt)
             pageShown(highlighting: passage)
             returnPrompt = .canReturn
             onShowPage(destination, passage)
@@ -193,15 +230,22 @@ final class ReferenceVM {
 
     func returnToReadingTapped() {
         returnPrompt = .none
+        analytics?.activity()
+        let attempt = AnalyticsAttempt()
         Task {
-            guard let position = await readerStateCtrl.returnPosition(), let page = await readerCtrl.page(ifValid: position) else { return }
+            guard let position = await readerStateCtrl.returnPosition(), let page = await readerCtrl.page(ifValid: position), !isClosed else {
+                analytics?.record(.recoverableError, category: "invalid_destination", feature: "return")
+                return
+            }
+            let flow = await readerStateCtrl.returnFlow()
             await readerStateCtrl.clearReturnPosition()
             returnPageNumber = nil
+            analytics?.navigating(.returnCompleted, to: page, flow: flow, attempt: attempt)
             onShowPage(page, nil)
             let message = "Returned to page \(page.number)"
             returnPrompt = .returned(message: message)
             try? await Task.sleep(for: .seconds(2))
-            // Not if a new jump has asked for the choice meanwhile.
+            // Not if a new jump has turned the return button on meanwhile.
             if returnPrompt == .returned(message: message) { returnPrompt = .none }
         }
     }

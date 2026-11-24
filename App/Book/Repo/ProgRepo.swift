@@ -1,6 +1,12 @@
 import Foundation
 import OSLog
 
+enum ResumeCandidate: Sendable {
+    case firstOpen
+    case failed(String)
+    case saved(ReadingProgress)
+}
+
 actor ProgRepo {
     private let booksFolder: URL
     private var pending: [UUID: ReadingProgress] = [:]
@@ -18,6 +24,24 @@ actor ProgRepo {
     func progress(for bookID: UUID) -> ReadingProgress? {
         guard let data = try? Data(contentsOf: fileURL(for: bookID)) else { return nil }
         return try? decoder.decode(ReadingProgress.self, from: data)
+    }
+
+    func resumeCandidate(for bookID: UUID) -> ResumeCandidate {
+        let url = fileURL(for: bookID)
+        do {
+            let saved = try decoder.decode(ReadingProgress.self, from: Data(contentsOf: url))
+            guard saved.bookID == bookID else { return .failed("mismatched") }
+            return .saved(saved)
+        } catch let error as CocoaError where error.code == .fileReadNoSuchFile {
+            let expected = FileManager.default.fileExists(atPath: saveMarker(for: url).path)
+            return expected ? .failed("missing") : .firstOpen
+        } catch {
+            return .failed(error is DecodingError ? "invalid" : "file_access")
+        }
+    }
+
+    private func saveMarker(for url: URL) -> URL {
+        url.deletingLastPathComponent().appending(path: ".position-saved")
     }
 
     func save(_ progress: ReadingProgress) {
@@ -63,11 +87,19 @@ actor ProgRepo {
 
     private func writePending() {
         while let (bookID, progress) = pending.popFirst() {
+            let attempt = AnalyticsAttempt()
             let url = fileURL(for: bookID)
             do {
                 try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
                 try encoder.encode(progress).write(to: url, options: .atomic)
+                BetaAnalytics.shared.record(.progressSaved, milliseconds: attempt.milliseconds)
+                let marker = saveMarker(for: url)
+                if !FileManager.default.fileExists(atPath: marker.path) {
+                    _ = FileManager.default.createFile(atPath: marker.path, contents: Data())
+                }
             } catch {
+                BetaAnalytics.shared.record(.progressSaveFailed, category: BetaAnalytics.category(error),
+                                            feature: "progress", milliseconds: attempt.milliseconds)
                 logger.error("Couldn't save progress for \(bookID.uuidString, privacy: .public): \(error.localizedDescription, privacy: .public)")
             }
         }

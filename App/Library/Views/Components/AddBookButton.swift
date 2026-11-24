@@ -3,12 +3,13 @@ import SwiftUI
 /// Dedicated add-book control, shared by the header and empty state.
 struct AddBookButton: View {
     var size: CGFloat = 48
+    var symbolWeight: Font.Weight = .semibold
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Image(systemName: "plus")
-                .font(.system(.title3, weight: .semibold))
+                .font(.system(.title3, weight: symbolWeight))
                 .foregroundStyle(.black)
                 .libraryIconFrame(size)
                 .contentShape(.circle)
