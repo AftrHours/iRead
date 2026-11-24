@@ -50,6 +50,7 @@ final class LibVM {
     }
     private(set) var isSearchActive = false
     private(set) var isLibraryScrolled = false
+    var isOptionsMenuPresented = false
     var isImportPickerPresented = false
     private(set) var isSelectionMode = false
     private(set) var selectedBookIDs: Set<UUID> = []
