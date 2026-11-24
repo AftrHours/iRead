@@ -61,13 +61,13 @@ enum PageTextStyle {
         return text
     }
 
-    /// The page's text with every setting applied, and the dotted line under each underline.
+    /// The page's text with every setting applied, and a line under each underline.
     static func attributedText(_ string: String, settings: ReadingSettings, marks: [Mark]) -> NSAttributedString {
         let text = attributedText(string, settings: settings)
 
         for mark in marks where mark.isUnderline {
             text.addAttributes([
-                .underlineStyle: NSUnderlineStyle.single.union(.patternDot).rawValue,
+                .underlineStyle: NSUnderlineStyle.single.rawValue,
                 .underlineColor: UIColor(AppColors.actionPrimary)
             ], range: mark.range)
         }

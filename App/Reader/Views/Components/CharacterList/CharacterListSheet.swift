@@ -131,7 +131,7 @@ private struct CharacterRow: View {
     var body: some View {
         VStack(alignment: .trailing, spacing: 12) {
             Button {
-                withAnimation(.snappy(duration: 0.25)) { onTapped() }
+                onTapped()
             } label: {
                 HStack {
                     Text(character.name)
@@ -141,7 +141,8 @@ private struct CharacterRow: View {
                     Spacer(minLength: 8)
                     Image(systemName: "chevron.right")
                         .font(.footnote.weight(.semibold))
-                        .rotationEffect(.degrees(isOpen ? 90 : 0))
+                        // Only the arrow's turn is animated, not its place in the row; the passage just appears.
+                        .animation(.easeInOut(duration: 0.2)) { $0.rotationEffect(.degrees(isOpen ? 90 : 0)) }
                         .foregroundStyle(.secondary)
                         .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                         .accessibilityHidden(true)

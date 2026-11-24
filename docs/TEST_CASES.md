@@ -184,6 +184,7 @@ The app's only AI feature: phrases worth underlining, each with the earlier pass
 | CH-08 | P1 | `CharacterCtrl` (golden) | Pride and Prejudice, to chapter 16 | Bingley, Darcy, Lydia and Mr. Bennet get their descriptions |
 | CH-09 | P0 | `CharacterRules.characters` | "Good", "Him" (mostly lowercase), "Washington" ("in/from Washington", "the Washington dispatches"), Sallie ("at Sallie’s", "said Sallie") | Only Sallie |
 | CH-10 | P1 | `CharacterRules.characters` | "Brookes", "Germans", "Christmas Eve", "Gott" only inside quotes | Only Brooke |
+| CH-11 | P1 | `CharacterRules.characters` | "Lenny" and "Len"; "Josie Pye" and "Josephine Barry"; "Kitty" and "Lady Catherine" | Lenny joins Len; Josie and Kitty stay apart |
 | DS-05 | P0 | `DescriptionRules.unnamedDescriptions` | A description naming no one, after "Laurie’s…" and "the ‘Laurence boy’" | Laurie's; not Jo's (gender), not Mr. Laurence's ("the Laurence boy" is a family) |
 | DS-06 | P1 | `DescriptionRules.gender` | "Laurie laughed, and he bowed"; Jo with one "she" | Male; not clear |
 | DS-07 | P0 | `DescriptionRules` | "Mr. Hurst… but his friend Mr. Darcy… tall person"; a Darcy sentence mostly about "her" | Darcy's part only; the "her" sentence isn't his |

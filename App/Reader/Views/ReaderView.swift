@@ -64,13 +64,6 @@ struct ReaderView: View {
             readerVM.screenChanged($0)
         }
         .task { await readerVM.onAppear() }
-        .overlay {
-            if case .returned(let message) = referenceVM.returnPrompt {
-                ReferredToast(text: message)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                    .padding(.bottom, barHeight + 4)
-            }
-        }
         .background(Color(PageTextStyle.backgroundColor(for: readerVM.theme)))
         .preferredColorScheme(readerVM.forcedDarkMode.map { $0 ? .dark : .light })
         .onChange(of: colorScheme, initial: true) { _, colorScheme in

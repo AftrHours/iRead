@@ -109,6 +109,17 @@ struct CharacterRulesTests {
         #expect(CharacterRules.characters(from: mentions, sentences: sentences).map(\.name) == ["Brooke"])
     }
 
+    @Test("CH-11 a pet form joins its name in any book; different surnames or a name mostly said with a title keep two people apart")
+    func nicknamesInAnyBook() {
+        let people = ["Lenny", "Len", "Josie Pye", "Josie", "Josephine Barry", "Josephine", "Kitty", "Lady Catherine"]
+        let sentences = paragraphs(people.flatMap { name in ["laughed", "smiled", "nodded"].map { "\(name) \($0)." } })
+        let mentions = people.indices.flatMap { person in (0..<3).map { mention(people[person], paragraph: person * 3 + $0) } }
+        let names = CharacterRules.characters(from: mentions, sentences: sentences).map { Set($0.names) }
+        #expect(names.contains { $0.isSuperset(of: ["Lenny", "Len"]) })
+        #expect(names.contains { $0.contains("Josie") && !$0.contains("Josephine") })
+        #expect(names.contains { $0 == ["Kitty"] })
+    }
+
     @Test("CH-04 search finds any of a character's names, ignoring case, and forgives one typo in a longer search")
     func search() {
         let laurie = BookCharacter(name: "Laurie/Laurence", names: ["Laurie", "Laurence"], passage: nil)

@@ -159,7 +159,9 @@ final class ReaderVM {
         chapterTitles.indices.contains(page.chapterIndex) ? chapterTitles[page.chapterIndex] : ""
     }
 
+    /// "Page 12 of 300", or "Returned to page 12" for a moment after returning.
     private func pageLabel(for page: Page) -> String {
+        if case .returned(let message) = referenceVM.returnPrompt, page.number == shownPage?.number { return message }
         guard !isFocusMode, let pageCount else { return "Page \(page.number)" }
         return "Page \(page.number) of \(pageCount)"
     }

@@ -2,17 +2,22 @@ import Foundation
 
 enum CharacterRulesKnobs {
     static let minMentions = 3
+    /// Common English nicknames that can't be guessed from the spelling. Pet forms that can ("Johnny" for John) are found in
+    /// each book (`petForms`), and two forms used with different surnames stay apart (`isSameFamily`).
     static let nicknames: [[String]] = [
-        ["Josephine", "Jo", "Josie"], ["Margaret", "Meg", "Maggie", "Peggy", "Madge"], ["Laurence", "Laurie", "Lawrence", "Larry"],
-        ["Elizabeth", "Beth", "Bess", "Betsy", "Betty", "Eliza", "Lizzie", "Lizzy", "Liz"], ["Theodore", "Teddy", "Theo"],
-        ["Catherine", "Kate", "Katie", "Kitty", "Cathy"], ["Katherine", "Kate", "Katie", "Kitty", "Kathy"], ["Mary", "Molly", "Polly"],
-        ["Sarah", "Sally"], ["Frances", "Fanny"], ["Eleanor", "Ellen", "Nell", "Nelly"], ["Susan", "Sue", "Susie"],
-        ["Jane", "Jenny", "Janie"], ["Anne", "Ann", "Anna", "Annie", "Nan", "Nancy"], ["William", "Will", "Bill", "Billy", "Willie"],
-        ["Robert", "Rob", "Bob", "Bobby"], ["Richard", "Dick", "Rick"], ["Thomas", "Tom", "Tommy"], ["James", "Jim", "Jimmy", "Jem"],
-        ["John", "Jack", "Johnny"], ["Edward", "Ned", "Ed", "Eddie"], ["Henry", "Harry", "Hal"], ["Charles", "Charlie", "Chas"],
-        ["Frederick", "Fred", "Freddie", "Fritz"], ["Benjamin", "Ben"], ["Samuel", "Sam", "Sammy"], ["Joseph", "Joe", "Joey"],
-        ["Anthony", "Tony"], ["Alexander", "Alex", "Sandy"], ["Andrew", "Andy"], ["Nicholas", "Nick"], ["Michael", "Mike", "Mickey"],
-        ["Daniel", "Dan", "Danny"], ["Peter", "Pete"], ["Christopher", "Chris", "Kit"], ["Matthew", "Matt"]
+        ["Margaret", "Meg", "Maggie", "Peggy", "Madge"], ["Mary", "Molly", "Polly"], ["Sarah", "Sally"], ["Frances", "Fanny"],
+        ["Elizabeth", "Beth", "Bess", "Betsy", "Betty", "Eliza", "Lizzie", "Lizzy", "Liz"], ["Susan", "Sue", "Susie"],
+        ["Catherine", "Kate", "Katie", "Kitty", "Cathy"], ["Katherine", "Kate", "Katie", "Kitty", "Kathy"], ["Jane", "Jenny", "Janie"],
+        ["Eleanor", "Ellen", "Nell", "Nelly"], ["Anne", "Ann", "Anna", "Annie", "Nan"], ["Dorothy", "Dolly", "Dot"],
+        ["Martha", "Patty", "Mattie"], ["Isabella", "Bella", "Isabel"], ["Rebecca", "Becky"], ["Abigail", "Abby", "Nabby"],
+        ["Harriet", "Hattie"], ["Josephine", "Jo", "Josie"], ["Laurence", "Laurie", "Lawrence", "Larry"],
+        ["William", "Will", "Bill", "Billy", "Willie"], ["Robert", "Rob", "Bob", "Bobby"], ["Richard", "Dick", "Rick"], ["Thomas", "Tom", "Tommy"],
+        ["Edward", "Ned", "Ed", "Eddie"], ["Edmund", "Ned"], ["Henry", "Harry", "Hal"], ["John", "Jack", "Johnny"],
+        ["James", "Jim", "Jimmy", "Jem"], ["Theodore", "Teddy", "Theo", "Ted"], ["Charles", "Charlie", "Chas"],
+        ["Frederick", "Fred", "Freddie"], ["Friedrich", "Fritz"], ["Alexander", "Alex", "Sandy"], ["Christopher", "Chris", "Kit"],
+        ["Patrick", "Paddy", "Pat"], ["Philip", "Phil", "Pip"], ["Augustus", "Gus"], ["Benjamin", "Ben"], ["Samuel", "Sam", "Sammy"],
+        ["Joseph", "Joe", "Joey"], ["Anthony", "Tony"], ["Andrew", "Andy"], ["Nicholas", "Nick"], ["Michael", "Mike", "Mickey"],
+        ["Daniel", "Dan", "Danny"], ["Peter", "Pete"], ["Matthew", "Matt"]
     ]
     /// Followed by a surname: "Mr. Laurence". The other titles can take a first name too: "Miss Jo", "Aunt March".
     static let surnameTitles: Set<String> = ["mr", "mrs", "ms", "dr", "captain", "professor"]
@@ -37,6 +42,9 @@ enum CharacterRulesKnobs {
     static let determiners = "a|an|the|their|his|her|our|my|your|its"
     /// Next to a person's name: "said Jo", "Laurie laughed".
     static let personVerbs = "said|asked|cried|replied|answered|exclaimed|whispered|laughed|added|returned|began|smiled|thought|nodded"
+    /// A first name and surname: "Josie Pye", "Catherine de Bourgh".
+    /// The surname is looked ahead for, so "Lady Catherine de Bourgh" gives both "Lady Catherine" and "Catherine de Bourgh".
+    static let fullName = try? NSRegularExpression(pattern: "\\b([A-Z][a-z]+)(?=\\s+(?:(?:de|van|von|du|le|la)\\s+)?([A-Z][a-z]+)\\b)")
     /// From this length, one typo is forgiven ("Lauire").
     static let typoQueryLength = 4
     /// The book saying two names are one person: "Elizabeth, or Beth, as everyone called her",
@@ -45,7 +53,9 @@ enum CharacterRulesKnobs {
         "\\b([A-Z][a-z]+), or ([A-Z][a-z]+), as \\w+ (?:called|calls|call) (?:her|him)\\b",
         "\\bname is ([A-Z][a-z]+)\\b[^.!?]*\\b(?:say|call me)\\s+([A-Z][a-z]+)\\s+instead\\b",
         "\\b([A-Z][a-z]+), (?:whom|who) (?:everyone|everybody|they|we) called ([A-Z][a-z]+)\\b",
-        "\\b([A-Z][a-z]+), (?:known as|nicknamed) ([A-Z][a-z]+)\\b"
+        "\\b([A-Z][a-z]+), (?:known as|nicknamed) ([A-Z][a-z]+)\\b",
+        "\\b([A-Z][a-z]+), (?:but|though) (?:everyone|everybody|they|we|she|he) called (?:her|him) ([A-Z][a-z]+)\\b",
+        "\\b([A-Z][a-z]+) (?:is|was) short for ([A-Z][a-z]+)\\b"
     ].compactMap { try? NSRegularExpression(pattern: $0) }
 }
 
@@ -65,7 +75,8 @@ enum CharacterRules {
         let pairs = sameNames(in: sentences)
         let bookNames = Set(pairs.flatMap { [$0.0.lowercased(), $0.1.lowercased()] })
         let surnames = surnameOwners(counts: counts, bookNames: bookNames)
-        let key = keys(for: Set(counts.keys), surnames: surnames, pairs: pairs, bookNames: bookNames)
+        let key = keys(for: Set(counts.keys), surnames: surnames, pairs: pairs, bookNames: bookNames,
+                       nicknames: nicknameJoins(counts: counts, sentences: sentences))
         let sentencesByWord = capitalisedWordIndex(of: sentences)
         let wordCase = wordCaseCounts(in: sentences)
         let narration = DescriptionRules.narration(of: sentences)
@@ -200,7 +211,7 @@ enum CharacterRules {
     /// with it, or is left out when several share it ("March": Mrs. March and Aunt March). Names the book says are one
     /// person are joined.
     private static func keys(for names: Set<String>, surnames: [String: Set<String>], pairs: [(String, String)],
-                             bookNames: Set<String>) -> (String) -> String? {
+                             bookNames: Set<String>, nicknames: [String: String]) -> (String) -> String? {
         let given = givenNames(in: names)
         func baseKey(_ name: String) -> String? {
             var parts = words(of: name)
@@ -208,7 +219,7 @@ enum CharacterRules {
             guard let first = parts.first?.lowercased() else { return nil }
             if isTitle(first) { return parts.joined(separator: " ").lowercased() }
             if parts.count == 1, let owners = surnames[first] { return owners.count == 1 ? owners.first : nil }
-            return formalName[first] ?? first
+            return nicknames[first] ?? first
         }
         var joined: [String: String] = [:]
         func root(_ key: String) -> String {
@@ -220,6 +231,61 @@ enum CharacterRules {
             if let lhsKey = baseKey(lhs).map(root), let rhsKey = baseKey(rhs).map(root), lhsKey != rhsKey { joined[rhsKey] = lhsKey }
         }
         return { baseKey($0).map(root) }
+    }
+
+    /// A pet form whose stem is another first name in the book: "Johnny" → "John", "Tommy" → "Tom", "Bethy" → "Beth".
+    static func petForms(among names: Set<String>) -> [String: String] {
+        var forms: [String: String] = [:]
+        for name in names {
+            guard let suffix = ["ie", "y"].first(where: name.hasSuffix) else { continue }
+            var stem = String(name.dropLast(suffix.count))
+            if stem.count > 3, stem.last == stem.dropLast().last { stem.removeLast() }
+            if stem.count >= 3, stem != name, names.contains(stem) { forms[name] = stem }
+        }
+        return forms
+    }
+
+    /// First name → the full name it's a nickname of in this book (`CharacterRulesKnobs.nicknames`, `petForms`). Not when the
+    /// book tells them apart: different surnames ("Josie Pye", "Josephine Barry"), another nickname of the same name with a
+    /// different surname (Kitty Bryant, Kate Vaughn), or a full name mostly said with a title its nickname never has
+    /// ("Lady Catherine" and Kitty).
+    static func nicknameJoins(counts: [String: Int], sentences: [ContextPassage]) -> [String: String] {
+        let given = givenNames(in: Set(counts.keys))
+        let pets = petForms(among: given)
+        let surnames = surnamesInText(given: given, nameWords: Set(counts.keys.flatMap(words(of:)).map { $0.lowercased() }),
+                                      sentences: sentences)
+        var titled: [String: Int] = [:], bare: [String: Int] = [:]
+        for (name, count) in counts {
+            let parts = words(of: name).map { $0.lowercased() }
+            if parts.count == 2, isTitle(parts[0]) { titled[parts[1], default: 0] += count }
+            if parts.count == 1 { bare[parts[0], default: 0] += count }
+        }
+        let formalOf = given.reduce(into: [String: String]()) { joins, name in
+            if let formal = formalName[name] ?? pets[name].map({ formalName[$0] ?? $0 }), formal != name { joins[name] = formal }
+        }
+        func clash(_ lhs: String, _ rhs: String) -> Bool {
+            guard let lhsFamily = surnames[lhs], let rhsFamily = surnames[rhs] else { return false }
+            return lhsFamily.isDisjoint(with: rhsFamily)
+        }
+        return formalOf.filter { name, formal in
+            let titles = titled[formal, default: 0]
+            let mostlyTitled = titles >= CharacterRulesKnobs.minMentions && titles > bare[formal, default: 0] && titled[name, default: 0] == 0
+            let family = formalOf.filter { $0.value == formal }.map(\.key) + [formal]
+            return !mostlyTitled && !family.contains { clash(name, $0) }
+        }
+    }
+
+    /// First name → the surnames the book puts after it: "Josie Pye", "Catherine de Bourgh". A word that is itself followed
+    /// by a surname, or is a known first name, isn't a surname ("Beth Frank", with "Frank Vaughn").
+    private static func surnamesInText(given: Set<String>, nameWords: Set<String>, sentences: [ContextPassage]) -> [String: Set<String>] {
+        let pairs = sentences.flatMap { sentence -> [(String, String)] in
+            let text = sentence.text as NSString
+            return (CharacterRulesKnobs.fullName?.matches(in: sentence.text, range: NSRange(location: 0, length: text.length)) ?? []).map {
+                (text.substring(with: $0.range(at: 1)).lowercased(), text.substring(with: $0.range(at: 2)).lowercased())
+            }.filter { given.contains($0.0) && nameWords.contains($0.1) }
+        }
+        let firstNames = Set(pairs.map(\.0)).union(formalName.keys)
+        return pairs.filter { !firstNames.contains($0.1) }.reduce(into: [:]) { surnames, pair in surnames[pair.0, default: []].insert(pair.1) }
     }
 
     private static func sameNames(in sentences: [ContextPassage]) -> [(String, String)] {

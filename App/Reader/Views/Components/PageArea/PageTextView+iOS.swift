@@ -167,7 +167,9 @@ final class PageTextView: UIView {
             actions.onCenterTapped()
             return true
         }]
-        pageLabel.text = chrome.pageLabel
+        // Crossfades, as "Page 12 of 300" turns into "Returned to page 12" and back.
+        let label = chrome.pageLabel
+        UIView.transition(with: pageLabel, duration: pageLabel.text == nil ? 0 : 0.25, options: .transitionCrossDissolve) { self.pageLabel.text = label }
         progressTrack.isHidden = chrome.progress == nil
         returnMark.isHidden = chrome.returnMark == nil
         setNeedsLayout()

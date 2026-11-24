@@ -23,7 +23,7 @@ struct CharacterCtrlTests {
         let found = try await characters(in: "Little Women", before: "What in the world are you going to do now, Jo?")
         #expect(found["Meg/Margaret"]??.hasPrefix("Margaret, the eldest of the four, was six") == true)
         #expect(found["Jo/Josephine"]??.hasPrefix("Fifteen-year-old Jo was very tall, thin,") == true)
-        #expect(found["Beth"]??.hasPrefix("Elizabeth, or Beth, as everyone called he") == true)
+        #expect(found["Beth/Bethy"]??.hasPrefix("Elizabeth, or Beth, as everyone called he") == true)
         #expect(found["Amy"]??.hasPrefix("Amy, though the youngest, was a most imp") == true)
         #expect(found["Laurie/Theodore"]??.hasPrefix("“Curly black hair, brown skin, big black") == true)
         #expect(found["Mr. Laurence"] == .some(nil))

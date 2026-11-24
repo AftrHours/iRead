@@ -221,7 +221,7 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 2. Jump to Passage → `ReferenceVM.jumpToPassageTapped` → `ReaderCtrl.startPosition(of:)` → `ReaderStateCtrl.saveReturnPosition`
    → `ReaderCtrl.page(containing:)` → `onShowPage` → `ReaderVM.show(_:highlighting:)`.
 3. Return to Reading → `ReferenceVM.returnToReadingTapped` → `ReaderStateCtrl.returnPosition` → `ReaderCtrl.page(ifValid:)`
-   → `ReaderStateCtrl.clearReturnPosition` → `onShowPage` and a 2-second toast.
+   → `ReaderStateCtrl.clearReturnPosition` → `onShowPage`, and the page label reads "Returned to page N" for 2 seconds.
 
 ## Analysis
 
@@ -245,8 +245,9 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
   from the chapter's start like UnderlineEngine's golden set. Taking a rating back deletes its record. One send runs at a time;
   what can't be sent yet is retried when a book opens. See `docs/ICLOUD.md` for the CloudKit Console.
 - Characters: `Svc/NameSvc` finds people's names in a chapter with NaturalLanguage (the tagger the engine uses inside; the engine
-  doesn't hand names out) and keeps a title in front ("Mr. Laurence"). `Rules/CharacterRules` joins a person's names: nicknames
-  (`CharacterRulesKnobs`), names the book says are one person ("…so I made them say Laurie instead"), "Miss Jo" with Jo; a titled
+  doesn't hand names out) and keeps a title in front ("Mr. Laurence"). `Rules/CharacterRules` joins a person's names: common English
+  nicknames (`CharacterRulesKnobs`) and pet forms of a name in the book ("Johnny" for John), unless the book tells them apart
+  (different surnames, "Josie Pye"/"Josephine Barry", or a name mostly said with a title, "Lady Catherine"/Kitty); names the book says are one person ("…so I made them say Laurie instead"), "Miss Jo" with Jo; a titled
   surname stays its own person and a bare surname joins its one owner or is left out ("March"). `CharacterRules+People` keeps
   only people: not ordinary words ("Good": mostly written in lowercase), places ("in Washington"), groups ("Germans",
   "the Brookes"), parts of longer names ("Christmas Eve"), titles alone, or names only in dialogue. Ordered by latest mention.
