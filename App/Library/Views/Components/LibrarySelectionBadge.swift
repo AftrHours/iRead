@@ -13,6 +13,7 @@ struct LibrarySelectionBadge: View {
                 .frame(width: diameter, height: diameter)
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(item.isSelected ? AppColors.bgPrimary : AppColors.textSecondary, AppColors.textPrimary)
+                .contentTransition(.opacity)
                 .accessibilityHidden(true)
                 .allowsHitTesting(false)
         }

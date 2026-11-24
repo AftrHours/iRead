@@ -227,6 +227,7 @@ final class LibVM {
     }
 
     func searchTapped() {
+        guard !isSelectionMode else { return }
         isSearchActive = true
     }
 
@@ -237,7 +238,7 @@ final class LibVM {
     }
 
     func searchFocusChanged(_ focused: Bool) {
-        if focused { isSearchActive = true }
+        if focused { searchTapped() }
     }
 
     func searchDismissed() {
@@ -250,8 +251,7 @@ final class LibVM {
     }
 
     func selectionModeTapped() {
-        stopDictation()
-        isSearchActive = false
+        searchDismissed()
         isSelectionMode = true
         selectedBookIDs.removeAll()
     }
