@@ -63,21 +63,23 @@ struct CharacterListSheet: View {
         }
     }
 
+    /// A stack rather than a List, so a row opens with only the passage moving: a List re-centres its rows as they grow.
     private var characterList: some View {
-        List(characterVM.shownCharacters) { character in
-            CharacterRow(
-                character: character,
-                passage: characterVM.passage(of: character),
-                isOpen: characterVM.openedID == character.id,
-                onTapped: { characterVM.rowTapped(character) },
-                onJumpTapped: { characterVM.jumpTapped(character) }
-            )
-            .listRowBackground(Color.clear)
-            .listRowInsets(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
-            .listRowSeparator(.hidden, edges: character.id == characterVM.shownCharacters.first?.id ? .top : [])
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ForEach(characterVM.shownCharacters) { character in
+                    CharacterRow(
+                        character: character,
+                        passage: characterVM.passage(of: character),
+                        isOpen: characterVM.openedID == character.id,
+                        onTapped: { characterVM.rowTapped(character) },
+                        onJumpTapped: { characterVM.jumpTapped(character) }
+                    )
+                    Divider()
+                }
+            }
+            .padding(.horizontal, 24)
         }
-        .listStyle(.plain)
-        .scrollContentBackground(.hidden)
     }
 
     private var recentSearches: some View {
@@ -129,9 +131,9 @@ private struct CharacterRow: View {
     let onJumpTapped: () -> Void
 
     var body: some View {
-        VStack(alignment: .trailing, spacing: 12) {
+        VStack(alignment: .trailing, spacing: 0) {
             Button {
-                onTapped()
+                withAnimation(.easeInOut(duration: 0.25)) { onTapped() }
             } label: {
                 HStack {
                     Text(character.name)
@@ -141,8 +143,7 @@ private struct CharacterRow: View {
                     Spacer(minLength: 8)
                     Image(systemName: "chevron.right")
                         .font(.footnote.weight(.semibold))
-                        // Only the arrow's turn is animated, not its place in the row; the passage just appears.
-                        .animation(.easeInOut(duration: 0.2)) { $0.rotationEffect(.degrees(isOpen ? 90 : 0)) }
+                        .rotationEffect(.degrees(isOpen ? 90 : 0))
                         .foregroundStyle(.secondary)
                         .dynamicTypeSize(...PageLayoutKnobs.maximumIconSize)
                         .accessibilityHidden(true)
@@ -153,20 +154,28 @@ private struct CharacterRow: View {
             .buttonStyle(.plain)
             .accessibilityHint(isOpen ? "Hides the passage." : "Shows the passage that describes them.")
 
-            if isOpen {
-                Text(passage)
-                    .font(AppTypography.callout())
-                    .foregroundStyle(AppColors.popoverPassageText)
-                    .padding(10)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(AppColors.popoverPassageBg, in: .rect(cornerRadius: 8))
-                if character.passage != nil {
-                    jumpButton
+            // Drops down from under the name, like a disclosure row: clipped here, so it never slides over the name.
+            VStack(spacing: 0) {
+                if isOpen {
+                    VStack(alignment: .trailing, spacing: 12) {
+                        Text(passage)
+                            .font(AppTypography.callout())
+                            .foregroundStyle(AppColors.popoverPassageText)
+                            .padding(10)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(AppColors.popoverPassageBg, in: .rect(cornerRadius: 8))
+                        if character.passage != nil {
+                            jumpButton
+                        }
+                    }
+                    .padding(.top, 12)
+                    .padding(.bottom, 16)
+                    .transition(.move(edge: .top).combined(with: .opacity))
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .clipped()
         }
-        .padding(.bottom, isOpen ? 16 : 0)
-        .alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
     }
 
     /// The reference card's Jump to Passage. An HStack, as a Label in a List puts its icon far from the text.

@@ -35,10 +35,6 @@ final class PageTextView: UIView {
     private let textView = UITextView(usingTextLayoutManager: false)
     private let titleLabel = UILabel()
     private let chapterLabel = UILabel()
-    private let pageLabel = UILabel()
-    private let progressTrack = UIView()
-    private let progressFill = UIView()
-    private let returnMark = UIView()
     private lazy var modeControl = ReaderAccessibilityButton(container: self) { [weak self] in
         self?.actions.onCenterTapped()
     }
@@ -92,7 +88,7 @@ final class PageTextView: UIView {
         addSubview(textView)
     }
 
-    /// The book title over the chapter title on top, the page label below: subheadline semibold, a faded caption, a caption.
+    /// The book title over the chapter title on top: subheadline semibold over a faded caption. The page label is `PageFooter`.
     private func configureLabels() {
         let textColor = PageTextStyle.textColor(for: settings.theme)
         let standardSize = UITraitCollection(preferredContentSizeCategory: .large)
@@ -103,24 +99,11 @@ final class PageTextView: UIView {
         titleLabel.textColor = textColor
         chapterLabel.font = .preferredFont(forTextStyle: .caption2, compatibleWith: standardSize)
         chapterLabel.textColor = textColor.withAlphaComponent(Self.chapterTitleAlpha)
-        pageLabel.font = .preferredFont(forTextStyle: .caption1)
-        pageLabel.textColor = textColor
-        pageLabel.textAlignment = .center
-        progressTrack.backgroundColor = UIColor(AppColors.progressBarBg)
-        progressFill.backgroundColor = UIColor(AppColors.progressBarLine)
-        returnMark.backgroundColor = AppColors.readerReturnMark
-        progressTrack.layer.cornerRadius = PageLayoutKnobs.progressBarHeight / 2
-        progressTrack.clipsToBounds = true
-        progressTrack.isAccessibilityElement = false
-        progressTrack.addSubview(progressFill)
-        progressTrack.addSubview(returnMark)
-        addSubview(progressTrack)
         for label in [titleLabel, chapterLabel] {
             label.textAlignment = .center
             label.lineBreakMode = .byTruncatingTail
             addSubview(label)
         }
-        addSubview(pageLabel)
         let source = page.text as NSString
         for mark in marks.sorted(by: { $0.range.location < $1.range.location }) where mark.isUnderline {
             guard mark.range.length > 0, NSMaxRange(mark.range) <= source.length else { continue }
@@ -132,7 +115,7 @@ final class PageTextView: UIView {
             button.accessibilityHint = "Opens the earlier passage."
             referenceButtons.append((mark, button))
         }
-        accessibilityElements = [titleLabel, textView] + referenceButtons.map { $0.button as NSObject } + [modeControl, pageLabel]
+        accessibilityElements = [titleLabel, textView] + referenceButtons.map { $0.button as NSObject } + [modeControl]
     }
 
     /// Whether this view already shows `page` as `content` has it, so it can stay on screen instead of being built again.
@@ -167,11 +150,6 @@ final class PageTextView: UIView {
             actions.onCenterTapped()
             return true
         }]
-        // Crossfades, as "Page 12 of 300" turns into "Returned to page 12" and back.
-        let label = chrome.pageLabel
-        UIView.transition(with: pageLabel, duration: pageLabel.text == nil ? 0 : 0.25, options: .transitionCrossDissolve) { self.pageLabel.text = label }
-        progressTrack.isHidden = chrome.progress == nil
-        returnMark.isHidden = chrome.returnMark == nil
         setNeedsLayout()
     }
 
@@ -225,7 +203,6 @@ final class PageTextView: UIView {
         titleLabel.frame = CGRect(x: header.minX, y: titlesTop, width: header.width, height: titleHeight)
         chapterLabel.frame = CGRect(x: header.minX, y: titlesTop + titleHeight + Self.titleSpacing,
                                     width: header.width, height: chapterHeight)
-        layoutFooter()
         layoutMentionTag()
         modeControl.accessibilityFrameInContainerSpace = CGRect(x: bounds.midX - 22, y: layout.footer.midY - 22, width: 44, height: 44)
         for (mark, button) in referenceButtons {
@@ -296,22 +273,6 @@ final class PageTextView: UIView {
 }
 
 private extension PageTextView {
-    func layoutFooter() {
-        typealias Knobs = PageLayoutKnobs
-        let footer = layout.footer
-        let labelHeight = pageLabel.intrinsicContentSize.height
-        let barHeight = progressTrack.isHidden ? 0 : Knobs.progressBarHeight + Knobs.progressBarGap
-        let top = footer.midY - (barHeight + labelHeight) / 2
-        let barWidth = min(Knobs.progressBarWidth, footer.width - 2 * footer.height)
-        progressTrack.frame = CGRect(x: footer.midX - barWidth / 2, y: top, width: barWidth, height: Knobs.progressBarHeight)
-        progressFill.frame = CGRect(x: 0, y: 0, width: barWidth * (chrome.progress ?? 0), height: Knobs.progressBarHeight)
-        returnMark.frame = CGRect(x: barWidth * (chrome.returnMark ?? 0) - Knobs.returnMarkWidth / 2, y: 0,
-                                  width: Knobs.returnMarkWidth, height: Knobs.progressBarHeight)
-        let labelInset = footer.height + 4
-        pageLabel.frame = CGRect(x: footer.minX + labelInset, y: top + barHeight,
-                                 width: footer.width - 2 * labelInset, height: labelHeight)
-    }
-
     func layoutMentionTag() {
         guard let range = mentionedRange, let firstLine = firstLineRect(of: range) else { return hideMentionTag() }
         let tag = mentionTag ?? makeMentionTag()

@@ -35,7 +35,7 @@ struct LibCtrl {
         try libRepo.rename(book, to: title)
     }
 
-    /// A book with no saved progress keeps its own (a sample's mock progress, or 0 for an imported book).
+    /// A book with no saved progress keeps its own (0, for a sample or an imported book).
     private func withProgress(_ book: BookRecord, _ progress: ReadingProgress?) -> BookRecord {
         guard let progress else { return book }
         return BookRecord(

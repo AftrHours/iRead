@@ -5,14 +5,15 @@
 //  Created by Putri Aziza Mufva on 22/11/26.
 //
 
+import Lottie
 import SwiftUI
-//import Lottie
 
 struct QuickGuideView: View {
     var onBack: () -> Void
     var onConfirm: () -> Void
 
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         NavigationStack {
@@ -32,11 +33,13 @@ struct QuickGuideView: View {
                         .padding(.horizontal, 40)
                 }
 
-//                LottieView(animation: .named("nama_file_lottie_nya_ya"))
-//                    .playing(loopMode: .loop)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .padding(.vertical, 40)
+                // `Resources/Animation/QuickGuide.lottie`. Still, on its first frame, with Reduce Motion.
+                LottieView { try await DotLottieFile.named("QuickGuide") }
+                    .playbackMode(reduceMotion ? .paused(at: .progress(0)) : .playing(.fromProgress(0, toProgress: 1, loopMode: .loop)))
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.vertical, 40)
+                    .accessibilityHidden(true)
 
                 Button(action: onConfirm) {
                     Text("Got it!")
