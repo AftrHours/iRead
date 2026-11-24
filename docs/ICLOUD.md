@@ -32,8 +32,8 @@ signing), comment out both, then run `xcodegen generate`. Never one without the 
    `iCloud.com.aftrhours.reader` → Development:
    - Indexes → `UnderlineRating`, `ChapterUnderlines` and `BetaAnalyticsBatch` → add a **Queryable** index on `recordName`, so
      the Console can list them.
-   - Security Roles → `UnderlineRating` and `BetaAnalyticsBatch` → take **Read** away from **World**, so readers can't read
-     each other's ratings or events.
+   - Security Roles → `UnderlineRating` → take **Read** away from **World**, so readers can't read each other's ratings.
+     For `BetaAnalyticsBatch`, follow `tools/BetaAnalytics.md` (Creators also need Write, so a retried batch can overwrite itself).
 5. **Before TestFlight or the App Store:** Deploy Schema Changes to Production. TestFlight and App Store builds use the
    Production environment; builds run from Xcode use Development. The data in the two is separate.
 
