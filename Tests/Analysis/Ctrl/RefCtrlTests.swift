@@ -57,7 +57,7 @@ struct RefCtrlTests {
     func highlight() async throws {
         let refCtrl = makeRefCtrl()
         try await load([clockInHall, clockAtNoon], into: refCtrl)
-        let marks = try await refCtrl.marks(on: wholeChapter(0), highlighting: clockAtNoon.id)
+        let marks = try await refCtrl.marks(on: wholeChapter(0), highlighting: clockAtNoon.reference)
         let reference = clockAtNoon.reference
         let expected = NSRange(location: content.paragraphs[reference.paragraph].range.location + reference.range.location, length: reference.range.length)
         #expect(marks.filter { $0.kind == .highlight } == [Mark(range: expected, kind: .highlight)])
@@ -69,7 +69,7 @@ struct RefCtrlTests {
         let rainAfterClock = SavedUnderline.make("The rain", paragraph: 4, passage: "Then Anna saw the old clock in the hall.",
                                                  passageParagraph: 0, in: content)
         try await load([rainAfterClock], into: refCtrl)
-        let marks = try await refCtrl.marks(on: wholeChapter(0), highlighting: rainAfterClock.id)
+        let marks = try await refCtrl.marks(on: wholeChapter(0), highlighting: rainAfterClock.reference)
         let reference = rainAfterClock.reference
         let expected = NSRange(location: content.paragraphs[reference.paragraph].range.location + reference.range.location, length: reference.range.length)
         #expect(marks == [Mark(range: expected, kind: .highlight)])

@@ -32,7 +32,7 @@ struct ReferenceVMTests {
         for await _ in try await refCtrl.underlineUpdates(from: readingPage) {}
         await referenceVM.bookOpened()
 
-        let (shownPages, shown) = AsyncStream<(page: Page, underlineID: String?)>.makeStream()
+        let (shownPages, shown) = AsyncStream<(page: Page, passage: ContextPassage?)>.makeStream()
         referenceVM.onShowPage = { shown.yield(($0, $1)) }
         var nextShown = shownPages.makeAsyncIterator()
         referenceVM.update(shownPage: readingPage, loadedPages: [readingPage])
@@ -42,7 +42,7 @@ struct ReferenceVMTests {
         #expect(referenceVM.selectedUnderlineID == underline.id)
         referenceVM.jumpToPassageTapped()
         let jumped = try #require(await nextShown.next(isolation: MainActor.shared))
-        #expect(jumped.underlineID == underline.id)
+        #expect(jumped.passage == underline.reference)
         #expect(jumped.page.range.location == 0)
         #expect(jumped.page != readingPage)
         #expect(await readerStateCtrl.returnPosition() == (await readerCtrl.startPosition(of: readingPage)))
@@ -59,7 +59,7 @@ struct ReferenceVMTests {
         referenceVM.returnToReadingTapped()
         let returned = try #require(await nextShown.next(isolation: MainActor.shared))
         #expect(returned.page == readingPage)
-        #expect(returned.underlineID == nil)
+        #expect(returned.passage == nil)
         #expect(referenceVM.returnPrompt == .returned(message: "Returned to page \(readingPage.number)"))
         #expect(await readerStateCtrl.returnPosition() == nil)
         #expect(referenceVM.card == nil)

@@ -27,8 +27,7 @@ struct ReaderVMTests {
                                      readerStateCtrl: readerStateCtrl, readerCtrl: readerCtrl),
             ratingVM: RatingVM(ratingCtrl: RatingCtrl(bookID: book.id, bookTitle: book.title, bookContentRepo: bookContentRepo,
                                                       underlineRepo: underlineRepo, ratingRepo: RatingRepo(folder: folder.url))),
-            characterVM: CharacterVM(characterCtrl: CharacterCtrl(bookID: book.id, bookContentRepo: bookContentRepo,
-                                                                  underlineRepo: underlineRepo),
+            characterVM: CharacterVM(characterCtrl: CharacterCtrl(bookID: book.id, bookContentRepo: bookContentRepo),
                                      readerStateCtrl: readerStateCtrl)
         )
     }

@@ -178,8 +178,8 @@ final class ReaderVM {
         readerSettingsVM.onSettingsChanged = { [weak self] in
             Task { await self?.showCurrentPage() }
         }
-        referenceVM.onShowPage = { [weak self] page, underlineID in self?.show(page, highlighting: underlineID) }
-        characterVM.onJump = { [weak self] underlineID in self?.characterPassagePicked(underlineID) }
+        referenceVM.onShowPage = { [weak self] page, passage in self?.show(page, highlighting: passage) }
+        characterVM.onJump = { [weak self] passage in self?.characterPassagePicked(passage) }
     }
 
     func startPageLabel(ofChapter index: Int) -> String {
@@ -302,9 +302,9 @@ final class ReaderVM {
         Task { show(await readerCtrl.firstPage(ofChapter: index)) }
     }
 
-    private func characterPassagePicked(_ underlineID: String) {
+    private func characterPassagePicked(_ passage: ContextPassage) {
         sheet = nil
-        referenceVM.jumpToPassage(ofUnderline: underlineID)
+        referenceVM.jumpToPassage(passage)
     }
 
     private func searchResultPicked(_ result: SearchResult) {
@@ -338,8 +338,8 @@ final class ReaderVM {
         await referenceVM.refreshReturnPage()
     }
 
-    private func show(_ page: Page, highlighting underlineID: String? = nil, searchResult: SearchResult? = nil) {
-        referenceVM.pageShown(highlighting: underlineID, searchResult: searchResult)
+    private func show(_ page: Page, highlighting passage: ContextPassage? = nil, searchResult: SearchResult? = nil) {
+        referenceVM.pageShown(highlighting: passage, searchResult: searchResult)
         completedPassageSpeech = nil
         readingFocus = ReaderFocusRequest(from: shownPage, to: page, passage: referenceVM.jumpedPassageText)
         shownPage = page

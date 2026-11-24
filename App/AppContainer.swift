@@ -75,7 +75,7 @@ struct AppContainer {
             ratingVM: RatingVM(ratingCtrl: RatingCtrl(bookID: book.id, bookTitle: book.title, bookContentRepo: bookContentRepo,
                                                       underlineRepo: underlineRepo, ratingRepo: ratingRepo)),
             characterVM: CharacterVM(
-                characterCtrl: CharacterCtrl(bookID: book.id, bookContentRepo: bookContentRepo, underlineRepo: underlineRepo),
+                characterCtrl: CharacterCtrl(bookID: book.id, bookContentRepo: bookContentRepo),
                 readerStateCtrl: readerStateCtrl
             )
         )
@@ -171,7 +171,7 @@ enum PreviewFixtures {
                 ratingRepo: ratingRepo
             )),
             characterVM: CharacterVM(
-                characterCtrl: CharacterCtrl(bookID: book.id, bookContentRepo: bookContentRepo, underlineRepo: underlineRepo),
+                characterCtrl: CharacterCtrl(bookID: book.id, bookContentRepo: bookContentRepo),
                 readerStateCtrl: readerStateCtrl
             )
         )

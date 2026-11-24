@@ -149,7 +149,7 @@ private struct CharacterRow: View {
                     .padding(10)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(AppColors.popoverPassageBg, in: .rect(cornerRadius: 8))
-                if character.underlineID != nil {
+                if character.passage != nil {
                     jumpButton
                 }
             }

@@ -10,8 +10,21 @@ struct NameSvc: Sendable {
         let text = chapter.text
         let found = hasEnglishModels ? taggedNames(in: text) : capitalisedWords(in: text)
         return found.map { name, offset in
-            NameMention(name: name, position: position(ofChapterOffset: offset, in: chapter, of: content))
+            NameMention(name: withTitle(name, at: offset, in: text as NSString),
+                        position: position(ofChapterOffset: offset, in: chapter, of: content))
         }
+    }
+
+    private func withTitle(_ name: String, at offset: Int, in text: NSString) -> String {
+        if let first = name.split(separator: " ").first, CharacterRulesKnobs.titles.contains(first.lowercased().trimmingCharacters(in: ["."])) {
+            return name
+        }
+        let start = max(0, offset - 12)
+        let before = text.substring(with: NSRange(location: start, length: offset - start))
+        guard let title = before.range(of: "\\b[A-Z][a-z]+\\.?\\s+$", options: .regularExpression).map({ String(before[$0]) }) else { return name }
+        let word = title.trimmingCharacters(in: .whitespaces)
+        guard CharacterRulesKnobs.titles.contains(word.lowercased().trimmingCharacters(in: ["."])) else { return name }
+        return "\(word) \(name)"
     }
 
     private func taggedNames(in text: String) -> [(String, Int)] {
@@ -32,11 +45,14 @@ struct NameSvc: Sendable {
         var startsSentence = true
         text.enumerateSubstrings(in: text.startIndex..<text.endIndex, options: .byWords) { word, range, enclosing, _ in
             guard let word else { return }
-            if word.first?.isUppercase == true, !startsSentence {
+            // Right after an opening quote is the start of what someone says: “Good gracious…”
+            let afterQuote = text[..<range.lowerBound].last { !$0.isWhitespace }.map { "“‘\"(—".contains($0) } ?? false
+            if word.first?.isUppercase == true, !startsSentence, !afterQuote {
                 names.append((word, NSRange(range, in: text).location))
             }
+            // The full stop after "Mr" doesn't end a sentence.
             let after = text[range.upperBound..<enclosing.upperBound]
-            startsSentence = after.contains { ".!?\n".contains($0) }
+            startsSentence = after.contains { ".!?\n".contains($0) } && !CharacterRulesKnobs.titles.contains(word.lowercased())
         }
         return names
     }

@@ -154,7 +154,7 @@ The app's only AI feature: phrases worth underlining, each with the earlier pass
 | AN-04 | P0 | `UnderlineRepo` | Stored chapter has older `parserVersion` | Underlined again |
 | AN-05 | P1 | `UnderlineRepo` | Start ch 2 while ch 1 runs; restart ch 1 | Ch 1 not saved half-done; no duplicate IDs |
 | AN-06 | P0 | `RefCtrl.marks` | Underline on page + one in other chapter | One `.underline` mark, page-relative; none for other |
-| AN-07 | P0 | `RefCtrl.marks` | `highlighting:` an underline whose reference is on page | `.highlight` for it only |
+| AN-07 | P0 | `RefCtrl.marks` | `highlighting:` an underline's reference passage, on its page | `.highlight` for it only |
 | AN-09 | P1 | `RefCtrl.underline(withID:)` | Unknown ID | `ContentError.notFound` |
 | AN-14 | P0 | `UnderlineRepo` | Stored chapter with the same / older / missing `engineVersion` (`UnderlineRepoKnobs`) | Loaded from disk / underlined again and saved with the current version |
 | AN-15 | P0 | `UnderlineRepo` | Chapter in the reader's iCloud with the same / older engine version | Used without the engine and saved on disk / underlined again (debug sheet says which) |
@@ -170,8 +170,22 @@ The app's only AI feature: phrases worth underlining, each with the earlier pass
 | AN-25 | P1 | `RatingCtrl.rate` | Underline not loaded | `ContentError.notFound` |
 | AN-26 | P0 | `UnderlineRepo` | Chapter in the app's bundled seeds with the same / older engine version | Used without the engine or iCloud, nothing saved on disk / underlined again, saved and sent to iCloud |
 | AN-27 | P0 | `App/Resources/UnderlineSeed` | Every bundled seed file | Folder matches a sample book's fingerprint; chapter exists; current parser and engine version |
-| AN-28 | P0 | `RefCtrl.marks` | `highlighting:` an underline in ch 2 whose passage is in ch 1, on a ch 1 page | `.highlight` on the passage, no underline mark |
+| AN-28 | P0 | `RefCtrl.marks` | `highlighting:` the passage (in ch 1) of an underline in ch 2, on a ch 1 page | `.highlight` on the passage, no underline mark |
 | CH-01 | P0 | `CharacterRules.characters` | "Jo", "Josephine March", "Laurie", "Laurence", "Beth", "Beth March" | "Laurie/Laurence", "Jo/Josephine March", "Beth March", latest mentioned first |
 | CH-02 | P1 | `CharacterRules.characters` | Names under 3 mentions, "Christmas", "CHAPTER", "I’m", "Father", "Mr. Laurence" | Noise left out; "Mr. Laurence" kept apart from Laurie |
-| CH-03 | P0 | `CharacterRules.characters` | Underlines naming Laurie in the passage, in the paragraph only, and none for Amy | The passage that names him, the latest on a tie; Amy has no passage |
+| CH-03 | P0 | `CharacterRules.characters` | Laurie: a speech tag, a description, a line about Marmee; Marmee only mentioned | Laurie's description; Marmee has no passage |
+| DS-01 | P0 | `DescriptionRules` | Jo's speech tag, then "Fifteen-year-old Jo was very tall…" and "She had a decided mouth…" | The introduction, carried on into the "She" sentence; Beth's "girl of thirteen" for Beth |
+| DS-02 | P1 | `DescriptionRules` | Amy's introduction then "A regular snow maiden, with blue eyes…" | Both sentences |
+| DS-03 | P1 | `DescriptionRules` | Pride and Prejudice: Bingley, Lydia | Each one's description |
+| DS-04 | P0 | `DescriptionRules` | A plain mention; a name only in dialogue; "Elizabeth’s intimate friend" | No passage |
+| CH-05 | P0 | `CharacterRules.characters` | "Laurie", "Mr. Laurence", bare "Laurence"; "Mrs. March", "Aunt March", bare "March"; "Jo", "Miss Jo" | Mr. Laurence apart from Laurie and owns bare "Laurence"; bare "March" left out; "Miss Jo" is Jo |
+| CH-06 | P1 | `CharacterRules.characters` | "My first name is Theodore… so I made them say Laurie instead" | Theodore and Laurie are one character |
+| CH-07 | P1 | `CharacterCtrl` (golden) | Little Women, chapters 1–4 | Each sister's introduction; Laurie gets "Curly black hair…"; Mr. Laurence gets none |
+| CH-08 | P1 | `CharacterCtrl` (golden) | Pride and Prejudice, to chapter 16 | Bingley, Darcy, Lydia and Mr. Bennet get their descriptions |
+| CH-09 | P0 | `CharacterRules.characters` | "Good", "Him" (mostly lowercase), "Washington" ("in/from Washington", "the Washington dispatches"), Sallie ("at Sallie’s", "said Sallie") | Only Sallie |
+| CH-10 | P1 | `CharacterRules.characters` | "Brookes", "Germans", "Christmas Eve", "Gott" only inside quotes | Only Brooke |
+| DS-05 | P0 | `DescriptionRules.unnamedDescriptions` | A description naming no one, after "Laurie’s…" and "the ‘Laurence boy’" | Laurie's; not Jo's (gender), not Mr. Laurence's ("the Laurence boy" is a family) |
+| DS-06 | P1 | `DescriptionRules.gender` | "Laurie laughed, and he bowed"; Jo with one "she" | Male; not clear |
+| DS-07 | P0 | `DescriptionRules` | "Mr. Hurst… but his friend Mr. Darcy… tall person"; a Darcy sentence mostly about "her" | Darcy's part only; the "her" sentence isn't his |
+| DS-08 | P1 | `DescriptionRules.gender` | "Miss Lydia" with stray "he"s; "Mr. Darcy" | Female; male |
 | CH-04 | P1 | `CharacterRules.matches` | "laur", "LAURENCE", "Lauire", "", "Haymitch", "Lx" | Found, found, found (one typo), all, not found, not found |

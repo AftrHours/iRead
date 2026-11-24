@@ -101,7 +101,7 @@ Names that are easy to mix up:
 | `ReaderStateCtrl` | Reading settings, brightness, the "return to reading" position, recent searches | `ReadingSettingsRepo`, `BrightnessSvc`, `BookStateRepo` |
 | `ReaderVM` (parent) | Pages, shown page, the screen's `PageLayout`, what the pagers draw (`PageContent`), light or dark page, settings panel or sheet, show/hide controls, menu, back, contents, search, saving progress in page-turn order | `ReaderCtrl`, `ProgressCtrl`, `ReaderStateCtrl` (handed to `SearchVM`), `AppNav` + 3 children |
 | `ReaderSettingsVM` | Settings, layout settings, brightness, text size, line spacing, theme | `ReaderStateCtrl` |
-| `ReferenceVM` | Marks, following underlines for the shown chapter, reference cards, highlight, jump and return (`returnPrompt`: none, the return button on, or "Returned to page N"; `returnPageNumber` for the progress bar's mark). `jumpToPassage(ofUnderline:)` is the one jump, used by the card and the character list | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
+| `ReferenceVM` | Marks, following underlines for the shown chapter, reference cards, highlight, jump and return (`returnPrompt`: none, the return button on, or "Returned to page N"; `returnPageNumber` for the progress bar's mark). `jumpToPassage(_:)` is the one jump, used by the card and the character list | `RefCtrl`, `ReaderStateCtrl`, `ReaderCtrl` |
 | `CharacterVM` | "Characters so far": the characters up to the shown page, the most recently mentioned first, one opened row, search with its own recent searches. Jump to Passage goes through `onJump` → `ReferenceVM.jumpToPassage` | `CharacterCtrl`, `ReaderStateCtrl` |
 | `RatingVM` | Thumbs on the shown card, the share question, the Share Ratings switch, the iCloud row in the menu | `RatingCtrl` |
 | `SearchVM` | Search query (searched once typing pauses for 300 ms, 2 characters or more), results and recent searches | `ReaderCtrl.search` (passed in as a closure, so tests can count searches), `ReaderStateCtrl` |
@@ -245,10 +245,19 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
   from the chapter's start like UnderlineEngine's golden set. Taking a rating back deletes its record. One send runs at a time;
   what can't be sent yet is retried when a book opens. See `docs/ICLOUD.md` for the CloudKit Console.
 - Characters: `Svc/NameSvc` finds people's names in a chapter with NaturalLanguage (the tagger the engine uses inside; the engine
-  doesn't hand names out). `Rules/CharacterRules` joins a person's names (nicknames in `CharacterRulesKnobs`), orders them by
-  latest mention, and picks the engine underline whose passage describes each one best (the name in the passage, in the
-  phrase, or in either paragraph). `Ctrl/CharacterCtrl` runs it from the first chapter to the end of the shown page, with the
-  underlines `UnderlineRepo` already has (`underlines(throughChapter:of:)`: saved, bundled or in progress; the engine isn't run).
+  doesn't hand names out) and keeps a title in front ("Mr. Laurence"). `Rules/CharacterRules` joins a person's names: nicknames
+  (`CharacterRulesKnobs`), names the book says are one person ("…so I made them say Laurie instead"), "Miss Jo" with Jo; a titled
+  surname stays its own person and a bare surname joins its one owner or is left out ("March"). `CharacterRules+People` keeps
+  only people: not ordinary words ("Good": mostly written in lowercase), places ("in Washington"), groups ("Germans",
+  "the Brookes"), parts of longer names ("Christmas Eve"), titles alone, or names only in dialogue. Ordered by latest mention.
+  The Project Gutenberg licence is skipped.
+  `Rules/DescriptionRules` picks the passage that describes each one, the way novels do: the name as the subject of "was"/"had",
+  looks and temperament words in their own part of the sentence, an age, "a … girl", carried on into the sentences about them;
+  not dialogue-only lines, nor sentences mostly about "her" for a man (and the other way round). A strong description that names
+  no one goes to the nearest character named before it whose gender matches (from a title, else "he"/"she" after the name).
+  The engine's passages explain underlined phrases and rarely hold these introductions, so the text is read directly.
+  `Ctrl/CharacterCtrl` runs it from the first chapter to the end of the shown page. Jump to Passage goes through
+  `ReferenceVM.jumpToPassage`, the same jump as the reference card.
 - `Ctrl/RefCtrl`: underline updates for a page, marks, and an underline by ID. `Ctrl/RatingCtrl`: builds an `UnderlineRating`
   from a `SavedUnderline` and the book's text, and the share answer, unsent ratings and iCloud account.
 - `Debug/UnderlineDebugView` (DEBUG; ladybug button or ⌘⇧D, made by `ReaderVM.makeUnderlineDebugVM`): the engine's one-line

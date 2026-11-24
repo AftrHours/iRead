@@ -41,6 +41,12 @@ enum MentionPopoverKnobs {
     static let horizontalPadding: CGFloat = 12
     static let arrowSize = CGSize(width: 18, height: 9)
     static let arrowInset: CGFloat = 20
+
+    /// Scales the tag about its arrow's tip, so it grows out of the passage like a popover.
+    static func arrowScale(_ scale: CGFloat, size: CGSize) -> CGAffineTransform {
+        let tip = CGPoint(x: arrowInset + arrowSize.width / 2 - size.width / 2, y: size.height / 2)
+        return CGAffineTransform(translationX: tip.x, y: tip.y).scaledBy(x: scale, y: scale).translatedBy(x: -tip.x, y: -tip.y)
+    }
 }
 
 private struct MentionArrow: Shape {

@@ -31,11 +31,11 @@ final class ReferenceVM {
     private(set) var returnPrompt = ReturnPrompt.none
     private(set) var returnPageNumber: Int?
 
-    @ObservationIgnored var onShowPage: (Page, String?) -> Void = { _, _ in }
+    @ObservationIgnored var onShowPage: (Page, ContextPassage?) -> Void = { _, _ in }
 
     private var shownPage: Page?
     private var loadedPages: [Page] = []
-    private var highlightedUnderlineID: String?
+    private var highlightedPassage: ContextPassage?
     private var highlightedSearchResult: SearchResult?
     private var isClosed = false
     private var underlinedChapter: Int?
@@ -104,9 +104,9 @@ final class ReferenceVM {
         }
     }
 
-    func pageShown(highlighting underlineID: String?, searchResult: SearchResult? = nil) {
-        if underlineID == nil { jumpedPassageText = nil }
-        highlightedUnderlineID = underlineID
+    func pageShown(highlighting passage: ContextPassage?, searchResult: SearchResult? = nil) {
+        jumpedPassageText = passage?.text
+        highlightedPassage = passage
         highlightedSearchResult = searchResult
     }
 
@@ -154,7 +154,7 @@ final class ReferenceVM {
     func passageDismissed() {
         guard hasPassageHighlight else { return }
         jumpedPassageText = nil
-        highlightedUnderlineID = nil
+        highlightedPassage = nil
         highlightedSearchResult = nil
         Task { await loadMarks() }
     }
@@ -171,17 +171,23 @@ final class ReferenceVM {
         jumpToPassage(ofUnderline: referenceCard.underlineID)
     }
 
-    /// Used by the reference card and the character list.
     func jumpToPassage(ofUnderline underlineID: String) {
+        Task {
+            guard let underline = try? await refCtrl.underline(withID: underlineID) else { return }
+            jumpToPassage(underline.reference)
+        }
+    }
+
+    /// Used by the reference card and the character list.
+    func jumpToPassage(_ passage: ContextPassage) {
         guard let shownPage else { return }
         Task {
             await readerStateCtrl.saveReturnPosition(await readerCtrl.startPosition(of: shownPage))
             await refreshReturnPage()
-            guard let underline = try? await refCtrl.underline(withID: underlineID) else { return }
-            let destination = await readerCtrl.page(containing: underline.reference.start)
-            jumpedPassageText = underline.reference.text
+            let destination = await readerCtrl.page(containing: passage.start)
+            pageShown(highlighting: passage)
             returnPrompt = .canReturn
-            onShowPage(destination, underlineID)
+            onShowPage(destination, passage)
         }
     }
 
@@ -204,7 +210,7 @@ final class ReferenceVM {
         let pages = loadedPages
         var marks: [Int: [Mark]] = [:]
         for page in pages {
-            var pageMarks = (try? await refCtrl.marks(on: page, highlighting: highlightedUnderlineID)) ?? []
+            var pageMarks = (try? await refCtrl.marks(on: page, highlighting: highlightedPassage)) ?? []
             if let searchResult = highlightedSearchResult,
                let range = await readerCtrl.range(from: searchResult.position, length: searchResult.length, on: page) {
                 // Same highlight as a jumped-to passage.

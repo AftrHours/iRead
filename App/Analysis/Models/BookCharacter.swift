@@ -5,9 +5,8 @@ struct BookCharacter: Identifiable, Hashable, Sendable {
     /// "Jo/Josephine March"
     let name: String
     let names: [String]
-    /// The engine underline whose passage describes them best.
-    let underlineID: String?
-    let passage: String?
+    /// The passage that describes them best, nil when none does yet.
+    let passage: ContextPassage?
 
     var id: String { name }
 }

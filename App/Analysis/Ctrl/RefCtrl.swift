@@ -12,7 +12,7 @@ struct RefCtrl {
                                              startingAt: ChapterInputMapper.firstSentence(on: page, in: content))
     }
 
-    func marks(on page: Page, highlighting underlineID: String?) async throws -> [Mark] {
+    func marks(on page: Page, highlighting passage: ContextPassage?) async throws -> [Mark] {
         let content = try await bookContentRepo.content(for: bookID)
         var marks: [Mark] = []
         for underline in await underlineRepo.underlines(inChapter: page.chapterIndex, of: content.fingerprint) {
@@ -20,9 +20,7 @@ struct RefCtrl {
                 marks.append(Mark(range: range, kind: .underline(id: underline.id)))
             }
         }
-        // Looked up by ID, because the passage can be in an earlier chapter than its underline.
-        if let underlineID, let underline = await underlineRepo.underline(withID: underlineID, of: content.fingerprint),
-           let range = pageRange(paragraph: underline.reference.paragraph, range: underline.reference.range, on: page, in: content) {
+        if let passage, let range = pageRange(paragraph: passage.paragraph, range: passage.range, on: page, in: content) {
             marks.append(Mark(range: range, kind: .highlight))
         }
         return marks

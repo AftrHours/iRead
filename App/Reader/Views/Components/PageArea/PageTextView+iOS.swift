@@ -17,7 +17,11 @@ final class PageTextView: UIView {
     }
     private(set) var highlights: [NSRange] {
         didSet {
-            if oldValue != highlights { showBackgrounds() }
+            guard oldValue != highlights else { return }
+            guard window != nil else { return showBackgrounds() }
+            UIView.transition(with: textView, duration: 0.25, options: [.transitionCrossDissolve, .allowUserInteraction]) {
+                self.showBackgrounds()
+            }
         }
     }
     private(set) var mentionedRange: NSRange? {
@@ -26,6 +30,7 @@ final class PageTextView: UIView {
         }
     }
     private var mentionTag: UIHostingController<MentionPopover>?
+    private var isMentionTagHiding = false
     private var actions: PageActions
     private let textView = UITextView(usingTextLayoutManager: false)
     private let titleLabel = UILabel()
@@ -131,11 +136,12 @@ final class PageTextView: UIView {
     }
 
     /// Whether this view already shows `page` as `content` has it, so it can stay on screen instead of being built again.
+    /// Highlights don't count: `refresh` changes them in place, so they can fade.
     func isShowing(_ page: Page, in content: PageContent) -> Bool {
         self.page == page
             && settings == content.settings
             && horizontalMargin == content.horizontalMargin
-            && marks == content.marks(on: page)
+            && marks.filter(\.isUnderline) == content.marks(on: page).filter(\.isUnderline)
     }
 
     /// Brings what changes without a new layout (the labels, where they sit, the highlights, what a tap does) up to date with `content`.
@@ -305,16 +311,42 @@ private extension PageTextView {
     }
 
     func layoutMentionTag() {
-        guard let range = mentionedRange, let firstLine = firstLineRect(of: range) else {
-            mentionTag?.view.isHidden = true
-            return
-        }
+        guard let range = mentionedRange, let firstLine = firstLineRect(of: range) else { return hideMentionTag() }
         let tag = mentionTag ?? makeMentionTag()
         let size = tag.sizeThatFits(in: bounds.size)
         let preferredX = firstLine.minX - MentionPopoverKnobs.arrowInset + 4
         let x = min(max(preferredX, PageLayoutKnobs.sideMargin), bounds.width - PageLayoutKnobs.sideMargin - size.width)
-        tag.view.frame = CGRect(x: x, y: firstLine.minY - size.height, width: size.width, height: size.height)
+        // Bounds and center, not frame: the transform animates.
+        tag.view.bounds = CGRect(origin: .zero, size: size)
+        tag.view.center = CGPoint(x: x + size.width / 2, y: firstLine.minY - size.height / 2)
+        guard tag.view.isHidden || isMentionTagHiding else { return }
+        isMentionTagHiding = false
         tag.view.isHidden = false
+        guard window != nil else { return }
+        // Grows out of its arrow, like the reference card's popover.
+        tag.view.alpha = 0
+        tag.view.transform = UIAccessibility.isReduceMotionEnabled ? .identity : MentionPopoverKnobs.arrowScale(0.6, size: size)
+        UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0,
+                       options: [.allowUserInteraction, .beginFromCurrentState]) {
+            tag.view.alpha = 1
+            tag.view.transform = .identity
+        }
+    }
+
+    func hideMentionTag() {
+        guard let view = mentionTag?.view, !view.isHidden, !isMentionTagHiding else { return }
+        guard window != nil else { return view.isHidden = true }
+        isMentionTagHiding = true
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState]) {
+            view.alpha = 0
+            if !UIAccessibility.isReduceMotionEnabled { view.transform = MentionPopoverKnobs.arrowScale(0.8, size: view.bounds.size) }
+        } completion: { _ in
+            guard self.isMentionTagHiding else { return }
+            self.isMentionTagHiding = false
+            view.isHidden = true
+            view.alpha = 1
+            view.transform = .identity
+        }
     }
 
     func makeMentionTag() -> UIHostingController<MentionPopover> {
@@ -324,6 +356,7 @@ private extension PageTextView {
         tag.view.backgroundColor = .clear
         tag.view.isUserInteractionEnabled = false
         tag.view.accessibilityElementsHidden = true
+        tag.view.isHidden = true
         addSubview(tag.view)
         mentionTag = tag
         return tag

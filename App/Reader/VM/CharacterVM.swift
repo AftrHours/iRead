@@ -10,7 +10,7 @@ final class CharacterVM {
     private(set) var query = ""
     private(set) var recentSearches: [String] = []
 
-    @ObservationIgnored var onJump: (_ underlineID: String) -> Void = { _ in }
+    @ObservationIgnored var onJump: (ContextPassage) -> Void = { _ in }
 
     private let characterCtrl: CharacterCtrl
     private let readerStateCtrl: ReaderStateCtrl
@@ -56,13 +56,13 @@ final class CharacterVM {
     }
 
     func passage(of character: BookCharacter) -> String {
-        character.passage.map(ReferenceVM.quoted) ?? "No passage points to this character yet. Keep reading!"
+        character.passage.map { ReferenceVM.quoted($0.text) } ?? "No passage describes this character yet. Keep reading!"
     }
 
     func jumpTapped(_ character: BookCharacter) {
-        guard let underlineID = character.underlineID else { return }
+        guard let passage = character.passage else { return }
         saveRecentSearch()
-        onJump(underlineID)
+        onJump(passage)
     }
 
     func queryChanged(_ query: String) {
