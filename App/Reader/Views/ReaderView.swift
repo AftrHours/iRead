@@ -8,6 +8,8 @@ struct ReaderView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    /// The quick guide shows the first time a book is opened, until "Got it!".
+    @AppStorage("hasSeenReadingGuide") private var hasSeenReadingGuide = false
 
     private let readerSettingsVM: ReaderSettingsVM
     private let referenceVM: ReferenceVM
@@ -64,6 +66,9 @@ struct ReaderView: View {
             readerVM.screenChanged($0)
         }
         .task { await readerVM.onAppear() }
+        .fullScreenCover(isPresented: .constant(!hasSeenReadingGuide)) {
+            QuickGuideView(onBack: readerVM.backTapped, onConfirm: { hasSeenReadingGuide = true })
+        }
         .background(Color(PageTextStyle.backgroundColor(for: readerVM.theme)))
         .preferredColorScheme(readerVM.forcedDarkMode.map { $0 ? .dark : .light })
         .onChange(of: colorScheme, initial: true) { _, colorScheme in

@@ -71,7 +71,7 @@ actor ProgRepo {
         ))
     }
 
-    /// Saved as a 0% record rather than deleted, so a sample book doesn't fall back to its mock progress.
+    /// Saved as a 0% record rather than deleted, the same as any other saved progress.
     func resetProgress(for bookID: UUID) {
         let current = pending[bookID] ?? progress(for: bookID)
         saveNow(ReadingProgress(

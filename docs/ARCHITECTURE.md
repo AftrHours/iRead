@@ -113,7 +113,9 @@ to look up the rated underline, `RatingRepo`) share one `UnderlineRepo` for the 
 
 ### The page on screen
 
-Pages fill the whole screen, and each carries its own book and chapter titles and page label, so all of it turns together.
+Pages fill the whole screen, and each carries its own book and chapter titles, so they turn together. The progress bar and
+page label are one `PageFooter` over the pages, so they stay still while a page slides or curls. The first time a book opens,
+`QuickGuideView` covers the reader until "Got it!" (`hasSeenReadingGuide`); its back button closes the book.
 Nothing is decided in a view: `ReaderVM` holds the state and the views draw it.
 
 | Type | Layer | Job |
@@ -178,7 +180,7 @@ State flows one way. `ReaderVM` pushes the shown page and the loaded pages into
 
 **Book "…" menu in the library**
 - Mark as Finished / Still Reading → `LibCtrl.setFinished` → `ProgRepo.setFinished` (keeps the reading position).
-- Reset Progress → `LibCtrl.resetProgress` → `ProgRepo.resetProgress` (a saved 0% record, so samples don't fall back to mock progress).
+- Reset Progress → `LibCtrl.resetProgress` → `ProgRepo.resetProgress` (a saved 0% record).
 - Remove → alert → `LibCtrl.remove` → `LibRepo.remove`: imported books are deleted; sample books are added to `Books/hidden-samples.json`.
   Then `BookContentRepo.forget` drops the book's parse and cover from memory.
 

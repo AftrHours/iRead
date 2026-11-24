@@ -1,6 +1,7 @@
 import SwiftUI
 
-/// The pages, filling the whole screen like Apple Books, so the book and chapter titles and the page label turn with the text.
+/// The pages, filling the whole screen like Apple Books, so the book and chapter titles turn with the text. The progress bar
+/// and page label (`PageFooter`) stay still on top.
 /// The reader's bars stay on top with only their buttons. It renders what `ReaderVM` says and forwards taps: it shows the pager
 /// of the chosen style, and hosts the reference card.
 struct PageArea: View {
@@ -14,6 +15,10 @@ struct PageArea: View {
         Group {
             if let content = readerVM.pageContent {
                 pages(content)
+                    .overlay {
+                        PageFooter(chrome: content.chrome(of: content.shownPage), footer: content.layout.footer,
+                                   textColor: PageTextStyle.textColor(for: content.settings.theme))
+                    }
                     .task(id: content.shownPage) {
                         if scenePhase == .active { await readerVM.pageVisible(content.shownPage) }
                         recordVisibleMarks(content)
