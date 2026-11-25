@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4375:172",
+      "sentence": 4375,
+      "paragraph": 1832,
+      "range": [
+        172,
+        64
+      ],
+      "text": "though some people may call him proud, I have seen nothing of it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4248,
+        "paragraph": 1791,
+        "range": [
+          233,
+          69
+        ],
+        "text": "Some people call him proud; but I am sure I never saw anything of it."
+      }
+    },
+    {
+      "id": "4383:122",
+      "sentence": 4383,
+      "paragraph": 1836,
+      "range": [
+        122,
+        46
+      ],
+      "text": "I shall not take him at his word about fishing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4338,
+        "paragraph": 1820,
+        "range": [
+          0,
+          323
+        ],
+        "text": "The conversation soon turned upon fishing; and she heard Mr. Darcy invite him, with the greatest civility, to fish there as often as he chose, while he continued in the neighbourhood, offering at the same time to supply him with fishing tackle, and pointing out those parts of the stream where there was usually most sport."
+      }
+    },
+    {
+      "id": "4385:151",
+      "sentence": 4385,
+      "paragraph": 1838,
+      "range": [
+        151,
+        27
+      ],
+      "text": "he has done by poor Wickham",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4252,
+        "paragraph": 1793,
+        "range": [
+          0,
+          127
+        ],
+        "text": "“This fine account of him,” whispered her aunt as they walked, “is not quite consistent with his behaviour to our poor friend.”"
+      }
+    }
+  ]
+}

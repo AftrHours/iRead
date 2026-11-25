@@ -1,1 +1,5 @@
-{"parserVersion":1,"underlines":[{"paragraph":1379,"kind":"thing","decidedBy":"rules","sentence":3105,"text":"is ill-qualified to recommend himself to strangers","id":"3105:185","reference":{"paragraph":1378,"range":[0,139],"text":"“Perhaps,” said Darcy, “I should have judged better had I sought an introduction, but I am ill-qualified to recommend myself to strangers.”","sentence":3102},"range":[185,50]}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": []
+}

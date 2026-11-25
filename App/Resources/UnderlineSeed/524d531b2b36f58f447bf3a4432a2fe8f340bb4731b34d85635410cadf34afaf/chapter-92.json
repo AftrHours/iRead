@@ -1,1 +1,90 @@
-{"parserVersion":1,"underlines":[{"sentence":1310,"id":"1310:104","kind":"action","range":[104,27],"decidedBy":"rules","reference":{"range":[51,65],"paragraph":669,"sentence":1300,"text":"I have faults enough, but they are not, I hope, of understanding."},"paragraph":670,"text":"have chosen your fault well"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1297:1",
+      "sentence": 1297,
+      "paragraph": 668,
+      "range": [
+        1,
+        59
+      ],
+      "text": "I am perfectly convinced by it that Mr. Darcy has no defect",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1288,
+        "paragraph": 661,
+        "range": [
+          241,
+          58
+        ],
+        "text": "But these, I suppose, are precisely what you are without.”"
+      }
+    },
+    {
+      "id": "1314:1",
+      "sentence": 1314,
+      "paragraph": 672,
+      "range": [
+        1,
+        49
+      ],
+      "text": "And your defect is a propensity to hate everybody",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1306,
+        "paragraph": 669,
+        "range": [
+          457,
+          44
+        ],
+        "text": "My good opinion once lost is lost for ever.”"
+      }
+    },
+    {
+      "id": "1317:105",
+      "sentence": 1317,
+      "paragraph": 674,
+      "range": [
+        105,
+        45
+      ],
+      "text": "Louisa, you will not mind my waking Mr. Hurst",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1230,
+        "paragraph": 640,
+        "range": [
+          340,
+          99
+        ],
+        "text": "Mr. Hurst had, therefore, nothing to do but to stretch himself on one of the sofas and go to sleep."
+      }
+    },
+    {
+      "id": "1319:143",
+      "sentence": 1319,
+      "paragraph": 675,
+      "range": [
+        143,
+        66
+      ],
+      "text": "He began to feel the danger of paying Elizabeth too much attention",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1256,
+        "paragraph": 651,
+        "range": [
+          143,
+          130
+        ],
+        "text": "He was as much awake to the novelty of attention in that quarter as Elizabeth herself could be, and unconsciously closed his book."
+      }
+    }
+  ]
+}

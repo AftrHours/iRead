@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2802:0",
+      "sentence": 2802,
+      "paragraph": 1261,
+      "range": [
+        0,
+        46
+      ],
+      "text": "Elizabeth was prepared to see him in his glory",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2800,
+        "paragraph": 1260,
+        "range": [
+          562,
+          225
+        ],
+        "text": "She saw instantly that her cousin’s manners were not altered by his marriage: his formal civility was just what it had been; and he detained her some minutes at the gate to hear and satisfy his inquiries after all her family."
+      }
+    }
+  ]
+}

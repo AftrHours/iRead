@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1626:58",
+      "sentence": 1626,
+      "paragraph": 801,
+      "range": [
+        58,
+        28
+      ],
+      "text": "Till I can forget his father",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1596,
+        "paragraph": 790,
+        "range": [
+          578,
+          191
+        ],
+        "text": "His behaviour to myself has been scandalous; but I verily believe I could forgive him anything and everything, rather than his disappointing the hopes and disgracing the memory of his father."
+      }
+    },
+    {
+      "id": "1626:88",
+      "sentence": 1626,
+      "paragraph": 801,
+      "range": [
+        88,
+        30
+      ],
+      "text": "I can never defy or expose him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1594,
+        "paragraph": 790,
+        "range": [
+          100,
+          234
+        ],
+        "text": "We are not on friendly terms, and it always gives me pain to meet him, but I have no reason for avoiding him but what I might proclaim to all the world—a sense of very great ill-usage, and most painful regrets at his being what he is."
+      }
+    }
+  ]
+}

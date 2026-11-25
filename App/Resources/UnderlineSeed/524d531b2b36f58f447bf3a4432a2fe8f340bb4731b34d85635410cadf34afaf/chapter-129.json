@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1779:62",
+      "sentence": 1779,
+      "paragraph": 865,
+      "range": [
+        62,
+        55
+      ],
+      "text": "To find a man agreeable whom one is determined to hate!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1767,
+        "paragraph": 860,
+        "range": [
+          489,
+          209
+        ],
+        "text": "She was resolved against any sort of conversation with him, and turned away with a degree of ill-humour which she could not wholly surmount even in speaking to Mr. Bingley, whose blind partiality provoked her."
+      }
+    }
+  ]
+}

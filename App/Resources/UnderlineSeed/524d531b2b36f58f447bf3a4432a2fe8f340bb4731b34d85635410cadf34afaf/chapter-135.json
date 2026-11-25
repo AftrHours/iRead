@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1861:169",
+      "sentence": 1861,
+      "paragraph": 912,
+      "range": [
+        169,
+        72
+      ],
+      "text": "he was excessively glad to find that he had taken himself out of the way",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1763,
+        "paragraph": 858,
+        "range": [
+          540,
+          446
+        ],
+        "text": "But in an instant arose the dreadful suspicion of his being purposely omitted, for Mr. Darcy’s pleasure, in the Bingleys’ invitation to the officers; and though this was not exactly the case, the absolute fact of his absence was pronounced by his friend Mr. Denny, to whom Lydia eagerly applied, and who told them that Wickham had been obliged to go to town on business the day before, and was not yet returned; adding, with a significant smile,—"
+      }
+    },
+    {
+      "id": "1864:190",
+      "sentence": 1864,
+      "paragraph": 913,
+      "range": [
+        190,
+        53
+      ],
+      "text": "and of that, I can assure you, he informed me himself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1858,
+        "paragraph": 911,
+        "range": [
+          69,
+          229
+        ],
+        "text": "Your sister has been talking to me about him, and asking me a thousand questions; and I find that the young man forgot to tell you, among his other communications, that he was the son of old Wickham, the late Mr. Darcy’s steward."
+      }
+    },
+    {
+      "id": "1871:245",
+      "sentence": 1871,
+      "paragraph": 915,
+      "range": [
+        245,
+        67
+      ],
+      "text": "who had undertaken to make inquiries on the same subject of Bingley",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1858,
+        "paragraph": 911,
+        "range": [
+          69,
+          229
+        ],
+        "text": "Your sister has been talking to me about him, and asking me a thousand questions; and I find that the young man forgot to tell you, among his other communications, that he was the son of old Wickham, the late Mr. Darcy’s steward."
+      }
+    }
+  ]
+}

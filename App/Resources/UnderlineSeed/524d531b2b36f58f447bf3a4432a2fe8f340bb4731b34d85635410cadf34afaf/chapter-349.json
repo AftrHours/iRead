@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[{"id":"4751:9","decidedBy":"rules","paragraph":1956,"text":"does Jane ever think ill","range":[9,24],"reference":{"text":"“But you see that Jane,” said her aunt, “does not think so ill of Wickham, as to believe him capable of the attempt.”","paragraph":1955,"range":[0,117],"sentence":4750},"sentence":4751,"kind":"action"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4750:1",
+      "sentence": 4750,
+      "paragraph": 1955,
+      "range": [
+        1,
+        72
+      ],
+      "text": "But you see that Jane,” said her aunt, “does not think so ill of Wickham",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4707,
+        "paragraph": 1943,
+        "range": [
+          0,
+          220
+        ],
+        "text": "“I HAVE been thinking it over again, Elizabeth,” said her uncle, as they drove from the town; “and really, upon serious consideration, I am much more inclined than I was to judge as your eldest sister does of the matter."
+      }
+    }
+  ]
+}

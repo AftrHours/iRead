@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5758:1",
+      "sentence": 5758,
+      "paragraph": 2331,
+      "range": [
+        1,
+        39
+      ],
+      "text": "When you have killed all your own birds",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5635,
+        "paragraph": 2284,
+        "range": [
+          196,
+          163
+        ],
+        "text": "The housekeeper at Netherfield had received orders to prepare for the arrival of her master, who was coming down in a day or two, to shoot there for several weeks."
+      }
+    },
+    {
+      "id": "5760:0",
+      "sentence": 5760,
+      "paragraph": 2332,
+      "range": [
+        0,
+        75
+      ],
+      "text": "Elizabeth’s misery increased at such unnecessary, such officious attention!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5755,
+        "paragraph": 2330,
+        "range": [
+          0,
+          118
+        ],
+        "text": "Elizabeth, who knew this to be levelled at Mr. Darcy, was in such misery of shame that she could hardly keep her seat."
+      }
+    },
+    {
+      "id": "5766:0",
+      "sentence": 5766,
+      "paragraph": 2334,
+      "range": [
+        0,
+        74
+      ],
+      "text": "Yet the misery, for which years of happiness were to offer no compensation",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5762,
+        "paragraph": 2332,
+        "range": [
+          243,
+          126
+        ],
+        "text": "At that instant she felt, that years of happiness could not make Jane or herself amends for moments of such painful confusion."
+      }
+    }
+  ]
+}

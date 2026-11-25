@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4780:290",
+      "sentence": 4780,
+      "paragraph": 1964,
+      "range": [
+        290,
+        42
+      ],
+      "text": "Fixed there by the keenest of all anguish,",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4771,
+        "paragraph": 1961,
+        "range": [
+          524,
+          73
+        ],
+        "text": "That she could be in any danger from the deception never entered my head."
+      }
+    }
+  ]
+}

@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4450:0",
+      "sentence": 4450,
+      "paragraph": 1861,
+      "range": [
+        0,
+        75
+      ],
+      "text": "Bingley expressed great pleasure in the certainty of seeing Elizabeth again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4417,
+        "paragraph": 1849,
+        "range": [
+          272,
+          211
+        ],
+        "text": "All Elizabeth’s anger against him had been long done away; but had she still felt any, it could hardly have stood its ground against the unaffected cordiality with which he expressed himself on seeing her again."
+      }
+    },
+    {
+      "id": "4451:195",
+      "sentence": 4451,
+      "paragraph": 1861,
+      "range": [
+        195,
+        31
+      ],
+      "text": "construing all this into a wish",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4437,
+        "paragraph": 1856,
+        "range": [
+          191,
+          281
+        ],
+        "text": "On this point she was soon satisfied; and two or three little circumstances occurred ere they parted, which, in her anxious interpretation, denoted a recollection of Jane, not untinctured by tenderness, and a wish of saying more that might lead to the mention of her, had he dared."
+      }
+    }
+  ]
+}

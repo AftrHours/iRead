@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1852:129",
+      "sentence": 1852,
+      "paragraph": 907,
+      "range": [
+        129,
+        62
+      ],
+      "text": "that you were not to sketch my character at the present moment",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1801,
+        "paragraph": 875,
+        "range": [
+          136,
+          47
+        ],
+        "text": "You think it a faithful portrait, undoubtedly.”"
+      }
+    },
+    {
+      "id": "1855:316",
+      "sentence": 1855,
+      "paragraph": 909,
+      "range": [
+        316,
+        38
+      ],
+      "text": "directed all his anger against another",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1809,
+        "paragraph": 880,
+        "range": [
+          0,
+          152
+        ],
+        "text": "“Mr. Wickham is blessed with such happy manners as may insure his making friends; whether he may be equally capable of retaining them, is less certain.”"
+      }
+    }
+  ]
+}

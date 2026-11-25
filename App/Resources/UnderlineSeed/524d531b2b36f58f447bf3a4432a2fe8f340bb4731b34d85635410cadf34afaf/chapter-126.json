@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[{"range":[122,24],"paragraph":854,"reference":{"paragraph":852,"range":[0,496],"text":"Elizabeth’s spirits were so high on the occasion, that though she did not often speak unnecessarily to Mr. Collins, she could not help asking him whether he intended to accept Mr. Bingley’s invitation, and if he did, whether he would think it proper to join in the evening’s amusement; and she was rather surprised to find that he entertained no scruple whatever on that head, and was very far from dreading a rebuke, either from the Archbishop or Lady Catherine de Bourgh, by venturing to dance.","sentence":1744},"decidedBy":"rules","text":"have Mr. Collins instead","sentence":1747,"id":"1747:122","kind":"thing"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1746:0",
+      "sentence": 1746,
+      "paragraph": 854,
+      "range": [
+        0,
+        42
+      ],
+      "text": "Elizabeth felt herself completely taken in",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1744,
+        "paragraph": 852,
+        "range": [
+          0,
+          496
+        ],
+        "text": "Elizabeth’s spirits were so high on the occasion, that though she did not often speak unnecessarily to Mr. Collins, she could not help asking him whether he intended to accept Mr. Bingley’s invitation, and if he did, whether he would think it proper to join in the evening’s amusement; and she was rather surprised to find that he entertained no scruple whatever on that head, and was very far from dreading a rebuke, either from the Archbishop or Lady Catherine de Bourgh, by venturing to dance."
+      }
+    },
+    {
+      "id": "1747:44",
+      "sentence": 1747,
+      "paragraph": 854,
+      "range": [
+        44,
+        69
+      ],
+      "text": "She had fully proposed being engaged by Wickham for those very dances",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1737,
+        "paragraph": 849,
+        "range": [
+          288,
+          268
+        ],
+        "text": "Jane pictured to herself a happy evening in the society of her two friends, and the attentions of their brother; and Elizabeth thought with pleasure of dancing a great deal with Mr. Wickham, and of seeing a confirmation of everything in Mr. Darcy’s look and behaviour."
+      }
+    },
+    {
+      "id": "1747:148",
+      "sentence": 1747,
+      "paragraph": 854,
+      "range": [
+        148,
+        41
+      ],
+      "text": "her liveliness had been never worse timed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1744,
+        "paragraph": 852,
+        "range": [
+          0,
+          496
+        ],
+        "text": "Elizabeth’s spirits were so high on the occasion, that though she did not often speak unnecessarily to Mr. Collins, she could not help asking him whether he intended to accept Mr. Bingley’s invitation, and if he did, whether he would think it proper to join in the evening’s amusement; and she was rather surprised to find that he entertained no scruple whatever on that head, and was very far from dreading a rebuke, either from the Archbishop or Lady Catherine de Bourgh, by venturing to dance."
+      }
+    }
+  ]
+}

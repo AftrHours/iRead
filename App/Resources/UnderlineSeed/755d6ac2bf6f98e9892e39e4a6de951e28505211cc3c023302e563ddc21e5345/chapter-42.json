@@ -1,1 +1,804 @@
-{"engineVersion":5,"underlines":[{"range":[238,74],"text":"winding through lemon trees and feathery palms up to the villa on the hill","decidedBy":"rules","paragraph":3449,"id":"8282:238","kind":"action","reference":{"range":[695,261],"sentence":8280,"paragraph":3448,"text":"Gnarled olive trees covered the hills with their dusky foliage, fruit hung golden in the orchard, and great scarlet anemones fringed the roadside, while beyond green slopes and craggy heights, the Maritime Alps rose sharp and white against the blue Italian sky."},"sentence":8282},{"range":[90,40],"text":"pausing on the terrace to enjoy the view","decidedBy":"rules","paragraph":3450,"id":"8287:90","kind":"reaction","reference":{"range":[575,224],"sentence":8284,"paragraph":3449,"text":"Roses covered the walls of the house, draped the cornices, climbed the pillars, and ran riot over the balustrade of the wide terrace, whence one looked down on the sunny Mediterranean, and the white-walled city on its shore."},"sentence":8287},{"range":[21,30],"text":"pick those that have no thorns","decidedBy":"rules","paragraph":3452,"id":"8289:21","kind":"action","reference":{"range":[0,164],"sentence":8288,"paragraph":3451,"text":"“No, nor felt such thorns,” returned Laurie, with his thumb in his mouth, after a vain attempt to capture a solitary scarlet flower that grew just beyond his reach."},"sentence":8289},{"range":[205,66],"text":"composed himself for a lounge on the broad ledge of the balustrade","decidedBy":"rules","paragraph":3464,"id":"8308:205","kind":"action","reference":{"range":[575,224],"sentence":8284,"paragraph":3449,"text":"Roses covered the walls of the house, draped the cornices, climbed the pillars, and ran riot over the balustrade of the wide terrace, whence one looked down on the sunny Mediterranean, and the white-walled city on its shore."},"sentence":8308},{"range":[296,122],"text":"looked up in time to catch a new expression on Laurie’s face—a hard bitter look, full of pain, dissatisfaction, and regret","decidedBy":"rules","paragraph":3475,"id":"8330:296","kind":"action","reference":{"range":[145,357],"sentence":8290,"paragraph":3452,"text":"She put them in his buttonhole as a peace offering, and he stood a minute looking down at them with a curious expression, for in the Italian part of his nature there was a touch of superstition, and he was just then in that state of half-sweet, half-bitter melancholy, when imaginative young men find significance in trifles and food for romance everywhere."},"sentence":8330},{"range":[334,21],"text":"lie on the grass here","decidedBy":"rules","paragraph":3481,"id":"8342:334","kind":"action","reference":{"range":[371,199],"sentence":8278,"paragraph":3448,"text":"Meek, mouse-colored donkeys, laden with panniers of freshly cut grass passed by, with a pretty girl in a capaline sitting between the green piles, or an old woman spinning with a distaff as she went."},"sentence":8342},{"range":[168,39],"text":"gave up all my foolish hopes in despair","decidedBy":"rules","paragraph":3488,"id":"8357:168","kind":"action","reference":{"range":[0,58],"sentence":8335,"paragraph":3478,"text":"“That’s a foolish wish, unless you have spoiled your life."},"sentence":8357},{"range":[1,24],"text":"I’m never angry with you","decidedBy":"rules","paragraph":3515,"id":"8399:1","kind":"feeling","reference":{"range":[0,33],"sentence":8398,"paragraph":3514,"text":"“You’d be angry in five minutes.”"},"sentence":8399},{"range":[102,32],"text":"sharpened both tongue and pencil","decidedBy":"rules","paragraph":3518,"id":"8407:102","kind":"action","reference":{"range":[0,38],"sentence":8371,"paragraph":3497,"text":"“Your face will, if your tongue won’t."},"sentence":8407},{"range":[220,34],"text":"have been abroad nearly six months","decidedBy":"rules","paragraph":3532,"id":"8428:220","kind":"thing","reference":{"range":[0,67],"sentence":8250,"paragraph":3440,"text":"Laurie went to Nice intending to stay a week, and remained a month."},"sentence":8428},{"range":[243,79],"text":"have grown abominably lazy, you like gossip, and waste time on frivolous things","decidedBy":"rules","paragraph":3534,"id":"8434:243","kind":"action","reference":{"range":[211,116],"sentence":8428,"paragraph":3532,"text":"Here you have been abroad nearly six months, and done nothing but waste time and money and disappoint your friends.”"},"sentence":8434},{"range":[113,38],"text":"Aren’t you ashamed of a hand like that","decidedBy":"rules","paragraph":3538,"id":"8443:113","kind":"thing","reference":{"range":[0,190],"sentence":8385,"paragraph":3506,"text":"“He is rich, a gentleman, and has delightful manners,” began Amy, trying to be quite cool and dignified, but feeling a little ashamed of herself, in spite of the sincerity of her intentions."},"sentence":8443},{"range":[153,35],"text":"It’s as soft and white as a woman’s","decidedBy":"rules","paragraph":3538,"id":"8444:153","kind":"action","reference":{"range":[63,34],"sentence":8401,"paragraph":3515,"text":"You are as cool and soft as snow.”"},"sentence":8444},{"range":[688,40],"text":"recalled the shadow on his face just now","decidedBy":"rules","paragraph":3540,"id":"8452:688","kind":"action","reference":{"range":[211,208],"sentence":8330,"paragraph":3475,"text":"Both tone and shadow struck Amy, for she had seen and heard them before, and now she looked up in time to catch a new expression on Laurie’s face—a hard bitter look, full of pain, dissatisfaction, and regret."},"sentence":8452},{"range":[1061,45],"text":"was in a voice that could be beautifully soft","decidedBy":"rules","paragraph":3540,"id":"8455:1061","kind":"thing","reference":{"range":[63,34],"sentence":8401,"paragraph":3515,"text":"You are as cool and soft as snow.”"},"sentence":8455},{"range":[149,32],"text":"are all so fond and proud of you","decidedBy":"rules","paragraph":3541,"id":"8457:149","kind":"thing","reference":{"range":[0,32],"sentence":8380,"paragraph":3503,"text":"“Then you are fond of old Fred?”"},"sentence":8457},{"range":[184,15],"text":"said artful Amy","decidedBy":"rules","paragraph":3543,"id":"8461:184","kind":"reaction","reference":{"range":[53,22],"sentence":8307,"paragraph":3463,"text":"and Amy looked severe."},"sentence":8461},{"decidedBy":"rules","id":"8476:217","text":"pulled up the grass by the handful","range":[217,34],"reference":{"range":[371,199],"sentence":8278,"paragraph":3448,"text":"Meek, mouse-colored donkeys, laden with panniers of freshly cut grass passed by, with a pretty girl in a capaline sitting between the green piles, or an old woman spinning with a distaff as she went."},"kind":"action","sentence":8476,"paragraph":3551},{"decidedBy":"rules","id":"8479:292","text":"shut himself up in moody indifference","range":[292,37],"reference":{"range":[86,78],"sentence":8404,"paragraph":3516,"text":"Your indifference is half affectation, and a good stirring up would prove it.”"},"kind":"action","sentence":8479,"paragraph":3553},{"decidedBy":"rules","id":"8501:190","text":"put it on his knee","range":[190,18],"reference":{"range":[0,83],"sentence":8378,"paragraph":3501,"text":"“But you will be, if he comes back and goes properly down on his knees, won’t you?”"},"kind":"action","sentence":8501,"paragraph":3561},{"decidedBy":"rules","id":"8502:175","text":"holding a cigar","range":[175,15],"reference":{"paragraph":3470,"text":"I don’t approve of cigars and I will only allow it on condition that you let me put you into my sketch.","sentence":8316,"range":[24,103]},"kind":"action","paragraph":3562,"sentence":8502},{"decidedBy":"rules","id":"8509:262","text":"were off, and every line of the active figure, resolute face","range":[262,60],"reference":{"paragraph":3562,"text":"He looked and then he smiled, as he could not well help doing, for it was capitally done, the long, lazy figure on the grass, with listless face, half-shut eyes, and one hand holding a cigar, from which came the little wreath of smoke that encircled the dreamer’s head.","sentence":8502,"range":[0,269]},"kind":"thing","paragraph":3565,"sentence":8509},{"decidedBy":"rules","id":"8521:220","text":"was an affectation now","range":[220,22],"reference":{"paragraph":3516,"text":"Your indifference is half affectation, and a good stirring up would prove it.”","sentence":8404,"range":[86,78]},"kind":"thing","paragraph":3568,"sentence":8521}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "8288:0",
+      "sentence": 8288,
+      "paragraph": 3451,
+      "range": [
+        0,
+        27
+      ],
+      "text": "“No, nor felt such thorns,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8285,
+        "paragraph": 3450,
+        "range": [
+          0,
+          48
+        ],
+        "text": "“This is a regular honeymoon paradise, isn’t it?"
+      }
+    },
+    {
+      "id": "8293:0",
+      "sentence": 8293,
+      "paragraph": 3453,
+      "range": [
+        0,
+        63
+      ],
+      "text": "“It’s good advice, you’d better take it and save your fingers,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8289,
+        "paragraph": 3452,
+        "range": [
+          0,
+          144
+        ],
+        "text": "“Try lower down, and pick those that have no thorns,” said Amy, gathering three of the tiny cream-colored ones that starred the wall behind her."
+      }
+    },
+    {
+      "id": "8294:0",
+      "sentence": 8294,
+      "paragraph": 3454,
+      "range": [
+        0,
+        86
+      ],
+      "text": "“Thank you, I will,” he answered in jest, and a few months later he did it in earnest.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8289,
+        "paragraph": 3452,
+        "range": [
+          0,
+          144
+        ],
+        "text": "“Try lower down, and pick those that have no thorns,” said Amy, gathering three of the tiny cream-colored ones that starred the wall behind her."
+      }
+    },
+    {
+      "id": "8305:0",
+      "sentence": 8305,
+      "paragraph": 3463,
+      "range": [
+        0,
+        29
+      ],
+      "text": "“Natural indolence, you mean.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8258,
+        "paragraph": 3440,
+        "range": [
+          1287,
+          195
+        ],
+        "text": "Laurie made no effort of any kind, but just let himself drift along as comfortably as possible, trying to forget, and feeling that all women owed him a kind word because one had been cold to him."
+      }
+    },
+    {
+      "id": "8321:0",
+      "sentence": 8321,
+      "paragraph": 3472,
+      "range": [
+        0,
+        46
+      ],
+      "text": "“Stay as you are, and go to sleep if you like.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8316,
+        "paragraph": 3470,
+        "range": [
+          24,
+          103
+        ],
+        "text": "I don’t approve of cigars and I will only allow it on condition that you let me put you into my sketch."
+      }
+    },
+    {
+      "id": "8327:0",
+      "sentence": 8327,
+      "paragraph": 3475,
+      "range": [
+        0,
+        27
+      ],
+      "text": "“As usual, ‘Go away, Teddy.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8325,
+        "paragraph": 3474,
+        "range": [
+          0,
+          39
+        ],
+        "text": "“What would Jo say if she saw you now?”"
+      }
+    },
+    {
+      "id": "8334:0",
+      "sentence": 8334,
+      "paragraph": 3477,
+      "range": [
+        0,
+        13
+      ],
+      "text": "“Wish I was!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8333,
+        "paragraph": 3476,
+        "range": [
+          0,
+          145
+        ],
+        "text": "“You look like the effigy of a young knight asleep on his tomb,” she said, carefully tracing the well-cut profile defined against the dark stone."
+      }
+    },
+    {
+      "id": "8337:125",
+      "sentence": 8337,
+      "paragraph": 3479,
+      "range": [
+        125,
+        65
+      ],
+      "text": "just as he used to say it to her mother, “It’s all right, ma’am.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8336,
+        "paragraph": 3478,
+        "range": [
+          59,
+          141
+        ],
+        "text": "You are so changed, I sometimes think—” there Amy stopped, with a half-timid, half-wistful look, more significant than her unfinished speech."
+      }
+    },
+    {
+      "id": "8344:0",
+      "sentence": 8344,
+      "paragraph": 3483,
+      "range": [
+        0,
+        32
+      ],
+      "text": "“I’m all ready for the secrets.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8342,
+        "paragraph": 3481,
+        "range": [
+          292,
+          157
+        ],
+        "text": "Don’t stay out there in the sun, come and lie on the grass here and ‘let us be friendly’, as Jo used to say when we got in the sofa corner and told secrets.”"
+      }
+    },
+    {
+      "id": "8352:0",
+      "sentence": 8352,
+      "paragraph": 3487,
+      "range": [
+        0,
+        17
+      ],
+      "text": "“She’s very busy.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8351,
+        "paragraph": 3486,
+        "range": [
+          64,
+          37
+        ],
+        "text": "I fancied Jo would send you volumes.”"
+      }
+    },
+    {
+      "id": "8366:0",
+      "sentence": 8366,
+      "paragraph": 3494,
+      "range": [
+        0,
+        6
+      ],
+      "text": "“Good!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8363,
+        "paragraph": 3492,
+        "range": [
+          0,
+          81
+        ],
+        "text": "“Polish up my other talents, and be an ornament to society, if I get the chance.”"
+      }
+    },
+    {
+      "id": "8386:0",
+      "sentence": 8386,
+      "paragraph": 3507,
+      "range": [
+        0,
+        14
+      ],
+      "text": "“I understand.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8385,
+        "paragraph": 3506,
+        "range": [
+          0,
+          190
+        ],
+        "text": "“He is rich, a gentleman, and has delightful manners,” began Amy, trying to be quite cool and dignified, but feeling a little ashamed of herself, in spite of the sincerity of her intentions."
+      }
+    },
+    {
+      "id": "8392:314",
+      "sentence": 8392,
+      "paragraph": 3509,
+      "range": [
+        314,
+        53
+      ],
+      "text": "made her resolve to deliver her lecture without delay",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8309,
+        "paragraph": 3465,
+        "range": [
+          0,
+          156
+        ],
+        "text": "Amy shook her head and opened her sketchbook with an air of resignation, but she had made up her mind to lecture ‘that boy’ and in a minute she began again."
+      }
+    },
+    {
+      "id": "8395:0",
+      "sentence": 8395,
+      "paragraph": 3512,
+      "range": [
+        0,
+        67
+      ],
+      "text": "“I could, if I tried.” and she looked as if she would like doing it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8381,
+        "paragraph": 3504,
+        "range": [
+          0,
+          25
+        ],
+        "text": "“I could be, if I tried.”"
+      }
+    },
+    {
+      "id": "8408:0",
+      "sentence": 8408,
+      "paragraph": 3519,
+      "range": [
+        0,
+        39
+      ],
+      "text": "“Flo and I have got a new name for you.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8305,
+        "paragraph": 3463,
+        "range": [
+          0,
+          29
+        ],
+        "text": "“Natural indolence, you mean."
+      }
+    },
+    {
+      "id": "8425:86",
+      "sentence": 8425,
+      "paragraph": 3531,
+      "range": [
+        86,
+        56
+      ],
+      "text": "the one virtue on which he prided himself was generosity",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8259,
+        "paragraph": 3440,
+        "range": [
+          1483,
+          326
+        ],
+        "text": "It cost him no effort to be generous, and he would have given Amy all the trinkets in Nice if she would have taken them, but at the same time he felt that he could not change the opinion she was forming of him, and he rather dreaded the keen blue eyes that seemed to watch him with such half-sorrowful, half-scornful surprise."
+      }
+    },
+    {
+      "id": "8432:104",
+      "sentence": 8432,
+      "paragraph": 3534,
+      "range": [
+        104,
+        47
+      ],
+      "text": "I said when we first met that you had improved.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8256,
+        "paragraph": 3440,
+        "range": [
+          971,
+          118
+        ],
+        "text": "Amy rose daily in the estimation of her friend, but he sank in hers, and each felt the truth before a word was spoken."
+      }
+    },
+    {
+      "id": "8434:332",
+      "sentence": 8434,
+      "paragraph": 3534,
+      "range": [
+        332,
+        50
+      ],
+      "text": "contented to be petted and admired by silly people",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8252,
+        "paragraph": 3440,
+        "range": [
+          215,
+          208
+        ],
+        "text": "He rather missed the ‘petting’ he used to receive, and enjoyed a taste of it again, for no attentions, however flattering, from strangers, were half so pleasant as the sisterly adoration of the girls at home."
+      }
+    },
+    {
+      "id": "8437:0",
+      "sentence": 8437,
+      "paragraph": 3535,
+      "range": [
+        0,
+        31
+      ],
+      "text": "“Saint Laurence on a gridiron,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8418,
+        "paragraph": 3526,
+        "range": [
+          0,
+          100
+        ],
+        "text": "“Because, with every chance for being good, useful, and happy, you are faulty, lazy, and miserable.”"
+      }
+    },
+    {
+      "id": "8447:0",
+      "sentence": 8447,
+      "paragraph": 3539,
+      "range": [
+        0,
+        10
+      ],
+      "text": "“So do I!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8446,
+        "paragraph": 3538,
+        "range": [
+          437,
+          43
+        ],
+        "text": "Dear soul, I wish she was here to help me!”"
+      }
+    },
+    {
+      "id": "8452:684",
+      "sentence": 8452,
+      "paragraph": 3540,
+      "range": [
+        684,
+        44
+      ],
+      "text": "she recalled the shadow on his face just now",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8329,
+        "paragraph": 3475,
+        "range": [
+          40,
+          170
+        ],
+        "text": "He laughed as he spoke, but the laugh was not natural, and a shade passed over his face, for the utterance of the familiar name touched the wound that was not healed yet."
+      }
+    },
+    {
+      "id": "8452:763",
+      "sentence": 8452,
+      "paragraph": 3540,
+      "range": [
+        763,
+        75
+      ],
+      "text": "the wearing of the little old ring which was no ornament to a handsome hand",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8445,
+        "paragraph": 3538,
+        "range": [
+          287,
+          149
+        ],
+        "text": "You are not a dandy, thank Heaven, so I’m glad to see there are no diamonds or big seal rings on it, only the little old one Jo gave you so long ago."
+      }
+    },
+    {
+      "id": "8462:0",
+      "sentence": 8462,
+      "paragraph": 3544,
+      "range": [
+        0,
+        19
+      ],
+      "text": "“Hang Miss Randal!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8460,
+        "paragraph": 3543,
+        "range": [
+          129,
+          54
+        ],
+        "text": "I never did like that Miss Randal and now I hate her!”"
+      }
+    },
+    {
+      "id": "8471:0",
+      "sentence": 8471,
+      "paragraph": 3549,
+      "range": [
+        0,
+        37
+      ],
+      "text": "The hard, bitter look came back again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8330,
+        "paragraph": 3475,
+        "range": [
+          211,
+          208
+        ],
+        "text": "Both tone and shadow struck Amy, for she had seen and heard them before, and now she looked up in time to catch a new expression on Laurie’s face—a hard bitter look, full of pain, dissatisfaction, and regret."
+      }
+    },
+    {
+      "id": "8474:0",
+      "sentence": 8474,
+      "paragraph": 3551,
+      "range": [
+        0,
+        32
+      ],
+      "text": "“Don’t, that’s her name for me!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8473,
+        "paragraph": 3550,
+        "range": [
+          29,
+          91
+        ],
+        "text": "I’m very sorry I was so cross, but I can’t help wishing you’d bear it better, Teddy, dear.”"
+      }
+    },
+    {
+      "id": "8481:468",
+      "sentence": 8481,
+      "paragraph": 3553,
+      "range": [
+        468,
+        45
+      ],
+      "text": "“Do you think Jo would despise me as you do?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8415,
+        "paragraph": 3523,
+        "range": [
+          0,
+          22
+        ],
+        "text": "“Well, I despise you.”"
+      }
+    },
+    {
+      "id": "8486:0",
+      "sentence": 8486,
+      "paragraph": 3556,
+      "range": [
+        0,
+        27
+      ],
+      "text": "“Graduating well, you mean?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8485,
+        "paragraph": 3555,
+        "range": [
+          0,
+          35
+        ],
+        "text": "“I did my best, but it was no use.”"
+      }
+    },
+    {
+      "id": "8500:35",
+      "sentence": 8500,
+      "paragraph": 3561,
+      "range": [
+        35,
+        48
+      ],
+      "text": "Laurie sat turning the little ring on his finger",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8450,
+        "paragraph": 3540,
+        "range": [
+          267,
+          214
+        ],
+        "text": "She only saw his chest rise and fall, with a long breath that might have been a sigh, and the hand that wore the ring nestled down into the grass, as if to hide something too precious or too tender to be spoken of."
+      }
+    },
+    {
+      "id": "8502:90",
+      "sentence": 8502,
+      "paragraph": 3562,
+      "range": [
+        90,
+        100
+      ],
+      "text": "the long, lazy figure on the grass, with listless face, half-shut eyes, and one hand holding a cigar",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8314,
+        "paragraph": 3469,
+        "range": [
+          0,
+          40
+        ],
+        "text": "“Smoke a cigarette, if you’ll allow me.”"
+      }
+    },
+    {
+      "id": "8511:775",
+      "sentence": 8511,
+      "paragraph": 3565,
+      "range": [
+        775,
+        49
+      ],
+      "text": "the supine grace of the ‘Dolce far Niente’ sketch",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8320,
+        "paragraph": 3471,
+        "range": [
+          109,
+          109
+        ],
+        "text": "I should respectfully suggest a recumbent posture, then put yourself in also and call it ‘Dolce far niente’.”"
+      }
+    },
+    {
+      "id": "8512:964",
+      "sentence": 8512,
+      "paragraph": 3565,
+      "range": [
+        964,
+        35
+      ],
+      "text": "the little lesson she had given him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8407,
+        "paragraph": 3518,
+        "range": [
+          0,
+          146
+        ],
+        "text": "Being decidedly nettled herself, and longing to see him shake off the apathy that so altered him, Amy sharpened both tongue and pencil, and began."
+      }
+    },
+    {
+      "id": "8514:0",
+      "sentence": 8514,
+      "paragraph": 3566,
+      "range": [
+        0,
+        54
+      ],
+      "text": "“Don’t you remember the day you played Rarey with Puck",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8508,
+        "paragraph": 3565,
+        "range": [
+          203,
+          45
+        ],
+        "text": "Only a rough sketch of Laurie taming a horse."
+      }
+    },
+    {
+      "id": "8519:77",
+      "sentence": 8519,
+      "paragraph": 3567,
+      "range": [
+        77,
+        50
+      ],
+      "text": "May I venture to suggest in ‘a honeymoon paradise’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8285,
+        "paragraph": 3450,
+        "range": [
+          0,
+          48
+        ],
+        "text": "“This is a regular honeymoon paradise, isn’t it?"
+      }
+    },
+    {
+      "id": "8523:0",
+      "sentence": 8523,
+      "paragraph": 3569,
+      "range": [
+        0,
+        24
+      ],
+      "text": "“Now, I’ve offended him.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8522,
+        "paragraph": 3568,
+        "range": [
+          307,
+          68
+        ],
+        "text": "Amy felt the shade of coldness in his manner, and said to herself..."
+      }
+    },
+    {
+      "id": "8525:47",
+      "sentence": 8525,
+      "paragraph": 3570,
+      "range": [
+        47,
+        26
+      ],
+      "text": "little Baptiste, up behind",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8271,
+        "paragraph": 3446,
+        "range": [
+          0,
+          232
+        ],
+        "text": "Laurie lifted his eyebrows and followed at a leisurely pace as she ran downstairs, but when they got into the carriage he took the reins himself, and left little Baptiste nothing to do but fold his arms and fall asleep on his perch."
+      }
+    },
+    {
+      "id": "8537:83",
+      "sentence": 8537,
+      "paragraph": 3576,
+      "range": [
+        83,
+        62
+      ],
+      "text": "‘Lazy Laurence’ has gone to his grandpa, like the best of boys",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8295,
+        "paragraph": 3455,
+        "range": [
+          0,
+          49
+        ],
+        "text": "“Laurie, when are you going to your grandfather?”"
+      }
+    },
+    {
+      "id": "8538:177",
+      "sentence": 8538,
+      "paragraph": 3576,
+      "range": [
+        177,
+        54
+      ],
+      "text": "may the gods grant you a blissful honeymoon at Valrosa",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8285,
+        "paragraph": 3450,
+        "range": [
+          0,
+          48
+        ],
+        "text": "“This is a regular honeymoon paradise, isn’t it?"
+      }
+    },
+    {
+      "id": "8539:233",
+      "sentence": 8539,
+      "paragraph": 3576,
+      "range": [
+        233,
+        43
+      ],
+      "text": "I think Fred would be benefited by a rouser",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8393,
+        "paragraph": 3510,
+        "range": [
+          0,
+          76
+        ],
+        "text": "“I wish you’d do me the favor to rouse yourself a little,” she said sharply."
+      }
+    }
+  ]
+}

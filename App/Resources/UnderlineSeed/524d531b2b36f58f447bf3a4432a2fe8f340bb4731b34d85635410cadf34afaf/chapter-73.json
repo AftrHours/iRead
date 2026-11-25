@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[{"id":"1026:74","text":"looking at Darcy","reference":{"range":[0,92],"sentence":1019,"paragraph":536,"text":"Everybody was surprised; and Darcy, after looking at her for a moment, turned silently away."},"kind":"action","paragraph":539,"range":[74,16],"sentence":1026,"decidedBy":"rules"},{"id":"1033:114","text":"directed her eye towards Mr. Darcy with","reference":{"range":[76,29],"sentence":1028,"paragraph":540,"text":"“You quite mistook Mr. Darcy."},"kind":"action","paragraph":542,"range":[114,39],"sentence":1033,"decidedBy":"rules"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1017:34",
+      "sentence": 1017,
+      "paragraph": 535,
+      "range": [
+        34,
+        60
+      ],
+      "text": "offended by his manner of mentioning a country neighbourhood",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1014,
+        "paragraph": 532,
+        "range": [
+          85,
+          77
+        ],
+        "text": "In a country neighbourhood you move in a very confined and unvarying society."
+      }
+    },
+    {
+      "id": "1026:93",
+      "sentence": 1026,
+      "paragraph": 539,
+      "range": [
+        93,
+        46
+      ],
+      "text": "seemed to think the country was nothing at all",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1013,
+        "paragraph": 532,
+        "range": [
+          0,
+          84
+        ],
+        "text": "“The country,” said Darcy, “can in general supply but few subjects for such a study."
+      }
+    }
+  ]
+}

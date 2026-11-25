@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4678:18",
+      "sentence": 4678,
+      "paragraph": 1934,
+      "range": [
+        18,
+        80
+      ],
+      "text": "that Wickham should marry a girl whom it was impossible he could marry for money",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4557,
+        "paragraph": 1902,
+        "range": [
+          591,
+          86
+        ],
+        "text": "His choice is disinterested at least, for he must know my father can give her nothing."
+      }
+    },
+    {
+      "id": "4686:174",
+      "sentence": 4686,
+      "paragraph": 1936,
+      "range": [
+        174,
+        30
+      ],
+      "text": "a mother incapable of exertion",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4588,
+        "paragraph": 1906,
+        "range": [
+          327,
+          137
+        ],
+        "text": "Could she exert herself, it would be better, but this is not to be expected; and as to my father, I never in my life saw him so affected."
+      }
+    },
+    {
+      "id": "4687:484",
+      "sentence": 4687,
+      "paragraph": 1936,
+      "range": [
+        484,
+        76
+      ],
+      "text": "supposing, by the servant’s account, that their niece was taken suddenly ill",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4609,
+        "paragraph": 1910,
+        "range": [
+          129,
+          176
+        ],
+        "text": "Calling back the servant, therefore, she commissioned him, though in so breathless an accent as made her almost unintelligible, to fetch his master and mistress home instantly."
+      }
+    }
+  ]
+}

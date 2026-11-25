@@ -1,1 +1,111 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"paragraph":1920,"kind":"action","decidedBy":"rules","sentence":4638,"text":"left Brighton together on Sunday night","id":"4638:15","reference":{"paragraph":1916,"range":[9,41],"sentence":4626,"text":"They are gone off together from Brighton."},"range":[15,38]}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4628:92",
+      "sentence": 4628,
+      "paragraph": 1916,
+      "range": [
+        92,
+        60
+      ],
+      "text": "She has no money, no connections, nothing that can tempt him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4557,
+        "paragraph": 1902,
+        "range": [
+          591,
+          86
+        ],
+        "text": "His choice is disinterested at least, for he must know my father can give her nothing."
+      }
+    },
+    {
+      "id": "4632:158",
+      "sentence": 4632,
+      "paragraph": 1918,
+      "range": [
+        158,
+        45
+      ],
+      "text": "some part of what I learnt, to my own family!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4560,
+        "paragraph": 1902,
+        "range": [
+          739,
+          107
+        ],
+        "text": "How thankful am I, that we never let them know what has been said against him; we must forget it ourselves."
+      }
+    },
+    {
+      "id": "4638:59",
+      "sentence": 4638,
+      "paragraph": 1920,
+      "range": [
+        59,
+        44
+      ],
+      "text": "were traced almost to London, but not beyond",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4576,
+        "paragraph": 1905,
+        "range": [
+          893,
+          81
+        ],
+        "text": "All that is known after this is, that they were seen to continue the London road."
+      }
+    },
+    {
+      "id": "4640:35",
+      "sentence": 4640,
+      "paragraph": 1922,
+      "range": [
+        35,
+        55
+      ],
+      "text": "Jane has written to beg my uncle’s immediate assistance",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4597,
+        "paragraph": 1906,
+        "range": [
+          1440,
+          166
+        ],
+        "text": "In such an exigence my uncle’s advice and assistance would be everything in the world; he will immediately comprehend what I must feel, and I rely upon his goodness.”"
+      }
+    },
+    {
+      "id": "4647:1",
+      "sentence": 4647,
+      "paragraph": 1924,
+      "range": [
+        1,
+        46
+      ],
+      "text": "When my eyes were opened to his real character",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4630,
+        "paragraph": 1918,
+        "range": [
+          0,
+          92
+        ],
+        "text": "“When I consider,” she added, in a yet more agitated voice, “that I might have prevented it!"
+      }
+    }
+  ]
+}

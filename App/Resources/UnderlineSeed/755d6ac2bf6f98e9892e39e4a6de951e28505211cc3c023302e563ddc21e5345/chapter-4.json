@@ -1,1 +1,909 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"paragraph":180,"decidedBy":"rules","text":"sent the basket under the sofa, and the girls to the table, eager for breakfast","range":[32,79],"sentence":343,"id":"343:32","kind":"action","reference":{"text":"“She will be back soon, I think, so fry your cakes, and have everything ready,” said Meg, looking over the presents which were collected in a basket and kept under the sofa, ready to be produced at the proper time.","paragraph":168,"range":[0,214],"sentence":318}},{"paragraph":188,"decidedBy":"rules","text":"went through back streets","range":[85,25],"sentence":363,"id":"363:85","kind":"action","reference":{"text":"Another bang of the street door sent the basket under the sofa, and the girls to the table, eager for breakfast.","paragraph":180,"range":[0,112],"sentence":343}},{"paragraph":194,"decidedBy":"rules","text":"had never been called angel children before","range":[135,43],"sentence":377,"id":"377:135","kind":"action","reference":{"text":"It is good angels come to us!”","paragraph":191,"range":[17,30],"sentence":367}},{"paragraph":194,"decidedBy":"rules","text":"That was a very happy breakfast","range":[286,31],"sentence":378,"id":"378:286","kind":"feeling","reference":{"text":"My girls, will you give them your breakfast as a Christmas present?”","paragraph":182,"range":[399,68],"sentence":354}},{"paragraph":198,"decidedBy":"rules","text":"was both surprised","range":[109,18],"sentence":388,"id":"388:109","kind":"thing","reference":{"text":"asked Meg, surprised to see, by her hood and cloak, that lazy Amy had been out so early.","paragraph":176,"range":[59,88],"sentence":337}},{"paragraph":221,"decidedBy":"rules","text":"waiting for Roderigo","range":[361,20],"sentence":435,"id":"435:361","kind":"action","reference":{"text":"Hugo demanded a potion to make Zara adore him, and one to destroy Roderigo.","paragraph":204,"range":[126,75],"sentence":411}},{"paragraph":221,"decidedBy":"rules","text":"Then came the grand effect of the play","range":[628,38],"sentence":439,"id":"439:628","kind":"reaction","reference":{"text":"The stage was dark and the glow of the furnace had a fine effect, especially as real steam issued from the kettle when the witch took off the cover.","paragraph":203,"range":[316,148],"sentence":404}},{"paragraph":225,"decidedBy":"rules","text":"was a truly thrilling scene","range":[5,27],"sentence":460,"id":"460:5","kind":"thing","reference":{"text":"The big chamber was the scene of many innocent revels.","paragraph":200,"range":[707,54],"sentence":394}},{"paragraph":226,"decidedBy":"rules","text":"tears off his chains","range":[359,20],"sentence":464,"id":"464:359","kind":"feeling","reference":{"text":"A stout little retainer came in with chains and led them away, looking very much frightened and evidently forgetting the speech he ought to have made.","paragraph":223,"range":[363,150],"sentence":454}},{"paragraph":227,"decidedBy":"rules","text":"is about to bear away the exhausted Zara, when the timid servant enters with a letter and a bag from Hagar","range":[333,106],"sentence":468,"id":"468:333","kind":"place","reference":{"text":"She hears him coming and hides, sees him put the potions into two cups of wine and bid the timid little servant, “Bear them to the captives in their cells, and tell them I shall come anon.”","paragraph":224,"range":[104,189],"sentence":456}},{"paragraph":227,"decidedBy":"rules","text":"join in a joyful chorus","range":[813,23],"sentence":472,"id":"472:813","kind":"action","reference":{"text":"We read some, and mean to every day,” they all cried in chorus.","paragraph":181,"range":[65,63],"sentence":347}},{"paragraph":229,"decidedBy":"rules","text":"was a surprise even to the actors","range":[5,33],"sentence":476,"id":"476:5","kind":"thing","reference":{"text":"No gentleman were admitted, so Jo played male parts to her heart’s content and took immense satisfaction in a pair of russet leather boots given her by a friend, who knew a lady who knew an actor.","paragraph":201,"range":[0,196],"sentence":395}},{"paragraph":229,"decidedBy":"rules","text":"distracting French bonbons and, in the middle of the table, four great bouquets of hot house flowers","range":[340,100],"sentence":478,"id":"478:340","kind":"action","reference":{"text":"Not a very splendid show, but there was a great deal of love done up in the few little bundles, and the tall vase of red roses, white chrysanthemums, and trailing vines, which stood in the middle, gave quite an elegant air to the table.","paragraph":196,"range":[0,236],"sentence":381}},{"paragraph":239,"decidedBy":"rules","text":"doesn’t like to mix with his neighbors","range":[158,38],"sentence":501,"id":"501:158","kind":"action","reference":{"text":"“That’s loving our neighbor better than ourselves, and I like it,” said Meg, as they set out their presents while their mother was upstairs collecting clothes for the poor Hummels.","paragraph":195,"range":[0,180],"sentence":380}},{"paragraph":242,"decidedBy":"rules","text":"looking at her boots","range":[47,20],"sentence":511,"id":"511:47","kind":"action","reference":{"text":"A universal shriek arose as the russet boots waved wildly from the wreck and a golden head emerged, exclaiming, “I told you so!","paragraph":222,"range":[0,127],"sentence":445}},{"paragraph":243,"decidedBy":"rules","text":"had such a fine bouquet before","range":[9,30],"sentence":515,"id":"515:9","kind":"thing","reference":{"text":"There was ice cream, actually two dishes of it, pink and white, and cake and fruit and distracting French bonbons and, in the middle of the table, four great bouquets of hot house flowers.","paragraph":229,"range":[253,188],"sentence":478}}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "308:48",
+      "sentence": 308,
+      "paragraph": 163,
+      "range": [
+        48,
+        63
+      ],
+      "text": "Jo put her arm round her and, leaning cheek to cheek, read also",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 303,
+        "paragraph": 161,
+        "range": [
+          0,
+          213
+        ],
+        "text": "In spite of her small vanities, Margaret had a sweet and pious nature, which unconsciously influenced her sisters, especially Jo, who loved her very tenderly, and obeyed her because her advice was so gently given."
+      }
+    },
+    {
+      "id": "309:1",
+      "sentence": 309,
+      "paragraph": 164,
+      "range": [
+        1,
+        16
+      ],
+      "text": "How good Meg is!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 303,
+        "paragraph": 161,
+        "range": [
+          0,
+          213
+        ],
+        "text": "In spite of her small vanities, Margaret had a sweet and pious nature, which unconsciously influenced her sisters, especially Jo, who loved her very tenderly, and obeyed her because her advice was so gently given."
+      }
+    },
+    {
+      "id": "312:1",
+      "sentence": 312,
+      "paragraph": 165,
+      "range": [
+        1,
+        21
+      ],
+      "text": "I’m glad mine is blue",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 302,
+        "paragraph": 160,
+        "range": [
+          777,
+          199
+        ],
+        "text": "Presently Beth and Amy woke to rummage and find their little books also, one dove-colored, the other blue, and all sat looking at and talking about them, while the east grew rosy with the coming day."
+      }
+    },
+    {
+      "id": "314:44",
+      "sentence": 314,
+      "paragraph": 166,
+      "range": [
+        44,
+        37
+      ],
+      "text": "ran down to thank her for their gifts",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 301,
+        "paragraph": 160,
+        "range": [
+          617,
+          159
+        ],
+        "text": "A green-covered book appeared, with the same picture inside, and a few words written by their mother, which made their one present very precious in their eyes."
+      }
+    },
+    {
+      "id": "333:17",
+      "sentence": 333,
+      "paragraph": 174,
+      "range": [
+        17,
+        23
+      ],
+      "text": "Hide the basket, quick!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 318,
+        "paragraph": 168,
+        "range": [
+          0,
+          214
+        ],
+        "text": "“She will be back soon, I think, so fry your cakes, and have everything ready,” said Meg, looking over the presents which were collected in a basket and kept under the sofa, ready to be produced at the proper time."
+      }
+    },
+    {
+      "id": "336:26",
+      "sentence": 336,
+      "paragraph": 176,
+      "range": [
+        26,
+        31
+      ],
+      "text": "what are you hiding behind you?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 321,
+        "paragraph": 169,
+        "range": [
+          0,
+          186
+        ],
+        "text": "“She took it out a minute ago, and went off with it to put a ribbon on it, or some such notion,” replied Jo, dancing about the room to take the first stiffness off the new army slippers."
+      }
+    },
+    {
+      "id": "340:77",
+      "sentence": 340,
+      "paragraph": 177,
+      "range": [
+        77,
+        54
+      ],
+      "text": "I only meant to change the little bottle for a big one",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 319,
+        "paragraph": 168,
+        "range": [
+          215,
+          40
+        ],
+        "text": "“Why, where is Amy’s bottle of cologne?”"
+      }
+    },
+    {
+      "id": "342:39",
+      "sentence": 342,
+      "paragraph": 179,
+      "range": [
+        39,
+        55
+      ],
+      "text": "after reading and talking about being good this morning",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 307,
+        "paragraph": 163,
+        "range": [
+          0,
+          47
+        ],
+        "text": "Then she opened her new book and began to read."
+      }
+    },
+    {
+      "id": "343:0",
+      "sentence": 343,
+      "paragraph": 180,
+      "range": [
+        0,
+        62
+      ],
+      "text": "Another bang of the street door sent the basket under the sofa",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 332,
+        "paragraph": 174,
+        "range": [
+          0,
+          16
+        ],
+        "text": "“There’s Mother."
+      }
+    },
+    {
+      "id": "346:40",
+      "sentence": 346,
+      "paragraph": 181,
+      "range": [
+        40,
+        24
+      ],
+      "text": "Thank you for our books.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 306,
+        "paragraph": 162,
+        "range": [
+          339,
+          179
+        ],
+        "text": "You can do as you please, but I shall keep my book on the table here and read a little every morning as soon as I wake, for I know it will do me good and help me through the day.”"
+      }
+    },
+    {
+      "id": "349:36",
+      "sentence": 349,
+      "paragraph": 182,
+      "range": [
+        36,
+        26
+      ],
+      "text": "I’m glad you began at once",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 304,
+        "paragraph": 162,
+        "range": [
+          0,
+          208
+        ],
+        "text": "“Girls,” said Meg seriously, looking from the tumbled head beside her to the two little night-capped ones in the room beyond, “Mother wants us to read and love and mind these books, and we must begin at once."
+      }
+    },
+    {
+      "id": "364:0",
+      "sentence": 364,
+      "paragraph": 189,
+      "range": [
+        0,
+        35
+      ],
+      "text": "A poor, bare, miserable room it was",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 351,
+        "paragraph": 182,
+        "range": [
+          138,
+          68
+        ],
+        "text": "Not far away from here lies a poor woman with a little newborn baby."
+      }
+    },
+    {
+      "id": "364:119",
+      "sentence": 364,
+      "paragraph": 189,
+      "range": [
+        119,
+        60
+      ],
+      "text": "a group of pale, hungry children cuddled under one old quilt",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 352,
+        "paragraph": 182,
+        "range": [
+          207,
+          83
+        ],
+        "text": "Six children are huddled into one bed to keep from freezing, for they have no fire."
+      }
+    },
+    {
+      "id": "371:79",
+      "sentence": 371,
+      "paragraph": 193,
+      "range": [
+        79,
+        41
+      ],
+      "text": "Hannah, who had carried wood, made a fire",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 352,
+        "paragraph": 182,
+        "range": [
+          207,
+          83
+        ],
+        "text": "Six children are huddled into one bed to keep from freezing, for they have no fire."
+      }
+    },
+    {
+      "id": "377:125",
+      "sentence": 377,
+      "paragraph": 194,
+      "range": [
+        125,
+        53
+      ],
+      "text": "The girls had never been called angel children before",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 367,
+        "paragraph": 191,
+        "range": [
+          17,
+          30
+        ],
+        "text": "It is good angels come to us!”"
+      }
+    },
+    {
+      "id": "378:286",
+      "sentence": 378,
+      "paragraph": 194,
+      "range": [
+        286,
+        65
+      ],
+      "text": "That was a very happy breakfast, though they didn’t get any of it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 354,
+        "paragraph": 182,
+        "range": [
+          399,
+          68
+        ],
+        "text": "My girls, will you give them your breakfast as a Christmas present?”"
+      }
+    },
+    {
+      "id": "379:525",
+      "sentence": 379,
+      "paragraph": 194,
+      "range": [
+        525,
+        61
+      ],
+      "text": "contented themselves with bread and milk on Christmas morning",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 361,
+        "paragraph": 187,
+        "range": [
+          67,
+          126
+        ],
+        "text": "“You shall all go and help me, and when we come back we will have bread and milk for breakfast, and make it up at dinnertime.”"
+      }
+    },
+    {
+      "id": "380:140",
+      "sentence": 380,
+      "paragraph": 195,
+      "range": [
+        140,
+        39
+      ],
+      "text": "collecting clothes for the poor Hummels",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 317,
+        "paragraph": 167,
+        "range": [
+          110,
+          214
+        ],
+        "text": "There never was such a woman for givin’ away vittles and drink, clothes and firin’,” replied Hannah, who had lived with the family since Meg was born, and was considered by them all more as a friend than a servant."
+      }
+    },
+    {
+      "id": "389:250",
+      "sentence": 389,
+      "paragraph": 198,
+      "range": [
+        250,
+        28
+      ],
+      "text": "The slippers went on at once",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 321,
+        "paragraph": 169,
+        "range": [
+          0,
+          186
+        ],
+        "text": "“She took it out a minute ago, and went off with it to put a ribbon on it, or some such notion,” replied Jo, dancing about the room to take the first stiffness off the new army slippers."
+      }
+    },
+    {
+      "id": "389:280",
+      "sentence": 389,
+      "paragraph": 198,
+      "range": [
+        280,
+        46
+      ],
+      "text": "a new handkerchief was slipped into her pocket",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 322,
+        "paragraph": 170,
+        "range": [
+          0,
+          44
+        ],
+        "text": "“How nice my handkerchiefs look, don’t they?"
+      }
+    },
+    {
+      "id": "389:328",
+      "sentence": 389,
+      "paragraph": 198,
+      "range": [
+        328,
+        31
+      ],
+      "text": "well scented with Amy’s cologne",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 341,
+        "paragraph": 178,
+        "range": [
+          0,
+          300
+        ],
+        "text": "As she spoke, Amy showed the handsome flask which replaced the cheap one, and looked so earnest and humble in her little effort to forget herself that Meg hugged her on the spot, and Jo pronounced her ‘a trump’, while Beth ran to the window, and picked her finest rose to ornament the stately bottle."
+      }
+    },
+    {
+      "id": "389:361",
+      "sentence": 389,
+      "paragraph": 198,
+      "range": [
+        361,
+        34
+      ],
+      "text": "the rose was fastened in her bosom",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 341,
+        "paragraph": 178,
+        "range": [
+          0,
+          300
+        ],
+        "text": "As she spoke, Amy showed the handsome flask which replaced the cheap one, and looked so earnest and humble in her little effort to forget herself that Meg hugged her on the spot, and Jo pronounced her ‘a trump’, while Beth ran to the window, and picked her finest rose to ornament the stately bottle."
+      }
+    },
+    {
+      "id": "405:606",
+      "sentence": 405,
+      "paragraph": 203,
+      "range": [
+        606,
+        44
+      ],
+      "text": "black beard, mysterious cloak, and the boots",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 395,
+        "paragraph": 201,
+        "range": [
+          0,
+          196
+        ],
+        "text": "No gentleman were admitted, so Jo played male parts to her heart’s content and took immense satisfaction in a pair of russet leather boots given her by a friend, who knew a lady who knew an actor."
+      }
+    },
+    {
+      "id": "411:126",
+      "sentence": 411,
+      "paragraph": 204,
+      "range": [
+        126,
+        45
+      ],
+      "text": "Hugo demanded a potion to make Zara adore him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 406,
+        "paragraph": 203,
+        "range": [
+          652,
+          216
+        ],
+        "text": "After pacing to and fro in much agitation, he struck his forehead, and burst out in a wild strain, singing of his hatred for Roderigo, his love for Zara, and his pleasing resolution to kill the one and win the other."
+      }
+    },
+    {
+      "id": "436:458",
+      "sentence": 436,
+      "paragraph": 221,
+      "range": [
+        458,
+        34
+      ],
+      "text": "a guitar, and the boots, of course",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 396,
+        "paragraph": 201,
+        "range": [
+          197,
+          145
+        ],
+        "text": "These boots, an old foil, and a slashed doublet once used by an artist for some picture, were Jo’s chief treasures and appeared on all occasions."
+      }
+    },
+    {
+      "id": "445:25",
+      "sentence": 445,
+      "paragraph": 222,
+      "range": [
+        25,
+        47
+      ],
+      "text": "as the russet boots waved wildly from the wreck",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 444,
+        "paragraph": 221,
+        "range": [
+          932,
+          123
+        ],
+        "text": "It caught in the window, the tower tottered, leaned forward, fell with a crash, and buried the unhappy lovers in the ruins."
+      }
+    },
+    {
+      "id": "451:129",
+      "sentence": 451,
+      "paragraph": 223,
+      "range": [
+        129,
+        52
+      ],
+      "text": "decidedly shaken by the fall from the tower upon him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 444,
+        "paragraph": 221,
+        "range": [
+          932,
+          123
+        ],
+        "text": "It caught in the window, the tower tottered, leaned forward, fell with a crash, and buried the unhappy lovers in the ruins."
+      }
+    },
+    {
+      "id": "455:56",
+      "sentence": 455,
+      "paragraph": 224,
+      "range": [
+        56,
+        46
+      ],
+      "text": "having come to free the lovers and finish Hugo",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 431,
+        "paragraph": 220,
+        "range": [
+          289,
+          241
+        ],
+        "text": "Having warbled his thanks and put the potions in his boots, Hugo departed, and Hagar informed the audience that as he had killed a few of her friends in times past, she had cursed him, and intends to thwart his plans, and be revenged on him."
+      }
+    },
+    {
+      "id": "456:136",
+      "sentence": 456,
+      "paragraph": 224,
+      "range": [
+        136,
+        46
+      ],
+      "text": "sees him put the potions into two cups of wine",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 431,
+        "paragraph": 220,
+        "range": [
+          289,
+          241
+        ],
+        "text": "Having warbled his thanks and put the potions in his boots, Hugo departed, and Hagar informed the audience that as he had killed a few of her friends in times past, she had cursed him, and intends to thwart his plans, and be revenged on him."
+      }
+    },
+    {
+      "id": "458:493",
+      "sentence": 458,
+      "paragraph": 224,
+      "range": [
+        493,
+        29
+      ],
+      "text": "the poison meant for Roderigo",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 411,
+        "paragraph": 204,
+        "range": [
+          126,
+          75
+        ],
+        "text": "Hugo demanded a potion to make Zara adore him, and one to destroy Roderigo."
+      }
+    },
+    {
+      "id": "461:267",
+      "sentence": 461,
+      "paragraph": 225,
+      "range": [
+        267,
+        61
+      ],
+      "text": "whose singing was considered more wonderful than all the rest",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 412,
+        "paragraph": 204,
+        "range": [
+          202,
+          118
+        ],
+        "text": "Hagar, in a fine dramatic melody, promised both, and proceeded to call up the spirit who would bring the love philter."
+      }
+    },
+    {
+      "id": "464:356",
+      "sentence": 464,
+      "paragraph": 226,
+      "range": [
+        356,
+        23
+      ],
+      "text": "he tears off his chains",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 454,
+        "paragraph": 223,
+        "range": [
+          363,
+          150
+        ],
+        "text": "A stout little retainer came in with chains and led them away, looking very much frightened and evidently forgetting the speech he ought to have made."
+      }
+    },
+    {
+      "id": "473:67",
+      "sentence": 473,
+      "paragraph": 228,
+      "range": [
+        67,
+        66
+      ],
+      "text": "the cot bed, on which the dress circle was built, suddenly shut up",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 399,
+        "paragraph": 202,
+        "range": [
+          0,
+          173
+        ],
+        "text": "On Christmas night, a dozen girls piled onto the bed which was the dress circle, and sat before the blue and yellow chintz curtains in a most flattering state of expectancy."
+      }
+    },
+    {
+      "id": "484:46",
+      "sentence": 484,
+      "paragraph": 233,
+      "range": [
+        46,
+        45
+      ],
+      "text": "in spite of her gray beard and white eyebrows",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 447,
+        "paragraph": 222,
+        "range": [
+          144,
+          118
+        ],
+        "text": "With wonderful presence of mind, Don Pedro, the cruel sire, rushed in, dragged out his daughter, with a hasty aside..."
+      }
+    },
+    {
+      "id": "492:1",
+      "sentence": 492,
+      "paragraph": 237,
+      "range": [
+        1,
+        58
+      ],
+      "text": "Hannah told one of his servants about your breakfast party",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 359,
+        "paragraph": 186,
+        "range": [
+          0,
+          81
+        ],
+        "text": "Meg was already covering the buckwheats, and piling the bread into one big plate."
+      }
+    },
+    {
+      "id": "495:381",
+      "sentence": 495,
+      "paragraph": 237,
+      "range": [
+        381,
+        43
+      ],
+      "text": "to make up for the bread-and-milk breakfast",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 379,
+        "paragraph": 194,
+        "range": [
+          353,
+          234
+        ],
+        "text": "And when they went away, leaving comfort behind, I think there were not in all the city four merrier people than the hungry little girls who gave away their breakfasts and contented themselves with bread and milk on Christmas morning."
+      }
+    },
+    {
+      "id": "505:140",
+      "sentence": 505,
+      "paragraph": 240,
+      "range": [
+        140,
+        38
+      ],
+      "text": "when he saw Meg coming, and walked off",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 498,
+        "paragraph": 238,
+        "range": [
+          106,
+          226
+        ],
+        "text": "He looks as if he’d like to know us but he’s bashful, and Meg is so prim she won’t let me speak to him when we pass,” said Jo, as the plates went round, and the ice began to melt out of sight, with ohs and ahs of satisfaction."
+      }
+    },
+    {
+      "id": "506:180",
+      "sentence": 506,
+      "paragraph": 240,
+      "range": [
+        180,
+        45
+      ],
+      "text": "I mean to know him some day, for he needs fun",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 498,
+        "paragraph": 238,
+        "range": [
+          106,
+          226
+        ],
+        "text": "He looks as if he’d like to know us but he’s bashful, and Meg is so prim she won’t let me speak to him when we pass,” said Jo, as the plates went round, and the ice began to melt out of sight, with ohs and ahs of satisfaction."
+      }
+    },
+    {
+      "id": "507:62",
+      "sentence": 507,
+      "paragraph": 241,
+      "range": [
+        62,
+        68
+      ],
+      "text": "I’ve no objection to your knowing him, if a proper opportunity comes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 497,
+        "paragraph": 238,
+        "range": [
+          47,
+          58
+        ],
+        "text": "He’s a capital fellow, and I wish we could get acquainted."
+      }
+    },
+    {
+      "id": "508:132",
+      "sentence": 508,
+      "paragraph": 241,
+      "range": [
+        132,
+        30
+      ],
+      "text": "He brought the flowers himself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 478,
+        "paragraph": 229,
+        "range": [
+          253,
+          188
+        ],
+        "text": "There was ice cream, actually two dishes of it, pink and white, and cake and fruit and distracting French bonbons and, in the middle of the table, four great bouquets of hot house flowers."
+      }
+    },
+    {
+      "id": "511:35",
+      "sentence": 511,
+      "paragraph": 242,
+      "range": [
+        35,
+        32
+      ],
+      "text": "laughed Jo, looking at her boots",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 395,
+        "paragraph": 201,
+        "range": [
+          0,
+          196
+        ],
+        "text": "No gentleman were admitted, so Jo played male parts to her heart’s content and took immense satisfaction in a pair of russet leather boots given her by a friend, who knew a lady who knew an actor."
+      }
+    },
+    {
+      "id": "519:18",
+      "sentence": 519,
+      "paragraph": 244,
+      "range": [
+        18,
+        34
+      ],
+      "text": "But Beth’s roses are sweeter to me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 341,
+        "paragraph": 178,
+        "range": [
+          0,
+          300
+        ],
+        "text": "As she spoke, Amy showed the handsome flask which replaced the cheap one, and looked so earnest and humble in her little effort to forget herself that Meg hugged her on the spot, and Jo pronounced her ‘a trump’, while Beth ran to the window, and picked her finest rose to ornament the stately bottle."
+      }
+    },
+    {
+      "id": "519:81",
+      "sentence": 519,
+      "paragraph": 244,
+      "range": [
+        81,
+        30
+      ],
+      "text": "the half-dead posy in her belt",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 389,
+        "paragraph": 198,
+        "range": [
+          250,
+          197
+        ],
+        "text": "The slippers went on at once, a new handkerchief was slipped into her pocket, well scented with Amy’s cologne, the rose was fastened in her bosom, and the nice gloves were pronounced a perfect fit."
+      }
+    }
+  ]
+}

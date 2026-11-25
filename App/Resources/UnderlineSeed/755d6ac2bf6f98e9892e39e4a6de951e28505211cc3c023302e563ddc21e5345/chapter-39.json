@@ -1,1 +1,426 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"range":[547,65],"text":"believing that it would tell itself when Beth came back no better","decidedBy":"rules","paragraph":3235,"id":"7741:547","kind":"action","reference":{"sentence":7729,"paragraph":3232,"range":[0,75],"text":"When Jo came home that spring, she had been struck with the change in Beth."},"sentence":7741},{"range":[43,44],"text":"I’m going to believe that it is a sick fancy","decidedBy":"rules","paragraph":3254,"id":"7803:43","kind":"action","reference":{"sentence":7757,"paragraph":3240,"range":[58,74],"text":"I tried to think it was a sick fancy, and would not let it trouble anyone."},"sentence":7803},{"range":[50,65],"text":"was no sound but the sigh of the wind and the lapping of the tide","decidedBy":"rules","paragraph":3256,"id":"7812:50","kind":"thing","reference":{"sentence":7742,"paragraph":3235,"range":[614,274],"text":"She wondered still more if her sister really guessed the hard truth, and what thoughts were passing through her mind during the long hours when she lay on the warm rocks with her head in Jo’s lap, while the winds blew healthfully over her and the sea made music at her feet."},"sentence":7812},{"range":[46,32],"text":"like peeps better than the gulls","decidedBy":"rules","paragraph":3257,"id":"7820:46","kind":"action","reference":{"sentence":7813,"paragraph":3256,"range":[117,78],"text":"A white-winged gull flew by, with the flash of sunshine on its silvery breast."},"sentence":7820},{"range":[5,23],"text":"is coming in the spring","decidedBy":"rules","paragraph":3258,"id":"7828:5","kind":"reaction","reference":{"sentence":7729,"paragraph":3232,"range":[0,75],"text":"When Jo came home that spring, she had been struck with the change in Beth."},"sentence":7828}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "7733:53",
+      "sentence": 7733,
+      "paragraph": 3233,
+      "range": [
+        53,
+        42
+      ],
+      "text": "the vague anxiety returned and haunted her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7732,
+        "paragraph": 3232,
+        "range": [
+          552,
+          232
+        ],
+        "text": "Jo saw and felt it, but said nothing at the time, and soon the first impression lost much of its power, for Beth seemed happy, no one appeared to doubt that she was better, and presently in other cares Jo for a time forgot her fear."
+      }
+    },
+    {
+      "id": "7738:387",
+      "sentence": 7738,
+      "paragraph": 3234,
+      "range": [
+        387,
+        53
+      ],
+      "text": "the strong sister and the feeble one, always together",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7735,
+        "paragraph": 3233,
+        "range": [
+          280,
+          276
+        ],
+        "text": "Another little visit to the seashore would suit her better, and as Grandma could not be prevailed upon to leave the babies, Jo took Beth down to the quiet place, where she could live much in the open air, and let the fresh sea breezes blow a little color into her pale cheeks."
+      }
+    },
+    {
+      "id": "7743:0",
+      "sentence": 7743,
+      "paragraph": 3236,
+      "range": [
+        0,
+        22
+      ],
+      "text": "One day Beth told her.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7740,
+        "paragraph": 3235,
+        "range": [
+          165,
+          186
+        ],
+        "text": "Jo felt as if a veil had fallen between her heart and Beth’s, but when she put out her hand to lift it up, there seemed something sacred in the silence, and she waited for Beth to speak."
+      }
+    },
+    {
+      "id": "7747:703",
+      "sentence": 7747,
+      "paragraph": 3236,
+      "range": [
+        703,
+        32
+      ],
+      "text": "“Jo, dear, I’m glad you know it.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7742,
+        "paragraph": 3235,
+        "range": [
+          614,
+          274
+        ],
+        "text": "She wondered still more if her sister really guessed the hard truth, and what thoughts were passing through her mind during the long hours when she lay on the warm rocks with her head in Jo’s lap, while the winds blew healthfully over her and the sea made music at her feet."
+      }
+    },
+    {
+      "id": "7753:0",
+      "sentence": 7753,
+      "paragraph": 3239,
+      "range": [
+        0,
+        54
+      ],
+      "text": "“Is this what made you so unhappy in the autumn, Beth?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7731,
+        "paragraph": 3232,
+        "range": [
+          304,
+          247
+        ],
+        "text": "It was no paler and but littler thinner than in the autumn, yet there was a strange, transparent look about it, as if the mortal was being slowly refined away, and the immortal shining through the frail flesh with an indescribably pathetic beauty."
+      }
+    },
+    {
+      "id": "7780:115",
+      "sentence": 7780,
+      "paragraph": 3248,
+      "range": [
+        115,
+        37
+      ],
+      "text": "It’s like the tide, Jo, when it turns",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7742,
+        "paragraph": 3235,
+        "range": [
+          614,
+          274
+        ],
+        "text": "She wondered still more if her sister really guessed the hard truth, and what thoughts were passing through her mind during the long hours when she lay on the warm rocks with her head in Jo’s lap, while the winds blew healthfully over her and the sea made music at her feet."
+      }
+    },
+    {
+      "id": "7781:0",
+      "sentence": 7781,
+      "paragraph": 3249,
+      "range": [
+        0,
+        53
+      ],
+      "text": "“It shall be stopped, your tide must not turn so soon",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7780,
+        "paragraph": 3248,
+        "range": [
+          115,
+          80
+        ],
+        "text": "It’s like the tide, Jo, when it turns, it goes slowly, but it can’t be stopped.”"
+      }
+    },
+    {
+      "id": "7795:0",
+      "sentence": 7795,
+      "paragraph": 3252,
+      "range": [
+        0,
+        41
+      ],
+      "text": "“I think they will see it without words,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7741,
+        "paragraph": 3235,
+        "range": [
+          352,
+          261
+        ],
+        "text": "She wondered, and was thankful also, that her parents did not seem to see what she saw, and during the quiet weeks when the shadows grew so plain to her, she said nothing of it to those at home, believing that it would tell itself when Beth came back no better."
+      }
+    },
+    {
+      "id": "7797:14",
+      "sentence": 7797,
+      "paragraph": 3253,
+      "range": [
+        14,
+        74
+      ],
+      "text": "I’ve heard that the people who love best are often blindest to such things",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7741,
+        "paragraph": 3235,
+        "range": [
+          352,
+          261
+        ],
+        "text": "She wondered, and was thankful also, that her parents did not seem to see what she saw, and during the quiet weeks when the shadows grew so plain to her, she said nothing of it to those at home, believing that it would tell itself when Beth came back no better."
+      }
+    },
+    {
+      "id": "7801:0",
+      "sentence": 7801,
+      "paragraph": 3254,
+      "range": [
+        0,
+        10
+      ],
+      "text": "“If I can.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7757,
+        "paragraph": 3240,
+        "range": [
+          58,
+          74
+        ],
+        "text": "I tried to think it was a sick fancy, and would not let it trouble anyone."
+      }
+    },
+    {
+      "id": "7808:352",
+      "sentence": 7808,
+      "paragraph": 3255,
+      "range": [
+        352,
+        48
+      ],
+      "text": "I never thought of being married, as you all did",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7758,
+        "paragraph": 3240,
+        "range": [
+          133,
+          149
+        ],
+        "text": "But when I saw you all so well and strong and full of happy plans, it was hard to feel that I could never be like you, and then I was miserable, Jo.”"
+      }
+    },
+    {
+      "id": "7818:0",
+      "sentence": 7818,
+      "paragraph": 3257,
+      "range": [
+        0,
+        18
+      ],
+      "text": "“Dear little bird!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7815,
+        "paragraph": 3256,
+        "range": [
+          265,
+          119
+        ],
+        "text": "A little gray-coated sand bird came tripping over the beach ‘peeping’ softly to itself, as if enjoying the sun and sea."
+      }
+    },
+    {
+      "id": "7820:44",
+      "sentence": 7820,
+      "paragraph": 3257,
+      "range": [
+        44,
+        34
+      ],
+      "text": "I like peeps better than the gulls",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7813,
+        "paragraph": 3256,
+        "range": [
+          117,
+          78
+        ],
+        "text": "A white-winged gull flew by, with the flash of sunshine on its silvery breast."
+      }
+    },
+    {
+      "id": "7827:752",
+      "sentence": 7827,
+      "paragraph": 3257,
+      "range": [
+        752,
+        55
+      ],
+      "text": "I hope I shall see her again, but she seems so far away",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7764,
+        "paragraph": 3243,
+        "range": [
+          113,
+          156
+        ],
+        "text": "It would have been selfish to frighten you all when Marmee was so anxious about Meg, and Amy away, and you so happy with Laurie—at least I thought so then.”"
+      }
+    },
+    {
+      "id": "7828:0",
+      "sentence": 7828,
+      "paragraph": 3258,
+      "range": [
+        0,
+        28
+      ],
+      "text": "“She is coming in the spring",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7827,
+        "paragraph": 3257,
+        "range": [
+          752,
+          57
+        ],
+        "text": "I hope I shall see her again, but she seems so far away.”"
+      }
+    },
+    {
+      "id": "7829:298",
+      "sentence": 7829,
+      "paragraph": 3258,
+      "range": [
+        298,
+        25
+      ],
+      "text": "quite unlike bashful Beth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7737,
+        "paragraph": 3234,
+        "range": [
+          138,
+          88
+        ],
+        "text": "Beth was too shy to enjoy society, and Jo too wrapped up in her to care for anyone else."
+      }
+    },
+    {
+      "id": "7834:188",
+      "sentence": 7834,
+      "paragraph": 3259,
+      "range": [
+        188,
+        51
+      ],
+      "text": "I think the tide will go out easily, if you help me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7781,
+        "paragraph": 3249,
+        "range": [
+          0,
+          83
+        ],
+        "text": "“It shall be stopped, your tide must not turn so soon, nineteen is too young, Beth."
+      }
+    },
+    {
+      "id": "7835:69",
+      "sentence": 7835,
+      "paragraph": 3260,
+      "range": [
+        69,
+        43
+      ],
+      "text": "she dedicated herself soul and body to Beth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7783,
+        "paragraph": 3249,
+        "range": [
+          104,
+          40
+        ],
+        "text": "I’ll work and pray and fight against it."
+      }
+    },
+    {
+      "id": "7836:0",
+      "sentence": 7836,
+      "paragraph": 3261,
+      "range": [
+        0,
+        14
+      ],
+      "text": "She was right.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7795,
+        "paragraph": 3252,
+        "range": [
+          0,
+          106
+        ],
+        "text": "“I think they will see it without words,” sighed Jo, for now it seemed to her that Beth changed every day."
+      }
+    },
+    {
+      "id": "7838:280",
+      "sentence": 7838,
+      "paragraph": 3261,
+      "range": [
+        280,
+        58
+      ],
+      "text": "she would be spared the hard task of telling Beth’s secret",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7798,
+        "paragraph": 3253,
+        "range": [
+          90,
+          48
+        ],
+        "text": "If they don’t see it, you will tell them for me."
+      }
+    }
+  ]
+}

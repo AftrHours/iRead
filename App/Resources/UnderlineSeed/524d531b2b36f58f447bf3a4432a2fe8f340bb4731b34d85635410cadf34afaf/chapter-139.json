@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1915:82",
+      "sentence": 1915,
+      "paragraph": 933,
+      "range": [
+        82,
+        48
+      ],
+      "text": "Mr. Darcy seemed much pleased with the attention",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1913,
+        "paragraph": 932,
+        "range": [
+          111,
+          269
+        ],
+        "text": "Mr. Collins, however, was not discouraged from speaking again, and Mr. Darcy’s contempt seemed abundantly increasing with the length of his second speech; and at the end of it he only made him a slight bow, and moved another way: Mr. Collins then returned to Elizabeth."
+      }
+    },
+    {
+      "id": "1919:0",
+      "sentence": 1919,
+      "paragraph": 934,
+      "range": [
+        0,
+        60
+      ],
+      "text": "As Elizabeth had no longer any interest of her own to pursue",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1768,
+        "paragraph": 861,
+        "range": [
+          0,
+          365
+        ],
+        "text": "But Elizabeth was not formed for ill-humour; and though every prospect of her own was destroyed for the evening, it could not dwell long on her spirits; and, having told all her griefs to Charlotte Lucas, whom she had not seen for a week, she was soon able to make a voluntary transition to the oddities of her cousin, and to point him out to her particular notice."
+      }
+    }
+  ]
+}

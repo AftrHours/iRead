@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6012:35",
+      "sentence": 6012,
+      "paragraph": 2443,
+      "range": [
+        35,
+        50
+      ],
+      "text": "he had not betrayed the interference of his friend",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5953,
+        "paragraph": 2416,
+        "range": [
+          0,
+          77
+        ],
+        "text": "“And this,” said she, “is the end of all his friend’s anxious circumspection!"
+      }
+    },
+    {
+      "id": "6013:1",
+      "sentence": 6013,
+      "paragraph": 2444,
+      "range": [
+        1,
+        61
+      ],
+      "text": "I am certainly the most fortunate creature that ever existed!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5938,
+        "paragraph": 2410,
+        "range": [
+          0,
+          202
+        ],
+        "text": "Jane could have no reserves from Elizabeth, where confidence would give pleasure; and, instantly embracing her, acknowledged, with the liveliest emotion, that she was the happiest creature in the world."
+      }
+    }
+  ]
+}

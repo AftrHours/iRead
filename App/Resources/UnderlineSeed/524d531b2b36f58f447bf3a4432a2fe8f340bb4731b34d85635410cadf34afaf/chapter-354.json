@@ -1,1 +1,48 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4829:119",
+      "sentence": 4829,
+      "paragraph": 1987,
+      "range": [
+        119,
+        29
+      ],
+      "text": "keep Mr. Bennet from fighting",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4818,
+        "paragraph": 1983,
+        "range": [
+          395,
+          154
+        ],
+        "text": "And now here’s Mr. Bennet gone away, and I know he will fight Wickham, wherever he meets him, and then he will be killed, and what is to become of us all?"
+      }
+    },
+    {
+      "id": "4834:102",
+      "sentence": 4834,
+      "paragraph": 1988,
+      "range": [
+        102,
+        65
+      ],
+      "text": "recommending moderation to her, as well in her hopes as her fears",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4821,
+        "paragraph": 1985,
+        "range": [
+          0,
+          142
+        ],
+        "text": "“Do not give way to useless alarm,” added he: “though it is right to be prepared for the worst, there is no occasion to look on it as certain."
+      }
+    }
+  ]
+}

@@ -1,1 +1,48 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4809:40",
+      "sentence": 4809,
+      "paragraph": 1980,
+      "range": [
+        40,
+        85
+      ],
+      "text": "the questions which Elizabeth had already asked were of course repeated by the others",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4786,
+        "paragraph": 1969,
+        "range": [
+          0,
+          162
+        ],
+        "text": "Elizabeth, as she affectionately embraced her, whilst tears filled the eyes of both, lost not a moment in asking whether anything had been heard of the fugitives."
+      }
+    },
+    {
+      "id": "4810:294",
+      "sentence": 4810,
+      "paragraph": 1980,
+      "range": [
+        294,
+        45
+      ],
+      "text": "she still expected that it would all end well",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4788,
+        "paragraph": 1970,
+        "range": [
+          25,
+          69
+        ],
+        "text": "“But now that my dear uncle is come, I hope everything will be well.”"
+      }
+    }
+  ]
+}

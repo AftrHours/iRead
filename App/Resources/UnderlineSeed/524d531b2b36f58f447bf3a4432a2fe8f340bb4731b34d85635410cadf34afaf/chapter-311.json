@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4273:264",
+      "sentence": 4273,
+      "paragraph": 1803,
+      "range": [
+        264,
+        34
+      ],
+      "text": "As a brother, a landlord, a master",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4245,
+        "paragraph": 1791,
+        "range": [
+          0,
+          75
+        ],
+        "text": "“He is the best landlord, and the best master,” said she, “that ever lived."
+      }
+    }
+  ]
+}

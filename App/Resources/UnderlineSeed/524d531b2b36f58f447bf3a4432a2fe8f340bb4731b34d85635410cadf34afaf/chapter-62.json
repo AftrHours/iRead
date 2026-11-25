@@ -1,1 +1,111 @@
-{"engineVersion":5,"underlines":[{"sentence":849,"decidedBy":"rules","paragraph":443,"text":"showed for Jane","range":[152,15],"reference":{"range":[0,135],"paragraph":440,"sentence":837,"text":"She was shown into the breakfast parlour, where all but Jane were assembled, and where her appearance created a great deal of surprise."},"id":"849:152","kind":"action"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "838:136",
+      "sentence": 838,
+      "paragraph": 440,
+      "range": [
+        136,
+        59
+      ],
+      "text": "That she should have walked three miles so early in the day",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 830,
+        "paragraph": 435,
+        "range": [
+          46,
+          65
+        ],
+        "text": "The distance is nothing, when one has a motive; only three miles."
+      }
+    },
+    {
+      "id": "845:300",
+      "sentence": 845,
+      "paragraph": 441,
+      "range": [
+        300,
+        64
+      ],
+      "text": "from expressing in her note how much she longed for such a visit",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 810,
+        "paragraph": 425,
+        "range": [
+          0,
+          19
+        ],
+        "text": "“My dearest Lizzie,"
+      }
+    },
+    {
+      "id": "846:546",
+      "sentence": 846,
+      "paragraph": 441,
+      "range": [
+        546,
+        47
+      ],
+      "text": "the extraordinary kindness she was treated with",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 812,
+        "paragraph": 426,
+        "range": [
+          113,
+          68
+        ],
+        "text": "My kind friends will not hear of my returning home till I am better."
+      }
+    },
+    {
+      "id": "849:62",
+      "sentence": 849,
+      "paragraph": 443,
+      "range": [
+        62,
+        36
+      ],
+      "text": "Elizabeth began to like them herself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 838,
+        "paragraph": 440,
+        "range": [
+          136,
+          219
+        ],
+        "text": "That she should have walked three miles so early in the day in such dirty weather, and by herself, was almost incredible to Mrs. Hurst and Miss Bingley; and Elizabeth was convinced that they held her in contempt for it."
+      }
+    },
+    {
+      "id": "850:169",
+      "sentence": 850,
+      "paragraph": 443,
+      "range": [
+        169,
+        19
+      ],
+      "text": "The apothecary came",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 813,
+        "paragraph": 426,
+        "range": [
+          182,
+          194
+        ],
+        "text": "They insist also on my seeing Mr. Jones—therefore do not be alarmed if you should hear of his having been to me—and, excepting a sore throat and a headache, there is not much the matter with me."
+      }
+    }
+  ]
+}

@@ -1,1 +1,90 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"id":"3175:81","decidedBy":"rules","paragraph":1415,"text":"drew back his chair","range":[81,19],"reference":{"paragraph":1414,"range":[0,119],"text":"Mr. Darcy drew his chair a little towards her, and said, “You cannot have a right to such very strong local attachment.","sentence":3172},"sentence":3175,"kind":"action"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3166:79",
+      "sentence": 3166,
+      "paragraph": 1412,
+      "range": [
+        79,
+        63
+      ],
+      "text": "he must be supposing her to be thinking of Jane and Netherfield",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3139,
+        "paragraph": 1396,
+        "range": [
+          0,
+          102
+        ],
+        "text": "“I think I have understood that Mr. Bingley has not much idea of ever returning to Netherfield again?”"
+      }
+    },
+    {
+      "id": "3171:453",
+      "sentence": 3171,
+      "paragraph": 1413,
+      "range": [
+        453,
+        41
+      ],
+      "text": "under less than half the present distance",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3157,
+        "paragraph": 1407,
+        "range": [
+          34,
+          26
+        ],
+        "text": "It is nearly fifty miles.”"
+      }
+    },
+    {
+      "id": "3175:78",
+      "sentence": 3175,
+      "paragraph": 1415,
+      "range": [
+        78,
+        22
+      ],
+      "text": "he drew back his chair",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3172,
+        "paragraph": 1414,
+        "range": [
+          0,
+          119
+        ],
+        "text": "Mr. Darcy drew his chair a little towards her, and said, “You cannot have a right to such very strong local attachment."
+      }
+    },
+    {
+      "id": "3178:186",
+      "sentence": 3178,
+      "paragraph": 1417,
+      "range": [
+        186,
+        30
+      ],
+      "text": "The tête-à-tête surprised them",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3131,
+        "paragraph": 1391,
+        "range": [
+          0,
+          152
+        ],
+        "text": "He seemed astonished too on finding her alone, and apologized for his intrusion, by letting her know that he had understood all the ladies to be within."
+      }
+    }
+  ]
+}

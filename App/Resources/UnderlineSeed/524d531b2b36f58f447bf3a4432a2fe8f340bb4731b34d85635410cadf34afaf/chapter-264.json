@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3580:0",
+      "sentence": 3580,
+      "paragraph": 1537,
+      "range": [
+        0,
+        68
+      ],
+      "text": "How differently did everything now appear in which he was concerned!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3542,
+        "paragraph": 1527,
+        "range": [
+          0,
+          349
+        ],
+        "text": "But when this subject was succeeded by his account of Mr. Wickham—when she read, with somewhat clearer attention, a relation of events which, if true, must overthrow every cherished opinion of his worth, and which bore so alarming an affinity to his own history of himself—her feelings were yet more acutely painful and more difficult of definition."
+      }
+    },
+    {
+      "id": "3584:0",
+      "sentence": 3584,
+      "paragraph": 1538,
+      "range": [
+        0,
+        39
+      ],
+      "text": "She grew absolutely ashamed of herself.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3536,
+        "paragraph": 1526,
+        "range": [
+          339,
+          213
+        ],
+        "text": "With amazement did she first understand that he believed any apology to be in his power; and steadfastly was she persuaded, that he could have no explanation to give, which a just sense of shame would not conceal."
+      }
+    }
+  ]
+}

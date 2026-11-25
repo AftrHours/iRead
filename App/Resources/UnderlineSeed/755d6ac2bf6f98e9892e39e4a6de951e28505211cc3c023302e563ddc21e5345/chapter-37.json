@@ -1,1 +1,972 @@
-{"engineVersion":5,"underlines":[{"text":"was looking for the Weekly Volcano office","range":[14,41],"decidedBy":"rules","kind":"action","reference":{"range":[102,127],"paragraph":3051,"sentence":7281,"text":"She told no one, but concocted a ‘thrilling tale’, and boldly carried it herself to Mr. Dashwood, editor of the Weekly Volcano."},"paragraph":3052,"sentence":7285,"id":"7285:14"},{"text":"wished to see Mr. Dashwood","range":[59,26],"decidedBy":"rules","kind":"action","reference":{"range":[102,127],"paragraph":3051,"sentence":7281,"text":"She told no one, but concocted a ‘thrilling tale’, and boldly carried it herself to Mr. Dashwood, editor of the Weekly Volcano."},"paragraph":3052,"sentence":7286,"id":"7286:59"},{"text":"went the highest pair of heels","range":[5,30],"decidedBy":"rules","kind":"reaction","reference":{"range":[408,397],"paragraph":3051,"sentence":7283,"text":"So she dressed herself in her best, and trying to persuade herself that she was neither excited nor nervous, bravely climbed two pairs of dark and dirty stairs to find herself in a disorderly room, a cloud of cigar smoke, and the presence of three gentlemen, sitting with their heels rather higher than their hats, which articles of dress none of them took the trouble to remove on her appearance."},"paragraph":3053,"sentence":7287,"id":"7287:5"},{"text":"had taken the manuscript","range":[46,24],"decidedBy":"rules","kind":"action","reference":{"range":[199,214],"paragraph":3053,"sentence":7288,"text":"Feeling that she must get through the matter somehow, Jo produced her manuscript and, blushing redder and redder with each sentence, blundered out fragments of the little speech carefully prepared for the occasion."},"paragraph":3055,"sentence":7290,"id":"7290:46"},{"text":"has had some experience","range":[14,23],"decidedBy":"rules","kind":"thing","reference":{"range":[0,151],"paragraph":3050,"sentence":7276,"text":"The prize-story experience had seemed to open a way which might, after long traveling and much uphill work, lead to this delightful chateau en Espagne."},"paragraph":3057,"sentence":7294,"id":"7294:14"},{"text":"think it would do with these alterations, then","range":[5,46],"decidedBy":"rules","kind":"action","reference":{"range":[0,81],"paragraph":3061,"sentence":7304,"text":"“We’ll take this (editors never say I), if you don’t object to a few alterations."},"paragraph":3066,"sentence":7312,"id":"7312:5"},{"text":"Following Mr. Dashwood’s directions","range":[0,35],"decidedBy":"rules","kind":"reaction","reference":{"range":[57,30],"paragraph":3052,"sentence":7286,"text":"I wished to see Mr. Dashwood.”"},"paragraph":3077,"sentence":7334,"id":"7334:0"},{"text":"don’t know whether the study of Shakespeare helped her to read character","range":[2,72],"decidedBy":"rules","kind":"action","reference":{"range":[230,177],"paragraph":3051,"sentence":7282,"text":"She had never read Sartor Resartus, but she had a womanly instinct that clothes possess an influence more powerful over many than the worth of character or the magic of manners."},"paragraph":3083,"sentence":7353,"id":"7353:2"},{"text":"behold him devouring his supper with an ardor which flushed his intellectual countenance","range":[442,88],"decidedBy":"rules","kind":"action","reference":{"range":[0,198],"paragraph":3053,"sentence":7287,"text":"Down went the highest pair of heels, up rose the smokiest gentleman, and carefully cherishing his cigar between his fingers, he advanced with a nod and a countenance expressive of nothing but sleep."},"paragraph":3088,"sentence":7381,"id":"7381:442"},{"text":"looking rather out of his element, and presently several of the philosophers","range":[148,76],"decidedBy":"rules","kind":"action","reference":{"range":[638,414],"paragraph":3088,"sentence":7383,"text":"The great novelist vibrated between two decanters with the regularity of a pendulum; the famous divine flirted openly with one of the Madame de Staels of the age, who looked daggers at another Corinne, who was amiably satirizing her, after outmaneuvering her in efforts to absorb the profound philosopher, who imbibed tea Johnsonianly and appeared to slumber, the loquacity of the lady rendering speech impossible."},"paragraph":3089,"sentence":7386,"id":"7386:148"},{"text":"defended religion with all the eloquence of truth","range":[117,49],"decidedBy":"rules","kind":"action","reference":{"range":[587,274],"paragraph":3089,"sentence":7388,"text":"It dawned upon her gradually that the world was being picked to pieces, and put together on new and, according to the talkers, on infinitely better principles than before, that religion was in a fair way to be reasoned into nothingness, and intellect was to be the only God."},"paragraph":3092,"sentence":7394,"id":"7394:117"},{"text":"thought Jo, with a smile","range":[64,24],"decidedBy":"rules","kind":"action","reference":{"range":[0,126],"paragraph":3064,"sentence":7308,"text":"Mr. Dashwoods’s editorial gravity relaxed into a smile, for Jo had forgotten her ‘friend’, and spoken as only an author could."},"paragraph":3095,"sentence":7405,"id":"7405:64"},{"text":"haf no patience with those who make this harm","range":[280,45],"decidedBy":"rules","kind":"action","reference":{"range":[0,253],"paragraph":3080,"sentence":7342,"text":"She thought it would do her no harm, for she sincerely meant to write nothing of which she would be ashamed, and quieted all pricks of conscience by anticipations of the happy minute when she should show her earnings and laugh over her well-kept secret."},"paragraph":3101,"sentence":7419,"id":"7419:280"},{"text":"is none of my business","range":[886,22],"decidedBy":"rules","kind":"thing","reference":{"range":[0,129],"paragraph":3073,"sentence":7326,"text":"“None at all, if you please, she doesn’t wish her name to appear and has no nom de plume,” said Jo, blushing in spite of herself."},"paragraph":3102,"sentence":7426,"id":"7426:886"},{"text":"make an honest living out of what are called sensation stories","range":[143,62],"decidedBy":"rules","kind":"action","reference":{"range":[0,101],"paragraph":3051,"sentence":7280,"text":"She took to writing sensation stories, for in those dark ages, even all-perfect America read rubbish."},"paragraph":3104,"sentence":7434,"id":"7434:143"},{"text":"earned money lay rather heavily on her conscience at that minute","range":[77,64],"decidedBy":"rules","kind":"action","reference":{"range":[0,253],"paragraph":3080,"sentence":7342,"text":"She thought it would do her no harm, for she sincerely meant to write nothing of which she would be ashamed, and quieted all pricks of conscience by anticipations of the happy minute when she should show her earnings and laugh over her well-kept secret."},"paragraph":3108,"sentence":7442,"id":"7442:77"},{"text":"are only silly, never bad","range":[214,25],"decidedBy":"rules","kind":"thing","reference":{"range":[0,113],"paragraph":3104,"sentence":7433,"text":"“All may not be bad, only silly, you know, and if there is a demand for it, I don’t see any harm in supplying it."},"paragraph":3108,"sentence":7443,"id":"7443:214"},{"decidedBy":"rules","paragraph":3111,"reference":{"range":[101,113],"paragraph":3103,"sentence":7432,"text":"They are made pleasant to some, but I would more rather give my boys gunpowder to play with than this bad trash.”"},"sentence":7449,"id":"7449:21","range":[21,35],"kind":"thing","text":"will soon be worse trash if I go on"},{"decidedBy":"rules","paragraph":3115,"reference":{"range":[0,253],"paragraph":3080,"sentence":7342,"text":"She thought it would do her no harm, for she sincerely meant to write nothing of which she would be ashamed, and quieted all pricks of conscience by anticipations of the happy minute when she should show her earnings and laugh over her well-kept secret."},"sentence":7456,"id":"7456:143","range":[143,28],"kind":"action","text":"wish I hadn’t any conscience"},{"decidedBy":"rules","paragraph":3117,"reference":{"range":[0,261],"paragraph":3081,"sentence":7343,"text":"But Mr. Dashwood rejected any but thrilling tales, and as thrills could not be produced except by harrowing up the souls of the readers, history and romance, land and sea, science and art, police records and lunatic asylums, had to be ransacked for the purpose."},"sentence":7460,"id":"7460:251","range":[251,84],"kind":"reaction","text":"then produced a tale which might have been more properly called an essay or a sermon"},{"decidedBy":"rules","paragraph":3120,"reference":{"paragraph":3102,"text":"He knew that Jo wrote, and had met her down among the newspaper offices more than once, but as she never spoke of it, he asked no questions in spite of a strong desire to see her work.","sentence":7424,"range":[578,184]},"sentence":7472,"id":"7472:577","range":[577,39],"kind":"action","text":"was met no more among newspaper offices"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "7276:108",
+      "sentence": 7276,
+      "paragraph": 3050,
+      "range": [
+        108,
+        42
+      ],
+      "text": "lead to this delightful chateau en Espagne",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7275,
+        "paragraph": 3049,
+        "range": [
+          503,
+          299
+        ],
+        "text": "The dream of filling home with comforts, giving Beth everything she wanted, from strawberries in winter to an organ in her bedroom, going abroad herself, and always having more than enough, so that she might indulge in the luxury of charity, had been for years Jo’s most cherished castle in the air."
+      }
+    },
+    {
+      "id": "7280:0",
+      "sentence": 7280,
+      "paragraph": 3051,
+      "range": [
+        0,
+        37
+      ],
+      "text": "She took to writing sensation stories",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7279,
+        "paragraph": 3050,
+        "range": [
+          479,
+          216
+        ],
+        "text": "But the ‘up again and take another’ spirit was as strong in Jo as in Jack, so she scrambled up on the shady side this time and got more booty, but nearly left behind her what was far more precious than the moneybags."
+      }
+    },
+    {
+      "id": "7294:43",
+      "sentence": 7294,
+      "paragraph": 3057,
+      "range": [
+        43,
+        49
+      ],
+      "text": "got a prize for a tale in the Blarneystone Banner",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7276,
+        "paragraph": 3050,
+        "range": [
+          0,
+          151
+        ],
+        "text": "The prize-story experience had seemed to open a way which might, after long traveling and much uphill work, lead to this delightful chateau en Espagne."
+      }
+    },
+    {
+      "id": "7300:360",
+      "sentence": 7300,
+      "paragraph": 3059,
+      "range": [
+        360,
+        60
+      ],
+      "text": "her little fiction of ‘my friend’ was considered a good joke",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7289,
+        "paragraph": 3054,
+        "range": [
+          0,
+          129
+        ],
+        "text": "“A friend of mine desired me to offer—a story—just as an experiment—would like your opinion—be glad to write more if this suits.”"
+      }
+    },
+    {
+      "id": "7302:0",
+      "sentence": 7302,
+      "paragraph": 3060,
+      "range": [
+        0,
+        43
+      ],
+      "text": "When she went again, Mr. Dashwood was alone",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7298,
+        "paragraph": 3058,
+        "range": [
+          200,
+          145
+        ],
+        "text": "We’ve more of this sort of thing on hand than we know what to do with at present, but I’ll run my eye over it, and give you an answer next week.”"
+      }
+    },
+    {
+      "id": "7303:67",
+      "sentence": 7303,
+      "paragraph": 3060,
+      "range": [
+        67,
+        45
+      ],
+      "text": "Mr. Dashwood was much wider awake than before",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7287,
+        "paragraph": 3053,
+        "range": [
+          0,
+          198
+        ],
+        "text": "Down went the highest pair of heels, up rose the smokiest gentleman, and carefully cherishing his cigar between his fingers, he advanced with a nod and a countenance expressive of nothing but sleep."
+      }
+    },
+    {
+      "id": "7303:152",
+      "sentence": 7303,
+      "paragraph": 3060,
+      "range": [
+        152,
+        62
+      ],
+      "text": "was not too deeply absorbed in a cigar to remember his manners",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7287,
+        "paragraph": 3053,
+        "range": [
+          0,
+          198
+        ],
+        "text": "Down went the highest pair of heels, up rose the smokiest gentleman, and carefully cherishing his cigar between his fingers, he advanced with a nod and a countenance expressive of nothing but sleep."
+      }
+    },
+    {
+      "id": "7306:283",
+      "sentence": 7306,
+      "paragraph": 3062,
+      "range": [
+        283,
+        67
+      ],
+      "text": "all the moral reflections—which she had carefully put in as ballast",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7305,
+        "paragraph": 3061,
+        "range": [
+          82,
+          122
+        ],
+        "text": "It’s too long, but omitting the passages I’ve marked will make it just the right length,” he said, in a businesslike tone."
+      }
+    },
+    {
+      "id": "7308:56",
+      "sentence": 7308,
+      "paragraph": 3064,
+      "range": [
+        56,
+        69
+      ],
+      "text": "for Jo had forgotten her ‘friend’, and spoken as only an author could",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7307,
+        "paragraph": 3063,
+        "range": [
+          0,
+          118
+        ],
+        "text": "“But, Sir, I thought every story should have some sort of a moral, so I took care to have a few of my sinners repent.”"
+      }
+    },
+    {
+      "id": "7323:51",
+      "sentence": 7323,
+      "paragraph": 3072,
+      "range": [
+        51,
+        61
+      ],
+      "text": "Tell her to make it short and spicy, and never mind the moral",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7309,
+        "paragraph": 3065,
+        "range": [
+          0,
+          53
+        ],
+        "text": "“People want to be amused, not preached at, you know."
+      }
+    },
+    {
+      "id": "7333:73",
+      "sentence": 7333,
+      "paragraph": 3076,
+      "range": [
+        73,
+        42
+      ],
+      "text": "“Poor and proud, as usual, but she’ll do.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7331,
+        "paragraph": 3075,
+        "range": [
+          0,
+          11
+        ],
+        "text": "“I’ll call."
+      }
+    },
+    {
+      "id": "7337:80",
+      "sentence": 7337,
+      "paragraph": 3079,
+      "range": [
+        80,
+        61
+      ],
+      "text": "the little hoard she was making to take Beth to the mountains",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7275,
+        "paragraph": 3049,
+        "range": [
+          503,
+          299
+        ],
+        "text": "The dream of filling home with comforts, giving Beth everything she wanted, from strawberries in winter to an organ in her bedroom, going abroad herself, and always having more than enough, so that she might indulge in the luxury of charity, had been for years Jo’s most cherished castle in the air."
+      }
+    },
+    {
+      "id": "7340:412",
+      "sentence": 7340,
+      "paragraph": 3079,
+      "range": [
+        412,
+        69
+      ],
+      "text": "It was easy to keep her secret, for no name appeared with her stories",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7326,
+        "paragraph": 3073,
+        "range": [
+          0,
+          129
+        ],
+        "text": "“None at all, if you please, she doesn’t wish her name to appear and has no nom de plume,” said Jo, blushing in spite of herself."
+      }
+    },
+    {
+      "id": "7354:317",
+      "sentence": 7354,
+      "paragraph": 3083,
+      "range": [
+        317,
+        102
+      ],
+      "text": "Mr. Bhaer, in one of their conversations, had advised her to study simple, true, and lovely characters",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7347,
+        "paragraph": 3081,
+        "range": [
+          737,
+          91
+        ],
+        "text": "She studied faces in the street, and characters, good, bad, and indifferent, all about her."
+      }
+    },
+    {
+      "id": "7369:166",
+      "sentence": 7369,
+      "paragraph": 3086,
+      "range": [
+        166,
+        48
+      ],
+      "text": "who shoveled in his dinner, darned his own socks",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7363,
+        "paragraph": 3085,
+        "range": [
+          0,
+          74
+        ],
+        "text": "His very clothes seemed to partake of the hospitable nature of the wearer."
+      }
+    },
+    {
+      "id": "7385:0",
+      "sentence": 7385,
+      "paragraph": 3089,
+      "range": [
+        0,
+        69
+      ],
+      "text": "Before the evening was half over, Jo felt so completely disillusioned",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7380,
+        "paragraph": 3088,
+        "range": [
+          113,
+          180
+        ],
+        "text": "But her reverence for genius received a severe shock that night, and it took her some time to recover from the discovery that the great creatures were only men and women after all."
+      }
+    },
+    {
+      "id": "7390:56",
+      "sentence": 7390,
+      "paragraph": 3090,
+      "range": [
+        56,
+        53
+      ],
+      "text": "found him looking at her with the grimmest expression",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7388,
+        "paragraph": 3089,
+        "range": [
+          587,
+          274
+        ],
+        "text": "It dawned upon her gradually that the world was being picked to pieces, and put together on new and, according to the talkers, on infinitely better principles than before, that religion was in a fair way to be reasoned into nothingness, and intellect was to be the only God."
+      }
+    },
+    {
+      "id": "7394:76",
+      "sentence": 7394,
+      "paragraph": 3092,
+      "range": [
+        76,
+        58
+      ],
+      "text": "he blazed up with honest indignation and defended religion",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7393,
+        "paragraph": 3091,
+        "range": [
+          154,
+          317
+        ],
+        "text": "As he glanced from Jo to several other young people, attracted by the brilliancy of the philosophic pyrotechnics, he knit his brows and longed to speak, fearing that some inflammable young soul would be led astray by the rockets, to find when the display was over that they had only an empty stick or a scorched hand."
+      }
+    },
+    {
+      "id": "7401:209",
+      "sentence": 7401,
+      "paragraph": 3093,
+      "range": [
+        209,
+        65
+      ],
+      "text": "She began to see that character is a better possession than money",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7274,
+        "paragraph": 3049,
+        "range": [
+          338,
+          164
+        ],
+        "text": "She saw that money conferred power, money and power, therefore, she resolved to have, not to be used for herself alone, but for those whom she loved more than life."
+      }
+    },
+    {
+      "id": "7407:364",
+      "sentence": 7407,
+      "paragraph": 3096,
+      "range": [
+        364,
+        51
+      ],
+      "text": "the cocked hat kept her eyes dancing with merriment",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7404,
+        "paragraph": 3094,
+        "range": [
+          197,
+          189
+        ],
+        "text": "It all grew out of a cocked hat, for one evening the Professor came in to give Jo her lesson with a paper soldier cap on his head, which Tina had put there and he had forgotten to take off."
+      }
+    },
+    {
+      "id": "7411:0",
+      "sentence": 7411,
+      "paragraph": 3098,
+      "range": [
+        0,
+        69
+      ],
+      "text": "“How can I be respectful, Sir, when you forget to take your hat off?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7405,
+        "paragraph": 3095,
+        "range": [
+          0,
+          275
+        ],
+        "text": "“It’s evident he doesn’t look in his glass before coming down,” thought Jo, with a smile, as he said “Goot efening,” and sat soberly down, quite unconscious of the ludicrous contrast between his subject and his headgear, for he was going to read her the Death of Wallenstein."
+      }
+    },
+    {
+      "id": "7415:20",
+      "sentence": 7415,
+      "paragraph": 3100,
+      "range": [
+        20,
+        51
+      ],
+      "text": "it is that imp Tina who makes me a fool with my cap",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7404,
+        "paragraph": 3094,
+        "range": [
+          197,
+          189
+        ],
+        "text": "It all grew out of a cocked hat, for one evening the Professor came in to give Jo her lesson with a paper soldier cap on his head, which Tina had put there and he had forgotten to take off."
+      }
+    },
+    {
+      "id": "7421:222",
+      "sentence": 7421,
+      "paragraph": 3102,
+      "range": [
+        222,
+        50
+      ],
+      "text": "for a minute she fancied the paper was the Volcano",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7281,
+        "paragraph": 3051,
+        "range": [
+          102,
+          127
+        ],
+        "text": "She told no one, but concocted a ‘thrilling tale’, and boldly carried it herself to Mr. Dashwood, editor of the Weekly Volcano."
+      }
+    },
+    {
+      "id": "7422:393",
+      "sentence": 7422,
+      "paragraph": 3102,
+      "range": [
+        393,
+        43
+      ],
+      "text": "there would have been no name to betray her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7340,
+        "paragraph": 3079,
+        "range": [
+          412,
+          70
+        ],
+        "text": "It was easy to keep her secret, for no name appeared with her stories."
+      }
+    },
+    {
+      "id": "7424:605",
+      "sentence": 7424,
+      "paragraph": 3102,
+      "range": [
+        605,
+        59
+      ],
+      "text": "had met her down among the newspaper offices more than once",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7281,
+        "paragraph": 3051,
+        "range": [
+          102,
+          127
+        ],
+        "text": "She told no one, but concocted a ‘thrilling tale’, and boldly carried it herself to Mr. Dashwood, editor of the Weekly Volcano."
+      }
+    },
+    {
+      "id": "7430:0",
+      "sentence": 7430,
+      "paragraph": 3103,
+      "range": [
+        0,
+        39
+      ],
+      "text": "“Yes, you are right to put it from you.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7421,
+        "paragraph": 3102,
+        "range": [
+          113,
+          160
+        ],
+        "text": "She did not like it, but the impulse that made her turn it over was not one of displeasure but fear, because for a minute she fancied the paper was the Volcano."
+      }
+    },
+    {
+      "id": "7434:114",
+      "sentence": 7434,
+      "paragraph": 3104,
+      "range": [
+        114,
+        91
+      ],
+      "text": "Many very respectable people make an honest living out of what are called sensation stories",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7417,
+        "paragraph": 3101,
+        "range": [
+          0,
+          197
+        ],
+        "text": "But the lesson did not go at all for a few minutes because Mr. Bhaer caught sight of a picture on the hat, and unfolding it, said with great disgust, “I wish these papers did not come in the house."
+      }
+    },
+    {
+      "id": "7440:158",
+      "sentence": 7440,
+      "paragraph": 3106,
+      "range": [
+        158,
+        45
+      ],
+      "text": "long after the cocked hat had turned to smoke",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7404,
+        "paragraph": 3094,
+        "range": [
+          197,
+          189
+        ],
+        "text": "It all grew out of a cocked hat, for one evening the Professor came in to give Jo her lesson with a paper soldier cap on his head, which Tina had put there and he had forgotten to take off."
+      }
+    },
+    {
+      "id": "7441:0",
+      "sentence": 7441,
+      "paragraph": 3107,
+      "range": [
+        0,
+        52
+      ],
+      "text": "“I should like much to send all the rest after him,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7439,
+        "paragraph": 3106,
+        "range": [
+          0,
+          81
+        ],
+        "text": "Mr. Bhaer spoke warmly, and walked to the fire, crumpling the paper in his hands."
+      }
+    },
+    {
+      "id": "7442:0",
+      "sentence": 7442,
+      "paragraph": 3108,
+      "range": [
+        0,
+        62
+      ],
+      "text": "Jo thought what a blaze her pile of papers upstairs would make",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7441,
+        "paragraph": 3107,
+        "range": [
+          0,
+          109
+        ],
+        "text": "“I should like much to send all the rest after him,” muttered the Professor, coming back with a relieved air."
+      }
+    },
+    {
+      "id": "7442:68",
+      "sentence": 7442,
+      "paragraph": 3108,
+      "range": [
+        68,
+        58
+      ],
+      "text": "her hard-earned money lay rather heavily on her conscience",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7337,
+        "paragraph": 3079,
+        "range": [
+          0,
+          197
+        ],
+        "text": "She soon became interested in her work, for her emaciated purse grew stout, and the little hoard she was making to take Beth to the mountains next summer grew slowly but surely as the weeks passed."
+      }
+    },
+    {
+      "id": "7445:130",
+      "sentence": 7445,
+      "paragraph": 3109,
+      "range": [
+        130,
+        67
+      ],
+      "text": "the words Weekly Volcano were printed in large type on her forehead",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7423,
+        "paragraph": 3102,
+        "range": [
+          438,
+          139
+        ],
+        "text": "She had betrayed herself, however, by a look and a blush, for though an absent man, the Professor saw a good deal more than people fancied."
+      }
+    },
+    {
+      "id": "7452:36",
+      "sentence": 7452,
+      "paragraph": 3112,
+      "range": [
+        36,
+        73
+      ],
+      "text": "stuffed the whole bundle into her stove, nearly setting the chimney afire",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7442,
+        "paragraph": 3108,
+        "range": [
+          0,
+          142
+        ],
+        "text": "Jo thought what a blaze her pile of papers upstairs would make, and her hard-earned money lay rather heavily on her conscience at that minute."
+      }
+    },
+    {
+      "id": "7454:102",
+      "sentence": 7454,
+      "paragraph": 3113,
+      "range": [
+        102,
+        58
+      ],
+      "text": "than let other people blow themselves up with my gunpowder",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7432,
+        "paragraph": 3103,
+        "range": [
+          101,
+          113
+        ],
+        "text": "They are made pleasant to some, but I would more rather give my boys gunpowder to play with than this bad trash.”"
+      }
+    },
+    {
+      "id": "7455:147",
+      "sentence": 7455,
+      "paragraph": 3114,
+      "range": [
+        147,
+        46
+      ],
+      "text": "wondering what she ought to do about her wages",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7442,
+        "paragraph": 3108,
+        "range": [
+          0,
+          142
+        ],
+        "text": "Jo thought what a blaze her pile of papers upstairs would make, and her hard-earned money lay rather heavily on her conscience at that minute."
+      }
+    },
+    {
+      "id": "7458:338",
+      "sentence": 7458,
+      "paragraph": 3115,
+      "range": [
+        338,
+        66
+      ],
+      "text": "that Mother and Father hadn’t been so particular about such things",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7339,
+        "paragraph": 3079,
+        "range": [
+          285,
+          126
+        ],
+        "text": "She had a feeling that Father and Mother would not approve, and preferred to have her own way first, and beg pardon afterward."
+      }
+    },
+    {
+      "id": "7462:659",
+      "sentence": 7462,
+      "paragraph": 3117,
+      "range": [
+        659,
+        67
+      ],
+      "text": "she was inclined to agree with Mr. Dashwood that morals didn’t sell",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7309,
+        "paragraph": 3065,
+        "range": [
+          0,
+          53
+        ],
+        "text": "“People want to be amused, not preached at, you know."
+      }
+    },
+    {
+      "id": "7468:79",
+      "sentence": 7468,
+      "paragraph": 3119,
+      "range": [
+        79,
+        46
+      ],
+      "text": "‘sweep mud in the street’ if I can’t do better",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7438,
+        "paragraph": 3105,
+        "range": [
+          257,
+          87
+        ],
+        "text": "No, they should think a little, and sweep mud in the street before they do this thing.”"
+      }
+    },
+    {
+      "id": "7469:180",
+      "sentence": 7469,
+      "paragraph": 3119,
+      "range": [
+        180,
+        59
+      ],
+      "text": "her second tumble down the beanstalk had done her some good",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7278,
+        "paragraph": 3050,
+        "range": [
+          313,
+          165
+        ],
+        "text": "Like that immortal hero, she reposed awhile after the first attempt, which resulted in a tumble and the least lovely of the giant’s treasures, if I remember rightly."
+      }
+    },
+    {
+      "id": "7471:240",
+      "sentence": 7471,
+      "paragraph": 3120,
+      "range": [
+        240,
+        68
+      ],
+      "text": "he was watching to see if she would accept and profit by his reproof",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7435,
+        "paragraph": 3105,
+        "range": [
+          0,
+          76
+        ],
+        "text": "“There is a demand for whisky, but I think you and I do not care to sell it."
+      }
+    },
+    {
+      "id": "7472:577",
+      "sentence": 7472,
+      "paragraph": 3120,
+      "range": [
+        577,
+        39
+      ],
+      "text": "was met no more among newspaper offices",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7424,
+        "paragraph": 3102,
+        "range": [
+          578,
+          184
+        ],
+        "text": "He knew that Jo wrote, and had met her down among the newspaper offices more than once, but as she never spoke of it, he asked no questions in spite of a strong desire to see her work."
+      }
+    },
+    {
+      "id": "7473:156",
+      "sentence": 7473,
+      "paragraph": 3121,
+      "range": [
+        156,
+        59
+      ],
+      "text": "laying a foundation for the sensation story of her own life",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7280,
+        "paragraph": 3051,
+        "range": [
+          0,
+          101
+        ],
+        "text": "She took to writing sensation stories, for in those dark ages, even all-perfect America read rubbish."
+      }
+    },
+    {
+      "id": "7484:0",
+      "sentence": 7484,
+      "paragraph": 3126,
+      "range": [
+        0,
+        22
+      ],
+      "text": "“Yes, come next month.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7479,
+        "paragraph": 3124,
+        "range": [
+          0,
+          187
+        ],
+        "text": "She was going early, so she bade them all goodbye overnight, and when his turn came, she said warmly, “Now, Sir, you won’t forget to come and see us, if you ever travel our way, will you?"
+      }
+    },
+    {
+      "id": "7496:0",
+      "sentence": 7496,
+      "paragraph": 3130,
+      "range": [
+        0,
+        42
+      ],
+      "text": "“I fear I shall not make the time for that",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7486,
+        "paragraph": 3127,
+        "range": [
+          0,
+          46
+        ],
+        "text": "“That is your best friend, of whom you speak?”"
+      }
+    },
+    {
+      "id": "7502:234",
+      "sentence": 7502,
+      "paragraph": 3132,
+      "range": [
+        234,
+        58
+      ],
+      "text": "took down his seldom-used meerschaum, and opened his Plato",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7500,
+        "paragraph": 3131,
+        "range": [
+          152,
+          233
+        ],
+        "text": "Once, when he remembered Jo as she sat with the little child in her lap and that new softness in her face, he leaned his head on his hands a minute, and then roamed about the room, as if in search of something that he could not find."
+      }
+    },
+    {
+      "id": "7504:335",
+      "sentence": 7504,
+      "paragraph": 3134,
+      "range": [
+        335,
+        68
+      ],
+      "text": "I’ve made a friend worth having and I’ll try to keep him all my life",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7480,
+        "paragraph": 3124,
+        "range": [
+          188,
+          73
+        ],
+        "text": "I’ll never forgive you if you do, for I want them all to know my friend.”"
+      }
+    }
+  ]
+}

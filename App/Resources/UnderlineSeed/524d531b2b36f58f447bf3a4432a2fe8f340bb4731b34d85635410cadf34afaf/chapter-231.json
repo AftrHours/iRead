@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3080:37",
+      "sentence": 3080,
+      "paragraph": 1369,
+      "range": [
+        37,
+        38
+      ],
+      "text": "by coming in all this state to hear me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3077,
+        "paragraph": 1367,
+        "range": [
+          167,
+          210
+        ],
+        "text": "Lady Catherine listened to half a song, and then talked, as before, to her other nephew; till the latter walked away from her, and moving with his usual deliberation towards the pianoforte, stationed himself so"
+      }
+    },
+    {
+      "id": "3081:104",
+      "sentence": 3081,
+      "paragraph": 1369,
+      "range": [
+        104,
+        36
+      ],
+      "text": "though your sister does play so well",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3065,
+        "paragraph": 1362,
+        "range": [
+          0,
+          69
+        ],
+        "text": "Mr. Darcy spoke with affectionate praise of his sister’s proficiency."
+      }
+    },
+    {
+      "id": "3088:1",
+      "sentence": 3088,
+      "paragraph": 1372,
+      "range": [
+        1,
+        44
+      ],
+      "text": "I am not afraid of you,” said he, smilingly.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3083,
+        "paragraph": 1369,
+        "range": [
+          235,
+          61
+        ],
+        "text": "My courage always rises with every attempt to intimidate me.”"
+      }
+    }
+  ]
+}

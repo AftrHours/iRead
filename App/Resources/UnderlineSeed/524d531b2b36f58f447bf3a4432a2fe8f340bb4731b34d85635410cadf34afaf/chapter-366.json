@@ -1,1 +1,90 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4981:0",
+      "sentence": 4981,
+      "paragraph": 2052,
+      "range": [
+        0,
+        85
+      ],
+      "text": "Mr. Gardiner did not write again, till he had received an answer from Colonel Forster",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4952,
+        "paragraph": 2038,
+        "range": [
+          0,
+          262
+        ],
+        "text": "“I have written to Colonel Forster to desire him to find out, if possible, from some of the young man’s intimates in the regiment, whether Wickham has any relations or connections who would be likely to know in what part of the town he has now concealed himself."
+      }
+    },
+    {
+      "id": "4982:141",
+      "sentence": 4982,
+      "paragraph": 2052,
+      "range": [
+        141,
+        87
+      ],
+      "text": "It was not known that Wickham had a single relation with whom he kept up any connection",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4952,
+        "paragraph": 2038,
+        "range": [
+          0,
+          262
+        ],
+        "text": "“I have written to Colonel Forster to desire him to find out, if possible, from some of the young man’s intimates in the regiment, whether Wickham has any relations or connections who would be likely to know in what part of the town he has now concealed himself."
+      }
+    },
+    {
+      "id": "4983:362",
+      "sentence": 4983,
+      "paragraph": 2052,
+      "range": [
+        362,
+        80
+      ],
+      "text": "it did not appear that he was on terms of particular friendship with any of them",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4960,
+        "paragraph": 2041,
+        "range": [
+          67,
+          214
+        ],
+        "text": "It was possible, however, that some of his companions in the ——shire might be able to give more information; and though she was not very sanguine in expecting it, the application was a something to look forward to."
+      }
+    },
+    {
+      "id": "4985:717",
+      "sentence": 4985,
+      "paragraph": 2052,
+      "range": [
+        717,
+        65
+      ],
+      "text": "he had left gaming debts behind him to a very considerable amount",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4944,
+        "paragraph": 2036,
+        "range": [
+          112,
+          172
+        ],
+        "text": "He was declared to be in debt to every tradesman in the place, and his intrigues, all honoured with the title of seduction, had been extended into every tradesman’s family."
+      }
+    }
+  ]
+}

@@ -1,1 +1,90 @@
-{"underlines":[],"parserVersion":1,"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5298:261",
+      "sentence": 5298,
+      "paragraph": 2170,
+      "range": [
+        261,
+        43
+      ],
+      "text": "her plan of their residing in Hertfordshire",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5246,
+        "paragraph": 2153,
+        "range": [
+          156,
+          98
+        ],
+        "text": "I could not bear to have her ten miles from me; and as for Purvis Lodge, the attics are dreadful.”"
+      }
+    },
+    {
+      "id": "5302:0",
+      "sentence": 5302,
+      "paragraph": 2172,
+      "range": [
+        0,
+        55
+      ],
+      "text": "His daughter’s request, for such it might be considered",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5292,
+        "paragraph": 2167,
+        "range": [
+          1221,
+          191
+        ],
+        "text": "They will then join his regiment, unless they are first invited to Longbourn; and I understand from Mrs. Gardiner that my niece is very desirous of seeing you all before she leaves the south."
+      }
+    },
+    {
+      "id": "5302:132",
+      "sentence": 5302,
+      "paragraph": 2172,
+      "range": [
+        132,
+        38
+      ],
+      "text": "received at first an absolute negative",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5250,
+        "paragraph": 2154,
+        "range": [
+          325,
+          79
+        ],
+        "text": "I will not encourage the imprudence of either, by receiving them at Longbourn.”"
+      }
+    },
+    {
+      "id": "5304:597",
+      "sentence": 5304,
+      "paragraph": 2172,
+      "range": [
+        597,
+        68
+      ],
+      "text": "she should be able to show her married daughter in the neighbourhood",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5298,
+        "paragraph": 2170,
+        "range": [
+          125,
+          354
+        ],
+        "text": "Lydia’s being settled in the north, just when she had expected most pleasure and pride in her company, for she had by no means given up her plan of their residing in Hertfordshire, was a severe disappointment; and, besides, it was such a pity that Lydia should be taken from a regiment where she was acquainted with everybody, and had so many favourites."
+      }
+    }
+  ]
+}

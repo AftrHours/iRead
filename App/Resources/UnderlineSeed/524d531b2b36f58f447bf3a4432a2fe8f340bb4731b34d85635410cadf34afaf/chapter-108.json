@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1507:0",
+      "sentence": 1507,
+      "paragraph": 754,
+      "range": [
+        0,
+        31
+      ],
+      "text": "In pompous nothings on his side",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1492,
+        "paragraph": 746,
+        "range": [
+          630,
+          395
+        ],
+        "text": "A fortunate chance had recommended him to Lady Catherine de Bourgh when the living of Hunsford was vacant; and the respect which he felt for her high rank, and his veneration for her as his patroness, mingling with a very good opinion of himself, of his authority as a clergyman, and his right as a rector, made him altogether a mixture of pride and obsequiousness, self-importance and humility."
+      }
+    }
+  ]
+}

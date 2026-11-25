@@ -1,1 +1,111 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"range":[111,27],"paragraph":1334,"reference":{"range":[83,203],"paragraph":1333,"sentence":2986,"text":"Lady Catherine, Sir William, and Mr. and Mrs. Collins sat down to quadrille; and as Miss De Bourgh chose to play at cassino, the two girls had the honour of assisting Mrs. Jenkinson to make up her party."},"decidedBy":"rules","text":"was offered to Mrs. Collins","sentence":2994,"id":"2994:111","kind":"action"},{"range":[333,138],"paragraph":1334,"reference":{"range":[83,203],"paragraph":1333,"sentence":2986,"text":"Lady Catherine, Sir William, and Mr. and Mrs. Collins sat down to quadrille; and as Miss De Bourgh chose to play at cassino, the two girls had the honour of assisting Mrs. Jenkinson to make up her party."},"decidedBy":"rules","text":"were summoned by the arrival of the coach; and with many speeches of thankfulness on Mr. Collins’s side, and as many bows on Sir William’s","sentence":2996,"id":"2996:333","kind":"action"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2988:402",
+      "sentence": 2988,
+      "paragraph": 1333,
+      "range": [
+        402,
+        80
+      ],
+      "text": "Mrs. Jenkinson expressed her fears of Miss De Bourgh’s being too hot or too cold",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2910,
+        "paragraph": 1302,
+        "range": [
+          1000,
+          146
+        ],
+        "text": "Mrs. Jenkinson was chiefly employed in watching how little Miss de Bourgh ate, pressing her to try some other dish and fearing she was indisposed."
+      }
+    },
+    {
+      "id": "2990:607",
+      "sentence": 2990,
+      "paragraph": 1333,
+      "range": [
+        607,
+        40
+      ],
+      "text": "stating the mistakes of the three others",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2912,
+        "paragraph": 1303,
+        "range": [
+          0,
+          297
+        ],
+        "text": "When the ladies returned to the drawing-room, there was little to be done but to hear Lady Catherine talk, which she did without any intermission till coffee came in, delivering her opinion on every subject in so decisive a manner as proved that she was not used to have her judgment controverted."
+      }
+    },
+    {
+      "id": "2991:687",
+      "sentence": 2991,
+      "paragraph": 1333,
+      "range": [
+        687,
+        68
+      ],
+      "text": "Mr. Collins was employed in agreeing to everything her Ladyship said",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2906,
+        "paragraph": 1302,
+        "range": [
+          303,
+          253
+        ],
+        "text": "He carved and ate and praised with delighted alacrity; and every dish was commended first by him, and then by Sir William, who was now enough recovered to echo whatever his son-in-law said, in a manner which Elizabeth wondered Lady Catherine could bear."
+      }
+    },
+    {
+      "id": "2995:225",
+      "sentence": 2995,
+      "paragraph": 1334,
+      "range": [
+        225,
+        77
+      ],
+      "text": "to hear Lady Catherine determine what weather they were to have on the morrow",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2912,
+        "paragraph": 1303,
+        "range": [
+          0,
+          297
+        ],
+        "text": "When the ladies returned to the drawing-room, there was little to be done but to hear Lady Catherine talk, which she did without any intermission till coffee came in, delivering her opinion on every subject in so decisive a manner as proved that she was not used to have her judgment controverted."
+      }
+    },
+    {
+      "id": "2998:825",
+      "sentence": 2998,
+      "paragraph": 1334,
+      "range": [
+        825,
+        45
+      ],
+      "text": "take her Ladyship’s praise into his own hands",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2888,
+        "paragraph": 1295,
+        "range": [
+          88,
+          350
+        ],
+        "text": "Every park has its beauty and its prospects; and Elizabeth saw much to be pleased with, though she could not be in such raptures as Mr. Collins expected the scene to inspire, and was but slightly affected by his enumeration of the windows in front of the house, and his relation of what the glazing altogether had originally cost Sir Lewis de Bourgh."
+      }
+    }
+  ]
+}

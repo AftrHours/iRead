@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6727:74",
+      "sentence": 6727,
+      "paragraph": 2706,
+      "range": [
+        74,
+        44
+      ],
+      "text": "angry by the contents of her nephew’s letter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6711,
+        "paragraph": 2699,
+        "range": [
+          0,
+          159
+        ],
+        "text": "Mr. Darcy’s letter to Lady Catherine was in a different style, and still different from either was what Mr. Bennet sent to Mr. Collins, in return for his last."
+      }
+    },
+    {
+      "id": "6728:433",
+      "sentence": 6728,
+      "paragraph": 2706,
+      "range": [
+        433,
+        51
+      ],
+      "text": "the parading and obsequious civility of her husband",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6653,
+        "paragraph": 2679,
+        "range": [
+          72,
+          82
+        ],
+        "text": "The fact is, that you were sick of civility, of deference, of officious attention."
+      }
+    },
+    {
+      "id": "6735:861",
+      "sentence": 6735,
+      "paragraph": 2707,
+      "range": [
+        861,
+        59
+      ],
+      "text": "the comfort and elegance of their family party at Pemberley",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6709,
+        "paragraph": 2698,
+        "range": [
+          339,
+          46
+        ],
+        "text": "You are all to come to Pemberley at Christmas."
+      }
+    }
+  ]
+}

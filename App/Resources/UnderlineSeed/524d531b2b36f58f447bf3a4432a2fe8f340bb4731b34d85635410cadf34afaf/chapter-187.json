@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2508:0",
+      "sentence": 2508,
+      "paragraph": 1159,
+      "range": [
+        0,
+        45
+      ],
+      "text": "Mr. Wickham’s society was of material service",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2503,
+        "paragraph": 1156,
+        "range": [
+          310,
+          24
+        ],
+        "text": "Let Wickham be your man."
+      }
+    },
+    {
+      "id": "2511:67",
+      "sentence": 2511,
+      "paragraph": 1160,
+      "range": [
+        67,
+        81
+      ],
+      "text": "any extenuating circumstances in the case unknown to the society of Hertfordshire",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2488,
+        "paragraph": 1152,
+        "range": [
+          725,
+          78
+        ],
+        "text": "Let me take it in the best light, in the light in which it may be understood.”"
+      }
+    }
+  ]
+}

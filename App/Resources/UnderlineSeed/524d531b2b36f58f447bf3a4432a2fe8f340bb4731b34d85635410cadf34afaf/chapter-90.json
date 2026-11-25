@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[{"kind":"action","decidedBy":"rules","paragraph":653,"text":"requiring an explanation of his two motives","range":[107,43],"reference":{"range":[274,233],"sentence":1257,"paragraph":651,"text":"He was directly invited to join their party, but he declined it, observing that he could imagine but two motives for their choosing to walk up and down the room together, with either of which motives his joining them would interfere."},"id":"1261:107","sentence":1261}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1256:243",
+      "sentence": 1256,
+      "paragraph": 651,
+      "range": [
+        243,
+        29
+      ],
+      "text": "unconsciously closed his book",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1231,
+        "paragraph": 640,
+        "range": [
+          440,
+          21
+        ],
+        "text": "Darcy took up a book."
+      }
+    },
+    {
+      "id": "1261:107",
+      "sentence": 1261,
+      "paragraph": 653,
+      "range": [
+        107,
+        43
+      ],
+      "text": "requiring an explanation of his two motives",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1257,
+        "paragraph": 651,
+        "range": [
+          274,
+          233
+        ],
+        "text": "He was directly invited to join their party, but he declined it, observing that he could imagine but two motives for their choosing to walk up and down the room together, with either of which motives his joining them would interfere."
+      }
+    },
+    {
+      "id": "1263:270",
+      "sentence": 1263,
+      "paragraph": 654,
+      "range": [
+        270,
+        56
+      ],
+      "text": "your figures appear to the greatest advantage in walking",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1249,
+        "paragraph": 648,
+        "range": [
+          83,
+          70
+        ],
+        "text": "Her figure was elegant, and she walked well; but Darcy, at whom it was"
+      }
+    }
+  ]
+}

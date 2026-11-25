@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5867:88",
+      "sentence": 5867,
+      "paragraph": 2379,
+      "range": [
+        88,
+        82
+      ],
+      "text": "I have now learnt to enjoy his conversation as an agreeable and sensible young man",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5792,
+        "paragraph": 2348,
+        "range": [
+          188,
+          103
+        ],
+        "text": "It will then be publicly seen, that on both sides we meet only as common and indifferent acquaintance.”"
+      }
+    }
+  ]
+}

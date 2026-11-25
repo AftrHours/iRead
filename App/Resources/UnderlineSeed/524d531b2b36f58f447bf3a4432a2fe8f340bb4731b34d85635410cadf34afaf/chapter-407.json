@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[{"range":[140,18],"id":"5693:140","reference":{"paragraph":2304,"range":[84,149],"text":"But on the third morning after his arrival in Hertfordshire, she saw him from her dressing-room window enter the paddock, and ride towards the house.","sentence":5691},"decidedBy":"rules","paragraph":2305,"text":"went to the window","sentence":5693,"kind":"action"},{"range":[426,44],"id":"5705:426","reference":{"paragraph":2309,"range":[50,130],"text":"Well, any friend of Mr. Bingley’s will always be welcome here, to be sure; but else I must say that I hate the very sight of him.”","sentence":5701},"decidedBy":"rules","paragraph":2310,"text":"be civil to him only as Mr. Bingley’s friend","sentence":5705,"kind":"thing"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5693:170",
+      "sentence": 5693,
+      "paragraph": 2305,
+      "range": [
+        170,
+        60
+      ],
+      "text": "she saw Mr. Darcy with him, and sat down again by her sister",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5656,
+        "paragraph": 2289,
+        "range": [
+          217,
+          82
+        ],
+        "text": "I am glad of one thing, that he comes alone; because we shall see the less of him."
+      }
+    },
+    {
+      "id": "5705:408",
+      "sentence": 5705,
+      "paragraph": 2310,
+      "range": [
+        408,
+        62
+      ],
+      "text": "her resolution to be civil to him only as Mr. Bingley’s friend",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5701,
+        "paragraph": 2309,
+        "range": [
+          50,
+          130
+        ],
+        "text": "Well, any friend of Mr. Bingley’s will always be welcome here, to be sure; but else I must say that I hate the very sight of him.”"
+      }
+    }
+  ]
+}

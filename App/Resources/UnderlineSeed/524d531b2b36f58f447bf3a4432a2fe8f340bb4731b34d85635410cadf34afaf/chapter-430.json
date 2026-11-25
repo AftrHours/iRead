@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[{"id":"6053:186","decidedBy":"rules","paragraph":2465,"text":"said to Elizabeth","range":[186,17],"reference":{"paragraph":2464,"range":[0,133],"text":"Elizabeth now expected that she would produce a letter for her from Charlotte, as it seemed the only probable motive for her calling.","sentence":6051},"sentence":6053,"kind":"action"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6051:0",
+      "sentence": 6051,
+      "paragraph": 2464,
+      "range": [
+        0,
+        77
+      ],
+      "text": "Elizabeth now expected that she would produce a letter for her from Charlotte",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6048,
+        "paragraph": 2462,
+        "range": [
+          0,
+          92
+        ],
+        "text": "“May I take the liberty of asking your Ladyship whether you left Mr. and Mrs. Collins well?”"
+      }
+    },
+    {
+      "id": "6059:214",
+      "sentence": 6059,
+      "paragraph": 2468,
+      "range": [
+        214,
+        66
+      ],
+      "text": "pronouncing them, after a short survey, to be decent-looking rooms",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6046,
+        "paragraph": 2460,
+        "range": [
+          0,
+          101
+        ],
+        "text": "“This must be a most inconvenient sitting-room for the evening in summer: the windows are full west.”"
+      }
+    }
+  ]
+}

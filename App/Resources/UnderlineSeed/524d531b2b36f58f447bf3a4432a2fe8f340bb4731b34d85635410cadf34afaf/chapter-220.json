@@ -1,1 +1,5 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"sentence":2927,"decidedBy":"rules","paragraph":1307,"text":"Do your sisters play and sing","range":[143,29],"reference":{"range":[253,35],"paragraph":1305,"sentence":2923,"text":"Do you play and sing, Miss Bennet?”"},"id":"2927:143","kind":"action"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": []
+}

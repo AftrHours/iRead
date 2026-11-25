@@ -1,1 +1,48 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"range":[118,66],"paragraph":1736,"reference":{"range":[375,144],"paragraph":1733,"sentence":4117,"text":"In that county there was enough to be seen to occupy the chief of their three weeks; and to Mrs. Gardiner it had a peculiarly strong attraction."},"decidedBy":"rules","text":"did pass away, and Mr. and Mrs. Gardiner, with their four children","sentence":4126,"id":"4126:118","kind":"action"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4116:211",
+      "sentence": 4116,
+      "paragraph": 1733,
+      "range": [
+        211,
+        38
+      ],
+      "text": "they were obliged to give up the Lakes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4102,
+        "paragraph": 1727,
+        "range": [
+          957,
+          284
+        ],
+        "text": "Her tour to the Lakes was now the object of her happiest thoughts: it was her best consolation for all the uncomfortable hours which the discontentedness of her mother and Kitty made inevitable; and could she have included Jane in the scheme, every part of it would have been perfect."
+      }
+    },
+    {
+      "id": "4119:0",
+      "sentence": 4119,
+      "paragraph": 1734,
+      "range": [
+        0,
+        38
+      ],
+      "text": "Elizabeth was excessively disappointed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4104,
+        "paragraph": 1728,
+        "range": [
+          72,
+          72
+        ],
+        "text": "Were the whole arrangement complete, my disappointment would be certain."
+      }
+    }
+  ]
+}

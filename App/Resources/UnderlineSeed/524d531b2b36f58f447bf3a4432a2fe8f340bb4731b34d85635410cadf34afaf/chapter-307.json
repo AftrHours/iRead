@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[{"range":[68,49],"id":"4205:68","reference":{"text":"“I have heard much of your master’s fine person,” said Mrs. Gardiner, looking at the picture; “it is a handsome face.","paragraph":1763,"range":[0,117],"sentence":4198},"decidedBy":"rules","paragraph":1769,"text":"will see a finer, larger picture of him than this","sentence":4205,"kind":"action"},{"range":[5,40],"id":"4210:5","reference":{"text":"Mrs. Reynolds then directed their attention to one of Miss Darcy, drawn when she was only eight years old.","paragraph":1771,"range":[0,106],"sentence":4209},"decidedBy":"rules","paragraph":1772,"text":"is Miss Darcy as handsome as her brother","sentence":4210,"kind":"thing"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4195:0",
+      "sentence": 4195,
+      "paragraph": 1761,
+      "range": [
+        0,
+        82
+      ],
+      "text": "Mrs. Gardiner looked at her niece with a smile, but Elizabeth could not return it.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4193,
+        "paragraph": 1759,
+        "range": [
+          390,
+          88
+        ],
+        "text": "“He is now gone into the army,” she added; “but I am afraid he has turned out very wild."
+      }
+    },
+    {
+      "id": "4208:0",
+      "sentence": 4208,
+      "paragraph": 1770,
+      "range": [
+        0,
+        63
+      ],
+      "text": "This accounted to Elizabeth for Mr. Wickham’s being among them.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4190,
+        "paragraph": 1759,
+        "range": [
+          46,
+          120
+        ],
+        "text": "She approached, and saw the likeness of Mr. Wickham, suspended, amongst several other miniatures, over the mantel-piece."
+      }
+    }
+  ]
+}

@@ -1,1 +1,111 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3410:368",
+      "sentence": 3410,
+      "paragraph": 1510,
+      "range": [
+        368,
+        60
+      ],
+      "text": "That she should receive an offer of marriage from Mr. Darcy!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3325,
+        "paragraph": 1479,
+        "range": [
+          78,
+          66
+        ],
+        "text": "You must allow me to tell you how ardently I admire and love you.”"
+      }
+    },
+    {
+      "id": "3413:718",
+      "sentence": 3413,
+      "paragraph": 1510,
+      "range": [
+        718,
+        64
+      ],
+      "text": "gratifying to have inspired unconsciously so strong an affection",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3331,
+        "paragraph": 1481,
+        "range": [
+          0,
+          309
+        ],
+        "text": "In spite of her deeply-rooted dislike, she could not be insensible to the compliment of such a man’s affection, and though her intentions did not vary for an instant, she was at first sorry for the pain he was to receive; till roused to resentment by his subsequent language, she lost all compassion in anger."
+      }
+    },
+    {
+      "id": "3414:821",
+      "sentence": 3414,
+      "paragraph": 1510,
+      "range": [
+        821,
+        61
+      ],
+      "text": "his shameless avowal of what he had done with respect to Jane",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3365,
+        "paragraph": 1492,
+        "range": [
+          0,
+          176
+        ],
+        "text": "With assumed tranquillity he then replied, “I have no wish of denying that I did everything in my power to separate my friend from your sister, or that I rejoice in my success."
+      }
+    },
+    {
+      "id": "3414:965",
+      "sentence": 3414,
+      "paragraph": 1510,
+      "range": [
+        965,
+        55
+      ],
+      "text": "the unfeeling manner which he had mentioned Mr. Wickham",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3378,
+        "paragraph": 1498,
+        "range": [
+          19,
+          78
+        ],
+        "text": "repeated Darcy, contemptuously,—“yes, his misfortunes have been great indeed.”"
+      }
+    },
+    {
+      "id": "3414:1022",
+      "sentence": 3414,
+      "paragraph": 1510,
+      "range": [
+        1022,
+        53
+      ],
+      "text": "his cruelty towards whom he had not attempted to deny",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3379,
+        "paragraph": 1499,
+        "range": [
+          0,
+          130
+        ],
+        "text": "“And of your infliction,” cried Elizabeth, with energy; “You have reduced him to his present state of poverty—comparative poverty."
+      }
+    }
+  ]
+}

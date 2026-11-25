@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3609:0",
+      "sentence": 3609,
+      "paragraph": 1545,
+      "range": [
+        0,
+        44
+      ],
+      "text": "After wandering along the lane for two hours",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3547,
+        "paragraph": 1528,
+        "range": [
+          0,
+          348
+        ],
+        "text": "In this perturbed state of mind, with thoughts that could rest on nothing, she walked on; but it would not do: in half a minute the letter was unfolded again; and collecting herself as well as she could, she again began the mortifying perusal of all that related to Wickham, and commanded herself so far as to examine the meaning of every sentence."
+      }
+    },
+    {
+      "id": "3612:392",
+      "sentence": 3612,
+      "paragraph": 1546,
+      "range": [
+        392,
+        44
+      ],
+      "text": "Colonel Fitzwilliam was no longer an object.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3572,
+        "paragraph": 1534,
+        "range": [
+          534,
+          288
+        ],
+        "text": "At one time she had almost resolved on applying to him, but the idea was checked by the awkwardness of the application, and at length wholly banished by the conviction that Mr. Darcy would never have hazarded such a proposal, if he had not been well assured of his cousin’s corroboration."
+      }
+    },
+    {
+      "id": "3613:437",
+      "sentence": 3613,
+      "paragraph": 1546,
+      "range": [
+        437,
+        35
+      ],
+      "text": "She could think only of her letter.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3533,
+        "paragraph": 1526,
+        "range": [
+          0,
+          154
+        ],
+        "text": "ELIZABETH, when Mr. Darcy gave her the letter, did not expect it to contain a renewal of his offers, she had formed no expectation at all of its contents."
+      }
+    }
+  ]
+}

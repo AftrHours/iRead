@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4298:175",
+      "sentence": 4298,
+      "paragraph": 1811,
+      "range": [
+        175,
+        50
+      ],
+      "text": "why did he thus come a day before he was expected?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4187,
+        "paragraph": 1758,
+        "range": [
+          108,
+          200
+        ],
+        "text": "At length, however, the question was asked by her uncle; and she turned away with alarm, while Mrs. Reynolds replied, that he was; adding, “But we expect him to-morrow, with a large party of friends.”"
+      }
+    }
+  ]
+}

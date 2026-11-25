@@ -1,1 +1,678 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"text":"When I mentioned it to Mrs. K., that evening","sentence":7063,"paragraph":2982,"kind":"thing","decidedBy":"rules","id":"7063:87","reference":{"sentence":7052,"paragraph":2980,"range":[0,234],"text":"“Now, my dear, make yourself at home,” said Mrs. K. in her motherly way, “I’m on the drive from morning to night, as you may suppose with such a family, but a great anxiety will be off my mind if I know the children are safe with you."},"range":[87,44]},{"text":"is a glass door between it and the nursery","sentence":7066,"paragraph":2983,"kind":"place","decidedBy":"rules","id":"7066:383","reference":{"sentence":7050,"paragraph":2978,"range":[368,274],"text":"The nursery, where I am to teach and sew, is a pleasant room next Mrs. Kirke’s private parlor, and the two little girls are pretty children, rather spoiled, I fancy, but they took to me after telling them The Seven Bad Pigs, and I’ve no doubt I shall make a model governess."},"range":[383,42]},{"text":"lifting one end of the curtain before the glass door","sentence":7075,"paragraph":2986,"kind":"action","decidedBy":"rules","id":"7075:630","reference":{"sentence":7066,"paragraph":2983,"range":[377,113],"text":"There is a glass door between it and the nursery, and I mean to peep at him, and then I’ll tell you how he looks."},"range":[630,52]},{"text":"doesn’t she, Mr. Bhaer","sentence":7145,"paragraph":3017,"kind":"action","decidedBy":"rules","id":"7145:89","reference":{"sentence":7123,"paragraph":3005,"range":[0,92],"text":"I was in our parlor last evening when Mr. Bhaer came in with some newspapers for Mrs. Kirke."},"range":[89,22]},{"text":"are fond of me","sentence":7164,"paragraph":3024,"kind":"thing","decidedBy":"rules","id":"7164:453","reference":{"sentence":7152,"paragraph":3020,"range":[0,204],"text":"I’m so fond of writing, I should go spinning on forever if motives of economy didn’t stop me, for though I’ve used thin paper and written fine, I tremble to think of the stamps this long letter will need."},"range":[453,14]},{"text":"called to me one day as I passed Mr. Bhaer’s room where she was rummaging","sentence":7169,"paragraph":3025,"kind":"action","decidedBy":"rules","id":"7169:191","reference":{"sentence":7123,"paragraph":3005,"range":[0,92],"text":"I was in our parlor last evening when Mr. Bhaer came in with some newspapers for Mrs. Kirke."},"range":[191,73]},{"text":"was ‘a den’ to be sure","sentence":7172,"paragraph":3027,"kind":"thing","decidedBy":"rules","id":"7172:57","reference":{"sentence":7170,"paragraph":3026,"range":[0,38],"text":"“Did you ever see such a den, my dear?"},"range":[57,22]},{"text":"am too stupid to learn","sentence":7193,"paragraph":3032,"kind":"thing","decidedBy":"rules","id":"7193:30","reference":{"sentence":7188,"paragraph":3030,"range":[404,145],"text":"I had been sitting near this door, finishing off the last sock, and trying to understand what he said to a new scholar, who is as stupid as I am."},"range":[30,22]},{"text":"will never observe that his sock heels go not in holes any more","sentence":7197,"paragraph":3033,"kind":"action","decidedBy":"rules","id":"7197:315","reference":{"sentence":7185,"paragraph":3030,"range":[0,135],"text":"So I have got his things in order, and knit heels into two pairs of the socks, for they were boggled out of shape with his queer darns."},"range":[315,63]},{"text":"believe that strings make theirselves","sentence":7197,"paragraph":3033,"kind":"action","decidedBy":"rules","id":"7197:439","reference":{"sentence":7174,"paragraph":3027,"range":[288,65],"text":"Half-finished boats and bits of string lay among the manuscripts."},"range":[439,37]},{"text":"when in he came, as brisk","sentence":7206,"paragraph":3034,"kind":"thing","decidedBy":"rules","id":"7206:711","reference":{"sentence":7080,"paragraph":2986,"range":[1475,92],"text":"Then he smiled, and when a tap came at the door, called out in a loud, brisk tone, “Herein!”"},"range":[711,25]},{"range":[84,33],"sentence":7209,"paragraph":3036,"kind":"thing","decidedBy":"rules","id":"7209:84","reference":{"text":"He didn’t seem at all ashamed of it, for when I explained and hurried on, he waved his hand, sock and all, saying in his loud, cheerful way...","range":[316,142],"sentence":7132,"paragraph":3009},"text":"that I was more ashamed than ever"},{"range":[556,33],"sentence":7214,"paragraph":3036,"kind":"action","decidedBy":"rules","id":"7214:556","reference":{"text":"A regular German—rather stout, with brown hair tumbled all over his head, a bushy beard, good nose, the kindest eyes I ever saw, and a splendid big voice that does one’s ears good, after our sharp or slipshod American gabble.","range":[784,225],"sentence":7077,"paragraph":2986},"text":"do him in German, gif me your ear"},{"range":[615,21],"sentence":7233,"paragraph":3040,"kind":"action","decidedBy":"rules","id":"7233:615","reference":{"text":"I tried both ways, and when it came to a sniff or utter mortification and woe, he just threw the grammar on to the floor and marched out of the room.","range":[395,149],"sentence":7205,"paragraph":3034},"text":"sat down on the floor"},{"range":[909,39],"sentence":7236,"paragraph":3040,"kind":"action","decidedBy":"rules","id":"7236:909","reference":{"text":"Tell me something nice, Marmee.","range":[367,31],"sentence":7220,"paragraph":3037},"text":"wear the nice flannels you sent, Marmee"},{"range":[38,26],"sentence":7243,"paragraph":3043,"kind":"action","decidedBy":"rules","id":"7243:38","reference":{"text":"“You say often you wish a library.","range":[0,34],"sentence":7240,"paragraph":3042},"text":"talk now about ‘my library"},{"paragraph":3043,"decidedBy":"rules","text":"isn’t pronounced either Bear or Beer","range":[240,36],"sentence":7246,"id":"7246:240","kind":"action","reference":{"text":"The younger men quiz him, it seems, call him Old Fritz, Lager Beer, Ursa Major, and make all manner of jokes on his name.","range":[659,121],"sentence":7118,"paragraph":3003}}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "7063:157",
+      "sentence": 7063,
+      "paragraph": 2982,
+      "range": [
+        157,
+        35
+      ],
+      "text": "That must have been Professor Bhaer",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7059,
+        "paragraph": 2981,
+        "range": [
+          58,
+          359
+        ],
+        "text": "The flights are very long in this tall house, and as I stood waiting at the head of the third one for a little servant girl to lumber up, I saw a gentleman come along behind her, take the heavy hod of coal out of her hand, carry it all the way up, put it down at a door near by, and walk away, saying, with a kind nod and a foreign accent, “It goes better so."
+      }
+    },
+    {
+      "id": "7075:630",
+      "sentence": 7075,
+      "paragraph": 2986,
+      "range": [
+        630,
+        52
+      ],
+      "text": "lifting one end of the curtain before the glass door",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7066,
+        "paragraph": 2983,
+        "range": [
+          377,
+          113
+        ],
+        "text": "There is a glass door between it and the nursery, and I mean to peep at him, and then I’ll tell you how he looks."
+      }
+    },
+    {
+      "id": "7093:406",
+      "sentence": 7093,
+      "paragraph": 2993,
+      "range": [
+        406,
+        32
+      ],
+      "text": "I fancy he has a hard life of it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7064,
+        "paragraph": 2983,
+        "range": [
+          0,
+          244
+        ],
+        "text": "Mrs. K. told me he was from Berlin, very learned and good, but poor as a church mouse, and gives lessons to support himself and two little orphan nephews whom he is educating here, according to the wishes of his sister, who married an American."
+      }
+    },
+    {
+      "id": "7094:440",
+      "sentence": 7094,
+      "paragraph": 2993,
+      "range": [
+        440,
+        68
+      ],
+      "text": "Mrs. Kirke asked me if I wouldn’t go down to the five o’clock dinner",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7051,
+        "paragraph": 2979,
+        "range": [
+          0,
+          150
+        ],
+        "text": "I am to have my meals with the children, if I prefer it to the great table, and for the present I do, for I am bashful, though no one will believe it."
+      }
+    },
+    {
+      "id": "7102:524",
+      "sentence": 7102,
+      "paragraph": 2994,
+      "range": [
+        524,
+        29
+      ],
+      "text": "after teaching idiots all day",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7088,
+        "paragraph": 2991,
+        "range": [
+          169,
+          195
+        ],
+        "text": "One of the girls kept laughing affectedly, and saying, “Now Professor,” in a coquettish tone, and the other pronounced her German with an accent that must have made it hard for him to keep sober."
+      }
+    },
+    {
+      "id": "7110:90",
+      "sentence": 7110,
+      "paragraph": 3001,
+      "range": [
+        90,
+        34
+      ],
+      "text": "I’ve got sense, if I haven’t style",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7107,
+        "paragraph": 2999,
+        "range": [
+          0,
+          30
+        ],
+        "text": "“Handsome head, but no style.”"
+      }
+    },
+    {
+      "id": "7115:195",
+      "sentence": 7115,
+      "paragraph": 3003,
+      "range": [
+        195,
+        50
+      ],
+      "text": "It seems that Tina is the child of the Frenchwoman",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7086,
+        "paragraph": 2990,
+        "range": [
+          62,
+          436
+        ],
+        "text": "So he put her up at the table, opened the great dictionary she had brought, and gave her a paper and pencil, and she scribbled away, turning a leaf now and then, and passing her little fat finger down the page, as if finding a word, so soberly that I nearly betrayed myself by a laugh, while Mr. Bhaer stood stroking her pretty hair with a fatherly look that made me think she must be his own, though she looked more French than German."
+      }
+    },
+    {
+      "id": "7116:347",
+      "sentence": 7116,
+      "paragraph": 3003,
+      "range": [
+        347,
+        38
+      ],
+      "text": "follows him about the house like a dog",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7082,
+        "paragraph": 2988,
+        "range": [
+          0,
+          83
+        ],
+        "text": "“Me wants me Bhaer,” said the mite, slamming down her book and running to meet him."
+      }
+    },
+    {
+      "id": "7117:485",
+      "sentence": 7117,
+      "paragraph": 3003,
+      "range": [
+        485,
+        57
+      ],
+      "text": "Kitty and Minnie Kirke likewise regard him with affection",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7050,
+        "paragraph": 2978,
+        "range": [
+          368,
+          274
+        ],
+        "text": "The nursery, where I am to teach and sew, is a pleasant room next Mrs. Kirke’s private parlor, and the two little girls are pretty children, rather spoiled, I fancy, but they took to me after telling them The Seven Bad Pigs, and I’ve no doubt I shall make a model governess."
+      }
+    },
+    {
+      "id": "7120:0",
+      "sentence": 7120,
+      "paragraph": 3004,
+      "range": [
+        0,
+        32
+      ],
+      "text": "The maiden lady is a Miss Norton",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7099,
+        "paragraph": 2993,
+        "range": [
+          1260,
+          140
+        ],
+        "text": "I don’t think I shall care to have much to do with any of them, except one sweetfaced maiden lady, who looks as if she had something in her."
+      }
+    },
+    {
+      "id": "7121:95",
+      "sentence": 7121,
+      "paragraph": 3004,
+      "range": [
+        95,
+        56
+      ],
+      "text": "for I went to table again, it’s such fun to watch people",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7099,
+        "paragraph": 2993,
+        "range": [
+          1260,
+          140
+        ],
+        "text": "I don’t think I shall care to have much to do with any of them, except one sweetfaced maiden lady, who looks as if she had something in her."
+      }
+    },
+    {
+      "id": "7128:10",
+      "sentence": 7128,
+      "paragraph": 3008,
+      "range": [
+        10,
+        39
+      ],
+      "text": "I hear these naughty ones go to vex you",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7071,
+        "paragraph": 2986,
+        "range": [
+          0,
+          146
+        ],
+        "text": "Had a lively time in my seminary this morning, for the children acted like Sancho, and at one time I really thought I should shake them all round."
+      }
+    },
+    {
+      "id": "7138:44",
+      "sentence": 7138,
+      "paragraph": 3013,
+      "range": [
+        44,
+        21
+      ],
+      "text": "a call on Miss Norton",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7121,
+        "paragraph": 3004,
+        "range": [
+          62,
+          137
+        ],
+        "text": "She spoke to me at dinner today (for I went to table again, it’s such fun to watch people), and asked me to come and see her at her room."
+      }
+    },
+    {
+      "id": "7145:63",
+      "sentence": 7145,
+      "paragraph": 3017,
+      "range": [
+        63,
+        24
+      ],
+      "text": "when Franz and Emil come",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7064,
+        "paragraph": 2983,
+        "range": [
+          0,
+          244
+        ],
+        "text": "Mrs. K. told me he was from Berlin, very learned and good, but poor as a church mouse, and gives lessons to support himself and two little orphan nephews whom he is educating here, according to the wishes of his sister, who married an American."
+      }
+    },
+    {
+      "id": "7150:265",
+      "sentence": 7150,
+      "paragraph": 3019,
+      "range": [
+        265,
+        44
+      ],
+      "text": "he told charming fairy stories of the storks",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7117,
+        "paragraph": 3003,
+        "range": [
+          485,
+          173
+        ],
+        "text": "Kitty and Minnie Kirke likewise regard him with affection, and tell all sorts of stories about the plays he invents, the presents he brings, and the splendid tales he tells."
+      }
+    },
+    {
+      "id": "7154:255",
+      "sentence": 7154,
+      "paragraph": 3020,
+      "range": [
+        255,
+        54
+      ],
+      "text": "My small news will sound very flat after her splendors",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7044,
+        "paragraph": 2976,
+        "range": [
+          0,
+          129
+        ],
+        "text": "I’m going to write you a regular volume, for I’ve got heaps to tell, though I’m not a fine young lady traveling on the continent."
+      }
+    },
+    {
+      "id": "7166:631",
+      "sentence": 7166,
+      "paragraph": 3024,
+      "range": [
+        631,
+        37
+      ],
+      "text": "Saturday afternoons are riotous times",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7145,
+        "paragraph": 3017,
+        "range": [
+          0,
+          113
+        ],
+        "text": "“Mamma always allows us to do what we like Saturday afternoon, when Franz and Emil come, doesn’t she, Mr. Bhaer?”"
+      }
+    },
+    {
+      "id": "7185:83",
+      "sentence": 7185,
+      "paragraph": 3030,
+      "range": [
+        83,
+        51
+      ],
+      "text": "they were boggled out of shape with his queer darns",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7131,
+        "paragraph": 3009,
+        "range": [
+          193,
+          122
+        ],
+        "text": "It flew open, and there he stood in his dressing gown, with a big blue sock on one hand and a darning needle in the other."
+      }
+    },
+    {
+      "id": "7187:233",
+      "sentence": 7187,
+      "paragraph": 3030,
+      "range": [
+        233,
+        38
+      ],
+      "text": "Hearing the lessons he gives to others",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7064,
+        "paragraph": 2983,
+        "range": [
+          0,
+          244
+        ],
+        "text": "Mrs. K. told me he was from Berlin, very learned and good, but poor as a church mouse, and gives lessons to support himself and two little orphan nephews whom he is educating here, according to the wishes of his sister, who married an American."
+      }
+    },
+    {
+      "id": "7191:54",
+      "sentence": 7191,
+      "paragraph": 3031,
+      "range": [
+        54,
+        29
+      ],
+      "text": "you peep at me, I peep at you",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7075,
+        "paragraph": 2986,
+        "range": [
+          552,
+          144
+        ],
+        "text": "It was dreadfully improper, I know, but I couldn’t resist the temptation, and lifting one end of the curtain before the glass door, I peeped in."
+      }
+    },
+    {
+      "id": "7196:151",
+      "sentence": 7196,
+      "paragraph": 3033,
+      "range": [
+        151,
+        22
+      ],
+      "text": "I haf this debt to pay",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7183,
+        "paragraph": 3029,
+        "range": [
+          0,
+          66
+        ],
+        "text": "“Let me mend them,” said I. “I don’t mind it, and he needn’t know."
+      }
+    },
+    {
+      "id": "7197:339",
+      "sentence": 7197,
+      "paragraph": 3033,
+      "range": [
+        339,
+        39
+      ],
+      "text": "his sock heels go not in holes any more",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7185,
+        "paragraph": 3030,
+        "range": [
+          0,
+          135
+        ],
+        "text": "So I have got his things in order, and knit heels into two pairs of the socks, for they were boggled out of shape with his queer darns."
+      }
+    },
+    {
+      "id": "7197:380",
+      "sentence": 7197,
+      "paragraph": 3033,
+      "range": [
+        380,
+        53
+      ],
+      "text": "he will think his buttons grow out new when they fall",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7078,
+        "paragraph": 2986,
+        "range": [
+          1010,
+          296
+        ],
+        "text": "His clothes were rusty, his hands were large, and he hadn’t a really handsome feature in his face, except his beautiful teeth, yet I liked him, for he had a fine head, his linen was very nice, and he looked like a gentleman, though two buttons were off his coat and there was a patch on one shoe."
+      }
+    },
+    {
+      "id": "7221:0",
+      "sentence": 7221,
+      "paragraph": 3038,
+      "range": [
+        0,
+        39
+      ],
+      "text": "I’m glad Laurie seems so happy and busy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7155,
+        "paragraph": 3020,
+        "range": [
+          343,
+          74
+        ],
+        "text": "Is Teddy studying so hard that he can’t find time to write to his friends?"
+      }
+    },
+    {
+      "id": "7245:201",
+      "sentence": 7245,
+      "paragraph": 3043,
+      "range": [
+        201,
+        34
+      ],
+      "text": "Now don’t laugh at his horrid name",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7118,
+        "paragraph": 3003,
+        "range": [
+          659,
+          121
+        ],
+        "text": "The younger men quiz him, it seems, call him Old Fritz, Lager Beer, Ursa Major, and make all manner of jokes on his name."
+      }
+    },
+    {
+      "id": "7249:538",
+      "sentence": 7249,
+      "paragraph": 3043,
+      "range": [
+        538,
+        31
+      ],
+      "text": "my new ‘friend Friedrich Bhaer’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7239,
+        "paragraph": 3041,
+        "range": [
+          125,
+          271
+        ],
+        "text": "It is one he values much, and I’ve often admired it, set up in the place of honor with his German Bible, Plato, Homer, and Milton, so you may imagine how I felt when he brought it down, without its cover, and showed me my own name in it, “from my friend Friedrich Bhaer”."
+      }
+    },
+    {
+      "id": "7250:50",
+      "sentence": 7250,
+      "paragraph": 3044,
+      "range": [
+        50,
+        56
+      ],
+      "text": "I got several little things, and put them about the room",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7219,
+        "paragraph": 3037,
+        "range": [
+          296,
+          70
+        ],
+        "text": "I mean to give him something on Christmas, for I dare not offer money."
+      }
+    },
+    {
+      "id": "7251:212",
+      "sentence": 7251,
+      "paragraph": 3044,
+      "range": [
+        212,
+        28
+      ],
+      "text": "a little vase for his flower",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7079,
+        "paragraph": 2986,
+        "range": [
+          1307,
+          167
+        ],
+        "text": "He looked sober in spite of his humming, till he went to the window to turn the hyacinth bulbs toward the sun, and stroke the cat, who received him like an old friend."
+      }
+    },
+    {
+      "id": "7251:323",
+      "sentence": 7251,
+      "paragraph": 3044,
+      "range": [
+        323,
+        23
+      ],
+      "text": "a holder for his blower",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7176,
+        "paragraph": 3027,
+        "range": [
+          515,
+          165
+        ],
+        "text": "After a grand rummage three of the missing articles were found, one over the bird cage, one covered with ink, and a third burned brown, having been used as a holder."
+      }
+    },
+    {
+      "id": "7254:745",
+      "sentence": 7254,
+      "paragraph": 3044,
+      "range": [
+        745,
+        43
+      ],
+      "text": "from the French laundrywoman to Miss Norton",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7115,
+        "paragraph": 3003,
+        "range": [
+          195,
+          97
+        ],
+        "text": "It seems that Tina is the child of the Frenchwoman who does the fine ironing in the laundry here."
+      }
+    },
+    {
+      "id": "7260:322",
+      "sentence": 7260,
+      "paragraph": 3045,
+      "range": [
+        322,
+        48
+      ],
+      "text": "no one dreamed of the silent, haughty Miss March",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7051,
+        "paragraph": 2979,
+        "range": [
+          0,
+          150
+        ],
+        "text": "I am to have my meals with the children, if I prefer it to the great table, and for the present I do, for I am bashful, though no one will believe it."
+      }
+    },
+    {
+      "id": "7266:205",
+      "sentence": 7266,
+      "paragraph": 3046,
+      "range": [
+        205,
+        49
+      ],
+      "text": "take more interest in other people than I used to",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7111,
+        "paragraph": 3001,
+        "range": [
+          257,
+          23
+        ],
+        "text": "I hate ordinary people!"
+      }
+    }
+  ]
+}

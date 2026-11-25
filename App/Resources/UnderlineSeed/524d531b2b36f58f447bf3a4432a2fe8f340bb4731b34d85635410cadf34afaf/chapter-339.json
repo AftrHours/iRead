@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4587:277",
+      "sentence": 4587,
+      "paragraph": 1906,
+      "range": [
+        277,
+        49
+      ],
+      "text": "My poor mother is really ill, and keeps her room.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4558,
+        "paragraph": 1902,
+        "range": [
+          678,
+          33
+        ],
+        "text": "Our poor mother is sadly grieved."
+      }
+    },
+    {
+      "id": "4589:465",
+      "sentence": 4589,
+      "paragraph": 1906,
+      "range": [
+        465,
+        58
+      ],
+      "text": "Poor Kitty has anger for having concealed their attachment",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4552,
+        "paragraph": 1902,
+        "range": [
+          268,
+          57
+        ],
+        "text": "To Kitty, however, it does not seem so wholly unexpected."
+      }
+    },
+    {
+      "id": "4598:0",
+      "sentence": 4598,
+      "paragraph": 1907,
+      "range": [
+        0,
+        4
+      ],
+      "text": "“Oh!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4543,
+        "paragraph": 1900,
+        "range": [
+          0,
+          143
+        ],
+        "text": "They had just been preparing to walk as the letters came in; and her uncle and aunt, leaving her to enjoy them in quiet, set off by themselves."
+      }
+    }
+  ]
+}

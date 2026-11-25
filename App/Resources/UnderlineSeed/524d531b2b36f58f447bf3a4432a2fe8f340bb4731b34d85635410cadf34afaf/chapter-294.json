@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4038:185",
+      "sentence": 4038,
+      "paragraph": 1698,
+      "range": [
+        185,
+        52
+      ],
+      "text": "tenderly flirting with at least six officers at once",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4014,
+        "paragraph": 1692,
+        "range": [
+          554,
+          413
+        ],
+        "text": "Her character will be fixed; and she will, at sixteen, be the most determined flirt that ever made herself and her family ridiculous;—a flirt, too, in the worst and meanest degree of flirtation; without any attraction beyond youth and a tolerable person; and, from the ignorance and emptiness of her mind, wholly unable to ward off any portion of that universal contempt which her rage for admiration will excite."
+      }
+    },
+    {
+      "id": "4043:309",
+      "sentence": 4043,
+      "paragraph": 1701,
+      "range": [
+        309,
+        49
+      ],
+      "text": "her husband’s never intending to go there himself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3980,
+        "paragraph": 1680,
+        "range": [
+          42,
+          29
+        ],
+        "text": "But papa is so disagreeable.”"
+      }
+    }
+  ]
+}

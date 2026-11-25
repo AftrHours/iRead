@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3383:364",
+      "sentence": 3383,
+      "paragraph": 1499,
+      "range": [
+        364,
+        50
+      ],
+      "text": "treat the mention of his misfortunes with contempt",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3378,
+        "paragraph": 1498,
+        "range": [
+          19,
+          78
+        ],
+        "text": "repeated Darcy, contemptuously,—“yes, his misfortunes have been great indeed.”"
+      }
+    },
+    {
+      "id": "3388:389",
+      "sentence": 3388,
+      "paragraph": 1500,
+      "range": [
+        389,
+        36
+      ],
+      "text": "my honest confession of the scruples",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3330,
+        "paragraph": 1480,
+        "range": [
+          378,
+          257
+        ],
+        "text": "His sense of her inferiority, of its being a degradation, of the family obstacles which judgment had always opposed to inclination, were dwelt on with a warmth which seemed due to the consequence he was wounding, but was very unlikely to recommend his suit."
+      }
+    }
+  ]
+}

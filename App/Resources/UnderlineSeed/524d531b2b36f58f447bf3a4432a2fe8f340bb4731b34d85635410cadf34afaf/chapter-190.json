@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2543:17",
+      "sentence": 2543,
+      "paragraph": 1169,
+      "range": [
+        17,
+        55
+      ],
+      "text": "It seems likely to have been a desirable match for Jane",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2529,
+        "paragraph": 1166,
+        "range": [
+          0,
+          88
+        ],
+        "text": "“I do not blame Jane,” she continued, “for Jane would have got Mr. Bingley if she could."
+      }
+    }
+  ]
+}

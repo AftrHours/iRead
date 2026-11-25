@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6760:211",
+      "sentence": 6760,
+      "paragraph": 2717,
+      "range": [
+        211,
+        55
+      ],
+      "text": "I am sure Wickham would like a place at court very much",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6753,
+        "paragraph": 2715,
+        "range": [
+          0,
+          156
+        ],
+        "text": "falsehood had before been unknown to her; and, in spite of everything, was not wholly without hope that Darcy might yet be prevailed on to make his fortune."
+      }
+    },
+    {
+      "id": "6763:0",
+      "sentence": 6763,
+      "paragraph": 2719,
+      "range": [
+        0,
+        49
+      ],
+      "text": "As it happened that Elizabeth had much rather not",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6761,
+        "paragraph": 2717,
+        "range": [
+          352,
+          130
+        ],
+        "text": "Any place would do of about three or four hundred a year; but, however, do not speak to Mr. Darcy about it, if you had rather not."
+      }
+    },
+    {
+      "id": "6764:142",
+      "sentence": 6764,
+      "paragraph": 2719,
+      "range": [
+        142,
+        54
+      ],
+      "text": "Such relief, however, as it was in her power to afford",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6760,
+        "paragraph": 2717,
+        "range": [
+          211,
+          140
+        ],
+        "text": "I am sure Wickham would like a place at court very much; and I do not think we shall have quite money enough to live upon without some help."
+      }
+    }
+  ]
+}

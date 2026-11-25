@@ -1,1 +1,132 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1333:34",
+      "sentence": 1333,
+      "paragraph": 681,
+      "range": [
+        34,
+        42
+      ],
+      "text": "the separation, so agreeable to almost all",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1329,
+        "paragraph": 680,
+        "range": [
+          0,
+          88
+        ],
+        "text": "To Mr. Darcy it was welcome intelligence: Elizabeth had been at Netherfield long enough."
+      }
+    },
+    {
+      "id": "1334:90",
+      "sentence": 1334,
+      "paragraph": 681,
+      "range": [
+        90,
+        67
+      ],
+      "text": "Miss Bingley’s civility to Elizabeth increased at last very rapidly",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1327,
+        "paragraph": 678,
+        "range": [
+          194,
+          146
+        ],
+        "text": "Miss Bingley was then sorry that she had proposed the delay; for her jealousy and dislike of one sister much exceeded her affection for the other."
+      }
+    },
+    {
+      "id": "1335:401",
+      "sentence": 1335,
+      "paragraph": 681,
+      "range": [
+        401,
+        64
+      ],
+      "text": "Elizabeth took leave of the whole party in the liveliest spirits",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1323,
+        "paragraph": 677,
+        "range": [
+          382,
+          113
+        ],
+        "text": "Her answer, therefore, was not propitious, at least not to Elizabeth’s wishes, for she was impatient to get home."
+      }
+    },
+    {
+      "id": "1336:0",
+      "sentence": 1336,
+      "paragraph": 682,
+      "range": [
+        0,
+        58
+      ],
+      "text": "They were not welcomed home very cordially by their mother",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1322,
+        "paragraph": 677,
+        "range": [
+          174,
+          207
+        ],
+        "text": "But Mrs. Bennet, who had calculated on her daughters remaining at Netherfield till the following Tuesday, which would exactly finish Jane’s week, could not bring herself to receive them with pleasure before."
+      }
+    },
+    {
+      "id": "1337:102",
+      "sentence": 1337,
+      "paragraph": 682,
+      "range": [
+        102,
+        47
+      ],
+      "text": "thought them very wrong to give so much trouble",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1325,
+        "paragraph": 677,
+        "range": [
+          718,
+          396
+        ],
+        "text": "Against staying longer, however, Elizabeth was positively resolved—nor did she much expect it would be asked; and fearful, on the contrary, of being considered as intruding themselves needlessly long, she urged Jane to borrow Mr. Bingley’s carriage immediately, and at length it was settled that their original design of leaving Netherfield that morning should be mentioned, and the request made."
+      }
+    },
+    {
+      "id": "1337:155",
+      "sentence": 1337,
+      "paragraph": 682,
+      "range": [
+        155,
+        42
+      ],
+      "text": "was sure Jane would have caught cold again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1328,
+        "paragraph": 679,
+        "range": [
+          0,
+          244
+        ],
+        "text": "The master of the house heard with real sorrow that they were to go so soon, and repeatedly tried to persuade Miss Bennet that it would not be safe for her—that she was not enough recovered; but Jane was firm where she felt herself to be right."
+      }
+    }
+  ]
+}

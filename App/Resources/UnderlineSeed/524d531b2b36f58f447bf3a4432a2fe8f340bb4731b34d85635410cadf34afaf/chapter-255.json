@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3425:153",
+      "sentence": 3425,
+      "paragraph": 1516,
+      "range": [
+        153,
+        59
+      ],
+      "text": "fearful of its being Mr. Darcy, she was directly retreating",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3420,
+        "paragraph": 1514,
+        "range": [
+          332,
+          226
+        ],
+        "text": "She was proceeding directly to her favourite walk, when the recollection of Mr. Darcy’s sometimes coming there stopped her, and instead of entering the park, she turned up the lane which led her farther from the turnpike road."
+      }
+    },
+    {
+      "id": "3431:67",
+      "sentence": 3431,
+      "paragraph": 1517,
+      "range": [
+        67,
+        27
+      ],
+      "text": "Elizabeth opened the letter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3428,
+        "paragraph": 1516,
+        "range": [
+          469,
+          206
+        ],
+        "text": "He had by that time reached it also; and, holding out a letter, which she instinctively took, said, with a look of haughty composure, “I have been walking in the grove some time, in the hope of meeting you."
+      }
+    }
+  ]
+}

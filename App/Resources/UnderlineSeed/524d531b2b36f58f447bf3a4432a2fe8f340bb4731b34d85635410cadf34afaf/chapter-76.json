@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1076:166",
+      "sentence": 1076,
+      "paragraph": 555,
+      "range": [
+        166,
+        36
+      ],
+      "text": "abruptly reminded him of his promise",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1072,
+        "paragraph": 553,
+        "range": [
+          675,
+          227
+        ],
+        "text": "The two girls had been whispering to each other during the whole visit; and the result of it was, that the youngest should tax Mr. Bingley with having promised on his first coming into the country to give a ball at Netherfield."
+      }
+    },
+    {
+      "id": "1084:87",
+      "sentence": 1084,
+      "paragraph": 558,
+      "range": [
+        87,
+        59
+      ],
+      "text": "leaving her own and her relations’ behaviour to the remarks",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1032,
+        "paragraph": 542,
+        "range": [
+          0,
+          79
+        ],
+        "text": "Nothing but concern for Elizabeth could enable Bingley to keep his countenance."
+      }
+    }
+  ]
+}

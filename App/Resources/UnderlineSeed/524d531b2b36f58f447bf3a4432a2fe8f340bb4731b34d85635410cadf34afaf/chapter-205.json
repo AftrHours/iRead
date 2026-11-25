@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[{"range":[8,48],"paragraph":1239,"reference":{"range":[0,69],"sentence":2747,"paragraph":1237,"text":"“But, my dear Elizabeth,” she added, “what sort of girl is Miss King?"},"decidedBy":"rules","text":"will only tell me what sort of girl Miss King is","sentence":2752,"id":"2752:8","kind":"reaction"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2747:38",
+      "sentence": 2747,
+      "paragraph": 1237,
+      "range": [
+        38,
+        31
+      ],
+      "text": "what sort of girl is Miss King?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2731,
+        "paragraph": 1231,
+        "range": [
+          92,
+          632
+        ],
+        "text": "His present pursuit could not make him forget that Elizabeth had been the first to excite and to deserve his attention, the first to listen and to pity, the first to be admired; and in his manner of bidding her adieu, wishing her every enjoyment, reminding her of what she was to expect in Lady Catherine de Bourgh, and trusting their opinion of her—their opinion of everybody—would always coincide, there was a solicitude, an interest, which she felt must ever attach her to him with a most sincere regard; and she parted from him convinced, that, whether married or single, he must always be her model of the amiable and pleasing."
+      }
+    }
+  ]
+}

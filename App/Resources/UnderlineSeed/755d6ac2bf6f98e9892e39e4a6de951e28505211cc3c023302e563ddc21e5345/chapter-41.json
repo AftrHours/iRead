@@ -1,1 +1,783 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"paragraph":3350,"text":"bore it very patiently for six months","id":"8042:230","range":[230,37],"decidedBy":"rules","sentence":8042,"reference":{"sentence":8032,"text":"But three months passed, and there was no return of repose.","range":[609,59],"paragraph":3349},"kind":"action"},{"paragraph":3352,"text":"found it a relief to know that John was having a good time instead of dozing in the parlor","id":"8047:57","range":[57,90],"decidedBy":"rules","sentence":8047,"reference":{"sentence":8043,"text":"Scott had married and gone to housekeeping not far off, and John fell into the way of running over for an hour or two of an evening, when his own parlor was empty, and his own wife singing lullabies that seemed to have no end.","range":[388,226],"paragraph":3350},"kind":"action"},{"paragraph":3371,"text":"are always in the nursery","id":"8087:129","range":[129,25],"decidedBy":"rules","sentence":8087,"reference":{"sentence":8041,"text":"The poor man was very uncomfortable, for the children had bereft him of his wife, home was merely a nursery and the perpetual ‘hushing’ made him feel like a brutal intruder whenever he entered the sacred precincts of Babyland.","range":[0,226],"paragraph":3350},"kind":"thing"},{"paragraph":3373,"text":"don’t shut him out of the nursery","id":"8091:198","range":[198,33],"decidedBy":"rules","sentence":8091,"reference":{"sentence":8087,"text":"My dear, he’s longing for his little home, but it isn’t home without you, and you are always in the nursery.”","range":[47,109],"paragraph":3371},"kind":"action"},{"paragraph":3373,"text":"will do it gladly and faithfully","id":"8093:376","range":[376,32],"decidedBy":"rules","sentence":8093,"reference":{"sentence":8054,"text":"Well, the babies love me, they don’t care if I am thin and pale and haven’t time to crimp my hair, they are my comfort, and some day John will see what I’ve gladly sacrificed for them, won’t he, my precious?”","range":[206,208],"paragraph":3353},"kind":"action"},{"paragraph":3375,"text":"made himself so helpful that I saw my mistake","id":"8101:572","range":[572,45],"decidedBy":"rules","sentence":8101,"reference":{"sentence":8080,"text":"“You have only made the mistake that most young wives make—forgotten your duty to your husband in your love for your children.","range":[0,126],"paragraph":3369},"kind":"action"},{"paragraph":3375,"text":"try not to let domestic worries destroy my interest in his pursuits","id":"8103:808","range":[808,67],"decidedBy":"rules","sentence":8103,"reference":{"sentence":8050,"text":"She was nervous and worn out with watching and worry, and in that unreasonable frame of mind which the best of mothers occasionally experience when domestic cares oppress them.","range":[683,176],"paragraph":3352},"kind":"action"},{"paragraph":3377,"text":"may trust the precious babies to her while you do more housework","id":"8110:285","range":[285,64],"decidedBy":"rules","sentence":8110,"reference":{"sentence":8054,"text":"Well, the babies love me, they don’t care if I am thin and pale and haven’t time to crimp my hair, they are my comfort, and some day John will see what I’ve gladly sacrificed for them, won’t he, my precious?”","range":[206,208],"paragraph":3353},"kind":"action"},{"paragraph":3377,"text":"need the exercise","id":"8111:355","range":[355,17],"decidedBy":"rules","sentence":8111,"reference":{"sentence":8051,"text":"Want of exercise robs them of cheerfulness, and too much devotion to that idol of American women, the teapot, makes them feel as if they were all nerve and no muscle.","range":[860,166],"paragraph":3352},"kind":"action"},{"paragraph":3379,"text":"see if he doesn’t find your society far more agreeable than Mrs. Scott’s suppers","id":"8118:123","range":[123,80],"decidedBy":"rules","sentence":8118,"reference":{"sentence":8044,"text":"Mrs. Scott was a lively, pretty girl, with nothing to do but be agreeable, and she performed her mission most successfully.","range":[615,123],"paragraph":3350},"kind":"action"},{"paragraph":3381,"text":"tried not to be selfish","id":"8122:4","range":[4,23],"decidedBy":"rules","sentence":8122,"reference":{"sentence":8063,"text":"Men are very selfish, even the best of them.”","range":[178,45],"paragraph":3357},"kind":"action"},{"paragraph":3381,"text":"when young married people are apt to grow apart","id":"8123:98","range":[98,47],"decidedBy":"rules","sentence":8123,"reference":{"text":"In France the young girls have a dull time of it till they are married, when ‘Vive la liberte!’","range":[0,95],"sentence":8024,"paragraph":3347},"kind":"thing"},{"paragraph":3383,"text":"ordered a nice supper","id":"8134:98","range":[98,21],"decidedBy":"rules","sentence":8134,"reference":{"text":"The parlor was always bright and attractive, the chessboard ready, the piano in tune, plenty of gay gossip, and a nice little supper set forth in tempting style.","range":[739,161],"sentence":8045,"paragraph":3350},"kind":"action"},{"paragraph":3383,"text":"set the parlor in order","id":"8134:121","range":[121,23],"decidedBy":"rules","sentence":8134,"reference":{"text":"The parlor was always bright and attractive, the chessboard ready, the piano in tune, plenty of gay gossip, and a nice little supper set forth in tempting style.","range":[739,161],"sentence":8045,"paragraph":3350},"kind":"action"},{"paragraph":3398,"text":"must go to bed, and not trouble poor Mamma","id":"8163:31","range":[31,42],"decidedBy":"rules","sentence":8163,"reference":{"text":"“Will Demi lie still like a good boy, while Mamma runs down and gives poor Papa his tea?”","range":[0,89],"sentence":8137,"paragraph":3384},"kind":"action"},{"paragraph":3402,"text":"gave him a lump of sugar","id":"8170:62","range":[62,24],"decidedBy":"rules","sentence":8170,"reference":{"text":"Then you can have the little cake with sugar on it.”","range":[75,52],"sentence":8164,"paragraph":3398},"kind":"action"},{"text":"sucking his sugar","range":[42,17],"decidedBy":"rules","kind":"action","reference":{"text":"Then you can have the little cake with sugar on it.”","range":[75,52],"sentence":8164,"paragraph":3398},"paragraph":3403,"sentence":8172,"id":"8172:42"},{"text":"regarding his first attempt as eminently successful","range":[65,51],"decidedBy":"rules","kind":"action","reference":{"text":"Meg did think it over, found it good, and acted upon it, though the first attempt was not made exactly as she planned to have it.","range":[0,129],"sentence":8128,"paragraph":3382},"paragraph":3403,"sentence":8172,"id":"8172:65"},{"text":"get into your bed, as Mamma bids you","range":[41,36],"decidedBy":"rules","kind":"action","reference":{"text":"You must go to bed, and not trouble poor Mamma.","range":[27,47],"sentence":8163,"paragraph":3398},"paragraph":3407,"sentence":8181,"id":"8181:41"},{"text":"howled dismally for ‘Marmar","range":[1101,27],"decidedBy":"rules","kind":"action","reference":{"text":"Meg returned to her place, and supper was progressing pleasantly, when the little ghost walked again, and exposed the maternal delinquencies by boldly demanding, “More sudar, Marmar.”","range":[0,183],"sentence":8173,"paragraph":3404},"paragraph":3411,"sentence":8192,"id":"8192:1101"},{"text":"he’ll cry himself sick","range":[5,22],"decidedBy":"rules","kind":"feeling","reference":{"text":"You were poorly, and I worried about you till I fell sick myself.","range":[442,65],"sentence":8100,"paragraph":3375},"paragraph":3414,"sentence":8197,"id":"8197:5"},{"text":"won’t have his temper spoiled by indulgence","range":[22,43],"decidedBy":"rules","kind":"action","reference":{"text":"I nearly spoiled her by indulgence.","range":[406,35],"sentence":8099,"paragraph":3375},"paragraph":3417,"sentence":8201,"id":"8201:22"},{"text":"lay fast asleep, not in his usual spreadeagle attitude, but in a subdued bunch","range":[202,78],"decidedBy":"rules","kind":"action","reference":{"text":"So poor Meg sang and rocked, told stories and tried every sleep-prevoking wile she could devise, but all in vain, the big eyes wouldn’t shut, and long after Daisy had gone to byelow, like the chubby little bunch of good nature she was, naughty Demi lay staring at the light, with the most discouragingly wide-awake expression of countenance.","range":[384,341],"sentence":8136,"paragraph":3383},"paragraph":3424,"sentence":8212,"id":"8212:202"},{"text":"It’s a love of a bonnet","range":[1,23],"decidedBy":"rules","kind":"action","reference":{"text":"“My dear man, it’s a bonnet!","range":[0,28],"sentence":8223,"paragraph":3429},"paragraph":3432,"sentence":8228,"id":"8228:1"},{"text":"kissed the smiling face, to the great detriment of the rosebud under the chin","range":[102,77],"decidedBy":"rules","kind":"feeling","reference":{"text":"“These bits of lace are fastened under the chin with a rosebud, so,” and Meg illustrated by putting on the bonnet and regarding him with an air of calm satisfaction that was irresistible.","range":[0,187],"sentence":8227,"paragraph":3431},"paragraph":3432,"sentence":8228,"id":"8228:102"},{"text":"mind what John said","range":[6,19],"decidedBy":"rules","kind":"reaction","reference":{"text":"Don’t blame John till you see where you are wrong yourself.”","range":[15,60],"sentence":8065,"paragraph":3358},"paragraph":3436,"sentence":8238,"id":"8238:6"},{"text":"have any business to know is that John did not appear to object","range":[107,63],"decidedBy":"rules","kind":"thing","reference":{"text":"John saw in a minute that a revolution of some kind was going on, but wisely asked no questions, knowing that Meg was such a transparent little person, she couldn’t keep a secret to save her life, and therefore the clue would soon appear.","range":[243,238],"sentence":8217,"paragraph":3426},"paragraph":3436,"sentence":8239,"id":"8239:107"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "8041:41",
+      "sentence": 8041,
+      "paragraph": 3350,
+      "range": [
+        41,
+        39
+      ],
+      "text": "the children had bereft him of his wife",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8029,
+        "paragraph": 3349,
+        "range": [
+          0,
+          177
+        ],
+        "text": "As she was a womanly little woman, the maternal instinct was very strong, and she was entirely absorbed in her children, to the utter exclusion of everything and everybody else."
+      }
+    },
+    {
+      "id": "8041:112",
+      "sentence": 8041,
+      "paragraph": 3350,
+      "range": [
+        112,
+        23
+      ],
+      "text": "the perpetual ‘hushing’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8034,
+        "paragraph": 3349,
+        "range": [
+          839,
+          180
+        ],
+        "text": "When he went out in the morning he was bewildered by small commissions for the captive mamma, if he came gaily in at night, eager to embrace his family, he was quenched by a “Hush!"
+      }
+    },
+    {
+      "id": "8046:0",
+      "sentence": 8046,
+      "paragraph": 3351,
+      "range": [
+        0,
+        71
+      ],
+      "text": "John would have preferred his own fireside if it had not been so lonely",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8043,
+        "paragraph": 3350,
+        "range": [
+          388,
+          226
+        ],
+        "text": "Scott had married and gone to housekeeping not far off, and John fell into the way of running over for an hour or two of an evening, when his own parlor was empty, and his own wife singing lullabies that seemed to have no end."
+      }
+    },
+    {
+      "id": "8047:0",
+      "sentence": 8047,
+      "paragraph": 3352,
+      "range": [
+        0,
+        51
+      ],
+      "text": "Meg rather approved of the new arrangement at first",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8043,
+        "paragraph": 3350,
+        "range": [
+          388,
+          226
+        ],
+        "text": "Scott had married and gone to housekeeping not far off, and John fell into the way of running over for an hour or two of an evening, when his own parlor was empty, and his own wife singing lullabies that seemed to have no end."
+      }
+    },
+    {
+      "id": "8049:614",
+      "sentence": 8049,
+      "paragraph": 3352,
+      "range": [
+        614,
+        67
+      ],
+      "text": "entirely forgetting the many evenings he had waited for her in vain",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8036,
+        "paragraph": 3349,
+        "range": [
+          1066,
+          77
+        ],
+        "text": "If he proposed a little amusement at home, “No, it would disturb the babies.”"
+      }
+    },
+    {
+      "id": "8053:148",
+      "sentence": 8053,
+      "paragraph": 3353,
+      "range": [
+        148,
+        56
+      ],
+      "text": "goes to see his pretty neighbor, who has no incumbrances",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8044,
+        "paragraph": 3350,
+        "range": [
+          615,
+          123
+        ],
+        "text": "Mrs. Scott was a lively, pretty girl, with nothing to do but be agreeable, and she performed her mission most successfully."
+      }
+    },
+    {
+      "id": "8056:207",
+      "sentence": 8056,
+      "paragraph": 3354,
+      "range": [
+        207,
+        95
+      ],
+      "text": "as politics absorbed John, who was always running over to discuss interesting points with Scott",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8043,
+        "paragraph": 3350,
+        "range": [
+          388,
+          226
+        ],
+        "text": "Scott had married and gone to housekeeping not far off, and John fell into the way of running over for an hour or two of an evening, when his own parlor was empty, and his own wife singing lullabies that seemed to have no end."
+      }
+    },
+    {
+      "id": "8061:57",
+      "sentence": 8061,
+      "paragraph": 3357,
+      "range": [
+        57,
+        43
+      ],
+      "text": "he is continually going over to the Scotts’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8043,
+        "paragraph": 3350,
+        "range": [
+          388,
+          226
+        ],
+        "text": "Scott had married and gone to housekeeping not far off, and John fell into the way of running over for an hour or two of an evening, when his own parlor was empty, and his own wife singing lullabies that seemed to have no end."
+      }
+    },
+    {
+      "id": "8067:0",
+      "sentence": 8067,
+      "paragraph": 3360,
+      "range": [
+        0,
+        24
+      ],
+      "text": "“Don’t you neglect him?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8066,
+        "paragraph": 3359,
+        "range": [
+          0,
+          46
+        ],
+        "text": "“But it can’t be right for him to neglect me.”"
+      }
+    },
+    {
+      "id": "8083:0",
+      "sentence": 8083,
+      "paragraph": 3370,
+      "range": [
+        0,
+        21
+      ],
+      "text": "“I’m afraid it won’t.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8049,
+        "paragraph": 3352,
+        "range": [
+          494,
+          188
+        ],
+        "text": "She would not ask him to stay at home, but felt injured because he did not know that she wanted him without being told, entirely forgetting the many evenings he had waited for her in vain."
+      }
+    },
+    {
+      "id": "8089:0",
+      "sentence": 8089,
+      "paragraph": 3373,
+      "range": [
+        0,
+        57
+      ],
+      "text": "“Not all the time, too much confinement makes you nervous",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8050,
+        "paragraph": 3352,
+        "range": [
+          683,
+          176
+        ],
+        "text": "She was nervous and worn out with watching and worry, and in that unreasonable frame of mind which the best of mothers occasionally experience when domestic cares oppress them."
+      }
+    },
+    {
+      "id": "8118:159",
+      "sentence": 8118,
+      "paragraph": 3379,
+      "range": [
+        159,
+        44
+      ],
+      "text": "far more agreeable than Mrs. Scott’s suppers",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8045,
+        "paragraph": 3350,
+        "range": [
+          739,
+          161
+        ],
+        "text": "The parlor was always bright and attractive, the chessboard ready, the piano in tune, plenty of gay gossip, and a nice little supper set forth in tempting style."
+      }
+    },
+    {
+      "id": "8119:0",
+      "sentence": 8119,
+      "paragraph": 3380,
+      "range": [
+        0,
+        8
+      ],
+      "text": "“I will.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8080,
+        "paragraph": 3369,
+        "range": [
+          0,
+          126
+        ],
+        "text": "“You have only made the mistake that most young wives make—forgotten your duty to your husband in your love for your children."
+      }
+    },
+    {
+      "id": "8130:414",
+      "sentence": 8130,
+      "paragraph": 3382,
+      "range": [
+        414,
+        59
+      ],
+      "text": "an attempt at paternal discipline with his obstreperous son",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8108,
+        "paragraph": 3377,
+        "range": [
+          37,
+          145
+        ],
+        "text": "Well, dear, if I were you, I’d let John have more to do with the management of Demi, for the boy needs training, and it’s none too soon to begin."
+      }
+    },
+    {
+      "id": "8134:0",
+      "sentence": 8134,
+      "paragraph": 3383,
+      "range": [
+        0,
+        41
+      ],
+      "text": "A few days after the talk with her mother",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8127,
+        "paragraph": 3381,
+        "range": [
+          642,
+          85
+        ],
+        "text": "Think over Mother’s preachment, act upon it if it seems good, and God bless you all.”"
+      }
+    },
+    {
+      "id": "8135:276",
+      "sentence": 8135,
+      "paragraph": 3383,
+      "range": [
+        276,
+        60
+      ],
+      "text": "Demi’s most unconquerable prejudice was against going to bed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8132,
+        "paragraph": 3382,
+        "range": [
+          724,
+          137
+        ],
+        "text": "Mamma thought the dear too young to be taught to conquer his prejudices, but Papa believed that it never was too soon to learn obedience."
+      }
+    },
+    {
+      "id": "8145:118",
+      "sentence": 8145,
+      "paragraph": 3388,
+      "range": [
+        118,
+        65
+      ],
+      "text": "the little blue bow in her hair which was his especial admiration",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8134,
+        "paragraph": 3383,
+        "range": [
+          0,
+          257
+        ],
+        "text": "A few days after the talk with her mother, Meg resolved to try a social evening with John, so she ordered a nice supper, set the parlor in order, dressed herself prettily, and put the children to bed early, that nothing should interfere with her experiment."
+      }
+    },
+    {
+      "id": "8150:0",
+      "sentence": 8150,
+      "paragraph": 3391,
+      "range": [
+        0,
+        59
+      ],
+      "text": "“No, I’m tired of being dowdy, so I dressed up as a change.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8146,
+        "paragraph": 3388,
+        "range": [
+          185,
+          94
+        ],
+        "text": "He saw it at once and said with pleased surprise, “Why, little mother, how gay we are tonight."
+      }
+    },
+    {
+      "id": "8161:178",
+      "sentence": 8161,
+      "paragraph": 3397,
+      "range": [
+        178,
+        39
+      ],
+      "text": "eyeing the ‘cakies’ with loving glances",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8141,
+        "paragraph": 3386,
+        "range": [
+          0,
+          89
+        ],
+        "text": "“No, but I’ll save you some little cakies for breakfast, if you’ll go bye-bye like Daisy."
+      }
+    },
+    {
+      "id": "8171:0",
+      "sentence": 8171,
+      "paragraph": 3403,
+      "range": [
+        0,
+        6
+      ],
+      "text": "“Iss!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8143,
+        "paragraph": 3387,
+        "range": [
+          0,
+          6
+        ],
+        "text": "“Iss!”"
+      }
+    },
+    {
+      "id": "8173:162",
+      "sentence": 8173,
+      "paragraph": 3404,
+      "range": [
+        162,
+        21
+      ],
+      "text": "“More sudar, Marmar.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8170,
+        "paragraph": 3402,
+        "range": [
+          0,
+          158
+        ],
+        "text": "Nor was he disappointed, for that shortsighted woman actually gave him a lump of sugar, tucked him into his bed, and forbade any more promenades till morning."
+      }
+    },
+    {
+      "id": "8179:0",
+      "sentence": 8179,
+      "paragraph": 3406,
+      "range": [
+        0,
+        57
+      ],
+      "text": "“He won’t stay there, he never does unless I sit by him.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8136,
+        "paragraph": 3383,
+        "range": [
+          384,
+          341
+        ],
+        "text": "So poor Meg sang and rocked, told stories and tried every sleep-prevoking wile she could devise, but all in vain, the big eyes wouldn’t shut, and long after Daisy had gone to byelow, like the chubby little bunch of good nature she was, naughty Demi lay staring at the light, with the most discouragingly wide-awake expression of countenance."
+      }
+    },
+    {
+      "id": "8183:34",
+      "sentence": 8183,
+      "paragraph": 3408,
+      "range": [
+        34,
+        38
+      ],
+      "text": "helping himself to the coveted ‘cakie’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8164,
+        "paragraph": 3398,
+        "range": [
+          75,
+          52
+        ],
+        "text": "Then you can have the little cake with sugar on it.”"
+      }
+    },
+    {
+      "id": "8194:0",
+      "sentence": 8194,
+      "paragraph": 3412,
+      "range": [
+        0,
+        48
+      ],
+      "text": "“Let me stay with him, he’ll be good now, John.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8187,
+        "paragraph": 3411,
+        "range": [
+          0,
+          216
+        ],
+        "text": "But even that refuge proved unavailing, for he was delivered over to the enemy, with a “Be gentle with him, John,” which struck the culprit with dismay, for when Mamma deserted him, then the judgment day was at hand."
+      }
+    },
+    {
+      "id": "8201:20",
+      "sentence": 8201,
+      "paragraph": 3417,
+      "range": [
+        20,
+        45
+      ],
+      "text": "I won’t have his temper spoiled by indulgence",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8099,
+        "paragraph": 3375,
+        "range": [
+          406,
+          35
+        ],
+        "text": "I nearly spoiled her by indulgence."
+      }
+    },
+    {
+      "id": "8203:0",
+      "sentence": 8203,
+      "paragraph": 3418,
+      "range": [
+        0,
+        57
+      ],
+      "text": "When John spoke in that masterful tone, Meg always obeyed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8107,
+        "paragraph": 3377,
+        "range": [
+          0,
+          36
+        ],
+        "text": "“You always were my docile daughter."
+      }
+    },
+    {
+      "id": "8214:131",
+      "sentence": 8214,
+      "paragraph": 3425,
+      "range": [
+        131,
+        62
+      ],
+      "text": "“I never need fear that John will be too harsh with my babies.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8200,
+        "paragraph": 3416,
+        "range": [
+          0,
+          65
+        ],
+        "text": "“He’s my child, and I can’t have his spirit broken by harshness.”"
+      }
+    },
+    {
+      "id": "8216:168",
+      "sentence": 8216,
+      "paragraph": 3426,
+      "range": [
+        168,
+        48
+      ],
+      "text": "the request to read something about the election",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8113,
+        "paragraph": 3377,
+        "range": [
+          577,
+          140
+        ],
+        "text": "Then I’d try to take an interest in whatever John likes—talk with him, let him read to you, exchange ideas, and help each other in that way."
+      }
+    },
+    {
+      "id": "8219:780",
+      "sentence": 8219,
+      "paragraph": 3426,
+      "range": [
+        780,
+        52
+      ],
+      "text": "she decided that politics were as bad as mathematics",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8115,
+        "paragraph": 3378,
+        "range": [
+          0,
+          104
+        ],
+        "text": "“John is so sensible, I’m afraid he will think I’m stupid if I ask questions about politics and things.”"
+      }
+    },
+    {
+      "id": "8221:0",
+      "sentence": 8221,
+      "paragraph": 3428,
+      "range": [
+        0,
+        43
+      ],
+      "text": "“She is trying to like politics for my sake",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8218,
+        "paragraph": 3426,
+        "range": [
+          482,
+          268
+        ],
+        "text": "He read a long debate with the most amiable readiness and then explained it in his most lucid manner, while Meg tried to look deeply interested, to ask intelligent questions, and keep her thoughts from wandering from the state of the nation to the state of her bonnet."
+      }
+    },
+    {
+      "id": "8223:0",
+      "sentence": 8223,
+      "paragraph": 3429,
+      "range": [
+        0,
+        28
+      ],
+      "text": "“My dear man, it’s a bonnet!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8216,
+        "paragraph": 3426,
+        "range": [
+          0,
+          242
+        ],
+        "text": "When John came down at last, expecting to find a pensive or reproachful wife, he was agreeably surprised to find Meg placidly trimming a bonnet, and to be greeted with the request to read something about the election, if he was not too tired."
+      }
+    },
+    {
+      "id": "8229:27",
+      "sentence": 8229,
+      "paragraph": 3433,
+      "range": [
+        27,
+        59
+      ],
+      "text": "I want you to take me to one of the new concerts some night",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8037,
+        "paragraph": 3349,
+        "range": [
+          1144,
+          135
+        ],
+        "text": "If he hinted at a lecture or a concert, he was answered with a reproachful look, and a decided—“Leave my children for pleasure, never!”"
+      }
+    },
+    {
+      "id": "8235:0",
+      "sentence": 8235,
+      "paragraph": 3435,
+      "range": [
+        0,
+        45
+      ],
+      "text": "“Well, I had a talk with Marmee the other day",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8057,
+        "paragraph": 3354,
+        "range": [
+          343,
+          181
+        ],
+        "text": "Not a word did she say, however, till her mother found her in tears one day, and insisted on knowing what the matter was, for Meg’s drooping spirits had not escaped her observation."
+      }
+    },
+    {
+      "id": "8235:151",
+      "sentence": 8235,
+      "paragraph": 3435,
+      "range": [
+        151,
+        41
+      ],
+      "text": "so Hannah is to help me with the children",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8109,
+        "paragraph": 3377,
+        "range": [
+          183,
+          69
+        ],
+        "text": "Then I’d do what I have often proposed, let Hannah come and help you."
+      }
+    },
+    {
+      "id": "8241:350",
+      "sentence": 8241,
+      "paragraph": 3436,
+      "range": [
+        350,
+        43
+      ],
+      "text": "The children throve under the paternal rule",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8125,
+        "paragraph": 3381,
+        "range": [
+          395,
+          226
+        ],
+        "text": "Don’t let John be a stranger to the babies, for they will do more to keep him safe and happy in this world of trial and temptation than anything else, and through them you will learn to know and love one another as you should."
+      }
+    },
+    {
+      "id": "8243:725",
+      "sentence": 8243,
+      "paragraph": 3436,
+      "range": [
+        725,
+        35
+      ],
+      "text": "The Scotts came to the Brookes’ now",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8061,
+        "paragraph": 3357,
+        "range": [
+          0,
+          101
+        ],
+        "text": "“He’s away all day, and at night when I want to see him, he is continually going over to the Scotts’."
+      }
+    },
+    {
+      "id": "8247:276",
+      "sentence": 8247,
+      "paragraph": 3437,
+      "range": [
+        276,
+        81
+      ],
+      "text": "This is the sort of shelf on which young wives and mothers may consent to be laid",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8027,
+        "paragraph": 3347,
+        "range": [
+          407,
+          265
+        ],
+        "text": "Whether they like it or not, they are virtually put upon the shelf as soon as the wedding excitement is over, and most of them might exclaim, as did a very pretty woman the other day, “I’m as handsome as ever, but no one takes any notice of me because I’m married.”"
+      }
+    }
+  ]
+}

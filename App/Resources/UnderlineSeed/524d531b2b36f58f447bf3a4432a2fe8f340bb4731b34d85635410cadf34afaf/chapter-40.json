@@ -1,1 +1,111 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "548:90",
+      "sentence": 548,
+      "paragraph": 292,
+      "range": [
+        90,
+        51
+      ],
+      "text": "the easiness, openness, and ductility of his temper",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 542,
+        "paragraph": 289,
+        "range": [
+          165,
+          335
+        ],
+        "text": "Mr. Bingley intended it likewise, and sometimes made choice of his county; but, as he was now provided with a good house and the liberty of a manor, it was doubtful to many of those who best knew the easiness of his temper, whether he might not spend the remainder of his days at Netherfield, and leave the next generation to purchase."
+      }
+    },
+    {
+      "id": "556:88",
+      "sentence": 556,
+      "paragraph": 293,
+      "range": [
+        88,
+        62
+      ],
+      "text": "Bingley had never met with pleasanter people or prettier girls",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 554,
+        "paragraph": 292,
+        "range": [
+          640,
+          91
+        ],
+        "text": "Bingley was sure of being liked wherever he appeared; Darcy was continually giving offence."
+      }
+    },
+    {
+      "id": "556:328",
+      "sentence": 556,
+      "paragraph": 293,
+      "range": [
+        328,
+        45
+      ],
+      "text": "he could not conceive an angel more beautiful",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 518,
+        "paragraph": 281,
+        "range": [
+          0,
+          65
+        ],
+        "text": "were about five times as pretty as every other woman in the room."
+      }
+    },
+    {
+      "id": "557:375",
+      "sentence": 557,
+      "paragraph": 293,
+      "range": [
+        375,
+        55
+      ],
+      "text": "Darcy, on the contrary, had seen a collection of people",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 554,
+        "paragraph": 292,
+        "range": [
+          640,
+          91
+        ],
+        "text": "Bingley was sure of being liked wherever he appeared; Darcy was continually giving offence."
+      }
+    },
+    {
+      "id": "559:47",
+      "sentence": 559,
+      "paragraph": 294,
+      "range": [
+        47,
+        40
+      ],
+      "text": "but still they admired her and liked her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 534,
+        "paragraph": 286,
+        "range": [
+          0,
+          87
+        ],
+        "text": "“Certainly not, at first; but they are very pleasing women when you converse with them."
+      }
+    }
+  ]
+}

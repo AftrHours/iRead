@@ -1,1 +1,510 @@
-{"underlines":[{"paragraph":2287,"decidedBy":"rules","text":"did in many things, but the quiet scholar","range":[76,41],"sentence":5278,"id":"5278:76","kind":"action","reference":{"sentence":5274,"text":"Earnest young men found the gray-headed scholar as young at heart as they; thoughtful or troubled women instinctively brought their doubts to him, sure of finding the gentlest sympathy, the wisest counsel.","range":[307,205],"paragraph":2286}},{"paragraph":2291,"decidedBy":"rules","text":"had her girlish ambitions and hopes","range":[170,35],"sentence":5286,"id":"5286:170","kind":"thing","reference":{"sentence":5277,"text":"Ambitious men caught glimpses of nobler ambitions than their own, and even worldlings confessed that his beliefs were beautiful and true, although ‘they wouldn’t pay’.","range":[635,167],"paragraph":2286}},{"paragraph":2305,"decidedBy":"rules","text":"had a servant","range":[13,13],"sentence":5330,"id":"5330:13","kind":"thing","reference":{"sentence":5310,"text":"To be sure, the hall was so narrow it was fortunate that they had no piano, for one never could have been got in whole, the dining room was so small that six people were a tight fit, and the kitchen stairs seemed built for the express purpose of precipitating both servants and china pell-mell into the coalbin.","range":[843,311],"paragraph":2297}},{"paragraph":2305,"decidedBy":"rules","text":"coming out of the parlor","range":[68,24],"sentence":5330,"id":"5330:68","kind":"action","reference":{"sentence":5312,"text":"There were no marble-topped tables, long mirrors, or lace curtains in the little parlor, but simple furniture, plenty of books, a fine picture or two, a stand of flowers in the bay window, and, scattered all about, the pretty gifts which came from friendly hands and were the fairer for the loving messages they brought.","range":[1339,320],"paragraph":2297}},{"paragraph":2309,"decidedBy":"rules","text":"give orders, and gossip","range":[313,23],"sentence":5337,"id":"5337:313","kind":"action","reference":{"sentence":5269,"text":"In order that we may start afresh and go to Meg’s wedding with free minds, it will be well to begin with a little gossip about the Marches.","range":[0,139],"paragraph":2284}},{"paragraph":2309,"decidedBy":"rules","text":"tending my pocket handkerchief","range":[521,30],"sentence":5338,"id":"5338:521","kind":"action","reference":{"sentence":5307,"text":"It was a tiny house, with a little garden behind and a lawn about as big as a pocket handkerchief in the front.","range":[255,111],"paragraph":2297}},{"paragraph":2310,"decidedBy":"rules","text":"didn’t you go into the kitchen","range":[5,30],"sentence":5339,"id":"5339:5","kind":"reaction","reference":{"sentence":5310,"text":"To be sure, the hall was so narrow it was fortunate that they had no piano, for one never could have been got in whole, the dining room was so small that six people were a tight fit, and the kitchen stairs seemed built for the express purpose of precipitating both servants and china pell-mell into the coalbin.","range":[843,311],"paragraph":2297}},{"paragraph":2310,"decidedBy":"rules","text":"turn out well and the servants laugh at her","range":[113,43],"sentence":5339,"id":"5339:113","kind":"action","reference":{"sentence":5310,"text":"To be sure, the hall was so narrow it was fortunate that they had no piano, for one never could have been got in whole, the dining room was so small that six people were a tight fit, and the kitchen stairs seemed built for the express purpose of precipitating both servants and china pell-mell into the coalbin.","range":[843,311],"paragraph":2297}},{"paragraph":2311,"decidedBy":"rules","text":"did after a while, not to ‘mess","range":[3,31],"sentence":5340,"id":"5340:3","kind":"action","reference":{"sentence":5339,"text":"“Why didn’t you go into the kitchen and make messes, as Sallie says she does to amuse herself, though they never turn out well and the servants laugh at her,” said Meg.","range":[0,168],"paragraph":2310}},{"paragraph":2311,"decidedBy":"rules","text":"that my servants need not laugh at me","range":[86,37],"sentence":5340,"id":"5340:86","kind":"feeling","reference":{"sentence":5339,"text":"“Why didn’t you go into the kitchen and make messes, as Sallie says she does to amuse herself, though they never turn out well and the servants laugh at her,” said Meg.","range":[0,168],"paragraph":2310}},{"paragraph":2313,"decidedBy":"rules","text":"was a joke","range":[153,10],"sentence":5346,"id":"5346:153","kind":"thing","reference":{"sentence":5318,"text":"In his love of jokes, this young gentleman, though nearly through college, was a much of a boy as ever.","range":[178,103],"paragraph":2300}},{"paragraph":2315,"decidedBy":"rules","text":"haven’t a single finger bowl","range":[3,28],"sentence":5352,"id":"5352:3","kind":"thing","reference":{"paragraph":2314,"range":[52,226],"text":"I had a young friend who set up housekeeping with six sheets, but she had finger bowls for company and that satisfied her,” said Mrs. March, patting the damask tablecloths, with a truly feminine appreciation of their fineness.","sentence":5351}},{"paragraph":2320,"decidedBy":"rules","text":"stared at Jo’s big pinafore","range":[86,27],"sentence":5362,"id":"5362:86","kind":"action","reference":{"paragraph":2308,"range":[0,204],"text":"“If Meg had four, the house wouldn’t hold them, and master and missis would have to camp in the garden,” broke in Jo, who, enveloped in a big blue pinafore, was giving the last polish to the door handles.","sentence":5334}},{"paragraph":2332,"decidedBy":"rules","text":"I’m doing my best, ma’am","range":[1,24],"sentence":5385,"id":"5385:1","kind":"action","reference":{"paragraph":2322,"range":[0,49],"text":"“Stopped to get the license for tomorrow, ma’am.”","sentence":5365}},{"paragraph":2337,"decidedBy":"rules","text":"want to talk seriously to you about tomorrow","range":[15,44],"sentence":5393,"id":"5393:15","kind":"action","reference":{"paragraph":2322,"range":[0,49],"text":"“Stopped to get the license for tomorrow, ma’am.”","sentence":5365}},{"paragraph":2356,"decidedBy":"rules","text":"stuffed it into his pocket","range":[267,26],"sentence":5429,"id":"5429:267","kind":"action","reference":{"paragraph":2297,"range":[255,111],"text":"It was a tiny house, with a little garden behind and a lawn about as big as a pocket handkerchief in the front.","sentence":5307}},{"paragraph":2357,"decidedBy":"rules","text":"I’ll get myself up regardless of expense tomorrow","range":[125,49],"sentence":5432,"id":"5432:125","kind":"action","reference":{"paragraph":2322,"range":[0,49],"text":"“Stopped to get the license for tomorrow, ma’am.”","sentence":5365}},{"kind":"action","id":"5444:24","text":"don’t know what we are coming to, ma’am","range":[24,39],"reference":{"paragraph":2322,"range":[0,49],"text":"“Stopped to get the license for tomorrow, ma’am.”","sentence":5365},"sentence":5444,"decidedBy":"rules","paragraph":2362},{"kind":"thing","id":"5448:103","text":"should always be one old maid in a family","range":[103,41],"reference":{"paragraph":2309,"range":[0,91],"text":"“Sallie isn’t a poor man’s wife, and many maids are in keeping with her fine establishment.","sentence":5335},"sentence":5448,"decidedBy":"rules","paragraph":2363},{"kind":"action","id":"5456:125","text":"parted at the gate","range":[125,18],"reference":{"paragraph":2316,"range":[0,271],"text":"A tall, broad-shouldered young fellow, with a cropped head, a felt basin of a hat, and a flyaway coat, came tramping down the road at a great pace, walked over the low fence without stopping to open the gate, straight up to Mrs. March, with both hands out and a hearty...","sentence":5354},"sentence":5456,"decidedBy":"rules","paragraph":2366}],"parserVersion":1,"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5305:21",
+      "sentence": 5305,
+      "paragraph": 2297,
+      "range": [
+        21,
+        67
+      ],
+      "text": "the little brown house Mr. Brooke had prepared for Meg’s first home",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5288,
+        "paragraph": 2291,
+        "range": [
+          490,
+          361
+        ],
+        "text": "But somehow envy and discontent soon vanished when she thought of all the patient love and labor John had put into the little home awaiting her, and when they sat together in the twilight, talking over their small plans, the future always grew so beautiful and bright that she forgot Sallie’s splendor and felt herself the richest, happiest girl in Christendom."
+      }
+    },
+    {
+      "id": "5333:1",
+      "sentence": 5333,
+      "paragraph": 2307,
+      "range": [
+        1,
+        22
+      ],
+      "text": "Sallie Moffat has four",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5287,
+        "paragraph": 2291,
+        "range": [
+          288,
+          201
+        ],
+        "text": "Ned Moffat had just married Sallie Gardiner, and Meg couldn’t help contrasting their fine house and carriage, many gifts, and splendid outfit with her own, and secretly wishing she could have the same."
+      }
+    },
+    {
+      "id": "5335:1",
+      "sentence": 5335,
+      "paragraph": 2309,
+      "range": [
+        1,
+        30
+      ],
+      "text": "Sallie isn’t a poor man’s wife",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5287,
+        "paragraph": 2291,
+        "range": [
+          288,
+          201
+        ],
+        "text": "Ned Moffat had just married Sallie Gardiner, and Meg couldn’t help contrasting their fine house and carriage, many gifts, and splendid outfit with her own, and secretly wishing she could have the same."
+      }
+    },
+    {
+      "id": "5336:92",
+      "sentence": 5336,
+      "paragraph": 2309,
+      "range": [
+        92,
+        25
+      ],
+      "text": "Meg and John begin humbly",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5286,
+        "paragraph": 2291,
+        "range": [
+          166,
+          121
+        ],
+        "text": "She had her girlish ambitions and hopes, and felt some disappointment at the humble way in which the new life must begin."
+      }
+    },
+    {
+      "id": "5336:159",
+      "sentence": 5336,
+      "paragraph": 2309,
+      "range": [
+        159,
+        61
+      ],
+      "text": "quite as much happiness in the little house as in the big one",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5288,
+        "paragraph": 2291,
+        "range": [
+          490,
+          361
+        ],
+        "text": "But somehow envy and discontent soon vanished when she thought of all the patient love and labor John had put into the little home awaiting her, and when they sat together in the twilight, talking over their small plans, the future always grew so beautiful and bright that she forgot Sallie’s splendor and felt herself the richest, happiest girl in Christendom."
+      }
+    },
+    {
+      "id": "5354:39",
+      "sentence": 5354,
+      "paragraph": 2316,
+      "range": [
+        39,
+        42
+      ],
+      "text": "with a cropped head, a felt basin of a hat",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5297,
+        "paragraph": 2295,
+        "range": [
+          0,
+          253
+        ],
+        "text": "Being only ‘a glorious human boy’, of course he frolicked and flirted, grew dandified, aquatic, sentimental, or gymnastic, as college fashions ordained, hazed and was hazed, talked slang, and more than once came perilously near suspension and expulsion."
+      }
+    },
+    {
+      "id": "5355:1",
+      "sentence": 5355,
+      "paragraph": 2317,
+      "range": [
+        1,
+        18
+      ],
+      "text": "Here I am, Mother!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5296,
+        "paragraph": 2294,
+        "range": [
+          145,
+          583
+        ],
+        "text": "A universal favorite, thanks to money, manners, much talent, and the kindest heart that ever got its owner into scrapes by trying to get other people out of them, he stood in great danger of being spoiled, and probably would have been, like many another promising boy, if he had not possessed a talisman against evil in the memory of the kind old man who was bound up in his success, the motherly friend who watched over him as if he were her son, and last, but not least by any means, the knowledge that four innocent girls loved, admired, and believed in him with all their hearts."
+      }
+    },
+    {
+      "id": "5361:131",
+      "sentence": 5361,
+      "paragraph": 2319,
+      "range": [
+        131,
+        62
+      ],
+      "text": "Amy, you are getting altogether too handsome for a single lady",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5301,
+        "paragraph": 2296,
+        "range": [
+          0,
+          175
+        ],
+        "text": "Amy especially enjoyed this high honor, and became quite a belle among them, for her ladyship early felt and learned to use the gift of fascination with which she was endowed."
+      }
+    },
+    {
+      "id": "5362:86",
+      "sentence": 5362,
+      "paragraph": 2320,
+      "range": [
+        86,
+        27
+      ],
+      "text": "stared at Jo’s big pinafore",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5334,
+        "paragraph": 2308,
+        "range": [
+          0,
+          204
+        ],
+        "text": "“If Meg had four, the house wouldn’t hold them, and master and missis would have to camp in the garden,” broke in Jo, who, enveloped in a big blue pinafore, was giving the last polish to the door handles."
+      }
+    },
+    {
+      "id": "5366:1",
+      "sentence": 5366,
+      "paragraph": 2323,
+      "range": [
+        1,
+        37
+      ],
+      "text": "Which side won the last match, Teddy?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5302,
+        "paragraph": 2296,
+        "range": [
+          176,
+          415
+        ],
+        "text": "Meg was too much absorbed in her private and particular John to care for any other lords of creation, and Beth too shy to do more than peep at them and wonder how Amy dared to order them about so, but Jo felt quite in her own element, and found it very difficult to refrain from imitating the gentlemanly attitudes, phrases, and feats, which seemed more natural to her than the decorums prescribed for young ladies."
+      }
+    },
+    {
+      "id": "5370:1",
+      "sentence": 5370,
+      "paragraph": 2325,
+      "range": [
+        1,
+        30
+      ],
+      "text": "How is the lovely Miss Randal?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5297,
+        "paragraph": 2295,
+        "range": [
+          0,
+          253
+        ],
+        "text": "Being only ‘a glorious human boy’, of course he frolicked and flirted, grew dandified, aquatic, sentimental, or gymnastic, as college fashions ordained, hazed and was hazed, talked slang, and more than once came perilously near suspension and expulsion."
+      }
+    },
+    {
+      "id": "5375:1",
+      "sentence": 5375,
+      "paragraph": 2327,
+      "range": [
+        1,
+        21
+      ],
+      "text": "What’s the last joke?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5319,
+        "paragraph": 2300,
+        "range": [
+          282,
+          128
+        ],
+        "text": "His last whim had been to bring with him on his weekly visits some new, useful, and ingenious article for the young housekeeper."
+      }
+    },
+    {
+      "id": "5377:88",
+      "sentence": 5377,
+      "paragraph": 2328,
+      "range": [
+        88,
+        31
+      ],
+      "text": "as a watchman’s rattle appeared",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5324,
+        "paragraph": 2301,
+        "range": [
+          196,
+          41
+        ],
+        "text": "So each week beheld some fresh absurdity."
+      }
+    },
+    {
+      "id": "5384:1",
+      "sentence": 5384,
+      "paragraph": 2331,
+      "range": [
+        1,
+        41
+      ],
+      "text": "I wonder if you will ever grow up, Laurie",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5318,
+        "paragraph": 2300,
+        "range": [
+          178,
+          103
+        ],
+        "text": "In his love of jokes, this young gentleman, though nearly through college, was a much of a boy as ever."
+      }
+    },
+    {
+      "id": "5392:99",
+      "sentence": 5392,
+      "paragraph": 2336,
+      "range": [
+        99,
+        42
+      ],
+      "text": "Don’t take off your apron, whatever you do",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5362,
+        "paragraph": 2320,
+        "range": [
+          0,
+          224
+        ],
+        "text": "As Laurie spoke, he delivered a brown paper parcel to Meg, pulled Beth’s hair ribbon, stared at Jo’s big pinafore, and fell into an attitude of mock rapture before Amy, then shook hands all round, and everyone began to talk."
+      }
+    },
+    {
+      "id": "5411:12",
+      "sentence": 5411,
+      "paragraph": 2347,
+      "range": [
+        12,
+        62
+      ],
+      "text": "have you got into a scrape and want to know how he’ll take it?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5297,
+        "paragraph": 2295,
+        "range": [
+          0,
+          253
+        ],
+        "text": "Being only ‘a glorious human boy’, of course he frolicked and flirted, grew dandified, aquatic, sentimental, or gymnastic, as college fashions ordained, hazed and was hazed, talked slang, and more than once came perilously near suspension and expulsion."
+      }
+    },
+    {
+      "id": "5413:10",
+      "sentence": 5413,
+      "paragraph": 2348,
+      "range": [
+        10,
+        65
+      ],
+      "text": "do you think I’d look your mother in the face and say ‘All right’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5355,
+        "paragraph": 2317,
+        "range": [
+          0,
+          19
+        ],
+        "text": "“Here I am, Mother!"
+      }
+    },
+    {
+      "id": "5420:1",
+      "sentence": 5420,
+      "paragraph": 2353,
+      "range": [
+        1,
+        63
+      ],
+      "text": "You are so generous and kind-hearted that you let people borrow",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5296,
+        "paragraph": 2294,
+        "range": [
+          145,
+          583
+        ],
+        "text": "A universal favorite, thanks to money, manners, much talent, and the kindest heart that ever got its owner into scrapes by trying to get other people out of them, he stood in great danger of being spoiled, and probably would have been, like many another promising boy, if he had not possessed a talisman against evil in the memory of the kind old man who was bound up in his success, the motherly friend who watched over him as if he were her son, and last, but not least by any means, the knowledge that four innocent girls loved, admired, and believed in him with all their hearts."
+      }
+    },
+    {
+      "id": "5426:135",
+      "sentence": 5426,
+      "paragraph": 2355,
+      "range": [
+        135,
+        41
+      ],
+      "text": "I thought you’d got over the dandy period",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5297,
+        "paragraph": 2295,
+        "range": [
+          0,
+          253
+        ],
+        "text": "Being only ‘a glorious human boy’, of course he frolicked and flirted, grew dandified, aquatic, sentimental, or gymnastic, as college fashions ordained, hazed and was hazed, talked slang, and more than once came perilously near suspension and expulsion."
+      }
+    },
+    {
+      "id": "5429:73",
+      "sentence": 5429,
+      "paragraph": 2356,
+      "range": [
+        73,
+        42
+      ],
+      "text": "the felt hat fell off, and Jo walked on it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5354,
+        "paragraph": 2316,
+        "range": [
+          0,
+          271
+        ],
+        "text": "A tall, broad-shouldered young fellow, with a cropped head, a felt basin of a hat, and a flyaway coat, came tramping down the road at a great pace, walked over the low fence without stopping to open the gate, straight up to Mrs. March, with both hands out and a hearty..."
+      }
+    },
+    {
+      "id": "5435:157",
+      "sentence": 5435,
+      "paragraph": 2359,
+      "range": [
+        157,
+        65
+      ],
+      "text": "a handsome curly crop to the demand for quarter-inch-long stubble",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5354,
+        "paragraph": 2316,
+        "range": [
+          0,
+          271
+        ],
+        "text": "A tall, broad-shouldered young fellow, with a cropped head, a felt basin of a hat, and a flyaway coat, came tramping down the road at a great pace, walked over the low fence without stopping to open the gate, straight up to Mrs. March, with both hands out and a hearty..."
+      }
+    },
+    {
+      "id": "5436:30",
+      "sentence": 5436,
+      "paragraph": 2360,
+      "range": [
+        30,
+        51
+      ],
+      "text": "little Parker is really getting desperate about Amy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5303,
+        "paragraph": 2296,
+        "range": [
+          592,
+          158
+        ],
+        "text": "They all liked Jo immensely, but never fell in love with her, though very few escaped without paying the tribute of a sentimental sigh or two at Amy’s shrine."
+      }
+    },
+    {
+      "id": "5448:54",
+      "sentence": 5448,
+      "paragraph": 2363,
+      "range": [
+        54,
+        19
+      ],
+      "text": "Nobody will want me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5303,
+        "paragraph": 2296,
+        "range": [
+          592,
+          158
+        ],
+        "text": "They all liked Jo immensely, but never fell in love with her, though very few escaped without paying the tribute of a sentimental sigh or two at Amy’s shrine."
+      }
+    },
+    {
+      "id": "5456:146",
+      "sentence": 5456,
+      "paragraph": 2366,
+      "range": [
+        146,
+        34
+      ],
+      "text": "Mark my words, Jo, you’ll go next.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5445,
+        "paragraph": 2362,
+        "range": [
+          65,
+          140
+        ],
+        "text": "You are a mere infant, but you’ll go next, Jo, and we’ll be left lamenting,” said Laurie, shaking his head over the degeneracy of the times."
+      }
+    }
+  ]
+}

@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3916:14",
+      "sentence": 3916,
+      "paragraph": 1658,
+      "range": [
+        14,
+        37
+      ],
+      "text": "She had got rid of two of the secrets",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3847,
+        "paragraph": 1630,
+        "range": [
+          0,
+          304
+        ],
+        "text": "ELIZABETH’S impatience to acquaint Jane with what had happened could no longer be overcome; and at length resolving to suppress every particular in which her sister was concerned, and preparing her to be surprised, she related to her the next morning the chief of the scene between Mr. Darcy and herself."
+      }
+    },
+    {
+      "id": "3918:278",
+      "sentence": 3918,
+      "paragraph": 1658,
+      "range": [
+        278,
+        57
+      ],
+      "text": "She dared not relate the other half of Mr. Darcy’s letter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3847,
+        "paragraph": 1630,
+        "range": [
+          0,
+          304
+        ],
+        "text": "ELIZABETH’S impatience to acquaint Jane with what had happened could no longer be overcome; and at length resolving to suppress every particular in which her sister was concerned, and preparing her to be surprised, she related to her the next morning the chief of the scene between Mr. Darcy and herself."
+      }
+    },
+    {
+      "id": "3924:121",
+      "sentence": 3924,
+      "paragraph": 1659,
+      "range": [
+        121,
+        56
+      ],
+      "text": "She still cherished a very tender affection for Bingley.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3918,
+        "paragraph": 1658,
+        "range": [
+          278,
+          133
+        ],
+        "text": "She dared not relate the other half of Mr. Darcy’s letter, nor explain to her sister how sincerely she had been valued by his friend."
+      }
+    }
+  ]
+}

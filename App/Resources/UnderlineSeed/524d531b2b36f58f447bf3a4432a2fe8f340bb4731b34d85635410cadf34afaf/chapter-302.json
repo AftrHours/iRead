@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4133:281",
+      "sentence": 4133,
+      "paragraph": 1739,
+      "range": [
+        281,
+        76
+      ],
+      "text": "To the little town of Lambton, the scene of Mrs. Gardiner’s former residence",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4118,
+        "paragraph": 1733,
+        "range": [
+          520,
+          234
+        ],
+        "text": "The town where she had formerly passed some years of her life, and where they were now to spend a few days, was probably as great an object of her curiosity as all the celebrated beauties of Matlock, Chatsworth, Dovedale, or the Peak."
+      }
+    },
+    {
+      "id": "4133:548",
+      "sentence": 4133,
+      "paragraph": 1739,
+      "range": [
+        548,
+        59
+      ],
+      "text": "Elizabeth found, from her aunt, that Pemberley was situated",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4122,
+        "paragraph": 1735,
+        "range": [
+          65,
+          86
+        ],
+        "text": "It was impossible for her to see the word without thinking of Pemberley and its owner."
+      }
+    }
+  ]
+}

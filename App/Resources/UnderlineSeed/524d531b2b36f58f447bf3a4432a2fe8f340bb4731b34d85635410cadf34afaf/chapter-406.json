@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5679:29",
+      "sentence": 5679,
+      "paragraph": 2300,
+      "range": [
+        29,
+        56
+      ],
+      "text": "she was the better able to bear her husband’s incivility",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5671,
+        "paragraph": 2298,
+        "range": [
+          0,
+          39
+        ],
+        "text": "“’Tis an etiquette I despise,” said he."
+      }
+    }
+  ]
+}

@@ -1,1 +1,531 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"sentence":4140,"reference":{"sentence":4128,"text":"How dark the days seemed now, how sad and lonely the house, and how heavy were the hearts of the sisters as they worked and waited, while the shadow of death hovered over the once happy home.","paragraph":1823,"range":[0,191]},"kind":"thing","paragraph":1825,"range":[108,34],"id":"4140:108","decidedBy":"rules","text":"seemed getting ready for its death"},{"sentence":4141,"reference":{"sentence":4139,"text":"Dr. Bangs came twice a day, Hannah sat up at night, Meg kept a telegram in her desk all ready to send off at any minute, and Jo never stirred from Beth’s side.","paragraph":1824,"range":[663,159]},"kind":"thing","paragraph":1825,"range":[144,32],"id":"4141:144","decidedBy":"rules","text":"When Dr. Bangs came that morning"},{"sentence":4142,"reference":{"sentence":4139,"text":"Dr. Bangs came twice a day, Hannah sat up at night, Meg kept a telegram in her desk all ready to send off at any minute, and Jo never stirred from Beth’s side.","paragraph":1824,"range":[663,159]},"kind":"action","paragraph":1826,"range":[237,24],"id":"4142:237","decidedBy":"rules","text":"snatched up the telegram"},{"sentence":4145,"reference":{"sentence":4120,"text":"Beth did have the fever, and was much sicker than anyone but Hannah and the doctor suspected.","paragraph":1821,"range":[0,93]},"kind":"thing","paragraph":1826,"range":[606,13],"id":"4145:606","decidedBy":"rules","text":"Is Beth worse"},{"sentence":4159,"reference":{"sentence":4147,"text":"“Good for you, Jo!","paragraph":1828,"range":[0,18]},"kind":"action","paragraph":1832,"range":[227,23],"id":"4159:227","decidedBy":"rules","text":"Hold on to me, Jo, dear"},{"sentence":4182,"reference":{"sentence":4157,"text":"Mother and father both gone, and God seems so far away I can’t find Him.”","paragraph":1831,"range":[201,73]},"kind":"action","paragraph":1840,"range":[462,40],"id":"4182:462","decidedBy":"rules","text":"don’t believe God will take her away yet"},{"sentence":4185,"reference":{"sentence":4165,"text":"I don’t feel so forlorn, and will try to bear it if it comes.”","paragraph":1835,"range":[35,62]},"kind":"action","paragraph":1842,"range":[32,28],"id":"4185:32","decidedBy":"rules","text":"isn’t like you to be forlorn"},{"sentence":4204,"reference":{"sentence":4136,"text":"She longed for her cats, but would not have them brought, lest they should get sick, and in her quiet hours she was full of anxiety about Jo.","paragraph":1824,"range":[125,141]},"kind":"thing","paragraph":1848,"range":[179,30],"id":"4204:179","decidedBy":"rules","text":"which brought Jo round at once"},{"sentence":4221,"reference":{"sentence":4209,"text":"“Why, you see I got fidgety, and so did Grandpa.","paragraph":1849,"range":[55,48]},"kind":"thing","paragraph":1852,"range":[37,23],"id":"4221:37","decidedBy":"rules","text":"when your grandpa comes"},{"sentence":4227,"reference":{"sentence":4215,"text":"Your mother will come, I know, and the late train is in at two A.M. I shall go for her, and you’ve only got to bottle up your rapture, and keep Beth quiet till that blessed lady gets here.”","paragraph":1849,"range":[531,189]},"kind":"thing","paragraph":1855,"range":[4,19],"id":"4227:4","decidedBy":"rules","text":"had a quiet rapture"},{"sentence":4238,"reference":{"sentence":4157,"text":"Mother and father both gone, and God seems so far away I can’t find Him.”","paragraph":1831,"range":[201,73]},"kind":"action","paragraph":1855,"range":[1165,26],"id":"4238:1165","decidedBy":"rules","text":"trusting in God and Mother"},{"sentence":4241,"reference":{"sentence":4142,"text":"Hannah nodded without speaking, for her lips twitched nervously, Meg dropped down into a chair as the strength seemed to go out of her limbs at the sound of those words, and Jo, standing with a pale face for a minute, ran to the parlor, snatched up the telegram, and throwing on her things, rushed out into the storm.","paragraph":1826,"range":[0,317]},"kind":"action","paragraph":1856,"range":[98,32],"id":"4241:98","decidedBy":"rules","text":"marched to and fro in the parlor"},{"sentence":4259,"reference":{"sentence":4156,"text":"She doesn’t look like my Beth, and there’s nobody to help us bear it.","paragraph":1831,"range":[131,69]},"kind":"action","paragraph":1865,"range":[79,14],"id":"4259:79","decidedBy":"rules","text":"looked at Beth"},{"sentence":4265,"reference":{"sentence":4188,"text":"Laurie went off two stairs at a time, and Jo laid her wearied head down on Beth’s little brown hood, which no one had thought of moving from the table where she left it.","paragraph":1843,"range":[0,169]},"kind":"action","paragraph":1867,"range":[79,21],"id":"4265:79","decidedBy":"rules","text":"sitting on the stairs"},{"sentence":4266,"reference":{"sentence":4233,"text":"Every one rejoiced but Beth.","paragraph":1855,"range":[645,28]},"kind":"action","paragraph":1867,"range":[237,16],"id":"4266:237","decidedBy":"rules","text":"found Beth lying"},{"sentence":4275,"reference":{"sentence":4142,"text":"Hannah nodded without speaking, for her lips twitched nervously, Meg dropped down into a chair as the strength seemed to go out of her limbs at the sound of those words, and Jo, standing with a pale face for a minute, ran to the parlor, snatched up the telegram, and throwing on her things, rushed out into the storm.","paragraph":1826,"range":[0,317]},"kind":"place","paragraph":1873,"range":[11,57],"id":"4275:11","decidedBy":"rules","text":"was a sound of bells at the door below, a cry from Hannah"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4126:541",
+      "sentence": 4126,
+      "paragraph": 1822,
+      "range": [
+        541,
+        43
+      ],
+      "text": "Meg begged to be allowed to write the truth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4122,
+        "paragraph": 1821,
+        "range": [
+          293,
+          181
+        ],
+        "text": "Meg stayed at home, lest she should infect the Kings, and kept house, feeling very anxious and a little guilty when she wrote letters in which no mention was made of Beth’s illness."
+      }
+    },
+    {
+      "id": "4132:1228",
+      "sentence": 4132,
+      "paragraph": 1823,
+      "range": [
+        1228,
+        35
+      ],
+      "text": "Mr. Laurence locked the grand piano",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4125,
+        "paragraph": 1822,
+        "range": [
+          158,
+          357
+        ],
+        "text": "But there came a time when during the fever fits she began to talk in a hoarse, broken voice, to play on the coverlet as if on her beloved little piano, and try to sing with a throat so swollen that there was no music left, a time when she did not know the familiar faces around her, but addressed them by wrong names, and called imploringly for her mother."
+      }
+    },
+    {
+      "id": "4139:788",
+      "sentence": 4139,
+      "paragraph": 1824,
+      "range": [
+        788,
+        33
+      ],
+      "text": "Jo never stirred from Beth’s side",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4124,
+        "paragraph": 1822,
+        "range": [
+          0,
+          157
+        ],
+        "text": "Jo devoted herself to Beth day and night, not a hard task, for Beth was very patient, and bore her pain uncomplainingly as long as she could control herself."
+      }
+    },
+    {
+      "id": "4142:237",
+      "sentence": 4142,
+      "paragraph": 1826,
+      "range": [
+        237,
+        24
+      ],
+      "text": "snatched up the telegram",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4139,
+        "paragraph": 1824,
+        "range": [
+          663,
+          159
+        ],
+        "text": "Dr. Bangs came twice a day, Hannah sat up at night, Meg kept a telegram in her desk all ready to send off at any minute, and Jo never stirred from Beth’s side."
+      }
+    },
+    {
+      "id": "4143:381",
+      "sentence": 4143,
+      "paragraph": 1826,
+      "range": [
+        381,
+        69
+      ],
+      "text": "Laurie came in with a letter, saying that Mr. March was mending again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4127,
+        "paragraph": 1822,
+        "range": [
+          664,
+          134
+        ],
+        "text": "A letter from Washington added to their trouble, for Mr. March had had a relapse, and could not think of coming home for a long while."
+      }
+    },
+    {
+      "id": "4146:1",
+      "sentence": 4146,
+      "paragraph": 1827,
+      "range": [
+        1,
+        20
+      ],
+      "text": "I’ve sent for Mother",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4141,
+        "paragraph": 1825,
+        "range": [
+          144,
+          228
+        ],
+        "text": "When Dr. Bangs came that morning, he looked long at Beth, held the hot hand in both his own for a minute, and laid it gently down, saying, in a low voice to Hannah, “If Mrs. March can leave her husband she’d better be sent for.”"
+      }
+    },
+    {
+      "id": "4155:13",
+      "sentence": 4155,
+      "paragraph": 1831,
+      "range": [
+        13,
+        19
+      ],
+      "text": "She doesn’t know us",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4125,
+        "paragraph": 1822,
+        "range": [
+          158,
+          357
+        ],
+        "text": "But there came a time when during the fever fits she began to talk in a hoarse, broken voice, to play on the coverlet as if on her beloved little piano, and try to sing with a throat so swollen that there was no music left, a time when she did not know the familiar faces around her, but addressed them by wrong names, and called imploringly for her mother."
+      }
+    },
+    {
+      "id": "4168:1",
+      "sentence": 4168,
+      "paragraph": 1837,
+      "range": [
+        1,
+        28
+      ],
+      "text": "I’m so glad Father is better",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4143,
+        "paragraph": 1826,
+        "range": [
+          318,
+          133
+        ],
+        "text": "She was soon back, and while noiselessly taking off her cloak, Laurie came in with a letter, saying that Mr. March was mending again."
+      }
+    },
+    {
+      "id": "4196:1",
+      "sentence": 4196,
+      "paragraph": 1846,
+      "range": [
+        1,
+        38
+      ],
+      "text": "I telegraphed to your mother yesterday",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4193,
+        "paragraph": 1844,
+        "range": [
+          0,
+          217
+        ],
+        "text": "“I’ll send my bill, by-and-by, and tonight I’ll give you something that will warm the cockles of your heart better than quarts of wine,” said Laurie, beaming at her with a face of suppressed satisfaction at something."
+      }
+    },
+    {
+      "id": "4206:364",
+      "sentence": 4206,
+      "paragraph": 1848,
+      "range": [
+        364,
+        34
+      ],
+      "text": "to go and do it in spite of Hannah",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4123,
+        "paragraph": 1821,
+        "range": [
+          475,
+          180
+        ],
+        "text": "She could not think it right to deceive her mother, but she had been bidden to mind Hannah, and Hannah wouldn’t hear of ‘Mrs. March bein’ told, and worried just for sech a trifle.’"
+      }
+    },
+    {
+      "id": "4207:461",
+      "sentence": 4207,
+      "paragraph": 1848,
+      "range": [
+        461,
+        44
+      ],
+      "text": "don’t give me wine again, it makes me act so",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4189,
+        "paragraph": 1843,
+        "range": [
+          170,
+          234
+        ],
+        "text": "It must have possessed some magic, for the submissive spirit of its gentle owner seemed to enter into Jo, and when Laurie came running down with a glass of wine, she took it with a smile, and said bravely, “I drink— Health to my Beth!"
+      }
+    },
+    {
+      "id": "4210:104",
+      "sentence": 4210,
+      "paragraph": 1849,
+      "range": [
+        104,
+        54
+      ],
+      "text": "We thought Hannah was overdoing the authority business",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4121,
+        "paragraph": 1821,
+        "range": [
+          94,
+          198
+        ],
+        "text": "The girls knew nothing about illness, and Mr. Laurence was not allowed to see her, so Hannah had everything her own way, and busy Dr. Bangs did his best, but left a good deal to the excellent nurse."
+      }
+    },
+    {
+      "id": "4218:1",
+      "sentence": 4218,
+      "paragraph": 1851,
+      "range": [
+        1,
+        16
+      ],
+      "text": "Fly at me again.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4199,
+        "paragraph": 1847,
+        "range": [
+          156,
+          183
+        ],
+        "text": "Jo grew quite white, flew out of her chair, and the moment he stopped speaking she electrified him by throwing her arms round his neck, and crying out, with a joyful cry, “Oh, Laurie!"
+      }
+    },
+    {
+      "id": "4219:72",
+      "sentence": 4219,
+      "paragraph": 1851,
+      "range": [
+        72,
+        39
+      ],
+      "text": "a thing he had not done for a fortnight",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4132,
+        "paragraph": 1823,
+        "range": [
+          1176,
+          199
+        ],
+        "text": "Laurie haunted the house like a restless ghost, and Mr. Laurence locked the grand piano, because he could not bear to be reminded of the young neighbor who used to make the twilight pleasant for him."
+      }
+    },
+    {
+      "id": "4226:1",
+      "sentence": 4226,
+      "paragraph": 1854,
+      "range": [
+        1,
+        41
+      ],
+      "text": "That’s the interferingest chap I ever see",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4213,
+        "paragraph": 1849,
+        "range": [
+          263,
+          190
+        ],
+        "text": "So I got grandpa to say it was high time we did something, and off I pelted to the office yesterday, for the doctor looked sober, and Hannah most took my head off when I proposed a telegram."
+      }
+    },
+    {
+      "id": "4231:604",
+      "sentence": 4231,
+      "paragraph": 1855,
+      "range": [
+        604,
+        22
+      ],
+      "text": "Mother’s coming, dear!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4196,
+        "paragraph": 1846,
+        "range": [
+          0,
+          142
+        ],
+        "text": "“I telegraphed to your mother yesterday, and Brooke answered she’d come at once, and she’ll be here tonight, and everything will be all right."
+      }
+    },
+    {
+      "id": "4241:154",
+      "sentence": 4241,
+      "paragraph": 1856,
+      "range": [
+        154,
+        57
+      ],
+      "text": "rather face a rebel battery than Mrs. March’s countenance",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4213,
+        "paragraph": 1849,
+        "range": [
+          263,
+          190
+        ],
+        "text": "So I got grandpa to say it was high time we did something, and off I pelted to the office yesterday, for the doctor looked sober, and Hannah most took my head off when I proposed a telegram."
+      }
+    },
+    {
+      "id": "4248:0",
+      "sentence": 4248,
+      "paragraph": 1862,
+      "range": [
+        0,
+        28
+      ],
+      "text": "Here the clock struck twelve",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4240,
+        "paragraph": 1855,
+        "range": [
+          1466,
+          141
+        ],
+        "text": "The doctor had been in to say that some change, for better or worse, would probably take place about midnight, at which time he would return."
+      }
+    },
+    {
+      "id": "4251:375",
+      "sentence": 4251,
+      "paragraph": 1862,
+      "range": [
+        375,
+        40
+      ],
+      "text": "Laurie’s quiet departure for the station",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4215,
+        "paragraph": 1849,
+        "range": [
+          531,
+          189
+        ],
+        "text": "Your mother will come, I know, and the late train is in at two A.M. I shall go for her, and you’ve only got to bottle up your rapture, and keep Beth quiet till that blessed lady gets here.”"
+      }
+    },
+    {
+      "id": "4253:0",
+      "sentence": 4253,
+      "paragraph": 1863,
+      "range": [
+        0,
+        15
+      ],
+      "text": "It was past two",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4215,
+        "paragraph": 1849,
+        "range": [
+          531,
+          189
+        ],
+        "text": "Your mother will come, I know, and the late train is in at two A.M. I shall go for her, and you’ve only got to bottle up your rapture, and keep Beth quiet till that blessed lady gets here.”"
+      }
+    },
+    {
+      "id": "4259:26",
+      "sentence": 4259,
+      "paragraph": 1865,
+      "range": [
+        26,
+        31
+      ],
+      "text": "Hannah started out of her sleep",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4241,
+        "paragraph": 1856,
+        "range": [
+          0,
+          227
+        ],
+        "text": "Hannah, quite worn out, lay down on the sofa at the bed’s foot and fell fast asleep, Mr. Laurence marched to and fro in the parlor, feeling that he would rather face a rebel battery than Mrs. March’s countenance as she entered."
+      }
+    },
+    {
+      "id": "4262:48",
+      "sentence": 4262,
+      "paragraph": 1866,
+      "range": [
+        48,
+        29
+      ],
+      "text": "the doctor came to confirm it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4240,
+        "paragraph": 1855,
+        "range": [
+          1466,
+          141
+        ],
+        "text": "The doctor had been in to say that some change, for better or worse, would probably take place about midnight, at which time he would return."
+      }
+    },
+    {
+      "id": "4263:212",
+      "sentence": 4263,
+      "paragraph": 1866,
+      "range": [
+        212,
+        51
+      ],
+      "text": "I think the little girl will pull through this time",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4244,
+        "paragraph": 1858,
+        "range": [
+          0,
+          75
+        ],
+        "text": "“If God spares Beth, I never will complain again,” whispered Meg earnestly."
+      }
+    },
+    {
+      "id": "4269:17",
+      "sentence": 4269,
+      "paragraph": 1869,
+      "range": [
+        17,
+        40
+      ],
+      "text": "coming up with a white, half-opened rose",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4230,
+        "paragraph": 1855,
+        "range": [
+          334,
+          99
+        ],
+        "text": "Beth’s bird began to chirp again, and a half-blown rose was discovered on Amy’s bush in the window."
+      }
+    },
+    {
+      "id": "4275:123",
+      "sentence": 4275,
+      "paragraph": 1873,
+      "range": [
+        123,
+        18
+      ],
+      "text": "Girls, she’s come!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4215,
+        "paragraph": 1849,
+        "range": [
+          531,
+          189
+        ],
+        "text": "Your mother will come, I know, and the late train is in at two A.M. I shall go for her, and you’ve only got to bottle up your rapture, and keep Beth quiet till that blessed lady gets here.”"
+      }
+    }
+  ]
+}

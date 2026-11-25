@@ -1,1 +1,27 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"paragraph":1877,"kind":"action","decidedBy":"rules","sentence":4491,"text":"saw that she was herself closely watched by Miss Bingley","id":"4491:15","reference":{"paragraph":1875,"range":[0,146],"sentence":4485,"text":"In this room they were received by Miss Darcy, who was sitting there with Mrs. Hurst and Miss Bingley, and the lady with whom she lived in London."},"range":[15,56]}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4491:0",
+      "sentence": 4491,
+      "paragraph": 1877,
+      "range": [
+        0,
+        71
+      ],
+      "text": "Elizabeth soon saw that she was herself closely watched by Miss Bingley",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4482,
+        "paragraph": 1873,
+        "range": [
+          0,
+          289
+        ],
+        "text": "CONVINCED as Elizabeth now was that Miss Bingley’s dislike of her had originated in jealousy, she could not help feeling how very unwelcome her appearance at Pemberley must be to her, and was curious to know with how much civility on that lady’s side the acquaintance would now be renewed."
+      }
+    }
+  ]
+}

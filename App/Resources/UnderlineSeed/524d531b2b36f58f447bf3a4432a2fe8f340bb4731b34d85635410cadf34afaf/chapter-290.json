@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[{"decidedBy":"rules","range":[67,46],"sentence":3964,"paragraph":1674,"kind":"thing","id":"3964:67","text":"was the last of the regiment’s stay in Meryton","reference":{"range":[0,43],"sentence":3960,"paragraph":1672,"text":"“When Colonel Miller’s regiment went away.”"}},{"decidedBy":"rules","range":[26,68],"sentence":3974,"paragraph":1677,"kind":"feeling","id":"3974:26","text":"cried for two days together when Colonel Miller’s regiment went away","reference":{"range":[0,43],"sentence":3960,"paragraph":1672,"text":"“When Colonel Miller’s regiment went away.”"}},{"decidedBy":"rules","range":[26,14],"sentence":3979,"paragraph":1680,"kind":"action","id":"3979:26","text":"go to Brighton","reference":{"range":[0,34],"sentence":3977,"paragraph":1679,"text":"“If one could but go to Brighton!”"}},{"decidedBy":"rules","range":[68,81],"sentence":3986,"paragraph":1684,"kind":"action","id":"3986:68","text":"received an invitation from Mrs. Forster, the wife of the colonel of the regiment","reference":{"range":[0,43],"sentence":3960,"paragraph":1672,"text":"“When Colonel Miller’s regiment went away.”"}}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3986:0",
+      "sentence": 3986,
+      "paragraph": 1684,
+      "range": [
+        0,
+        58
+      ],
+      "text": "But the gloom of Lydia’s prospect was shortly cleared away",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3969,
+        "paragraph": 1675,
+        "range": [
+          14,
+          24
+        ],
+        "text": "What is to become of us?"
+      }
+    }
+  ]
+}

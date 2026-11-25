@@ -1,1 +1,111 @@
-{"parserVersion":1,"underlines":[{"range":[34,38],"paragraph":428,"reference":{"range":[218,102],"paragraph":424,"sentence":809,"text":"Breakfast was scarcely over when a servant from Netherfield brought the following note for Elizabeth:—"},"decidedBy":"rules","text":"when Elizabeth had read the note aloud","sentence":815,"id":"815:34","kind":"thing"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "802:39",
+      "sentence": 802,
+      "paragraph": 423,
+      "range": [
+        39,
+        46
+      ],
+      "text": "an acknowledgment that the horses were engaged",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 797,
+        "paragraph": 418,
+        "range": [
+          63,
+          55
+        ],
+        "text": "They are wanted in the farm, Mr. Bennet, are not they?”"
+      }
+    },
+    {
+      "id": "803:244",
+      "sentence": 803,
+      "paragraph": 423,
+      "range": [
+        244,
+        49
+      ],
+      "text": "Jane had not been gone long before it rained hard",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 791,
+        "paragraph": 413,
+        "range": [
+          0,
+          113
+        ],
+        "text": "“No, my dear, you had better go on horseback, because it seems likely to rain; and then you must stay all night.”"
+      }
+    },
+    {
+      "id": "806:1",
+      "sentence": 806,
+      "paragraph": 424,
+      "range": [
+        1,
+        38
+      ],
+      "text": "This was a lucky idea of mine, indeed!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 791,
+        "paragraph": 413,
+        "range": [
+          0,
+          113
+        ],
+        "text": "“No, my dear, you had better go on horseback, because it seems likely to rain; and then you must stay all night.”"
+      }
+    },
+    {
+      "id": "811:79",
+      "sentence": 811,
+      "paragraph": 426,
+      "range": [
+        79,
+        32
+      ],
+      "text": "my getting wet through yesterday",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 805,
+        "paragraph": 423,
+        "range": [
+          358,
+          94
+        ],
+        "text": "The rain continued the whole evening without intermission; Jane certainly could not come back."
+      }
+    },
+    {
+      "id": "815:184",
+      "sentence": 815,
+      "paragraph": 428,
+      "range": [
+        184,
+        59
+      ],
+      "text": "it was all in pursuit of Mr. Bingley, and under your orders",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 802,
+        "paragraph": 423,
+        "range": [
+          0,
+          218
+        ],
+        "text": "She did at last extort from her father an acknowledgment that the horses were engaged; Jane was therefore obliged to go on horseback, and her mother attended her to the door with many cheerful prognostics of a bad day."
+      }
+    }
+  ]
+}

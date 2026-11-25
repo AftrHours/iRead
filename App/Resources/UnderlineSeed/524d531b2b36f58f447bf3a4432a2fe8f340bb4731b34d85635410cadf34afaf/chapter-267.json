@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[{"text":"told Mrs. Collins so before you came","id":"3637:97","reference":{"paragraph":1554,"range":[98,59],"text":"Mrs. Collins will be very glad of your company, I am sure.”","sentence":3632},"kind":"action","paragraph":1556,"range":[97,36],"sentence":3637,"decidedBy":"rules"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3622:0",
+      "sentence": 3622,
+      "paragraph": 1551,
+      "range": [
+        0,
+        61
+      ],
+      "text": "Their first subject was the diminution of the Rosings’ party.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3616,
+        "paragraph": 1549,
+        "range": [
+          0,
+          341
+        ],
+        "text": "THE two gentlemen left Rosings the next morning; and Mr. Collins having been in waiting near the lodges, to make them his parting obeisance, was able to bring home the pleasing intelligence of their appearing in very good health, and in as tolerable spirits as could be expected, after the melancholy scene so lately gone through at Rosings."
+      }
+    },
+    {
+      "id": "3627:407",
+      "sentence": 3627,
+      "paragraph": 1551,
+      "range": [
+        407,
+        36
+      ],
+      "text": "Darcy seemed to feel it most acutely",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3616,
+        "paragraph": 1549,
+        "range": [
+          0,
+          341
+        ],
+        "text": "THE two gentlemen left Rosings the next morning; and Mr. Collins having been in waiting near the lodges, to make them his parting obeisance, was able to bring home the pleasing intelligence of their appearing in very good health, and in as tolerable spirits as could be expected, after the melancholy scene so lately gone through at Rosings."
+      }
+    }
+  ]
+}

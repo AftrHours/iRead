@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[{"range":[12,21],"paragraph":523,"reference":{"paragraph":522,"range":[295,89],"text":"You will not think of quitting it in a hurry, I hope, though you have but a short lease.”","sentence":998},"decidedBy":"rules","text":"do is done in a hurry","sentence":999,"id":"999:12","kind":"reaction"},{"range":[31,20],"paragraph":531,"reference":{"paragraph":530,"range":[96,29],"text":"It must be an amusing study.”","sentence":1010},"decidedBy":"rules","text":"are the most amusing","sentence":1011,"id":"1011:31","kind":"thing"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1011:1",
+      "sentence": 1011,
+      "paragraph": 531,
+      "range": [
+        1,
+        50
+      ],
+      "text": "Yes; but intricate characters are the most amusing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1007,
+        "paragraph": 528,
+        "range": [
+          24,
+          116
+        ],
+        "text": "It does not necessarily follow that a deep, intricate character is more or less estimable than such a one as yours.”"
+      }
+    }
+  ]
+}

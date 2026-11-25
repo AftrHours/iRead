@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2490:0",
+      "sentence": 2490,
+      "paragraph": 1154,
+      "range": [
+        0,
+        73
+      ],
+      "text": "Mrs. Bennet still continued to wonder and repine at his returning no more",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2417,
+        "paragraph": 1129,
+        "range": [
+          0,
+          53
+        ],
+        "text": "“O that my dear mother had more command over herself!"
+      }
+    }
+  ]
+}

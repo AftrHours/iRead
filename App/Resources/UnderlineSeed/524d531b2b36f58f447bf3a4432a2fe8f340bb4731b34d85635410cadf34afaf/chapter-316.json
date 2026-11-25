@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4338:0",
+      "sentence": 4338,
+      "paragraph": 1820,
+      "range": [
+        0,
+        41
+      ],
+      "text": "The conversation soon turned upon fishing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4320,
+        "paragraph": 1816,
+        "range": [
+          0,
+          244
+        ],
+        "text": "slow, for Mr. Gardiner, though seldom able to indulge the taste, was very fond of fishing, and was so much engaged in watching the occasional appearance of some trout in the water, and talking to the man about them, that he advanced but little."
+      }
+    },
+    {
+      "id": "4345:790",
+      "sentence": 4345,
+      "paragraph": 1820,
+      "range": [
+        790,
+        46
+      ],
+      "text": "It is impossible that he should still love me.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4308,
+        "paragraph": 1812,
+        "range": [
+          558,
+          164
+        ],
+        "text": "She longed to know what at that moment was passing in his mind; in what manner he thought of her, and whether, in defiance of everything, she was still dear to him."
+      }
+    }
+  ]
+}

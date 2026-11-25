@@ -1,1 +1,111 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4688:4",
+      "sentence": 4688,
+      "paragraph": 1937,
+      "range": [
+        4,
+        60
+      ],
+      "text": "dwelling on the postscript of the last with trembling energy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4593,
+        "paragraph": 1906,
+        "range": [
+          831,
+          175
+        ],
+        "text": "I take up my pen again to do, what I have just told you I would not; but circumstances are such, that I cannot help earnestly begging you all to come here as soon as possible."
+      }
+    },
+    {
+      "id": "4690:276",
+      "sentence": 4690,
+      "paragraph": 1937,
+      "range": [
+        276,
+        59
+      ],
+      "text": "Mr. Gardiner readily promised every assistance in his power",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4597,
+        "paragraph": 1906,
+        "range": [
+          1440,
+          166
+        ],
+        "text": "In such an exigence my uncle’s advice and assistance would be everything in the world; he will immediately comprehend what I must feel, and I rely upon his goodness.”"
+      }
+    },
+    {
+      "id": "4695:619",
+      "sentence": 4695,
+      "paragraph": 1937,
+      "range": [
+        619,
+        52
+      ],
+      "text": "John told us Mr. Darcy was here when you sent for us",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4600,
+        "paragraph": 1907,
+        "range": [
+          32,
+          186
+        ],
+        "text": "cried Elizabeth, darting from her seat as she finished the letter, in eagerness to follow him, without losing a moment of the time so precious; but as she reached the door, it was opened"
+      }
+    },
+    {
+      "id": "4696:10",
+      "sentence": 4696,
+      "paragraph": 1938,
+      "range": [
+        10,
+        55
+      ],
+      "text": "I told him we should not be able to keep our engagement",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4664,
+        "paragraph": 1929,
+        "range": [
+          10,
+          48
+        ],
+        "text": "Be so kind as to apologize for us to Miss Darcy."
+      }
+    },
+    {
+      "id": "4703:395",
+      "sentence": 4703,
+      "paragraph": 1940,
+      "range": [
+        395,
+        45
+      ],
+      "text": "with false excuses for their sudden departure",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4666,
+        "paragraph": 1929,
+        "range": [
+          111,
+          52
+        ],
+        "text": "Conceal the unhappy truth as long as it is possible."
+      }
+    }
+  ]
+}

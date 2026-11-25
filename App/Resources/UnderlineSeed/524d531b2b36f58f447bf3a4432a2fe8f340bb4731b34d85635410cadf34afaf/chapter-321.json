@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4408:0",
+      "sentence": 4408,
+      "paragraph": 1846,
+      "range": [
+        0,
+        81
+      ],
+      "text": "Miss Darcy and her brother appeared, and this formidable introduction took place.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4401,
+        "paragraph": 1844,
+        "range": [
+          322,
+          279
+        ],
+        "text": "They had been walking about the place with some of their new friends, and were just returned to the inn to dress themselves for dining with the same family, when the sound of a carriage drew them to a window, and they saw a gentleman and lady in a curricle driving up the street."
+      }
+    },
+    {
+      "id": "4409:123",
+      "sentence": 4409,
+      "paragraph": 1846,
+      "range": [
+        123,
+        64
+      ],
+      "text": "her new acquaintance was at least as much embarrassed as herself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4406,
+        "paragraph": 1844,
+        "range": [
+          1322,
+          284
+        ],
+        "text": "She was quite amazed at her own discomposure; but, amongst other causes of disquiet, she dreaded lest the partiality of the brother should have said too much in her favour; and, more than commonly anxious to please, she naturally suspected that every power of pleasing would fail her."
+      }
+    }
+  ]
+}

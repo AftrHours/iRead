@@ -1,1 +1,90 @@
-{"engineVersion":5,"underlines":[{"range":[18,80],"id":"6724:18","reference":{"sentence":6714,"range":[51,45],"paragraph":2701,"text":"Elizabeth will soon be the wife of Mr. Darcy."},"decidedBy":"rules","paragraph":2705,"text":"could arrive from Mr. Collins, or any congratulations to Elizabeth from his wife","sentence":6724,"kind":"action"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6711:0",
+      "sentence": 6711,
+      "paragraph": 2699,
+      "range": [
+        0,
+        61
+      ],
+      "text": "Mr. Darcy’s letter to Lady Catherine was in a different style",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6692,
+        "paragraph": 2694,
+        "range": [
+          56,
+          93
+        ],
+        "text": "But it ought to be done; and if you will give me a sheet of paper it shall be done directly.”"
+      }
+    },
+    {
+      "id": "6715:97",
+      "sentence": 6715,
+      "paragraph": 2701,
+      "range": [
+        97,
+        42
+      ],
+      "text": "Console Lady Catherine as well as you can.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6690,
+        "paragraph": 2693,
+        "range": [
+          0,
+          82
+        ],
+        "text": "“Shall you ever have courage to announce to Lady Catherine what is to befall her?”"
+      }
+    },
+    {
+      "id": "6722:0",
+      "sentence": 6722,
+      "paragraph": 2704,
+      "range": [
+        0,
+        67
+      ],
+      "text": "The joy which Miss Darcy expressed on receiving similar information",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6719,
+        "paragraph": 2703,
+        "range": [
+          0,
+          119
+        ],
+        "text": "Miss Bingley’s congratulations to her brother on his approaching marriage were all that was affectionate and insincere."
+      }
+    },
+    {
+      "id": "6724:0",
+      "sentence": 6724,
+      "paragraph": 2705,
+      "range": [
+        0,
+        47
+      ],
+      "text": "Before any answer could arrive from Mr. Collins",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6711,
+        "paragraph": 2699,
+        "range": [
+          0,
+          159
+        ],
+        "text": "Mr. Darcy’s letter to Lady Catherine was in a different style, and still different from either was what Mr. Bennet sent to Mr. Collins, in return for his last."
+      }
+    }
+  ]
+}

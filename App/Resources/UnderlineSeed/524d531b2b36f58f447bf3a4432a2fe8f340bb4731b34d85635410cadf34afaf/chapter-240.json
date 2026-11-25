@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3196:240",
+      "sentence": 3196,
+      "paragraph": 1424,
+      "range": [
+        240,
+        62
+      ],
+      "text": "she would have liked to believe this change the effect of love",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3185,
+        "paragraph": 1421,
+        "range": [
+          75,
+          103
+        ],
+        "text": "“My dear Eliza, he must be in love with you, or he would never have called on us in this familiar way.”"
+      }
+    },
+    {
+      "id": "3199:45",
+      "sentence": 3199,
+      "paragraph": 1425,
+      "range": [
+        45,
+        43
+      ],
+      "text": "the possibility of his being partial to her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3186,
+        "paragraph": 1422,
+        "range": [
+          0,
+          295
+        ],
+        "text": "But when Elizabeth told of his silence, it did not seem very likely, even to Charlotte’s wishes, to be the case; and, after various conjectures, they could at last only suppose his visit to proceed from the difficulty of finding anything to do, which was the more probable from the time of year."
+      }
+    }
+  ]
+}

@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6371:1",
+      "sentence": 6371,
+      "paragraph": 2582,
+      "range": [
+        1,
+        35
+      ],
+      "text": "Oh, do not repeat what I then said.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6363,
+        "paragraph": 2579,
+        "range": [
+          212,
+          102
+        ],
+        "text": "Your reproof, so well applied, I shall never forget: ‘Had you behaved in a more gentlemanlike manner.’"
+      }
+    }
+  ]
+}

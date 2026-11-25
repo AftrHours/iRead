@@ -1,1 +1,69 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2242:365",
+      "sentence": 2242,
+      "paragraph": 1051,
+      "range": [
+        365,
+        38
+      ],
+      "text": "her brother greatly admires Miss Darcy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2222,
+        "paragraph": 1045,
+        "range": [
+          14,
+          300
+        ],
+        "text": "My brother admires her greatly already; he will have frequent opportunity now of seeing her on the most intimate footing; her relations all wish the connection as much as his own; and a sister’s partiality is not misleading me, I think, when I call Charles most capable of engaging any woman’s heart."
+      }
+    },
+    {
+      "id": "2245:149",
+      "sentence": 2245,
+      "paragraph": 1052,
+      "range": [
+        149,
+        50
+      ],
+      "text": "Caroline is incapable of wilfully deceiving anyone",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2235,
+        "paragraph": 1048,
+        "range": [
+          125,
+          117
+        ],
+        "text": "She follows him to town in the hope of keeping him there, and tries to persuade you that he does not care about you.”"
+      }
+    },
+    {
+      "id": "2249:82",
+      "sentence": 2249,
+      "paragraph": 1054,
+      "range": [
+        82,
+        64
+      ],
+      "text": "whose sisters and friends are all wishing him to marry elsewhere",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2222,
+        "paragraph": 1045,
+        "range": [
+          14,
+          300
+        ],
+        "text": "My brother admires her greatly already; he will have frequent opportunity now of seeing her on the most intimate footing; her relations all wish the connection as much as his own; and a sister’s partiality is not misleading me, I think, when I call Charles most capable of engaging any woman’s heart."
+      }
+    }
+  ]
+}

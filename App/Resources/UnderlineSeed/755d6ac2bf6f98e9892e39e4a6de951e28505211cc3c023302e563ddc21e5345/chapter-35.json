@@ -1,1 +1,657 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"decidedBy":"rules","text":"isn’t like Beth","range":[250,15],"reference":{"sentence":6789,"range":[0,29],"paragraph":2860,"text":"“Jo, I’m anxious about Beth.”"},"sentence":6797,"id":"6797:250","kind":"thing","paragraph":2864},{"decidedBy":"rules","text":"flirted with Amy","range":[183,16],"reference":{"sentence":6843,"range":[529,80],"paragraph":2879,"text":"Here’s Meg married and a mamma, Amy flourishing away at Paris, and Beth in love."},"sentence":6848,"id":"6848:183","kind":"action","paragraph":2880},{"decidedBy":"rules","text":"having given the rein to her lively fancy","range":[278,41],"reference":{"sentence":6822,"range":[171,108],"paragraph":2876,"text":"A slight incident gave Jo the clue to the mystery, she thought, and lively fancy, loving heart did the rest."},"sentence":6859,"id":"6859:278","kind":"action","paragraph":2882},{"decidedBy":"rules","text":"settled the afghan over Beth’s feet with an assiduity that was really almost tender","range":[1204,83],"reference":{"sentence":6831,"range":[177,99],"paragraph":2878,"text":"Beth whisked it off, and in her half-averted face read a tender sorrow that made her own eyes fill."},"sentence":6862,"id":"6862:1204","kind":"action","paragraph":2882},{"decidedBy":"rules","text":"burning to lay herself upon the shrine of sisterly devotion","range":[143,59],"reference":{"sentence":6854,"range":[289,164],"paragraph":2881,"text":"But there came a time when Laurie ceased to worship at many shrines, hinted darkly at one all-absorbing passion, and indulged occasionally in Byronic fits of gloom."},"sentence":6869,"id":"6869:143","kind":"action","paragraph":2884},{"decidedBy":"rules","text":"knew this pillow well","range":[7,21],"reference":{"sentence":6872,"range":[461,157],"paragraph":2885,"text":"Among the many pillows that adorned the venerable couch was one, hard, round, covered with prickly horsehair, and furnished with a knobby button at each end."},"sentence":6874,"id":"6874:7","kind":"action","paragraph":2886},{"decidedBy":"rules","text":"lay flat across the sofa","range":[364,24],"reference":{"sentence":6860,"range":[469,177],"paragraph":2882,"text":"As usual Beth lay on the sofa and Laurie sat in a low chair close by, amusing her with all sorts of gossip, for she depended on her weekly ‘spin’, and he never disappointed her."},"sentence":6875,"id":"6875:364","kind":"action","paragraph":2886},{"decidedBy":"rules","text":"do care whole papers of pins won’t let me send them ‘flowers and things","range":[27,71],"reference":{"sentence":6891,"range":[0,155],"paragraph":2894,"text":"“I’m glad of it, that’s one of your foolish extravagances, sending flowers and things to girls for whom you don’t care two pins,” continued Jo reprovingly."},"sentence":6892,"id":"6892:27","kind":"action","paragraph":2895},{"decidedBy":"rules","text":"don’t mean any harm","range":[256,19],"reference":{"sentence":6896,"range":[51,131],"paragraph":2897,"text":"As I can’t, I’ll merely say that I don’t see any harm in that pleasant little game, if all parties understand that it’s only play.”"},"sentence":6905,"id":"6905:256","kind":"action","paragraph":2901},{"decidedBy":"rules","text":"rejoiced more than she confessed to find that he still believed in modest girls","range":[496,79],"reference":{"sentence":6910,"range":[140,86],"paragraph":2903,"text":"The pretty, modest girls are never talked about, except respectfully, among gentleman."},"sentence":6917,"id":"6917:496","kind":"action","paragraph":2906},{"decidedBy":"rules","text":"whoever the modest girl may be","range":[164,30],"reference":{"sentence":6910,"range":[140,86],"paragraph":2903,"text":"The pretty, modest girls are never talked about, except respectfully, among gentleman."},"sentence":6922,"id":"6922:164","kind":"thing","paragraph":2908},{"decidedBy":"rules","text":"that depends on who wears the apron","range":[5,35],"reference":{"sentence":6930,"range":[105,58],"paragraph":2912,"text":"I thought you hated to be tied to a woman’s apron string?”"},"sentence":6932,"id":"6932:5","kind":"thing","paragraph":2913},{"decidedBy":"rules","text":"gave an audacious tweak at the tassel","range":[54,37],"reference":{"sentence":6924,"range":[16,145],"paragraph":2909,"text":"acquiesced Laurie, with an expression of humility quite new to him, as he dropped his eyes and absently wound Jo’s apron tassel round his finger."},"sentence":6933,"id":"6933:54","kind":"reaction","paragraph":2913},{"decidedBy":"rules","text":"Is the pain better now","range":[1,22],"reference":{"sentence":6939,"range":[0,34],"paragraph":2918,"text":"“Is it the old pain, my precious?”"},"sentence":6958,"id":"6958:1","kind":"thing","paragraph":2930},{"decidedBy":"rules","text":"can be spared this winter","range":[222,25],"reference":{"sentence":6966,"range":[124,55],"paragraph":2935,"text":"“I want to go away somewhere this winter for a change.”"},"sentence":6971,"id":"6971:222","kind":"action","paragraph":2937},{"decidedBy":"rules","text":"I’m not ashamed of it","range":[260,21],"reference":{"sentence":6904,"range":[151,99],"paragraph":2901,"text":"Between ourselves, Jo, some of the girls I know really do go on at such a rate I’m ashamed of them."},"sentence":6982,"id":"6982:260","kind":"thing","paragraph":2941},{"decidedBy":"rules","text":"are too much alike and too fond of freedom","range":[195,42],"reference":{"sentence":6990,"range":[84,86],"paragraph":2947,"text":"“It may be vain and wrong to say it, but—I’m afraid—Laurie is getting too fond of me.”"},"sentence":6999,"id":"6999:195","kind":"thing","paragraph":2952},{"paragraph":2958,"text":"may differ in their management","decidedBy":"rules","range":[17,30],"kind":"action","sentence":7009,"reference":{"sentence":7008,"range":[0,177],"paragraph":2957,"text":"Jo looked relieved, and after a pause, said, smiling, “How Mrs. Moffat would wonder at your want of management, if she knew, and how she will rejoice that Annie may still hope.”"},"id":"7009:17"},{"paragraph":2958,"text":"is the same in all","decidedBy":"rules","range":[62,18],"kind":"thing","sentence":7009,"reference":{"sentence":6906,"range":[0,131],"paragraph":2902,"text":"“They do the same, and as their tongues are the sharpest, you fellows get the worst of it, for you are as silly as they, every bit."},"id":"7009:62"},{"paragraph":2963,"text":"would be both useful and agreeable","decidedBy":"rules","range":[284,34],"kind":"thing","sentence":7025,"reference":{"sentence":6929,"range":[36,68],"paragraph":2912,"text":"Go and make yourself useful, since you are too big to be ornamental."},"id":"7025:284"},{"paragraph":2964,"text":"seemed more cheerful","decidedBy":"rules","range":[141,20],"kind":"thing","sentence":7029,"reference":{"sentence":6815,"range":[188,93],"paragraph":2872,"text":"If she only would get quite strong and cheerful again, I shouldn’t have a wish in the world.”"},"id":"7029:141"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6821:46",
+      "sentence": 6821,
+      "paragraph": 2876,
+      "range": [
+        46,
+        55
+      ],
+      "text": "Jo watched Beth, and after many conflicting conjectures",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6813,
+        "paragraph": 2872,
+        "range": [
+          0,
+          114
+        ],
+        "text": "“I leave Beth to your hands, then, for she will open her tender little heart to her Jo sooner than to anyone else."
+      }
+    },
+    {
+      "id": "6822:171",
+      "sentence": 6822,
+      "paragraph": 2876,
+      "range": [
+        171,
+        49
+      ],
+      "text": "A slight incident gave Jo the clue to the mystery",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6792,
+        "paragraph": 2862,
+        "range": [
+          61,
+          80
+        ],
+        "text": "I’m sure there is something on her mind, and I want you to discover what it is.”"
+      }
+    },
+    {
+      "id": "6833:1",
+      "sentence": 6833,
+      "paragraph": 2879,
+      "range": [
+        1,
+        31
+      ],
+      "text": "Mercy on me, Beth loves Laurie!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6828,
+        "paragraph": 2877,
+        "range": [
+          0,
+          190
+        ],
+        "text": "Beth started, leaned forward, smiled and nodded, watched the passer-by till his quick tramp died away, then said softly as if to herself, “How strong and well and happy that dear boy looks.”"
+      }
+    },
+    {
+      "id": "6857:65",
+      "sentence": 6857,
+      "paragraph": 2882,
+      "range": [
+        65,
+        57
+      ],
+      "text": "Jo watched Laurie that night as she had never done before",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6826,
+        "paragraph": 2876,
+        "range": [
+          640,
+          106
+        ],
+        "text": "Suddenly some one passed below, whistling like an operatic blackbird, and a voice called out, “All serene!"
+      }
+    },
+    {
+      "id": "6878:24",
+      "sentence": 6878,
+      "paragraph": 2888,
+      "range": [
+        24,
+        24
+      ],
+      "text": "slamming down the pillow",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6875,
+        "paragraph": 2886,
+        "range": [
+          255,
+          184
+        ],
+        "text": "If ‘the sausage’ as they called it, stood on end, it was a sign that he might approach and repose, but if it lay flat across the sofa, woe to man, woman, or child who dared disturb it!"
+      }
+    },
+    {
+      "id": "6886:155",
+      "sentence": 6886,
+      "paragraph": 2891,
+      "range": [
+        155,
+        28
+      ],
+      "text": "want to fire pillows at him?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6874,
+        "paragraph": 2886,
+        "range": [
+          0,
+          254
+        ],
+        "text": "Laurie knew this pillow well, and had cause to regard it with deep aversion, having been unmercifully pummeled with it in former days when romping was allowed, and now frequently debarred by it from the seat he most coveted next to Jo in the sofa corner."
+      }
+    },
+    {
+      "id": "6897:34",
+      "sentence": 6897,
+      "paragraph": 2898,
+      "range": [
+        34,
+        27
+      ],
+      "text": "I can’t learn how it’s done",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6852,
+        "paragraph": 2880,
+        "range": [
+          767,
+          128
+        ],
+        "text": "But Jo hated ‘philandering’, and wouldn’t allow it, always having a joke or a smile ready at the least sign of impending danger."
+      }
+    },
+    {
+      "id": "6899:1",
+      "sentence": 6899,
+      "paragraph": 2899,
+      "range": [
+        1,
+        53
+      ],
+      "text": "Take lessons of Amy, she has a regular talent for it.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6848,
+        "paragraph": 2880,
+        "range": [
+          169,
+          136
+        ],
+        "text": "Though Laurie flirted with Amy and joked with Jo, his manner to Beth had always been peculiarly kind and gentle, but so was everybody’s."
+      }
+    },
+    {
+      "id": "6918:651",
+      "sentence": 6918,
+      "paragraph": 2906,
+      "range": [
+        651,
+        32
+      ],
+      "text": "If you must have a ‘vent’, Teddy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6893,
+        "paragraph": 2895,
+        "range": [
+          119,
+          27
+        ],
+        "text": "My feelings need a ‘vent’.”"
+      }
+    },
+    {
+      "id": "6918:685",
+      "sentence": 6918,
+      "paragraph": 2906,
+      "range": [
+        685,
+        59
+      ],
+      "text": "go and devote yourself to one of the ‘pretty, modest girls’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6910,
+        "paragraph": 2903,
+        "range": [
+          140,
+          86
+        ],
+        "text": "The pretty, modest girls are never talked about, except respectfully, among gentleman."
+      }
+    },
+    {
+      "id": "6933:47",
+      "sentence": 6933,
+      "paragraph": 2913,
+      "range": [
+        47,
+        44
+      ],
+      "text": "Laurie gave an audacious tweak at the tassel",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6924,
+        "paragraph": 2909,
+        "range": [
+          16,
+          145
+        ],
+        "text": "acquiesced Laurie, with an expression of humility quite new to him, as he dropped his eyes and absently wound Jo’s apron tassel round his finger."
+      }
+    },
+    {
+      "id": "6935:17",
+      "sentence": 6935,
+      "paragraph": 2914,
+      "range": [
+        17,
+        34
+      ],
+      "text": "demanded Jo, diving for the pillow",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6879,
+        "paragraph": 2888,
+        "range": [
+          50,
+          119
+        ],
+        "text": "But it was too late, there was no room for it, and coasting onto the floor, it disappeared in a most mysterious manner."
+      }
+    },
+    {
+      "id": "6951:261",
+      "sentence": 6951,
+      "paragraph": 2924,
+      "range": [
+        261,
+        57
+      ],
+      "text": "though she believed she knew the cause of Beth’s new pain",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6940,
+        "paragraph": 2919,
+        "range": [
+          0,
+          75
+        ],
+        "text": "“No, it’s a new one, but I can bear it,” and Beth tried to check her tears."
+      }
+    },
+    {
+      "id": "6963:0",
+      "sentence": 6963,
+      "paragraph": 2934,
+      "range": [
+        0,
+        27
+      ],
+      "text": "But Jo had made up her mind",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6867,
+        "paragraph": 2884,
+        "range": [
+          0,
+          113
+        ],
+        "text": "As everyone was out of the way but herself, Jo began to feel that she ought to dispose of herself with all speed."
+      }
+    },
+    {
+      "id": "6964:1",
+      "sentence": 6964,
+      "paragraph": 2935,
+      "range": [
+        1,
+        46
+      ],
+      "text": "You asked me the other day what my wishes were",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6816,
+        "paragraph": 2873,
+        "range": [
+          0,
+          13
+        ],
+        "text": "“Happy woman!"
+      }
+    },
+    {
+      "id": "6971:249",
+      "sentence": 6971,
+      "paragraph": 2937,
+      "range": [
+        249,
+        45
+      ],
+      "text": "I’d like to hop a little way and try my wings",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6806,
+        "paragraph": 2869,
+        "range": [
+          131,
+          64
+        ],
+        "text": "I promise never to hop very far, if that is any comfort to you.”"
+      }
+    },
+    {
+      "id": "6990:136",
+      "sentence": 6990,
+      "paragraph": 2947,
+      "range": [
+        136,
+        32
+      ],
+      "text": "Laurie is getting too fond of me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6850,
+        "paragraph": 2880,
+        "range": [
+          393,
+          220
+        ],
+        "text": "Indeed, a general impression had prevailed in the family of late that ‘our boy’ was getting fonder than ever of Jo, who, however, wouldn’t hear a word upon the subject and scolded violently if anyone dared to suggest it."
+      }
+    },
+    {
+      "id": "7014:401",
+      "sentence": 7014,
+      "paragraph": 2958,
+      "range": [
+        401,
+        51
+      ],
+      "text": "By the way, she seems brighter this last day or two",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6962,
+        "paragraph": 2933,
+        "range": [
+          0,
+          180
+        ],
+        "text": "So cheek to cheek they fell asleep, and on the morrow Beth seemed quite herself again, for at eighteen neither heads nor hearts ache long, and a loving word can medicine most ills."
+      }
+    },
+    {
+      "id": "7016:6",
+      "sentence": 7016,
+      "paragraph": 2959,
+      "range": [
+        6,
+        62
+      ],
+      "text": "she owned she had a trouble, and promised to tell me by-and-by",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6956,
+        "paragraph": 2929,
+        "range": [
+          0,
+          11
+        ],
+        "text": "“I know it."
+      }
+    },
+    {
+      "id": "7017:110",
+      "sentence": 7017,
+      "paragraph": 2959,
+      "range": [
+        110,
+        28
+      ],
+      "text": "and Jo told her little story",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6828,
+        "paragraph": 2877,
+        "range": [
+          0,
+          190
+        ],
+        "text": "Beth started, leaned forward, smiled and nodded, watched the passer-by till his quick tramp died away, then said softly as if to herself, “How strong and well and happy that dear boy looks.”"
+      }
+    },
+    {
+      "id": "7021:218",
+      "sentence": 7021,
+      "paragraph": 2961,
+      "range": [
+        218,
+        46
+      ],
+      "text": "But she can pet and comfort him after I’m gone",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6882,
+        "paragraph": 2890,
+        "range": [
+          0,
+          19
+        ],
+        "text": "“Beth will pet you."
+      }
+    },
+    {
+      "id": "7022:307",
+      "sentence": 7022,
+      "paragraph": 2961,
+      "range": [
+        307,
+        68
+      ],
+      "text": "He’s been through so many little trials of the sort, he’s used to it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6853,
+        "paragraph": 2881,
+        "range": [
+          0,
+          288
+        ],
+        "text": "When Laurie first went to college, he fell in love about once a month, but these small flames were as brief as ardent, did no damage, and much amused Jo, who took great interest in the alternations of hope, despair, and resignation, which were confided to her in their weekly conferences."
+      }
+    },
+    {
+      "id": "7023:74",
+      "sentence": 7023,
+      "paragraph": 2962,
+      "range": [
+        74,
+        51
+      ],
+      "text": "this ‘little trial’ would be harder than the others",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7022,
+        "paragraph": 2961,
+        "range": [
+          307,
+          110
+        ],
+        "text": "He’s been through so many little trials of the sort, he’s used to it, and will soon get over his lovelornity.”"
+      }
+    },
+    {
+      "id": "7023:143",
+      "sentence": 7023,
+      "paragraph": 2962,
+      "range": [
+        143,
+        60
+      ],
+      "text": "would not get over his ‘lovelornity’ as easily as heretofore",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7022,
+        "paragraph": 2961,
+        "range": [
+          307,
+          110
+        ],
+        "text": "He’s been through so many little trials of the sort, he’s used to it, and will soon get over his lovelornity.”"
+      }
+    },
+    {
+      "id": "7024:66",
+      "sentence": 7024,
+      "paragraph": 2963,
+      "range": [
+        66,
+        29
+      ],
+      "text": "Mrs. Kirke gladly accepted Jo",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6975,
+        "paragraph": 2939,
+        "range": [
+          61,
+          97
+        ],
+        "text": "You know Mrs. Kirke wrote to you for some respectable young person to teach her children and sew."
+      }
+    },
+    {
+      "id": "7027:524",
+      "sentence": 7027,
+      "paragraph": 2963,
+      "range": [
+        524,
+        39
+      ],
+      "text": "to her surprise he took it very quietly",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7019,
+        "paragraph": 2961,
+        "range": [
+          0,
+          126
+        ],
+        "text": "“Let us say nothing about it to him till the plan is settled, then I’ll run away before he can collect his wits and be tragic."
+      }
+    },
+    {
+      "id": "7033:1",
+      "sentence": 7033,
+      "paragraph": 2967,
+      "range": [
+        1,
+        11
+      ],
+      "text": "No, my boy.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6886,
+        "paragraph": 2891,
+        "range": [
+          129,
+          55
+        ],
+        "text": "Do you hate your boy, and want to fire pillows at him?”"
+      }
+    },
+    {
+      "id": "7036:33",
+      "sentence": 7036,
+      "paragraph": 2969,
+      "range": [
+        33,
+        61
+      ],
+      "text": "I leave him in your charge, to plague, pet, and keep in order",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7021,
+        "paragraph": 2961,
+        "range": [
+          218,
+          88
+        ],
+        "text": "But she can pet and comfort him after I’m gone, and so cure him of this romantic notion."
+      }
+    },
+    {
+      "id": "7037:49",
+      "sentence": 7037,
+      "paragraph": 2970,
+      "range": [
+        49,
+        41
+      ],
+      "text": "wondering why Jo looked at her so queerly",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7020,
+        "paragraph": 2961,
+        "range": [
+          127,
+          90
+        ],
+        "text": "Beth must think I’m going to please myself, as I am, for I can’t talk about Laurie to her."
+      }
+    },
+    {
+      "id": "7038:55",
+      "sentence": 7038,
+      "paragraph": 2971,
+      "range": [
+        55,
+        30
+      ],
+      "text": "It won’t do a bit of good, Jo.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6846,
+        "paragraph": 2879,
+        "range": [
+          930,
+          123
+        ],
+        "text": "So you needn’t write touching notes and smile in that insinuating way, for it won’t do a bit of good, and I won’t have it.”"
+      }
+    },
+    {
+      "id": "7039:86",
+      "sentence": 7039,
+      "paragraph": 2971,
+      "range": [
+        86,
+        70
+      ],
+      "text": "My eye is on you, so mind what you do, or I’ll come and bring you home",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7006,
+        "paragraph": 2955,
+        "range": [
+          238,
+          58
+        ],
+        "text": "I think I had better go away before it comes to anything.”"
+      }
+    }
+  ]
+}

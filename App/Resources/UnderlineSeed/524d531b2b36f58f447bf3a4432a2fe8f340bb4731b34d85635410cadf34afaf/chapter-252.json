@@ -1,1 +1,90 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"kind":"action","decidedBy":"rules","paragraph":1507,"text":"impressing me with the fullest belief of your arrogance, your conceit, and your selfish disdain of the feelings of others","range":[109,121],"reference":{"sentence":3390,"range":[0,130],"paragraph":1501,"text":"flattered you into the belief of my being impelled by unqualified, unalloyed inclination; by reason, by reflection, by everything."},"sentence":3401,"id":"3401:109"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3394:271",
+      "sentence": 3394,
+      "paragraph": 1501,
+      "range": [
+        271,
+        46
+      ],
+      "text": "rejoice in the inferiority of your connections",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3330,
+        "paragraph": 1480,
+        "range": [
+          378,
+          257
+        ],
+        "text": "His sense of her inferiority, of its being a degradation, of the family obstacles which judgment had always opposed to inclination, were dwelt on with a warmth which seemed due to the consequence he was wounding, but was very unlikely to recommend his suit."
+      }
+    },
+    {
+      "id": "3396:50",
+      "sentence": 3396,
+      "paragraph": 1503,
+      "range": [
+        50,
+        28
+      ],
+      "text": "the mode of your declaration",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3329,
+        "paragraph": 1480,
+        "range": [
+          223,
+          154
+        ],
+        "text": "He spoke well; but there were feelings besides those of the heart to be detailed, and he was not more eloquent on the subject of tenderness than of pride."
+      }
+    },
+    {
+      "id": "3396:119",
+      "sentence": 3396,
+      "paragraph": 1503,
+      "range": [
+        119,
+        61
+      ],
+      "text": "spared me the concern which I might have felt in refusing you",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3331,
+        "paragraph": 1481,
+        "range": [
+          0,
+          309
+        ],
+        "text": "In spite of her deeply-rooted dislike, she could not be insensible to the compliment of such a man’s affection, and though her intentions did not vary for an instant, she was at first sorry for the pain he was to receive; till roused to resentment by his subsequent language, she lost all compassion in anger."
+      }
+    },
+    {
+      "id": "3399:0",
+      "sentence": 3399,
+      "paragraph": 1506,
+      "range": [
+        0,
+        34
+      ],
+      "text": "Again his astonishment was obvious",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3334,
+        "paragraph": 1481,
+        "range": [
+          637,
+          81
+        ],
+        "text": "As he said this she could easily see that he had no doubt of a favourable answer."
+      }
+    }
+  ]
+}

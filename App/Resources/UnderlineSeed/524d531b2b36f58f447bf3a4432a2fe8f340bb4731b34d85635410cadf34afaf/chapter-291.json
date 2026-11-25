@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[{"paragraph":1686,"kind":"action","decidedBy":"rules","sentence":3991,"text":"cannot see why Mrs. Forster should not ask me as well as Lydia","id":"3991:3","reference":{"paragraph":1685,"range":[0,159],"sentence":3989,"text":"The rapture of Lydia on this occasion, her adoration of Mrs. Forster, the delight of Mrs. Bennet, and the mortification of Kitty, are scarcely to be described."},"range":[3,62]},{"paragraph":1687,"kind":"action","decidedBy":"rules","sentence":3995,"text":"could derive from the friendship of such a woman as Mrs. Forster","id":"3995:527","reference":{"paragraph":1685,"range":[0,159],"sentence":3989,"text":"The rapture of Lydia on this occasion, her adoration of Mrs. Forster, the delight of Mrs. Bennet, and the mortification of Kitty, are scarcely to be described."},"range":[527,64]}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3989:70",
+      "sentence": 3989,
+      "paragraph": 1685,
+      "range": [
+        70,
+        26
+      ],
+      "text": "the delight of Mrs. Bennet",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3978,
+        "paragraph": 1679,
+        "range": [
+          35,
+          21
+        ],
+        "text": "observed Mrs. Bennet."
+      }
+    },
+    {
+      "id": "3991:1",
+      "sentence": 3991,
+      "paragraph": 1686,
+      "range": [
+        1,
+        64
+      ],
+      "text": "I cannot see why Mrs. Forster should not ask me as well as Lydia",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3982,
+        "paragraph": 1682,
+        "range": [
+          0,
+          79
+        ],
+        "text": "“And my aunt Philips is sure it would do me a great deal of good,” added Kitty."
+      }
+    }
+  ]
+}

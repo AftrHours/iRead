@@ -1,1 +1,5 @@
-{"parserVersion":1,"underlines":[{"text":"was said of wishing them to stay at least till the following day to work on Jane","id":"1326:66","reference":{"paragraph":677,"range":[174,207],"text":"But Mrs. Bennet, who had calculated on her daughters remaining at Netherfield till the following Tuesday, which would exactly finish Jane’s week, could not bring herself to receive them with pleasure before.","sentence":1322},"kind":"action","paragraph":678,"range":[66,80],"sentence":1326,"decidedBy":"rules"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": []
+}

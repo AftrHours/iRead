@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6323:197",
+      "sentence": 6323,
+      "paragraph": 2564,
+      "range": [
+        197,
+        52
+      ],
+      "text": "Now was the moment for her resolution to be executed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6321,
+        "paragraph": 2563,
+        "range": [
+          729,
+          170
+        ],
+        "text": "Very little was said by either; Kitty was too much afraid of him to talk; Elizabeth was secretly forming a desperate resolution; and, perhaps, he might be doing the same."
+      }
+    }
+  ]
+}

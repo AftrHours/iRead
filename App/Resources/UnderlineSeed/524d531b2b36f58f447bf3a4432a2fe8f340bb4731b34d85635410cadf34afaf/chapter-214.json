@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[{"decidedBy":"rules","range":[61,21],"sentence":2847,"paragraph":1278,"kind":"thing","text":"is not Lady Catherine","id":"2847:61","reference":{"text":"“I expected at least that the pigs were got into the garden, and here is nothing but Lady Catherine and her daughter!”","paragraph":1277,"range":[36,118],"sentence":2845}},{"decidedBy":"rules","range":[26,110],"sentence":2861,"paragraph":1282,"kind":"thing","text":"were both standing at the gate in conversation with the ladies; and Sir William, to Elizabeth’s high diversion","id":"2861:26","reference":{"text":"Elizabeth asked questions in vain; Maria would tell her nothing more; and down they ran into the dining-room which fronted the lane, in quest of this wonder; it was two ladies, stopping in a low phaeton at the garden gate.","paragraph":1276,"range":[0,222],"sentence":2842}}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2842:35",
+      "sentence": 2842,
+      "paragraph": 1276,
+      "range": [
+        35,
+        33
+      ],
+      "text": "Maria would tell her nothing more",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2839,
+        "paragraph": 1274,
+        "range": [
+          105,
+          31
+        ],
+        "text": "I will not tell you what it is."
+      }
+    },
+    {
+      "id": "2845:101",
+      "sentence": 2845,
+      "paragraph": 1277,
+      "range": [
+        101,
+        52
+      ],
+      "text": "here is nothing but Lady Catherine and her daughter!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2833,
+        "paragraph": 1271,
+        "range": [
+          0,
+          266
+        ],
+        "text": "About the middle of the next day, as she was in her room getting ready for a walk, a sudden noise below seemed to speak the whole house in confusion; and, after listening a moment, she heard somebody running upstairs in a violent hurry, and calling loudly after her."
+      }
+    },
+    {
+      "id": "2863:256",
+      "sentence": 2863,
+      "paragraph": 1283,
+      "range": [
+        256,
+        57
+      ],
+      "text": "the whole party was asked to dine at Rosings the next day",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2821,
+        "paragraph": 1266,
+        "range": [
+          302,
+          155
+        ],
+        "text": "I have scarcely any hesitation in saying that she will include you and my sister Maria in every invitation with which she honours us during your stay here."
+      }
+    }
+  ]
+}

@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2194:544",
+      "sentence": 2194,
+      "paragraph": 1036,
+      "range": [
+        544,
+        40
+      ],
+      "text": "drew off her attention even from Wickham",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2187,
+        "paragraph": 1032,
+        "range": [
+          0,
+          279
+        ],
+        "text": "She highly approved his forbearance; and they had leisure for a full discussion of it, and for all the commendations which they civilly bestowed on each other, as Wickham and another officer walked back with them to Longbourn, and during the walk he particularly attended to her."
+      }
+    }
+  ]
+}

@@ -1,1 +1,111 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6290:263",
+      "sentence": 6290,
+      "paragraph": 2557,
+      "range": [
+        263,
+        74
+      ],
+      "text": "she would never give her consent to what she termed so disgraceful a match",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6240,
+        "paragraph": 2538,
+        "range": [
+          166,
+          262
+        ],
+        "text": "From what she had said of her resolution to prevent the marriage, it occurred to Elizabeth that she must meditate an application to her nephew; and how he might take a similar representation of the evils attached to a connection with her she dared not pronounce."
+      }
+    },
+    {
+      "id": "6298:1394",
+      "sentence": 6298,
+      "paragraph": 2557,
+      "range": [
+        1394,
+        48
+      ],
+      "text": "But, Lizzy, you look as if you did not enjoy it.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6285,
+        "paragraph": 2554,
+        "range": [
+          0,
+          98
+        ],
+        "text": "Elizabeth tried to join in her father’s pleasantry, but could only force one most reluctant smile."
+      }
+    },
+    {
+      "id": "6301:23",
+      "sentence": 6301,
+      "paragraph": 2558,
+      "range": [
+        23,
+        27
+      ],
+      "text": "“I am exceedingly diverted.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6287,
+        "paragraph": 2555,
+        "range": [
+          0,
+          23
+        ],
+        "text": "“Are you not diverted?”"
+      }
+    },
+    {
+      "id": "6307:456",
+      "sentence": 6307,
+      "paragraph": 2559,
+      "range": [
+        456,
+        43
+      ],
+      "text": "what said Lady Catherine about this report?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6250,
+        "paragraph": 2542,
+        "range": [
+          0,
+          264
+        ],
+        "text": "The surprise of the rest of the family, on hearing who their visitor had been, was very great: but they obligingly satisfied it with the same kind of supposition which had appeased Mrs. Bennet’s curiosity; and Elizabeth was spared from much teasing on the subject."
+      }
+    },
+    {
+      "id": "6312:348",
+      "sentence": 6312,
+      "paragraph": 2560,
+      "range": [
+        348,
+        40
+      ],
+      "text": "what he said of Mr. Darcy’s indifference",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6304,
+        "paragraph": 2559,
+        "range": [
+          37,
+          145
+        ],
+        "text": "Had they fixed on any other man it would have been nothing; but his perfect indifference and your pointed dislike make it so delightfully absurd!"
+      }
+    }
+  ]
+}

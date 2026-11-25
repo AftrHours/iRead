@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4321:317",
+      "sentence": 4321,
+      "paragraph": 1816,
+      "range": [
+        317,
+        69
+      ],
+      "text": "Elizabeth’s astonishment was quite equal to what it had been at first",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4278,
+        "paragraph": 1805,
+        "range": [
+          0,
+          285
+        ],
+        "text": "As they walked across the lawn towards the river, Elizabeth turned back to look again; her uncle and aunt stopped also; and while the former was conjecturing as to the date of the building, the owner of it himself suddenly came forward from the road which led behind it to the stables."
+      }
+    },
+    {
+      "id": "4326:973",
+      "sentence": 4326,
+      "paragraph": 1816,
+      "range": [
+        973,
+        39
+      ],
+      "text": "he had lost none of his recent civility",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4282,
+        "paragraph": 1807,
+        "range": [
+          0,
+          67
+        ],
+        "text": "if not in terms of perfect composure, at least of perfect civility."
+      }
+    },
+    {
+      "id": "4329:264",
+      "sentence": 4329,
+      "paragraph": 1817,
+      "range": [
+        264,
+        53
+      ],
+      "text": "seeking the acquaintance of some of those very people",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4184,
+        "paragraph": 1756,
+        "range": [
+          257,
+          147
+        ],
+        "text": "But, no,” recollecting herself, “that could never be; my uncle and aunt would have been lost to me; I should not have been allowed to invite them.”"
+      }
+    }
+  ]
+}

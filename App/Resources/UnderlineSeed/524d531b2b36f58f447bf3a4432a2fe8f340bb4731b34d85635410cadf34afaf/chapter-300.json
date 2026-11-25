@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4110:57",
+      "sentence": 4110,
+      "paragraph": 1731,
+      "range": [
+        57,
+        68
+      ],
+      "text": "health, good-humour, and cheerfulness began to reappear at Longbourn",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4099,
+        "paragraph": 1727,
+        "range": [
+          0,
+          439
+        ],
+        "text": "sister, whose constant repinings at the dulness of everything around them threw a real gloom over their domestic circle; and, though Kitty might in time regain her natural degree of sense, since the disturbers of her brain were removed, her other sister, from whose disposition greater evil might be apprehended, was likely to be hardened in all her folly and assurance, by a situation of such double danger as a watering-place and a camp."
+      }
+    },
+    {
+      "id": "4113:275",
+      "sentence": 4113,
+      "paragraph": 1731,
+      "range": [
+        275,
+        56
+      ],
+      "text": "Mrs. Bennet was restored to her usual querulous serenity",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4099,
+        "paragraph": 1727,
+        "range": [
+          0,
+          439
+        ],
+        "text": "sister, whose constant repinings at the dulness of everything around them threw a real gloom over their domestic circle; and, though Kitty might in time regain her natural degree of sense, since the disturbers of her brain were removed, her other sister, from whose disposition greater evil might be apprehended, was likely to be hardened in all her folly and assurance, by a situation of such double danger as a watering-place and a camp."
+      }
+    },
+    {
+      "id": "4113:359",
+      "sentence": 4113,
+      "paragraph": 1731,
+      "range": [
+        359,
+        72
+      ],
+      "text": "Kitty was so much recovered as to be able to enter Meryton without tears",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4099,
+        "paragraph": 1727,
+        "range": [
+          0,
+          439
+        ],
+        "text": "sister, whose constant repinings at the dulness of everything around them threw a real gloom over their domestic circle; and, though Kitty might in time regain her natural degree of sense, since the disturbers of her brain were removed, her other sister, from whose disposition greater evil might be apprehended, was likely to be hardened in all her folly and assurance, by a situation of such double danger as a watering-place and a camp."
+      }
+    }
+  ]
+}

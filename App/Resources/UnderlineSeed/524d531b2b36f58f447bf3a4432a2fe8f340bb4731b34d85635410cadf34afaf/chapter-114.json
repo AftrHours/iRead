@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[{"kind":"action","paragraph":775,"decidedBy":"rules","sentence":1557,"id":"1557:12","text":"did not play at whist","reference":{"range":[0,109],"paragraph":773,"sentence":1555,"text":"When the card tables were placed, he had an opportunity of obliging her, in return, by sitting down to whist."},"range":[12,21]}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1554:175",
+      "sentence": 1554,
+      "paragraph": 772,
+      "range": [
+        175,
+        57
+      ],
+      "text": "he had still at intervals a kind listener in Mrs. Philips",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1544,
+        "paragraph": 766,
+        "range": [
+          0,
+          433
+        ],
+        "text": "In describing to her all the grandeur of Lady Catherine and her mansion, with occasional digressions in praise of his own humble abode, and the improvements it was receiving, he was happily employed until the gentlemen joined them; and he found in Mrs. Philips a very attentive listener, whose opinion of his consequence increased with what she heard, and who was resolving to retail it all among her neighbours as soon as she could."
+      }
+    },
+    {
+      "id": "1555:84",
+      "sentence": 1555,
+      "paragraph": 773,
+      "range": [
+        84,
+        24
+      ],
+      "text": "by sitting down to whist",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1554,
+        "paragraph": 772,
+        "range": [
+          0,
+          312
+        ],
+        "text": "With such rivals for the notice of the fair as Mr. Wickham and the officers, Mr. Collins seemed to sink into insignificance; to the young ladies he certainly was nothing; but he had still at intervals a kind listener in Mrs. Philips, and was, by her watchfulness, most abundantly supplied with coffee and muffin."
+      }
+    }
+  ]
+}

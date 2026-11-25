@@ -1,1 +1,90 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3895:43",
+      "sentence": 3895,
+      "paragraph": 1652,
+      "range": [
+        43,
+        64
+      ],
+      "text": "such very strong expressions in speaking of Wickham to Mr. Darcy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3856,
+        "paragraph": 1636,
+        "range": [
+          0,
+          58
+        ],
+        "text": "“But you blame me for having spoken so warmly of Wickham?”"
+      }
+    },
+    {
+      "id": "3897:92",
+      "sentence": 3897,
+      "paragraph": 1653,
+      "range": [
+        92,
+        37
+      ],
+      "text": "the prejudices I had been encouraging",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3886,
+        "paragraph": 1648,
+        "range": [
+          0,
+          99
+        ],
+        "text": "“And yet I meant to be uncommonly clever in taking so decided a dislike to him, without any reason."
+      }
+    },
+    {
+      "id": "3904:119",
+      "sentence": 3904,
+      "paragraph": 1655,
+      "range": [
+        119,
+        90
+      ],
+      "text": "every particular relative to his sister was meant to be kept as much as possible to myself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3875,
+        "paragraph": 1643,
+        "range": [
+          145,
+          48
+        ],
+        "text": "and having to relate such a thing of his sister!"
+      }
+    },
+    {
+      "id": "3911:22",
+      "sentence": 3911,
+      "paragraph": 1656,
+      "range": [
+        22,
+        55
+      ],
+      "text": "To have his errors made public might ruin him for ever.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3899,
+        "paragraph": 1653,
+        "range": [
+          179,
+          117
+        ],
+        "text": "I want to be told whether I ought, or ought not, to make our acquaintance in general understand Wickham’s character.”"
+      }
+    }
+  ]
+}

@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[{"range":[398,48],"id":"6597:398","reference":{"sentence":6590,"text":"young lovers carry everything their own way.","range":[0,44],"paragraph":2661},"decidedBy":"rules","paragraph":2664,"text":"that came in the shape of a lover to any of them","sentence":6597,"kind":"thing"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6595:0",
+      "sentence": 6595,
+      "paragraph": 2664,
+      "range": [
+        0,
+        110
+      ],
+      "text": "When her mother went up to her dressing-room at night, she followed her, and made the important communication.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6545,
+        "paragraph": 2646,
+        "range": [
+          0,
+          170
+        ],
+        "text": "During their walk, it was resolved that Mr. Bennet’s consent should be asked in the course of the evening: Elizabeth reserved to herself the application for her mother’s."
+      }
+    }
+  ]
+}

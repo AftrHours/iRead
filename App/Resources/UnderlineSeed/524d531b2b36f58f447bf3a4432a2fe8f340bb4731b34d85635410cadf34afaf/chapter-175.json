@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2348:47",
+      "sentence": 2348,
+      "paragraph": 1098,
+      "range": [
+        47,
+        48
+      ],
+      "text": "Elizabeth was the real cause of all the mischief",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2342,
+        "paragraph": 1094,
+        "range": [
+          56,
+          55
+        ],
+        "text": "Do not you know that Mr. Collins wants to marry Lizzy?”"
+      }
+    },
+    {
+      "id": "2355:85",
+      "sentence": 2355,
+      "paragraph": 1101,
+      "range": [
+        85,
+        45
+      ],
+      "text": "the comfort of having a daughter well married",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2351,
+        "paragraph": 1098,
+        "range": [
+          331,
+          233
+        ],
+        "text": "A week elapsed before she could see Elizabeth without scolding her: a month passed away before she could speak to Sir William or Lady Lucas without being rude; and many months were gone before she could at all forgive their daughter."
+      }
+    }
+  ]
+}

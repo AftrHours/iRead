@@ -1,1 +1,5 @@
-{"parserVersion":1,"underlines":[{"kind":"reaction","decidedBy":"rules","paragraph":308,"text":"opening his lips","range":[14,16],"reference":{"sentence":590,"range":[118,102],"paragraph":307,"text":"Mrs. Long told me last night that he sat close to her for half an hour without once opening his lips.”"},"sentence":591,"id":"591:14"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": []
+}

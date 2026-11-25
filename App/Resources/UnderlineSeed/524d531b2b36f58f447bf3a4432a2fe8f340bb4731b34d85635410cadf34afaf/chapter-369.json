@@ -1,1 +1,5 @@
-{"underlines":[{"range":[5,14],"id":"5031:5","reference":{"paragraph":2072,"text":"“If I should ever go to Brighton, I would behave better than Lydia.”","sentence":5030,"range":[59,68]},"decidedBy":"rules","paragraph":2073,"text":"go to Brighton","sentence":5031,"kind":"reaction"}],"parserVersion":1,"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": []
+}

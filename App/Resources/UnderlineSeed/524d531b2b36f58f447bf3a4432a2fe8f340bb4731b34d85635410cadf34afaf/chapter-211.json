@@ -1,1 +1,48 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2816:56",
+      "sentence": 2816,
+      "paragraph": 1264,
+      "range": [
+        56,
+        45
+      ],
+      "text": "Elizabeth supposed he must be often forgotten",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2808,
+        "paragraph": 1262,
+        "range": [
+          353,
+          228
+        ],
+        "text": "To work in his garden was one of his most respectable pleasures; and Elizabeth admired the command of countenance with which Charlotte talked of the healthfulness of the exercise, and owned she encouraged it as much as possible."
+      }
+    },
+    {
+      "id": "2829:234",
+      "sentence": 2829,
+      "paragraph": 1269,
+      "range": [
+        234,
+        80
+      ],
+      "text": "to understand her address in guiding, and composure in bearing with, her husband",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2805,
+        "paragraph": 1261,
+        "range": [
+          645,
+          71
+        ],
+        "text": "Once or twice she could discern a faint blush; but in general Charlotte"
+      }
+    }
+  ]
+}

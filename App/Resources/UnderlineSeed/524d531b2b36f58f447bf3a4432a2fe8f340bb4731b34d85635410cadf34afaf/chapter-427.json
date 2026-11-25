@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5997:280",
+      "sentence": 5997,
+      "paragraph": 2434,
+      "range": [
+        280,
+        74
+      ],
+      "text": "he always attached himself to Elizabeth for the pleasure of talking of her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5964,
+        "paragraph": 2421,
+        "range": [
+          190,
+          451
+        ],
+        "text": "They shook hands with great cordiality; and then, till her sister came down, she had to listen to all he had to say of his own happiness, and of Jane’s perfections; and in spite of his being a lover, Elizabeth really believed all his expectations of felicity to be rationally founded, because they had for basis the excellent understanding and super-excellent disposition of Jane, and a general similarity of feeling and taste between her and himself."
+      }
+    },
+    {
+      "id": "6002:1",
+      "sentence": 6002,
+      "paragraph": 2437,
+      "range": [
+        1,
+        37
+      ],
+      "text": "It must have been his sisters’ doing.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5954,
+        "paragraph": 2416,
+        "range": [
+          78,
+          46
+        ],
+        "text": "of all his sister’s falsehood and contrivance!"
+      }
+    }
+  ]
+}

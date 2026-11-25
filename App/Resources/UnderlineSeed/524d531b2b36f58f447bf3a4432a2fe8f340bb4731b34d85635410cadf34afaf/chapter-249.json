@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3352:128",
+      "sentence": 3352,
+      "paragraph": 1486,
+      "range": [
+        128,
+        51
+      ],
+      "text": "you liked me against your will, against your reason",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3330,
+        "paragraph": 1480,
+        "range": [
+          378,
+          257
+        ],
+        "text": "His sense of her inferiority, of its being a degradation, of the family obstacles which judgment had always opposed to inclination, were dwelt on with a warmth which seemed due to the consequence he was wounding, but was very unlikely to recommend his suit."
+      }
+    },
+    {
+      "id": "3353:255",
+      "sentence": 3353,
+      "paragraph": 1486,
+      "range": [
+        255,
+        16
+      ],
+      "text": "if I was uncivil",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3350,
+        "paragraph": 1485,
+        "range": [
+          71,
+          100
+        ],
+        "text": "I might, perhaps, wish to be informed why, with so little endeavour at civility, I am thus rejected."
+      }
+    }
+  ]
+}

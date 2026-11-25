@@ -1,1 +1,426 @@
-{"parserVersion":1,"underlines":[{"id":"9417:44","range":[44,57],"decidedBy":"rules","reference":{"paragraph":3919,"text":"Her grandfather often called her ‘Beth’, and her grandmother watched over her with untiring devotion, as if trying to atone for some past mistake, which no eye but her own could see.","sentence":9400,"range":[308,182]},"sentence":9417,"kind":"action","paragraph":3931,"text":"listened so attentively that his anxious grandmother said"},{"id":"9423:143","range":[143,59],"decidedBy":"rules","reference":{"paragraph":3922,"text":"asked the young philosopher, surveying those active portions of his frame with a meditative air, while resting after a go-to-bed frolic one night.","sentence":9404,"range":[33,146]},"sentence":9423,"kind":"action","paragraph":3933,"text":"standing a moment on one leg, like a meditative young stork"},{"id":"9437:19","range":[19,22],"decidedBy":"rules","reference":{"paragraph":3936,"text":"“No more raisins, Demi.","sentence":9426,"range":[0,23]},"sentence":9437,"kind":"action","paragraph":3943,"text":"eat up all the raisins"},{"id":"9452:5","range":[5,19],"decidedBy":"rules","reference":{"paragraph":3922,"text":"“What makes my legs go, Dranpa?”","sentence":9403,"range":[0,32]},"sentence":9452,"kind":"reaction","paragraph":3949,"text":"went the black legs"},{"id":"9457:153","range":[153,17],"decidedBy":"rules","reference":{"paragraph":3922,"text":"“What makes my legs go, Dranpa?”","sentence":9403,"range":[0,32]},"sentence":9457,"kind":"action","paragraph":3950,"text":"It’s a We, Dranpa"},{"id":"9466:34","range":[34,31],"decidedBy":"rules","reference":{"paragraph":3953,"text":"“Me went to see little Mary.”","sentence":9461,"range":[0,29]},"sentence":9466,"kind":"action","paragraph":3956,"text":"did the little Mary say to that"},{"id":"9467:150","range":[150,30],"decidedBy":"rules","reference":{"paragraph":3944,"text":"Demi, with infantile penetration, soon discovered that Dodo like to play with ‘the bear-man’ better than she did him, but though hurt, he concealed his anguish, for he hadn’t the heart to insult a rival who kept a mine of chocolate drops in his waistcoat pocket, and a watch that could be taken out of its case and freely shaken by ardent admirers.","sentence":9442,"range":[526,348]},"sentence":9467,"kind":"action","paragraph":3956,"text":"exploring the waistcoat pocket"},{"id":"9474:66","range":[66,51],"decidedBy":"rules","reference":{"paragraph":3944,"text":"Demi, with infantile penetration, soon discovered that Dodo like to play with ‘the bear-man’ better than she did him, but though hurt, he concealed his anguish, for he hadn’t the heart to insult a rival who kept a mine of chocolate drops in his waistcoat pocket, and a watch that could be taken out of its case and freely shaken by ardent admirers.","sentence":9442,"range":[526,348]},"sentence":9474,"kind":"action","paragraph":3959,"text":"putting out his tongue, with a chocolate drop on it"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "9392:135",
+      "sentence": 9392,
+      "paragraph": 3917,
+      "range": [
+        135,
+        26
+      ],
+      "text": "Demi tyrannized over Daisy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9390,
+        "paragraph": 3916,
+        "range": [
+          1482,
+          299
+        ],
+        "text": "Also a basket hung over the back of a chair, in which he vainly tried to hoist his too confiding sister, who, with feminine devotion, allowed her little head to be bumped till rescued, when the young inventor indignantly remarked, “Why, Marmar, dat’s my lellywaiter, and me’s trying to pull her up.”"
+      }
+    },
+    {
+      "id": "9398:0",
+      "sentence": 9398,
+      "paragraph": 3918,
+      "range": [
+        0,
+        20
+      ],
+      "text": "“Me loves evvybody,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9397,
+        "paragraph": 3917,
+        "range": [
+          946,
+          162
+        ],
+        "text": "Everyone was a friend, and she offered kisses to a stranger so confidingly that the most inveterate bachelor relented, and baby-lovers became faithful worshipers."
+      }
+    },
+    {
+      "id": "9407:0",
+      "sentence": 9407,
+      "paragraph": 3925,
+      "range": [
+        0,
+        89
+      ],
+      "text": "“It is something which makes your body move, as the spring made the wheels go in my watch",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9403,
+        "paragraph": 3922,
+        "range": [
+          0,
+          32
+        ],
+        "text": "“What makes my legs go, Dranpa?”"
+      }
+    },
+    {
+      "id": "9408:0",
+      "sentence": 9408,
+      "paragraph": 3926,
+      "range": [
+        0,
+        9
+      ],
+      "text": "“Open me.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9389,
+        "paragraph": 3916,
+        "range": [
+          1167,
+          314
+        ],
+        "text": "The boy early developed a mechanical genius which delighted his father and distracted his mother, for he tried to imitate every machine he saw, and kept the nursery in a chaotic condition, with his ‘sewinsheen’, a mysterious structure of string, chairs, clothespins, and spools, for wheels to go ‘wound and wound’."
+      }
+    },
+    {
+      "id": "9416:0",
+      "sentence": 9416,
+      "paragraph": 3930,
+      "range": [
+        0,
+        69
+      ],
+      "text": "Demi felt his back, as if expecting to find it like that of the watch",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9414,
+        "paragraph": 3928,
+        "range": [
+          83,
+          33
+        ],
+        "text": "“Is I wounded up like the watch?”"
+      }
+    },
+    {
+      "id": "9419:0",
+      "sentence": 9419,
+      "paragraph": 3932,
+      "range": [
+        0,
+        40
+      ],
+      "text": "“If he is old enough to ask the question",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9418,
+        "paragraph": 3931,
+        "range": [
+          174,
+          93
+        ],
+        "text": "He’s getting great bumps over his eyes, and learning to ask the most unanswerable questions.”"
+      }
+    },
+    {
+      "id": "9423:247",
+      "sentence": 9423,
+      "paragraph": 3933,
+      "range": [
+        247,
+        21
+      ],
+      "text": "“In my little belly,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9422,
+        "paragraph": 3932,
+        "range": [
+          281,
+          45
+        ],
+        "text": "Now, Demi, tell me where you keep your mind.”"
+      }
+    },
+    {
+      "id": "9423:327",
+      "sentence": 9423,
+      "paragraph": 3933,
+      "range": [
+        327,
+        32
+      ],
+      "text": "dismiss the class in metaphysics",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9402,
+        "paragraph": 3921,
+        "range": [
+          0,
+          240
+        ],
+        "text": "He also possessed a philosophic bent, to the great delight of his grandfather, who used to hold Socratic conversations with him, in which the precocious pupil occasionally posed his teacher, to the undisguised satisfaction of the womenfolk."
+      }
+    },
+    {
+      "id": "9424:230",
+      "sentence": 9424,
+      "paragraph": 3934,
+      "range": [
+        230,
+        39
+      ],
+      "text": "“That child ain’t long for this world,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9418,
+        "paragraph": 3931,
+        "range": [
+          174,
+          93
+        ],
+        "text": "He’s getting great bumps over his eyes, and learning to ask the most unanswerable questions.”"
+      }
+    },
+    {
+      "id": "9437:0",
+      "sentence": 9437,
+      "paragraph": 3943,
+      "range": [
+        0,
+        43
+      ],
+      "text": "“Then we’ll go and eat up all the raisins.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9426,
+        "paragraph": 3936,
+        "range": [
+          0,
+          23
+        ],
+        "text": "“No more raisins, Demi."
+      }
+    },
+    {
+      "id": "9441:430",
+      "sentence": 9441,
+      "paragraph": 3944,
+      "range": [
+        430,
+        74
+      ],
+      "text": "Daisy, who was fond of going about peddling kisses, lost her best customer",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9397,
+        "paragraph": 3917,
+        "range": [
+          946,
+          162
+        ],
+        "text": "Everyone was a friend, and she offered kisses to a stranger so confidingly that the most inveterate bachelor relented, and baby-lovers became faithful worshipers."
+      }
+    },
+    {
+      "id": "9442:793",
+      "sentence": 9442,
+      "paragraph": 3944,
+      "range": [
+        793,
+        43
+      ],
+      "text": "a watch that could be taken out of its case",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9410,
+        "paragraph": 3927,
+        "range": [
+          0,
+          56
+        ],
+        "text": "“I can’t do that any more than you could open the watch."
+      }
+    },
+    {
+      "id": "9454:151",
+      "sentence": 9454,
+      "paragraph": 3949,
+      "range": [
+        151,
+        33
+      ],
+      "text": "We are just finishing our lesson.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9388,
+        "paragraph": 3916,
+        "range": [
+          828,
+          338
+        ],
+        "text": "She likewise set up housekeeping in the sideboard, and managed a microscopic cooking stove with a skill that brought tears of pride to Hannah’s eyes, while Demi learned his letters with his grandfather, who invented a new mode of teaching the alphabet by forming letters with his arms and legs, thus uniting gymnastics for head and heels."
+      }
+    },
+    {
+      "id": "9457:52",
+      "sentence": 9457,
+      "paragraph": 3950,
+      "range": [
+        52,
+        50
+      ],
+      "text": "the red legs took the shape of a pair of compasses",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9388,
+        "paragraph": 3916,
+        "range": [
+          828,
+          338
+        ],
+        "text": "She likewise set up housekeeping in the sideboard, and managed a microscopic cooking stove with a skill that brought tears of pride to Hannah’s eyes, while Demi learned his letters with his grandfather, who invented a new mode of teaching the alphabet by forming letters with his arms and legs, thus uniting gymnastics for head and heels."
+      }
+    },
+    {
+      "id": "9459:0",
+      "sentence": 9459,
+      "paragraph": 3952,
+      "range": [
+        0,
+        39
+      ],
+      "text": "“What have you been at today, bubchen?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9388,
+        "paragraph": 3916,
+        "range": [
+          828,
+          338
+        ],
+        "text": "She likewise set up housekeeping in the sideboard, and managed a microscopic cooking stove with a skill that brought tears of pride to Hannah’s eyes, while Demi learned his letters with his grandfather, who invented a new mode of teaching the alphabet by forming letters with his arms and legs, thus uniting gymnastics for head and heels."
+      }
+    },
+    {
+      "id": "9467:150",
+      "sentence": 9467,
+      "paragraph": 3956,
+      "range": [
+        150,
+        30
+      ],
+      "text": "exploring the waistcoat pocket",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9442,
+        "paragraph": 3944,
+        "range": [
+          526,
+          348
+        ],
+        "text": "Demi, with infantile penetration, soon discovered that Dodo like to play with ‘the bear-man’ better than she did him, but though hurt, he concealed his anguish, for he hadn’t the heart to insult a rival who kept a mine of chocolate drops in his waistcoat pocket, and a watch that could be taken out of its case and freely shaken by ardent admirers."
+      }
+    },
+    {
+      "id": "9474:90",
+      "sentence": 9474,
+      "paragraph": 3959,
+      "range": [
+        90,
+        27
+      ],
+      "text": "with a chocolate drop on it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9442,
+        "paragraph": 3944,
+        "range": [
+          526,
+          348
+        ],
+        "text": "Demi, with infantile penetration, soon discovered that Dodo like to play with ‘the bear-man’ better than she did him, but though hurt, he concealed his anguish, for he hadn’t the heart to insult a rival who kept a mine of chocolate drops in his waistcoat pocket, and a watch that could be taken out of its case and freely shaken by ardent admirers."
+      }
+    },
+    {
+      "id": "9478:0",
+      "sentence": 9478,
+      "paragraph": 3961,
+      "range": [
+        0,
+        46
+      ],
+      "text": "“Do great boys like great girls, to, ’Fessor?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9469,
+        "paragraph": 3957,
+        "range": [
+          54,
+          37
+        ],
+        "text": "Don’t little boys like little girls?”"
+      }
+    },
+    {
+      "id": "9479:260",
+      "sentence": 9479,
+      "paragraph": 3962,
+      "range": [
+        260,
+        52
+      ],
+      "text": "the ‘precocious chick’ had put an idea into his head",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9471,
+        "paragraph": 3958,
+        "range": [
+          0,
+          22
+        ],
+        "text": "“You precocious chick!"
+      }
+    },
+    {
+      "id": "9480:292",
+      "sentence": 9480,
+      "paragraph": 3963,
+      "range": [
+        292,
+        67
+      ],
+      "text": "remained one of the problems over which Demi puzzled his small wits",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9401,
+        "paragraph": 3920,
+        "range": [
+          0,
+          187
+        ],
+        "text": "Demi, like a true Yankee, was of an inquiring turn, wanting to know everything, and often getting much disturbed because he could not get satisfactory answers to his perpetual “What for?”"
+      }
+    }
+  ]
+}

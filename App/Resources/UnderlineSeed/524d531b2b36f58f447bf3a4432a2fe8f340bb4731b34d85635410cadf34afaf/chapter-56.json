@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "757:366",
+      "sentence": 757,
+      "paragraph": 393,
+      "range": [
+        366,
+        39
+      ],
+      "text": "They could talk of nothing but officers",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 752,
+        "paragraph": 392,
+        "range": [
+          643,
+          208
+        ],
+        "text": "At present, indeed, they were well supplied both with news and happiness by the recent arrival of a militia regiment in the neighbourhood; it was to remain the whole winter, and Meryton was the head-quarters."
+      }
+    }
+  ]
+}

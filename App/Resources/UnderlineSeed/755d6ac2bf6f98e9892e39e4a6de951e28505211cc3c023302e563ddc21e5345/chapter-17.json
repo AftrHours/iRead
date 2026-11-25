@@ -1,1 +1,510 @@
-{"underlines":[{"range":[8,52],"text":"don’t have fortunes left them in that style nowadays","decidedBy":"rules","paragraph":1574,"id":"3563:8","kind":"thing","reference":{"range":[240,110],"paragraph":1573,"sentence":3561,"text":"You’re pretty enough and good enough already, so I’d have some rich relation leave you a fortune unexpectedly."},"sentence":3563},{"range":[283,15],"text":"It’s a dull day","decidedBy":"rules","paragraph":1578,"id":"3574:283","kind":"action","reference":{"range":[0,157],"paragraph":1569,"sentence":3551,"text":"“November is the most disagreeable month in the whole year,” said Margaret, standing at the window one dull afternoon, looking out at the frostbitten garden."},"sentence":3574},{"range":[5,29],"text":"tried to be calm, poor things","decidedBy":"rules","paragraph":1596,"id":"3603:5","kind":"action","reference":{"range":[45,34],"paragraph":1595,"sentence":3602,"text":"Be calm, girls, and let me think.”"},"sentence":3603},{"range":[13,28],"text":"came hurrying back with Beth","decidedBy":"rules","paragraph":1607,"id":"3631:13","kind":"action","reference":{"range":[401,43],"paragraph":1578,"sentence":3575,"text":"Come, Jo, you and Beth will go, won’t you?”"},"sentence":3631},{"range":[137,45],"text":"came to offer myself as escort to your mother","decidedBy":"rules","paragraph":1608,"id":"3638:137","kind":"action","reference":{"range":[234,83],"paragraph":1607,"sentence":3632,"text":"There was nothing he didn’t offer, from his own dressing gown to himself as escort."},"sentence":3638},{"range":[11,68],"text":"was arranged by the time Laurie returned with a note from Aunt March","decidedBy":"rules","paragraph":1612,"id":"3645:11","kind":"action","reference":{"range":[0,30],"paragraph":1601,"sentence":3615,"text":"“Leave a note at Aunt March’s."},"sentence":3645},{"range":[260,16],"text":"don’t wail, Beth","decidedBy":"rules","paragraph":1618,"id":"3664:260","kind":"action","reference":{"range":[401,43],"paragraph":1578,"sentence":3575,"text":"Come, Jo, you and Beth will go, won’t you?”"},"sentence":3664},{"range":[1,24],"text":"Tell me all about it, Jo","decidedBy":"rules","paragraph":1619,"id":"3669:1","kind":"reaction","reference":{"range":[0,60],"paragraph":1605,"sentence":3621,"text":"“Jo, run to the rooms, and tell Mrs. King that I can’t come."},"sentence":3669},{"range":[29,22],"text":"am not quite satisfied","decidedBy":"rules","paragraph":1619,"id":"3670:29","kind":"thing","reference":{"range":[551,63],"paragraph":1618,"sentence":3668,"text":"I’m satisfied, so please take the money and let’s have supper.”"},"sentence":3670},{"range":[82,45],"text":"know how willingly you sacrificed your vanity","decidedBy":"rules","paragraph":1619,"id":"3670:82","kind":"action","reference":{"range":[278,65],"paragraph":1618,"sentence":3665,"text":"It will be good for my vanity, I was getting too proud of my wig."},"sentence":3670},{"range":[1,13],"text":"Who was Jimmy","decidedBy":"rules","paragraph":1627,"id":"3693:1","kind":"thing","reference":{"range":[795,77],"paragraph":1626,"sentence":3692,"text":"I’d do as much for our Jimmy any day if I had a spire of hair worth selling.”"},"sentence":3693},{"range":[135,23],"text":"settling a pillow there","decidedBy":"rules","paragraph":1649,"id":"3739:135","kind":"action","reference":{"range":[17,70],"paragraph":1638,"sentence":3722,"text":"burst out poor Jo, trying vainly to smother her emotion in the pillow."},"sentence":3739}],"engineVersion":5,"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3567:38",
+      "sentence": 3567,
+      "paragraph": 1576,
+      "range": [
+        38,
+        26
+      ],
+      "text": "much faith in ink and dirt",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3552,
+        "paragraph": 1570,
+        "range": [
+          0,
+          103
+        ],
+        "text": "“That’s the reason I was born in it,” observed Jo pensively, quite unconscious of the blot on her nose."
+      }
+    },
+    {
+      "id": "3569:220",
+      "sentence": 3569,
+      "paragraph": 1577,
+      "range": [
+        220,
+        50
+      ],
+      "text": "Two pleasant things are going to happen right away",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3553,
+        "paragraph": 1571,
+        "range": [
+          0,
+          151
+        ],
+        "text": "“If something very pleasant should happen now, we should think it a delightful month,” said Beth, who took a hopeful view of everything, even November."
+      }
+    },
+    {
+      "id": "3609:1",
+      "sentence": 3609,
+      "paragraph": 1599,
+      "range": [
+        1,
+        42
+      ],
+      "text": "Send a telegram saying I will come at once",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3595,
+        "paragraph": 1592,
+        "range": [
+          0,
+          188
+        ],
+        "text": "Mrs. March was herself again directly, read the message over, and stretched out her arms to her daughters, saying, in a tone they never forgot, “I shall go at once, but it may be too late."
+      }
+    },
+    {
+      "id": "3631:0",
+      "sentence": 3631,
+      "paragraph": 1607,
+      "range": [
+        0,
+        41
+      ],
+      "text": "Mr. Laurence came hurrying back with Beth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3625,
+        "paragraph": 1605,
+        "range": [
+          201,
+          66
+        ],
+        "text": "Beth, go and ask Mr. Laurence for a couple of bottles of old wine."
+      }
+    },
+    {
+      "id": "3638:135",
+      "sentence": 3638,
+      "paragraph": 1608,
+      "range": [
+        135,
+        47
+      ],
+      "text": "I came to offer myself as escort to your mother",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3632,
+        "paragraph": 1607,
+        "range": [
+          234,
+          83
+        ],
+        "text": "There was nothing he didn’t offer, from his own dressing gown to himself as escort."
+      }
+    },
+    {
+      "id": "3639:184",
+      "sentence": 3639,
+      "paragraph": 1608,
+      "range": [
+        184,
+        49
+      ],
+      "text": "Mr. Laurence has commissions for me in Washington",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3635,
+        "paragraph": 1607,
+        "range": [
+          527,
+          116
+        ],
+        "text": "He saw the look, knit his heavy eyebrows, rubbed his hands, and marched abruptly away, saying he’d be back directly."
+      }
+    },
+    {
+      "id": "3640:0",
+      "sentence": 3640,
+      "paragraph": 1609,
+      "range": [
+        0,
+        24
+      ],
+      "text": "Down dropped the rubbers",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3636,
+        "paragraph": 1607,
+        "range": [
+          644,
+          174
+        ],
+        "text": "No one had time to think of him again till, as Meg ran through the entry, with a pair of rubbers in one hand and a cup of tea in the other, she came suddenly upon Mr. Brooke."
+      }
+    },
+    {
+      "id": "3644:102",
+      "sentence": 3644,
+      "paragraph": 1611,
+      "range": [
+        102,
+        33
+      ],
+      "text": "made her remember the cooling tea",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3636,
+        "paragraph": 1607,
+        "range": [
+          644,
+          174
+        ],
+        "text": "No one had time to think of him again till, as Meg ran through the entry, with a pair of rubbers in one hand and a cup of tea in the other, she came suddenly upon Mr. Brooke."
+      }
+    },
+    {
+      "id": "3645:36",
+      "sentence": 3645,
+      "paragraph": 1612,
+      "range": [
+        36,
+        43
+      ],
+      "text": "Laurie returned with a note from Aunt March",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3615,
+        "paragraph": 1601,
+        "range": [
+          0,
+          30
+        ],
+        "text": "“Leave a note at Aunt March’s."
+      }
+    },
+    {
+      "id": "3645:81",
+      "sentence": 3645,
+      "paragraph": 1612,
+      "range": [
+        81,
+        25
+      ],
+      "text": "enclosing the desired sum",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3617,
+        "paragraph": 1602,
+        "range": [
+          0,
+          248
+        ],
+        "text": "Tearing off the blank side of one of her newly copied pages, Jo drew the table before her mother, well knowing that money for the long, sad journey must be borrowed, and feeling as if she could do anything to add a little to the sum for her father."
+      }
+    },
+    {
+      "id": "3648:220",
+      "sentence": 3648,
+      "paragraph": 1613,
+      "range": [
+        220,
+        25
+      ],
+      "text": "but still Jo did not come",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3621,
+        "paragraph": 1605,
+        "range": [
+          0,
+          60
+        ],
+        "text": "“Jo, run to the rooms, and tell Mrs. King that I can’t come."
+      }
+    },
+    {
+      "id": "3650:656",
+      "sentence": 3650,
+      "paragraph": 1613,
+      "range": [
+        656,
+        55
+      ],
+      "text": "That’s my contribution toward making Father comfortable",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3617,
+        "paragraph": 1602,
+        "range": [
+          0,
+          248
+        ],
+        "text": "Tearing off the blank side of one of her newly copied pages, Jo drew the table before her mother, well knowing that money for the long, sad journey must be borrowed, and feeling as if she could do anything to add a little to the sum for her father."
+      }
+    },
+    {
+      "id": "3670:80",
+      "sentence": 3670,
+      "paragraph": 1619,
+      "range": [
+        80,
+        63
+      ],
+      "text": "I know how willingly you sacrificed your vanity, as you call it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3665,
+        "paragraph": 1618,
+        "range": [
+          278,
+          65
+        ],
+        "text": "It will be good for my vanity, I was getting too proud of my wig."
+      }
+    },
+    {
+      "id": "3677:157",
+      "sentence": 3677,
+      "paragraph": 1622,
+      "range": [
+        157,
+        39
+      ],
+      "text": "I hate to borrow as much as Mother does",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3626,
+        "paragraph": 1605,
+        "range": [
+          268,
+          36
+        ],
+        "text": "I’m not too proud to beg for Father."
+      }
+    },
+    {
+      "id": "3677:202",
+      "sentence": 3677,
+      "paragraph": 1622,
+      "range": [
+        202,
+        46
+      ],
+      "text": "I knew Aunt March would croak, she always does",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3645,
+        "paragraph": 1612,
+        "range": [
+          0,
+          344
+        ],
+        "text": "Everything was arranged by the time Laurie returned with a note from Aunt March, enclosing the desired sum, and a few lines repeating what she had often said before, that she had always told them it was absurd for March to go into the army, always predicted that no good would come of it, and she hoped they would take her advice the next time."
+      }
+    },
+    {
+      "id": "3706:0",
+      "sentence": 3706,
+      "paragraph": 1631,
+      "range": [
+        0,
+        40
+      ],
+      "text": "Mrs. March folded the wavy chestnut lock",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3704,
+        "paragraph": 1630,
+        "range": [
+          310,
+          71
+        ],
+        "text": "The woman saw me look at it, and picked out a long lock for me to keep."
+      }
+    },
+    {
+      "id": "3707:194",
+      "sentence": 3707,
+      "paragraph": 1631,
+      "range": [
+        194,
+        60
+      ],
+      "text": "talk as cheerfully as they could about Mr. Brooke’s kindness",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3639,
+        "paragraph": 1608,
+        "range": [
+          184,
+          120
+        ],
+        "text": "Mr. Laurence has commissions for me in Washington, and it will give me real satisfaction to be of service to her there.”"
+      }
+    },
+    {
+      "id": "3707:329",
+      "sentence": 3707,
+      "paragraph": 1631,
+      "range": [
+        329,
+        34
+      ],
+      "text": "when Father came home to be nursed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3623,
+        "paragraph": 1605,
+        "range": [
+          90,
+          73
+        ],
+        "text": "I’ll put them down, they’ll be needed and I must go prepared for nursing."
+      }
+    },
+    {
+      "id": "3711:27",
+      "sentence": 3711,
+      "paragraph": 1633,
+      "range": [
+        27,
+        63
+      ],
+      "text": "for we must be up early and shall need all the sleep we can get",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3610,
+        "paragraph": 1599,
+        "range": [
+          45,
+          41
+        ],
+        "text": "The next train goes early in the morning."
+      }
+    },
+    {
+      "id": "3720:0",
+      "sentence": 3720,
+      "paragraph": 1638,
+      "range": [
+        0,
+        6
+      ],
+      "text": "“My...",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3657,
+        "paragraph": 1616,
+        "range": [
+          0,
+          106
+        ],
+        "text": "As she spoke, Jo took off her bonnet, and a general outcry arose, for all her abundant hair was cut short."
+      }
+    },
+    {
+      "id": "3724:0",
+      "sentence": 3724,
+      "paragraph": 1640,
+      "range": [
+        0,
+        29
+      ],
+      "text": "“I’m not sorry,” protested Jo",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3671,
+        "paragraph": 1619,
+        "range": [
+          159,
+          106
+        ],
+        "text": "But, my dear, it was not necessary, and I’m afraid you will regret it one of these days,” said Mrs. March."
+      }
+    },
+    {
+      "id": "3728:221",
+      "sentence": 3728,
+      "paragraph": 1640,
+      "range": [
+        221,
+        51
+      ],
+      "text": "I just made a little private moan for my one beauty",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3660,
+        "paragraph": 1617,
+        "range": [
+          34,
+          23
+        ],
+        "text": "“Oh, Jo, how could you?"
+      }
+    },
+    {
+      "id": "3736:1",
+      "sentence": 3736,
+      "paragraph": 1647,
+      "range": [
+        1,
+        26
+      ],
+      "text": "Brown, that is, sometimes.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3644,
+        "paragraph": 1611,
+        "range": [
+          0,
+          204
+        ],
+        "text": "Meg spoke earnestly, and forgot herself entirely till something in the brown eyes looking down at her made her remember the cooling tea, and lead the way into the parlor, saying she would call her mother."
+      }
+    },
+    {
+      "id": "3738:66",
+      "sentence": 3738,
+      "paragraph": 1648,
+      "range": [
+        66,
+        30
+      ],
+      "text": "promised to make her hair curl",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3667,
+        "paragraph": 1618,
+        "range": [
+          398,
+          152
+        ],
+        "text": "My head feels deliciously light and cool, and the barber said I could soon have a curly crop, which will be boyish, becoming, and easy to keep in order."
+      }
+    }
+  ]
+}

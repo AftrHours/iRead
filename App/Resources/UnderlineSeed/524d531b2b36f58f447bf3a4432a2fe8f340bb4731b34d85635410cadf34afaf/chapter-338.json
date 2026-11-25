@@ -1,1 +1,90 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4572:219",
+      "sentence": 4572,
+      "paragraph": 1905,
+      "range": [
+        219,
+        66
+      ],
+      "text": "there is but too much reason to fear they are not gone to Scotland",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4550,
+        "paragraph": 1902,
+        "range": [
+          48,
+          197
+        ],
+        "text": "An express came at twelve last night, just as we were all gone to bed, from Colonel Forster, to inform us that she was gone off to Scotland with one of his officers; to own the truth, with Wickham!"
+      }
+    },
+    {
+      "id": "4573:287",
+      "sentence": 4573,
+      "paragraph": 1905,
+      "range": [
+        287,
+        67
+      ],
+      "text": "Colonel Forster came yesterday, having left Brighton the day before",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4564,
+        "paragraph": 1902,
+        "range": [
+          1058,
+          56
+        ],
+        "text": "Colonel Forster gives us reason to expect him here soon."
+      }
+    },
+    {
+      "id": "4574:390",
+      "sentence": 4574,
+      "paragraph": 1905,
+      "range": [
+        390,
+        38
+      ],
+      "text": "Though Lydia’s short letter to Mrs. F.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4565,
+        "paragraph": 1902,
+        "range": [
+          1115,
+          70
+        ],
+        "text": "Lydia left a few lines for his wife, informing her of their intention."
+      }
+    },
+    {
+      "id": "4582:1511",
+      "sentence": 4582,
+      "paragraph": 1905,
+      "range": [
+        1511,
+        38
+      ],
+      "text": "My father and mother believe the worst",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4559,
+        "paragraph": 1902,
+        "range": [
+          712,
+          26
+        ],
+        "text": "My father bears it better."
+      }
+    }
+  ]
+}

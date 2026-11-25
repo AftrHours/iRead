@@ -1,1 +1,111 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "898:1",
+      "sentence": 898,
+      "paragraph": 467,
+      "range": [
+        1,
+        47
+      ],
+      "text": "If they had uncles enough to fill all Cheapside",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 896,
+        "paragraph": 465,
+        "range": [
+          0,
+          65
+        ],
+        "text": "“Yes; and they have another, who lives somewhere near Cheapside.”"
+      }
+    },
+    {
+      "id": "899:1",
+      "sentence": 899,
+      "paragraph": 468,
+      "range": [
+        1,
+        59
+      ],
+      "text": "But it must very materially lessen their chance of marrying",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 893,
+        "paragraph": 462,
+        "range": [
+          130,
+          99
+        ],
+        "text": "But with such a father and mother, and such low connections, I am afraid there is no chance of it.”"
+      }
+    },
+    {
+      "id": "900:141",
+      "sentence": 900,
+      "paragraph": 469,
+      "range": [
+        141,
+        36
+      ],
+      "text": "their dear friend’s vulgar relations",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 893,
+        "paragraph": 462,
+        "range": [
+          130,
+          99
+        ],
+        "text": "But with such a father and mother, and such low connections, I am afraid there is no chance of it.”"
+      }
+    },
+    {
+      "id": "901:0",
+      "sentence": 901,
+      "paragraph": 470,
+      "range": [
+        0,
+        64
+      ],
+      "text": "With a renewal of tenderness, however, they repaired to her room",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 862,
+        "paragraph": 448,
+        "range": [
+          325,
+          358
+        ],
+        "text": "The sisters, on hearing this, repeated three or four times how much they were grieved, how shocking it was to have a bad cold, and how excessively they disliked being ill themselves; and then thought no more of the matter: and their indifference towards Jane, when not immediately before them, restored Elizabeth to the enjoyment of all her original dislike."
+      }
+    },
+    {
+      "id": "905:1",
+      "sentence": 905,
+      "paragraph": 471,
+      "range": [
+        1,
+        31
+      ],
+      "text": "Do you prefer reading to cards?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 866,
+        "paragraph": 449,
+        "range": [
+          330,
+          270
+        ],
+        "text": "Miss Bingley was engrossed by Mr. Darcy, her sister scarcely less so; and as for Mr. Hurst, by whom Elizabeth sat, he was an indolent man, who lived only to eat, drink, and play at cards, who, when he found her prefer a plain dish to a ragout, had nothing to say to her."
+      }
+    }
+  ]
+}

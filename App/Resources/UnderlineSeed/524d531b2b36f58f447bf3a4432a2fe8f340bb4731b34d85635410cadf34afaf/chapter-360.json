@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4919:60",
+      "sentence": 4919,
+      "paragraph": 2025,
+      "range": [
+        60,
+        72
+      ],
+      "text": "Mary studies so much that her hours of repose should not be broken in on",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4837,
+        "paragraph": 1990,
+        "range": [
+          154,
+          57
+        ],
+        "text": "One came from her books, and the other from her toilette."
+      }
+    },
+    {
+      "id": "4920:134",
+      "sentence": 4920,
+      "paragraph": 2025,
+      "range": [
+        134,
+        71
+      ],
+      "text": "My aunt Philips came to Longbourn on Tuesday, after my father went away",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4790,
+        "paragraph": 1972,
+        "range": [
+          0,
+          47
+        ],
+        "text": "“Yes, he went on Tuesday, as I wrote you word.”"
+      }
+    },
+    {
+      "id": "4927:206",
+      "sentence": 4927,
+      "paragraph": 2028,
+      "range": [
+        206,
+        60
+      ],
+      "text": "the number of the hackney coach which took them from Clapham",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4724,
+        "paragraph": 1948,
+        "range": [
+          0,
+          83
+        ],
+        "text": "“Oh, but their removing from the chaise into a hackney coach is such a presumption!"
+      }
+    }
+  ]
+}

@@ -1,1 +1,153 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "491:105",
+      "sentence": 491,
+      "paragraph": 271,
+      "range": [
+        105,
+        30
+      ],
+      "text": "his sisters are charming women",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 432,
+        "paragraph": 252,
+        "range": [
+          109,
+          60
+        ],
+        "text": "His sisters were fine women, with an air of decided fashion."
+      }
+    },
+    {
+      "id": "496:221",
+      "sentence": 496,
+      "paragraph": 272,
+      "range": [
+        221,
+        34
+      ],
+      "text": "the shocking rudeness of Mr. Darcy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 442,
+        "paragraph": 254,
+        "range": [
+          266,
+          178
+        ],
+        "text": "Amongst the most violent against him was Mrs. Bennet, whose dislike of his general behaviour was sharpened into particular resentment by his having slighted one of her daughters."
+      }
+    },
+    {
+      "id": "497:41",
+      "sentence": 497,
+      "paragraph": 273,
+      "range": [
+        41,
+        49
+      ],
+      "text": "Lizzy does not lose much by not suiting his fancy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 460,
+        "paragraph": 264,
+        "range": [
+          21,
+          273
+        ],
+        "text": "and turning round, he looked for a moment at Elizabeth, till, catching her eye, he withdrew his own, and coldly said, “She is tolerable: but not handsome enough to tempt me; and I am in no humour at present to give consequence to young ladies who are slighted by other men."
+      }
+    },
+    {
+      "id": "497:96",
+      "sentence": 497,
+      "paragraph": 273,
+      "range": [
+        96,
+        37
+      ],
+      "text": "he is a most disagreeable, horrid man",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 441,
+        "paragraph": 254,
+        "range": [
+          151,
+          114
+        ],
+        "text": "He was the proudest, most disagreeable man in the world, and everybody hoped that he would never come there again."
+      }
+    },
+    {
+      "id": "498:162",
+      "sentence": 498,
+      "paragraph": 273,
+      "range": [
+        162,
+        24
+      ],
+      "text": "So high and so conceited",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 434,
+        "paragraph": 252,
+        "range": [
+          472,
+          513
+        ],
+        "text": "The gentlemen pronounced him to be a fine figure of a man, the ladies declared he was much handsomer than Mr. Bingley, and he was looked at with great admiration for about half the evening, till his manners gave a disgust which turned the tide of his popularity; for he was discovered to be proud, to be above his company, and above being pleased; and not all his large estate in Derbyshire could save him from having a most forbidding, disagreeable countenance, and being unworthy to be compared with his friend."
+      }
+    },
+    {
+      "id": "499:220",
+      "sentence": 499,
+      "paragraph": 273,
+      "range": [
+        220,
+        35
+      ],
+      "text": "He walked here, and he walked there",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 439,
+        "paragraph": 254,
+        "range": [
+          0,
+          123
+        ],
+        "text": "any other lady, and spent the rest of the evening in walking about the room, speaking occasionally to one of his own party."
+      }
+    },
+    {
+      "id": "500:289",
+      "sentence": 500,
+      "paragraph": 273,
+      "range": [
+        289,
+        34
+      ],
+      "text": "Not handsome enough to dance with!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 460,
+        "paragraph": 264,
+        "range": [
+          21,
+          273
+        ],
+        "text": "and turning round, he looked for a moment at Elizabeth, till, catching her eye, he withdrew his own, and coldly said, “She is tolerable: but not handsome enough to tempt me; and I am in no humour at present to give consequence to young ladies who are slighted by other men."
+      }
+    }
+  ]
+}

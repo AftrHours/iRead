@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6781:0",
+      "sentence": 6781,
+      "paragraph": 2724,
+      "range": [
+        0,
+        63
+      ],
+      "text": "With the Gardiners they were always on the most intimate terms.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6780,
+        "paragraph": 2723,
+        "range": [
+          311,
+          500
+        ],
+        "text": "But at length, by Elizabeth’s persuasion, he was prevailed on to overlook the offence, and seek a reconciliation; and, after a little further resistance on the part of his aunt, her resentment gave way, either to her affection for him, or her curiosity to see how his wife conducted herself; and she condescended to wait on them at Pemberley, in spite of that pollution which its woods had received, not merely from the presence of such a mistress, but the visits of her uncle and aunt from the city."
+      }
+    }
+  ]
+}

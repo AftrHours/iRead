@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1598:91",
+      "sentence": 1598,
+      "paragraph": 792,
+      "range": [
+        91,
+        44
+      ],
+      "text": "the delicacy of it prevented further inquiry",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1596,
+        "paragraph": 790,
+        "range": [
+          578,
+          191
+        ],
+        "text": "His behaviour to myself has been scandalous; but I verily believe I could forgive him anything and everything, rather than his disappointing the hopes and disgracing the memory of his father."
+      }
+    },
+    {
+      "id": "1606:732",
+      "sentence": 1606,
+      "paragraph": 794,
+      "range": [
+        732,
+        57
+      ],
+      "text": "had it pleased the gentleman we were speaking of just now",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1592,
+        "paragraph": 790,
+        "range": [
+          0,
+          55
+        ],
+        "text": "“Oh no—it is not for me to be driven away by Mr. Darcy."
+      }
+    },
+    {
+      "id": "1609:92",
+      "sentence": 1609,
+      "paragraph": 796,
+      "range": [
+        92,
+        51
+      ],
+      "text": "He was my godfather, and excessively attached to me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1595,
+        "paragraph": 790,
+        "range": [
+          335,
+          242
+        ],
+        "text": "His father, Miss Bennet, the late Mr. Darcy, was one of the best men that ever breathed, and the truest friend I ever had; and I can never be in company with this Mr. Darcy without being grieved to the soul by a thousand tender recollections."
+      }
+    }
+  ]
+}

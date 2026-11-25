@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "370:93",
+      "sentence": 370,
+      "paragraph": 223,
+      "range": [
+        93,
+        46
+      ],
+      "text": "it will be impossible for her to introduce him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 357,
+        "paragraph": 215,
+        "range": [
+          0,
+          134
+        ],
+        "text": "“But you forget, mamma,” said Elizabeth, “that we shall meet him at the assemblies, and that Mrs. Long has promised to introduce him.”"
+      }
+    },
+    {
+      "id": "376:209",
+      "sentence": 376,
+      "paragraph": 226,
+      "range": [
+        209,
+        48
+      ],
+      "text": "Mrs. Long and her nieces must stand their chance",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 359,
+        "paragraph": 216,
+        "range": [
+          52,
+          30
+        ],
+        "text": "She has two nieces of her own."
+      }
+    }
+  ]
+}

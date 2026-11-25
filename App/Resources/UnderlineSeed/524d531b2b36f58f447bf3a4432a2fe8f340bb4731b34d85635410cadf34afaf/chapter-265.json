@@ -1,1 +1,132 @@
-{"parserVersion":1,"underlines":[{"paragraph":1540,"kind":"thing","decidedBy":"rules","sentence":3594,"text":"could not have been more wretchedly blind","id":"3594:335","reference":{"paragraph":1539,"range":[0,104],"text":"Darcy nor Wickham could she think, without feeling that she had been blind, partial, prejudiced, absurd.","sentence":3586},"range":[335,41]}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3594:313",
+      "sentence": 3594,
+      "paragraph": 1540,
+      "range": [
+        313,
+        64
+      ],
+      "text": "Had I been in love, I could not have been more wretchedly blind.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3586,
+        "paragraph": 1539,
+        "range": [
+          0,
+          104
+        ],
+        "text": "Darcy nor Wickham could she think, without feeling that she had been blind, partial, prejudiced, absurd."
+      }
+    },
+    {
+      "id": "3596:419",
+      "sentence": 3596,
+      "paragraph": 1540,
+      "range": [
+        419,
+        34
+      ],
+      "text": "Pleased with the preference of one",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3582,
+        "paragraph": 1537,
+        "range": [
+          284,
+          236
+        ],
+        "text": "His behaviour to herself could now have had no tolerable motive: he had either been deceived with regard to her fortune, or had been gratifying his vanity by encouraging the preference which she believed she had most incautiously shown."
+      }
+    },
+    {
+      "id": "3598:116",
+      "sentence": 3598,
+      "paragraph": 1541,
+      "range": [
+        116,
+        60
+      ],
+      "text": "Mr. Darcy’s explanation there had appeared very insufficient",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3537,
+        "paragraph": 1526,
+        "range": [
+          553,
+          115
+        ],
+        "text": "With a strong prejudice against everything he might say, she began his account of what had happened at Netherfield."
+      }
+    },
+    {
+      "id": "3599:201",
+      "sentence": 3599,
+      "paragraph": 1541,
+      "range": [
+        201,
+        52
+      ],
+      "text": "Widely different was the effect of a second perusal.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3538,
+        "paragraph": 1526,
+        "range": [
+          669,
+          207
+        ],
+        "text": "She read with an eagerness which hardly left her power of comprehension; and from impatience of knowing what the next sentence might bring, was incapable of attending to the sense of the one before her eyes."
+      }
+    },
+    {
+      "id": "3602:552",
+      "sentence": 3602,
+      "paragraph": 1541,
+      "range": [
+        552,
+        38
+      ],
+      "text": "the justice of his description of Jane",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3539,
+        "paragraph": 1526,
+        "range": [
+          877,
+          198
+        ],
+        "text": "His belief of her sister’s insensibility she instantly resolved to be false; and his account of the real, the worst objections to the match, made her too angry to have any wish of doing him justice."
+      }
+    },
+    {
+      "id": "3604:17",
+      "sentence": 3604,
+      "paragraph": 1542,
+      "range": [
+        17,
+        58
+      ],
+      "text": "that part of the letter in which her family were mentioned",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3539,
+        "paragraph": 1526,
+        "range": [
+          877,
+          198
+        ],
+        "text": "His belief of her sister’s insensibility she instantly resolved to be false; and his account of the real, the worst objections to the match, made her too angry to have any wish of doing him justice."
+      }
+    }
+  ]
+}

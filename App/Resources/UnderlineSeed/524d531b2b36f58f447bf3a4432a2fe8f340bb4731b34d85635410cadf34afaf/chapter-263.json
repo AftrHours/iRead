@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[{"decidedBy":"rules","range":[729,70],"sentence":3578,"paragraph":1535,"kind":"action","text":"had told his story to no one but herself; but that after their removal","id":"3578:729","reference":{"paragraph":1534,"range":[118,415],"text":"the story which followed, of his designs on Miss Darcy, received some confirmation from what had passed between Colonel Fitzwilliam and herself only the morning before; and at last she was referred for the truth of every particular to Colonel Fitzwilliam himself—from whom she had previously received the information of his near concern in all his cousin’s affairs and whose character she had no reason to question.","sentence":3571}}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3569:74",
+      "sentence": 3569,
+      "paragraph": 1534,
+      "range": [
+        74,
+        31
+      ],
+      "text": "she once more continued to read",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3553,
+        "paragraph": 1529,
+        "range": [
+          801,
+          164
+        ],
+        "text": "She put down the letter, weighed every circumstance with what she meant to be impartiality—deliberated on the probability of each statement—but with little success."
+      }
+    },
+    {
+      "id": "3575:217",
+      "sentence": 3575,
+      "paragraph": 1535,
+      "range": [
+        217,
+        52
+      ],
+      "text": "the impropriety of such communications to a stranger",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3559,
+        "paragraph": 1530,
+        "range": [
+          393,
+          83
+        ],
+        "text": "Of his former way of life, nothing had been known in Hertfordshire but what he told"
+      }
+    }
+  ]
+}

@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"kind":"thing","decidedBy":"rules","paragraph":1065,"text":"was Miss Lucas’s scheme","range":[366,23],"reference":{"range":[0,142],"sentence":2264,"paragraph":1064,"text":"THE Bennets were engaged to dine with the Lucases; and again, during the chief of the day, was Miss Lucas so kind as to listen to Mr. Collins."},"id":"2269:366","sentence":2269}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2268:160",
+      "sentence": 2268,
+      "paragraph": 1065,
+      "range": [
+        160,
+        74
+      ],
+      "text": "Charlotte’s kindness extended farther than Elizabeth had any conception of",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2266,
+        "paragraph": 1064,
+        "range": [
+          190,
+          91
+        ],
+        "text": "“It keeps him in good humour,” said she, “and I am more obliged to you than I can express.”"
+      }
+    }
+  ]
+}

@@ -1,1 +1,90 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1482:0",
+      "sentence": 1482,
+      "paragraph": 742,
+      "range": [
+        0,
+        58
+      ],
+      "text": "Lydia was bid by her two eldest sisters to hold her tongue",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1478,
+        "paragraph": 741,
+        "range": [
+          0,
+          73
+        ],
+        "text": "“Do you know, mamma, that my uncle Philips talks of turning away Richard?"
+      }
+    },
+    {
+      "id": "1482:64",
+      "sentence": 1482,
+      "paragraph": 742,
+      "range": [
+        64,
+        47
+      ],
+      "text": "Mr. Collins, much offended, laid aside his book",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1476,
+        "paragraph": 740,
+        "range": [
+          117,
+          84
+        ],
+        "text": "Other books were produced, and after some deliberation he chose “Fordyce’s Sermons.”"
+      }
+    },
+    {
+      "id": "1483:65",
+      "sentence": 1483,
+      "paragraph": 743,
+      "range": [
+        65,
+        65
+      ],
+      "text": "books of a serious stamp, though written solely for their benefit",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1474,
+        "paragraph": 740,
+        "range": [
+          0,
+          74
+        ],
+        "text": "he started back, and, begging pardon, protested that he never read novels."
+      }
+    },
+    {
+      "id": "1488:237",
+      "sentence": 1488,
+      "paragraph": 744,
+      "range": [
+        237,
+        48
+      ],
+      "text": "apologized most civilly for Lydia’s interruption",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1477,
+        "paragraph": 740,
+        "range": [
+          202,
+          132
+        ],
+        "text": "Lydia gaped as he opened the volume; and before he had, with very monotonous solemnity, read three pages, she interrupted him with,—"
+      }
+    }
+  ]
+}

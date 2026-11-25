@@ -1,1 +1,132 @@
-{"parserVersion":1,"underlines":[{"id":"2075:382","decidedBy":"rules","paragraph":980,"text":"Do not consider me now as an elegant female intending to plague you","range":[382,67],"reference":{"text":"As I must, therefore, conclude that you are not serious in your rejection of me, I shall choose to attribute it to your wish of increasing my love by suspense, according to the usual practice of elegant females.”","paragraph":979,"range":[285,212],"sentence":2069},"sentence":2075,"kind":"action"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2068:154",
+      "sentence": 2068,
+      "paragraph": 979,
+      "range": [
+        154,
+        34
+      ],
+      "text": "Your portion is unhappily so small",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2036,
+        "paragraph": 967,
+        "range": [
+          1228,
+          301
+        ],
+        "text": "To fortune I am perfectly indifferent, and shall make no demand of that nature on your father, since I am well aware that it could not be complied with; and that one thousand pounds in the 4 per cents., which will not be yours till after your mother’s decease, is all that you may ever be entitled to."
+      }
+    },
+    {
+      "id": "2071:132",
+      "sentence": 2071,
+      "paragraph": 980,
+      "range": [
+        132,
+        63
+      ],
+      "text": "I would rather be paid the compliment of being believed sincere",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2056,
+        "paragraph": 975,
+        "range": [
+          0,
+          46
+        ],
+        "text": "pay me the compliment of believing what I say."
+      }
+    },
+    {
+      "id": "2072:197",
+      "sentence": 2072,
+      "paragraph": 980,
+      "range": [
+        197,
+        77
+      ],
+      "text": "I thank you again and again for the honour you have done me in your proposals",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2044,
+        "paragraph": 970,
+        "range": [
+          121,
+          115
+        ],
+        "text": "I am very sensible of the honour of your proposals, but it is impossible for me to do otherwise than decline them.”"
+      }
+    },
+    {
+      "id": "2077:105",
+      "sentence": 2077,
+      "paragraph": 981,
+      "range": [
+        105,
+        66
+      ],
+      "text": "sanctioned by the express authority of both your excellent parents",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2013,
+        "paragraph": 961,
+        "range": [
+          65,
+          159
+        ],
+        "text": "And upon Elizabeth’s seeming really, with vexed and embarrassed looks, about to escape, she added, “Lizzy, I insist upon your staying and hearing Mr. Collins.”"
+      }
+    },
+    {
+      "id": "2078:166",
+      "sentence": 2078,
+      "paragraph": 982,
+      "range": [
+        166,
+        49
+      ],
+      "text": "her repeated refusals as flattering encouragement",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2044,
+        "paragraph": 970,
+        "range": [
+          121,
+          115
+        ],
+        "text": "I am very sensible of the honour of your proposals, but it is impossible for me to do otherwise than decline them.”"
+      }
+    },
+    {
+      "id": "2078:366",
+      "sentence": 2078,
+      "paragraph": 982,
+      "range": [
+        366,
+        49
+      ],
+      "text": "the affectation and coquetry of an elegant female",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2069,
+        "paragraph": 979,
+        "range": [
+          285,
+          212
+        ],
+        "text": "As I must, therefore, conclude that you are not serious in your rejection of me, I shall choose to attribute it to your wish of increasing my love by suspense, according to the usual practice of elegant females.”"
+      }
+    }
+  ]
+}

@@ -1,1 +1,867 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"decidedBy":"rules","sentence":1045,"reference":{"range":[326,122],"paragraph":450,"text":"Both stood in a suburb of the city, which was still country-like, with groves and lawns, large gardens, and quiet streets.","sentence":1041},"id":"1045:64","kind":"action","range":[64,21],"text":"frolicked on the lawn","paragraph":451},{"decidedBy":"rules","sentence":1048,"reference":{"range":[95,158],"paragraph":450,"text":"The snow was light, and with her broom she soon swept a path all round the garden, for Beth to walk in when the sun came out and the invalid dolls needed air.","sentence":1039},"id":"1048:578","kind":"thing","range":[578,29],"text":"were snow-balling one another","paragraph":452},{"decidedBy":"rules","sentence":1065,"reference":{"range":[38,35],"paragraph":455,"text":"All alone and sick this dismal day.","sentence":1059},"id":"1065:16","kind":"thing","range":[16,12],"text":"Are you sick","paragraph":457},{"decidedBy":"rules","sentence":1091,"reference":{"range":[175,68],"paragraph":456,"text":"Jo nodded and laughed, and flourished her broom as she called out...","sentence":1063},"id":"1091:14","kind":"reaction","range":[14,20],"text":"shouldered her broom","paragraph":473},{"decidedBy":"rules","sentence":1100,"reference":{"range":[116,120],"paragraph":475,"text":"Meg wanted me to bring some of her blanc mange, she makes it very nicely, and Beth thought her cats would be comforting.","sentence":1097},"id":"1100:94","kind":"action","range":[94,22],"text":"showed the blanc mange","paragraph":477},{"decidedBy":"rules","sentence":1110,"reference":{"range":[0,252],"paragraph":480,"text":"“I’ll right it up in two minutes, for it only needs to have the hearth brushed, so—and the things made straight on the mantelpiece, so—and the books put here, and the bottles there, and your sofa turned from the light, and the pillows plumped up a bit.","sentence":1107},"id":"1110:171","kind":"thing","range":[171,33],"text":"when she beckoned him to his sofa","paragraph":481},{"decidedBy":"rules","sentence":1122,"reference":{"range":[0,224],"paragraph":474,"text":"“All right, show her up, it’s Miss Jo,” said Laurie, going to the door of his little parlor to meet Jo, who appeared, looking rosy and quite at her ease, with a covered dish in one hand and Beth’s three kittens in the other.","sentence":1094},"id":"1122:1","kind":"thing","range":[1,20],"text":"Is Beth the rosy one","paragraph":486},{"decidedBy":"rules","sentence":1136,"reference":{"range":[38,35],"paragraph":455,"text":"All alone and sick this dismal day.","sentence":1059},"id":"1136:208","kind":"thing","range":[208,19],"text":"was sick and lonely","paragraph":491},{"decidedBy":"rules","sentence":1142,"reference":{"range":[66,80],"paragraph":453,"text":"“His grandpa does not know what’s good for him, and keeps him shut up all alone.","sentence":1050},"id":"1142:370","kind":"action","range":[370,29],"text":"Wouldn’t your grandpa let you","paragraph":492},{"decidedBy":"rules","sentence":1148,"reference":{"range":[370,31],"paragraph":492,"text":"Wouldn’t your grandpa let you?”","sentence":1142},"id":"1148:5","kind":"reaction","range":[5,34],"text":"see, Grandpa lives among his books","paragraph":495},{"decidedBy":"rules","sentence":1157,"reference":{"range":[0,26],"paragraph":498,"text":"“Do you like your school?”","sentence":1155},"id":"1157:1","kind":"action","range":[1,18],"text":"Don’t go to school","paragraph":499},{"decidedBy":"rules","sentence":1173,"reference":{"range":[0,218],"paragraph":501,"text":"Jo liked his good breeding, and didn’t mind having a laugh at Aunt March, so she gave him a lively description of the fidgety old lady, her fat poodle, the parrot that talked Spanish, and the library where she reveled.","sentence":1160},"id":"1173:165","kind":"action","range":[165,19],"text":"came to the library","paragraph":508},{"decidedBy":"rules","sentence":1196,"reference":{"range":[0,323],"paragraph":502,"text":"Laurie enjoyed that immensely, and when she told about the prim old gentleman who came once to woo Aunt March, and in the middle of a fine speech, how Poll had tweaked his wig off to his great dismay, the boy lay back and laughed till the tears ran down his cheeks, and a maid popped her head in to see what was the matter.","sentence":1161},"id":"1196:20","kind":"action","range":[20,61],"text":"said a gruff voice behind her, and there, to her great dismay","paragraph":519},{"decidedBy":"rules","sentence":1196,"reference":{"range":[254,71],"paragraph":450,"text":"Now, the garden separated the Marches’ house from that of Mr. Laurence.","sentence":1040},"id":"1196:83","kind":"action","range":[83,22],"text":"stood old Mr. Laurence","paragraph":519},{"decidedBy":"rules","sentence":1199,"reference":{"range":[0,77],"paragraph":447,"text":"“Going out for exercise,” answered Jo with a mischievous twinkle in her eyes.","sentence":1032},"id":"1199:431","kind":"thing","range":[431,25],"text":"was a sly twinkle in them","paragraph":520},{"decidedBy":"rules","sentence":1248,"reference":{"range":[650,238],"paragraph":450,"text":"On the other side was a stately stone mansion, plainly betokening every sort of comfort and luxury, from the big coach house and well-kept grounds to the conservatory and the glimpses of lovely things one caught between the rich curtains.","sentence":1044},"id":"1248:311","kind":"action","range":[311,33],"text":"took her away to the conservatory","paragraph":545},{"paragraph":545,"decidedBy":"rules","text":"enjoying the blooming walls on either side, the soft light, the damp sweet air, and the wonderful vines","range":[454,103],"sentence":1249,"id":"1249:454","kind":"action","reference":{"range":[485,164],"paragraph":450,"text":"On one side was an old, brown house, looking rather bare and shabby, robbed of the vines that in summer covered its walls and the flowers, which then surrounded it.","sentence":1043}},{"paragraph":547,"decidedBy":"rules","text":"turning to Laurie with a respectful expression","range":[26,46],"sentence":1253,"id":"1253:26","kind":"reaction","reference":{"range":[125,142],"paragraph":481,"text":"Laurie watched her in respectful silence, and when she beckoned him to his sofa, he sat down with a sigh of satisfaction, saying gratefully...","sentence":1110}},{"paragraph":552,"decidedBy":"rules","text":"wished Beth could hear him","range":[225,26],"sentence":1262,"id":"1262:225","kind":"action","reference":{"range":[16,39],"paragraph":549,"text":"I want to hear it, so I can tell Beth.”","sentence":1256}},{"paragraph":568,"decidedBy":"rules","text":"Let him be a musician if he wants to","range":[23,36],"sentence":1300,"id":"1300:23","kind":"action","reference":{"range":[483,143],"paragraph":566,"text":"Laurie comes naturally by his love of music, for he is like his mother, and I dare say his grandfather fears that he may want to be a musician.","sentence":1294}},{"paragraph":579,"decidedBy":"rules","text":"is going to be our Palace Beautiful","range":[268,35],"sentence":1321,"id":"1321:268","kind":"action","reference":{"sentence":1046,"paragraph":452,"range":[0,125],"text":"To Jo’s lively fancy, this fine house seemed a kind of enchanted palace, full of splendors and delights which no one enjoyed."}}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1038:54",
+      "sentence": 1038,
+      "paragraph": 450,
+      "range": [
+        54,
+        39
+      ],
+      "text": "Jo began to dig paths with great energy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1031,
+        "paragraph": 446,
+        "range": [
+          49,
+          165
+        ],
+        "text": "asked Meg one snowy afternoon, as her sister came tramping through the hall, in rubber boots, old sack, and hood, with a broom in one hand and a shovel in the other."
+      }
+    },
+    {
+      "id": "1054:109",
+      "sentence": 1054,
+      "paragraph": 454,
+      "range": [
+        109,
+        42
+      ],
+      "text": "The plan of ‘going over’ was not forgotten",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1052,
+        "paragraph": 453,
+        "range": [
+          222,
+          60
+        ],
+        "text": "I’ve a great mind to go over and tell the old gentleman so!”"
+      }
+    },
+    {
+      "id": "1057:450",
+      "sentence": 1057,
+      "paragraph": 454,
+      "range": [
+        450,
+        61
+      ],
+      "text": "a curly black head leaning on a thin hand at the upper window",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1048,
+        "paragraph": 452,
+        "range": [
+          282,
+          326
+        ],
+        "text": "Since the party, she had been more eager than ever, and had planned many ways of making friends with him, but he had not been seen lately, and Jo began to think he had gone away, when she one day spied a brown face at an upper window, looking wistfully down into their garden, where Beth and Amy were snow-balling one another."
+      }
+    },
+    {
+      "id": "1058:28",
+      "sentence": 1058,
+      "paragraph": 455,
+      "range": [
+        28,
+        9
+      ],
+      "text": "Poor boy!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1050,
+        "paragraph": 453,
+        "range": [
+          66,
+          80
+        ],
+        "text": "“His grandpa does not know what’s good for him, and keeps him shut up all alone."
+      }
+    },
+    {
+      "id": "1088:1",
+      "sentence": 1088,
+      "paragraph": 472,
+      "range": [
+        1,
+        37
+      ],
+      "text": "I’m not quiet and nice, but I’ll come",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1082,
+        "paragraph": 468,
+        "range": [
+          54,
+          40
+        ],
+        "text": "Girls are quiet and like to play nurse.”"
+      }
+    },
+    {
+      "id": "1099:20",
+      "sentence": 1099,
+      "paragraph": 476,
+      "range": [
+        20,
+        36
+      ],
+      "text": "Beth’s funny loan was just the thing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1094,
+        "paragraph": 474,
+        "range": [
+          0,
+          224
+        ],
+        "text": "“All right, show her up, it’s Miss Jo,” said Laurie, going to the door of his little parlor to meet Jo, who appeared, looking rosy and quite at her ease, with a covered dish in one hand and Beth’s three kittens in the other."
+      }
+    },
+    {
+      "id": "1100:94",
+      "sentence": 1100,
+      "paragraph": 477,
+      "range": [
+        94,
+        22
+      ],
+      "text": "showed the blanc mange",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1097,
+        "paragraph": 475,
+        "range": [
+          116,
+          120
+        ],
+        "text": "Meg wanted me to bring some of her blanc mange, she makes it very nicely, and Beth thought her cats would be comforting."
+      }
+    },
+    {
+      "id": "1103:159",
+      "sentence": 1103,
+      "paragraph": 478,
+      "range": [
+        159,
+        50
+      ],
+      "text": "it will slip down without hurting your sore throat",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1066,
+        "paragraph": 458,
+        "range": [
+          0,
+          67
+        ],
+        "text": "Laurie opened the window, and croaked out as hoarsely as a raven..."
+      }
+    },
+    {
+      "id": "1105:38",
+      "sentence": 1105,
+      "paragraph": 479,
+      "range": [
+        38,
+        58
+      ],
+      "text": "the maids are lazy, and I don’t know how to make them mind",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1092,
+        "paragraph": 473,
+        "range": [
+          105,
+          334
+        ],
+        "text": "Laurie was in a flutter of excitement at the idea of having company, and flew about to get ready, for as Mrs. March said, he was ‘a little gentleman’, and did honor to the coming guest by brushing his curly pate, putting on a fresh color, and trying to tidy up the room, which in spite of half a dozen servants, was anything but neat."
+      }
+    },
+    {
+      "id": "1115:26",
+      "sentence": 1115,
+      "paragraph": 483,
+      "range": [
+        26,
+        19
+      ],
+      "text": "Shall I read aloud?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1081,
+        "paragraph": 468,
+        "range": [
+          0,
+          53
+        ],
+        "text": "“Isn’t there some nice girl who’d read and amuse you?"
+      }
+    },
+    {
+      "id": "1138:1",
+      "sentence": 1138,
+      "paragraph": 492,
+      "range": [
+        1,
+        38
+      ],
+      "text": "We’ll never draw that curtain any more",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1129,
+        "paragraph": 490,
+        "range": [
+          211,
+          122
+        ],
+        "text": "I beg your pardon for being so rude, but sometimes you forget to put down the curtain at the window where the flowers are."
+      }
+    },
+    {
+      "id": "1139:91",
+      "sentence": 1139,
+      "paragraph": 492,
+      "range": [
+        91,
+        39
+      ],
+      "text": "I just wish, though, instead of peeping",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1128,
+        "paragraph": 490,
+        "range": [
+          0,
+          210
+        ],
+        "text": "Laurie colored up, but answered frankly, “Why, you see I often hear you calling to one another, and when I’m alone up here, I can’t help looking over at your house, you always seem to be having such good times."
+      }
+    },
+    {
+      "id": "1179:79",
+      "sentence": 1179,
+      "paragraph": 511,
+      "range": [
+        79,
+        9
+      ],
+      "text": "Mercy me!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1168,
+        "paragraph": 505,
+        "range": [
+          51,
+          71
+        ],
+        "text": "Grandfather is out, so you needn’t be afraid,” said Laurie, getting up."
+      }
+    },
+    {
+      "id": "1182:22",
+      "sentence": 1182,
+      "paragraph": 512,
+      "range": [
+        22,
+        40
+      ],
+      "text": "You are not afraid of anything, you know",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1169,
+        "paragraph": 506,
+        "range": [
+          0,
+          67
+        ],
+        "text": "“I’m not afraid of anything,” returned Jo, with a toss of the head."
+      }
+    },
+    {
+      "id": "1199:338",
+      "sentence": 1199,
+      "paragraph": 520,
+      "range": [
+        338,
+        81
+      ],
+      "text": "the living eyes, under the bushy eyebrows, were kinder even than the painted ones",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1194,
+        "paragraph": 518,
+        "range": [
+          63,
+          284
+        ],
+        "text": "She was standing before a fine portrait of the old gentleman when the door opened again, and without turning, she said decidedly, “I’m sure now that I shouldn’t be afraid of him, for he’s got kind eyes, though his mouth is grim, and he looks as if he had a tremendous will of his own."
+      }
+    },
+    {
+      "id": "1200:597",
+      "sentence": 1200,
+      "paragraph": 520,
+      "range": [
+        597,
+        32
+      ],
+      "text": "So you’re not afraid of me, hey?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1194,
+        "paragraph": 518,
+        "range": [
+          63,
+          284
+        ],
+        "text": "She was standing before a fine portrait of the old gentleman when the door opened again, and without turning, she said decidedly, “I’m sure now that I shouldn’t be afraid of him, for he’s got kind eyes, though his mouth is grim, and he looks as if he had a tremendous will of his own."
+      }
+    },
+    {
+      "id": "1202:1",
+      "sentence": 1202,
+      "paragraph": 522,
+      "range": [
+        1,
+        55
+      ],
+      "text": "And you don’t think me as handsome as your grandfather?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1195,
+        "paragraph": 518,
+        "range": [
+          348,
+          56
+        ],
+        "text": "He isn’t as handsome as my grandfather, but I like him.”"
+      }
+    },
+    {
+      "id": "1204:1",
+      "sentence": 1204,
+      "paragraph": 524,
+      "range": [
+        1,
+        39
+      ],
+      "text": "And I’ve got a tremendous will, have I?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1194,
+        "paragraph": 518,
+        "range": [
+          63,
+          284
+        ],
+        "text": "She was standing before a fine portrait of the old gentleman when the door opened again, and without turning, she said decidedly, “I’m sure now that I shouldn’t be afraid of him, for he’s got kind eyes, though his mouth is grim, and he looks as if he had a tremendous will of his own."
+      }
+    },
+    {
+      "id": "1206:1",
+      "sentence": 1206,
+      "paragraph": 526,
+      "range": [
+        1,
+        31
+      ],
+      "text": "But you like me in spite of it?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1195,
+        "paragraph": 518,
+        "range": [
+          348,
+          56
+        ],
+        "text": "He isn’t as handsome as my grandfather, but I like him.”"
+      }
+    },
+    {
+      "id": "1209:200",
+      "sentence": 1209,
+      "paragraph": 528,
+      "range": [
+        200,
+        61
+      ],
+      "text": "You’ve got your grandfather’s spirit, if you haven’t his face",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1202,
+        "paragraph": 522,
+        "range": [
+          0,
+          57
+        ],
+        "text": "“And you don’t think me as handsome as your grandfather?”"
+      }
+    },
+    {
+      "id": "1214:1",
+      "sentence": 1214,
+      "paragraph": 531,
+      "range": [
+        1,
+        33
+      ],
+      "text": "Only trying to be neighborly, sir",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1145,
+        "paragraph": 494,
+        "range": [
+          0,
+          81
+        ],
+        "text": "“We are not strangers, we are neighbors, and you needn’t think you’d be a bother."
+      }
+    },
+    {
+      "id": "1216:1",
+      "sentence": 1216,
+      "paragraph": 532,
+      "range": [
+        1,
+        45
+      ],
+      "text": "You think he needs cheering up a bit, do you?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1049,
+        "paragraph": 453,
+        "range": [
+          0,
+          65
+        ],
+        "text": "“That boy is suffering for society and fun,” she said to herself."
+      }
+    },
+    {
+      "id": "1236:151",
+      "sentence": 1236,
+      "paragraph": 540,
+      "range": [
+        151,
+        73
+      ],
+      "text": "at the astounding sight of Jo arm in arm with his redoubtable grandfather",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1231,
+        "paragraph": 538,
+        "range": [
+          34,
+          65
+        ],
+        "text": "And Mr. Laurence offered her his arm with old-fashioned courtesy."
+      }
+    },
+    {
+      "id": "1241:146",
+      "sentence": 1241,
+      "paragraph": 543,
+      "range": [
+        146,
+        45
+      ],
+      "text": "the change in his grandson did not escape him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1062,
+        "paragraph": 456,
+        "range": [
+          0,
+          174
+        ],
+        "text": "Up went a handful of soft snow, and the head turned at once, showing a face which lost its listless look in a minute, as the big eyes brightened and the mouth began to smile."
+      }
+    },
+    {
+      "id": "1243:1",
+      "sentence": 1243,
+      "paragraph": 544,
+      "range": [
+        1,
+        30
+      ],
+      "text": "She’s right, the lad is lonely",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1217,
+        "paragraph": 533,
+        "range": [
+          0,
+          79
+        ],
+        "text": "“Yes, sir, he seems a little lonely, and young folks would do him good perhaps."
+      }
+    },
+    {
+      "id": "1250:765",
+      "sentence": 1250,
+      "paragraph": 545,
+      "range": [
+        765,
+        50
+      ],
+      "text": "tell her I like the medicine she sent me very much",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1096,
+        "paragraph": 475,
+        "range": [
+          48,
+          67
+        ],
+        "text": "“Mother sent her love, and was glad if I could do anything for you."
+      }
+    },
+    {
+      "id": "1273:0",
+      "sentence": 1273,
+      "paragraph": 555,
+      "range": [
+        0,
+        15
+      ],
+      "text": "“No, it was me.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1270,
+        "paragraph": 554,
+        "range": [
+          0,
+          69
+        ],
+        "text": "He shook hands kindly, but looked as if something did not please him."
+      }
+    },
+    {
+      "id": "1282:1",
+      "sentence": 1282,
+      "paragraph": 560,
+      "range": [
+        1,
+        52
+      ],
+      "text": "If you promise to come and see us after you are well",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1139,
+        "paragraph": 492,
+        "range": [
+          91,
+          68
+        ],
+        "text": "I just wish, though, instead of peeping, you’d come over and see us."
+      }
+    },
+    {
+      "id": "1286:0",
+      "sentence": 1286,
+      "paragraph": 564,
+      "range": [
+        0,
+        49
+      ],
+      "text": "When all the afternoon’s adventures had been told",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1037,
+        "paragraph": 449,
+        "range": [
+          106,
+          47
+        ],
+        "text": "I like adventures, and I’m going to find some.”"
+      }
+    },
+    {
+      "id": "1287:192",
+      "sentence": 1287,
+      "paragraph": 564,
+      "range": [
+        192,
+        82
+      ],
+      "text": "Mrs. March wanted to talk of her father with the old man who had not forgotten him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1210,
+        "paragraph": 528,
+        "range": [
+          263,
+          116
+        ],
+        "text": "He was a fine man, my dear, but what is better, he was a brave and an honest one, and I was proud to be his friend.”"
+      }
+    },
+    {
+      "id": "1287:276",
+      "sentence": 1287,
+      "paragraph": 564,
+      "range": [
+        276,
+        38
+      ],
+      "text": "Meg longed to walk in the conservatory",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1248,
+        "paragraph": 545,
+        "range": [
+          221,
+          164
+        ],
+        "text": "When they rose she proposed to go, but Laurie said he had something more to show her, and took her away to the conservatory, which had been lighted for her benefit."
+      }
+    },
+    {
+      "id": "1287:316",
+      "sentence": 1287,
+      "paragraph": 564,
+      "range": [
+        316,
+        31
+      ],
+      "text": "Beth sighed for the grand piano",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1251,
+        "paragraph": 546,
+        "range": [
+          0,
+          152
+        ],
+        "text": "They found Mr. Laurence standing before the fire in the great drawing room, but Jo’s attention was entirely absorbed by a grand piano, which stood open."
+      }
+    },
+    {
+      "id": "1287:353",
+      "sentence": 1287,
+      "paragraph": 564,
+      "range": [
+        353,
+        50
+      ],
+      "text": "Amy was eager to see the fine pictures and statues",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1174,
+        "paragraph": 508,
+        "range": [
+          272,
+          253
+        ],
+        "text": "It was lined with books, and there were pictures and statues, and distracting little cabinets full of coins and curiosities, and Sleepy Hollow chairs, and queer tables, and bronzes, and best of all, a great open fireplace with quaint tiles all round it."
+      }
+    },
+    {
+      "id": "1288:1",
+      "sentence": 1288,
+      "paragraph": 565,
+      "range": [
+        1,
+        57
+      ],
+      "text": "Mother, why didn’t Mr. Laurence like to have Laurie play?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1274,
+        "paragraph": 555,
+        "range": [
+          16,
+          33
+        ],
+        "text": "He doesn’t like to hear me play.”"
+      }
+    },
+    {
+      "id": "1295:692",
+      "sentence": 1295,
+      "paragraph": 566,
+      "range": [
+        692,
+        31
+      ],
+      "text": "and so he ‘glowered’ as Jo said",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1270,
+        "paragraph": 554,
+        "range": [
+          0,
+          69
+        ],
+        "text": "He shook hands kindly, but looked as if something did not please him."
+      }
+    },
+    {
+      "id": "1300:65",
+      "sentence": 1300,
+      "paragraph": 568,
+      "range": [
+        65,
+        46
+      ],
+      "text": "not plague his life out sending him to college",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1265,
+        "paragraph": 553,
+        "range": [
+          83,
+          76
+        ],
+        "text": "His music isn’t bad, but I hope he will do as well in more important things."
+      }
+    },
+    {
+      "id": "1306:78",
+      "sentence": 1306,
+      "paragraph": 571,
+      "range": [
+        78,
+        64
+      ],
+      "text": "That was a nice little speech about the medicine Mother sent him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1250,
+        "paragraph": 545,
+        "range": [
+          659,
+          158
+        ],
+        "text": "Then he tied them up, saying, with the happy look Jo liked to see, “Please give these to your mother, and tell her I like the medicine she sent me very much.”"
+      }
+    },
+    {
+      "id": "1307:1",
+      "sentence": 1307,
+      "paragraph": 572,
+      "range": [
+        1,
+        35
+      ],
+      "text": "He meant the blanc mange, I suppose",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1100,
+        "paragraph": 477,
+        "range": [
+          0,
+          205
+        ],
+        "text": "“That looks too pretty to eat,” he said, smiling with pleasure, as Jo uncovered the dish, and showed the blanc mange, surrounded by a garland of green leaves, and the scarlet flowers of Amy’s pet geranium."
+      }
+    },
+    {
+      "id": "1316:223",
+      "sentence": 1316,
+      "paragraph": 576,
+      "range": [
+        223,
+        32
+      ],
+      "text": "because he hasn’t got any mother",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1132,
+        "paragraph": 490,
+        "range": [
+          557,
+          36
+        ],
+        "text": "I haven’t got any mother, you know.”"
+      }
+    },
+    {
+      "id": "1321:268",
+      "sentence": 1321,
+      "paragraph": 579,
+      "range": [
+        268,
+        35
+      ],
+      "text": "is going to be our Palace Beautiful",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1046,
+        "paragraph": 452,
+        "range": [
+          0,
+          125
+        ],
+        "text": "To Jo’s lively fancy, this fine house seemed a kind of enchanted palace, full of splendors and delights which no one enjoyed."
+      }
+    },
+    {
+      "id": "1322:1",
+      "sentence": 1322,
+      "paragraph": 580,
+      "range": [
+        1,
+        37
+      ],
+      "text": "We have got to get by the lions first",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1171,
+        "paragraph": 507,
+        "range": [
+          27,
+          191
+        ],
+        "text": "exclaimed the boy, looking at her with much admiration, though he privately thought she would have good reason to be a trifle afraid of the old gentleman, if she met him in some of his moods."
+      }
+    }
+  ]
+}

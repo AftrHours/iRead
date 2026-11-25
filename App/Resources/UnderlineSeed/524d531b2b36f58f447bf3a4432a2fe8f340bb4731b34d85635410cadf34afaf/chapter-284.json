@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[{"id":"3884:91","text":"has got all the goodness, and the other all the appearance of it","reference":{"range":[15,59],"sentence":3881,"paragraph":1645,"text":"there is such an expression of goodness in his countenance!"},"kind":"action","paragraph":1646,"range":[91,64],"sentence":3884,"decidedBy":"rules"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3877:8",
+      "sentence": 3877,
+      "paragraph": 1644,
+      "range": [
+        8,
+        72
+      ],
+      "text": "my regret and compassion are all done away by seeing you so full of both",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3852,
+        "paragraph": 1634,
+        "range": [
+          0,
+          139
+        ],
+        "text": "“Indeed,” replied Elizabeth, “I am heartily sorry for him; but he has other feelings which will probably soon drive away his regard for me."
+      }
+    },
+    {
+      "id": "3884:87",
+      "sentence": 3884,
+      "paragraph": 1646,
+      "range": [
+        87,
+        69
+      ],
+      "text": "One has got all the goodness, and the other all the appearance of it.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3862,
+        "paragraph": 1639,
+        "range": [
+          420,
+          116
+        ],
+        "text": "Most earnestly did she labour to prove the probability of error, and seek to clear one, without involving the other."
+      }
+    }
+  ]
+}

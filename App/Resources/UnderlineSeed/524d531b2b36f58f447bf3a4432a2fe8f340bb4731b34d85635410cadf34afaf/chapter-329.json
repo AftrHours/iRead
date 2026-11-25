@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4472:170",
+      "sentence": 4472,
+      "paragraph": 1868,
+      "range": [
+        170,
+        46
+      ],
+      "text": "was soliciting the good opinion of her friends",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4443,
+        "paragraph": 1858,
+        "range": [
+          415,
+          171
+        ],
+        "text": "When she saw him thus seeking the acquaintance, and courting the good opinion of people with whom any intercourse a few months ago would have been a disgrace; when she saw"
+      }
+    },
+    {
+      "id": "4472:222",
+      "sentence": 4472,
+      "paragraph": 1868,
+      "range": [
+        222,
+        38
+      ],
+      "text": "bent on making her known to his sister",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4408,
+        "paragraph": 1846,
+        "range": [
+          0,
+          81
+        ],
+        "text": "Miss Darcy and her brother appeared, and this formidable introduction took place."
+      }
+    },
+    {
+      "id": "4475:111",
+      "sentence": 4475,
+      "paragraph": 1869,
+      "range": [
+        111,
+        61
+      ],
+      "text": "in coming to them on the very day of her arrival at Pemberley",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4400,
+        "paragraph": 1844,
+        "range": [
+          212,
+          109
+        ],
+        "text": "But her conclusion was false; for on the very morning after their own arrival at Lambton these visitors came."
+      }
+    }
+  ]
+}

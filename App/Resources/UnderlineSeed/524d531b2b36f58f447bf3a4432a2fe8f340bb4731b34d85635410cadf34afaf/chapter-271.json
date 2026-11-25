@@ -1,1 +1,90 @@
-{"parserVersion":1,"underlines":[{"text":"wished them a good journey","id":"3690:60","reference":{"paragraph":1573,"range":[106,363],"text":"The very last evening was spent there; and her Ladyship again inquired minutely into the particulars of their journey, gave them directions as to the best method of packing, and was so urgent on the necessity of placing gowns in the only right way, that Maria thought herself obliged, on her return, to undo all the work of the morning, and pack her trunk afresh.","sentence":3689},"kind":"action","paragraph":1574,"range":[60,26],"sentence":3690,"decidedBy":"rules"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3686:486",
+      "sentence": 3686,
+      "paragraph": 1571,
+      "range": [
+        486,
+        68
+      ],
+      "text": "Jane had been deprived, by the folly and indecorum of her own family",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3677,
+        "paragraph": 1569,
+        "range": [
+          619,
+          154
+        ],
+        "text": "In her own past behaviour, there was a constant source of vexation and regret: and in the unhappy defects of her family, a subject of yet heavier chagrin."
+      }
+    },
+    {
+      "id": "3687:109",
+      "sentence": 3687,
+      "paragraph": 1572,
+      "range": [
+        109,
+        56
+      ],
+      "text": "the happy spirits which had seldom been depressed before",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3630,
+        "paragraph": 1553,
+        "range": [
+          0,
+          194
+        ],
+        "text": "Lady Catherine observed, after dinner, that Miss Bennet seemed out of spirits; and immediately accounting for it herself, by supposing that she did not like to go home again so soon, she added,—"
+      }
+    },
+    {
+      "id": "3688:0",
+      "sentence": 3688,
+      "paragraph": 1573,
+      "range": [
+        0,
+        66
+      ],
+      "text": "Their engagements at Rosings were as frequent during the last week",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3617,
+        "paragraph": 1549,
+        "range": [
+          342,
+          263
+        ],
+        "text": "To Rosings he then hastened to console Lady Catherine and her daughter; and on his return brought back, with great satisfaction, a message from her Ladyship, importing that she felt herself so dull as to make her very desirous of having them all to dine with her."
+      }
+    },
+    {
+      "id": "3689:149",
+      "sentence": 3689,
+      "paragraph": 1573,
+      "range": [
+        149,
+        74
+      ],
+      "text": "her Ladyship again inquired minutely into the particulars of their journey",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3670,
+        "paragraph": 1567,
+        "range": [
+          0,
+          155
+        ],
+        "text": "Lady Catherine had many other questions to ask respecting their journey; and as she did not answer them all herself attention was necessary—which Elizabeth"
+      }
+    }
+  ]
+}

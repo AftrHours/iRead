@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1233:54",
+      "sentence": 1233,
+      "paragraph": 641,
+      "range": [
+        54,
+        46
+      ],
+      "text": "watching Mr. Darcy’s progress through his book",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1232,
+        "paragraph": 640,
+        "range": [
+          462,
+          172
+        ],
+        "text": "Miss Bingley did the same; and Mrs. Hurst, principally occupied in playing with her bracelets and rings, joined now and then in her brother’s conversation with Miss Bennet."
+      }
+    }
+  ]
+}

@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2539:813",
+      "sentence": 2539,
+      "paragraph": 1166,
+      "range": [
+        813,
+        32
+      ],
+      "text": "what you tell us of long sleeves",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2523,
+        "paragraph": 1165,
+        "range": [
+          0,
+          124
+        ],
+        "text": "The first part of Mrs. Gardiner’s business, on her arrival, was to distribute her presents and describe the newest fashions."
+      }
+    },
+    {
+      "id": "2540:15",
+      "sentence": 2540,
+      "paragraph": 1167,
+      "range": [
+        15,
+        52
+      ],
+      "text": "to whom the chief of this news had been given before",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2521,
+        "paragraph": 1164,
+        "range": [
+          64,
+          88
+        ],
+        "text": "Between the two eldest and herself especially, there subsisted a very particular regard."
+      }
+    },
+    {
+      "id": "2541:0",
+      "sentence": 2541,
+      "paragraph": 1168,
+      "range": [
+        0,
+        52
+      ],
+      "text": "When alone with Elizabeth afterwards, she spoke more",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2540,
+        "paragraph": 1167,
+        "range": [
+          0,
+          223
+        ],
+        "text": "Mrs. Gardiner, to whom the chief of this news had been given before, in the course of Jane and Elizabeth’s correspondence with her, made her sister a slight answer, and, in compassion to her nieces, turned the conversation."
+      }
+    }
+  ]
+}

@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5722:244",
+      "sentence": 5722,
+      "paragraph": 2317,
+      "range": [
+        244,
+        77
+      ],
+      "text": "the cold and ceremonious politeness of her courtesy and address of his friend",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5705,
+        "paragraph": 2310,
+        "range": [
+          293,
+          217
+        ],
+        "text": "Each felt for the other, and of course for themselves; and their mother talked on of her dislike of Mr. Darcy, and her resolution to be civil to him only as Mr. Bingley’s friend, without being heard by either of them."
+      }
+    },
+    {
+      "id": "5723:24",
+      "sentence": 5723,
+      "paragraph": 2318,
+      "range": [
+        24,
+        86
+      ],
+      "text": "who knew that her mother owed to the latter the preservation of her favourite daughter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5708,
+        "paragraph": 2311,
+        "range": [
+          66,
+          365
+        ],
+        "text": "To Jane, he could be only a man whose proposals she had refused, and whose merits she had undervalued; but to her own more extensive information, he was the person to whom the whole family were indebted for the first of benefits, and whom she regarded herself with an interest, if not quite so tender, at least as reasonable and just, as what Jane felt for Bingley."
+      }
+    },
+    {
+      "id": "5729:681",
+      "sentence": 5729,
+      "paragraph": 2319,
+      "range": [
+        681,
+        58
+      ],
+      "text": "She was disappointed, and angry with herself for being so.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5710,
+        "paragraph": 2312,
+        "range": [
+          0,
+          268
+        ],
+        "text": "The colour which had been driven from her face returned for half a minute with an additional glow, and a smile of delight added lustre to her eyes, as she thought for that space of time that his affection and wishes must still be unshaken; but she would not be secure."
+      }
+    }
+  ]
+}

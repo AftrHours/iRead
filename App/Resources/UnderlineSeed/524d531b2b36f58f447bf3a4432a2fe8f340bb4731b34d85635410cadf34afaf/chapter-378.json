@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5187:117",
+      "sentence": 5187,
+      "paragraph": 2136,
+      "range": [
+        117,
+        55
+      ],
+      "text": "he has pledged himself to assist Mr. Wickham with money",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5113,
+        "paragraph": 2114,
+        "range": [
+          62,
+          164
+        ],
+        "text": "But there are two things that I want very much to know:—one is, how much money your uncle has laid down to bring it about; and the other, how I am ever to pay him.”"
+      }
+    },
+    {
+      "id": "5189:85",
+      "sentence": 5189,
+      "paragraph": 2137,
+      "range": [
+        85,
+        37
+      ],
+      "text": "If he had not had a family of his own",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5139,
+        "paragraph": 2123,
+        "range": [
+          273,
+          46
+        ],
+        "text": "He has children of his own, and may have more."
+      }
+    }
+  ]
+}

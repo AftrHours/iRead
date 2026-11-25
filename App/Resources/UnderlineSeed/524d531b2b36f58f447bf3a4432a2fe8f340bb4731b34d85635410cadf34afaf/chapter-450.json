@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6424:0",
+      "sentence": 6424,
+      "paragraph": 2602,
+      "range": [
+        0,
+        33
+      ],
+      "text": "She expressed her gratitude again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6333,
+        "paragraph": 2568,
+        "range": [
+          126,
+          203
+        ],
+        "text": "Let me thank you again and again, in the name of all my family, for that generous compassion which induced you to take so much trouble, and bear so many mortifications, for the sake of discovering them.”"
+      }
+    },
+    {
+      "id": "6425:0",
+      "sentence": 6425,
+      "paragraph": 2603,
+      "range": [
+        0,
+        89
+      ],
+      "text": "After walking several miles in a leisurely manner, and too busy to know anything about it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6346,
+        "paragraph": 2573,
+        "range": [
+          0,
+          49
+        ],
+        "text": "They walked on without knowing in what direction."
+      }
+    },
+    {
+      "id": "6426:1",
+      "sentence": 6426,
+      "paragraph": 2604,
+      "range": [
+        1,
+        47
+      ],
+      "text": "What could have become of Mr. Bingley and Jane?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6319,
+        "paragraph": 2563,
+        "range": [
+          576,
+          68
+        ],
+        "text": "Bingley and Jane, however, soon allowed the others to outstrip them."
+      }
+    }
+  ]
+}

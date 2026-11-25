@@ -1,1 +1,867 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"paragraph":90,"text":"are old enough to leave off boyish tricks","id":"114:111","range":[111,41],"decidedBy":"rules","sentence":114,"reference":{"paragraph":85,"sentence":108,"text":"It’s so boyish!”","range":[12,16]},"kind":"thing"},{"paragraph":91,"text":"fight with Papa","id":"121:465","range":[465,15],"decidedBy":"rules","sentence":121,"reference":{"paragraph":80,"sentence":96,"text":"Don’t you wish we had the money Papa lost when we were little, Jo?","range":[38,66]},"kind":"action"},{"paragraph":98,"text":"was usually bundled into a net","id":"139:559","range":[559,30],"decidedBy":"rules","sentence":139,"reference":{"paragraph":91,"sentence":117,"text":"And if turning up my hair makes me one, I’ll wear it in two tails till I’m twenty,” cried Jo, pulling off her net, and shaking down a chestnut mane.","range":[10,148]},"kind":"action"},{"paragraph":99,"text":"having swept up the hearth","id":"146:26","range":[26,26],"decidedBy":"rules","sentence":146,"reference":{"paragraph":71,"sentence":81,"text":"“I planned to spend mine in new music,” said Beth, with a little sigh, which no one heard but the hearth brush and kettle-holder.","range":[0,129]},"kind":"action"},{"paragraph":101,"text":"thought I’d get her some with my dollar","id":"151:3","range":[3,39],"decidedBy":"rules","sentence":151,"reference":{"paragraph":70,"sentence":78,"text":"We’ve each got a dollar, and the army wouldn’t be much helped by our giving that.","range":[65,81]},"kind":"reaction"},{"paragraph":109,"text":"I’ll have some left to buy my pencils","id":"163:79","range":[79,37],"decidedBy":"rules","sentence":163,"reference":{"paragraph":72,"sentence":82,"text":"“I shall get a nice box of Faber’s drawing pencils; I really need them,” said Amy decidedly.","range":[0,92]},"kind":"thing"},{"paragraph":112,"text":"was dreadful to have you sit looking at me while I opened the bundles","id":"170:200","range":[200,69],"decidedBy":"rules","sentence":170,"reference":{"paragraph":111,"sentence":166,"text":"“Put them on the table, and bring her in and see her open the bundles.","range":[0,70]},"kind":"thing"},{"paragraph":115,"text":"Come here, Amy","id":"179:260","range":[260,14],"decidedBy":"rules","sentence":179,"reference":{"paragraph":95,"sentence":131,"text":"“If Jo is a tomboy and Amy a goose, what am I, please?”","range":[0,55]},"kind":"action"},{"paragraph":123,"text":"it’s the toasting fork, with Mother’s shoe on it instead of the bread","id":"209:5","range":[5,69],"decidedBy":"rules","sentence":209,"reference":{"paragraph":112,"sentence":170,"text":"I liked the things and the kisses, but it was dreadful to have you sit looking at me while I opened the bundles,” said Beth, who was toasting her face and the bread for tea at the same time.","range":[158,190]},"kind":"action"},{"paragraph":125,"text":"getting the boxes ready to go tomorrow","id":"215:68","range":[68,38],"decidedBy":"rules","sentence":215,"reference":{"paragraph":113,"sentence":172,"text":"We must go shopping tomorrow afternoon, Meg.","range":[78,44]},"kind":"action"},{"paragraph":125,"text":"Has anyone called, Beth","id":"216:143","range":[143,23],"decidedBy":"rules","sentence":216,"reference":{"paragraph":123,"sentence":210,"text":"Beth’s stage-struck!”","range":[76,21]},"kind":"thing"},{"paragraph":130,"text":"dropping her bread, butter side down","id":"233:127","range":[127,36],"decidedBy":"rules","sentence":233,"reference":{"paragraph":123,"sentence":209,"text":"“No, it’s the toasting fork, with Mother’s shoe on it instead of the bread.","range":[0,75]},"kind":"action"},{"paragraph":130,"text":"get at the treat","id":"233:195","range":[195,16],"decidedBy":"rules","sentence":233,"reference":{"paragraph":127,"sentence":224,"text":"As they gathered about the table, Mrs. March said, with a particularly happy face, “I’ve got a treat for you after supper.”","range":[0,123]},"kind":"action"},{"paragraph":138,"text":"minded the rumpling of her curls as she hid her face on her mother’s shoulder","id":"253:721","range":[721,77],"decidedBy":"rules","sentence":253,"reference":{"paragraph":98,"sentence":144,"text":"A regular snow maiden, with blue eyes, and yellow hair curling on her shoulders, pale and slender, and always carrying herself like a young lady mindful of her manners.","range":[1266,168]},"kind":"action"},{"paragraph":141,"text":"wiped away her tears with the blue army sock","id":"258:23","range":[23,44],"decidedBy":"rules","sentence":258,"reference":{"paragraph":92,"sentence":123,"text":"And Jo shook the blue army sock till the needles rattled like castanets, and her ball bounded across the room.","range":[0,110]},"kind":"feeling"},{"paragraph":144,"text":"liked the place where the bundles fell off","id":"262:3","range":[3,42],"decidedBy":"rules","sentence":262,"reference":{"paragraph":112,"sentence":170,"text":"I liked the things and the kisses, but it was dreadful to have you sit looking at me while I opened the bundles,” said Beth, who was toasting her face and the bread for tea at the same time.","range":[158,190]},"kind":"action"},{"id":"266:144","sentence":266,"kind":"thing","reference":{"paragraph":137,"sentence":247,"text":"It was a cheerful, hopeful letter, full of lively descriptions of camp life, marches, and military news, and only at the end did the writer’s heart over-flow with fatherly love and longing for the little girls at home.","range":[457,218]},"decidedBy":"rules","paragraph":146,"range":[144,42],"text":"is before us, and the longing for goodness"},{"id":"266:282","sentence":266,"kind":"place","reference":{"paragraph":142,"sentence":260,"text":"Nothing delighted you more than to have me tie my piece bags on your backs for burdens, give you hats and sticks and rolls of paper, and let you travel through the house from the cellar, which was the City of Destruction, up, up, to the housetop, where you had all the lovely things you could collect to make a Celestial City.”","range":[171,327]},"decidedBy":"rules","paragraph":146,"range":[282,24],"text":"is a true Celestial City"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "112:131",
+      "sentence": 112,
+      "paragraph": 89,
+      "range": [
+        131,
+        37
+      ],
+      "text": "and the “pecking” ended for that time",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 95,
+        "paragraph": 80,
+        "range": [
+          0,
+          37
+        ],
+        "text": "“Don’t peck at one another, children."
+      }
+    },
+    {
+      "id": "121:445",
+      "sentence": 121,
+      "paragraph": 91,
+      "range": [
+        445,
+        35
+      ],
+      "text": "I’m dying to go and fight with Papa",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 73,
+        "paragraph": 68,
+        "range": [
+          186,
+          112
+        ],
+        "text": "She didn’t say “perhaps never,” but each silently added it, thinking of Father far away, where the fighting was."
+      }
+    },
+    {
+      "id": "126:196",
+      "sentence": 126,
+      "paragraph": 93,
+      "range": [
+        196,
+        45
+      ],
+      "text": "all the dish washing and dusting in the world",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 88,
+        "paragraph": 76,
+        "range": [
+          0,
+          108
+        ],
+        "text": "“It’s naughty to fret, but I do think washing dishes and keeping things tidy is the worst work in the world."
+      }
+    },
+    {
+      "id": "130:266",
+      "sentence": 130,
+      "paragraph": 94,
+      "range": [
+        266,
+        17
+      ],
+      "text": "your absurd words",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 94,
+        "paragraph": 79,
+        "range": [
+          61,
+          88
+        ],
+        "text": "It’s proper to use good words, and improve your vocabilary,” returned Amy, with dignity."
+      }
+    },
+    {
+      "id": "130:288",
+      "sentence": 130,
+      "paragraph": 94,
+      "range": [
+        288,
+        20
+      ],
+      "text": "as bad as Jo’s slang",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 104,
+        "paragraph": 83,
+        "range": [
+          0,
+          31
+        ],
+        "text": "“Jo does use such slang words!”"
+      }
+    },
+    {
+      "id": "131:1",
+      "sentence": 131,
+      "paragraph": 95,
+      "range": [
+        1,
+        17
+      ],
+      "text": "If Jo is a tomboy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 114,
+        "paragraph": 90,
+        "range": [
+          106,
+          80
+        ],
+        "text": "“You are old enough to leave off boyish tricks, and to behave better, Josephine."
+      }
+    },
+    {
+      "id": "139:511",
+      "sentence": 139,
+      "paragraph": 98,
+      "range": [
+        511,
+        39
+      ],
+      "text": "Her long, thick hair was her one beauty",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 117,
+        "paragraph": 91,
+        "range": [
+          10,
+          148
+        ],
+        "text": "And if turning up my hair makes me one, I’ll wear it in two tails till I’m twenty,” cried Jo, pulling off her net, and shaking down a chestnut mane."
+      }
+    },
+    {
+      "id": "148:228",
+      "sentence": 148,
+      "paragraph": 99,
+      "range": [
+        228,
+        21
+      ],
+      "text": "Meg stopped lecturing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 113,
+        "paragraph": 90,
+        "range": [
+          0,
+          105
+        ],
+        "text": "“Really, girls, you are both to be blamed,” said Meg, beginning to lecture in her elder-sisterly fashion."
+      }
+    },
+    {
+      "id": "149:1",
+      "sentence": 149,
+      "paragraph": 100,
+      "range": [
+        1,
+        24
+      ],
+      "text": "They are quite worn out.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 146,
+        "paragraph": 99,
+        "range": [
+          0,
+          95
+        ],
+        "text": "The clock struck six and, having swept up the hearth, Beth put a pair of slippers down to warm."
+      }
+    },
+    {
+      "id": "151:1",
+      "sentence": 151,
+      "paragraph": 101,
+      "range": [
+        1,
+        41
+      ],
+      "text": "I thought I’d get her some with my dollar",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 78,
+        "paragraph": 70,
+        "range": [
+          65,
+          81
+        ],
+        "text": "We’ve each got a dollar, and the army wouldn’t be much helped by our giving that."
+      }
+    },
+    {
+      "id": "154:108",
+      "sentence": 154,
+      "paragraph": 103,
+      "range": [
+        108,
+        28
+      ],
+      "text": "I shall provide the slippers",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 150,
+        "paragraph": 100,
+        "range": [
+          26,
+          29
+        ],
+        "text": "Marmee must have a new pair.”"
+      }
+    },
+    {
+      "id": "155:43",
+      "sentence": 155,
+      "paragraph": 104,
+      "range": [
+        43,
+        78
+      ],
+      "text": "let’s each get her something for Christmas, and not get anything for ourselves",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 74,
+        "paragraph": 69,
+        "range": [
+          0,
+          294
+        ],
+        "text": "Nobody spoke for a minute; then Meg said in an altered tone, “You know the reason Mother proposed not having any presents this Christmas was because it is going to be a hard winter for everyone; and she thinks we ought not to spend money for pleasure, when our men are suffering so in the army."
+      }
+    },
+    {
+      "id": "159:91",
+      "sentence": 159,
+      "paragraph": 106,
+      "range": [
+        91,
+        33
+      ],
+      "text": "the sight of her own pretty hands",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 136,
+        "paragraph": 98,
+        "range": [
+          0,
+          191
+        ],
+        "text": "Margaret, the eldest of the four, was sixteen, and very pretty, being plump and fair, with large eyes, plenty of soft brown hair, a sweet mouth, and white hands, of which she was rather vain."
+      }
+    },
+    {
+      "id": "163:76",
+      "sentence": 163,
+      "paragraph": 109,
+      "range": [
+        76,
+        40
+      ],
+      "text": "so I’ll have some left to buy my pencils",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 82,
+        "paragraph": 72,
+        "range": [
+          0,
+          92
+        ],
+        "text": "“I shall get a nice box of Faber’s drawing pencils; I really need them,” said Amy decidedly."
+      }
+    },
+    {
+      "id": "171:1",
+      "sentence": 171,
+      "paragraph": 113,
+      "range": [
+        1,
+        52
+      ],
+      "text": "Let Marmee think we are getting things for ourselves",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 84,
+        "paragraph": 73,
+        "range": [
+          90,
+          161
+        ],
+        "text": "Let’s each buy what we want, and have a little fun; I’m sure we work hard enough to earn it,” cried Jo, examining the heels of her shoes in a gentlemanly manner."
+      }
+    },
+    {
+      "id": "190:18",
+      "sentence": 190,
+      "paragraph": 118,
+      "range": [
+        18,
+        42
+      ],
+      "text": "she poked her hands out stiffly before her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 179,
+        "paragraph": 115,
+        "range": [
+          260,
+          84
+        ],
+        "text": "Come here, Amy, and do the fainting scene, for you are as stiff as a poker in that.”"
+      }
+    },
+    {
+      "id": "198:259",
+      "sentence": 198,
+      "paragraph": 119,
+      "range": [
+        259,
+        43
+      ],
+      "text": "Hugo died in agonies of remorse and arsenic",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 184,
+        "paragraph": 116,
+        "range": [
+          214,
+          205
+        ],
+        "text": "I don’t care if Hugo does come at me with a pistol,” returned Amy, who was not gifted with dramatic power, but was chosen because she was small enough to be borne out shrieking by the villain of the piece."
+      }
+    },
+    {
+      "id": "200:41",
+      "sentence": 200,
+      "paragraph": 120,
+      "range": [
+        41,
+        26
+      ],
+      "text": "as the dead villain sat up",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 198,
+        "paragraph": 119,
+        "range": [
+          212,
+          109
+        ],
+        "text": "Roderigo rent his chains asunder manfully, and Hugo died in agonies of remorse and arsenic, with a wild, “Ha!"
+      }
+    },
+    {
+      "id": "209:29",
+      "sentence": 209,
+      "paragraph": 123,
+      "range": [
+        29,
+        45
+      ],
+      "text": "with Mother’s shoe on it instead of the bread",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 170,
+        "paragraph": 112,
+        "range": [
+          158,
+          190
+        ],
+        "text": "I liked the things and the kisses, but it was dreadful to have you sit looking at me while I opened the bundles,” said Beth, who was toasting her face and the bread for tea at the same time."
+      }
+    },
+    {
+      "id": "211:113",
+      "sentence": 211,
+      "paragraph": 123,
+      "range": [
+        113,
+        50
+      ],
+      "text": "the rehearsal ended in a general burst of laughter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 178,
+        "paragraph": 115,
+        "range": [
+          229,
+          30
+        ],
+        "text": "“We ought to rehearse tonight."
+      }
+    },
+    {
+      "id": "220:73",
+      "sentence": 220,
+      "paragraph": 126,
+      "range": [
+        73,
+        20
+      ],
+      "text": "her warm slippers on",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 146,
+        "paragraph": 99,
+        "range": [
+          0,
+          95
+        ],
+        "text": "The clock struck six and, having swept up the hearth, Beth put a pair of slippers down to warm."
+      }
+    },
+    {
+      "id": "220:99",
+      "sentence": 220,
+      "paragraph": 126,
+      "range": [
+        99,
+        51
+      ],
+      "text": "sitting down in the easy chair, drew Amy to her lap",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 148,
+        "paragraph": 99,
+        "range": [
+          228,
+          183
+        ],
+        "text": "Meg stopped lecturing, and lighted the lamp, Amy got out of the easy chair without being asked, and Jo forgot how tired she was as she sat up to hold the slippers nearer to the blaze."
+      }
+    },
+    {
+      "id": "222:344",
+      "sentence": 222,
+      "paragraph": 126,
+      "range": [
+        344,
+        61
+      ],
+      "text": "dropping, over-turning, and clattering everything she touched",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 137,
+        "paragraph": 98,
+        "range": [
+          192,
+          173
+        ],
+        "text": "Fifteen-year-old Jo was very tall, thin, and brown, and reminded one of a colt, for she never seemed to know what to do with her long limbs, which were very much in her way."
+      }
+    },
+    {
+      "id": "223:471",
+      "sentence": 223,
+      "paragraph": 126,
+      "range": [
+        471,
+        71
+      ],
+      "text": "while Amy gave directions to everyone, as she sat with her hands folded",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 143,
+        "paragraph": 98,
+        "range": [
+          1182,
+          83
+        ],
+        "text": "Amy, though the youngest, was a most important person, in her own opinion at least."
+      }
+    },
+    {
+      "id": "233:21",
+      "sentence": 233,
+      "paragraph": 130,
+      "range": [
+        21,
+        70
+      ],
+      "text": "Don’t stop to quirk your little finger and simper over your plate, Amy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 144,
+        "paragraph": 98,
+        "range": [
+          1266,
+          168
+        ],
+        "text": "A regular snow maiden, with blue eyes, and yellow hair curling on her shoulders, pale and slender, and always carrying herself like a young lady mindful of her manners."
+      }
+    },
+    {
+      "id": "233:179",
+      "sentence": 233,
+      "paragraph": 130,
+      "range": [
+        179,
+        32
+      ],
+      "text": "in her haste to get at the treat",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 224,
+        "paragraph": 127,
+        "range": [
+          0,
+          123
+        ],
+        "text": "As they gathered about the table, Mrs. March said, with a particularly happy face, “I’ve got a treat for you after supper.”"
+      }
+    },
+    {
+      "id": "234:22",
+      "sentence": 234,
+      "paragraph": 131,
+      "range": [
+        22,
+        39
+      ],
+      "text": "crept away to sit in her shadowy corner",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 71,
+        "paragraph": 67,
+        "range": [
+          0,
+          85
+        ],
+        "text": "“We’ve got Father and Mother, and each other,” said Beth contentedly from her corner."
+      }
+    },
+    {
+      "id": "236:1",
+      "sentence": 236,
+      "paragraph": 133,
+      "range": [
+        1,
+        36
+      ],
+      "text": "Don’t I wish I could go as a drummer",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 121,
+        "paragraph": 91,
+        "range": [
+          411,
+          70
+        ],
+        "text": "And it’s worse than ever now, for I’m dying to go and fight with Papa."
+      }
+    },
+    {
+      "id": "250:159",
+      "sentence": 250,
+      "paragraph": 138,
+      "range": [
+        159,
+        48
+      ],
+      "text": "A year seems very long to wait before I see them",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 72,
+        "paragraph": 68,
+        "range": [
+          0,
+          185
+        ],
+        "text": "The four young faces on which the firelight shone brightened at the cheerful words, but darkened again as Jo said sadly, “We haven’t got Father, and shall not have him for a long time.”"
+      }
+    },
+    {
+      "id": "256:27",
+      "sentence": 256,
+      "paragraph": 139,
+      "range": [
+        27,
+        45
+      ],
+      "text": "I think too much of my looks and hate to work",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 85,
+        "paragraph": 74,
+        "range": [
+          0,
+          146
+        ],
+        "text": "“I know I do—teaching those tiresome children nearly all day, when I’m longing to enjoy myself at home,” began Meg, in the complaining tone again."
+      }
+    },
+    {
+      "id": "257:17",
+      "sentence": 257,
+      "paragraph": 140,
+      "range": [
+        17,
+        42
+      ],
+      "text": "what he loves to call me, ‘a little woman’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 251,
+        "paragraph": 138,
+        "range": [
+          305,
+          280
+        ],
+        "text": "I know they will remember all I said to them, that they will be loving children to you, will do their duty faithfully, fight their bosom enemies bravely, and conquer themselves so beautifully that when I come back to them I may be fonder and prouder than ever of my little women.”"
+      }
+    },
+    {
+      "id": "257:64",
+      "sentence": 257,
+      "paragraph": 140,
+      "range": [
+        64,
+        21
+      ],
+      "text": "not be rough and wild",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 119,
+        "paragraph": 91,
+        "range": [
+          272,
+          83
+        ],
+        "text": "It’s bad enough to be a girl, anyway, when I like boy’s games and work and manners!"
+      }
+    },
+    {
+      "id": "258:23",
+      "sentence": 258,
+      "paragraph": 141,
+      "range": [
+        23,
+        44
+      ],
+      "text": "wiped away her tears with the blue army sock",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 123,
+        "paragraph": 92,
+        "range": [
+          0,
+          110
+        ],
+        "text": "And Jo shook the blue army sock till the needles rattled like castanets, and her ball bounded across the room."
+      }
+    },
+    {
+      "id": "262:1",
+      "sentence": 262,
+      "paragraph": 144,
+      "range": [
+        1,
+        44
+      ],
+      "text": "I liked the place where the bundles fell off",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 260,
+        "paragraph": 142,
+        "range": [
+          171,
+          327
+        ],
+        "text": "Nothing delighted you more than to have me tie my piece bags on your backs for burdens, give you hats and sticks and rolls of paper, and let you travel through the house from the cellar, which was the City of Destruction, up, up, to the housetop, where you had all the lovely things you could collect to make a Celestial City.”"
+      }
+    },
+    {
+      "id": "264:149",
+      "sentence": 264,
+      "paragraph": 145,
+      "range": [
+        149,
+        35
+      ],
+      "text": "If I wasn’t too old for such things",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 175,
+        "paragraph": 114,
+        "range": [
+          47,
+          112
+        ],
+        "text": "I’m getting too old for such things,” observed Meg, who was as much a child as ever about ‘dressing-up’ frolics."
+      }
+    },
+    {
+      "id": "269:17",
+      "sentence": 269,
+      "paragraph": 147,
+      "range": [
+        17,
+        22
+      ],
+      "text": "Where are our bundles?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 266,
+        "paragraph": 146,
+        "range": [
+          113,
+          194
+        ],
+        "text": "Our burdens are here, our road is before us, and the longing for goodness and happiness is the guide that leads us through many troubles and mistakes to the peace which is a true Celestial City."
+      }
+    },
+    {
+      "id": "271:1",
+      "sentence": 271,
+      "paragraph": 148,
+      "range": [
+        1,
+        46
+      ],
+      "text": "Each of you told what your burden was just now",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 255,
+        "paragraph": 139,
+        "range": [
+          0,
+          25
+        ],
+        "text": "“We all will,” cried Meg."
+      }
+    },
+    {
+      "id": "274:14",
+      "sentence": 274,
+      "paragraph": 149,
+      "range": [
+        14,
+        26
+      ],
+      "text": "Mine is dishes and dusters",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 88,
+        "paragraph": 76,
+        "range": [
+          0,
+          108
+        ],
+        "text": "“It’s naughty to fret, but I do think washing dishes and keeping things tidy is the worst work in the world."
+      }
+    },
+    {
+      "id": "274:82",
+      "sentence": 274,
+      "paragraph": 149,
+      "range": [
+        82,
+        22
+      ],
+      "text": "being afraid of people",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 141,
+        "paragraph": 98,
+        "range": [
+          792,
+          188
+        ],
+        "text": "Elizabeth, or Beth, as everyone called her, was a rosy, smooth-haired, bright-eyed girl of thirteen, with a shy manner, a timid voice, and a peaceful expression which was seldom disturbed."
+      }
+    },
+    {
+      "id": "278:1",
+      "sentence": 278,
+      "paragraph": 152,
+      "range": [
+        1,
+        40
+      ],
+      "text": "We were in the Slough of Despond tonight",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 67,
+        "paragraph": 64,
+        "range": [
+          0,
+          83
+        ],
+        "text": "“Christmas won’t be Christmas without any presents,” grumbled Jo, lying on the rug."
+      }
+    },
+    {
+      "id": "287:72",
+      "sentence": 287,
+      "paragraph": 155,
+      "range": [
+        72,
+        57
+      ],
+      "text": "No one but Beth could get much music out of the old piano",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 89,
+        "paragraph": 76,
+        "range": [
+          109,
+          76
+        ],
+        "text": "It makes me cross, and my hands get so stiff, I can’t practice well at all.”"
+      }
+    }
+  ]
+}

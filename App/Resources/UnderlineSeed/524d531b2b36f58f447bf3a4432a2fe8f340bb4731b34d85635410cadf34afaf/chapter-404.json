@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5652:37",
+      "sentence": 5652,
+      "paragraph": 2288,
+      "range": [
+        37,
+        42
+      ],
+      "text": "when my aunt told us of the present report",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5638,
+        "paragraph": 2285,
+        "range": [
+          0,
+          103
+        ],
+        "text": "“Well, well, and so Mr. Bingley is coming down, sister,” (for Mrs. Philips first brought her the news)."
+      }
+    }
+  ]
+}

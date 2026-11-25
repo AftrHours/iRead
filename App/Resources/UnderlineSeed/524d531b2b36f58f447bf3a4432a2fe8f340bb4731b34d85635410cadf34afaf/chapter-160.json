@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2181:131",
+      "sentence": 2181,
+      "paragraph": 1029,
+      "range": [
+        131,
+        63
+      ],
+      "text": "Elizabeth had hoped that his resentment might shorten his visit",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2177,
+        "paragraph": 1028,
+        "range": [
+          0,
+          73
+        ],
+        "text": "by trying to avoid her, but by stiffness of manner and resentful silence."
+      }
+    },
+    {
+      "id": "2187:0",
+      "sentence": 2187,
+      "paragraph": 1032,
+      "range": [
+        0,
+        35
+      ],
+      "text": "She highly approved his forbearance",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2186,
+        "paragraph": 1031,
+        "range": [
+          0,
+          256
+        ],
+        "text": "“I found,” said he, “as the time drew near, that I had better not meet Mr. Darcy;—that to be in the same room, the same party with him for so many hours together, might be more than I could bear, and that scenes might arise unpleasant to more than myself.”"
+      }
+    }
+  ]
+}

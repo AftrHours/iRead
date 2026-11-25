@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5840:109",
+      "sentence": 5840,
+      "paragraph": 2370,
+      "range": [
+        109,
+        54
+      ],
+      "text": "He stood by her, however, for some minutes, in silence",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5781,
+        "paragraph": 2343,
+        "range": [
+          0,
+          92
+        ],
+        "text": "“Why, if he came only to be silent, grave, and indifferent,” said she, “did he come at all?”"
+      }
+    },
+    {
+      "id": "5840:179",
+      "sentence": 5840,
+      "paragraph": 2370,
+      "range": [
+        179,
+        65
+      ],
+      "text": "on the young lady’s whispering to Elizabeth again, he walked away",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5823,
+        "paragraph": 2361,
+        "range": [
+          0,
+          50
+        ],
+        "text": "“The men shan’t come and part us, I am determined."
+      }
+    },
+    {
+      "id": "5841:178",
+      "sentence": 5841,
+      "paragraph": 2371,
+      "range": [
+        178,
+        67
+      ],
+      "text": "seeing him fall a victim to her mother’s rapacity for whist players",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5815,
+        "paragraph": 2357,
+        "range": [
+          0,
+          160
+        ],
+        "text": "She was in hopes that the evening would afford some opportunity of bringing them together; that the whole of the visit would not pass away without enabling them"
+      }
+    }
+  ]
+}

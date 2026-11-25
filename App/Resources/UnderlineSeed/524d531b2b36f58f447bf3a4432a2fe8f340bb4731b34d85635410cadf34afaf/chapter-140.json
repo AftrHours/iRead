@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"kind":"thing","decidedBy":"rules","paragraph":938,"text":"can it be to you to offend Mr. Darcy","range":[55,36],"reference":{"range":[0,63],"sentence":1931,"paragraph":937,"text":"“What is Mr. Darcy to me, pray, that I should be afraid of him?"},"id":"1934:55","sentence":1934}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1929:203",
+      "sentence": 1929,
+      "paragraph": 936,
+      "range": [
+        203,
+        68
+      ],
+      "text": "the chief of it was overheard by Mr. Darcy, who sat opposite to them",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1922,
+        "paragraph": 934,
+        "range": [
+          605,
+          330
+        ],
+        "text": "When they sat down to supper, therefore, she considered it a most unlucky perverseness which placed them within one of each other; and deeply was she vexed to find that her mother was talking to that one person (Lady Lucas) freely, openly, and of nothing else but of her expectation that Jane would be soon married to Mr. Bingley."
+      }
+    }
+  ]
+}

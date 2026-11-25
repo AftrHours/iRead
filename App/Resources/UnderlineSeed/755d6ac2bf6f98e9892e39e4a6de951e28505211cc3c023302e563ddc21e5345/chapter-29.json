@@ -1,1 +1,699 @@
-{"underlines":[{"paragraph":2416,"text":"which quenched her ardor","id":"5570:706","range":[706,24],"decidedBy":"rules","sentence":5570,"reference":{"range":[0,111],"text":"From fire to oil was a natural transition for burned fingers, and Amy fell to painting with undiminished ardor.","paragraph":2415,"sentence":5562},"kind":"thing"},{"paragraph":2424,"text":"made any difference","id":"5590:358","range":[358,19],"decidedBy":"rules","sentence":5590,"reference":{"range":[0,120],"text":"It takes people a long time to learn the difference between talent and genius, especially ambitious young men and women.","paragraph":2414,"sentence":5555},"kind":"action"},{"paragraph":2426,"text":"know as well as I that it does make a difference with nearly everyone","id":"5593:5","range":[5,69],"decidedBy":"rules","sentence":5593,"reference":{"range":[235,144],"text":"They have been very kind to me in many ways, and I am grateful, for they are all rich and I know I am poor, yet they never made any difference.”","paragraph":2424,"sentence":5590},"kind":"action"},{"paragraph":2428,"text":"take them for a drive to the places they want to see, a row on the river, perhaps","id":"5596:59","range":[59,81],"decidedBy":"rules","sentence":5596,"reference":{"range":[125,109],"text":"They are wild to see the river, sketch the broken bridge, and copy some of the things they admire in my book.","paragraph":2424,"sentence":5589},"kind":"action"},{"paragraph":2429,"text":"do you want for lunch","id":"5598:27","range":[27,21],"decidedBy":"rules","sentence":5598,"reference":{"range":[0,184],"text":"“I should like to ask the girls out to lunch next week, to take them for a drive to the places they want to see, a row on the river, perhaps, and make a little artistic fete for them.”","paragraph":2428,"sentence":5596},"kind":"action"},{"paragraph":2430,"text":"want my lunch to be proper and elegant","id":"5602:135","range":[135,38],"decidedBy":"rules","sentence":5602,"reference":{"range":[22,27],"text":"What do you want for lunch?","paragraph":2429,"sentence":5598},"kind":"action"},{"paragraph":2446,"text":"proceeded to do it in spite of all obstacles","id":"5636:452","range":[452,44],"decidedBy":"rules","sentence":5636,"reference":{"range":[0,264],"text":"If ‘genius is eternal patience’, as Michelangelo affirms, Amy had some claim to the divine attribute, for she persevered in spite of all obstacles, failures, and discouragements, firmly believing that in time she should do something worthy to be called ‘high art’.","paragraph":2418,"sentence":5576},"kind":"action"},{"paragraph":2446,"text":"got a cold","id":"5640:819","range":[819,10],"decidedBy":"rules","sentence":5640,"reference":{"range":[15,78],"text":"We must have cold tongue and chicken, French chocolate and ice cream, besides.","paragraph":2430,"sentence":5601},"kind":"action"},{"paragraph":2447,"text":"was not fair on Monday","id":"5642:6","range":[6,22],"decidedBy":"rules","sentence":5642,"reference":{"range":[0,107],"text":"The invitations were sent, nearly all accepted, and the following Monday was set apart for the grand event.","paragraph":2446,"sentence":5634},"kind":"thing"},{"paragraph":2462,"text":"interest that did credit to his breeding","id":"5674:128","range":[128,40],"decidedBy":"rules","sentence":5674,"reference":{"range":[0,279],"text":"“My lady,” as her friends called her, sincerely desired to be a genuine lady, and was so at heart, but had yet to learn that money cannot buy refinement of nature, that rank does not always confer nobility, and that true breeding makes itself felt in spite of external drawbacks.","paragraph":2421,"sentence":5584},"kind":"action"},{"paragraph":2463,"text":"set her basket boldly on the seat","id":"5675:35","range":[35,33],"decidedBy":"rules","sentence":5675,"reference":{"range":[39,142],"text":"cried the unconscious youth, poking the scarlet monster into its place with his cane, and preparing to hand out the basket after the old lady.","paragraph":2460,"sentence":5670},"kind":"action"},{"paragraph":2463,"text":"Don’t you wish you were to have some of the salad he’s going to make","id":"5675:91","range":[91,68],"decidedBy":"rules","sentence":5675,"reference":{"range":[0,80],"text":"“Use the chicken then, the toughness won’t matter in a salad,” advised his wife.","paragraph":2452,"sentence":5654},"kind":"action"},{"paragraph":2466,"text":"ordered the ‘cherry bounce","id":"5680:456","range":[456,26],"decidedBy":"rules","sentence":5680,"reference":{"range":[49,118],"text":"Not more than six or eight will probably come, so I shall hire a beach wagon and borrow Mr. Laurence’s cherry-bounce.”","paragraph":2434,"sentence":5608},"kind":"action"},{"paragraph":2467,"text":"I’ll go onto the porch","id":"5682:37","range":[37,22],"decidedBy":"rules","sentence":5682,"reference":{"range":[0,130],"text":"Then came the hours of suspense, during which she vibrated from parlor to porch, while public opinion varied like the weathercock.","paragraph":2449,"sentence":5649},"kind":"action"},{"paragraph":2468,"text":"help Hannah clear half the things off the table","id":"5685:16","range":[16,47],"decidedBy":"rules","sentence":5685,"reference":{"range":[0,73],"text":"“Hannah left it on the kitchen table a minute, and the kittens got at it.","paragraph":2453,"sentence":5655},"kind":"action"},{"paragraph":2469,"text":"discussed with enthusiasm","id":"5689:386","range":[386,25],"decidedBy":"rules","sentence":5689,"reference":{"range":[121,159],"text":"Amy was learning this distinction through much tribulation, for mistaking enthusiasm for inspiration, she attempted every branch of art with youthful audacity.","paragraph":2414,"sentence":5556},"kind":"action"},{"paragraph":2469,"decidedBy":"rules","reference":{"range":[49,118],"text":"Not more than six or eight will probably come, so I shall hire a beach wagon and borrow Mr. Laurence’s cherry-bounce.”","paragraph":2434,"sentence":5608},"id":"5689:417","range":[417,51],"sentence":5689,"kind":"action","text":"ordered a buggy (alas for the elegant cherry-bounce"},{"paragraph":2475,"decidedBy":"rules","reference":{"range":[15,78],"text":"We must have cold tongue and chicken, French chocolate and ice cream, besides.","paragraph":2430,"sentence":5601},"id":"5697:62","range":[62,63],"sentence":5697,"kind":"action","text":"sat down to ice cream and salad for the second time in two days"}],"engineVersion":5,"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5562:0",
+      "sentence": 5562,
+      "paragraph": 2415,
+      "range": [
+        0,
+        60
+      ],
+      "text": "From fire to oil was a natural transition for burned fingers",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5558,
+        "paragraph": 2414,
+        "range": [
+          506,
+          97
+        ],
+        "text": "But over-strained eyes caused pen and ink to be laid aside for a bold attempt at poker-sketching."
+      }
+    },
+    {
+      "id": "5568:300",
+      "sentence": 5568,
+      "paragraph": 2416,
+      "range": [
+        300,
+        37
+      ],
+      "text": "A return to clay and plaster followed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5557,
+        "paragraph": 2414,
+        "range": [
+          281,
+          224
+        ],
+        "text": "For a long time there was a lull in the ‘mud-pie’ business, and she devoted herself to the finest pen-and-ink drawing, in which she showed such taste and skill that her graceful handiwork proved both pleasant and profitable."
+      }
+    },
+    {
+      "id": "5576:0",
+      "sentence": 5576,
+      "paragraph": 2418,
+      "range": [
+        0,
+        31
+      ],
+      "text": "If ‘genius is eternal patience’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5555,
+        "paragraph": 2414,
+        "range": [
+          0,
+          120
+        ],
+        "text": "It takes people a long time to learn the difference between talent and genius, especially ambitious young men and women."
+      }
+    },
+    {
+      "id": "5602:133",
+      "sentence": 5602,
+      "paragraph": 2430,
+      "range": [
+        133,
+        40
+      ],
+      "text": "I want my lunch to be proper and elegant",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5582,
+        "paragraph": 2420,
+        "range": [
+          117,
+          240
+        ],
+        "text": "Money, position, fashionable accomplishments, and elegant manners were most desirable things in her eyes, and she liked to associate with those who possessed them, often mistaking the false for the true, and admiring what was not admirable."
+      }
+    },
+    {
+      "id": "5633:455",
+      "sentence": 5633,
+      "paragraph": 2445,
+      "range": [
+        455,
+        56
+      ],
+      "text": "Jo at length consented to sacrifice a day to Mrs. Grundy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5621,
+        "paragraph": 2442,
+        "range": [
+          140,
+          84
+        ],
+        "text": "But Jo frowned upon the whole project and would have nothing to do with it at first."
+      }
+    },
+    {
+      "id": "5638:552",
+      "sentence": 5638,
+      "paragraph": 2446,
+      "range": [
+        552,
+        86
+      ],
+      "text": "The chicken was tough, the tongue too salty, and the chocolate wouldn’t froth properly",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5601,
+        "paragraph": 2430,
+        "range": [
+          15,
+          78
+        ],
+        "text": "We must have cold tongue and chicken, French chocolate and ice cream, besides."
+      }
+    },
+    {
+      "id": "5639:645",
+      "sentence": 5639,
+      "paragraph": 2446,
+      "range": [
+        645,
+        44
+      ],
+      "text": "the cake and ice cost more than Amy expected",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5612,
+        "paragraph": 2436,
+        "range": [
+          11,
+          54
+        ],
+        "text": "I’ve calculated the cost, and I’ll pay for it myself.”"
+      }
+    },
+    {
+      "id": "5641:913",
+      "sentence": 5641,
+      "paragraph": 2446,
+      "range": [
+        913,
+        38
+      ],
+      "text": "Jo was in such a divided state of mind",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5623,
+        "paragraph": 2443,
+        "range": [
+          154,
+          245
+        ],
+        "text": "I thought you had too much pride and sense to truckle to any mortal woman just because she wears French boots and rides in a coupe,” said Jo, who, being called from the tragic climax of her novel, was not in the best mood for social enterprises."
+      }
+    },
+    {
+      "id": "5646:704",
+      "sentence": 5646,
+      "paragraph": 2447,
+      "range": [
+        704,
+        51
+      ],
+      "text": "covering stains on the walls with homemade statuary",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5568,
+        "paragraph": 2416,
+        "range": [
+          300,
+          158
+        ],
+        "text": "A return to clay and plaster followed, and ghostly casts of her acquaintances haunted corners of the house, or tumbled off closet shelves onto people’s heads."
+      }
+    },
+    {
+      "id": "5647:101",
+      "sentence": 5647,
+      "paragraph": 2448,
+      "range": [
+        101,
+        65
+      ],
+      "text": "the borrowed glass, china, and silver would get safely home again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5613,
+        "paragraph": 2437,
+        "range": [
+          0,
+          324
+        ],
+        "text": "“Don’t you think, dear, that as these girls are used to such things, and the best we can do will be nothing new, that some simpler plan would be pleasanter to them, as a change if nothing more, and much better for us than buying or borrowing what we don’t need, and attempting a style not in keeping with our circumstances?”"
+      }
+    },
+    {
+      "id": "5648:245",
+      "sentence": 5648,
+      "paragraph": 2448,
+      "range": [
+        245,
+        46
+      ],
+      "text": "Beth was able to help Hannah behind the scenes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5640,
+        "paragraph": 2446,
+        "range": [
+          814,
+          36
+        ],
+        "text": "Beth got a cold and took to her bed."
+      }
+    },
+    {
+      "id": "5648:293",
+      "sentence": 5648,
+      "paragraph": 2448,
+      "range": [
+        293,
+        60
+      ],
+      "text": "Jo had engaged to be as lively and amiable as an absent mind",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5641,
+        "paragraph": 2446,
+        "range": [
+          851,
+          191
+        ],
+        "text": "Meg had an unusual number of callers to keep her at home, and Jo was in such a divided state of mind that her breakages, accidents, and mistakes were uncommonly numerous, serious, and trying."
+      }
+    },
+    {
+      "id": "5648:634",
+      "sentence": 5648,
+      "paragraph": 2448,
+      "range": [
+        634,
+        68
+      ],
+      "text": "for the ‘cherry bounce’ and the broken bridge were her strong points",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5589,
+        "paragraph": 2424,
+        "range": [
+          125,
+          109
+        ],
+        "text": "They are wild to see the river, sketch the broken bridge, and copy some of the things they admire in my book."
+      }
+    },
+    {
+      "id": "5650:131",
+      "sentence": 5650,
+      "paragraph": 2449,
+      "range": [
+        131,
+        62
+      ],
+      "text": "A smart shower at eleven had evidently quenched the enthusiasm",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5643,
+        "paragraph": 2447,
+        "range": [
+          138,
+          104
+        ],
+        "text": "On Monday morning the weather was in that undecided state which is more exasperating than a steady pour."
+      }
+    },
+    {
+      "id": "5652:192",
+      "sentence": 5652,
+      "paragraph": 2450,
+      "range": [
+        192,
+        45
+      ],
+      "text": "she wished she had said nothing about Tuesday",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5642,
+        "paragraph": 2447,
+        "range": [
+          0,
+          137
+        ],
+        "text": "If it was not fair on Monday, the young ladies were to come on Tuesday, an arrangement which aggravated Jo and Hannah to the last degree."
+      }
+    },
+    {
+      "id": "5652:243",
+      "sentence": 5652,
+      "paragraph": 2450,
+      "range": [
+        243,
+        53
+      ],
+      "text": "her interest like her cake was getting a little stale",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5650,
+        "paragraph": 2449,
+        "range": [
+          131,
+          270
+        ],
+        "text": "A smart shower at eleven had evidently quenched the enthusiasm of the young ladies who were to arrive at twelve, for nobody came, and at two the exhausted family sat down in a blaze of sunshine to consume the perishable portions of the feast, that nothing might be lost."
+      }
+    },
+    {
+      "id": "5654:1",
+      "sentence": 5654,
+      "paragraph": 2452,
+      "range": [
+        1,
+        59
+      ],
+      "text": "Use the chicken then, the toughness won’t matter in a salad",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5638,
+        "paragraph": 2446,
+        "range": [
+          552,
+          87
+        ],
+        "text": "The chicken was tough, the tongue too salty, and the chocolate wouldn’t froth properly."
+      }
+    },
+    {
+      "id": "5664:130",
+      "sentence": 5664,
+      "paragraph": 2458,
+      "range": [
+        130,
+        50
+      ],
+      "text": "trying to find out where all her money had gone to",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5610,
+        "paragraph": 2435,
+        "range": [
+          0,
+          37
+        ],
+        "text": "“All of this will be expensive, Amy.”"
+      }
+    },
+    {
+      "id": "5666:504",
+      "sentence": 5666,
+      "paragraph": 2458,
+      "range": [
+        504,
+        42
+      ],
+      "text": "Amy utterly ignored the basket at her feet",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5662,
+        "paragraph": 2457,
+        "range": [
+          0,
+          178
+        ],
+        "text": "Shrouded in a thick veil and armed with a genteel traveling basket, she departed, feeling that a cool drive would soothe her ruffled spirit and fit her for the labors of the day."
+      }
+    },
+    {
+      "id": "5668:263",
+      "sentence": 5668,
+      "paragraph": 2459,
+      "range": [
+        263,
+        50
+      ],
+      "text": "the lobster, in all its vulgar size and brilliancy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5663,
+        "paragraph": 2457,
+        "range": [
+          179,
+          191
+        ],
+        "text": "After some delay, the object of her desire was procured, likewise a bottle of dressing to prevent further loss of time at home, and off she drove again, well pleased with her own forethought."
+      }
+    },
+    {
+      "id": "5676:0",
+      "sentence": 5676,
+      "paragraph": 2464,
+      "range": [
+        0,
+        17
+      ],
+      "text": "Now that was tact",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5579,
+        "paragraph": 2419,
+        "range": [
+          423,
+          55
+        ],
+        "text": "Everybody liked her, for among her good gifts was tact."
+      }
+    },
+    {
+      "id": "5678:1",
+      "sentence": 5678,
+      "paragraph": 2465,
+      "range": [
+        1,
+        50
+      ],
+      "text": "I suppose he’ll laugh and joke over it with Laurie",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5665,
+        "paragraph": 2458,
+        "range": [
+          182,
+          266
+        ],
+        "text": "So busy was she with her card full of refractory figures that she did not observe a newcomer, who entered without stopping the vehicle, till a masculine voice said, “Good morning, Miss March,” and, looking up, she beheld one of Laurie’s most elegant college friends."
+      }
+    },
+    {
+      "id": "5679:91",
+      "sentence": 5679,
+      "paragraph": 2466,
+      "range": [
+        91,
+        58
+      ],
+      "text": "her new dress was much damaged by the rivulets of dressing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5663,
+        "paragraph": 2457,
+        "range": [
+          179,
+          191
+        ],
+        "text": "After some delay, the object of her desire was procured, likewise a bottle of dressing to prevent further loss of time at home, and off she drove again, well pleased with her own forethought."
+      }
+    },
+    {
+      "id": "5680:379",
+      "sentence": 5680,
+      "paragraph": 2466,
+      "range": [
+        379,
+        43
+      ],
+      "text": "to efface the memory of yesterday’s failure",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5650,
+        "paragraph": 2449,
+        "range": [
+          131,
+          270
+        ],
+        "text": "A smart shower at eleven had evidently quenched the enthusiasm of the young ladies who were to arrive at twelve, for nobody came, and at two the exhausted family sat down in a blaze of sunshine to consume the perishable portions of the feast, that nothing might be lost."
+      }
+    },
+    {
+      "id": "5680:452",
+      "sentence": 5680,
+      "paragraph": 2466,
+      "range": [
+        452,
+        31
+      ],
+      "text": "she ordered the ‘cherry bounce’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5608,
+        "paragraph": 2434,
+        "range": [
+          49,
+          118
+        ],
+        "text": "Not more than six or eight will probably come, so I shall hire a beach wagon and borrow Mr. Laurence’s cherry-bounce.”"
+      }
+    },
+    {
+      "id": "5684:328",
+      "sentence": 5684,
+      "paragraph": 2467,
+      "range": [
+        328,
+        26
+      ],
+      "text": "sat Amy and one young lady",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5608,
+        "paragraph": 2434,
+        "range": [
+          49,
+          118
+        ],
+        "text": "Not more than six or eight will probably come, so I shall hire a beach wagon and borrow Mr. Laurence’s cherry-bounce.”"
+      }
+    },
+    {
+      "id": "5686:65",
+      "sentence": 5686,
+      "paragraph": 2468,
+      "range": [
+        65,
+        71
+      ],
+      "text": "It will be too absurd to put a luncheon for twelve before a single girl",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5605,
+        "paragraph": 2432,
+        "range": [
+          0,
+          70
+        ],
+        "text": "“Twelve or fourteen in the class, but I dare say they won’t all come.”"
+      }
+    },
+    {
+      "id": "5689:413",
+      "sentence": 5689,
+      "paragraph": 2469,
+      "range": [
+        413,
+        56
+      ],
+      "text": "Amy ordered a buggy (alas for the elegant cherry-bounce)",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5608,
+        "paragraph": 2434,
+        "range": [
+          49,
+          118
+        ],
+        "text": "Not more than six or eight will probably come, so I shall hire a beach wagon and borrow Mr. Laurence’s cherry-bounce.”"
+      }
+    },
+    {
+      "id": "5689:475",
+      "sentence": 5689,
+      "paragraph": 2469,
+      "range": [
+        475,
+        59
+      ],
+      "text": "drove her friend quietly about the neighborhood till sunset",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5596,
+        "paragraph": 2428,
+        "range": [
+          0,
+          184
+        ],
+        "text": "“I should like to ask the girls out to lunch next week, to take them for a drive to the places they want to see, a row on the river, perhaps, and make a little artistic fete for them.”"
+      }
+    },
+    {
+      "id": "5704:49",
+      "sentence": 5704,
+      "paragraph": 2479,
+      "range": [
+        49,
+        34
+      ],
+      "text": "we all did our best to satisfy you",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5618,
+        "paragraph": 2440,
+        "range": [
+          150,
+          88
+        ],
+        "text": "Talk it over with the girls, and whichever way you decide, I’ll do my best to help you.”"
+      }
+    },
+    {
+      "id": "5706:17",
+      "sentence": 5706,
+      "paragraph": 2480,
+      "range": [
+        17,
+        64
+      ],
+      "text": "I’ve done what I undertook, and it’s not my fault that it failed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5636,
+        "paragraph": 2446,
+        "range": [
+          273,
+          224
+        ],
+        "text": "This hitch in the mainspring of the domestic machinery had a bad effect upon the whole concern, but Amy’s motto was ‘Nil desperandum’, and having made up her mind what to do, she proceeded to do it in spite of all obstacles."
+      }
+    },
+    {
+      "id": "5709:35",
+      "sentence": 5709,
+      "paragraph": 2481,
+      "range": [
+        35,
+        47
+      ],
+      "text": "the word ‘fete’ always produced a general smile",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5596,
+        "paragraph": 2428,
+        "range": [
+          0,
+          184
+        ],
+        "text": "“I should like to ask the girls out to lunch next week, to take them for a drive to the places they want to see, a row on the river, perhaps, and make a little artistic fete for them.”"
+      }
+    },
+    {
+      "id": "5709:122",
+      "sentence": 5709,
+      "paragraph": 2481,
+      "range": [
+        122,
+        44
+      ],
+      "text": "a tiny coral lobster in the shape of a charm",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5668,
+        "paragraph": 2459,
+        "range": [
+          200,
+          160
+        ],
+        "text": "In stumbling to the door, she upset the basket, and—oh horror!—the lobster, in all its vulgar size and brilliancy, was revealed to the highborn eyes of a Tudor!"
+      }
+    }
+  ]
+}

@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3009:161",
+      "sentence": 3009,
+      "paragraph": 1339,
+      "range": [
+        161,
+        65
+      ],
+      "text": "the minutest concerns of which were carried to her by Mr. Collins",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3006,
+        "paragraph": 1338,
+        "range": [
+          0,
+          288
+        ],
+        "text": "Very few days passed in which Mr. Collins did not walk to Rosings, and not many in which his wife did not think it necessary to go likewise; and till Elizabeth recollected that there might be other family livings to be disposed of, she could not understand the sacrifice of so many hours."
+      }
+    }
+  ]
+}

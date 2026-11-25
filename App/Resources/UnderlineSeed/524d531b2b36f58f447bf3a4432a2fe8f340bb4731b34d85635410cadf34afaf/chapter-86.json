@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[{"id":"1203:49","text":"left Elizabeth to walk by herself","reference":{"range":[0,83],"sentence":1200,"paragraph":627,"text":"At that moment they were met from another walk by Mrs. Hurst and Elizabeth herself."},"kind":"action","paragraph":630,"range":[49,33],"sentence":1203,"decidedBy":"rules"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1201:82",
+      "sentence": 1201,
+      "paragraph": 628,
+      "range": [
+        82,
+        28
+      ],
+      "text": "lest they had been overheard",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1188,
+        "paragraph": 620,
+        "range": [
+          0,
+          240
+        ],
+        "text": "the shrubbery the next day, “you will give your mother-in-law a few hints, when this desirable event takes place, as to the advantage of holding her tongue; and if you can compass it, to cure the younger girls of running after the officers."
+      }
+    },
+    {
+      "id": "1211:91",
+      "sentence": 1211,
+      "paragraph": 633,
+      "range": [
+        91,
+        53
+      ],
+      "text": "The picturesque would be spoilt by admitting a fourth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1204,
+        "paragraph": 630,
+        "range": [
+          84,
+          29
+        ],
+        "text": "The path just admitted three."
+      }
+    },
+    {
+      "id": "1214:109",
+      "sentence": 1214,
+      "paragraph": 634,
+      "range": [
+        109,
+        34
+      ],
+      "text": "Jane was already so much recovered",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1087,
+        "paragraph": 560,
+        "range": [
+          48,
+          191
+        ],
+        "text": "Mrs. Hurst and Miss Bingley had spent some hours of the morning with the invalid, who continued, though slowly, to mend; and, in the evening, Elizabeth joined their party in the drawing-room."
+      }
+    }
+  ]
+}

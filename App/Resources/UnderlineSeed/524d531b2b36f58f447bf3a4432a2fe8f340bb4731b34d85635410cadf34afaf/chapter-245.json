@@ -1,1 +1,111 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3291:65",
+      "sentence": 3291,
+      "paragraph": 1469,
+      "range": [
+        65,
+        43
+      ],
+      "text": "lessening the honour of my cousin’s triumph",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3275,
+        "paragraph": 1459,
+        "range": [
+          74,
+          388
+        ],
+        "text": "What he told me was merely this: that he congratulated himself on having lately saved a friend from the inconveniences of a most imprudent marriage, but without mentioning names or any other particulars; and I only suspected it to be Bingley from believing him the kind of young man to get into a scrape of that sort, and from knowing them to have been together the whole of last summer.”"
+      }
+    },
+    {
+      "id": "3294:408",
+      "sentence": 3294,
+      "paragraph": 1470,
+      "range": [
+        408,
+        70
+      ],
+      "text": "any other people could be meant than those with whom she was connected",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3269,
+        "paragraph": 1455,
+        "range": [
+          112,
+          96
+        ],
+        "text": "But I ought to beg his pardon, for I have no right to suppose that Bingley was the person meant."
+      }
+    },
+    {
+      "id": "3295:515",
+      "sentence": 3295,
+      "paragraph": 1470,
+      "range": [
+        515,
+        63
+      ],
+      "text": "two men over whom Mr. Darcy could have such boundless influence",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3275,
+        "paragraph": 1459,
+        "range": [
+          74,
+          388
+        ],
+        "text": "What he told me was merely this: that he congratulated himself on having lately saved a friend from the inconveniences of a most imprudent marriage, but without mentioning names or any other particulars; and I only suspected it to be Bingley from believing him the kind of young man to get into a scrape of that sort, and from knowing them to have been together the whole of last summer.”"
+      }
+    },
+    {
+      "id": "3296:610",
+      "sentence": 3296,
+      "paragraph": 1470,
+      "range": [
+        610,
+        51
+      ],
+      "text": "the measures taken to separate Mr. Bingley and Jane",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3278,
+        "paragraph": 1462,
+        "range": [
+          0,
+          44
+        ],
+        "text": "“And what arts did he use to separate them?”"
+      }
+    },
+    {
+      "id": "3297:884",
+      "sentence": 3297,
+      "paragraph": 1470,
+      "range": [
+        884,
+        57
+      ],
+      "text": "all that Jane had suffered, and still continued to suffer",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3214,
+        "paragraph": 1430,
+        "range": [
+          0,
+          274
+        ],
+        "text": "She was engaged one day, as she walked, in re-perusing Jane’s last letter, and dwelling on some passages which proved that Jane had not written in spirits, when, instead of being again surprised by Mr. Darcy, she saw, on looking up, that Colonel Fitzwilliam was meeting her."
+      }
+    }
+  ]
+}

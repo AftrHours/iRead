@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"id":"1736:176","text":"was particularly flattered by receiving the invitation from Mr. Bingley himself, instead of a ceremonious card","reference":{"sentence":1731,"range":[0,314],"paragraph":848,"text":"The two young ladies were summoned from the shrubbery, where this conversation passed, by the arrival of some of the very persons of whom they had been speaking; Mr. Bingley and his sisters came to give their personal invitation for the long expected ball at Netherfield, which was fixed for the following Tuesday."},"kind":"thing","paragraph":849,"sentence":1736,"range":[176,110],"decidedBy":"rules"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1736:206",
+      "sentence": 1736,
+      "paragraph": 849,
+      "range": [
+        206,
+        49
+      ],
+      "text": "receiving the invitation from Mr. Bingley himself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1731,
+        "paragraph": 848,
+        "range": [
+          0,
+          314
+        ],
+        "text": "The two young ladies were summoned from the shrubbery, where this conversation passed, by the arrival of some of the very persons of whom they had been speaking; Mr. Bingley and his sisters came to give their personal invitation for the long expected ball at Netherfield, which was fixed for the following Tuesday."
+      }
+    },
+    {
+      "id": "1737:288",
+      "sentence": 1737,
+      "paragraph": 849,
+      "range": [
+        288,
+        74
+      ],
+      "text": "Jane pictured to herself a happy evening in the society of her two friends",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1732,
+        "paragraph": 848,
+        "range": [
+          315,
+          180
+        ],
+        "text": "The two ladies were delighted to see their dear friend again, called it an age since they had met, and repeatedly asked what she had been doing with herself since their separation."
+      }
+    },
+    {
+      "id": "1737:486",
+      "sentence": 1737,
+      "paragraph": 849,
+      "range": [
+        486,
+        69
+      ],
+      "text": "seeing a confirmation of everything in Mr. Darcy’s look and behaviour",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1724,
+        "paragraph": 843,
+        "range": [
+          204,
+          45
+        ],
+        "text": "If it be not so, let Mr. Darcy contradict it."
+      }
+    }
+  ]
+}

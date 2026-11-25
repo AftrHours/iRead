@@ -1,1 +1,90 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "464:59",
+      "sentence": 464,
+      "paragraph": 266,
+      "range": [
+        59,
+        60
+      ],
+      "text": "Elizabeth remained with no very cordial feelings towards him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 460,
+        "paragraph": 264,
+        "range": [
+          21,
+          273
+        ],
+        "text": "and turning round, he looked for a moment at Elizabeth, till, catching her eye, he withdrew his own, and coldly said, “She is tolerable: but not handsome enough to tempt me; and I am in no humour at present to give consequence to young ladies who are slighted by other men."
+      }
+    },
+    {
+      "id": "468:146",
+      "sentence": 468,
+      "paragraph": 267,
+      "range": [
+        146,
+        37
+      ],
+      "text": "Mr. Bingley had danced with her twice",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 453,
+        "paragraph": 259,
+        "range": [
+          0,
+          109
+        ],
+        "text": "“You are dancing with the only handsome girl in the room,” said Mr. Darcy, looking at the eldest Miss Bennet."
+      }
+    },
+    {
+      "id": "475:934",
+      "sentence": 475,
+      "paragraph": 267,
+      "range": [
+        934,
+        83
+      ],
+      "text": "He had rather hoped that all his wife’s views on the stranger would be disappointed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 416,
+        "paragraph": 245,
+        "range": [
+          0,
+          180
+        ],
+        "text": "“If I can but see one of my daughters happily settled at Netherfield,” said Mrs. Bennet to her husband, “and all the others equally well married, I shall have nothing to wish for.”"
+      }
+    },
+    {
+      "id": "479:228",
+      "sentence": 479,
+      "paragraph": 268,
+      "range": [
+        228,
+        39
+      ],
+      "text": "Mr. Bingley thought her quite beautiful",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 454,
+        "paragraph": 260,
+        "range": [
+          0,
+          54
+        ],
+        "text": "“Oh, she is the most beautiful creature I ever beheld!"
+      }
+    }
+  ]
+}

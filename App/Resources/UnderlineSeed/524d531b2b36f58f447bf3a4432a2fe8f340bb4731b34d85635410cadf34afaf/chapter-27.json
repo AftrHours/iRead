@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[{"kind":"thing","decidedBy":"rules","paragraph":240,"text":"I’m the tallest","range":[1,15],"reference":{"sentence":403,"range":[0,92],"paragraph":238,"text":"“Oh,” said Lydia, stoutly, “I am not afraid; for though I am the youngest, I’m the tallest.”"},"sentence":405,"id":"405:1"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "402:375",
+      "sentence": 402,
+      "paragraph": 237,
+      "range": [
+        375,
+        48
+      ],
+      "text": "Mr. Bingley will dance with you at the next ball",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 368,
+        "paragraph": 221,
+        "range": [
+          65,
+          38
+        ],
+        "text": "“When is your next ball to be, Lizzy?”"
+      }
+    },
+    {
+      "id": "404:50",
+      "sentence": 404,
+      "paragraph": 239,
+      "range": [
+        50,
+        43
+      ],
+      "text": "how soon he would return Mr. Bennet’s visit",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 350,
+        "paragraph": 211,
+        "range": [
+          0,
+          69
+        ],
+        "text": "MR. BENNET was among the earliest of those who waited on Mr. Bingley."
+      }
+    }
+  ]
+}

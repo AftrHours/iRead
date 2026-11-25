@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1166:65",
+      "sentence": 1166,
+      "paragraph": 606,
+      "range": [
+        65,
+        43
+      ],
+      "text": "Mr. Darcy had much better finish his letter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1089,
+        "paragraph": 560,
+        "range": [
+          280,
+          166
+        ],
+        "text": "Mr. Darcy was writing, and Miss Bingley, seated near him, was watching the progress of his letter, and repeatedly calling off his attention by messages to his sister."
+      }
+    }
+  ]
+}

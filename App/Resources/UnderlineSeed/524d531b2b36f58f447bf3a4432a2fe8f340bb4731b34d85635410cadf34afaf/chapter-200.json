@@ -1,1 +1,111 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2694:623",
+      "sentence": 2694,
+      "paragraph": 1220,
+      "range": [
+        623,
+        51
+      ],
+      "text": "such pleasant accounts from our friends at Hunsford",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2653,
+        "paragraph": 1211,
+        "range": [
+          905,
+          104
+        ],
+        "text": "She wrote cheerfully, seemed surrounded with comforts, and mentioned nothing which she could not praise."
+      }
+    },
+    {
+      "id": "2695:676",
+      "sentence": 2695,
+      "paragraph": 1220,
+      "range": [
+        676,
+        47
+      ],
+      "text": "Pray go to see them, with Sir William and Maria",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2647,
+        "paragraph": 1210,
+        "range": [
+          0,
+          115
+        ],
+        "text": "“My father and Maria are to come to me in March,” added Charlotte, “and I hope you will consent to be of the party."
+      }
+    },
+    {
+      "id": "2698:87",
+      "sentence": 2698,
+      "paragraph": 1222,
+      "range": [
+        87,
+        53
+      ],
+      "text": "Jane would no longer be duped, by the sister at least",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2673,
+        "paragraph": 1217,
+        "range": [
+          181,
+          259
+        ],
+        "text": "After waiting at home every morning for a fortnight, and inventing every evening a fresh excuse for her, the visitor did at last appear; but the shortness of her stay, and, yet more, the alteration of her manner, would allow Jane to deceive herself no longer."
+      }
+    },
+    {
+      "id": "2701:372",
+      "sentence": 2701,
+      "paragraph": 1222,
+      "range": [
+        372,
+        65
+      ],
+      "text": "she seriously hoped he might really soon marry Mr. Darcy’s sister",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2687,
+        "paragraph": 1220,
+        "range": [
+          0,
+          77
+        ],
+        "text": "as if she wanted to persuade herself that he is really partial to Miss Darcy."
+      }
+    },
+    {
+      "id": "2702:30",
+      "sentence": 2702,
+      "paragraph": 1223,
+      "range": [
+        30,
+        59
+      ],
+      "text": "reminded Elizabeth of her promise concerning that gentleman",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2622,
+        "paragraph": 1198,
+        "range": [
+          873,
+          63
+        ],
+        "text": "All that I can promise you, therefore, is not to be in a hurry."
+      }
+    }
+  ]
+}

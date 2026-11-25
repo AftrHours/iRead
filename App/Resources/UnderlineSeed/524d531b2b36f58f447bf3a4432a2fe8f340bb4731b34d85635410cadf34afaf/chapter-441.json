@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6254:173",
+      "sentence": 6254,
+      "paragraph": 2545,
+      "range": [
+        173,
+        59
+      ],
+      "text": "It suddenly struck her that it might be from Lady Catherine",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6240,
+        "paragraph": 2538,
+        "range": [
+          166,
+          262
+        ],
+        "text": "From what she had said of her resolution to prevent the marriage, it occurred to Elizabeth that she must meditate an application to her nephew; and how he might take a similar representation of the evils attached to a connection with her she dared not pronounce."
+      }
+    },
+    {
+      "id": "6261:49",
+      "sentence": 6261,
+      "paragraph": 2548,
+      "range": [
+        49,
+        66
+      ],
+      "text": "the instantaneous conviction of its being a letter from the nephew",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6246,
+        "paragraph": 2540,
+        "range": [
+          0,
+          146
+        ],
+        "text": "“If, therefore, an excuse for not keeping his promise should come to his friend within a few days,” she added, “I shall know how to understand it."
+      }
+    }
+  ]
+}

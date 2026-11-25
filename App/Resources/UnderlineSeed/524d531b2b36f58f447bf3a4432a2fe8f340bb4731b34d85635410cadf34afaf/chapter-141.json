@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1942:97",
+      "sentence": 1942,
+      "paragraph": 941,
+      "range": [
+        97,
+        65
+      ],
+      "text": "the repetition of delights which she saw no likelihood of sharing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1928,
+        "paragraph": 935,
+        "range": [
+          921,
+          155
+        ],
+        "text": "She concluded with many good wishes that Lady Lucas might soon be equally fortunate, though evidently and triumphantly believing there was no chance of it."
+      }
+    }
+  ]
+}

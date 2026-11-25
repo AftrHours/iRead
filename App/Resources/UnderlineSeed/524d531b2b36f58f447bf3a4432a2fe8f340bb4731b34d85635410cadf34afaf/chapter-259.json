@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3491:1146",
+      "sentence": 3491,
+      "paragraph": 1523,
+      "range": [
+        1146,
+        32
+      ],
+      "text": "Here again I shall give you pain",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3438,
+        "paragraph": 1519,
+        "range": [
+          10,
+          159
+        ],
+        "text": "You must, therefore, pardon the freedom with which I demand your attention; your feelings, I know, will bestow it unwillingly, but I demand it of your justice."
+      }
+    },
+    {
+      "id": "3529:6984",
+      "sentence": 3529,
+      "paragraph": 1523,
+      "range": [
+        6984,
+        62
+      ],
+      "text": "putting this letter in your hands in the course of the morning",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3428,
+        "paragraph": 1516,
+        "range": [
+          469,
+          206
+        ],
+        "text": "He had by that time reached it also; and, holding out a letter, which she instinctively took, said, with a look of haughty composure, “I have been walking in the grove some time, in the hope of meeting you."
+      }
+    }
+  ]
+}

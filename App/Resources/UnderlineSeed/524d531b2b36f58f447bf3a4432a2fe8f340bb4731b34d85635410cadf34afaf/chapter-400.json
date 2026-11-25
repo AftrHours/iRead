@@ -1,1 +1,174 @@
-{"parserVersion":1,"underlines":[{"decidedBy":"rules","range":[125,24],"reference":{"paragraph":2234,"range":[541,26],"sentence":5528,"text":"Brother-in-law of Wickham!"},"paragraph":2235,"text":"was overtaken by Wickham","sentence":5541,"kind":"action","id":"5541:125"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5524:0",
+      "sentence": 5524,
+      "paragraph": 2234,
+      "range": [
+        0,
+        57
+      ],
+      "text": "finally bribe the man whom he always most wished to avoid",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5472,
+        "paragraph": 2227,
+        "range": [
+          1070,
+          108
+        ],
+        "text": "Under such circumstances, however, he was not likely to be proof against the temptation of immediate relief."
+      }
+    },
+    {
+      "id": "5526:191",
+      "sentence": 5526,
+      "paragraph": 2234,
+      "range": [
+        191,
+        50
+      ],
+      "text": "Her heart did whisper that he had done it for her.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5450,
+        "paragraph": 2226,
+        "range": [
+          171,
+          64
+        ],
+        "text": "If he had another motive, I am sure it would never disgrace him."
+      }
+    },
+    {
+      "id": "5529:568",
+      "sentence": 5529,
+      "paragraph": 2234,
+      "range": [
+        568,
+        52
+      ],
+      "text": "Every kind of pride must revolt from the connection.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5446,
+        "paragraph": 2225,
+        "range": [
+          1433,
+          145
+        ],
+        "text": "He generously imputed the whole to his mistaken pride, and confessed that he had before thought it beneath him to lay his private actions open to"
+      }
+    },
+    {
+      "id": "5532:687",
+      "sentence": 5532,
+      "paragraph": 2234,
+      "range": [
+        687,
+        95
+      ],
+      "text": "But he had given a reason for his interference, which asked no extraordinary stretch of belief.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5445,
+        "paragraph": 2225,
+        "range": [
+          1222,
+          210
+        ],
+        "text": "The motive professed was his conviction of its being owing to himself that Wickham’s worthlessness had not been so well known as to make it impossible for any young woman of character to love or confide in him."
+      }
+    },
+    {
+      "id": "5535:1244",
+      "sentence": 5535,
+      "paragraph": 2234,
+      "range": [
+        1244,
+        69
+      ],
+      "text": "They owed the restoration of Lydia, her character, everything to him.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5492,
+        "paragraph": 2228,
+        "range": [
+          1449,
+          180
+        ],
+        "text": "His debts are to be paid, amounting, I believe, to considerably more than a thousand pounds, another thousand in addition to her own settled upon her, and his commission purchased."
+      }
+    },
+    {
+      "id": "5538:1606",
+      "sentence": 5538,
+      "paragraph": 2234,
+      "range": [
+        1606,
+        61
+      ],
+      "text": "She read over her aunt’s commendation of him again and again.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5509,
+        "paragraph": 2230,
+        "range": [
+          0,
+          109
+        ],
+        "text": "Lizzy, if I take this opportunity of saying (what I was never bold enough to say before) how much I like him?"
+      }
+    },
+    {
+      "id": "5540:1850",
+      "sentence": 5540,
+      "paragraph": 2234,
+      "range": [
+        1850,
+        64
+      ],
+      "text": "affection and confidence subsisted between Mr. Darcy and herself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5497,
+        "paragraph": 2229,
+        "range": [
+          209,
+          193
+        ],
+        "text": "But in spite of all this fine talking, my dear Lizzy, you may rest perfectly assured that your uncle would never have yielded, if we had not given him credit for another interest in the affair."
+      }
+    },
+    {
+      "id": "5542:1",
+      "sentence": 5542,
+      "paragraph": 2236,
+      "range": [
+        1,
+        44
+      ],
+      "text": "I am afraid I interrupt your solitary ramble",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5431,
+        "paragraph": 2222,
+        "range": [
+          99,
+          260
+        ],
+        "text": "She was no sooner in possession of it, than hurrying into the little copse, where she was least likely to be interrupted, she sat down on one of the benches, and prepared to be happy; for the length of the letter convinced her that it did not contain a denial."
+      }
+    }
+  ]
+}

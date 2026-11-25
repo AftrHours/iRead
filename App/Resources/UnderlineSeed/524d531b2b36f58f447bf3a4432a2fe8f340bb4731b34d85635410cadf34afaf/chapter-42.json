@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "574:1",
+      "sentence": 574,
+      "paragraph": 300,
+      "range": [
+        1,
+        37
+      ],
+      "text": "You began the evening well, Charlotte",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 572,
+        "paragraph": 298,
+        "range": [
+          77,
+          109
+        ],
+        "text": "The eldest of them, a sensible, intelligent young woman, about twenty-seven, was Elizabeth’s intimate friend."
+      }
+    },
+    {
+      "id": "581:324",
+      "sentence": 581,
+      "paragraph": 303,
+      "range": [
+        324,
+        43
+      ],
+      "text": "‘Oh, the eldest Miss Bennet, beyond a doubt",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 576,
+        "paragraph": 301,
+        "range": [
+          0,
+          47
+        ],
+        "text": "“Yes; but he seemed to like his second better.”"
+      }
+    }
+  ]
+}

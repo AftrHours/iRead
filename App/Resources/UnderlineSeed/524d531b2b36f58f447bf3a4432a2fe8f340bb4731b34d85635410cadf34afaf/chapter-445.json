@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6334:0",
+      "sentence": 6334,
+      "paragraph": 2569,
+      "range": [
+        0,
+        66
+      ],
+      "text": "“If you will thank me,” he replied, “let it be for yourself alone.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6325,
+        "paragraph": 2565,
+        "range": [
+          138,
+          81
+        ],
+        "text": "I can no longer help thanking you for your unexampled kindness to my poor sister."
+      }
+    }
+  ]
+}

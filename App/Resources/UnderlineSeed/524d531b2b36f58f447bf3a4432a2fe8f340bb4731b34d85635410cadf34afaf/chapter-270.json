@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3676:515",
+      "sentence": 3676,
+      "paragraph": 1569,
+      "range": [
+        515,
+        45
+      ],
+      "text": "nor could she for a moment repent her refusal",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3618,
+        "paragraph": 1550,
+        "range": [
+          0,
+          245
+        ],
+        "text": "Elizabeth could not see Lady Catherine without recollecting that, had she chosen it, she might by this time have been presented to her as her future niece; nor could she think, without a smile, of what her Ladyship’s indignation would have been."
+      }
+    }
+  ]
+}

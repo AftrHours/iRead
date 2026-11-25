@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1593:56",
+      "sentence": 1593,
+      "paragraph": 790,
+      "range": [
+        56,
+        42
+      ],
+      "text": "If he wishes to avoid seeing me he must go",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1589,
+        "paragraph": 788,
+        "range": [
+          0,
+          115
+        ],
+        "text": "“I wonder,” said he, at the next opportunity of speaking, “whether he is likely to be in this country much longer.”"
+      }
+    }
+  ]
+}

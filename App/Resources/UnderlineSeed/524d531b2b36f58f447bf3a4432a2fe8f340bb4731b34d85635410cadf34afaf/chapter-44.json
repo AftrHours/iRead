@@ -1,1 +1,111 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "602:75",
+      "sentence": 602,
+      "paragraph": 314,
+      "range": [
+        75,
+        33
+      ],
+      "text": "he would have talked to Mrs. Long",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 590,
+        "paragraph": 307,
+        "range": [
+          118,
+          102
+        ],
+        "text": "Mrs. Long told me last night that he sat close to her for half an hour without once opening his lips.”"
+      }
+    },
+    {
+      "id": "603:1",
+      "sentence": 603,
+      "paragraph": 315,
+      "range": [
+        1,
+        42
+      ],
+      "text": "I do not mind his not talking to Mrs. Long",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 596,
+        "paragraph": 310,
+        "range": [
+          71,
+          44
+        ],
+        "text": "“I certainly saw Mr. Darcy speaking to her.”"
+      }
+    },
+    {
+      "id": "603:64",
+      "sentence": 603,
+      "paragraph": 315,
+      "range": [
+        64,
+        35
+      ],
+      "text": "but I wish he had danced with Eliza",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 586,
+        "paragraph": 305,
+        "range": [
+          145,
+          11
+        ],
+        "text": "Poor Eliza!"
+      }
+    },
+    {
+      "id": "606:1",
+      "sentence": 606,
+      "paragraph": 318,
+      "range": [
+        1,
+        27
+      ],
+      "text": "His pride,” said Miss Lucas",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 602,
+        "paragraph": 314,
+        "range": [
+          41,
+          265
+        ],
+        "text": "If he had been so very agreeable, he would have talked to Mrs. Long. But I can guess how it was; everybody says that he is eat up with pride, and I dare say he had heard somehow that Mrs. Long does not keep a carriage, and had to come to the ball in a hack chaise.”"
+      }
+    },
+    {
+      "id": "609:45",
+      "sentence": 609,
+      "paragraph": 319,
+      "range": [
+        45,
+        62
+      ],
+      "text": "I could easily forgive his pride, if he had not mortified mine",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 587,
+        "paragraph": 305,
+        "range": [
+          157,
+          27
+        ],
+        "text": "to be only just tolerable.”"
+      }
+    }
+  ]
+}

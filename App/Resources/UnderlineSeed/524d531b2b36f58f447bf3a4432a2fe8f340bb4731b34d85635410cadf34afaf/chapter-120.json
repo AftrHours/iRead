@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[{"range":[189,36],"paragraph":815,"reference":{"range":[126,113],"paragraph":812,"sentence":1650,"text":"If from no better motive, that he should not have been too proud to be dishonest,—for dishonesty I must call it.”"},"decidedBy":"rules","text":"is very proud of what his father was","sentence":1656,"id":"1656:189","kind":"thing"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1653:255",
+      "sentence": 1653,
+      "paragraph": 813,
+      "range": [
+        255,
+        44
+      ],
+      "text": "there were stronger impulses even than pride",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1630,
+        "paragraph": 804,
+        "range": [
+          0,
+          105
+        ],
+        "text": "“A thorough, determined dislike of me—a dislike which I cannot but attribute in some measure to jealousy."
+      }
+    }
+  ]
+}

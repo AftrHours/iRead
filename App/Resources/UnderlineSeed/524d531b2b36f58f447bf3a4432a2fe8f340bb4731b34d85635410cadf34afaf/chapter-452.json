@@ -1,1 +1,5 @@
-{"engineVersion":5,"underlines":[{"decidedBy":"rules","range":[160,27],"reference":{"sentence":6464,"text":"She coloured as she spoke; but neither that, nor anything else, awakened a suspicion of the truth.","range":[287,98],"paragraph":2618},"text":"speak nothing but the truth","paragraph":2622,"sentence":6478,"kind":"action","id":"6478:160"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": []
+}

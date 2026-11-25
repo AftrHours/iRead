@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4284:168",
+      "sentence": 4284,
+      "paragraph": 1808,
+      "range": [
+        168,
+        59
+      ],
+      "text": "his resemblance to the picture they had just been examining",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4267,
+        "paragraph": 1801,
+        "range": [
+          370,
+          129
+        ],
+        "text": "She stood several minutes before the picture, in earnest contemplation, and returned to it again before they quitted the gallery."
+      }
+    },
+    {
+      "id": "4284:300",
+      "sentence": 4284,
+      "paragraph": 1808,
+      "range": [
+        300,
+        62
+      ],
+      "text": "the gardener’s expression of surprise, on beholding his master",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4277,
+        "paragraph": 1804,
+        "range": [
+          0,
+          205
+        ],
+        "text": "When all of the house that was open to general inspection had been seen, they returned down stairs; and, taking leave of the housekeeper, were consigned over to the gardener, who met them at the hall door."
+      }
+    }
+  ]
+}

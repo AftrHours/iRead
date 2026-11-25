@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3790:46",
+      "sentence": 3790,
+      "paragraph": 1617,
+      "range": [
+        46,
+        29
+      ],
+      "text": "I am glad I brought my bonnet",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3749,
+        "paragraph": 1602,
+        "range": [
+          130,
+          66
+        ],
+        "text": "Then showing her purchases,—“Look here, I have bought this bonnet."
+      }
+    }
+  ]
+}

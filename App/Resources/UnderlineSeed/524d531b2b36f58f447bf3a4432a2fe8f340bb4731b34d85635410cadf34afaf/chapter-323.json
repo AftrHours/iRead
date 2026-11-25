@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4427:72",
+      "sentence": 4427,
+      "paragraph": 1852,
+      "range": [
+        72,
+        76
+      ],
+      "text": "Bingley was ready, Georgiana was eager, and Darcy determined, to be pleased.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4406,
+        "paragraph": 1844,
+        "range": [
+          1322,
+          284
+        ],
+        "text": "She was quite amazed at her own discomposure; but, amongst other causes of disquiet, she dreaded lest the partiality of the brother should have said too much in her favour; and, more than commonly anxious to please, she naturally suspected that every power of pleasing would fail her."
+      }
+    }
+  ]
+}

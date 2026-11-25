@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[{"kind":"thing","decidedBy":"rules","paragraph":343,"text":"That is a question which Mr. Darcy only can answer","range":[1,50],"reference":{"sentence":668,"range":[0,106],"paragraph":342,"text":"“What does Mr. Darcy mean,” said she to Charlotte, “by listening to my conversation with Colonel Forster?”"},"sentence":669,"id":"669:1"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "658:87",
+      "sentence": 658,
+      "paragraph": 339,
+      "range": [
+        87,
+        40
+      ],
+      "text": "you would never act in this way yourself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 653,
+        "paragraph": 337,
+        "range": [
+          222,
+          53
+        ],
+        "text": "Happiness in marriage is entirely a matter of chance."
+      }
+    },
+    {
+      "id": "668:52",
+      "sentence": 668,
+      "paragraph": 342,
+      "range": [
+        52,
+        52
+      ],
+      "text": "by listening to my conversation with Colonel Forster",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 665,
+        "paragraph": 341,
+        "range": [
+          0,
+          131
+        ],
+        "text": "He began to wish to know more of her; and, as a step towards conversing with her himself, attended to her conversation with others."
+      }
+    }
+  ]
+}

@@ -1,1 +1,132 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1532:27",
+      "sentence": 1532,
+      "paragraph": 760,
+      "range": [
+        27,
+        39
+      ],
+      "text": "She had been watching him the last hour",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1527,
+        "paragraph": 758,
+        "range": [
+          0,
+          291
+        ],
+        "text": "Mr. Denny and Mr. Wickham walked with the young ladies to the door of Mr. Philips’s house, and then made their bows, in spite of Miss Lydia’s pressing entreaties that they would come in, and even in spite of Mrs. Philips’s throwing up the parlour window, and loudly seconding the invitation."
+      }
+    },
+    {
+      "id": "1532:320",
+      "sentence": 1532,
+      "paragraph": 760,
+      "range": [
+        320,
+        43
+      ],
+      "text": "were become “stupid, disagreeable fellows.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1516,
+        "paragraph": 756,
+        "range": [
+          539,
+          140
+        ],
+        "text": "His appearance was greatly in his favour: he had all the best parts of beauty, a fine countenance, a good figure, and very pleasing address."
+      }
+    },
+    {
+      "id": "1537:21",
+      "sentence": 1537,
+      "paragraph": 761,
+      "range": [
+        21,
+        74
+      ],
+      "text": "Elizabeth related to Jane what she had seen pass between the two gentlemen",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1522,
+        "paragraph": 756,
+        "range": [
+          1578,
+          53
+        ],
+        "text": "Both changed colour, one looked white, the other red."
+      }
+    },
+    {
+      "id": "1538:58",
+      "sentence": 1538,
+      "paragraph": 762,
+      "range": [
+        58,
+        46
+      ],
+      "text": "admiring Mrs. Philips’s manners and politeness",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1529,
+        "paragraph": 759,
+        "range": [
+          549,
+          305
+        ],
+        "text": "She received him with her very best politeness, which he returned with as much more, apologizing for his intrusion, without any previous acquaintance with her, which he could not help flattering himself, however, might be justified by his relationship to the young ladies who introduced him to her notice."
+      }
+    },
+    {
+      "id": "1539:278",
+      "sentence": 1539,
+      "paragraph": 762,
+      "range": [
+        278,
+        61
+      ],
+      "text": "pointedly included him in her invitation for the next evening",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1533,
+        "paragraph": 760,
+        "range": [
+          364,
+          212
+        ],
+        "text": "Some of them were to dine with the Philipses the next day, and their aunt promised to make her husband call on Mr. Wickham, and give him an invitation also, if the family from Longbourn would come in the evening."
+      }
+    },
+    {
+      "id": "1540:405",
+      "sentence": 1540,
+      "paragraph": 762,
+      "range": [
+        405,
+        47
+      ],
+      "text": "might be attributed to his connection with them",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1529,
+        "paragraph": 759,
+        "range": [
+          549,
+          305
+        ],
+        "text": "She received him with her very best politeness, which he returned with as much more, apologizing for his intrusion, without any previous acquaintance with her, which he could not help flattering himself, however, might be justified by his relationship to the young ladies who introduced him to her notice."
+      }
+    }
+  ]
+}

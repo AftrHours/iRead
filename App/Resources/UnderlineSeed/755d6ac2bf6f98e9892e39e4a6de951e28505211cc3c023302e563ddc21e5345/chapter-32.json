@@ -1,1 +1,657 @@
-{"parserVersion":1,"underlines":[{"id":"6131:242","reference":{"paragraph":2618,"text":"“Come, Jo, it’s time.”","sentence":6106,"range":[0,22]},"kind":"action","sentence":6131,"text":"I’ll do anything for you, Jo","decidedBy":"rules","paragraph":2628,"range":[242,28]},{"id":"6147:296","reference":{"paragraph":2630,"text":"Take your light gloves and the embroidered handkerchief.","sentence":6145,"range":[363,56]},"kind":"action","sentence":6147,"text":"wrinkled up her features generally as she shook out the handkerchief","decidedBy":"rules","paragraph":2631,"range":[296,68]},{"id":"6154:388","reference":{"paragraph":2618,"text":"“Come, Jo, it’s time.”","sentence":6106,"range":[0,22]},"kind":"action","sentence":6154,"text":"There’s one thing you can do well, Jo","decidedBy":"rules","paragraph":2633,"range":[388,37]},{"id":"6165:64","reference":{"paragraph":2635,"text":"You haven’t half buttoned one cuff, do it at once.","sentence":6163,"range":[140,50]},"kind":"action","sentence":6165,"text":"doing up her cuff","decidedBy":"rules","paragraph":2636,"range":[64,17]},{"id":"6168:189","reference":{"paragraph":2627,"text":"I’m neat and cool and comfortable, quite proper for a dusty walk on a warm day.","sentence":6123,"range":[10,79]},"kind":"thing","sentence":6168,"text":"be calm, cool, and quiet","decidedBy":"rules","paragraph":2637,"range":[189,24]},{"id":"6175:377","reference":{"paragraph":2631,"text":"While Amy dressed, she issued her orders, and Jo obeyed them, not without entering her protest, however, for she sighed as she rustled into her new organdie, frowned darkly at herself as she tied her bonnet strings in an irreproachable bow, wrestled viciously with pins as she put on her collar, wrinkled up her features generally as she shook out the handkerchief, whose embroidery was as irritating to her nose as the present mission was to her feelings, and when she had squeezed her hands into tight gloves with three buttons and a tassel, as the last touch of elegance, she turned to Amy with an imbecile expression of countenance, saying meekly...","sentence":6147,"range":[0,653]},"kind":"feeling","sentence":6175,"text":"were answered by a smile, a bow, and a demure","decidedBy":"rules","paragraph":2639,"range":[377,45]},{"id":"6182:96","reference":{"paragraph":2630,"text":"“You’re a perfect cherub!","sentence":6140,"range":[0,25]},"kind":"action","sentence":6182,"text":"made yourself a perfect stock and stone","decidedBy":"rules","paragraph":2641,"range":[96,39]},{"id":"6185:346","reference":{"paragraph":2630,"text":"Now put on all your best things, and I’ll tell you how to behave at each place, so that you will make a good impression.","sentence":6141,"range":[26,120]},"kind":"outcome","sentence":6185,"text":"wouldn’t fail to make a good impression there for anything","decidedBy":"rules","paragraph":2641,"range":[346,58]},{"id":"6186:1","reference":{"paragraph":2630,"text":"I want people to like you, and they would if you’d only try to be a little more agreeable.","sentence":6142,"range":[147,90]},"kind":"thing","sentence":6186,"text":"I’ll be agreeable","decidedBy":"rules","paragraph":2642,"range":[1,17]},{"id":"6190:251","reference":{"paragraph":2641,"text":"Try to be sociable at the Lambs’.","sentence":6183,"range":[137,33]},"kind":"action","sentence":6190,"text":"See if the Lambs don’t say, ‘What a lively","decidedBy":"rules","paragraph":2642,"range":[251,42]},{"id":"6205:207","reference":{"paragraph":2633,"text":"Is the point of my mantle in the middle, and have I looped my dress evenly?","sentence":6157,"range":[620,75]},"kind":"thing","sentence":6205,"text":"was in the middle of her story","decidedBy":"rules","paragraph":2646,"range":[207,30]},{"id":"6213:269","reference":{"sentence":6200,"range":[9,98],"paragraph":2645,"text":"She used to practice mounting, holding the reins, and sitting straight on an old saddle in a tree."},"kind":"action","sentence":6213,"text":"took the saddle to the horse","decidedBy":"rules","range":[269,28],"paragraph":2649},{"id":"6215:1","reference":{"sentence":6201,"range":[108,152],"paragraph":2645,"text":"Now she rides anything, for she doesn’t know what fear is, and the stableman lets her have horses cheap because she trains them to carry ladies so well."},"kind":"reaction","sentence":6215,"text":"Did she ride the horse","decidedBy":"rules","range":[1,22],"paragraph":2650},{"id":"6229:68","reference":{"sentence":6225,"range":[31,40],"paragraph":2654,"text":"cried Miss Lamb, who found Jo great fun."},"kind":"action","sentence":6229,"text":"observed the elder Miss Lamb","decidedBy":"rules","range":[68,28],"paragraph":2656},{"id":"6238:56","reference":{"sentence":6111,"range":[44,115],"paragraph":2622,"text":"I was to finish the crayon of Beth for you, and you were to go properly with me, and return our neighbors’ visits.”"},"kind":"action","sentence":6238,"text":"are pining for a visit","decidedBy":"rules","range":[56,22],"paragraph":2659},{"id":"6255:51","reference":{"sentence":6123,"range":[10,79],"paragraph":2627,"text":"I’m neat and cool and comfortable, quite proper for a dusty walk on a warm day."},"kind":"thing","sentence":6255,"text":"we’ll have a comfortable time","decidedBy":"rules","range":[51,29],"paragraph":2668},{"paragraph":2668,"decidedBy":"rules","text":"has a bad effect upon my constitution","range":[134,37],"sentence":6256,"id":"6256:134","kind":"thing","reference":{"sentence":6230,"range":[0,156],"paragraph":2657,"text":"Any mention of her ‘works’ always had a bad effect upon Jo, who either grew rigid and looked offended, or changed the subject with a brusque remark, as now."}},{"paragraph":2670,"decidedBy":"rules","text":"tore herself from this aristocratic society","range":[948,43],"sentence":6261,"id":"6261:948","kind":"feeling","reference":{"sentence":6135,"range":[88,92],"paragraph":2629,"text":"The idea of my being aristocratic and well-bred, and your being afraid to go anywhere alone!"}},{"paragraph":2670,"decidedBy":"rules","text":"looked about for Jo","range":[997,19],"sentence":6261,"id":"6261:997","kind":"action","reference":{"sentence":6228,"range":[100,335],"paragraph":2655,"text":"Why, she wanted a pair of blue boots for Sallie’s party, so she just painted her soiled white ones the loveliest shade of sky blue you ever saw, and they looked exactly like satin,” added Jo, with an air of pride in her sister’s accomplishments that exasperated Amy till she felt that it would be a relief to throw her cardcase at her."}},{"paragraph":2676,"decidedBy":"rules","text":"was a third cousin to a lord","range":[124,28],"sentence":6274,"id":"6274:124","kind":"thing","reference":{"sentence":6260,"range":[94,662],"paragraph":2670,"text":"Mr. Tudor’s uncle had married an English lady who was third cousin to a living lord, and Amy regarded the whole family with great respect, for in spite of her American birth and breeding, she possessed that reverence for titles which haunts the best of us—that unacknowledged loyalty to the early faith in kings which set the most democratic nation under the sun in ferment at the coming of a royal yellow-haired laddie, some years ago, and which still has something to do with the love the young country bears the old, like that of a big son for an imperious little mother, who held him while she could, and let him go with a farewell scolding when he rebelled."}},{"paragraph":2678,"decidedBy":"rules","text":"I’m deeply grateful","range":[131,19],"sentence":6278,"id":"6278:131","kind":"thing","reference":{"sentence":6234,"range":[0,92],"paragraph":2658,"text":"As Miss Lamb had ‘enjoyed’ the story, this speech was not exactly grateful or complimentary."}},{"paragraph":2680,"decidedBy":"rules","text":"when we are tired and cross","range":[165,27],"sentence":6281,"id":"6281:165","kind":"thing","reference":{"sentence":6134,"range":[0,87],"paragraph":2629,"text":"“You’re an artful little puss to flatter and wheedle your cross old sister in that way."}},{"paragraph":2681,"decidedBy":"rules","text":"making a formal call","range":[111,20],"sentence":6283,"id":"6283:111","kind":"action","reference":{"sentence":6118,"range":[331,112],"paragraph":2625,"text":"She hated calls of the formal sort, and never made any till Amy compelled her with a bargain, bribe, or promise."}},{"paragraph":2681,"decidedBy":"rules","text":"let me take the crumbs off of your bonnet","range":[313,41],"sentence":6285,"id":"6285:313","kind":"action","reference":{"sentence":6143,"range":[238,66],"paragraph":2630,"text":"Do your hair the pretty way, and put the pink rose in your bonnet."}},{"paragraph":2685,"decidedBy":"rules","text":"don’t mind saying that I don’t approve of Tudor any more than you do","range":[47,68],"sentence":6295,"id":"6295:47","kind":"action","reference":{"sentence":6267,"range":[0,36],"paragraph":2673,"text":"“Why do you always avoid Mr. Tudor?”"}},{"paragraph":2688,"decidedBy":"rules","text":"are not belles and millionaires","range":[79,31],"sentence":6302,"id":"6302:79","kind":"thing","reference":{"sentence":6301,"range":[185,301],"paragraph":2687,"text":"“If we were belles, or women of wealth and position, we might do something, perhaps, but for us to frown at one set of young gentlemen because we don’t approve of them, and smile upon another set because we do, wouldn’t have a particle of effect, and we should only be considered odd and puritanical.”"}},{"paragraph":2693,"decidedBy":"rules","text":"returned, but Amy","range":[265,17],"sentence":6314,"id":"6314:265","kind":"action","reference":{"sentence":6236,"range":[0,17],"paragraph":2659,"text":"“Amy, we must go."}},{"paragraph":2697,"decidedBy":"rules","text":"am willing to work","range":[3,18],"sentence":6323,"id":"6323:3","kind":"thing","reference":{"sentence":6292,"range":[0,198],"paragraph":2684,"text":"“I’m a crotchety old thing, and always shall be, but I’m willing to own that you are right, only it’s easier for me to risk my life for a person than to be pleasant to him when I don’t feel like it."}},{"paragraph":2697,"decidedBy":"rules","text":"It’s for the freedmen as well as the Chesters","range":[23,45],"sentence":6324,"id":"6324:23","kind":"action","reference":{"sentence":6321,"range":[32,121],"paragraph":2696,"text":"“I hate to be patronized, and the Chesters think it’s a great favor to allow us to help with their highly connected fair."}},{"paragraph":2702,"decidedBy":"rules","text":"decided nod to Aunt Carrol","range":[41,26],"sentence":6337,"id":"6337:41","kind":"action","reference":{"sentence":6336,"range":[8,54],"paragraph":2701,"text":"coughed Aunt Carrol softly, with a look at Aunt March."}},{"paragraph":2704,"decidedBy":"rules","text":"laying a hand on Amy’s","range":[48,22],"sentence":6340,"id":"6340:48","kind":"reaction","reference":{"sentence":6253,"range":[21,48],"paragraph":2667,"text":"I wash my hands of you,” was Amy’s short answer."}},{"paragraph":2708,"decidedBy":"rules","text":"said to Amy","range":[55,11],"sentence":6346,"id":"6346:55","kind":"action","reference":{"sentence":6236,"range":[0,17],"paragraph":2659,"text":"“Amy, we must go."}},{"paragraph":2716,"decidedBy":"rules","text":"brought the visit to an end","range":[38,27],"sentence":6359,"id":"6359:38","kind":"action","reference":{"sentence":6238,"range":[53,26],"text":"We are pining for a visit.","paragraph":2659}},{"sentence":6359,"text":"feeling more strongly than ever that calls did have a bad effect upon her constitution","kind":"action","reference":{"sentence":6256,"range":[82,152],"text":"Goodness knows I need a little change, for elegance has a bad effect upon my constitution,” returned Jo gruffly, being disturbed by her failure to suit.","paragraph":2668},"range":[67,86],"decidedBy":"rules","id":"6359:67","paragraph":2716}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6147:0",
+      "sentence": 6147,
+      "paragraph": 2631,
+      "range": [
+        0,
+        60
+      ],
+      "text": "While Amy dressed, she issued her orders, and Jo obeyed them",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6138,
+        "paragraph": 2629,
+        "range": [
+          261,
+          88
+        ],
+        "text": "You shall be commander of the expedition, and I’ll obey blindly, will that satisfy you?”"
+      }
+    },
+    {
+      "id": "6147:348",
+      "sentence": 6147,
+      "paragraph": 2631,
+      "range": [
+        348,
+        64
+      ],
+      "text": "the handkerchief, whose embroidery was as irritating to her nose",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6145,
+        "paragraph": 2630,
+        "range": [
+          363,
+          56
+        ],
+        "text": "Take your light gloves and the embroidered handkerchief."
+      }
+    },
+    {
+      "id": "6152:246",
+      "sentence": 6152,
+      "paragraph": 2633,
+      "range": [
+        246,
+        50
+      ],
+      "text": "that white bonnet with the rose is quite ravishing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6143,
+        "paragraph": 2630,
+        "range": [
+          238,
+          66
+        ],
+        "text": "Do your hair the pretty way, and put the pink rose in your bonnet."
+      }
+    },
+    {
+      "id": "6153:353",
+      "sentence": 6153,
+      "paragraph": 2633,
+      "range": [
+        353,
+        33
+      ],
+      "text": "no matter if your gloves do pinch",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6147,
+        "paragraph": 2631,
+        "range": [
+          0,
+          653
+        ],
+        "text": "While Amy dressed, she issued her orders, and Jo obeyed them, not without entering her protest, however, for she sighed as she rustled into her new organdie, frowned darkly at herself as she tied her bonnet strings in an irreproachable bow, wrestled viciously with pins as she put on her collar, wrinkled up her features generally as she shook out the handkerchief, whose embroidery was as irritating to her nose as the present mission was to her feelings, and when she had squeezed her hands into tight gloves with three buttons and a tassel, as the last touch of elegance, she turned to Amy with an imbecile expression of countenance, saying meekly..."
+      }
+    },
+    {
+      "id": "6165:15",
+      "sentence": 6165,
+      "paragraph": 2636,
+      "range": [
+        15,
+        44
+      ],
+      "text": "proceeded to burst the buttons off her glove",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6147,
+        "paragraph": 2631,
+        "range": [
+          0,
+          653
+        ],
+        "text": "While Amy dressed, she issued her orders, and Jo obeyed them, not without entering her protest, however, for she sighed as she rustled into her new organdie, frowned darkly at herself as she tied her bonnet strings in an irreproachable bow, wrestled viciously with pins as she put on her collar, wrinkled up her features generally as she shook out the handkerchief, whose embroidery was as irritating to her nose as the present mission was to her feelings, and when she had squeezed her hands into tight gloves with three buttons and a tassel, as the last touch of elegance, she turned to Amy with an imbecile expression of countenance, saying meekly..."
+      }
+    },
+    {
+      "id": "6168:334",
+      "sentence": 6168,
+      "paragraph": 2637,
+      "range": [
+        334,
+        33
+      ],
+      "text": "having borrowed the white parasol",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6146,
+        "paragraph": 2630,
+        "range": [
+          420,
+          95
+        ],
+        "text": "We’ll stop at Meg’s, and borrow her white sunshade, and then you can have my dove-colored one.”"
+      }
+    },
+    {
+      "id": "6173:158",
+      "sentence": 6173,
+      "paragraph": 2639,
+      "range": [
+        158,
+        69
+      ],
+      "text": "calm as a summer sea, cool as a snowbank, and as silent as the sphinx",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6168,
+        "paragraph": 2637,
+        "range": [
+          184,
+          235
+        ],
+        "text": "Just be calm, cool, and quiet, that’s safe and ladylike, and you can easily do it for fifteen minutes,” said Amy, as they approached the first place, having borrowed the white parasol and been inspected by Meg, with a baby on each arm."
+      }
+    },
+    {
+      "id": "6181:1",
+      "sentence": 6181,
+      "paragraph": 2641,
+      "range": [
+        1,
+        28
+      ],
+      "text": "How could you mistake me so?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6173,
+        "paragraph": 2639,
+        "range": [
+          0,
+          228
+        ],
+        "text": "Amy looked relieved, but naughty Jo took her at her word, for during the first call she sat with every limb gracefully composed, every fold correctly draped, calm as a summer sea, cool as a snowbank, and as silent as the sphinx."
+      }
+    },
+    {
+      "id": "6190:280",
+      "sentence": 6190,
+      "paragraph": 2642,
+      "range": [
+        280,
+        46
+      ],
+      "text": "What a lively, nice creature that Jo March is!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6178,
+        "paragraph": 2640,
+        "range": [
+          0,
+          67
+        ],
+        "text": "“What a haughty, uninteresting creature that oldest Miss March is!”"
+      }
+    },
+    {
+      "id": "6220:99",
+      "sentence": 6220,
+      "paragraph": 2653,
+      "range": [
+        99,
+        31
+      ],
+      "text": "introduced the subject of dress",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6184,
+        "paragraph": 2641,
+        "range": [
+          171,
+          100
+        ],
+        "text": "Gossip as other girls do, and be interested in dress and flirtations and whatever nonsense comes up."
+      }
+    },
+    {
+      "id": "6230:0",
+      "sentence": 6230,
+      "paragraph": 2657,
+      "range": [
+        0,
+        58
+      ],
+      "text": "Any mention of her ‘works’ always had a bad effect upon Jo",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6174,
+        "paragraph": 2639,
+        "range": [
+          229,
+          134
+        ],
+        "text": "In vain Mrs. Chester alluded to her ‘charming novel’, and the Misses Chester introduced parties, picnics, the opera, and the fashions."
+      }
+    },
+    {
+      "id": "6234:0",
+      "sentence": 6234,
+      "paragraph": 2658,
+      "range": [
+        0,
+        36
+      ],
+      "text": "As Miss Lamb had ‘enjoyed’ the story",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6229,
+        "paragraph": 2656,
+        "range": [
+          0,
+          202
+        ],
+        "text": "“We read a story of yours the other day, and enjoyed it very much,” observed the elder Miss Lamb, wishing to compliment the literary lady, who did not look the character just then, it must be confessed."
+      }
+    },
+    {
+      "id": "6240:23",
+      "sentence": 6240,
+      "paragraph": 2660,
+      "range": [
+        23,
+        48
+      ],
+      "text": "a droll imitation of May Chester’s gushing style",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6189,
+        "paragraph": 2642,
+        "range": [
+          176,
+          74
+        ],
+        "text": "I can do it, for I have May Chester as a model, and I’ll improve upon her."
+      }
+    },
+    {
+      "id": "6244:87",
+      "sentence": 6244,
+      "paragraph": 2662,
+      "range": [
+        87,
+        29
+      ],
+      "text": "those stories about my saddle",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6213,
+        "paragraph": 2649,
+        "range": [
+          211,
+          87
+        ],
+        "text": "There was no one to bring the horse to the saddle, so she took the saddle to the horse."
+      }
+    },
+    {
+      "id": "6244:118",
+      "sentence": 6244,
+      "paragraph": 2662,
+      "range": [
+        118,
+        22
+      ],
+      "text": "and the hats and boots",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6221,
+        "paragraph": 2653,
+        "range": [
+          132,
+          238
+        ],
+        "text": "One of the young ladies asked Jo where she got the pretty drab hat she wore to the picnic and stupid Jo, instead of mentioning the place where it was bought two years ago, must needs answer with unnecessary frankness, “Oh, Amy painted it."
+      }
+    },
+    {
+      "id": "6249:37",
+      "sentence": 6249,
+      "paragraph": 2665,
+      "range": [
+        37,
+        54
+      ],
+      "text": "chafed the end of her nose with the stiff handkerchief",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6147,
+        "paragraph": 2631,
+        "range": [
+          0,
+          653
+        ],
+        "text": "While Amy dressed, she issued her orders, and Jo obeyed them, not without entering her protest, however, for she sighed as she rustled into her new organdie, frowned darkly at herself as she tied her bonnet strings in an irreproachable bow, wrestled viciously with pins as she put on her collar, wrinkled up her features generally as she shook out the handkerchief, whose embroidery was as irritating to her nose as the present mission was to her feelings, and when she had squeezed her hands into tight gloves with three buttons and a tassel, as the last touch of elegance, she turned to Amy with an imbecile expression of countenance, saying meekly..."
+      }
+    },
+    {
+      "id": "6263:120",
+      "sentence": 6263,
+      "paragraph": 2671,
+      "range": [
+        120,
+        72
+      ],
+      "text": "a dirty-footed dog reposing on the skirt of her state and festival dress",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6160,
+        "paragraph": 2634,
+        "range": [
+          156,
+          76
+        ],
+        "text": "“Am I to drag my best dress through the dust, or loop it up, please, ma’am?”"
+      }
+    },
+    {
+      "id": "6264:278",
+      "sentence": 6264,
+      "paragraph": 2671,
+      "range": [
+        278,
+        43
+      ],
+      "text": "poking turtles with Amy’s cherished parasol",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6146,
+        "paragraph": 2630,
+        "range": [
+          420,
+          95
+        ],
+        "text": "We’ll stop at Meg’s, and borrow her white sunshade, and then you can have my dove-colored one.”"
+      }
+    },
+    {
+      "id": "6266:154",
+      "sentence": 6266,
+      "paragraph": 2672,
+      "range": [
+        154,
+        34
+      ],
+      "text": "to conceal the bespattered parasol",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6264,
+        "paragraph": 2671,
+        "range": [
+          258,
+          348
+        ],
+        "text": "One small child was poking turtles with Amy’s cherished parasol, a second was eating gingerbread over Jo’s best bonnet, and a third playing ball with her gloves, but all were enjoying themselves, and when Jo collected her damaged property to go, her escort accompanied her, begging her to come again, “It was such fun to hear about Laurie’s larks.”"
+      }
+    },
+    {
+      "id": "6267:1",
+      "sentence": 6267,
+      "paragraph": 2673,
+      "range": [
+        1,
+        34
+      ],
+      "text": "Why do you always avoid Mr. Tudor?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6257,
+        "paragraph": 2669,
+        "range": [
+          0,
+          274
+        ],
+        "text": "An enthusiastic welcome from three big boys and several pretty children speedily soothed her ruffled feelings, and leaving Amy to entertain the hostess and Mr. Tudor, who happened to be calling likewise, Jo devoted herself to the young folks and found the change refreshing."
+      }
+    },
+    {
+      "id": "6274:76",
+      "sentence": 6274,
+      "paragraph": 2676,
+      "range": [
+        76,
+        76
+      ],
+      "text": "though his grandfather’s uncle’s nephew’s niece was a third cousin to a lord",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6260,
+        "paragraph": 2670,
+        "range": [
+          94,
+          662
+        ],
+        "text": "Mr. Tudor’s uncle had married an English lady who was third cousin to a living lord, and Amy regarded the whole family with great respect, for in spite of her American birth and breeding, she possessed that reverence for titles which haunts the best of us—that unacknowledged loyalty to the early faith in kings which set the most democratic nation under the sun in ferment at the coming of a royal yellow-haired laddie, some years ago, and which still has something to do with the love the young country bears the old, like that of a big son for an imperious little mother, who held him while she could, and let him go with a farewell scolding when he rebelled."
+      }
+    },
+    {
+      "id": "6276:259",
+      "sentence": 6276,
+      "paragraph": 2676,
+      "range": [
+        259,
+        53
+      ],
+      "text": "he is a gentleman in spite of the brown paper parcels",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6272,
+        "paragraph": 2675,
+        "range": [
+          40,
+          136
+        ],
+        "text": "You gave him a cool nod, and just now you bowed and smiled in the politest way to Tommy Chamberlain, whose father keeps a grocery store."
+      }
+    },
+    {
+      "id": "6284:248",
+      "sentence": 6284,
+      "paragraph": 2681,
+      "range": [
+        248,
+        47
+      ],
+      "text": "letting dirty dogs and clumping boys spoil them",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6263,
+        "paragraph": 2671,
+        "range": [
+          53,
+          204
+        ],
+        "text": "For Jo sat on the grass, with an encampment of boys about her, and a dirty-footed dog reposing on the skirt of her state and festival dress, as she related one of Laurie’s pranks to her admiring audience."
+      }
+    },
+    {
+      "id": "6285:313",
+      "sentence": 6285,
+      "paragraph": 2681,
+      "range": [
+        313,
+        41
+      ],
+      "text": "let me take the crumbs off of your bonnet",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6264,
+        "paragraph": 2671,
+        "range": [
+          258,
+          348
+        ],
+        "text": "One small child was poking turtles with Amy’s cherished parasol, a second was eating gingerbread over Jo’s best bonnet, and a third playing ball with her gloves, but all were enjoying themselves, and when Jo collected her damaged property to go, her escort accompanied her, begging her to come again, “It was such fun to hear about Laurie’s larks.”"
+      }
+    },
+    {
+      "id": "6295:70",
+      "sentence": 6295,
+      "paragraph": 2685,
+      "range": [
+        70,
+        45
+      ],
+      "text": "I don’t approve of Tudor any more than you do",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6269,
+        "paragraph": 2674,
+        "range": [
+          0,
+          118
+        ],
+        "text": "“Don’t like him, he puts on airs, snubs his sisters, worries his father, and doesn’t speak respectfully of his mother."
+      }
+    },
+    {
+      "id": "6314:279",
+      "sentence": 6314,
+      "paragraph": 2693,
+      "range": [
+        279,
+        54
+      ],
+      "text": "Amy, who had virtuously done her duty, kept her temper",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6283,
+        "paragraph": 2681,
+        "range": [
+          36,
+          96
+        ],
+        "text": "Aunt March likes to have us pay her the compliment of coming in style, and making a formal call."
+      }
+    },
+    {
+      "id": "6333:1",
+      "sentence": 6333,
+      "paragraph": 2700,
+      "range": [
+        1,
+        63
+      ],
+      "text": "I don’t like favors, they oppress and make me feel like a slave",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6311,
+        "paragraph": 2692,
+        "range": [
+          0,
+          130
+        ],
+        "text": "“I’ll try not to, but I’m always possessed to burst out with some particularly blunt speech or revolutionary sentiment before her."
+      }
+    },
+    {
+      "id": "6338:82",
+      "sentence": 6338,
+      "paragraph": 2703,
+      "range": [
+        82,
+        54
+      ],
+      "text": "a revolutionary aspect which was anything but inviting",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6311,
+        "paragraph": 2692,
+        "range": [
+          0,
+          130
+        ],
+        "text": "“I’ll try not to, but I’m always possessed to burst out with some particularly blunt speech or revolutionary sentiment before her."
+      }
+    },
+    {
+      "id": "6345:61",
+      "sentence": 6345,
+      "paragraph": 2707,
+      "range": [
+        61,
+        63
+      ],
+      "text": "can’t bear French, it’s such a slippery, silly sort of language",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6341,
+        "paragraph": 2705,
+        "range": [
+          0,
+          162
+        ],
+        "text": "“Pretty well, thanks to Aunt March, who lets Esther talk to me as often as I like,” replied Amy, with a grateful look, which caused the old lady to smile affably."
+      }
+    },
+    {
+      "id": "6359:67",
+      "sentence": 6359,
+      "paragraph": 2716,
+      "range": [
+        67,
+        86
+      ],
+      "text": "feeling more strongly than ever that calls did have a bad effect upon her constitution",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6256,
+        "paragraph": 2668,
+        "range": [
+          82,
+          152
+        ],
+        "text": "Goodness knows I need a little change, for elegance has a bad effect upon my constitution,” returned Jo gruffly, being disturbed by her failure to suit."
+      }
+    },
+    {
+      "id": "6361:1",
+      "sentence": 6361,
+      "paragraph": 2717,
+      "range": [
+        1,
+        25
+      ],
+      "text": "You’d better do it, Mary.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6330,
+        "paragraph": 2699,
+        "range": [
+          0,
+          247
+        ],
+        "text": "If Jo had only known what a great happiness was wavering in the balance for one of them, she would have turned dove-like in a minute, but unfortunately, we don’t have windows in our breasts, and cannot see what goes on in the minds of our friends."
+      }
+    }
+  ]
+}

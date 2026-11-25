@@ -1,1 +1,90 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2467:259",
+      "sentence": 2467,
+      "paragraph": 1144,
+      "range": [
+        259,
+        44
+      ],
+      "text": "and want of resolution, will do the business",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2412,
+        "paragraph": 1127,
+        "range": [
+          280,
+          386
+        ],
+        "text": "That he was really fond of Jane, she doubted no more than she had ever done; and much as she had always been disposed to like him, she could not think without anger, hardly without contempt, on that easiness of temper, that want of proper resolution, which now made him the slave of his designing friends, and led him to sacrifice his own happiness to the caprice of their inclinations."
+      }
+    },
+    {
+      "id": "2472:1",
+      "sentence": 2472,
+      "paragraph": 1147,
+      "range": [
+        1,
+        58
+      ],
+      "text": "You persist, then, in supposing his sisters influence him?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2415,
+        "paragraph": 1127,
+        "range": [
+          981,
+          395
+        ],
+        "text": "She could think of nothing else; and yet, whether Bingley’s regard had really died away, or were suppressed by his friends’ interference; whether he had been aware of Jane’s attachment, or whether it had escaped his observation; whichever were the case, though her opinion of him must be materially affected by the difference, her sister’s situation remained the same, her peace equally wounded."
+      }
+    },
+    {
+      "id": "2473:1",
+      "sentence": 2473,
+      "paragraph": 1148,
+      "range": [
+        1,
+        36
+      ],
+      "text": "Yes, in conjunction with his friend.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2412,
+        "paragraph": 1127,
+        "range": [
+          280,
+          386
+        ],
+        "text": "That he was really fond of Jane, she doubted no more than she had ever done; and much as she had always been disposed to like him, she could not think without anger, hardly without contempt, on that easiness of temper, that want of proper resolution, which now made him the slave of his designing friends, and led him to sacrifice his own happiness to the caprice of their inclinations."
+      }
+    },
+    {
+      "id": "2479:1",
+      "sentence": 2479,
+      "paragraph": 1151,
+      "range": [
+        1,
+        52
+      ],
+      "text": "Beyond a doubt they do wish him to choose Miss Darcy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2407,
+        "paragraph": 1126,
+        "range": [
+          227,
+          204
+        ],
+        "text": "Her many attractions were again dwelt on; and Caroline boasted joyfully of their increasing intimacy, and ventured to predict the accomplishment of the wishes which had been unfolded in her former letter."
+      }
+    }
+  ]
+}

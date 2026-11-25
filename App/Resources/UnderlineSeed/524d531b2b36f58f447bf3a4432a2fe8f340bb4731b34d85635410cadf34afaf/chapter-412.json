@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5771:36",
+      "sentence": 5771,
+      "paragraph": 2336,
+      "range": [
+        36,
+        48
+      ],
+      "text": "Mrs. Bennet was mindful of her intended civility",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5676,
+        "paragraph": 2299,
+        "range": [
+          81,
+          78
+        ],
+        "text": "But, however, that shan’t prevent my asking him to dine here, I am determined."
+      }
+    },
+    {
+      "id": "5776:39",
+      "sentence": 5776,
+      "paragraph": 2339,
+      "range": [
+        39,
+        43
+      ],
+      "text": "to ask them to stay and dine there that day",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5678,
+        "paragraph": 2299,
+        "range": [
+          207,
+          85
+        ],
+        "text": "That will make thirteen with ourselves, so there will be just room at table for him.”"
+      }
+    }
+  ]
+}

@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5262:0",
+      "sentence": 5262,
+      "paragraph": 2159,
+      "range": [
+        0,
+        66
+      ],
+      "text": "From such a connection she could not wonder that he should shrink.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5261,
+        "paragraph": 2158,
+        "range": [
+          390,
+          282
+        ],
+        "text": "Had Lydia’s marriage been concluded on the most honourable terms, it was not to be supposed that Mr. Darcy would connect himself with a family, where to every other objection would now be added an alliance and relationship of the nearest kind with the man whom he so justly scorned."
+      }
+    }
+  ]
+}

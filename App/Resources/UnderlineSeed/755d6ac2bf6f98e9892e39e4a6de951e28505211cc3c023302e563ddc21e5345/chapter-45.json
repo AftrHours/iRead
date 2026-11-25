@@ -1,1 +1,552 @@
-{"engineVersion":5,"underlines":[{"decidedBy":"rules","text":"told her troubles, the resentful sorrow for her loss","range":[58,52],"reference":{"paragraph":3700,"range":[420,370],"sentence":8845,"text":"For, as quick to hear her sobbing as she had been to hear her sister’s faintest whisper, her mother came to comfort her, not with words only, but the patient tenderness that soothes by a touch, tears that were mute reminders of a greater grief than Jo’s, and broken whispers, more eloquent than prayers, because hopeful resignation went hand-in-hand with natural sorrow."},"sentence":8851,"id":"8851:58","kind":"action","paragraph":3703},{"decidedBy":"rules","text":"find the kernal sound and sweet","range":[501,31],"reference":{"paragraph":3708,"range":[82,116],"sentence":8865,"text":"You are like a chestnut burr, prickly outside, but silky-soft within, and a sweet kernal, if one can only get at it."},"sentence":8871,"id":"8871:501","kind":"outcome","paragraph":3710},{"decidedBy":"rules","text":"took it, not as a reward, but as a comfort","range":[281,42],"reference":{"paragraph":3698,"range":[310,410],"sentence":8834,"text":"How could she ‘comfort Father and Mother’ when her own heart ached with a ceaseless longing for her sister, how could she ‘make the house cheerful’ when all its light and warmth and beauty seemed to have deserted it when Beth left the old home for the new, and where in all the world could she ‘find some useful, happy work to do’, that would take the place of the loving service which had been its own reward?"},"sentence":8883,"id":"8883:281","kind":"action","paragraph":3712},{"decidedBy":"rules","text":"comes to give you your reward","range":[207,29],"reference":{"paragraph":3712,"range":[244,202],"sentence":8883,"text":"Still another was given her, and she took it, not as a reward, but as a comfort, as Christian took the refreshment afforded by the little arbor where he rested, as he climbed the hill called Difficulty."},"sentence":8930,"id":"8930:207","kind":"action","paragraph":3732},{"decidedBy":"rules","text":"are the best lovers in the world","range":[9,32],"reference":{"paragraph":3732,"range":[61,177],"sentence":8930,"text":"There are plenty to love you, so try to be satisfied with Father and Mother, sisters and brothers, friends and babies, till the best lover of all comes to give you your reward.”"},"sentence":8931,"id":"8931:9","kind":"thing","paragraph":3733},{"decidedBy":"rules","text":"turned back the leaves to read what Amy said of Laurie","range":[52,54],"reference":{"paragraph":3722,"range":[0,301],"sentence":8908,"text":"When Amy and Laurie wrote of their engagement, Mrs. March feared that Jo would find it difficult to rejoice over it, but her fears were soon set at rest, for though Jo looked grave at first, she took it very quietly, and was full of hopes and plans for ‘the children’ before she read the letter twice."},"sentence":8936,"id":"8936:52","kind":"action","paragraph":3734},{"decidedBy":"rules","text":"is so beautiful to be loved as Laurie loves me","range":[4,46],"reference":{"paragraph":3724,"range":[78,197],"sentence":8913,"text":"I felt sure then that something better than what you call the ‘mercenary spirit’ had come over her, and a hint here and there in her letters made me suspect that love and Laurie would win the day.”"},"sentence":8937,"id":"8937:4","kind":"thing","paragraph":3735},{"decidedBy":"rules","text":"laid the rustling sheets together with a careful hand","range":[124,53],"reference":{"paragraph":3723,"range":[23,80],"sentence":8911,"text":"said Jo, as they laid down the closely written sheets and looked at one another."},"sentence":8946,"id":"8946:124","kind":"reaction","paragraph":3736}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "8841:0",
+      "sentence": 8841,
+      "paragraph": 3700,
+      "range": [
+        0,
+        33
+      ],
+      "text": "But someone did come and help her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8840,
+        "paragraph": 3699,
+        "range": [
+          258,
+          305
+        ],
+        "text": "I wasn’t meant for a life like this, and I know I shall break away and do something desperate if somebody doesn’t come and help me,” she said to herself, when her first efforts failed and she fell into the moody, miserable state of mind which often comes when strong wills have to yield to the inevitable."
+      }
+    },
+    {
+      "id": "8848:215",
+      "sentence": 8848,
+      "paragraph": 3701,
+      "range": [
+        215,
+        39
+      ],
+      "text": "“Father, talk to me as you did to Beth.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8845,
+        "paragraph": 3700,
+        "range": [
+          420,
+          370
+        ],
+        "text": "For, as quick to hear her sobbing as she had been to hear her sister’s faintest whisper, her mother came to comfort her, not with words only, but the patient tenderness that soothes by a touch, tears that were mute reminders of a greater grief than Jo’s, and broken whispers, more eloquent than prayers, because hopeful resignation went hand-in-hand with natural sorrow."
+      }
+    },
+    {
+      "id": "8857:156",
+      "sentence": 8857,
+      "paragraph": 3704,
+      "range": [
+        156,
+        73
+      ],
+      "text": "Brooms and dishcloths never could be as distasteful as they once had been",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8834,
+        "paragraph": 3698,
+        "range": [
+          310,
+          410
+        ],
+        "text": "How could she ‘comfort Father and Mother’ when her own heart ached with a ceaseless longing for her sister, how could she ‘make the house cheerful’ when all its light and warmth and beauty seemed to have deserted it when Beth left the old home for the new, and where in all the world could she ‘find some useful, happy work to do’, that would take the place of the loving service which had been its own reward?"
+      }
+    },
+    {
+      "id": "8859:0",
+      "sentence": 8859,
+      "paragraph": 3705,
+      "range": [
+        0,
+        72
+      ],
+      "text": "“You thoughtful creeter, you’re determined we shan’t miss that dear lamb",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8858,
+        "paragraph": 3704,
+        "range": [
+          381,
+          318
+        ],
+        "text": "As she used them, Jo found herself humming the songs Beth used to hum, imitating Beth’s orderly ways, and giving the little touches here and there that kept everything fresh and cozy, which was the first step toward making home happy, though she didn’t know it till Hannah said with an approving squeeze of the hand..."
+      }
+    },
+    {
+      "id": "8867:0",
+      "sentence": 8867,
+      "paragraph": 3709,
+      "range": [
+        0,
+        34
+      ],
+      "text": "“Frost opens chestnut burrs, ma’am",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8865,
+        "paragraph": 3708,
+        "range": [
+          82,
+          116
+        ],
+        "text": "You are like a chestnut burr, prickly outside, but silky-soft within, and a sweet kernal, if one can only get at it."
+      }
+    },
+    {
+      "id": "8870:325",
+      "sentence": 8870,
+      "paragraph": 3710,
+      "range": [
+        325,
+        33
+      ],
+      "text": "Jo’s was nearly ready for the bag",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8868,
+        "paragraph": 3709,
+        "range": [
+          82,
+          180
+        ],
+        "text": "Boys go nutting, and I don’t care to be bagged by them,” returned Jo, pasting away at the kite which no wind that blows would ever carry up, for Daisy had tied herself on as a bob."
+      }
+    },
+    {
+      "id": "8871:360",
+      "sentence": 8871,
+      "paragraph": 3710,
+      "range": [
+        360,
+        39
+      ],
+      "text": "A little more sunshine to ripen the nut",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8865,
+        "paragraph": 3708,
+        "range": [
+          82,
+          116
+        ],
+        "text": "You are like a chestnut burr, prickly outside, but silky-soft within, and a sweet kernal, if one can only get at it."
+      }
+    },
+    {
+      "id": "8877:755",
+      "sentence": 8877,
+      "paragraph": 3711,
+      "range": [
+        755,
+        54
+      ],
+      "text": "She had often said she wanted to do something splendid",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8834,
+        "paragraph": 3698,
+        "range": [
+          310,
+          410
+        ],
+        "text": "How could she ‘comfort Father and Mother’ when her own heart ached with a ceaseless longing for her sister, how could she ‘make the house cheerful’ when all its light and warmth and beauty seemed to have deserted it when Beth left the old home for the new, and where in all the world could she ‘find some useful, happy work to do’, that would take the place of the loving service which had been its own reward?"
+      }
+    },
+    {
+      "id": "8877:895",
+      "sentence": 8877,
+      "paragraph": 3711,
+      "range": [
+        895,
+        39
+      ],
+      "text": "to devote her life to Father and Mother",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8834,
+        "paragraph": 3698,
+        "range": [
+          310,
+          410
+        ],
+        "text": "How could she ‘comfort Father and Mother’ when her own heart ached with a ceaseless longing for her sister, how could she ‘make the house cheerful’ when all its light and warmth and beauty seemed to have deserted it when Beth left the old home for the new, and where in all the world could she ‘find some useful, happy work to do’, that would take the place of the loving service which had been its own reward?"
+      }
+    },
+    {
+      "id": "8879:0",
+      "sentence": 8879,
+      "paragraph": 3712,
+      "range": [
+        0,
+        36
+      ],
+      "text": "Providence had taken her at her word",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8877,
+        "paragraph": 3711,
+        "range": [
+          755,
+          237
+        ],
+        "text": "She had often said she wanted to do something splendid, no matter how hard, and now she had her wish, for what could be more beautiful than to devote her life to Father and Mother, trying to make home as happy to them as they had to her?"
+      }
+    },
+    {
+      "id": "8883:244",
+      "sentence": 8883,
+      "paragraph": 3712,
+      "range": [
+        244,
+        27
+      ],
+      "text": "Still another was given her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8856,
+        "paragraph": 3704,
+        "range": [
+          0,
+          155
+        ],
+        "text": "Other helps had Jo—humble, wholesome duties and delights that would not be denied their part in serving her, and which she slowly learned to see and value."
+      }
+    },
+    {
+      "id": "8886:0",
+      "sentence": 8886,
+      "paragraph": 3714,
+      "range": [
+        0,
+        67
+      ],
+      "text": "“I’ve no heart to write, and if I had, nobody cares for my things.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8884,
+        "paragraph": 3713,
+        "range": [
+          0,
+          21
+        ],
+        "text": "“Why don’t you write?"
+      }
+    },
+    {
+      "id": "8893:179",
+      "sentence": 8893,
+      "paragraph": 3717,
+      "range": [
+        179,
+        47
+      ],
+      "text": "well pleased with the success of her suggestion",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8887,
+        "paragraph": 3715,
+        "range": [
+          0,
+          7
+        ],
+        "text": "“We do."
+      }
+    },
+    {
+      "id": "8900:0",
+      "sentence": 8900,
+      "paragraph": 3719,
+      "range": [
+        0,
+        45
+      ],
+      "text": "“There is truth in it, Jo, that’s the secret.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8897,
+        "paragraph": 3718,
+        "range": [
+          0,
+          23
+        ],
+        "text": "“I don’t understand it."
+      }
+    },
+    {
+      "id": "8906:67",
+      "sentence": 8906,
+      "paragraph": 3720,
+      "range": [
+        67,
+        39
+      ],
+      "text": "I owe it all to you and Mother and Beth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8900,
+        "paragraph": 3719,
+        "range": [
+          0,
+          45
+        ],
+        "text": "“There is truth in it, Jo, that’s the secret."
+      }
+    },
+    {
+      "id": "8918:0",
+      "sentence": 8918,
+      "paragraph": 3727,
+      "range": [
+        0,
+        32
+      ],
+      "text": "“I’m not the scatterbrain I was.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8917,
+        "paragraph": 3726,
+        "range": [
+          86,
+          124
+        ],
+        "text": "I was half afraid to put the idea into your head, lest you should write and congratulate them before the thing was settled.”"
+      }
+    },
+    {
+      "id": "8928:110",
+      "sentence": 8928,
+      "paragraph": 3731,
+      "range": [
+        110,
+        49
+      ],
+      "text": "I am lonely, and perhaps if Teddy had tried again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8924,
+        "paragraph": 3730,
+        "range": [
+          152,
+          136
+        ],
+        "text": "Forgive me, dear, I can’t help seeing that you are very lonely, and sometimes there is a hungry look in your eyes that goes to my heart."
+      }
+    },
+    {
+      "id": "8931:0",
+      "sentence": 8931,
+      "paragraph": 3733,
+      "range": [
+        0,
+        41
+      ],
+      "text": "“Mothers are the best lovers in the world",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8930,
+        "paragraph": 3732,
+        "range": [
+          61,
+          177
+        ],
+        "text": "There are plenty to love you, so try to be satisfied with Father and Mother, sisters and brothers, friends and babies, till the best lover of all comes to give you your reward.”"
+      }
+    },
+    {
+      "id": "8943:0",
+      "sentence": 8943,
+      "paragraph": 3736,
+      "range": [
+        0,
+        48
+      ],
+      "text": "“And that’s our cool, reserved, and worldly Amy!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8913,
+        "paragraph": 3724,
+        "range": [
+          78,
+          197
+        ],
+        "text": "I felt sure then that something better than what you call the ‘mercenary spirit’ had come over her, and a hint here and there in her letters made me suspect that love and Laurie would win the day.”"
+      }
+    },
+    {
+      "id": "8948:114",
+      "sentence": 8948,
+      "paragraph": 3737,
+      "range": [
+        114,
+        26
+      ],
+      "text": "the old feeling came again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8837,
+        "paragraph": 3698,
+        "range": [
+          1015,
+          126
+        ],
+        "text": "It was not fair, for she tried more than Amy to be good, but never got any reward, only disappointment, trouble and hard work."
+      }
+    },
+    {
+      "id": "8948:202",
+      "sentence": 8948,
+      "paragraph": 3737,
+      "range": [
+        202,
+        59
+      ],
+      "text": "why one sister should have all she asked, the other nothing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8836,
+        "paragraph": 3698,
+        "range": [
+          954,
+          60
+        ],
+        "text": "Some people seemed to get all sunshine, and some all shadow."
+      }
+    },
+    {
+      "id": "8949:429",
+      "sentence": 8949,
+      "paragraph": 3737,
+      "range": [
+        429,
+        71
+      ],
+      "text": "‘love with heart and soul, and cling to while God let them be together’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8941,
+        "paragraph": 3735,
+        "range": [
+          539,
+          174
+        ],
+        "text": "I pray he may, and try to be all he believes me, for I love my gallant captain with all my heart and soul and might, and never will desert him, while God lets us be together."
+      }
+    },
+    {
+      "id": "8956:0",
+      "sentence": 8956,
+      "paragraph": 3739,
+      "range": [
+        0,
+        22
+      ],
+      "text": "“Oh, if he only would!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8954,
+        "paragraph": 3738,
+        "range": [
+          0,
+          24
+        ],
+        "text": "“Wait for me, my friend."
+      }
+    },
+    {
+      "id": "8958:172",
+      "sentence": 8958,
+      "paragraph": 3739,
+      "range": [
+        172,
+        56
+      ],
+      "text": "for everyone seems going away from me, and I’m all alone",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8928,
+        "paragraph": 3731,
+        "range": [
+          110,
+          169
+        ],
+        "text": "I am lonely, and perhaps if Teddy had tried again, I might have said ‘Yes’, not because I love him any more, but because I care more to be loved than when he went away.”"
+      }
+    },
+    {
+      "id": "8959:35",
+      "sentence": 8959,
+      "paragraph": 3740,
+      "range": [
+        35,
+        43
+      ],
+      "text": "as if it were a promise yet to be fulfilled",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8954,
+        "paragraph": 3738,
+        "range": [
+          0,
+          24
+        ],
+        "text": "“Wait for me, my friend."
+      }
+    },
+    {
+      "id": "8961:77",
+      "sentence": 8961,
+      "paragraph": 3741,
+      "range": [
+        77,
+        65
+      ],
+      "text": "a sentiment which had bided its time as patiently as its inspirer",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8957,
+        "paragraph": 3739,
+        "range": [
+          23,
+          63
+        ],
+        "text": "So kind, so good, so patient with me always, my dear old Fritz."
+      }
+    }
+  ]
+}

@@ -1,1 +1,48 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4736:0",
+      "sentence": 4736,
+      "paragraph": 1951,
+      "range": [
+        0,
+        58
+      ],
+      "text": "forego every chance of benefiting himself by marrying well",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4718,
+        "paragraph": 1946,
+        "range": [
+          0,
+          44
+        ],
+        "text": "“Not perhaps of neglecting his own interest."
+      }
+    },
+    {
+      "id": "4739:335",
+      "sentence": 4739,
+      "paragraph": 1951,
+      "range": [
+        335,
+        37
+      ],
+      "text": "Lydia has no brothers to step forward",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4709,
+        "paragraph": 1943,
+        "range": [
+          461,
+          56
+        ],
+        "text": "Could he expect that her friends would not step forward?"
+      }
+    }
+  ]
+}

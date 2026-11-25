@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6541:46",
+      "sentence": 6541,
+      "paragraph": 2644,
+      "range": [
+        46,
+        64
+      ],
+      "text": "Darcy professed a great curiosity to see the view from the Mount",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6537,
+        "paragraph": 2642,
+        "range": [
+          47,
+          63
+        ],
+        "text": "It is a nice long walk, and Mr. Darcy has never seen the view.”"
+      }
+    },
+    {
+      "id": "6543:26",
+      "sentence": 6543,
+      "paragraph": 2645,
+      "range": [
+        26,
+        71
+      ],
+      "text": "that you should be forced to have that disagreeable man all to yourself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6532,
+        "paragraph": 2638,
+        "range": [
+          357,
+          78
+        ],
+        "text": "Lizzy, you must walk out with him again, that he may not be in Bingley’s way.”"
+      }
+    }
+  ]
+}

@@ -1,1 +1,384 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "9284:0",
+      "sentence": 9284,
+      "paragraph": 3877,
+      "range": [
+        0,
+        23
+      ],
+      "text": "“Lovely weather so far.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9282,
+        "paragraph": 3876,
+        "range": [
+          0,
+          171
+        ],
+        "text": "“Exactly, for Amy keeps me pointing due west most of the time, with only an occasional whiffle round to the south, and I haven’t had an easterly spell since I was married."
+      }
+    },
+    {
+      "id": "9287:174",
+      "sentence": 9287,
+      "paragraph": 3877,
+      "range": [
+        174,
+        61
+      ],
+      "text": "I suppose that’s what you are rummaging after among my things",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9276,
+        "paragraph": 3872,
+        "range": [
+          67,
+          227
+        ],
+        "text": "The luggage has come, and I’ve been making hay of Amy’s Paris finery, trying to find some things I want,” said Laurie, coming in the next day to find Mrs. Laurence sitting in her mother’s lap, as if being made ‘the baby’ again."
+      }
+    },
+    {
+      "id": "9298:179",
+      "sentence": 9298,
+      "paragraph": 3881,
+      "range": [
+        179,
+        63
+      ],
+      "text": "the beneficial influence we shall exert over the world at large",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9291,
+        "paragraph": 3879,
+        "range": [
+          0,
+          19
+        ],
+        "text": "“We have our plans."
+      }
+    },
+    {
+      "id": "9305:0",
+      "sentence": 9305,
+      "paragraph": 3884,
+      "range": [
+        0,
+        32
+      ],
+      "text": "“Yes, and I think it will last,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9303,
+        "paragraph": 3883,
+        "range": [
+          0,
+          41
+        ],
+        "text": "“How happy those children seem together!”"
+      }
+    },
+    {
+      "id": "9309:22",
+      "sentence": 9309,
+      "paragraph": 3886,
+      "range": [
+        22,
+        53
+      ],
+      "text": "when his mind had been set at rest about the bootjack",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9286,
+        "paragraph": 3877,
+        "range": [
+          128,
+          45
+        ],
+        "text": "Come home, dear, and I’ll find your bootjack."
+      }
+    },
+    {
+      "id": "9311:0",
+      "sentence": 9311,
+      "paragraph": 3888,
+      "range": [
+        0,
+        35
+      ],
+      "text": "“That man intends to marry our Jo!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9308,
+        "paragraph": 3885,
+        "range": [
+          29,
+          94
+        ],
+        "text": "and Jo sighed, then smiled brightly as Professor Bhaer opened the gate with an impatient push."
+      }
+    },
+    {
+      "id": "9319:115",
+      "sentence": 9319,
+      "paragraph": 3892,
+      "range": [
+        115,
+        50
+      ],
+      "text": "you once thought it your duty to make a rich match",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9316,
+        "paragraph": 3891,
+        "range": [
+          143,
+          38
+        ],
+        "text": "Women never should marry for money...”"
+      }
+    },
+    {
+      "id": "9326:137",
+      "sentence": 9326,
+      "paragraph": 3894,
+      "range": [
+        137,
+        41
+      ],
+      "text": "I’d gladly pull in the same boat with you",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9316,
+        "paragraph": 3891,
+        "range": [
+          143,
+          38
+        ],
+        "text": "Women never should marry for money...”"
+      }
+    },
+    {
+      "id": "9337:0",
+      "sentence": 9337,
+      "paragraph": 3899,
+      "range": [
+        0,
+        44
+      ],
+      "text": "“Shall you care if Jo does marry Mr. Bhaer?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9311,
+        "paragraph": 3888,
+        "range": [
+          0,
+          35
+        ],
+        "text": "“That man intends to marry our Jo!”"
+      }
+    },
+    {
+      "id": "9343:41",
+      "sentence": 9343,
+      "paragraph": 3901,
+      "range": [
+        41,
+        40
+      ],
+      "text": "Her little jealous fear vanished forever",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9337,
+        "paragraph": 3899,
+        "range": [
+          0,
+          44
+        ],
+        "text": "“Shall you care if Jo does marry Mr. Bhaer?”"
+      }
+    },
+    {
+      "id": "9344:0",
+      "sentence": 9344,
+      "paragraph": 3902,
+      "range": [
+        0,
+        61
+      ],
+      "text": "“I wish we could do something for that capital old Professor.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9313,
+        "paragraph": 3890,
+        "range": [
+          0,
+          148
+        ],
+        "text": "“Well, my love, I consider him a trump, in the fullest sense of that expressive word, but I do wish he was a little younger and a good deal richer.”"
+      }
+    },
+    {
+      "id": "9348:41",
+      "sentence": 9348,
+      "paragraph": 3903,
+      "range": [
+        41,
+        39
+      ],
+      "text": "She is very proud of him, just as he is",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9313,
+        "paragraph": 3890,
+        "range": [
+          0,
+          148
+        ],
+        "text": "“Well, my love, I consider him a trump, in the fullest sense of that expressive word, but I do wish he was a little younger and a good deal richer.”"
+      }
+    },
+    {
+      "id": "9350:23",
+      "sentence": 9350,
+      "paragraph": 3904,
+      "range": [
+        23,
+        50
+      ],
+      "text": "She won’t think so when she has a literary husband",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9348,
+        "paragraph": 3903,
+        "range": [
+          41,
+          108
+        ],
+        "text": "She is very proud of him, just as he is, and said yesterday that she thought poverty was a beautiful thing.”"
+      }
+    },
+    {
+      "id": "9356:44",
+      "sentence": 9356,
+      "paragraph": 3906,
+      "range": [
+        44,
+        60
+      ],
+      "text": "There’s one sort of poverty that I particularly like to help",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9348,
+        "paragraph": 3903,
+        "range": [
+          41,
+          108
+        ],
+        "text": "She is very proud of him, just as he is, and said yesterday that she thought poverty was a beautiful thing.”"
+      }
+    },
+    {
+      "id": "9363:91",
+      "sentence": 9363,
+      "paragraph": 3908,
+      "range": [
+        91,
+        33
+      ],
+      "text": "while I was dawdling about abroad",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9295,
+        "paragraph": 3879,
+        "range": [
+          290,
+          52
+        ],
+        "text": "I’m tired of dawdling, and mean to work like a man.”"
+      }
+    },
+    {
+      "id": "9368:110",
+      "sentence": 9368,
+      "paragraph": 3909,
+      "range": [
+        110,
+        49
+      ],
+      "text": "I belonged to it before you made a princess of me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9322,
+        "paragraph": 3893,
+        "range": [
+          44,
+          41
+        ],
+        "text": "I forgot you were rich when I said ‘Yes’."
+      }
+    },
+    {
+      "id": "9372:106",
+      "sentence": 9372,
+      "paragraph": 3910,
+      "range": [
+        106,
+        97
+      ],
+      "text": "to found and endow an institution for the express benefit of young women with artistic tendencies",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9369,
+        "paragraph": 3909,
+        "range": [
+          211,
+          164
+        ],
+        "text": "Ambitious girls have a hard time, Laurie, and often have to see youth, health, and precious opportunities go by, just for want of a little help at the right minute."
+      }
+    },
+    {
+      "id": "9380:72",
+      "sentence": 9380,
+      "paragraph": 3913,
+      "range": [
+        72,
+        93
+      ],
+      "text": "feeling that their pleasant home was more homelike because they hoped to brighten other homes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9302,
+        "paragraph": 3882,
+        "range": [
+          17,
+          215
+        ],
+        "text": "Come away, Impertinence, and don’t shock my family by calling me names before their faces,” answered Amy, resolving that there should be a home with a good wife in it before she set up a salon as a queen of society."
+      }
+    }
+  ]
+}

@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "435:118",
+      "sentence": 435,
+      "paragraph": 253,
+      "range": [
+        118,
+        18
+      ],
+      "text": "danced every dance",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 415,
+        "paragraph": 244,
+        "range": [
+          687,
+          128
+        ],
+        "text": "To be fond of dancing was a certain step towards falling in love; and very lively hopes of Mr. Bingley’s heart were entertained."
+      }
+    },
+    {
+      "id": "437:278",
+      "sentence": 437,
+      "paragraph": 253,
+      "range": [
+        278,
+        43
+      ],
+      "text": "What a contrast between him and his friend!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 434,
+        "paragraph": 252,
+        "range": [
+          472,
+          513
+        ],
+        "text": "The gentlemen pronounced him to be a fine figure of a man, the ladies declared he was much handsomer than Mr. Bingley, and he was looked at with great admiration for about half the evening, till his manners gave a disgust which turned the tide of his popularity; for he was discovered to be proud, to be above his company, and above being pleased; and not all his large estate in Derbyshire could save him from having a most forbidding, disagreeable countenance, and being unworthy to be compared with his friend."
+      }
+    }
+  ]
+}

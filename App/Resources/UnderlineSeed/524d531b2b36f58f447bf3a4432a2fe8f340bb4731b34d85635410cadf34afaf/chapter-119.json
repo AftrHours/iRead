@@ -1,1 +1,90 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1637:60",
+      "sentence": 1637,
+      "paragraph": 808,
+      "range": [
+        60,
+        28
+      ],
+      "text": "I can hardly be just to him.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1577,
+        "paragraph": 782,
+        "range": [
+          184,
+          40
+        ],
+        "text": "It is impossible for me to be impartial."
+      }
+    },
+    {
+      "id": "1638:92",
+      "sentence": 1638,
+      "paragraph": 809,
+      "range": [
+        92,
+        52
+      ],
+      "text": "the godson, the friend, the favourite of his father!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1609,
+        "paragraph": 796,
+        "range": [
+          92,
+          52
+        ],
+        "text": "He was my godfather, and excessively attached to me."
+      }
+    },
+    {
+      "id": "1640:357",
+      "sentence": 1640,
+      "paragraph": 809,
+      "range": [
+        357,
+        62
+      ],
+      "text": "connected together, as I think you said, in the closest manner",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1568,
+        "paragraph": 778,
+        "range": [
+          90,
+          193
+        ],
+        "text": "You could not have met with a person more capable of giving you certain information on that head than myself—for I have been connected with his family, in a particular manner, from my infancy.”"
+      }
+    },
+    {
+      "id": "1644:669",
+      "sentence": 1644,
+      "paragraph": 810,
+      "range": [
+        669,
+        38
+      ],
+      "text": "Mr. Darcy gave him a voluntary promise",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1611,
+        "paragraph": 796,
+        "range": [
+          182,
+          112
+        ],
+        "text": "He meant to provide for me amply, and thought he had done it; but when the living fell, it was given elsewhere.”"
+      }
+    }
+  ]
+}

@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1378:1",
+      "sentence": 1378,
+      "paragraph": 701,
+      "range": [
+        1,
+        72
+      ],
+      "text": "The disagreement subsisting between yourself and my late honoured father",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1373,
+        "paragraph": 696,
+        "range": [
+          150,
+          77
+        ],
+        "text": "Why could not he keep on quarrelling with you, as his father did before him?”"
+      }
+    },
+    {
+      "id": "1379:1225",
+      "sentence": 1379,
+      "paragraph": 701,
+      "range": [
+        1225,
+        47
+      ],
+      "text": "my being next in the entail of Longbourn estate",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1363,
+        "paragraph": 692,
+        "range": [
+          230,
+          114
+        ],
+        "text": "It is from my cousin, Mr. Collins, who, when I am dead, may turn you all out of this house as soon as he pleases.”"
+      }
+    }
+  ]
+}

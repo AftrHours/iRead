@@ -1,1 +1,615 @@
-{"underlines":[{"paragraph":639,"decidedBy":"rules","reference":{"paragraph":635,"range":[20,83],"text":"I’m dreadfully in debt, and it won’t be my turn to have the rag money for a month.”","sentence":1475},"id":"1488:498","range":[498,33],"sentence":1488,"kind":"thing","text":"ought for they are debts of honor"},{"paragraph":643,"decidedBy":"rules","reference":{"paragraph":639,"range":[285,48],"text":"If one girl likes another, she gives her a lime.","sentence":1486},"id":"1499:88","range":[88,31],"sentence":1499,"kind":"action","text":"haven’t tasted a lime this week"},{"paragraph":644,"decidedBy":"rules","reference":{"paragraph":639,"range":[109,175],"text":"It’s nothing but limes now, for everyone is sucking them in their desks in schooltime, and trading them off for pencils, bead rings, paper dolls, or something else, at recess.","sentence":1485},"id":"1501:153","range":[153,47],"sentence":1501,"kind":"action","text":"consigned it to the inmost recesses of her desk"},{"paragraph":644,"decidedBy":"rules","reference":{"paragraph":643,"range":[57,63],"text":"I’ll have a grand feast, for I haven’t tasted a lime this week.","sentence":1499},"id":"1502:255","range":[255,35],"sentence":1502,"kind":"action","text":"had got twenty-four delicious limes"},{"paragraph":645,"decidedBy":"rules","reference":{"paragraph":633,"range":[0,117],"text":"“You needn’t be so rude, it’s only a ‘lapse of lingy’, as Mr. Davis says,” retorted Amy, finishing Jo with her Latin.","sentence":1470},"id":"1509:496","range":[496,31],"sentence":1509,"kind":"action","text":"informed Mr. Davis, the teacher"},{"paragraph":646,"decidedBy":"rules","reference":{"paragraph":640,"range":[0,53],"text":"“How much will pay them off and restore your credit?”","sentence":1489},"id":"1515:1103","range":[1103,53],"sentence":1515,"kind":"action","text":"had not done him the credit which he felt he deserved"},{"paragraph":649,"decidedBy":"rules","reference":{"paragraph":645,"range":[356,218],"text":"No sooner had the guest paid the usual stale compliments and bowed himself out, than Jenny, under pretense of asking an important question, informed Mr. Davis, the teacher, that Amy March had pickled limes in her desk.","sentence":1509},"id":"1520:13","range":[13,16],"sentence":1520,"kind":"action","text":"come to the desk"},{"paragraph":651,"decidedBy":"rules","reference":{"paragraph":646,"range":[1289,164],"text":"The word ‘limes’ was like fire to powder, his yellow face flushed, and he rapped on his desk with an energy which made Jenny skip to her seat with unusual rapidity.","sentence":1517},"id":"1522:1","range":[1,46],"sentence":1522,"kind":"action","text":"Bring with you the limes you have in your desk"},{"paragraph":653,"decidedBy":"rules","reference":{"paragraph":637,"range":[0,154],"text":"“Why, I owe at least a dozen pickled limes, and I can’t pay them, you know, till I have money, for Marmee forbade my having anything charged at the shop.”","sentence":1479},"id":"1524:12","range":[12,22],"sentence":1524,"kind":"action","text":"shook out half a dozen"},{"paragraph":661,"decidedBy":"rules","reference":{"paragraph":645,"range":[0,245],"text":"A distinguished personage happened to visit the school that morning, and Amy’s beautifully drawn maps received praise, which honor to her foe rankled in the soul of Miss Snow, and caused Miss March to assume the airs of a studious young peacock.","sentence":1506},"id":"1535:448","range":[448,25],"sentence":1535,"kind":"thing","text":"who were their sworn foes"},{"paragraph":667,"decidedBy":"rules","reference":{"paragraph":651,"range":[0,127],"text":"“Bring with you the limes you have in your desk,” was the unexpected command which arrested her before she got out of her seat.","sentence":1522},"id":"1552:22","range":[22,44],"sentence":1552,"kind":"thing","text":"would have been bad enough to go to her seat"},{"paragraph":671,"decidedBy":"rules","reference":{"text":"Now Mr. Davis had declared limes a contraband article, and solemnly vowed to publicly ferrule the first person who was found breaking the law.","paragraph":646,"range":[0,142],"sentence":1510},"id":"1563:624","range":[624,49],"sentence":1563,"kind":"action","text":"proposed that Mr. Davis be arrested without delay"},{"paragraph":673,"decidedBy":"rules","reference":{"text":"Mr. Davis knew any quantity of Greek, Latin, algebra, and ologies of all sorts so he was called a fine teacher, and manners, morals, feelings, and examples were not considered of any particular importance.","paragraph":646,"range":[683,205],"sentence":1513},"id":"1568:193","range":[193,38],"sentence":1568,"kind":"action","text":"dislike Mr. Davis’s manner of teaching"},{"paragraph":675,"decidedBy":"rules","reference":{"text":"“I don’t approve of corporal punishment, especially for girls.","paragraph":673,"range":[128,62],"sentence":1567},"id":"1572:60","range":[60,41],"sentence":1572,"kind":"action","text":"deserved some punishment for disobedience"}],"engineVersion":5,"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1471:149",
+      "sentence": 1471,
+      "paragraph": 633,
+      "range": [
+        149,
+        37
+      ],
+      "text": "the money Laurie spends on that horse",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1464,
+        "paragraph": 629,
+        "range": [
+          43,
+          96
+        ],
+        "text": "said Amy one day, as Laurie clattered by on horseback, with a flourish of his whip as he passed."
+      }
+    },
+    {
+      "id": "1489:1",
+      "sentence": 1489,
+      "paragraph": 640,
+      "range": [
+        1,
+        51
+      ],
+      "text": "How much will pay them off and restore your credit?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1475,
+        "paragraph": 635,
+        "range": [
+          20,
+          83
+        ],
+        "text": "I’m dreadfully in debt, and it won’t be my turn to have the rag money for a month.”"
+      }
+    },
+    {
+      "id": "1502:245",
+      "sentence": 1502,
+      "paragraph": 644,
+      "range": [
+        245,
+        45
+      ],
+      "text": "Amy March had got twenty-four delicious limes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1499,
+        "paragraph": 643,
+        "range": [
+          57,
+          63
+        ],
+        "text": "I’ll have a grand feast, for I haven’t tasted a lime this week."
+      }
+    },
+    {
+      "id": "1502:320",
+      "sentence": 1502,
+      "paragraph": 644,
+      "range": [
+        320,
+        47
+      ],
+      "text": "was going to treat circulated through her ‘set’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1488,
+        "paragraph": 639,
+        "range": [
+          418,
+          125
+        ],
+        "text": "They treat by turns, and I’ve had ever so many but haven’t returned them, and I ought for they are debts of honor, you know.”"
+      }
+    },
+    {
+      "id": "1504:585",
+      "sentence": 1504,
+      "paragraph": 644,
+      "range": [
+        585,
+        50
+      ],
+      "text": "who had basely twitted Amy upon her limeless state",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1500,
+        "paragraph": 643,
+        "range": [
+          121,
+          97
+        ],
+        "text": "I felt delicate about taking any, as I couldn’t return them, and I’m actually suffering for one.”"
+      }
+    },
+    {
+      "id": "1508:293",
+      "sentence": 1508,
+      "paragraph": 645,
+      "range": [
+        293,
+        37
+      ],
+      "text": "the revengeful Snow turned the tables",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1505,
+        "paragraph": 644,
+        "range": [
+          723,
+          340
+        ],
+        "text": "But Amy had not forgotten Miss Snow’s cutting remarks about ‘some persons whose noses were not too flat to smell other people’s limes, and stuck-up people who were not too proud to ask for them’, and she instantly crushed ‘that Snow girl’s’ hopes by the withering telegram, “You needn’t be so polite all of a sudden, for you won’t get any.”"
+      }
+    },
+    {
+      "id": "1509:529",
+      "sentence": 1509,
+      "paragraph": 645,
+      "range": [
+        529,
+        44
+      ],
+      "text": "that Amy March had pickled limes in her desk",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1501,
+        "paragraph": 644,
+        "range": [
+          0,
+          201
+        ],
+        "text": "Next day Amy was rather late at school, but could not resist the temptation of displaying, with pardonable pride, a moist brown-paper parcel, before she consigned it to the inmost recesses of her desk."
+      }
+    },
+    {
+      "id": "1522:1",
+      "sentence": 1522,
+      "paragraph": 651,
+      "range": [
+        1,
+        46
+      ],
+      "text": "Bring with you the limes you have in your desk",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1509,
+        "paragraph": 645,
+        "range": [
+          356,
+          218
+        ],
+        "text": "No sooner had the guest paid the usual stale compliments and bowed himself out, than Jenny, under pretense of asking an important question, informed Mr. Davis, the teacher, that Amy March had pickled limes in her desk."
+      }
+    },
+    {
+      "id": "1535:383",
+      "sentence": 1535,
+      "paragraph": 661,
+      "range": [
+        383,
+        63
+      ],
+      "text": "their feast was being exulted over by the little Irish children",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1533,
+        "paragraph": 660,
+        "range": [
+          11,
+          79
+        ],
+        "text": "Now take these disgusting things two by two, and throw them out of the window.”"
+      }
+    },
+    {
+      "id": "1540:1",
+      "sentence": 1540,
+      "paragraph": 663,
+      "range": [
+        1,
+        56
+      ],
+      "text": "Young ladies, you remember what I said to you a week ago",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1510,
+        "paragraph": 646,
+        "range": [
+          0,
+          142
+        ],
+        "text": "Now Mr. Davis had declared limes a contraband article, and solemnly vowed to publicly ferrule the first person who was found breaking the law."
+      }
+    },
+    {
+      "id": "1544:248",
+      "sentence": 1544,
+      "paragraph": 664,
+      "range": [
+        248,
+        29
+      ],
+      "text": "he would have broken his word",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1541,
+        "paragraph": 663,
+        "range": [
+          59,
+          100
+        ],
+        "text": "I am sorry this has happened, but I never allow my rules to be infringed, and I never break my word."
+      }
+    },
+    {
+      "id": "1547:158",
+      "sentence": 1547,
+      "paragraph": 665,
+      "range": [
+        158,
+        64
+      ],
+      "text": "bore without flinching several tingling blows on her little palm",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1542,
+        "paragraph": 663,
+        "range": [
+          160,
+          32
+        ],
+        "text": "Miss March, hold out your hand.”"
+      }
+    },
+    {
+      "id": "1553:340",
+      "sentence": 1553,
+      "paragraph": 667,
+      "range": [
+        340,
+        75
+      ],
+      "text": "A bitter sense of wrong and the thought of Jenny Snow helped her to bear it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1508,
+        "paragraph": 645,
+        "range": [
+          263,
+          92
+        ],
+        "text": "Pride goes before a fall, and the revengeful Snow turned the tables with disastrous success."
+      }
+    },
+    {
+      "id": "1556:351",
+      "sentence": 1556,
+      "paragraph": 668,
+      "range": [
+        351,
+        21
+      ],
+      "text": "The smart of her hand",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1547,
+        "paragraph": 665,
+        "range": [
+          25,
+          198
+        ],
+        "text": "was the only answer her mute appeal received, and too proud to cry or beseech, Amy set her teeth, threw back her head defiantly, and bore without flinching several tingling blows on her little palm."
+      }
+    },
+    {
+      "id": "1557:73",
+      "sentence": 1557,
+      "paragraph": 669,
+      "range": [
+        73,
+        18
+      ],
+      "text": "the word ‘Recess!’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1550,
+        "paragraph": 666,
+        "range": [
+          0,
+          122
+        ],
+        "text": "“You will now stand on the platform till recess,” said Mr. Davis, resolved to do the thing thoroughly, since he had begun."
+      }
+    },
+    {
+      "id": "1560:0",
+      "sentence": 1560,
+      "paragraph": 671,
+      "range": [
+        0,
+        58
+      ],
+      "text": "He did not soon forget the reproachful glance Amy gave him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1543,
+        "paragraph": 664,
+        "range": [
+          0,
+          141
+        ],
+        "text": "Amy started, and put both hands behind her, turning on him an imploring look which pleaded for her better than the words she could not utter."
+      }
+    },
+    {
+      "id": "1563:472",
+      "sentence": 1563,
+      "paragraph": 671,
+      "range": [
+        472,
+        53
+      ],
+      "text": "Meg bathed the insulted hand with glycerine and tears",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1546,
+        "paragraph": 665,
+        "range": [
+          0,
+          24
+        ],
+        "text": "“Your hand, Miss March!”"
+      }
+    },
+    {
+      "id": "1564:105",
+      "sentence": 1564,
+      "paragraph": 672,
+      "range": [
+        105,
+        70
+      ],
+      "text": "Mr. Davis was quite benignant in the afternoon, also unusually nervous",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1516,
+        "paragraph": 646,
+        "range": [
+          1158,
+          130
+        ],
+        "text": "Therefore, to use the expressive, if not elegant, language of a schoolgirl, “He was as nervous as a witch and as cross as a bear”."
+      }
+    },
+    {
+      "id": "1565:314",
+      "sentence": 1565,
+      "paragraph": 672,
+      "range": [
+        314,
+        43
+      ],
+      "text": "then collected Amy’s property, and departed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1560,
+        "paragraph": 671,
+        "range": [
+          0,
+          218
+        ],
+        "text": "He did not soon forget the reproachful glance Amy gave him, as she went, without a word to anyone, straight into the anteroom, snatched her things, and left the place “forever,” as she passionately declared to herself."
+      }
+    },
+    {
+      "id": "1567:129",
+      "sentence": 1567,
+      "paragraph": 673,
+      "range": [
+        129,
+        38
+      ],
+      "text": "I don’t approve of corporal punishment",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1549,
+        "paragraph": 665,
+        "range": [
+          294,
+          125
+        ],
+        "text": "For the first time in her life she had been struck, and the disgrace, in her eyes, was as deep as if he had knocked her down."
+      }
+    },
+    {
+      "id": "1568:248",
+      "sentence": 1568,
+      "paragraph": 673,
+      "range": [
+        248,
+        51
+      ],
+      "text": "the girls you associate with are doing you any good",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1484,
+        "paragraph": 639,
+        "range": [
+          0,
+          108
+        ],
+        "text": "“Why, you see, the girls are always buying them, and unless you want to be thought mean, you must do it too."
+      }
+    },
+    {
+      "id": "1571:74",
+      "sentence": 1571,
+      "paragraph": 674,
+      "range": [
+        74,
+        55
+      ],
+      "text": "It’s perfectly maddening to think of those lovely limes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1535,
+        "paragraph": 661,
+        "range": [
+          141,
+          333
+        ],
+        "text": "Scarlet with shame and anger, Amy went to and fro six dreadful times, and as each doomed couple, looking oh, so plump and juicy, fell from her reluctant hands, a shout from the street completed the anguish of the girls, for it told them that their feast was being exulted over by the little Irish children, who were their sworn foes."
+      }
+    },
+    {
+      "id": "1572:31",
+      "sentence": 1572,
+      "paragraph": 675,
+      "range": [
+        31,
+        23
+      ],
+      "text": "for you broke the rules",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1510,
+        "paragraph": 646,
+        "range": [
+          0,
+          142
+        ],
+        "text": "Now Mr. Davis had declared limes a contraband article, and solemnly vowed to publicly ferrule the first person who was found breaking the law."
+      }
+    },
+    {
+      "id": "1573:1",
+      "sentence": 1573,
+      "paragraph": 676,
+      "range": [
+        1,
+        65
+      ],
+      "text": "Do you mean you are glad I was disgraced before the whole school?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1552,
+        "paragraph": 667,
+        "range": [
+          19,
+          320
+        ],
+        "text": "It would have been bad enough to go to her seat, and see the pitying faces of her friends, or the satisfied ones of her few enemies, but to face the whole school, with that shame fresh upon her, seemed impossible, and for a second she felt as if she could only drop down where she stood, and break her heart with crying."
+      }
+    },
+    {
+      "id": "1576:147",
+      "sentence": 1576,
+      "paragraph": 677,
+      "range": [
+        147,
+        47
+      ],
+      "text": "You are getting to be rather conceited, my dear",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1506,
+        "paragraph": 645,
+        "range": [
+          0,
+          245
+        ],
+        "text": "A distinguished personage happened to visit the school that morning, and Amy’s beautifully drawn maps received praise, which honor to her foe rankled in the soul of Miss Snow, and caused Miss March to assume the airs of a studious young peacock."
+      }
+    },
+    {
+      "id": "1585:0",
+      "sentence": 1585,
+      "paragraph": 681,
+      "range": [
+        0,
+        61
+      ],
+      "text": "Jo let Laurie win the game to pay for that praise of her Beth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1581,
+        "paragraph": 678,
+        "range": [
+          69,
+          217
+        ],
+        "text": "“I knew a girl once, who had a really remarkable talent for music, and she didn’t know it, never guessed what sweet little things she composed when she was alone, and wouldn’t have believed it if anyone had told her.”"
+      }
+    },
+    {
+      "id": "1587:392",
+      "sentence": 1587,
+      "paragraph": 681,
+      "range": [
+        392,
+        30
+      ],
+      "text": "Is Laurie an accomplished boy?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1578,
+        "paragraph": 677,
+        "range": [
+          370,
+          209
+        ],
+        "text": "There is not much danger that real talent or goodness will be overlooked long, even if it is, the consciousness of possessing and using it well should satisfy one, and the great charm of all power is modesty.”"
+      }
+    },
+    {
+      "id": "1590:1",
+      "sentence": 1590,
+      "paragraph": 683,
+      "range": [
+        1,
+        30
+      ],
+      "text": "And he isn’t conceited, is he?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1576,
+        "paragraph": 677,
+        "range": [
+          147,
+          98
+        ],
+        "text": "You are getting to be rather conceited, my dear, and it is quite time you set about correcting it."
+      }
+    },
+    {
+      "id": "1595:58",
+      "sentence": 1595,
+      "paragraph": 685,
+      "range": [
+        58,
+        36
+      ],
+      "text": "but not to show off or get perked up",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1577,
+        "paragraph": 677,
+        "range": [
+          246,
+          123
+        ],
+        "text": "You have a good many little gifts and virtues, but there is no need of parading them, for conceit spoils the finest genius."
+      }
+    }
+  ]
+}

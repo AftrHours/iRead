@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4390:87",
+      "sentence": 4390,
+      "paragraph": 1839,
+      "range": [
+        87,
+        38
+      ],
+      "text": "did give him a most flaming character!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4244,
+        "paragraph": 1790,
+        "range": [
+          230,
+          253
+        ],
+        "text": "Mr. Gardiner, highly amused by the kind of family prejudice, to which he attributed her excessive commendation of her master, soon led again to the subject; and she dwelt with energy on his many merits, as they proceeded together up the great staircase."
+      }
+    },
+    {
+      "id": "4396:291",
+      "sentence": 4396,
+      "paragraph": 1841,
+      "range": [
+        291,
+        46
+      ],
+      "text": "Fatigued as she had been by the morning’s walk",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4348,
+        "paragraph": 1822,
+        "range": [
+          253,
+          168
+        ],
+        "text": "It originated in Mrs. Gardiner, who, fatigued by the exercise of the morning, found Elizabeth’s arm inadequate to her support, and consequently preferred her husband’s."
+      }
+    },
+    {
+      "id": "4397:217",
+      "sentence": 4397,
+      "paragraph": 1842,
+      "range": [
+        217,
+        51
+      ],
+      "text": "of his wishing her to be acquainted with his sister",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4357,
+        "paragraph": 1824,
+        "range": [
+          125,
+          113
+        ],
+        "text": "Will you allow me, or do I ask too much, to introduce my sister to your acquaintance during your stay at Lambton?"
+      }
+    }
+  ]
+}

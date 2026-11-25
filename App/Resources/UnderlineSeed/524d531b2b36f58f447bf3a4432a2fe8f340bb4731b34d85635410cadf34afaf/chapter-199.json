@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2679:546",
+      "sentence": 2679,
+      "paragraph": 1219,
+      "range": [
+        546,
+        47
+      ],
+      "text": "Caroline did not return my visit till yesterday",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2661,
+        "paragraph": 1215,
+        "range": [
+          0,
+          71
+        ],
+        "text": "She wrote again when the visit was paid, and she had seen Miss Bingley."
+      }
+    },
+    {
+      "id": "2686:1684",
+      "sentence": 2686,
+      "paragraph": 1219,
+      "range": [
+        1684,
+        42
+      ],
+      "text": "He knows of my being in town, I am certain",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2670,
+        "paragraph": 1216,
+        "range": [
+          43,
+          93
+        ],
+        "text": "It convinced her that accident only could discover to Mr. Bingley her sister’s being in town."
+      }
+    }
+  ]
+}

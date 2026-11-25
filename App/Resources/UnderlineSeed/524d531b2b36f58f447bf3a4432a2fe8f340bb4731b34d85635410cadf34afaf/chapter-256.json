@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3439:1",
+      "sentence": 3439,
+      "paragraph": 1520,
+      "range": [
+        1,
+        39
+      ],
+      "text": "Two offences of a very different nature",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3435,
+        "paragraph": 1518,
+        "range": [
+          0,
+          195
+        ],
+        "text": "“Be not alarmed, madam, on receiving this letter, by the apprehension of its containing any repetition of those sentiments, or renewal of those offers, which were last night so disgusting to you."
+      }
+    },
+    {
+      "id": "3443:1057",
+      "sentence": 3443,
+      "paragraph": 1520,
+      "range": [
+        1057,
+        77
+      ],
+      "text": "I am under the necessity of relating feelings which may be offensive to yours",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3436,
+        "paragraph": 1518,
+        "range": [
+          196,
+          305
+        ],
+        "text": "I write without any intention of paining you, or humbling myself, by dwelling on wishes, which, for the happiness of both, cannot be too soon forgotten; and the effort which the formation and the perusal of this letter must occasion, should have been spared, had not my character required it to be written"
+      }
+    }
+  ]
+}

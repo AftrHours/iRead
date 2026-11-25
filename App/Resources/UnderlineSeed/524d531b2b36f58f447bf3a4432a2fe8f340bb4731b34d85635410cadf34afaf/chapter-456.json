@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[{"range":[252,64],"id":"6557:252","reference":{"sentence":6549,"text":"disposing of her, was a wretched reflection, and she sat in misery till Mr. Darcy appeared again, when, looking at him, she was a little relieved by his smile.","range":[0,159],"paragraph":2648},"decidedBy":"rules","paragraph":2650,"text":"assured him, with some confusion, of her attachment to Mr. Darcy","sentence":6557,"kind":"action"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6555:158",
+      "sentence": 6555,
+      "paragraph": 2649,
+      "range": [
+        158,
+        30
+      ],
+      "text": "Have not you always hated him?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6483,
+        "paragraph": 2623,
+        "range": [
+          57,
+          33
+        ],
+        "text": "I know how much you dislike him.”"
+      }
+    },
+    {
+      "id": "6556:0",
+      "sentence": 6556,
+      "paragraph": 2650,
+      "range": [
+        0,
+        81
+      ],
+      "text": "How earnestly did she then wish that her former opinions had been more reasonable",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6486,
+        "paragraph": 2624,
+        "range": [
+          59,
+          112
+        ],
+        "text": "Perhaps I did not always love him so well as I do now; but in such cases as these a good memory is unpardonable."
+      }
+    },
+    {
+      "id": "6560:142",
+      "sentence": 6560,
+      "paragraph": 2651,
+      "range": [
+        142,
+        29
+      ],
+      "text": "But will they make you happy?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6494,
+        "paragraph": 2627,
+        "range": [
+          76,
+          149
+        ],
+        "text": "“My dear, dear Lizzy, I would, I do congratulate you; but are you certain—forgive the question—are you quite certain that you can be happy with him?”"
+      }
+    }
+  ]
+}

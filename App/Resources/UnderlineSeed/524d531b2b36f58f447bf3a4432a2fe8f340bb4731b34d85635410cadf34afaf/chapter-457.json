@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6579:415",
+      "sentence": 6579,
+      "paragraph": 2657,
+      "range": [
+        415,
+        40
+      ],
+      "text": "she did conquer her father’s incredulity",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6470,
+        "paragraph": 2620,
+        "range": [
+          39,
+          101
+        ],
+        "text": "Though suspicion was very far from Miss Bennet’s general habits, she was absolutely incredulous here."
+      }
+    },
+    {
+      "id": "6583:39",
+      "sentence": 6583,
+      "paragraph": 2659,
+      "range": [
+        39,
+        63
+      ],
+      "text": "she then told him what Mr. Darcy had voluntarily done for Lydia",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6525,
+        "paragraph": 2637,
+        "range": [
+          47,
+          213
+        ],
+        "text": "She had been unwilling to mention Bingley; and the unsettled state of her own feelings had made her equally avoid the name of his friend: but now she would no longer conceal from her his share in Lydia’s marriage."
+      }
+    }
+  ]
+}

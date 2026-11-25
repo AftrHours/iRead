@@ -1,1 +1,111 @@
-{"parserVersion":1,"underlines":[{"paragraph":1303,"kind":"action","decidedBy":"rules","sentence":2912,"text":"hear Lady Catherine talk","id":"2912:81","reference":{"text":"Elizabeth was ready to speak whenever there was an opening, but she was seated between Charlotte and Miss de Bourgh—the former of whom was engaged in listening to Lady Catherine, and the latter said not a word to her all the dinnertime.","paragraph":1302,"range":[763,236],"sentence":2909},"range":[81,24]}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2905:74",
+      "sentence": 2905,
+      "paragraph": 1302,
+      "range": [
+        74,
+        56
+      ],
+      "text": "all the articles of plate which Mr. Collins had promised",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2876,
+        "paragraph": 1290,
+        "range": [
+          90,
+          178
+        ],
+        "text": "Mr. Collins was carefully instructing them in what they were to expect, that the sight of such rooms, so many servants, and so splendid a dinner, might not wholly overpower them."
+      }
+    },
+    {
+      "id": "2905:137",
+      "sentence": 2905,
+      "paragraph": 1302,
+      "range": [
+        137,
+        72
+      ],
+      "text": "as he had likewise foretold, he took his seat at the bottom of the table",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2876,
+        "paragraph": 1290,
+        "range": [
+          90,
+          178
+        ],
+        "text": "Mr. Collins was carefully instructing them in what they were to expect, that the sight of such rooms, so many servants, and so splendid a dinner, might not wholly overpower them."
+      }
+    },
+    {
+      "id": "2906:426",
+      "sentence": 2906,
+      "paragraph": 1302,
+      "range": [
+        426,
+        65
+      ],
+      "text": "who was now enough recovered to echo whatever his son-in-law said",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2895,
+        "paragraph": 1298,
+        "range": [
+          31,
+          127
+        ],
+        "text": "James’s, Sir William was so completely awed by the grandeur surrounding him, that he had but just courage enough to make a very"
+      }
+    },
+    {
+      "id": "2909:946",
+      "sentence": 2909,
+      "paragraph": 1302,
+      "range": [
+        946,
+        52
+      ],
+      "text": "the latter said not a word to her all the dinnertime",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2903,
+        "paragraph": 1300,
+        "range": [
+          311,
+          328
+        ],
+        "text": "Miss de Bourgh was pale and sickly: her features, though not plain, were insignificant; and she spoke very little, except in a low voice, to Mrs. Jenkinson, in whose appearance there was nothing remarkable, and who was entirely engaged in listening to what she said, and placing a screen in the proper direction before her eyes."
+      }
+    },
+    {
+      "id": "2910:1000",
+      "sentence": 2910,
+      "paragraph": 1302,
+      "range": [
+        1000,
+        77
+      ],
+      "text": "Mrs. Jenkinson was chiefly employed in watching how little Miss de Bourgh ate",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2903,
+        "paragraph": 1300,
+        "range": [
+          311,
+          328
+        ],
+        "text": "Miss de Bourgh was pale and sickly: her features, though not plain, were insignificant; and she spoke very little, except in a low voice, to Mrs. Jenkinson, in whose appearance there was nothing remarkable, and who was entirely engaged in listening to what she said, and placing a screen in the proper direction before her eyes."
+      }
+    }
+  ]
+}

@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1519:1122",
+      "sentence": 1519,
+      "paragraph": 756,
+      "range": [
+        1122,
+        73
+      ],
+      "text": "Bingley was the principal spokesman, and Miss Bennet the principal object",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1499,
+        "paragraph": 749,
+        "range": [
+          612,
+          256
+        ],
+        "text": "“As to her younger daughters, she could not take upon her to say—she could not positively answer—but she did not know of any prepossession;—her eldest daughter she must just mention—she felt it incumbent on her to hint, was likely to be very soon engaged.”"
+      }
+    },
+    {
+      "id": "1526:0",
+      "sentence": 1526,
+      "paragraph": 757,
+      "range": [
+        0,
+        78
+      ],
+      "text": "In another minute Mr. Bingley, but without seeming to have noticed what passed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1521,
+        "paragraph": 756,
+        "range": [
+          1276,
+          301
+        ],
+        "text": "Mr. Darcy corroborated it with a bow, and was beginning to determine not to fix his eyes on Elizabeth, when they were suddenly arrested by the sight of the stranger; and Elizabeth happening to see the countenance of both as they looked at each other, was all astonishment at the effect of the meeting."
+      }
+    },
+    {
+      "id": "1530:1100",
+      "sentence": 1530,
+      "paragraph": 759,
+      "range": [
+        1100,
+        42
+      ],
+      "text": "that Mr. Denny had brought him from London",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1514,
+        "paragraph": 756,
+        "range": [
+          212,
+          217
+        ],
+        "text": "Mr. Denny addressed them directly, and entreated permission to introduce his friend, Mr. Wickham, who had returned with him the day before from town, and, he was happy to say, had accepted a commission in their corps."
+      }
+    }
+  ]
+}

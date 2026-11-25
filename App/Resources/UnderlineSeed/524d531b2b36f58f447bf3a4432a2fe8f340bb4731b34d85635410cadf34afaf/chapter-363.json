@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4957:0",
+      "sentence": 4957,
+      "paragraph": 2039,
+      "range": [
+        0,
+        93
+      ],
+      "text": "Elizabeth was at no loss to understand from whence this deference for her authority proceeded",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4956,
+        "paragraph": 2038,
+        "range": [
+          527,
+          116
+        ],
+        "text": "But, on second thoughts, perhaps Lizzy could tell us what relations he has now living better than any other person.”"
+      }
+    }
+  ]
+}

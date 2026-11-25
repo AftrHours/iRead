@@ -1,1 +1,678 @@
-{"underlines":[{"paragraph":1993,"text":"tried to take the paper which had done the mischief","id":"4608:67","range":[67,51],"decidedBy":"rules","sentence":4608,"reference":{"sentence":4590,"range":[0,146],"text":"She was quite right, for the mischief-loving lad no sooner suspected a mystery than he set himself to find it out, and led Jo a trying life of it.","paragraph":1987},"kind":"action"},{"paragraph":1997,"text":"were reading the note","id":"4618:44","range":[44,21],"decidedBy":"rules","sentence":4618,"reference":{"sentence":4603,"range":[0,42],"text":"“Here’s a note to you, Meg, all sealed up.","paragraph":1991},"kind":"action"},{"paragraph":2003,"text":"saw that note before","id":"4632:40","range":[40,20],"decidedBy":"rules","sentence":4632,"reference":{"sentence":4603,"range":[0,42],"text":"“Here’s a note to you, Meg, all sealed up.","paragraph":1991},"kind":"action"},{"paragraph":2003,"text":"have written a sensible note","id":"4634:228","range":[228,28],"decidedBy":"rules","sentence":4634,"reference":{"sentence":4618,"range":[0,104],"text":"Jo hardly heard her, for she and her mother were reading the note, which was written in a peculiar hand.","paragraph":1997},"kind":"action"},{"paragraph":2004,"text":"comparing it with the note in her hand","id":"4636:39","range":[39,38],"decidedBy":"rules","sentence":4636,"reference":{"sentence":4618,"range":[0,104],"text":"Jo hardly heard her, for she and her mother were reading the note, which was written in a peculiar hand.","paragraph":1997},"kind":"action"},{"paragraph":2009,"text":"remembered how you liked Mr. Brooke","id":"4649:177","range":[177,35],"decidedBy":"rules","sentence":4649,"reference":{"sentence":4635,"range":[258,124],"text":"I should think you’d have known Mr. Brooke wouldn’t write such stuff as that,” she added, scornfully tossing down the paper.","paragraph":2003},"kind":"action"},{"paragraph":2009,"text":"Forgive me, Mother","id":"4651:434","range":[434,18],"decidedBy":"rules","sentence":4651,"reference":{"sentence":4631,"range":[0,31],"text":"“On my word, Mother, I haven’t!","paragraph":2003},"kind":"action"},{"paragraph":2014,"text":"caught up the two notes","id":"4663:143","range":[143,23],"decidedBy":"rules","sentence":4663,"reference":{"sentence":4603,"range":[0,42],"text":"“Here’s a note to you, Meg, all sealed up.","paragraph":1991},"kind":"action"},{"paragraph":2015,"text":"Don’t have any secrets, Jo","id":"4665:1","range":[1,26],"decidedBy":"rules","sentence":4665,"reference":{"sentence":4585,"range":[0,131],"text":"Jo’s face was a study next day, for the secret rather weighed upon her, and she found it hard not to look mysterious and important.","paragraph":1986},"kind":"thing"},{"paragraph":2028,"text":"Is Mr. Laurence in","id":"4695:1","range":[1,18],"decidedBy":"rules","sentence":4695,"reference":{"sentence":4622,"range":[183,94],"text":"Mr. Laurence will help me to some good place, and then, my sweet girl, you will make me happy.","paragraph":1999},"kind":"thing"},{"paragraph":2032,"text":"Where is Laurie","id":"4701:1","range":[1,15],"decidedBy":"rules","sentence":4701,"reference":{"sentence":4670,"range":[19,45],"text":"I’ll comfort Meg while you go and get Laurie.","paragraph":2017},"kind":"place"},{"paragraph":2035,"text":"knocked smartly on the door of Laurie’s little study","id":"4706:16","range":[16,52],"decidedBy":"rules","sentence":4706,"reference":{"text":"The instant Laurie’s step was heard in the hall, Meg fled into the study, and Mrs. March received the culprit alone.","range":[181,116],"paragraph":2020,"sentence":4680},"kind":"action"},{"paragraph":2048,"text":"I’d have told my part of the scrape","id":"4735:74","range":[74,35],"decidedBy":"rules","sentence":4735,"reference":{"text":"“Here’s a scrape!","range":[0,17],"paragraph":2007,"sentence":4641},"kind":"action"},{"paragraph":2048,"text":"held my tongue","id":"4736:164","range":[164,14],"decidedBy":"rules","sentence":4736,"reference":{"text":"“If John doesn’t know anything about this nonsense, don’t tell him, and make Jo and Laurie hold their tongues.","range":[141,110],"paragraph":2019,"sentence":4676},"kind":"action"},{"paragraph":2062,"text":"I’ll stir up old Brooke","id":"4766:62","range":[62,23],"decidedBy":"rules","sentence":4766,"reference":{"text":"I’ll go to Washington and see Brooke.","range":[15,37],"paragraph":2060,"sentence":4760},"kind":"action"},{"paragraph":2064,"text":"Don’t tempt me, Teddy","id":"4776:130","range":[130,21],"decidedBy":"rules","sentence":4776,"reference":{"text":"“Now, Teddy, be sensible.","range":[0,25],"paragraph":2057,"sentence":4753},"kind":"action"},{"paragraph":2076,"decidedBy":"rules","reference":{"text":"He wheedled, bribed, ridiculed, threatened, and scolded; affected indifference, that he might surprise the truth from her; declared he knew, then that he didn’t care; and at last, by dint of perseverance, he satisfied himself that it concerned Meg and Mr. Brooke.","range":[147,263],"paragraph":1987,"sentence":4591},"id":"4802:159","range":[159,66],"sentence":4802,"kind":"thing","text":"when I threatened to shake the truth out of him he bolted upstairs"},{"paragraph":2079,"decidedBy":"rules","reference":{"text":"The shaggy eyebrows unbent a little as he rolled the steps toward the shelf where the Johnsonian literature was placed.","range":[0,119],"paragraph":2075,"sentence":4796},"id":"4809:111","range":[111,30],"sentence":4809,"kind":"action","text":"was perched aloft on the steps"},{"paragraph":2081,"decidedBy":"rules","reference":{"text":"I was very grateful for his kindness, and would be his friend, but nothing more, for a long while.”","range":[132,99],"paragraph":2011,"sentence":4656},"id":"4819:140","range":[140,35],"sentence":4819,"kind":"thing","text":"has, after all your kindness to him"},{"paragraph":2082,"decidedBy":"rules","reference":{"text":"“No, he would have the truth, the whole truth, and nothing but the truth.","range":[0,73],"paragraph":2048,"sentence":4734},"id":"4821:271","range":[271,20],"sentence":4821,"kind":"action","text":"forgetting the truth"},{"paragraph":2084,"decidedBy":"rules","reference":{"text":"I’d have told my part of the scrape, if I could without bringing Meg in.","range":[74,72],"paragraph":2048,"sentence":4735},"id":"4824:153","range":[153,61],"sentence":4824,"kind":"thing","text":"who seemed to get out of one scrape only to fall into another"},{"paragraph":2087,"decidedBy":"rules","reference":{"text":"You are rather too kind sometimes, and then just a trifle hasty when he tries your patience.","range":[19,92],"paragraph":2086,"sentence":4828},"id":"4832:300","range":[300,30],"sentence":4832,"kind":"action","text":"tries my patience past bearing"},{"paragraph":2089,"decidedBy":"rules","reference":{"text":"She started when spoken to, blushed when looked at, was very quiet, and sat over her sewing, with a timid, troubled look on her face.","range":[215,133],"paragraph":1988,"sentence":4594},"id":"4836:51","range":[51,65],"sentence":4836,"kind":"action","text":"sat down, with a troubled glance at the picture of a handsome man"},{"paragraph":2089,"decidedBy":"rules","reference":{"text":"And the injured youth finished his sentence by an energetic gesture of the right arm.","range":[54,85],"paragraph":2042,"sentence":4724},"id":"4837:169","range":[169,29],"sentence":4837,"kind":"place","text":"who had run away in his youth"},{"paragraph":2091,"decidedBy":"rules","reference":{"text":"It would be a glorious joke.","range":[87,28],"paragraph":2062,"sentence":4767},"id":"4841:70","range":[70,26],"sentence":4841,"kind":"action","text":"taking the whole as a joke"},{"paragraph":2097,"decidedBy":"rules","reference":{"text":"was the sharp answer.","range":[38,21],"paragraph":2085,"sentence":4826},"id":"4861:13","range":[13,21],"sentence":4861,"kind":"reaction","text":"gave her a sharp look"},{"paragraph":2097,"decidedBy":"rules","reference":{"text":"To her great relief and surprise, the old gentleman only threw his spectacles onto the table with a rattle and exclaimed frankly, “You’re right, girl, I am!","range":[120,156],"paragraph":2087,"sentence":4831},"id":"4861:40","range":[40,21],"sentence":4861,"kind":"action","text":"put on his spectacles"},{"paragraph":2097,"decidedBy":"rules","reference":{"text":"“If John doesn’t know anything about this nonsense, don’t tell him, and make Jo and Laurie hold their tongues.","range":[141,110],"paragraph":2019,"sentence":4676},"id":"4862:180","range":[180,35],"sentence":4862,"kind":"action","text":"let us have done with this nonsense"},{"paragraph":2098,"decidedBy":"rules","reference":{"text":"I shall sift the matter to the bottom, and put a stop to such pranks at once.”","range":[65,78],"paragraph":2017,"sentence":4671},"id":"4865:469","range":[469,28],"sentence":4865,"kind":"action","text":"waited for her at the bottom"},{"paragraph":2101,"decidedBy":"rules","reference":{"text":"“Now, Teddy, be sensible.","range":[0,25],"paragraph":2057,"sentence":4753},"id":"4872:47","range":[47,26],"sentence":4872,"kind":"action","text":"begin again, Teddy, my son"},{"paragraph":2102,"decidedBy":"rules","reference":{"text":"“Don’t talk that way, turn over a new leaf and begin again, Teddy, my son.”","range":[0,75],"paragraph":2101,"sentence":4872},"id":"4873:3","range":[3,28],"sentence":4873,"kind":"reaction","text":"keep turning over new leaves"},{"paragraph":2104,"decidedBy":"rules","reference":{"text":"Seeing Meg’s usually gentle temper was roused and her pride hurt by this mischievous joke, Mrs. March soothed her by promises of entire silence and great discretion for the future.","range":[0,180],"paragraph":2020,"sentence":4679},"id":"4876:131","range":[131,95],"sentence":4876,"kind":"thing","text":"who was quite saintly in temper and overwhelmingly respectful in manner all the rest of the day"}],"parserVersion":1,"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4597:65",
+      "sentence": 4597,
+      "paragraph": 1989,
+      "range": [
+        65,
+        30
+      ],
+      "text": "She’s got most of the symptoms",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4594,
+        "paragraph": 1988,
+        "range": [
+          215,
+          133
+        ],
+        "text": "She started when spoken to, blushed when looked at, was very quiet, and sat over her sewing, with a timid, troubled look on her face."
+      }
+    },
+    {
+      "id": "4626:25",
+      "sentence": 4626,
+      "paragraph": 2001,
+      "range": [
+        25,
+        63
+      ],
+      "text": "That’s the way he meant to pay me for keeping my word to Mother",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4592,
+        "paragraph": 1987,
+        "range": [
+          411,
+          142
+        ],
+        "text": "Feeling indignant that he was not taken into his tutor’s confidence, he set his wits to work to devise some proper retaliation for the slight."
+      }
+    },
+    {
+      "id": "4636:1",
+      "sentence": 4636,
+      "paragraph": 2004,
+      "range": [
+        1,
+        21
+      ],
+      "text": "It’s like his writing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4618,
+        "paragraph": 1997,
+        "range": [
+          0,
+          104
+        ],
+        "text": "Jo hardly heard her, for she and her mother were reading the note, which was written in a peculiar hand."
+      }
+    },
+    {
+      "id": "4648:1",
+      "sentence": 4648,
+      "paragraph": 2009,
+      "range": [
+        1,
+        39
+      ],
+      "text": "I received the first letter from Laurie",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4623,
+        "paragraph": 1999,
+        "range": [
+          278,
+          96
+        ],
+        "text": "I implore you to say nothing to your family yet, but to send one word of hope through Laurie to,"
+      }
+    },
+    {
+      "id": "4660:40",
+      "sentence": 4660,
+      "paragraph": 2013,
+      "range": [
+        40,
+        52
+      ],
+      "text": "telling me that he never sent any love letter at all",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4609,
+        "paragraph": 1994,
+        "range": [
+          0,
+          39
+        ],
+        "text": "“It’s all a mistake, he didn’t send it."
+      }
+    },
+    {
+      "id": "4664:299",
+      "sentence": 4664,
+      "paragraph": 2014,
+      "range": [
+        299,
+        70
+      ],
+      "text": "keeps yours to crow over me with because I wouldn’t tell him my secret",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4589,
+        "paragraph": 1986,
+        "range": [
+          714,
+          198
+        ],
+        "text": "Amy being gone, Laurie was her only refuge, and much as she enjoyed his society, she rather dreaded him just then, for he was an incorrigible tease, and she feared he would coax the secret from her."
+      }
+    },
+    {
+      "id": "4685:226",
+      "sentence": 4685,
+      "paragraph": 2021,
+      "range": [
+        226,
+        50
+      ],
+      "text": "the assurance that Brooke knew nothing of the joke",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4676,
+        "paragraph": 2019,
+        "range": [
+          141,
+          110
+        ],
+        "text": "“If John doesn’t know anything about this nonsense, don’t tell him, and make Jo and Laurie hold their tongues."
+      }
+    },
+    {
+      "id": "4686:1",
+      "sentence": 4686,
+      "paragraph": 2022,
+      "range": [
+        1,
+        35
+      ],
+      "text": "I’ll never tell him to my dying day",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4676,
+        "paragraph": 2019,
+        "range": [
+          141,
+          110
+        ],
+        "text": "“If John doesn’t know anything about this nonsense, don’t tell him, and make Jo and Laurie hold their tongues."
+      }
+    },
+    {
+      "id": "4693:24",
+      "sentence": 4693,
+      "paragraph": 2027,
+      "range": [
+        24,
+        38
+      ],
+      "text": "she wished she had been more forgiving",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4691,
+        "paragraph": 2026,
+        "range": [
+          0,
+          155
+        ],
+        "text": "Jo stood aloof, meanwhile, trying to harden her heart against him, and succeeding only in primming up her face into an expression of entire disapprobation."
+      }
+    },
+    {
+      "id": "4711:278",
+      "sentence": 4711,
+      "paragraph": 2037,
+      "range": [
+        278,
+        36
+      ],
+      "text": "Please forgive me for being so cross",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4693,
+        "paragraph": 2027,
+        "range": [
+          0,
+          144
+        ],
+        "text": "As soon as he had gone, she wished she had been more forgiving, and when Meg and her mother went upstairs, she felt lonely and longed for Teddy."
+      }
+    },
+    {
+      "id": "4718:1",
+      "sentence": 4718,
+      "paragraph": 2040,
+      "range": [
+        1,
+        38
+      ],
+      "text": "I’ve been shaken, and I won’t bear it!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4700,
+        "paragraph": 2031,
+        "range": [
+          0,
+          156
+        ],
+        "text": "“La, no Miss, but he’s had a scene with Mr. Laurie, who is in one of his tantrums about something, which vexes the old gentleman, so I dursn’t go nigh him.”"
+      }
+    },
+    {
+      "id": "4731:1",
+      "sentence": 4731,
+      "paragraph": 2046,
+      "range": [
+        1,
+        58
+      ],
+      "text": "Just because I wouldn’t say what your mother wanted me for",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4683,
+        "paragraph": 2020,
+        "range": [
+          608,
+          127
+        ],
+        "text": "The sound of voices in the parlor rose and fell for half an hour, but what happened during that interview the girls never knew."
+      }
+    },
+    {
+      "id": "4742:101",
+      "sentence": 4742,
+      "paragraph": 2050,
+      "range": [
+        101,
+        51
+      ],
+      "text": "I was sorry about Meg, and begged pardon like a man",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4685,
+        "paragraph": 2021,
+        "range": [
+          167,
+          110
+        ],
+        "text": "Meg received his humble apology, and was much comforted by the assurance that Brooke knew nothing of the joke."
+      }
+    },
+    {
+      "id": "4785:89",
+      "sentence": 4785,
+      "paragraph": 2068,
+      "range": [
+        89,
+        50
+      ],
+      "text": "If I get your grandpa to apologize for the shaking",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4749,
+        "paragraph": 2054,
+        "range": [
+          0,
+          97
+        ],
+        "text": "“Well, he ought to beg pardon, and believe me when I say I can’t tell him what the fuss’s about.”"
+      }
+    },
+    {
+      "id": "4788:85",
+      "sentence": 4788,
+      "paragraph": 2070,
+      "range": [
+        85,
+        39
+      ],
+      "text": "leaving Laurie bent over a railroad map",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4757,
+        "paragraph": 2058,
+        "range": [
+          43,
+          101
+        ],
+        "text": "I’ll slip off and take a journey somewhere, and when Grandpa misses me he’ll come round fast enough.”"
+      }
+    },
+    {
+      "id": "4791:20",
+      "sentence": 4791,
+      "paragraph": 2072,
+      "range": [
+        20,
+        21
+      ],
+      "text": "come to return a book",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4694,
+        "paragraph": 2027,
+        "range": [
+          145,
+          119
+        ],
+        "text": "After resisting for some time, she yielded to the impulse, and armed with a book to return, went over to the big house."
+      }
+    },
+    {
+      "id": "4802:159",
+      "sentence": 4802,
+      "paragraph": 2076,
+      "range": [
+        159,
+        47
+      ],
+      "text": "when I threatened to shake the truth out of him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4736,
+        "paragraph": 2048,
+        "range": [
+          147,
+          90
+        ],
+        "text": "As I couldn’t, I held my tongue, and bore the scolding till the old gentleman collared me."
+      }
+    },
+    {
+      "id": "4802:207",
+      "sentence": 4802,
+      "paragraph": 2076,
+      "range": [
+        207,
+        51
+      ],
+      "text": "he bolted upstairs and locked himself into his room",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4702,
+        "paragraph": 2033,
+        "range": [
+          0,
+          70
+        ],
+        "text": "“Shut up in his room, and he won’t answer, though I’ve been a-tapping."
+      }
+    },
+    {
+      "id": "4812:48",
+      "sentence": 4812,
+      "paragraph": 2080,
+      "range": [
+        48,
+        66
+      ],
+      "text": "Laurie has confessed, asked pardon, and been punished quite enough",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4690,
+        "paragraph": 2025,
+        "range": [
+          0,
+          236
+        ],
+        "text": "Meg pardoned him, and Mrs. March’s grave face relaxed, in spite of her efforts to keep sober, when she heard him declare that he would atone for his sins by all sorts of penances, and abase himself like a worm before the injured damsel."
+      }
+    },
+    {
+      "id": "4822:20",
+      "sentence": 4822,
+      "paragraph": 2083,
+      "range": [
+        20,
+        46
+      ],
+      "text": "if the boy held his tongue because he promised",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4732,
+        "paragraph": 2046,
+        "range": [
+          61,
+          73
+        ],
+        "text": "I’d promised not to tell, and of course I wasn’t going to break my word.”"
+      }
+    },
+    {
+      "id": "4833:1",
+      "sentence": 4833,
+      "paragraph": 2088,
+      "range": [
+        1,
+        30
+      ],
+      "text": "I’ll tell you, he’ll run away.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4757,
+        "paragraph": 2058,
+        "range": [
+          43,
+          101
+        ],
+        "text": "I’ll slip off and take a journey somewhere, and when Grandpa misses me he’ll come round fast enough.”"
+      }
+    },
+    {
+      "id": "4840:113",
+      "sentence": 4840,
+      "paragraph": 2090,
+      "range": [
+        113,
+        64
+      ],
+      "text": "I often think I should like to, especially since my hair was cut",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4775,
+        "paragraph": 2064,
+        "range": [
+          0,
+          129
+        ],
+        "text": "“If I was a boy, we’d run away together, and have a capital time, but as I’m a miserable girl, I must be proper and stop at home."
+      }
+    },
+    {
+      "id": "4849:21",
+      "sentence": 4849,
+      "paragraph": 2093,
+      "range": [
+        21,
+        45
+      ],
+      "text": "He feels badly because you didn’t believe him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4744,
+        "paragraph": 2052,
+        "range": [
+          0,
+          54
+        ],
+        "text": "“He ought to trust me, and not act as if I was a baby."
+      }
+    },
+    {
+      "id": "4850:98",
+      "sentence": 4850,
+      "paragraph": 2093,
+      "range": [
+        98,
+        47
+      ],
+      "text": "I think the shaking hurt his feelings very much",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4728,
+        "paragraph": 2044,
+        "range": [
+          7,
+          64
+        ],
+        "text": "You’re a girl, and it’s fun, but I’ll allow no man to shake me!”"
+      }
+    },
+    {
+      "id": "4856:47",
+      "sentence": 4856,
+      "paragraph": 2096,
+      "range": [
+        47,
+        42
+      ],
+      "text": "He says he won’t come down till he has one",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4752,
+        "paragraph": 2056,
+        "range": [
+          0,
+          31
+        ],
+        "text": "“I won’t go down till he does.”"
+      }
+    },
+    {
+      "id": "4856:91",
+      "sentence": 4856,
+      "paragraph": 2096,
+      "range": [
+        91,
+        26
+      ],
+      "text": "and talks about Washington",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4760,
+        "paragraph": 2060,
+        "range": [
+          15,
+          37
+        ],
+        "text": "I’ll go to Washington and see Brooke."
+      }
+    },
+    {
+      "id": "4861:102",
+      "sentence": 4861,
+      "paragraph": 2097,
+      "range": [
+        102,
+        42
+      ],
+      "text": "I don’t mind being managed by you and Beth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4788,
+        "paragraph": 2070,
+        "range": [
+          0,
+          164
+        ],
+        "text": "“If I can manage the young one, I can the old one,” muttered Jo, as she walked away, leaving Laurie bent over a railroad map with his head propped up on both hands."
+      }
+    },
+    {
+      "id": "4871:25",
+      "sentence": 4871,
+      "paragraph": 2100,
+      "range": [
+        25,
+        31
+      ],
+      "text": "Even you cast me off over there",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4692,
+        "paragraph": 2026,
+        "range": [
+          156,
+          213
+        ],
+        "text": "Laurie looked at her once or twice, but as she showed no sign of relenting, he felt injured, and turned his back on her till the others were done with him, when he made her a low bow and walked off without a word."
+      }
+    },
+    {
+      "id": "4874:1",
+      "sentence": 4874,
+      "paragraph": 2103,
+      "range": [
+        1,
+        51
+      ],
+      "text": "Go and eat your dinner, you’ll feel better after it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4703,
+        "paragraph": 2033,
+        "range": [
+          71,
+          91
+        ],
+        "text": "I don’t know what’s to become of the dinner, for it’s ready, and there’s no one to eat it.”"
+      }
+    },
+    {
+      "id": "4876:74",
+      "sentence": 4876,
+      "paragraph": 2104,
+      "range": [
+        74,
+        55
+      ],
+      "text": "to partake of humble pie dutifully with his grandfather",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4846,
+        "paragraph": 2092,
+        "range": [
+          227,
+          131
+        ],
+        "text": "“Go and bring that boy down to his dinner, tell him it’s all right, and advise him not to put on tragedy airs with his grandfather."
+      }
+    },
+    {
+      "id": "4878:350",
+      "sentence": 4878,
+      "paragraph": 2105,
+      "range": [
+        350,
+        18
+      ],
+      "text": "‘Mrs. John Brooke’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4598,
+        "paragraph": 1989,
+        "range": [
+          166,
+          115
+        ],
+        "text": "I caught her singing that song he gave her, and once she said ‘John’, as you do, and then turned as red as a poppy."
+      }
+    },
+    {
+      "id": "4878:441",
+      "sentence": 4878,
+      "paragraph": 2105,
+      "range": [
+        441,
+        48
+      ],
+      "text": "Laurie’s prank had hastened the evil day for her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4679,
+        "paragraph": 2020,
+        "range": [
+          0,
+          180
+        ],
+        "text": "Seeing Meg’s usually gentle temper was roused and her pride hurt by this mischievous joke, Mrs. March soothed her by promises of entire silence and great discretion for the future."
+      }
+    }
+  ]
+}

@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[{"paragraph":1430,"kind":"action","decidedBy":"rules","sentence":3214,"id":"3214:173","text":"being again surprised by Mr. Darcy","reference":{"range":[0,89],"sentence":3204,"paragraph":1429,"text":"MORE than once did Elizabeth, in her ramble within the park, unexpectedly meet Mr. Darcy."},"range":[173,34]},{"paragraph":1430,"kind":"thing","decidedBy":"rules","sentence":3214,"id":"3214:233","text":"that Colonel Fitzwilliam was meeting her","reference":{"range":[1152,50],"sentence":3211,"paragraph":1429,"text":"Could he have Colonel Fitzwilliam in his thoughts?"},"range":[233,40]},{"paragraph":1432,"kind":"reaction","decidedBy":"rules","sentence":3217,"id":"3217:3","text":"have been making the tour of the park","reference":{"range":[0,89],"sentence":3204,"paragraph":1429,"text":"MORE than once did Elizabeth, in her ramble within the park, unexpectedly meet Mr. Darcy."},"range":[3,37]}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3214:162",
+      "sentence": 3214,
+      "paragraph": 1430,
+      "range": [
+        162,
+        45
+      ],
+      "text": "instead of being again surprised by Mr. Darcy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3204,
+        "paragraph": 1429,
+        "range": [
+          0,
+          89
+        ],
+        "text": "MORE than once did Elizabeth, in her ramble within the park, unexpectedly meet Mr. Darcy."
+      }
+    }
+  ]
+}

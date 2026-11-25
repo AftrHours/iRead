@@ -1,1 +1,5 @@
-{"engineVersion":5,"underlines":[{"id":"64:103","text":"that construction is not the highest merit, the choicest gift, of the novelist","reference":{"range":[156,226],"paragraph":39,"sentence":63,"text":"But if the attempt were made, it would certainly not be hampered by any of those loosenesses of construction, which, sometimes disguised by the conveniences of which the novelist can avail himself, appear at once on the stage."},"kind":"thing","paragraph":40,"range":[103,78],"sentence":64,"decidedBy":"rules"},{"id":"68:44","text":"are so subtle","reference":{"range":[0,155],"paragraph":39,"sentence":62,"text":"if it were, the situations would prove not startling or garish enough for the footlights, the character-scheme too subtle and delicate for pit and gallery."},"kind":"thing","paragraph":41,"range":[44,13],"sentence":68,"decidedBy":"rules"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": []
+}

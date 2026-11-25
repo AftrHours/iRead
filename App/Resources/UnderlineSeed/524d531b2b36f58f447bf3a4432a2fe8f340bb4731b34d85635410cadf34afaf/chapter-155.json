@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2143:268",
+      "sentence": 2143,
+      "paragraph": 1015,
+      "range": [
+        268,
+        53
+      ],
+      "text": "entreating her to persuade her friend Lizzy to comply",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2132,
+        "paragraph": 1010,
+        "range": [
+          177,
+          214
+        ],
+        "text": "She endeavoured to secure Jane in her interest, but Jane, with all possible mildness, declined interfering; and Elizabeth, sometimes with real earnestness, and sometimes with playful gaiety, replied to her attacks."
+      }
+    }
+  ]
+}

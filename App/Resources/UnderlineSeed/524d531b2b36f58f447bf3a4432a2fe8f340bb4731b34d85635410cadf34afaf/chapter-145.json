@@ -1,1 +1,48 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1990:189",
+      "sentence": 1990,
+      "paragraph": 953,
+      "range": [
+        189,
+        62
+      ],
+      "text": "she should undoubtedly see her daughter settled at Netherfield",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1920,
+        "paragraph": 934,
+        "range": [
+          252,
+          216
+        ],
+        "text": "She saw her in idea settled in that very house, in all the felicity which a marriage of true affection could bestow; and she felt capable, under such circumstances, of endeavouring even to like Bingley’s two sisters."
+      }
+    },
+    {
+      "id": "1991:291",
+      "sentence": 1991,
+      "paragraph": 953,
+      "range": [
+        291,
+        49
+      ],
+      "text": "Of having another daughter married to Mr. Collins",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1974,
+        "paragraph": 948,
+        "range": [
+          363,
+          163
+        ],
+        "text": "He assured her that, as to dancing, he was perfectly indifferent to it; that his chief object was, by delicate attentions, to recommend himself to her; and that he"
+      }
+    }
+  ]
+}

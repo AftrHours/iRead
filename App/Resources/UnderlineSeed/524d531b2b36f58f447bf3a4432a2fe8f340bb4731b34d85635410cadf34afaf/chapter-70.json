@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "964:151",
+      "sentence": 964,
+      "paragraph": 509,
+      "range": [
+        151,
+        41
+      ],
+      "text": "undervaluing their own; and with many men",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 958,
+        "paragraph": 505,
+        "range": [
+          0,
+          78
+        ],
+        "text": "“Are you so severe upon your own sex as to doubt the possibility of all this?”"
+      }
+    },
+    {
+      "id": "971:518",
+      "sentence": 971,
+      "paragraph": 512,
+      "range": [
+        518,
+        31
+      ],
+      "text": "Bingley was quite uncomfortable",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 864,
+        "paragraph": 449,
+        "range": [
+          97,
+          187
+        ],
+        "text": "His anxiety for Jane was evident, and his attentions to herself most pleasing; and they prevented her feeling herself so much an intruder as she believed she was considered by the others."
+      }
+    },
+    {
+      "id": "971:551",
+      "sentence": 971,
+      "paragraph": 512,
+      "range": [
+        551,
+        45
+      ],
+      "text": "his sisters declared that they were miserable",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 862,
+        "paragraph": 448,
+        "range": [
+          325,
+          358
+        ],
+        "text": "The sisters, on hearing this, repeated three or four times how much they were grieved, how shocking it was to have a bad cold, and how excessively they disliked being ill themselves; and then thought no more of the matter: and their indifference towards Jane, when not immediately before them, restored Elizabeth to the enjoyment of all her original dislike."
+      }
+    }
+  ]
+}

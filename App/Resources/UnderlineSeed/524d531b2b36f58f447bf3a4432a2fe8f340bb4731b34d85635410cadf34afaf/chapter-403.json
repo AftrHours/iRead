@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5619:0",
+      "sentence": 5619,
+      "paragraph": 2277,
+      "range": [
+        0,
+        65
+      ],
+      "text": "Mr. Wickham’s adieus were much more affectionate than his wife’s.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5611,
+        "paragraph": 2274,
+        "range": [
+          0,
+          10
+        ],
+        "text": "“Oh, Lord!"
+      }
+    },
+    {
+      "id": "5625:0",
+      "sentence": 5625,
+      "paragraph": 2279,
+      "range": [
+        0,
+        69
+      ],
+      "text": "The loss of her daughter made Mrs. Bennet very dull for several days.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5609,
+        "paragraph": 2272,
+        "range": [
+          0,
+          239
+        ],
+        "text": "The day of his and Lydia’s departure soon came; and Mrs. Bennet was forced to submit to a separation, which, as her husband by no means entered into her scheme of their all going to Newcastle, was likely to continue at least a twelvemonth."
+      }
+    }
+  ]
+}

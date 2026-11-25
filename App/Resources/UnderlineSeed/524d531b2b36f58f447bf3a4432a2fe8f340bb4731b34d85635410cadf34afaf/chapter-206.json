@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[{"decidedBy":"rules","range":[23,60],"sentence":2768,"paragraph":1249,"kind":"thing","text":"have a very poor opinion of young men who live in Derbyshire","id":"2768:23","reference":{"text":"I should be sorry, you know, to think ill of a young man who has lived so long in Derbyshire.”","paragraph":1248,"range":[42,94],"sentence":2767}}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2771:236",
+      "sentence": 2771,
+      "paragraph": 1249,
+      "range": [
+        236,
+        39
+      ],
+      "text": "a man who has not one agreeable quality",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2723,
+        "paragraph": 1229,
+        "range": [
+          458,
+          100
+        ],
+        "text": "Absence had increased her desire of seeing Charlotte again, and weakened her disgust of Mr. Collins."
+      }
+    },
+    {
+      "id": "2774:0",
+      "sentence": 2774,
+      "paragraph": 1251,
+      "range": [
+        0,
+        56
+      ],
+      "text": "Before they were separated by the conclusion of the play",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2740,
+        "paragraph": 1233,
+        "range": [
+          635,
+          112
+        ],
+        "text": "The day passed most pleasantly away; the morning in bustle and shopping, and the evening at one of the theatres."
+      }
+    },
+    {
+      "id": "2780:231",
+      "sentence": 2780,
+      "paragraph": 1253,
+      "range": [
+        231,
+        35
+      ],
+      "text": "Adieu to disappointment and spleen.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2773,
+        "paragraph": 1250,
+        "range": [
+          0,
+          67
+        ],
+        "text": "“Take care, Lizzy; that speech savours strongly of disappointment.”"
+      }
+    }
+  ]
+}

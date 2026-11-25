@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[{"reference":{"sentence":6520,"text":"Were it for nothing but his love of you, I must always have esteemed him; but now, as Bingley’s friend and your husband, there can be only Bingley and yourself more dear to me.","range":[101,176],"paragraph":2636},"id":"6528:111","paragraph":2638,"decidedBy":"rules","text":"is not coming here again with our dear Bingley","sentence":6528,"range":[111,46],"kind":"action"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6534:98",
+      "sentence": 6534,
+      "paragraph": 2640,
+      "range": [
+        98,
+        40
+      ],
+      "text": "as left no doubt of his good information",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6469,
+        "paragraph": 2620,
+        "range": [
+          0,
+          38
+        ],
+        "text": "At night she opened her heart to Jane."
+      }
+    },
+    {
+      "id": "6534:223",
+      "sentence": 6534,
+      "paragraph": 2640,
+      "range": [
+        223,
+        45
+      ],
+      "text": "in which Lizzy may lose her way again to-day?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6463,
+        "paragraph": 2618,
+        "range": [
+          189,
+          97
+        ],
+        "text": "She had only to say in reply, that they had wandered about till she was beyond her own knowledge."
+      }
+    }
+  ]
+}

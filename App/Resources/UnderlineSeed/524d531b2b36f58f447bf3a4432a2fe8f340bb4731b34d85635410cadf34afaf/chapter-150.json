@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"decidedBy":"rules","range":[59,60],"sentence":2064,"paragraph":978,"kind":"thing","id":"2064:59","text":"that your refusal of my addresses are merely words of course","reference":{"range":[86,166],"sentence":2063,"paragraph":977,"text":"If what I have hitherto said can appear to you in the form of encouragement, I know not how to express my refusal in such a way as may convince you of its being one.”"}}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2058:271",
+      "sentence": 2058,
+      "paragraph": 975,
+      "range": [
+        271,
+        84
+      ],
+      "text": "may take possession of Longbourn estate whenever it falls, without any self-reproach",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2033,
+        "paragraph": 967,
+        "range": [
+          624,
+          393
+        ],
+        "text": "But the fact is, that being, as I am, to inherit this estate after the death of your honoured father (who, however, may live many years longer), I could not satisfy myself without resolving to choose a wife from among his daughters, that the loss to them might be as little as possible when the melancholy event takes place—which, however, as I have already said, may not be for several years."
+      }
+    },
+    {
+      "id": "2061:227",
+      "sentence": 2061,
+      "paragraph": 976,
+      "range": [
+        227,
+        75
+      ],
+      "text": "the established custom of your sex to reject a man on the first application",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2045,
+        "paragraph": 971,
+        "range": [
+          0,
+          297
+        ],
+        "text": "“I am not now to learn,” replied Mr. Collins, with a formal wave of the hand, “that it is usual with young ladies to reject the addresses of the man whom they secretly mean to accept, when he first applies for their favour; and that sometimes the refusal is repeated a second or even a third time."
+      }
+    },
+    {
+      "id": "2066:340",
+      "sentence": 2066,
+      "paragraph": 978,
+      "range": [
+        340,
+        43
+      ],
+      "text": "my connections with the family of De Bourgh",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2030,
+        "paragraph": 967,
+        "range": [
+          19,
+          181
+        ],
+        "text": "Allow me, by the way, to observe, my fair cousin, that I do not reckon the notice and kindness of Lady Catherine de Bourgh as among the least of the advantages in my power to offer."
+      }
+    }
+  ]
+}

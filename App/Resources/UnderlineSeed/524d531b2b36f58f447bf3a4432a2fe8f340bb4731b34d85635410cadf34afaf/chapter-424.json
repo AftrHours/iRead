@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5948:164",
+      "sentence": 5948,
+      "paragraph": 2413,
+      "range": [
+        164,
+        32
+      ],
+      "text": "He is gone to my father already.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5937,
+        "paragraph": 2409,
+        "range": [
+          0,
+          84
+        ],
+        "text": "down, suddenly rose, and, whispering a few words to her sister, ran out of the room."
+      }
+    },
+    {
+      "id": "5951:38",
+      "sentence": 5951,
+      "paragraph": 2414,
+      "range": [
+        38,
+        42
+      ],
+      "text": "who had purposely broken up the card-party",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5932,
+        "paragraph": 2407,
+        "range": [
+          535,
+          214
+        ],
+        "text": "Elizabeth, who had a letter to write, went into the breakfast-room for that purpose soon after tea; for as the others were all going to sit down to cards, she could not be wanted to counteract her mother’s schemes."
+      }
+    },
+    {
+      "id": "5952:36",
+      "sentence": 5952,
+      "paragraph": 2415,
+      "range": [
+        36,
+        76
+      ],
+      "text": "now smiled at the rapidity and ease with which an affair was finally settled",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5934,
+        "paragraph": 2408,
+        "range": [
+          180,
+          269
+        ],
+        "text": "On opening the door, she perceived her sister and Bingley standing together over the hearth, as if engaged in earnest conversation; and had this led to no suspicion, the faces of both, as they hastily turned round and moved away from each other, would have told it all."
+      }
+    }
+  ]
+}

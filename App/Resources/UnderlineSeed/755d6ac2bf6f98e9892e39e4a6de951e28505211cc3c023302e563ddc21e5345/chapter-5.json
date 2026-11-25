@@ -1,1 +1,825 @@
-{"engineVersion":5,"underlines":[{"range":[107,16],"decidedBy":"rules","sentence":577,"reference":{"sentence":535,"text":"A regular note of invitation from Mrs. Gardiner for tomorrow night!”","paragraph":250,"range":[21,68]},"text":"answer your note","kind":"action","id":"577:107","paragraph":264},{"range":[170,33],"decidedBy":"rules","sentence":578,"reference":{"sentence":531,"text":"As Meg appeared, Scrabble whisked into his hole.","paragraph":249,"range":[410,48]},"text":"had a game of romps with Scrabble","kind":"thing","id":"578:170","paragraph":265},{"range":[90,22],"decidedBy":"rules","sentence":587,"reference":{"sentence":581,"text":"Meg wanted a few curls about her face, and Jo undertook to pinch the papered locks with a pair of hot tongs.","paragraph":266,"range":[350,108]},"text":"putting down the tongs","kind":"action","id":"587:90","paragraph":270},{"range":[385,27],"decidedBy":"rules","sentence":609,"reference":{"sentence":550,"text":"I shall have a new ribbon for my hair, and Marmee will lend me her little pearl pin, and my new slippers are lovely, and my gloves will do, though they aren’t as nice as I’d like.”","paragraph":255,"range":[89,180]},"text":"put on one nice light glove","kind":"action","id":"609:385","paragraph":277},{"range":[110,53],"decidedBy":"rules","sentence":625,"reference":{"sentence":608,"text":"Jo in maroon, with a stiff, gentlemanly linen collar, and a white chrysanthemum or two for her only ornament.","paragraph":277,"range":[270,109]},"text":"giving her collar a twitch and her head a hasty brush","kind":"reaction","id":"625:110","paragraph":283},{"range":[909,56],"decidedBy":"rules","sentence":639,"reference":{"sentence":556,"text":"I don’t care much for company dancing.","paragraph":258,"range":[23,38]},"text":"stared at people rather forlornly till the dancing began","kind":"action","id":"639:909","paragraph":286},{"range":[0,23],"decidedBy":"rules","sentence":654,"reference":{"sentence":635,"text":"Meg knew Sallie and was at her ease very soon, but Jo, who didn’t care much for girls or girlish gossip, stood about, with her back carefully against the wall, and felt as much out of place as a colt in a flower garden.","paragraph":286,"range":[253,219]},"text":"That put Jo at her ease","kind":"thing","id":"654:0","paragraph":294},{"range":[1,20],"decidedBy":"rules","sentence":661,"reference":{"sentence":659,"text":"“Nicely, thank you, Mr. Laurence.","paragraph":298,"range":[0,33]},"text":"I’m not Mr. Laurence","kind":"thing","id":"661:1","paragraph":299},{"range":[40,48],"decidedBy":"rules","sentence":665,"reference":{"sentence":537,"text":"“‘Mrs. Gardiner would be happy to see Miss March and Miss Josephine at a little dance on New Year’s Eve.’","paragraph":251,"range":[0,105]},"text":"wish every one would say Jo instead of Josephine","kind":"action","id":"665:40","paragraph":302},{"range":[94,43],"decidedBy":"rules","sentence":666,"reference":{"sentence":663,"text":"“My first name is Theodore, but I don’t like it, for the fellows called me Dora, so I made them say Laurie instead.”","paragraph":301,"range":[0,116]},"text":"did you make the boys stop calling you Dora","kind":"action","id":"666:94","paragraph":302},{"range":[60,67],"decidedBy":"rules","sentence":676,"reference":{"sentence":556,"text":"I don’t care much for company dancing.","paragraph":258,"range":[23,38]},"text":"haven’t been into company enough yet to know how you do things here","kind":"place","id":"676:60","paragraph":307},{"range":[4,23],"decidedBy":"rules","sentence":685,"reference":{"sentence":560,"text":"She said when you spoiled the others that she shouldn’t get you any more this winter.","paragraph":259,"range":[84,85]},"text":"spent last winter there","kind":"reaction","id":"685:4","paragraph":311},{"range":[354,28],"decidedBy":"rules","sentence":699,"reference":{"sentence":627,"text":"I’ll lift my eyebrows if any thing is wrong, and nod if you are all right.","paragraph":284,"range":[29,74]},"text":"lifted their eyebrows at her","kind":"action","id":"699:354","paragraph":320},{"range":[7,27],"decidedBy":"rules","sentence":713,"reference":{"sentence":704,"text":"“I suppose you are going to college soon?","paragraph":323,"range":[0,41]},"text":"wish I was going to college","kind":"action","id":"713:7","paragraph":327},{"range":[309,42],"decidedBy":"rules","sentence":738,"reference":{"sentence":527,"text":"cried Meg at the foot of the garret stairs.","paragraph":248,"range":[25,43]},"text":"sat down on the stairs to get their breath","kind":"action","id":"738:309","paragraph":339},{"range":[540,29],"decidedBy":"rules","sentence":739,"reference":{"sentence":529,"text":"answered a husky voice from above, and, running up, Meg found her sister eating apples and crying over the Heir of Redclyffe, wrapped up in a comforter on an old three-legged sofa by the sunny window.","paragraph":249,"range":[8,200]},"text":"where she found her on a sofa","kind":"place","id":"739:540","paragraph":339},{"range":[165,35],"decidedBy":"rules","sentence":745,"reference":{"sentence":740,"text":"“I’ve sprained my ankle.","paragraph":340,"range":[0,24]},"text":"rubbing the poor ankle as she spoke","kind":"action","id":"745:165","paragraph":341},{"id":"753:130","reference":{"sentence":613,"text":"“Don’t eat much supper, and come away at eleven when I send Hannah for you.”","paragraph":278,"range":[90,76]},"kind":"action","sentence":753,"text":"I’ll rest till Hannah comes","decidedBy":"rules","paragraph":344,"range":[130,27]},{"id":"754:1","reference":{"sentence":671,"text":"asked Laurie, looking as if he thought the name suited her.","paragraph":305,"range":[36,59]},"kind":"reaction","sentence":754,"text":"I’ll ask Laurie","decidedBy":"rules","paragraph":345,"range":[1,15]},{"id":"759:151","reference":{"sentence":753,"text":"I’ll rest till Hannah comes, and then do the best I can.”","paragraph":344,"range":[130,57]},"kind":"action","sentence":759,"text":"watch for Hannah","decidedBy":"rules","paragraph":346,"range":[151,16]},{"id":"765:144","reference":{"text":"said Meg, as she turned from the glass in Mrs. Gardiner’s dressing room after a prolonged prink.","range":[111,96],"paragraph":282,"sentence":622},"kind":"action","sentence":765,"text":"opening the door of a room where old Mr. Gardiner was taking a little private refreshment","decidedBy":"rules","range":[144,89],"paragraph":349},{"id":"778:83","reference":{"text":"I’ll be as prim as I can and not get into any scrapes, if I can help it.","range":[23,72],"paragraph":264,"sentence":576},"kind":"action","sentence":778,"text":"should only get into another scrape if I did","decidedBy":"rules","range":[83,44],"paragraph":354},{"id":"780:269","reference":{"text":"When the music stopped, they sat down on the stairs to get their breath, and Laurie was in the midst of an account of a students’ festival at Heidelberg when Meg appeared in search of her sister.","range":[280,195],"paragraph":339,"sentence":738},"kind":"thing","sentence":780,"text":"were in the midst of a quiet game of Buzz, with two","decidedBy":"rules","range":[269,51],"paragraph":355},{"id":"786:159","reference":{"text":"“I can’t have a carriage without its costing ever so much.","range":[0,58],"paragraph":342,"sentence":746},"kind":"action","sentence":786,"text":"asked if he could get her a carriage","decidedBy":"rules","range":[159,36],"paragraph":357},{"id":"801:102","reference":{"text":"Sallie has some girls staying with her.","range":[90,39],"paragraph":344,"sentence":752},"kind":"action","sentence":801,"text":"spend a week with her when Sallie does","decidedBy":"rules","range":[102,38],"paragraph":362},{"id":"818:156","reference":{"text":"“I’ve sprained my ankle.","range":[0,24],"paragraph":340,"sentence":740},"kind":"action","sentence":818,"text":"sprain our ankles when we are silly enough to wear them","decidedBy":"rules","range":[156,55],"paragraph":371}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "578:0",
+      "sentence": 578,
+      "paragraph": 265,
+      "range": [
+        0,
+        40
+      ],
+      "text": "So Meg went away to ‘accept with thanks’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 535,
+        "paragraph": 250,
+        "range": [
+          21,
+          68
+        ],
+        "text": "A regular note of invitation from Mrs. Gardiner for tomorrow night!”"
+      }
+    },
+    {
+      "id": "578:126",
+      "sentence": 578,
+      "paragraph": 265,
+      "range": [
+        126,
+        38
+      ],
+      "text": "Jo finished her story, her four apples",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 529,
+        "paragraph": 249,
+        "range": [
+          8,
+          200
+        ],
+        "text": "answered a husky voice from above, and, running up, Meg found her sister eating apples and crying over the Heir of Redclyffe, wrapped up in a comforter on an old three-legged sofa by the sunny window."
+      }
+    },
+    {
+      "id": "578:170",
+      "sentence": 578,
+      "paragraph": 265,
+      "range": [
+        170,
+        33
+      ],
+      "text": "had a game of romps with Scrabble",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 531,
+        "paragraph": 249,
+        "range": [
+          410,
+          48
+        ],
+        "text": "As Meg appeared, Scrabble whisked into his hole."
+      }
+    },
+    {
+      "id": "582:1",
+      "sentence": 582,
+      "paragraph": 267,
+      "range": [
+        1,
+        30
+      ],
+      "text": "Ought they to smoke like that?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 581,
+        "paragraph": 266,
+        "range": [
+          350,
+          108
+        ],
+        "text": "Meg wanted a few curls about her face, and Jo undertook to pinch the papered locks with a pair of hot tongs."
+      }
+    },
+    {
+      "id": "586:21",
+      "sentence": 586,
+      "paragraph": 269,
+      "range": [
+        21,
+        25
+      ],
+      "text": "It’s like burned feathers",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 580,
+        "paragraph": 266,
+        "range": [
+          187,
+          162
+        ],
+        "text": "Simple as the toilets were, there was a great deal of running up and down, laughing and talking, and at one time a strong smell of burned hair pervaded the house."
+      }
+    },
+    {
+      "id": "598:98",
+      "sentence": 598,
+      "paragraph": 273,
+      "range": [
+        98,
+        22
+      ],
+      "text": "the tongs were too hot",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 581,
+        "paragraph": 266,
+        "range": [
+          350,
+          108
+        ],
+        "text": "Meg wanted a few curls about her face, and Jo undertook to pinch the papered locks with a pair of hot tongs."
+      }
+    },
+    {
+      "id": "600:40",
+      "sentence": 600,
+      "paragraph": 274,
+      "range": [
+        40,
+        49
+      ],
+      "text": "tie your ribbon so the ends come on your forehead",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 550,
+        "paragraph": 255,
+        "range": [
+          89,
+          180
+        ],
+        "text": "I shall have a new ribbon for my hair, and Marmee will lend me her little pearl pin, and my new slippers are lovely, and my gloves will do, though they aren’t as nice as I’d like.”"
+      }
+    },
+    {
+      "id": "607:238",
+      "sentence": 607,
+      "paragraph": 277,
+      "range": [
+        238,
+        30
+      ],
+      "text": "lace frills, and the pearl pin",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 550,
+        "paragraph": 255,
+        "range": [
+          89,
+          180
+        ],
+        "text": "I shall have a new ribbon for my hair, and Marmee will lend me her little pearl pin, and my new slippers are lovely, and my gloves will do, though they aren’t as nice as I’d like.”"
+      }
+    },
+    {
+      "id": "609:380",
+      "sentence": 609,
+      "paragraph": 277,
+      "range": [
+        380,
+        60
+      ],
+      "text": "Each put on one nice light glove, and carried one soiled one",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 565,
+        "paragraph": 260,
+        "range": [
+          108,
+          76
+        ],
+        "text": "I’ll tell you how we can manage, each wear one good one and carry a bad one."
+      }
+    },
+    {
+      "id": "618:61",
+      "sentence": 618,
+      "paragraph": 281,
+      "range": [
+        61,
+        67
+      ],
+      "text": "a real lady is always known by neat boots, gloves, and handkerchief",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 553,
+        "paragraph": 257,
+        "range": [
+          60,
+          46
+        ],
+        "text": "“Gloves are more important than anything else."
+      }
+    },
+    {
+      "id": "619:21",
+      "sentence": 619,
+      "paragraph": 282,
+      "range": [
+        21,
+        37
+      ],
+      "text": "keep the bad breadth out of sight, Jo",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 548,
+        "paragraph": 255,
+        "range": [
+          0,
+          64
+        ],
+        "text": "“You must sit still all you can and keep your back out of sight."
+      }
+    },
+    {
+      "id": "637:671",
+      "sentence": 637,
+      "paragraph": 286,
+      "range": [
+        671,
+        58
+      ],
+      "text": "the eyebrows went up so alarmingly that she dared not stir",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 627,
+        "paragraph": 284,
+        "range": [
+          29,
+          74
+        ],
+        "text": "I’ll lift my eyebrows if any thing is wrong, and nod if you are all right."
+      }
+    },
+    {
+      "id": "639:867",
+      "sentence": 639,
+      "paragraph": 286,
+      "range": [
+        867,
+        33
+      ],
+      "text": "for the burned breadth would show",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 545,
+        "paragraph": 254,
+        "range": [
+          68,
+          68
+        ],
+        "text": "Yours is as good as new, but I forgot the burn and the tear in mine."
+      }
+    },
+    {
+      "id": "640:994",
+      "sentence": 640,
+      "paragraph": 286,
+      "range": [
+        994,
+        43
+      ],
+      "text": "the tight slippers tripped about so briskly",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 610,
+        "paragraph": 277,
+        "range": [
+          495,
+          228
+        ],
+        "text": "Meg’s high-heeled slippers were very tight and hurt her, though she would not own it, and Jo’s nineteen hairpins all seemed stuck straight into her head, which was not exactly comfortable, but, dear me, let us be elegant or die."
+      }
+    },
+    {
+      "id": "657:1",
+      "sentence": 657,
+      "paragraph": 297,
+      "range": [
+        1,
+        28
+      ],
+      "text": "How is your cat, Miss March?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 653,
+        "paragraph": 293,
+        "range": [
+          13,
+          160
+        ],
+        "text": "And he looked up and laughed outright, for Jo’s prim manner was rather funny when he remembered how they had chatted about cricket when he brought the cat home."
+      }
+    },
+    {
+      "id": "671:50",
+      "sentence": 671,
+      "paragraph": 305,
+      "range": [
+        50,
+        44
+      ],
+      "text": "looking as if he thought the name suited her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 665,
+        "paragraph": 302,
+        "range": [
+          38,
+          51
+        ],
+        "text": "I wish every one would say Jo instead of Josephine."
+      }
+    },
+    {
+      "id": "673:75",
+      "sentence": 673,
+      "paragraph": 306,
+      "range": [
+        75,
+        48
+      ],
+      "text": "In a place like this I’m sure to upset something",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 556,
+        "paragraph": 258,
+        "range": [
+          23,
+          38
+        ],
+        "text": "I don’t care much for company dancing."
+      }
+    },
+    {
+      "id": "692:56",
+      "sentence": 692,
+      "paragraph": 316,
+      "range": [
+        56,
+        37
+      ],
+      "text": "the young lady in the pretty slippers",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 550,
+        "paragraph": 255,
+        "range": [
+          89,
+          180
+        ],
+        "text": "I shall have a new ribbon for my hair, and Marmee will lend me her little pearl pin, and my new slippers are lovely, and my gloves will do, though they aren’t as nice as I’d like.”"
+      }
+    },
+    {
+      "id": "699:347",
+      "sentence": 699,
+      "paragraph": 320,
+      "range": [
+        347,
+        35
+      ],
+      "text": "nobody lifted their eyebrows at her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 626,
+        "paragraph": 284,
+        "range": [
+          0,
+          28
+        ],
+        "text": "“No, winking isn’t ladylike."
+      }
+    },
+    {
+      "id": "728:7",
+      "sentence": 728,
+      "paragraph": 337,
+      "range": [
+        7,
+        71
+      ],
+      "text": "I have a bad trick of standing before the fire, and so I burn my frocks",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 547,
+        "paragraph": 254,
+        "range": [
+          158,
+          48
+        ],
+        "text": "The burn shows badly, and I can’t take any out.”"
+      }
+    },
+    {
+      "id": "728:150",
+      "sentence": 728,
+      "paragraph": 337,
+      "range": [
+        150,
+        48
+      ],
+      "text": "Meg told me to keep still so no one would see it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 548,
+        "paragraph": 255,
+        "range": [
+          0,
+          64
+        ],
+        "text": "“You must sit still all you can and keep your back out of sight."
+      }
+    },
+    {
+      "id": "736:32",
+      "sentence": 736,
+      "paragraph": 339,
+      "range": [
+        32,
+        31
+      ],
+      "text": "wishing she had two neat gloves",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 551,
+        "paragraph": 256,
+        "range": [
+          0,
+          148
+        ],
+        "text": "“Mine are spoiled with lemonade, and I can’t get any new ones, so I shall have to go without,” said Jo, who never troubled herself much about dress."
+      }
+    },
+    {
+      "id": "741:25",
+      "sentence": 741,
+      "paragraph": 340,
+      "range": [
+        25,
+        53
+      ],
+      "text": "That stupid high heel turned and gave me a sad wrench",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 610,
+        "paragraph": 277,
+        "range": [
+          495,
+          228
+        ],
+        "text": "Meg’s high-heeled slippers were very tight and hurt her, though she would not own it, and Jo’s nineteen hairpins all seemed stuck straight into her head, which was not exactly comfortable, but, dear me, let us be elegant or die."
+      }
+    },
+    {
+      "id": "743:1",
+      "sentence": 743,
+      "paragraph": 341,
+      "range": [
+        1,
+        50
+      ],
+      "text": "I knew you’d hurt your feet with those silly shoes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 610,
+        "paragraph": 277,
+        "range": [
+          495,
+          228
+        ],
+        "text": "Meg’s high-heeled slippers were very tight and hurt her, though she would not own it, and Jo’s nineteen hairpins all seemed stuck straight into her head, which was not exactly comfortable, but, dear me, let us be elegant or die."
+      }
+    },
+    {
+      "id": "759:151",
+      "sentence": 759,
+      "paragraph": 346,
+      "range": [
+        151,
+        49
+      ],
+      "text": "watch for Hannah and tell me the minute she comes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 613,
+        "paragraph": 278,
+        "range": [
+          90,
+          76
+        ],
+        "text": "“Don’t eat much supper, and come away at eleven when I send Hannah for you.”"
+      }
+    },
+    {
+      "id": "766:263",
+      "sentence": 766,
+      "paragraph": 349,
+      "range": [
+        263,
+        53
+      ],
+      "text": "she secured the coffee, which she immediately spilled",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 763,
+        "paragraph": 348,
+        "range": [
+          0,
+          47
+        ],
+        "text": "“No, dear, run along, and bring me some coffee."
+      }
+    },
+    {
+      "id": "766:326",
+      "sentence": 766,
+      "paragraph": 349,
+      "range": [
+        326,
+        48
+      ],
+      "text": "making the front of her dress as bad as the back",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 549,
+        "paragraph": 255,
+        "range": [
+          65,
+          23
+        ],
+        "text": "The front is all right."
+      }
+    },
+    {
+      "id": "768:51",
+      "sentence": 768,
+      "paragraph": 350,
+      "range": [
+        51,
+        51
+      ],
+      "text": "finishing Meg’s glove by scrubbing her gown with it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 572,
+        "paragraph": 263,
+        "range": [
+          27,
+          42
+        ],
+        "text": "Only don’t stain it, and do behave nicely."
+      }
+    },
+    {
+      "id": "778:81",
+      "sentence": 778,
+      "paragraph": 354,
+      "range": [
+        81,
+        46
+      ],
+      "text": "I should only get into another scrape if I did",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 576,
+        "paragraph": 264,
+        "range": [
+          23,
+          72
+        ],
+        "text": "I’ll be as prim as I can and not get into any scrapes, if I can help it."
+      }
+    },
+    {
+      "id": "781:391",
+      "sentence": 781,
+      "paragraph": 355,
+      "range": [
+        391,
+        39
+      ],
+      "text": "Meg forgot her foot and rose so quickly",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 740,
+        "paragraph": 340,
+        "range": [
+          0,
+          24
+        ],
+        "text": "“I’ve sprained my ankle."
+      }
+    },
+    {
+      "id": "787:358",
+      "sentence": 787,
+      "paragraph": 357,
+      "range": [
+        358,
+        34
+      ],
+      "text": "offered his grandfather’s carriage",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 746,
+        "paragraph": 342,
+        "range": [
+          0,
+          58
+        ],
+        "text": "“I can’t have a carriage without its costing ever so much."
+      }
+    },
+    {
+      "id": "803:1",
+      "sentence": 803,
+      "paragraph": 363,
+      "range": [
+        1,
+        57
+      ],
+      "text": "I saw you dancing with the red headed man I ran away from",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 641,
+        "paragraph": 286,
+        "range": [
+          1109,
+          172
+        ],
+        "text": "Jo saw a big red headed youth approaching her corner, and fearing he meant to engage her, she slipped into a curtained recess, intending to peep and enjoy herself in peace."
+      }
+    },
+    {
+      "id": "808:65",
+      "sentence": 808,
+      "paragraph": 365,
+      "range": [
+        65,
+        35
+      ],
+      "text": "Laurie and I couldn’t help laughing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 698,
+        "paragraph": 320,
+        "range": [
+          102,
+          77
+        ],
+        "text": "Both peeped and criticized and chatted till they felt like old acquaintances."
+      }
+    },
+    {
+      "id": "811:27",
+      "sentence": 811,
+      "paragraph": 366,
+      "range": [
+        27,
+        53
+      ],
+      "text": "What were you about all that time, hidden away there?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 641,
+        "paragraph": 286,
+        "range": [
+          1109,
+          172
+        ],
+        "text": "Jo saw a big red headed youth approaching her corner, and fearing he meant to engage her, she slipped into a curtained recess, intending to peep and enjoy herself in peace."
+      }
+    },
+    {
+      "id": "816:47",
+      "sentence": 816,
+      "paragraph": 369,
+      "range": [
+        47,
+        46
+      ],
+      "text": "Jo had saved some bonbons for the little girls",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 780,
+        "paragraph": 355,
+        "range": [
+          213,
+          177
+        ],
+        "text": "They had a merry time over the bonbons and mottoes, and were in the midst of a quiet game of Buzz, with two or three other young people who had strayed in, when Hannah appeared."
+      }
+    },
+    {
+      "id": "817:128",
+      "sentence": 817,
+      "paragraph": 370,
+      "range": [
+        128,
+        25
+      ],
+      "text": "with a maid to wait on me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 579,
+        "paragraph": 266,
+        "range": [
+          0,
+          186
+        ],
+        "text": "On New Year’s Eve the parlor was deserted, for the two younger girls played dressing maids and the two elder were absorbed in the all-important business of ‘getting ready for the party’."
+      }
+    },
+    {
+      "id": "818:75",
+      "sentence": 818,
+      "paragraph": 371,
+      "range": [
+        75,
+        27
+      ],
+      "text": "in spite of our burned hair",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 588,
+        "paragraph": 271,
+        "range": [
+          0,
+          199
+        ],
+        "text": "She did take off the papers, but no cloud of ringlets appeared, for the hair came with the papers, and the horrified hairdresser laid a row of little scorched bundles on the bureau before her victim."
+      }
+    },
+    {
+      "id": "818:115",
+      "sentence": 818,
+      "paragraph": 371,
+      "range": [
+        115,
+        16
+      ],
+      "text": "one glove apiece",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 609,
+        "paragraph": 277,
+        "range": [
+          380,
+          114
+        ],
+        "text": "Each put on one nice light glove, and carried one soiled one, and all pronounced the effect “quite easy and fine”."
+      }
+    },
+    {
+      "id": "818:136",
+      "sentence": 818,
+      "paragraph": 371,
+      "range": [
+        136,
+        37
+      ],
+      "text": "tight slippers that sprain our ankles",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 740,
+        "paragraph": 340,
+        "range": [
+          0,
+          24
+        ],
+        "text": "“I’ve sprained my ankle."
+      }
+    }
+  ]
+}

@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1697:1",
+      "sentence": 1697,
+      "paragraph": 833,
+      "range": [
+        1,
+        78
+      ],
+      "text": "Mr. Collins,” said she, “speaks highly both of Lady Catherine and her daughter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1544,
+        "paragraph": 766,
+        "range": [
+          0,
+          433
+        ],
+        "text": "In describing to her all the grandeur of Lady Catherine and her mansion, with occasional digressions in praise of his own humble abode, and the improvements it was receiving, he was happily employed until the gentlemen joined them; and he found in Mrs. Philips a very attentive listener, whose opinion of his consequence increased with what she heard, and who was resolving to retail it all among her neighbours as soon as she could."
+      }
+    }
+  ]
+}

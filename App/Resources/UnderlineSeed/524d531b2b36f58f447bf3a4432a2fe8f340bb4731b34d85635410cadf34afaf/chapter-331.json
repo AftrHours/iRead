@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4498:65",
+      "sentence": 4498,
+      "paragraph": 1880,
+      "range": [
+        65,
+        65
+      ],
+      "text": "whether she most feared or wished for the appearance of Mr. Darcy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4493,
+        "paragraph": 1878,
+        "range": [
+          237,
+          222
+        ],
+        "text": "She expected every moment that some of the gentlemen would enter the room: she wished, she feared, that the master of the house might be amongst them; and whether she wished or feared it most, she could scarcely determine."
+      }
+    }
+  ]
+}

@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "822:60",
+      "sentence": 822,
+      "paragraph": 431,
+      "range": [
+        60,
+        37
+      ],
+      "text": "though the carriage was not to be had",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 796,
+        "paragraph": 418,
+        "range": [
+          0,
+          62
+        ],
+        "text": "“But, my dear, your father cannot spare the horses, I am sure."
+      }
+    },
+    {
+      "id": "835:55",
+      "sentence": 835,
+      "paragraph": 438,
+      "range": [
+        55,
+        62
+      ],
+      "text": "perhaps we may see something of Captain Carter, before he goes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 761,
+        "paragraph": 396,
+        "range": [
+          0,
+          237
+        ],
+        "text": "Catherine was disconcerted, and made no answer; but Lydia, with perfect indifference, continued to express her admiration of Captain Carter, and her hope of seeing him in the course of the day, as he was going the next morning to London."
+      }
+    },
+    {
+      "id": "836:308",
+      "sentence": 836,
+      "paragraph": 439,
+      "range": [
+        308,
+        34
+      ],
+      "text": "with weary ancles, dirty stockings",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 824,
+        "paragraph": 432,
+        "range": [
+          0,
+          92
+        ],
+        "text": "“How can you be so silly,” cried her mother, “as to think of such a thing, in all this dirt!"
+      }
+    }
+  ]
+}

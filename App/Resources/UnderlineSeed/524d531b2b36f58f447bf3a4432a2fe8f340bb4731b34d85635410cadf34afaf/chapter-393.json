@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5423:314",
+      "sentence": 5423,
+      "paragraph": 2216,
+      "range": [
+        314,
+        62
+      ],
+      "text": "if it were compatible with the secrecy which had been intended",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5411,
+        "paragraph": 2210,
+        "range": [
+          185,
+          28
+        ],
+        "text": "It was to be such a secret!”"
+      }
+    },
+    {
+      "id": "5426:0",
+      "sentence": 5426,
+      "paragraph": 2218,
+      "range": [
+        0,
+        48
+      ],
+      "text": "“Not that I shall, though,” she added to herself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5414,
+        "paragraph": 2212,
+        "range": [
+          0,
+          95
+        ],
+        "text": "“Oh, certainly,” said Elizabeth, though burning with curiosity; “we will ask you no questions.”"
+      }
+    },
+    {
+      "id": "5427:0",
+      "sentence": 5427,
+      "paragraph": 2219,
+      "range": [
+        0,
+        83
+      ],
+      "text": "Jane’s delicate sense of honour would not allow her to speak to Elizabeth privately",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5412,
+        "paragraph": 2211,
+        "range": [
+          0,
+          76
+        ],
+        "text": "“If it was to be a secret,” said Jane, “say not another word on the subject."
+      }
+    }
+  ]
+}

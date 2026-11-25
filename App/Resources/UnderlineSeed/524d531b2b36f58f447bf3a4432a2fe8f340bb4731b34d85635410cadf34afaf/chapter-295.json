@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4051:0",
+      "sentence": 4051,
+      "paragraph": 1705,
+      "range": [
+        0,
+        59
+      ],
+      "text": "On the very last day of the regiment’s remaining in Meryton",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3964,
+        "paragraph": 1674,
+        "range": [
+          64,
+          117
+        ],
+        "text": "It was the last of the regiment’s stay in Meryton, and all the young ladies in the neighbourhood were drooping apace."
+      }
+    }
+  ]
+}

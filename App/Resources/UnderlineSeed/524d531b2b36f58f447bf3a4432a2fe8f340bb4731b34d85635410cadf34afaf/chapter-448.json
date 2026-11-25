@@ -1,1 +1,5 @@
-{"engineVersion":5,"underlines":[{"decidedBy":"rules","range":[3,53],"reference":{"sentence":6389,"range":[321,37],"paragraph":2589,"text":"You must learn some of my philosophy."},"paragraph":2590,"text":"cannot give you credit for any philosophy of the kind","sentence":6391,"kind":"reaction","id":"6391:3"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": []
+}

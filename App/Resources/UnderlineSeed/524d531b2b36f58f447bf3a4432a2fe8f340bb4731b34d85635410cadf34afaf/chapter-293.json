@@ -1,1 +1,48 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4023:211",
+      "sentence": 4023,
+      "paragraph": 1695,
+      "range": [
+        211,
+        68
+      ],
+      "text": "We shall have no peace at Longbourn if Lydia does not go to Brighton",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3983,
+        "paragraph": 1683,
+        "range": [
+          0,
+          82
+        ],
+        "text": "Such were the kind of lamentations resounding perpetually through Longbourn House."
+      }
+    },
+    {
+      "id": "4033:0",
+      "sentence": 4033,
+      "paragraph": 1697,
+      "range": [
+        0,
+        78
+      ],
+      "text": "Had Lydia and her mother known the substance of her conference with her father",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3994,
+        "paragraph": 1687,
+        "range": [
+          85,
+          341
+        ],
+        "text": "As for Elizabeth herself, this invitation was so far from exciting in her the same feelings as in her mother and Lydia, that she considered it as the death-warrant of all possibility of common sense for the latter; and detestable as such a step must make her, were it known, she could not help secretly advising her father not to let her go."
+      }
+    }
+  ]
+}

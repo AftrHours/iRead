@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5365:63",
+      "sentence": 5365,
+      "paragraph": 2196,
+      "range": [
+        63,
+        55
+      ],
+      "text": "I do not particularly like your way of getting husbands",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5351,
+        "paragraph": 2190,
+        "range": [
+          254,
+          34
+        ],
+        "text": "That is the place to get husbands."
+      }
+    },
+    {
+      "id": "5368:0",
+      "sentence": 5368,
+      "paragraph": 2198,
+      "range": [
+        0,
+        66
+      ],
+      "text": "No one but Mrs. Bennet regretted that their stay would be so short",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5354,
+        "paragraph": 2191,
+        "range": [
+          44,
+          66
+        ],
+        "text": "But, my dear Lydia, I don’t at all like your going such a way off."
+      }
+    }
+  ]
+}

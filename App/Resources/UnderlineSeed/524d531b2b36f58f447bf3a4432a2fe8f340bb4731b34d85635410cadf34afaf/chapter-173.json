@@ -1,1 +1,90 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2328:288",
+      "sentence": 2328,
+      "paragraph": 1089,
+      "range": [
+        288,
+        29
+      ],
+      "text": "I ask only a comfortable home",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2277,
+        "paragraph": 1067,
+        "range": [
+          366,
+          291
+        ],
+        "text": "The stupidity with which he was favoured by nature must guard his courtship from any charm that could make a woman wish for its continuance; and Miss Lucas, who accepted him solely from the pure and disinterested desire of an establishment, cared not how soon that establishment were gained."
+      }
+    },
+    {
+      "id": "2333:462",
+      "sentence": 2333,
+      "paragraph": 1090,
+      "range": [
+        462,
+        61
+      ],
+      "text": "Charlotte’s opinion of matrimony was not exactly like her own",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2293,
+        "paragraph": 1072,
+        "range": [
+          475,
+          270
+        ],
+        "text": "Without thinking highly either of men or of matrimony, marriage had always been her object: it was the only honourable provision for well-educated young women of small fortune, and, however uncertain of giving happiness, must be their pleasantest preservative from want."
+      }
+    },
+    {
+      "id": "2333:615",
+      "sentence": 2333,
+      "paragraph": 1090,
+      "range": [
+        615,
+        52
+      ],
+      "text": "sacrificed every better feeling to worldly advantage",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2293,
+        "paragraph": 1072,
+        "range": [
+          475,
+          270
+        ],
+        "text": "Without thinking highly either of men or of matrimony, marriage had always been her object: it was the only honourable provision for well-educated young women of small fortune, and, however uncertain of giving happiness, must be their pleasantest preservative from want."
+      }
+    },
+    {
+      "id": "2335:858",
+      "sentence": 2335,
+      "paragraph": 1090,
+      "range": [
+        858,
+        74
+      ],
+      "text": "impossible for that friend to be tolerably happy in the lot she had chosen",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2328,
+        "paragraph": 1089,
+        "range": [
+          288,
+          229
+        ],
+        "text": "I ask only a comfortable home; and, considering Mr. Collins’s character, connections, and situation in life, I am convinced that my chance of happiness with him is as fair as most people can boast on entering the marriage state.”"
+      }
+    }
+  ]
+}

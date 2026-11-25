@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "538:40",
+      "sentence": 538,
+      "paragraph": 288,
+      "range": [
+        40,
+        23
+      ],
+      "text": "but proud and conceited",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 533,
+        "paragraph": 285,
+        "range": [
+          427,
+          36
+        ],
+        "text": "Their manners are not equal to his.”"
+      }
+    },
+    {
+      "id": "543:0",
+      "sentence": 543,
+      "paragraph": 290,
+      "range": [
+        0,
+        65
+      ],
+      "text": "His sisters were very anxious for his having an estate of his own",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 541,
+        "paragraph": 289,
+        "range": [
+          0,
+          164
+        ],
+        "text": "Mr. Bingley inherited property to the amount of nearly a hundred thousand pounds from his father, who had intended to purchase an estate, but did not live to do it."
+      }
+    },
+    {
+      "id": "543:119",
+      "sentence": 543,
+      "paragraph": 290,
+      "range": [
+        119,
+        62
+      ],
+      "text": "Miss Bingley was by no means unwilling to preside at his table",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 535,
+        "paragraph": 286,
+        "range": [
+          88,
+          140
+        ],
+        "text": "Miss Bingley is to live with her brother, and keep his house; and I am much mistaken if we shall not find a very charming neighbour in her.”"
+      }
+    }
+  ]
+}

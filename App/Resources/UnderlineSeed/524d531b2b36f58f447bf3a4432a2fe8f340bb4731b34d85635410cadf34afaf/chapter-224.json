@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3004:0",
+      "sentence": 3004,
+      "paragraph": 1337,
+      "range": [
+        0,
+        64
+      ],
+      "text": "From the drawing-room they could distinguish nothing in the lane",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3002,
+        "paragraph": 1336,
+        "range": [
+          730,
+          47
+        ],
+        "text": "The room in which the ladies sat was backwards."
+      }
+    },
+    {
+      "id": "3004:103",
+      "sentence": 3004,
+      "paragraph": 1337,
+      "range": [
+        103,
+        42
+      ],
+      "text": "the knowledge of what carriages went along",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3001,
+        "paragraph": 1336,
+        "range": [
+          226,
+          503
+        ],
+        "text": "While Sir William was with them, Mr. Collins devoted his mornings to driving him out in his gig, and showing him the country: but when he went away, the whole family returned to their usual employments, and Elizabeth was thankful to find that they did not see more of her cousin by the alteration; for the chief of the time between breakfast and dinner was now passed by him either at work in the garden, or in reading and writing, and looking out of window in his own book room, which fronted the road."
+      }
+    }
+  ]
+}

@@ -1,1 +1,69 @@
-{"underlines":[],"parserVersion":1,"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5276:102",
+      "sentence": 5276,
+      "paragraph": 2163,
+      "range": [
+        102,
+        77
+      ],
+      "text": "An union of a different tendency, and precluding the possibility of the other",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5274,
+        "paragraph": 2162,
+        "range": [
+          199,
+          264
+        ],
+        "text": "It was an union that must have been to the advantage of both: by her ease and liveliness, his mind might have been softened, his manners improved; and from his judgment, information, and knowledge of the world, she must have received benefit of greater importance."
+      }
+    },
+    {
+      "id": "5280:46",
+      "sentence": 5280,
+      "paragraph": 2165,
+      "range": [
+        46,
+        50
+      ],
+      "text": "To Mr. Bennet’s acknowledgments he briefly replied",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5229,
+        "paragraph": 2147,
+        "range": [
+          348,
+          248
+        ],
+        "text": "In terms of grateful acknowledgment for the kindness of his brother, though expressed most concisely, he then delivered on paper his perfect approbation of all that was done, and his willingness to fulfil the engagements that had been made for him."
+      }
+    },
+    {
+      "id": "5280:195",
+      "sentence": 5280,
+      "paragraph": 2165,
+      "range": [
+        195,
+        65
+      ],
+      "text": "entreaties that the subject might never be mentioned to him again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5236,
+        "paragraph": 2149,
+        "range": [
+          443,
+          134
+        ],
+        "text": "He begged to know further particulars of what he was indebted to his brother; but was too angry with Lydia to send any message to her."
+      }
+    }
+  ]
+}

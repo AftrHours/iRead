@@ -1,1 +1,90 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1419:178",
+      "sentence": 1419,
+      "paragraph": 717,
+      "range": [
+        178,
+        74
+      ],
+      "text": "There is no knowing how estates will go when once they come to be entailed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1367,
+        "paragraph": 694,
+        "range": [
+          0,
+          71
+        ],
+        "text": "Jane and Elizabeth attempted to explain to her the nature of an entail."
+      }
+    },
+    {
+      "id": "1422:268",
+      "sentence": 1422,
+      "paragraph": 718,
+      "range": [
+        268,
+        38
+      ],
+      "text": "perhaps, when we are better acquainted",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1380,
+        "paragraph": 701,
+        "range": [
+          1366,
+          226
+        ],
+        "text": "I cannot be otherwise than concerned at being the means of injuring your amiable daughters, and beg leave to apologize for it, as well as to assure you of my readiness to make them every possible amends; but of this hereafter."
+      }
+    },
+    {
+      "id": "1425:329",
+      "sentence": 1425,
+      "paragraph": 719,
+      "range": [
+        329,
+        45
+      ],
+      "text": "his viewing it all as his own future property",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1369,
+        "paragraph": 695,
+        "range": [
+          0,
+          135
+        ],
+        "text": "“It certainly is a most iniquitous affair,” said Mr. Bennet; “and nothing can clear Mr. Collins from the guilt of inheriting Longbourn."
+      }
+    },
+    {
+      "id": "1429:814",
+      "sentence": 1429,
+      "paragraph": 719,
+      "range": [
+        814,
+        56
+      ],
+      "text": "he continued to apologize for about a quarter of an hour",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1399,
+        "paragraph": 710,
+        "range": [
+          31,
+          86
+        ],
+        "text": "There is a mixture of servility and self-importance in his letter which promises well."
+      }
+    }
+  ]
+}

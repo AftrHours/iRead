@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6769:73",
+      "sentence": 6769,
+      "paragraph": 2720,
+      "range": [
+        73,
+        78
+      ],
+      "text": "His affection for her soon sunk into indifference: hers lasted a little longer",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6758,
+        "paragraph": 2717,
+        "range": [
+          17,
+          83
+        ],
+        "text": "If you love Mr. Darcy half so well as I do my dear Wickham, you must be very happy."
+      }
+    },
+    {
+      "id": "6771:568",
+      "sentence": 6771,
+      "paragraph": 2720,
+      "range": [
+        568,
+        39
+      ],
+      "text": "even Bingley’s good-humour was overcome",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6743,
+        "paragraph": 2711,
+        "range": [
+          65,
+          124
+        ],
+        "text": "So near a vicinity to her mother and Meryton relations was not desirable even to his easy temper, or her affectionate heart."
+      }
+    }
+  ]
+}

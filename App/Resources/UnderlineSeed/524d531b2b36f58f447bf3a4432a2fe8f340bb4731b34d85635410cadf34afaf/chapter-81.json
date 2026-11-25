@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[{"id":"1154:131","text":"is to appertain to this request","reference":{"sentence":1150,"range":[94,128],"paragraph":599,"text":"A regard for the requester would often make one readily yield to a request, without waiting for arguments to reason one into it."},"kind":"thing","paragraph":600,"sentence":1154,"range":[131,31],"decidedBy":"rules"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1147:1",
+      "sentence": 1147,
+      "paragraph": 597,
+      "range": [
+        1,
+        53
+      ],
+      "text": "To yield readily—easily—to the persuasion of a friend",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1137,
+        "paragraph": 590,
+        "range": [
+          102,
+          281
+        ],
+        "text": "Your conduct would be quite as dependent on chance as that of any man I know; and if, as you were mounting your horse, a friend were to say, ‘Bingley, you had better stay till next week,’ you would probably do it—you would probably not go—and, at another word, might stay a month.”"
+      }
+    },
+    {
+      "id": "1151:257",
+      "sentence": 1151,
+      "paragraph": 599,
+      "range": [
+        257,
+        50
+      ],
+      "text": "such a case as you have supposed about Mr. Bingley",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1137,
+        "paragraph": 590,
+        "range": [
+          102,
+          281
+        ],
+        "text": "Your conduct would be quite as dependent on chance as that of any man I know; and if, as you were mounting your horse, a friend were to say, ‘Bingley, you had better stay till next week,’ you would probably do it—you would probably not go—and, at another word, might stay a month.”"
+      }
+    }
+  ]
+}

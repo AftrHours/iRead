@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4536:72",
+      "sentence": 4536,
+      "paragraph": 1896,
+      "range": [
+        72,
+        62
+      ],
+      "text": "having forced him to say what gave no one any pain but herself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4531,
+        "paragraph": 1893,
+        "range": [
+          26,
+          97
+        ],
+        "text": "He was resolutely silent, however; and, from a determination of making him speak, she continued,—"
+      }
+    },
+    {
+      "id": "4539:317",
+      "sentence": 4539,
+      "paragraph": 1897,
+      "range": [
+        317,
+        47
+      ],
+      "text": "his house, his fruit, of everything but himself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4497,
+        "paragraph": 1879,
+        "range": [
+          308,
+          201
+        ],
+        "text": "There was now employment for the whole party; for though they could not all talk, they could all eat; and the beautiful pyramids of grapes, nectarines, and peaches, soon collected them round the table."
+      }
+    }
+  ]
+}

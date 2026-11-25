@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4181:35",
+      "sentence": 4181,
+      "paragraph": 1756,
+      "range": [
+        35,
+        27
+      ],
+      "text": "I might have been mistress!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4168,
+        "paragraph": 1752,
+        "range": [
+          465,
+          128
+        ],
+        "text": "They were all of them warm in their admiration; and at that moment she felt that to be mistress of Pemberley might be something!"
+      }
+    }
+  ]
+}

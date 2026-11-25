@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[{"kind":"action","paragraph":1140,"decidedBy":"rules","sentence":2457,"id":"2457:202","text":"mentioned two instances","reference":{"range":[26,96],"paragraph":1137,"sentence":2442,"text":"I have met with two instances lately: one I will not mention, the other is Charlotte’s marriage."},"range":[202,23]}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2453:659",
+      "sentence": 2453,
+      "paragraph": 1139,
+      "range": [
+        659,
+        28
+      ],
+      "text": "that selfishness is prudence",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2448,
+        "paragraph": 1138,
+        "range": [
+          163,
+          81
+        ],
+        "text": "Consider Mr. Collins’s respectability, and Charlotte’s prudent, steady character."
+      }
+    },
+    {
+      "id": "2457:198",
+      "sentence": 2457,
+      "paragraph": 1140,
+      "range": [
+        198,
+        28
+      ],
+      "text": "You mentioned two instances.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2442,
+        "paragraph": 1137,
+        "range": [
+          26,
+          96
+        ],
+        "text": "I have met with two instances lately: one I will not mention, the other is Charlotte’s marriage."
+      }
+    },
+    {
+      "id": "2458:286",
+      "sentence": 2458,
+      "paragraph": 1140,
+      "range": [
+        286,
+        38
+      ],
+      "text": "not to pain me by thinking that person",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2442,
+        "paragraph": 1137,
+        "range": [
+          26,
+          96
+        ],
+        "text": "I have met with two instances lately: one I will not mention, the other is Charlotte’s marriage."
+      }
+    }
+  ]
+}

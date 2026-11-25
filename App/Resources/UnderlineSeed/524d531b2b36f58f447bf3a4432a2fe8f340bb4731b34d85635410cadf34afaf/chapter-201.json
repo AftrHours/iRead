@@ -1,1 +1,111 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2706:181",
+      "sentence": 2706,
+      "paragraph": 1224,
+      "range": [
+        181,
+        61
+      ],
+      "text": "she would have been his only choice, had fortune permitted it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2600,
+        "paragraph": 1192,
+        "range": [
+          193,
+          125
+        ],
+        "text": "Do not involve yourself, or endeavour to involve him, in an affection which the want of fortune would make so very imprudent."
+      }
+    },
+    {
+      "id": "2709:102",
+      "sentence": 2709,
+      "paragraph": 1225,
+      "range": [
+        102,
+        69
+      ],
+      "text": "I am now convinced, my dear aunt, that I have never been much in love",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2615,
+        "paragraph": 1198,
+        "range": [
+          38,
+          69
+        ],
+        "text": "At present I am not in love with Mr. Wickham; no, I certainly am not."
+      }
+    },
+    {
+      "id": "2710:360",
+      "sentence": 2710,
+      "paragraph": 1225,
+      "range": [
+        360,
+        41
+      ],
+      "text": "they are even impartial towards Miss King",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2707,
+        "paragraph": 1224,
+        "range": [
+          244,
+          272
+        ],
+        "text": "The sudden acquisition of ten thousand pounds was the most remarkable charm of the young lady to whom he was now rendering himself agreeable; but Elizabeth, less clear-sighted perhaps in this case than in Charlotte’s, did not quarrel with him for his wish of independence."
+      }
+    },
+    {
+      "id": "2713:554",
+      "sentence": 2713,
+      "paragraph": 1225,
+      "range": [
+        554,
+        34
+      ],
+      "text": "My watchfulness has been effectual",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2624,
+        "paragraph": 1198,
+        "range": [
+          998,
+          53
+        ],
+        "text": "When I am in company with him, I will not be wishing."
+      }
+    },
+    {
+      "id": "2716:976",
+      "sentence": 2716,
+      "paragraph": 1225,
+      "range": [
+        976,
+        70
+      ],
+      "text": "handsome young men must have something to live on as well as the plain",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2707,
+        "paragraph": 1224,
+        "range": [
+          244,
+          272
+        ],
+        "text": "The sudden acquisition of ten thousand pounds was the most remarkable charm of the young lady to whom he was now rendering himself agreeable; but Elizabeth, less clear-sighted perhaps in this case than in Charlotte’s, did not quarrel with him for his wish of independence."
+      }
+    }
+  ]
+}

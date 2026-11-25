@@ -1,1 +1,69 @@
-{"underlines":[],"parserVersion":1,"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5248:144",
+      "sentence": 5248,
+      "paragraph": 2154,
+      "range": [
+        144,
+        43
+      ],
+      "text": "before you take any, or all of these houses",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5244,
+        "paragraph": 2152,
+        "range": [
+          264,
+          206
+        ],
+        "text": "She was busily searching through the neighbourhood for a proper situation for her daughter; and, without knowing or considering what their income might be, rejected many as deficient in size and importance."
+      }
+    },
+    {
+      "id": "5251:158",
+      "sentence": 5251,
+      "paragraph": 2155,
+      "range": [
+        158,
+        58
+      ],
+      "text": "would not advance a guinea to buy clothes for his daughter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5243,
+        "paragraph": 2152,
+        "range": [
+          0,
+          263
+        ],
+        "text": "The marriage of a daughter, which had been the first object of her wishes since Jane was sixteen, was now on the point of accomplishment, and her thoughts and her words ran wholly on those attendants of elegant nuptials, fine muslins, new carriages, and servants."
+      }
+    },
+    {
+      "id": "5252:218",
+      "sentence": 5252,
+      "paragraph": 2155,
+      "range": [
+        218,
+        75
+      ],
+      "text": "He protested that she should receive from him no mark of affection whatever",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5236,
+        "paragraph": 2149,
+        "range": [
+          443,
+          134
+        ],
+        "text": "He begged to know further particulars of what he was indebted to his brother; but was too angry with Lydia to send any message to her."
+      }
+    }
+  ]
+}

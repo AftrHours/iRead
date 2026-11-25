@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5199:31",
+      "sentence": 5199,
+      "paragraph": 2139,
+      "range": [
+        31,
+        46
+      ],
+      "text": "the particulars of calico, muslin, and cambric",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5177,
+        "paragraph": 2134,
+        "range": [
+          271,
+          37
+        ],
+        "text": "But the clothes, the wedding clothes!"
+      }
+    },
+    {
+      "id": "5206:311",
+      "sentence": 5206,
+      "paragraph": 2140,
+      "range": [
+        311,
+        3
+      ],
+      "text": "Oh!",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5181,
+        "paragraph": 2134,
+        "range": [
+          475,
+          31
+        ],
+        "text": "Ring the bell, Kitty, for Hill."
+      }
+    },
+    {
+      "id": "5210:0",
+      "sentence": 5210,
+      "paragraph": 2141,
+      "range": [
+        0,
+        45
+      ],
+      "text": "Mrs. Hill began instantly to express her joy.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5042,
+        "paragraph": 2078,
+        "range": [
+          0,
+          487
+        ],
+        "text": "TWO days after Mr. Bennet’s return, as Jane and Elizabeth were walking together in the shrubbery behind the house, they saw the housekeeper coming towards them, and concluding that she came to call them to their mother, went forward to meet her; but instead of the expected summons, when they approached her, she said to Miss Bennet, “I beg your pardon, madam, for interrupting you, but I was in hopes you might have got some good news from town, so I took the liberty of coming to ask.”"
+      }
+    }
+  ]
+}

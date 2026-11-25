@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[{"text":"is Mr. Wickham’s intention to go into the Regulars; and, among his former friends","id":"5284:233","reference":{"text":"The principal purport of his letter was to inform them, that Mr. Wickham had resolved on quitting the militia.","paragraph":2166,"sentence":5281,"range":[0,110]},"kind":"thing","paragraph":2167,"sentence":5284,"range":[233,81],"decidedBy":"rules"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5295:29",
+      "sentence": 5295,
+      "paragraph": 2169,
+      "range": [
+        29,
+        22
+      ],
+      "text": "saw all the advantages",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5286,
+        "paragraph": 2167,
+        "range": [
+          476,
+          67
+        ],
+        "text": "It is an advantage to have it so far from this part of the kingdom."
+      }
+    }
+  ]
+}

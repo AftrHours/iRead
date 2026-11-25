@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6350:0",
+      "sentence": 6350,
+      "paragraph": 2574,
+      "range": [
+        0,
+        23
+      ],
+      "text": "“It taught me to hope,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6348,
+        "paragraph": 2573,
+        "range": [
+          140,
+          542
+        ],
+        "text": "She soon learnt that they were indebted for their present good understanding to the efforts of his aunt, who did call on him in her return through London, and there relate her journey to Longbourn, its motive, and the substance of her conversation with Elizabeth; dwelling emphatically on every expression of the latter, which, in her Ladyship’s apprehension, peculiarly denoted her perverseness and assurance, in the belief that such a relation must assist her endeavours to obtain that promise from her nephew which she had refused to give."
+      }
+    }
+  ]
+}

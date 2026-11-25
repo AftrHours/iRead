@@ -1,1 +1,132 @@
-{"parserVersion":1,"underlines":[{"id":"716:5","text":"excel so much in the dance, Miss Eliza","reference":{"range":[0,45],"paragraph":370,"sentence":708,"text":"“My dear Miss Eliza, why are not you dancing?"},"kind":"action","paragraph":373,"range":[5,38],"sentence":716,"decidedBy":"rules"},{"id":"718:20","text":"considering the inducement, my dear Miss Eliza","reference":{"range":[0,45],"paragraph":370,"sentence":708,"text":"“My dear Miss Eliza, why are not you dancing?"},"kind":"action","paragraph":375,"range":[20,46],"sentence":718,"decidedBy":"rules"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "712:1",
+      "sentence": 712,
+      "paragraph": 371,
+      "range": [
+        1,
+        54
+      ],
+      "text": "Indeed, sir, I have not the least intention of dancing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 664,
+        "paragraph": 340,
+        "range": [
+          920,
+          156
+        ],
+        "text": "Of this she was perfectly unaware: to her he was only the man who made himself agreeable nowhere, and who had not thought her handsome enough to dance with."
+      }
+    },
+    {
+      "id": "714:33",
+      "sentence": 714,
+      "paragraph": 372,
+      "range": [
+        33,
+        46
+      ],
+      "text": "requested to be allowed the honour of her hand",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 665,
+        "paragraph": 341,
+        "range": [
+          0,
+          131
+        ],
+        "text": "He began to wish to know more of her; and, as a step towards conversing with her himself, attended to her conversation with others."
+      }
+    },
+    {
+      "id": "716:106",
+      "sentence": 716,
+      "paragraph": 373,
+      "range": [
+        106,
+        55
+      ],
+      "text": "though this gentleman dislikes the amusement in general",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 693,
+        "paragraph": 358,
+        "range": [
+          0,
+          139
+        ],
+        "text": "“Certainly, sir; and it has the advantage also of being in vogue amongst the less polished societies of the world: every savage can dance.”"
+      }
+    },
+    {
+      "id": "719:0",
+      "sentence": 719,
+      "paragraph": 376,
+      "range": [
+        0,
+        40
+      ],
+      "text": "Elizabeth looked archly, and turned away",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 663,
+        "paragraph": 340,
+        "range": [
+          627,
+          292
+        ],
+        "text": "Though he had detected with a critical eye more than one failure of perfect symmetry in her form, he was forced to acknowledge her figure to be light and pleasing; and in spite of his asserting that her manners were not those of the fashionable world, he was caught by their easy playfulness."
+      }
+    },
+    {
+      "id": "720:101",
+      "sentence": 720,
+      "paragraph": 376,
+      "range": [
+        101,
+        44
+      ],
+      "text": "he was thinking of her with some complacency",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 659,
+        "paragraph": 340,
+        "range": [
+          0,
+          178
+        ],
+        "text": "Occupied in observing Mr. Bingley’s attention to her sister, Elizabeth was far from suspecting that she was herself becoming an object of some interest in the eyes of his friend."
+      }
+    },
+    {
+      "id": "723:21",
+      "sentence": 723,
+      "paragraph": 379,
+      "range": [
+        21,
+        29
+      ],
+      "text": "how insupportable it would be",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 689,
+        "paragraph": 356,
+        "range": [
+          0,
+          255
+        ],
+        "text": "Mr. Darcy stood near them in silent indignation at such a mode of passing the evening, to the exclusion of all conversation, and was too much engrossed by his own thoughts to perceive that Sir William Lucas was his neighbour, till Sir William thus began:—"
+      }
+    }
+  ]
+}

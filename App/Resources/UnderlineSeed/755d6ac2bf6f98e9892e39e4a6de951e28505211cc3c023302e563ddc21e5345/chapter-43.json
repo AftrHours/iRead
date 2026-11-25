@@ -1,1 +1,405 @@
-{"engineVersion":5,"underlines":[{"reference":{"paragraph":3582,"range":[525,259],"text":"Old Hannah never wearied of concocting dainty dishes to tempt a capricious appetite, dropping tears as she worked, and from across the sea came little gifts and cheerful letters, seeming to bring breaths of warmth and fragrance from lands that know no winter.","sentence":8552},"sentence":8554,"range":[837,65],"kind":"action","id":"8554:837","text":"showered down gifts miraculously suited to their tastes and needs","decidedBy":"rules","paragraph":3583},{"reference":{"paragraph":3582,"range":[190,191],"text":"Father’s best books found their way there, Mother’s easy chair, Jo’s desk, Amy’s finest sketches, and every day Meg brought her babies on a loving pilgrimage, to make sunshine for Aunty Beth.","sentence":8550},"sentence":8571,"range":[15,55],"kind":"action","id":"8571:15","text":"woke Jo found Beth reading in her well-worn little book","decidedBy":"rules","paragraph":3587},{"reference":{"paragraph":3583,"range":[250,653],"text":"The feeble fingers were never idle, and one of her pleasures was to make little things for the school children daily passing to and fro, to drop a pair of mittens from her window for a pair of purple hands, a needlebook for some small mother of many dolls, penwipers for young penmen toiling through forests of pothooks, scrapbooks for picture-loving eyes, and all manner of pleasant devices, till the reluctant climbers of the ladder of learning found their way strewn with flowers, as it were, and came to regard the gentle giver as a sort of fairy godmother, who sat above there, and showered down gifts miraculously suited to their tastes and needs.","sentence":8554},"sentence":8571,"range":[188,39],"kind":"action","id":"8571:188","text":"dropped through the transparent fingers","decidedBy":"rules","paragraph":3587},{"reference":{"paragraph":3583,"range":[0,249],"text":"Here, cherished like a household saint in its shrine, sat Beth, tranquil and busy as ever, for nothing could change the sweet, unselfish nature, and even while preparing to leave life, she tried to make it happier for those who should remain behind.","sentence":8553},"sentence":8571,"range":[293,47],"kind":"action","id":"8571:293","text":"feeling that Beth, in her simple, unselfish way","decidedBy":"rules","paragraph":3587},{"reference":{"paragraph":3580,"range":[0,24],"text":"THE VALLEY OF THE SHADOW","sentence":8546},"sentence":8580,"range":[0,29],"kind":"action","id":"8580:0","text":"Sitting patient in the shadow","decidedBy":"rules","paragraph":3592},{"reference":{"paragraph":3588,"range":[128,364],"text":"For with eyes made clear by many tears, and a heart softened by the tenderest sorrow, she recognized the beauty of her sister’s life—uneventful, unambitious, yet full of the genuine virtues which ‘smell sweet, and blossom in the dust’, the self-forgetfulness that makes the humblest on earth remembered soonest in heaven, the true success which is possible to all.","sentence":8573},"sentence":8590,"range":[0,34],"kind":"action","id":"8590:0","text":"Leave me, as a gift, those virtues","decidedBy":"rules","paragraph":3602},{"reference":{"paragraph":3596,"range":[0,34],"text":"Earthly joys and hopes and sorrows","sentence":8584},"sentence":8616,"range":[16,17],"kind":"action","id":"8616:16","text":"born of my sorrow","decidedBy":"rules","paragraph":3628},{"reference":{"paragraph":3588,"range":[128,364],"text":"For with eyes made clear by many tears, and a heart softened by the tenderest sorrow, she recognized the beauty of her sister’s life—uneventful, unambitious, yet full of the genuine virtues which ‘smell sweet, and blossom in the dust’, the self-forgetfulness that makes the humblest on earth remembered soonest in heaven, the true success which is possible to all.","sentence":8573},"sentence":8639,"range":[42,31],"kind":"action","id":"8639:42","text":"grew clearer, the earth greener","decidedBy":"rules","paragraph":3639},{"reference":{"paragraph":3634,"range":[30,60],"text":"and Jo’s head went down upon the pillow beside her sister’s.","sentence":8629},"sentence":8644,"range":[248,67],"kind":"action","id":"8644:248","text":"streamed in like a benediction over the placid face upon the pillow","decidedBy":"rules","paragraph":3642}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "8554:250",
+      "sentence": 8554,
+      "paragraph": 3583,
+      "range": [
+        250,
+        34
+      ],
+      "text": "The feeble fingers were never idle",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8549,
+        "paragraph": 3582,
+        "range": [
+          0,
+          189
+        ],
+        "text": "The pleasantest room in the house was set apart for Beth, and in it was gathered everything that she most loved, flowers, pictures, her piano, the little worktable, and the beloved pussies."
+      }
+    },
+    {
+      "id": "8559:116",
+      "sentence": 8559,
+      "paragraph": 3585,
+      "range": [
+        116,
+        60
+      ],
+      "text": "Beth said the needle was ‘so heavy’, and put it down forever",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8554,
+        "paragraph": 3583,
+        "range": [
+          250,
+          653
+        ],
+        "text": "The feeble fingers were never idle, and one of her pleasures was to make little things for the school children daily passing to and fro, to drop a pair of mittens from her window for a pair of purple hands, a needlebook for some small mother of many dolls, penwipers for young penmen toiling through forests of pothooks, scrapbooks for picture-loving eyes, and all manner of pleasant devices, till the reluctant climbers of the ladder of learning found their way strewn with flowers, as it were, and came to regard the gentle giver as a sort of fairy godmother, who sat above there, and showered down gifts miraculously suited to their tastes and needs."
+      }
+    },
+    {
+      "id": "8564:760",
+      "sentence": 8564,
+      "paragraph": 3585,
+      "range": [
+        760,
+        47
+      ],
+      "text": "the old peace returned more beautiful than ever",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8553,
+        "paragraph": 3583,
+        "range": [
+          0,
+          249
+        ],
+        "text": "Here, cherished like a household saint in its shrine, sat Beth, tranquil and busy as ever, for nothing could change the sweet, unselfish nature, and even while preparing to leave life, she tried to make it happier for those who should remain behind."
+      }
+    },
+    {
+      "id": "8567:237",
+      "sentence": 8567,
+      "paragraph": 3586,
+      "range": [
+        237,
+        27
+      ],
+      "text": "‘tried not to be a trouble’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8553,
+        "paragraph": 3583,
+        "range": [
+          0,
+          249
+        ],
+        "text": "Here, cherished like a household saint in its shrine, sat Beth, tranquil and busy as ever, for nothing could change the sweet, unselfish nature, and even while preparing to leave life, she tried to make it happier for those who should remain behind."
+      }
+    },
+    {
+      "id": "8571:478",
+      "sentence": 8571,
+      "paragraph": 3587,
+      "range": [
+        478,
+        27
+      ],
+      "text": "the music she loved so well",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8549,
+        "paragraph": 3582,
+        "range": [
+          0,
+          189
+        ],
+        "text": "The pleasantest room in the house was set apart for Beth, and in it was gathered everything that she most loved, flowers, pictures, her piano, the little worktable, and the beloved pussies."
+      }
+    },
+    {
+      "id": "8573:214",
+      "sentence": 8573,
+      "paragraph": 3588,
+      "range": [
+        214,
+        46
+      ],
+      "text": "she recognized the beauty of her sister’s life",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8570,
+        "paragraph": 3586,
+        "range": [
+          492,
+          282
+        ],
+        "text": "Lessons in patience were so sweetly taught her that she could not fail to learn them, charity for all, the lovely spirit that can forgive and truly forget unkindness, the loyalty to duty that makes the hardest easy, and the sincere faith that fears nothing, but trusts undoubtingly."
+      }
+    },
+    {
+      "id": "8578:185",
+      "sentence": 8578,
+      "paragraph": 3590,
+      "range": [
+        185,
+        93
+      ],
+      "text": "who lay on the rug, with the tongs beside her, ready to wake up the minute the log fell apart",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8567,
+        "paragraph": 3586,
+        "range": [
+          87,
+          178
+        ],
+        "text": "She slept on a couch in the room, waking often to renew the fire, to feed, lift, or wait upon the patient creature who seldom asked for anything, and ‘tried not to be a trouble’."
+      }
+    },
+    {
+      "id": "8580:0",
+      "sentence": 8580,
+      "paragraph": 3592,
+      "range": [
+        0,
+        29
+      ],
+      "text": "Sitting patient in the shadow",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8567,
+        "paragraph": 3586,
+        "range": [
+          87,
+          178
+        ],
+        "text": "She slept on a couch in the room, waking often to renew the fire, to feed, lift, or wait upon the patient creature who seldom asked for anything, and ‘tried not to be a trouble’."
+      }
+    },
+    {
+      "id": "8586:0",
+      "sentence": 8586,
+      "paragraph": 3598,
+      "range": [
+        0,
+        28
+      ],
+      "text": "Of the deep and solemn river",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8565,
+        "paragraph": 3585,
+        "range": [
+          809,
+          302
+        ],
+        "text": "With the wreck of her frail body, Beth’s soul grew strong, and though she said little, those about her felt that she was ready, saw that the first pilgrim called was likewise the fittest, and waited with her on the shore, trying to see the Shining Ones coming to receive her when she crossed the river."
+      }
+    },
+    {
+      "id": "8592:0",
+      "sentence": 8592,
+      "paragraph": 3604,
+      "range": [
+        0,
+        37
+      ],
+      "text": "Dear, bequeath me that great patience",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8570,
+        "paragraph": 3586,
+        "range": [
+          492,
+          282
+        ],
+        "text": "Lessons in patience were so sweetly taught her that she could not fail to learn them, charity for all, the lovely spirit that can forgive and truly forget unkindness, the loyalty to duty that makes the hardest easy, and the sincere faith that fears nothing, but trusts undoubtingly."
+      }
+    },
+    {
+      "id": "8602:0",
+      "sentence": 8602,
+      "paragraph": 3614,
+      "range": [
+        0,
+        38
+      ],
+      "text": "Can pardon wrong for love’s dear sake—",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8570,
+        "paragraph": 3586,
+        "range": [
+          492,
+          282
+        ],
+        "text": "Lessons in patience were so sweetly taught her that she could not fail to learn them, charity for all, the lovely spirit that can forgive and truly forget unkindness, the loyalty to duty that makes the hardest easy, and the sincere faith that fears nothing, but trusts undoubtingly."
+      }
+    },
+    {
+      "id": "8612:0",
+      "sentence": 8612,
+      "paragraph": 3624,
+      "range": [
+        0,
+        33
+      ],
+      "text": "Henceforth, safe across the river",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8565,
+        "paragraph": 3585,
+        "range": [
+          809,
+          302
+        ],
+        "text": "With the wreck of her frail body, Beth’s soul grew strong, and though she said little, those about her felt that she was ready, saw that the first pilgrim called was likewise the fittest, and waited with her on the shore, trying to see the Shining Ones coming to receive her when she crossed the river."
+      }
+    },
+    {
+      "id": "8620:0",
+      "sentence": 8620,
+      "paragraph": 3632,
+      "range": [
+        0,
+        56
+      ],
+      "text": "Blurred and blotted, faulty and feeble as the lines were",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8575,
+        "paragraph": 3589,
+        "range": [
+          280,
+          100
+        ],
+        "text": "The name caught her eye and the blurred look of the lines made her sure that tears had fallen on it."
+      }
+    },
+    {
+      "id": "8621:349",
+      "sentence": 8621,
+      "paragraph": 3632,
+      "range": [
+        349,
+        28
+      ],
+      "text": "the charred log fell asunder",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8578,
+        "paragraph": 3590,
+        "range": [
+          63,
+          216
+        ],
+        "text": "She shows me all her things, and I don’t think she’ll mind if I look at this”, thought Beth, with a glance at her sister, who lay on the rug, with the tongs beside her, ready to wake up the minute the log fell apart."
+      }
+    },
+    {
+      "id": "8623:0",
+      "sentence": 8623,
+      "paragraph": 3633,
+      "range": [
+        0,
+        32
+      ],
+      "text": "“Not asleep, but so happy, dear.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8578,
+        "paragraph": 3590,
+        "range": [
+          63,
+          216
+        ],
+        "text": "She shows me all her things, and I don’t think she’ll mind if I look at this”, thought Beth, with a glance at her sister, who lay on the rug, with the tongs beside her, ready to wake up the minute the log fell apart."
+      }
+    },
+    {
+      "id": "8630:0",
+      "sentence": 8630,
+      "paragraph": 3635,
+      "range": [
+        0,
+        44
+      ],
+      "text": "“Then I don’t feel as if I’d wasted my life.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8620,
+        "paragraph": 3632,
+        "range": [
+          0,
+          296
+        ],
+        "text": "Blurred and blotted, faulty and feeble as the lines were, they brought a look of inexpressible comfort to Beth’s face, for her one regret had been that she had done so little, and this seemed to assure her that her life had not been useless, that her death would not bring the despair she feared."
+      }
+    },
+    {
+      "id": "8638:37",
+      "sentence": 8638,
+      "paragraph": 3638,
+      "range": [
+        37,
+        29
+      ],
+      "text": "Jo renounced her old ambition",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8637,
+        "paragraph": 3637,
+        "range": [
+          211,
+          295
+        ],
+        "text": "They will turn to you, don’t fail them, and if it’s hard to work alone, remember that I don’t forget you, and that you’ll be happier in doing that than writing splendid books or seeing all the world, for love is the only thing that we can carry with us when we go, and it makes the end so easy.”"
+      }
+    },
+    {
+      "id": "8639:294",
+      "sentence": 8639,
+      "paragraph": 3639,
+      "range": [
+        294,
+        32
+      ],
+      "text": "through the Valley of the Shadow",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8574,
+        "paragraph": 3589,
+        "range": [
+          0,
+          279
+        ],
+        "text": "One night when Beth looked among the books upon her table, to find something to make her forget the mortal weariness that was almost as hard to bear as pain, as she turned the leaves of her old favorite, Pilgrims’s Progress, she found a little paper, scribbled over in Jo’s hand."
+      }
+    },
+    {
+      "id": "8643:53",
+      "sentence": 8643,
+      "paragraph": 3642,
+      "range": [
+        53,
+        38
+      ],
+      "text": "the fire was out, Jo’s place was empty",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 8567,
+        "paragraph": 3586,
+        "range": [
+          87,
+          178
+        ],
+        "text": "She slept on a couch in the room, waking often to renew the fire, to feed, lift, or wait upon the patient creature who seldom asked for anything, and ‘tried not to be a trouble’."
+      }
+    }
+  ]
+}

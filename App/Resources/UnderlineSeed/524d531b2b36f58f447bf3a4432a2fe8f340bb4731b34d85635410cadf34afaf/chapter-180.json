@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2398:1",
+      "sentence": 2398,
+      "paragraph": 1122,
+      "range": [
+        1,
+        66
+      ],
+      "text": "I never can be thankful, Mr. Bennet, for anything about the entail",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2394,
+        "paragraph": 1118,
+        "range": [
+          63,
+          52
+        ],
+        "text": "If it was not for the entail, I should not mind it.”"
+      }
+    }
+  ]
+}

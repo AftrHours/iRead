@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[{"id":"3770:58","text":"thought the waiter must not hear","reference":{"range":[0,87],"sentence":3767,"paragraph":1609,"text":"Jane and Elizabeth looked at each other, and the waiter was told that he need not stay."},"kind":"action","paragraph":1610,"range":[58,32],"sentence":3770,"decidedBy":"rules"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3786:0",
+      "sentence": 3786,
+      "paragraph": 1615,
+      "range": [
+        0,
+        35
+      ],
+      "text": "Elizabeth was shocked to think that",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3785,
+        "paragraph": 1614,
+        "range": [
+          93,
+          52
+        ],
+        "text": "Who could about such a nasty little freckled thing?”"
+      }
+    },
+    {
+      "id": "3787:0",
+      "sentence": 3787,
+      "paragraph": 1616,
+      "range": [
+        0,
+        47
+      ],
+      "text": "As soon as all had ate, and the elder ones paid",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3748,
+        "paragraph": 1602,
+        "range": [
+          0,
+          129
+        ],
+        "text": "“And we mean to treat you all,” added Lydia; “but you must lend us the money, for we have just spent ours at the shop out there.”"
+      }
+    },
+    {
+      "id": "3787:170",
+      "sentence": 3787,
+      "paragraph": 1616,
+      "range": [
+        170,
+        55
+      ],
+      "text": "the unwelcome addition of Kitty’s and Lydia’s purchases",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3745,
+        "paragraph": 1600,
+        "range": [
+          353,
+          170
+        ],
+        "text": "These two girls had been above an hour in the place, happily employed in visiting an opposite milliner, watching the sentinel on guard, and dressing a salad and cucumber."
+      }
+    }
+  ]
+}

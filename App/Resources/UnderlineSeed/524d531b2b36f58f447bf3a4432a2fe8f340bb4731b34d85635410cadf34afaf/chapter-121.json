@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1668:53",
+      "sentence": 1668,
+      "paragraph": 819,
+      "range": [
+        53,
+        57
+      ],
+      "text": "Elizabeth could not help reverting once more to the first",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1559,
+        "paragraph": 775,
+        "range": [
+          424,
+          259
+        ],
+        "text": "Allowing for the common demands of the game, Mr. Wickham was therefore at leisure to talk to Elizabeth, and she was very willing to hear him, though what she chiefly wished to hear she could not hope to be told, the history of his acquaintance with Mr. Darcy."
+      }
+    },
+    {
+      "id": "1680:307",
+      "sentence": 1680,
+      "paragraph": 823,
+      "range": [
+        307,
+        34
+      ],
+      "text": "with the rich he is liberal-minded",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1655,
+        "paragraph": 815,
+        "range": [
+          0,
+          149
+        ],
+        "text": "“Yes; it has often led him to be liberal and generous; to give his money freely, to display hospitality, to assist his tenants, and relieve the poor."
+      }
+    },
+    {
+      "id": "1683:260",
+      "sentence": 1683,
+      "paragraph": 824,
+      "range": [
+        260,
+        23
+      ],
+      "text": "he had lost every point",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1556,
+        "paragraph": 774,
+        "range": [
+          0,
+          205
+        ],
+        "text": "“I know little of the game at present,” said he, “but I shall be glad to improve myself; for in my situation of life——” Mrs. Philips was very thankful for his compliance, but could not wait for his reason."
+      }
+    }
+  ]
+}

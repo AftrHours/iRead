@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"paragraph":928,"kind":"action","decidedBy":"rules","sentence":1901,"text":"believe him to be Lady Catherine’s nephew","id":"1901:75","reference":{"text":"Who would have thought of my meeting with—perhaps—a nephew of Lady Catherine de Bourgh in this assembly!","paragraph":926,"range":[345,104],"sentence":1895},"range":[75,41]}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1890:100",
+      "sentence": 1890,
+      "paragraph": 925,
+      "range": [
+        100,
+        72
+      ],
+      "text": "the happy though modest hopes which Jane entertained of Bingley’s regard",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1872,
+        "paragraph": 915,
+        "range": [
+          314,
+          172
+        ],
+        "text": "Jane met her with a smile of such sweet complacency, a glow of such happy expression, as sufficiently marked how well she was satisfied with the occurrences of the evening."
+      }
+    },
+    {
+      "id": "1891:337",
+      "sentence": 1891,
+      "paragraph": 925,
+      "range": [
+        337,
+        36
+      ],
+      "text": "the pleasantness of her last partner",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1774,
+        "paragraph": 863,
+        "range": [
+          126,
+          271
+        ],
+        "text": "When those dances were over, she returned to Charlotte Lucas, and was in conversation with her, when she found herself suddenly addressed by Mr. Darcy, who took her so much by surprise in his application for her hand, that, without knowing what she did, she accepted him."
+      }
+    }
+  ]
+}

@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6081:1",
+      "sentence": 6081,
+      "paragraph": 2481,
+      "range": [
+        1,
+        49
+      ],
+      "text": "Your coming to Longbourn, to see me and my family",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6076,
+        "paragraph": 2477,
+        "range": [
+          610,
+          225
+        ],
+        "text": "Though I know it must be a scandalous falsehood, though I would not injure him so much as to suppose the truth of it possible, I instantly resolved on setting off for this place, that I might make my sentiments known to you.”"
+      }
+    },
+    {
+      "id": "6088:1",
+      "sentence": 6088,
+      "paragraph": 2485,
+      "range": [
+        1,
+        63
+      ],
+      "text": "I do not pretend to possess equal frankness with your Ladyship.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6073,
+        "paragraph": 2477,
+        "range": [
+          178,
+          147
+        ],
+        "text": "My character has ever been celebrated for its sincerity and frankness; and in a cause of such moment as this, I shall certainly not depart from it."
+      }
+    },
+    {
+      "id": "6093:1",
+      "sentence": 6093,
+      "paragraph": 2487,
+      "range": [
+        1,
+        47
+      ],
+      "text": "Your Ladyship has declared it to be impossible.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6076,
+        "paragraph": 2477,
+        "range": [
+          610,
+          225
+        ],
+        "text": "Though I know it must be a scandalous falsehood, though I would not injure him so much as to suppose the truth of it possible, I instantly resolved on setting off for this place, that I might make my sentiments known to you.”"
+      }
+    }
+  ]
+}

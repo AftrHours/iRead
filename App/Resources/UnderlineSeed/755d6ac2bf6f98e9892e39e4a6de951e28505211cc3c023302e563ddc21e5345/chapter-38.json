@@ -1,1 +1,636 @@
-{"engineVersion":5,"underlines":[{"decidedBy":"rules","id":"7519:1","text":"Where’s the jew’s-harp, Jo","range":[1,26],"reference":{"text":"“I’ll come, Teddy, rain or shine, and march before you, playing ‘Hail the conquering hero comes’ on a jew’s-harp.”","range":[0,114],"paragraph":3139,"sentence":7514},"kind":"place","paragraph":3142,"sentence":7519},{"decidedBy":"rules","id":"7533:7","text":"was a young lover","range":[7,17],"reference":{"text":"And Jo took heart again, for that salutation could not be called lover-like.","range":[15,76],"paragraph":3143,"sentence":7522},"kind":"thing","paragraph":3149,"sentence":7533},{"decidedBy":"rules","id":"7561:87","text":"Don’t tell me that, Jo","range":[87,22],"reference":{"text":"Presently Jo said very soberly, as she sat down on the step of the stile, “Laurie, I want to tell you something.”","range":[124,113],"paragraph":3162,"sentence":7560},"kind":"action","paragraph":3163,"sentence":7561},{"decidedBy":"rules","id":"7583:49","text":"threw himself down on the grass at her feet","range":[49,43],"reference":{"text":"There was a long pause, while a blackbird sung blithely on the willow by the river, and the tall grass rustled in the wind.","range":[0,123],"paragraph":3162,"sentence":7559},"kind":"action","paragraph":3173,"sentence":7583},{"decidedBy":"rules","id":"7583:94","text":"leaned his arm on the lower step of the stile","range":[94,45],"reference":{"text":"Presently Jo said very soberly, as she sat down on the step of the stile, “Laurie, I want to tell you something.”","range":[124,113],"paragraph":3162,"sentence":7560},"kind":"action","paragraph":3173,"sentence":7583},{"decidedBy":"rules","id":"7613:32","text":"You’ll get over this after a while","range":[32,34],"reference":{"text":"“But you will after a while, and then what will become of me?”","range":[0,62],"paragraph":3169,"sentence":7574},"kind":"action","paragraph":3184,"sentence":7613},{"decidedBy":"rules","id":"7626:200","text":"won’t be reasonable","range":[200,19],"reference":{"text":"“I won’t be reasonable.","range":[0,23],"paragraph":3178,"sentence":7595},"kind":"action","paragraph":3188,"sentence":7626},{"decidedBy":"rules","id":"7629:141","text":"saying in a desperate sort of tone","range":[141,34],"reference":{"text":"I’ll listen,” said Jo, with a desperate sort of patience.","range":[25,57],"paragraph":3148,"sentence":7532},"kind":"action","paragraph":3189,"sentence":7629},{"decidedBy":"rules","id":"7634:43","text":"swung himself down the bank toward the river","range":[43,44],"reference":{"text":"There was a long pause, while a blackbird sung blithely on the willow by the river, and the tall grass rustled in the wind.","range":[0,123],"paragraph":3162,"sentence":7559},"kind":"action","paragraph":3192,"sentence":7634},{"decidedBy":"rules","id":"7643:59","text":"went straight to Mr. Laurence","range":[59,29],"reference":{"text":"“Now I must go and prepare Mr. Laurence to be very kind to my poor boy.","range":[245,71],"paragraph":3193,"sentence":7638},"kind":"action","paragraph":3194,"sentence":7643},{"decidedBy":"rules","id":"7700:364","text":"I’ve friends in London and Paris","range":[364,32],"reference":{"text":"“There is business in London that needs looking after.","range":[0,54],"paragraph":3217,"sentence":7688},"kind":"thing","paragraph":3220,"sentence":7700},{"decidedBy":"rules","id":"7706:41","text":"give you entire liberty","range":[41,23],"reference":{"paragraph":3186,"sentence":7619,"text":"I’m happy as I am, and love my liberty too well to be in a hurry to give it up for any mortal man.”","range":[63,99]},"kind":"action","paragraph":3222,"sentence":7706},{"decidedBy":"rules","id":"7713:373","text":"playing tempestuously on his piano","range":[373,34],"reference":{"paragraph":3195,"sentence":7647,"text":"He bore it as long as he could, then went to his piano and began to play.","range":[433,73]},"kind":"action","paragraph":3225,"sentence":7713},{"decidedBy":"rules","id":"7714:615","text":"spoke of his unrequited passion","range":[615,31],"reference":{"paragraph":3168,"sentence":7571,"text":"Pray, don’t fly into a passion.","range":[223,31]},"kind":"action","paragraph":3225,"sentence":7714},{"decidedBy":"rules","id":"7714:652","text":"would allow no one, not even Mrs. March","range":[652,39],"reference":{"paragraph":3137,"sentence":7508,"text":"They were all there, his grandfather—oh, so proud—Mr. and Mrs. March, John and Meg, Jo and Beth, and all exulted over him with the sincere admiration which boys make light of at the time, but fail to win from the world by any after-triumphs.","range":[221,241]},"kind":"action","paragraph":3225,"sentence":7714},{"decidedBy":"rules","id":"7716:971","text":"smiled darkly at their delusion","range":[971,31],"reference":{"paragraph":3195,"sentence":7645,"text":"When Laurie came home, dead tired but quite composed, his grandfather met him as if he knew nothing, and kept up the delusion very successfully for an hour or two.","range":[0,163]},"kind":"feeling","paragraph":3225,"sentence":7716},{"decidedBy":"rules","text":"did not impose upon anybody","range":[145,27],"reference":{"paragraph":3168,"sentence":7573,"text":"I haven’t the least idea of loving him or anybody else.”","range":[330,56]},"sentence":7718,"id":"7718:145","kind":"action","paragraph":3226},{"decidedBy":"rules","text":"put his arms about her as she stood on the step above him","range":[575,57],"reference":{"paragraph":3173,"sentence":7583,"text":"Seeing a ray of hope in that last speech, Laurie threw himself down on the grass at her feet, leaned his arm on the lower step of the stile, and looked up at her with an expectant face.","range":[0,185]},"sentence":7721,"id":"7721:575","kind":"action","paragraph":3226}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "7519:0",
+      "sentence": 7519,
+      "paragraph": 3142,
+      "range": [
+        0,
+        29
+      ],
+      "text": "“Where’s the jew’s-harp, Jo?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7514,
+        "paragraph": 3139,
+        "range": [
+          0,
+          114
+        ],
+        "text": "“I’ll come, Teddy, rain or shine, and march before you, playing ‘Hail the conquering hero comes’ on a jew’s-harp.”"
+      }
+    },
+    {
+      "id": "7527:123",
+      "sentence": 7527,
+      "paragraph": 3146,
+      "range": [
+        123,
+        27
+      ],
+      "text": "the dreaded moment had come",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7516,
+        "paragraph": 3140,
+        "range": [
+          85,
+          54
+        ],
+        "text": "I know he’ll say something, and then what shall I do?”"
+      }
+    },
+    {
+      "id": "7537:0",
+      "sentence": 7537,
+      "paragraph": 3151,
+      "range": [
+        0,
+        27
+      ],
+      "text": "“I wanted to save you this.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7517,
+        "paragraph": 3141,
+        "range": [
+          0,
+          331
+        ],
+        "text": "Evening meditation and morning work somewhat allayed her fears, and having decided that she wouldn’t be vain enough to think people were going to propose when she had given them every reason to know what her answer would be, she set forth at the appointed time, hoping Teddy wouldn’t do anything to make her hurt his poor feelings."
+      }
+    },
+    {
+      "id": "7542:57",
+      "sentence": 7542,
+      "paragraph": 3153,
+      "range": [
+        57,
+        42
+      ],
+      "text": "I went away to keep you from it if I could",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7534,
+        "paragraph": 3150,
+        "range": [
+          0,
+          91
+        ],
+        "text": "“I’ve loved you ever since I’ve known you, Jo, couldn’t help it, you’ve been so good to me."
+      }
+    },
+    {
+      "id": "7545:119",
+      "sentence": 7545,
+      "paragraph": 3154,
+      "range": [
+        119,
+        50
+      ],
+      "text": "I gave up billiards and everything you didn’t like",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7535,
+        "paragraph": 3150,
+        "range": [
+          92,
+          47
+        ],
+        "text": "I’ve tried to show it, but you wouldn’t let me."
+      }
+    },
+    {
+      "id": "7551:0",
+      "sentence": 7551,
+      "paragraph": 3158,
+      "range": [
+        0,
+        22
+      ],
+      "text": "“Really, truly, dear.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7549,
+        "paragraph": 3156,
+        "range": [
+          0,
+          20
+        ],
+        "text": "“Really, truly, Jo?”"
+      }
+    },
+    {
+      "id": "7552:0",
+      "sentence": 7552,
+      "paragraph": 3159,
+      "range": [
+        0,
+        46
+      ],
+      "text": "They were in the grove now, close by the stile",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7523,
+        "paragraph": 3144,
+        "range": [
+          0,
+          264
+        ],
+        "text": "She always used to take his arm on these occasions, now she did not, and he made no complaint, which was a bad sign, but talked on rapidly about all sorts of faraway subjects, till they turned from the road into the little path that led homeward through the grove."
+      }
+    },
+    {
+      "id": "7560:159",
+      "sentence": 7560,
+      "paragraph": 3162,
+      "range": [
+        159,
+        37
+      ],
+      "text": "she sat down on the step of the stile",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7553,
+        "paragraph": 3159,
+        "range": [
+          214,
+          91
+        ],
+        "text": "So he just laid his head down on the mossy post, and stood so still that Jo was frightened."
+      }
+    },
+    {
+      "id": "7561:86",
+      "sentence": 7561,
+      "paragraph": 3163,
+      "range": [
+        86,
+        46
+      ],
+      "text": "“Don’t tell me that, Jo, I can’t bear it now!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7560,
+        "paragraph": 3162,
+        "range": [
+          124,
+          113
+        ],
+        "text": "Presently Jo said very soberly, as she sat down on the step of the stile, “Laurie, I want to tell you something.”"
+      }
+    },
+    {
+      "id": "7565:0",
+      "sentence": 7565,
+      "paragraph": 3166,
+      "range": [
+        0,
+        15
+      ],
+      "text": "“What old man?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7564,
+        "paragraph": 3165,
+        "range": [
+          0,
+          29
+        ],
+        "text": "“That you love that old man.”"
+      }
+    },
+    {
+      "id": "7572:310",
+      "sentence": 7572,
+      "paragraph": 3168,
+      "range": [
+        310,
+        18
+      ],
+      "text": "abuse my Professor",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7567,
+        "paragraph": 3167,
+        "range": [
+          0,
+          55
+        ],
+        "text": "“That devilish Professor you were always writing about."
+      }
+    },
+    {
+      "id": "7581:102",
+      "sentence": 7581,
+      "paragraph": 3172,
+      "range": [
+        102,
+        45
+      ],
+      "text": "“You haven’t heard what I wanted to tell you.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7560,
+        "paragraph": 3162,
+        "range": [
+          124,
+          113
+        ],
+        "text": "Presently Jo said very soberly, as she sat down on the step of the stile, “Laurie, I want to tell you something.”"
+      }
+    },
+    {
+      "id": "7585:520",
+      "sentence": 7585,
+      "paragraph": 3173,
+      "range": [
+        520,
+        57
+      ],
+      "text": "the wavy hair which had been allowed to grow for her sake",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7545,
+        "paragraph": 3154,
+        "range": [
+          51,
+          215
+        ],
+        "text": "I only loved you all the more, and I worked hard to please you, and I gave up billiards and everything you didn’t like, and waited and never complained, for I hoped you’d love me, though I’m not half good enough...”"
+      }
+    },
+    {
+      "id": "7589:24",
+      "sentence": 7589,
+      "paragraph": 3174,
+      "range": [
+        24,
+        48
+      ],
+      "text": "If you loved me, Jo, I should be a perfect saint",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7586,
+        "paragraph": 3173,
+        "range": [
+          613,
+          179
+        ],
+        "text": "“I agree with Mother that you and I are not suited to each other, because our quick tempers and strong wills would probably make us very miserable, if we were so foolish as to...”"
+      }
+    },
+    {
+      "id": "7595:0",
+      "sentence": 7595,
+      "paragraph": 3178,
+      "range": [
+        0,
+        23
+      ],
+      "text": "“I won’t be reasonable.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7594,
+        "paragraph": 3177,
+        "range": [
+          0,
+          99
+        ],
+        "text": "“Now do be reasonable, and take a sensible view of the case,” implored Jo, almost at her wit’s end."
+      }
+    },
+    {
+      "id": "7609:0",
+      "sentence": 7609,
+      "paragraph": 3183,
+      "range": [
+        0,
+        25
+      ],
+      "text": "“I’ll be hanged if I do!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7608,
+        "paragraph": 3182,
+        "range": [
+          52,
+          81
+        ],
+        "text": "You’ll see that I’m right, by-and-by, and thank me for it...” she began solemnly."
+      }
+    },
+    {
+      "id": "7624:0",
+      "sentence": 7624,
+      "paragraph": 3188,
+      "range": [
+        0,
+        33
+      ],
+      "text": "“Yes, I will live and die for him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7622,
+        "paragraph": 3187,
+        "range": [
+          34,
+          136
+        ],
+        "text": "“You think so now, but there’ll come a time when you will care for somebody, and you’ll love him tremendously, and live and die for him."
+      }
+    },
+    {
+      "id": "7635:326",
+      "sentence": 7635,
+      "paragraph": 3192,
+      "range": [
+        326,
+        32
+      ],
+      "text": "fling hat and coat into his boat",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7632,
+        "paragraph": 3191,
+        "range": [
+          0,
+          15
+        ],
+        "text": "“To the devil!”"
+      }
+    },
+    {
+      "id": "7637:0",
+      "sentence": 7637,
+      "paragraph": 3193,
+      "range": [
+        0,
+        22
+      ],
+      "text": "“That will do him good",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7635,
+        "paragraph": 3192,
+        "range": [
+          247,
+          207
+        ],
+        "text": "He had no thought of a melodramatic plunge, but some blind instinct led him to fling hat and coat into his boat, and row away with all his might, making better time up the river than he had done in any race."
+      }
+    },
+    {
+      "id": "7643:90",
+      "sentence": 7643,
+      "paragraph": 3194,
+      "range": [
+        90,
+        35
+      ],
+      "text": "told the hard story bravely through",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7638,
+        "paragraph": 3193,
+        "range": [
+          245,
+          71
+        ],
+        "text": "“Now I must go and prepare Mr. Laurence to be very kind to my poor boy."
+      }
+    },
+    {
+      "id": "7644:525",
+      "sentence": 7644,
+      "paragraph": 3194,
+      "range": [
+        525,
+        57
+      ],
+      "text": "for Young Impetuosity’s parting words to Jo disturbed him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7632,
+        "paragraph": 3191,
+        "range": [
+          0,
+          15
+        ],
+        "text": "“To the devil!”"
+      }
+    },
+    {
+      "id": "7646:402",
+      "sentence": 7646,
+      "paragraph": 3195,
+      "range": [
+        402,
+        29
+      ],
+      "text": "seemed like love’s labor lost",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7507,
+        "paragraph": 3137,
+        "range": [
+          0,
+          220
+        ],
+        "text": "Whatever his motive might have been, Laurie studied to some purpose that year, for he graduated with honor, and gave the Latin oration with the grace of a Phillips and the eloquence of a Demosthenes, so his friends said."
+      }
+    },
+    {
+      "id": "7656:173",
+      "sentence": 7656,
+      "paragraph": 3199,
+      "range": [
+        173,
+        25
+      ],
+      "text": "“I know, my boy, I know.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7643,
+        "paragraph": 3194,
+        "range": [
+          0,
+          276
+        ],
+        "text": "Being sure that no one could do it so well as herself, she went straight to Mr. Laurence, told the hard story bravely through, and then broke down, crying so dismally over her own insensibility that the kind old gentleman, though sorely disappointed, did not utter a reproach."
+      }
+    },
+    {
+      "id": "7667:93",
+      "sentence": 7667,
+      "paragraph": 3205,
+      "range": [
+        93,
+        58
+      ],
+      "text": "the only thing left for you to do is to go away for a time",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7644,
+        "paragraph": 3194,
+        "range": [
+          277,
+          333
+        ],
+        "text": "He found it difficult to understand how any girl could help loving Laurie, and hoped she would change her mind, but he knew even better than Jo that love cannot be forced, so he shook his head sadly and resolved to carry his boy out of harm’s way, for Young Impetuosity’s parting words to Jo disturbed him more than he would confess."
+      }
+    },
+    {
+      "id": "7675:0",
+      "sentence": 7675,
+      "paragraph": 3210,
+      "range": [
+        0,
+        36
+      ],
+      "text": "“Ah, but I didn’t mean to go alone!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7674,
+        "paragraph": 3209,
+        "range": [
+          0,
+          85
+        ],
+        "text": "“But you’ve been wild to go, and I promised you should when you got through college.”"
+      }
+    },
+    {
+      "id": "7708:0",
+      "sentence": 7708,
+      "paragraph": 3223,
+      "range": [
+        0,
+        25
+      ],
+      "text": "“Anything you like, Sir.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7703,
+        "paragraph": 3221,
+        "range": [
+          315,
+          71
+        ],
+        "text": "He sighed, and then said, in a spiritless tone, “Just as you like, Sir."
+      }
+    },
+    {
+      "id": "7710:60",
+      "sentence": 7710,
+      "paragraph": 3224,
+      "range": [
+        60,
+        68
+      ],
+      "text": "there’ll come a time when that promise will keep you out of mischief",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7707,
+        "paragraph": 3222,
+        "range": [
+          111,
+          25
+        ],
+        "text": "Promise me that, Laurie.”"
+      }
+    },
+    {
+      "id": "7713:352",
+      "sentence": 7713,
+      "paragraph": 3225,
+      "range": [
+        352,
+        55
+      ],
+      "text": "devoted much time to playing tempestuously on his piano",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7651,
+        "paragraph": 3197,
+        "range": [
+          0,
+          200
+        ],
+        "text": "Laurie dashed into a livelier strain, played stormily for several minutes, and would have got through bravely, if in a momentary lull Mrs. March’s voice had not been heard calling, “Jo, dear, come in."
+      }
+    },
+    {
+      "id": "7722:0",
+      "sentence": 7722,
+      "paragraph": 3227,
+      "range": [
+        0,
+        20
+      ],
+      "text": "“Oh, Jo, can’t you?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7607,
+        "paragraph": 3182,
+        "range": [
+          0,
+          51
+        ],
+        "text": "“I can’t say ‘yes’ truly, so I won’t say it at all."
+      }
+    },
+    {
+      "id": "7726:377",
+      "sentence": 7726,
+      "paragraph": 3229,
+      "range": [
+        377,
+        37
+      ],
+      "text": "the boy Laurie never would come again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 7534,
+        "paragraph": 3150,
+        "range": [
+          0,
+          91
+        ],
+        "text": "“I’ve loved you ever since I’ve known you, Jo, couldn’t help it, you’ve been so good to me."
+      }
+    }
+  ]
+}

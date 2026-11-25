@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5926:196",
+      "sentence": 5926,
+      "paragraph": 2406,
+      "range": [
+        196,
+        48
+      ],
+      "text": "unless Mr. Darcy returned within the stated time",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5881,
+        "paragraph": 2386,
+        "range": [
+          66,
+          90
+        ],
+        "text": "His friend had left him that morning for London, but was to return home in ten days’ time."
+      }
+    },
+    {
+      "id": "5928:0",
+      "sentence": 5928,
+      "paragraph": 2407,
+      "range": [
+        0,
+        39
+      ],
+      "text": "Bingley was punctual to his appointment",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5924,
+        "paragraph": 2405,
+        "range": [
+          0,
+          202
+        ],
+        "text": "He scarcely needed an invitation to stay supper; and before he went away an engagement was formed, chiefly through his own and Mrs. Bennet’s means, for his coming next morning to shoot with her husband."
+      }
+    },
+    {
+      "id": "5933:137",
+      "sentence": 5933,
+      "paragraph": 2408,
+      "range": [
+        137,
+        41
+      ],
+      "text": "her mother had been too ingenious for her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5931,
+        "paragraph": 2407,
+        "range": [
+          378,
+          156
+        ],
+        "text": "Bingley of course returned with him to dinner; and in the evening Mrs. Bennet’s invention was again at work to get everybody away from him and her daughter."
+      }
+    }
+  ]
+}

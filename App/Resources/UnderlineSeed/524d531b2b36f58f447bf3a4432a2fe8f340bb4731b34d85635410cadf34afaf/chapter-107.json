@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1496:0",
+      "sentence": 1496,
+      "paragraph": 749,
+      "range": [
+        0,
+        36
+      ],
+      "text": "His plan did not vary on seeing them",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1494,
+        "paragraph": 748,
+        "range": [
+          0,
+          121
+        ],
+        "text": "meant to choose one of the daughters, if he found them as handsome and amiable as they were represented by common report."
+      }
+    },
+    {
+      "id": "1500:0",
+      "sentence": 1500,
+      "paragraph": 750,
+      "range": [
+        0,
+        53
+      ],
+      "text": "Mr. Collins had only to change from Jane to Elizabeth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1497,
+        "paragraph": 749,
+        "range": [
+          38,
+          172
+        ],
+        "text": "Miss Bennet’s lovely face confirmed his views, and established all his strictest notions of what was due to seniority; and for the first evening she was his settled choice."
+      }
+    },
+    {
+      "id": "1502:0",
+      "sentence": 1502,
+      "paragraph": 751,
+      "range": [
+        0,
+        33
+      ],
+      "text": "Mrs. Bennet treasured up the hint",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1499,
+        "paragraph": 749,
+        "range": [
+          612,
+          256
+        ],
+        "text": "“As to her younger daughters, she could not take upon her to say—she could not positively answer—but she did not know of any prepossession;—her eldest daughter she must just mention—she felt it incumbent on her to hint, was likely to be very soon engaged.”"
+      }
+    }
+  ]
+}

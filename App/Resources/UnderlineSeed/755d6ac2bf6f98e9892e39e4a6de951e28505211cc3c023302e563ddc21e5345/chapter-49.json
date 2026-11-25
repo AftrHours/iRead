@@ -1,1 +1,909 @@
-{"engineVersion":5,"underlines":[{"id":"9514:654","reference":{"sentence":9497,"range":[0,72],"text":"For a fortnight, the Professor came and went with lover-like regularity.","paragraph":3971},"kind":"thing","sentence":9514,"text":"being a woman as well as a lover","decidedBy":"rules","paragraph":3979,"range":[654,32]},{"id":"9515:775","reference":{"sentence":9501,"range":[0,45],"text":"“You’d better take the little umbrella, dear.","paragraph":3973},"kind":"action","sentence":9515,"text":"remembered the little umbrella","decidedBy":"rules","paragraph":3979,"range":[775,30]},{"id":"9520:164","reference":{"sentence":9515,"range":[767,189],"text":"Now she remembered the little umbrella, which she had forgotten to take in her hurry to be off, but regret was unavailing, and nothing could be done but borrow one or submit to a drenching.","paragraph":3979},"kind":"action","sentence":9520,"text":"shall not go there to borrow an umbrella","decidedBy":"rules","paragraph":3980,"range":[164,40]},{"id":"9521:276","reference":{"sentence":9513,"range":[529,87],"text":"A drop of rain on her cheek recalled her thoughts from baffled hopes to ruined ribbons.","paragraph":3979},"kind":"action","sentence":9521,"text":"do your errands in the rain","decidedBy":"rules","paragraph":3980,"range":[276,27]},{"id":"9525:604","reference":{"sentence":9508,"range":[0,56],"text":"“If you happen to meet Mr. Bhaer, bring him home to tea.","paragraph":3977},"kind":"action","sentence":9525,"text":"saw Mr. Bhaer looking down","decidedBy":"rules","paragraph":3981,"range":[604,26]},{"id":"9544:3","reference":{"sentence":9518,"range":[21,110],"text":"what business had I to put on all my best things and come philandering down here, hoping to see the Professor?","paragraph":3980},"kind":"reaction","sentence":9544,"text":"haf no longer any business here","decidedBy":"rules","paragraph":3995,"range":[3,31]},{"id":"9565:711","reference":{"sentence":9534,"range":[80,108],"text":"Her bonnet wasn’t big enough to hide her face, and she feared he might think the joy it betrayed unmaidenly.","paragraph":3987},"kind":"thing","sentence":9565,"text":"Was the joy all for the boys","decidedBy":"rules","paragraph":4003,"range":[711,28]},{"id":"9573:244","reference":{"sentence":9505,"range":[0,107],"text":"“Yes, I want some twilled silesia, a paper of number nine needles, and two yards of narrow lavender ribbon.","paragraph":3975},"kind":"action","sentence":9573,"text":"upset the tray of needles","decidedBy":"rules","paragraph":4005,"range":[244,25]},{"id":"9573:271","reference":{"sentence":9505,"range":[0,107],"text":"“Yes, I want some twilled silesia, a paper of number nine needles, and two yards of narrow lavender ribbon.","paragraph":3975},"kind":"action","sentence":9573,"text":"forgot the silesia was to be ‘twilled’ till it was cut off","decidedBy":"rules","paragraph":4005,"range":[271,58]},{"id":"9589:455","reference":{"sentence":9501,"range":[0,45],"text":"“You’d better take the little umbrella, dear.","paragraph":3973},"kind":"action","sentence":9589,"text":"put up the old umbrella","decidedBy":"rules","paragraph":4014,"range":[455,23]},{"id":"9596:76","reference":{"sentence":9547,"range":[0,112],"text":"“I ought to think so, for I haf a way opened to me by which I can make my bread and gif my Junglings much help.”","paragraph":3997},"kind":"action","sentence":9596,"text":"Will you kindly gif me a word of taste","decidedBy":"rules","paragraph":4019,"range":[76,38]},{"id":"9623:89","reference":{"text":"For now the sun seemed to have gone in as suddenly as it came out, and the world grew muddy and miserable again, and for the first time she discovered that her feet were cold, her head ached, and that her heart was colder than the former, fuller of pain than the latter.","range":[80,270],"sentence":9613,"paragraph":4028},"kind":"thing","sentence":9623,"text":"had a cold in her head","decidedBy":"rules","range":[89,22],"paragraph":4032},{"id":"9626:52","reference":{"text":"Then distorting his pockets with knobby bundles, and giving her the flowers to hold, he put up the old umbrella, and they traveled on again.","range":[367,140],"sentence":9589,"paragraph":4014},"kind":"outcome","sentence":9626,"text":"managing to clasp his hands in spite of the umbrella and the bundles","decidedBy":"rules","range":[52,68],"paragraph":4033},{"id":"9632:220","reference":{"text":"“You’d better take the little umbrella, dear.","range":[0,45],"sentence":9501,"paragraph":3973},"kind":"thing","sentence":9632,"text":"had no better shelter than the old umbrella","decidedBy":"rules","range":[220,43],"paragraph":4034},{"id":"9657:116","reference":{"text":"Now, if Jo had not been new to this sort of thing she would have said she wasn’t crying, had a cold in her head, or told any other feminine fib proper to the occasion.","range":[0,167],"sentence":9623,"paragraph":4032},"kind":"thing","sentence":9657,"text":"is so cold","decidedBy":"rules","range":[116,10],"paragraph":4042},{"id":"9657:128","reference":{"text":"The sight seemed to touch him very much, for suddenly stooping down, he asked in a tone that meant a great deal, “Heart’s dearest, why do you cry?”","range":[72,147],"sentence":9622,"paragraph":4031},"kind":"action","sentence":9657,"text":"say ‘thou’, heart’s dearest","decidedBy":"rules","range":[128,27],"paragraph":4042},{"text":"hear, like a sweet refrain","range":[4,26],"decidedBy":"rules","paragraph":4084,"id":"9715:4","kind":"action","reference":{"text":"To hear the sweet refrain,","range":[0,26],"sentence":9698,"paragraph":4068},"sentence":9715},{"text":"falling summer rain","range":[7,19],"decidedBy":"rules","paragraph":4086,"id":"9717:7","kind":"action","reference":{"text":"In the falling summer rain.","range":[0,27],"sentence":9700,"paragraph":4070},"sentence":9717},{"text":"love and labor in their prime","range":[3,29],"decidedBy":"rules","paragraph":4138,"id":"9770:3","kind":"action","reference":{"text":"By children now in their prime.","range":[0,31],"sentence":9688,"paragraph":4058},"sentence":9770},{"text":"Lives whose brave music long shall ring","range":[0,39],"decidedBy":"rules","paragraph":4147,"id":"9779:0","kind":"action","reference":{"text":"With faded ribbons, brave and gay","range":[0,33],"sentence":9690,"paragraph":4060},"sentence":9779},{"text":"was very lonely","range":[69,15],"decidedBy":"rules","paragraph":4151,"id":"9783:69","kind":"thing","reference":{"text":"A woman in a lonely home,","range":[0,25],"sentence":9730,"paragraph":4099},"sentence":9783},{"text":"who has no fortune but a little learning","range":[235,40],"decidedBy":"rules","paragraph":4157,"id":"9797:235","kind":"thing","reference":{"text":"On learning his good fortune she almost clapped her hands.","range":[652,58],"sentence":9564,"paragraph":4003},"sentence":9797},{"text":"took away a bundle or two","range":[185,25],"decidedBy":"rules","paragraph":4159,"id":"9803:185","kind":"action","reference":{"text":"May I go also, and take for you the bundles?”","range":[173,45],"sentence":9530,"paragraph":3984},"sentence":9803},{"text":"leaving the future to be as God wills","range":[317,37],"decidedBy":"rules","paragraph":4162,"id":"9815:317","kind":"action","reference":{"text":"Dreams of a future never found,","range":[0,31],"sentence":9724,"paragraph":4093},"sentence":9815}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "9489:218",
+      "sentence": 9489,
+      "paragraph": 3968,
+      "range": [
+        218,
+        49
+      ],
+      "text": "“as Friedrich—I mean Mr. Bhaer—doesn’t like tea.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9484,
+        "paragraph": 3967,
+        "range": [
+          0,
+          311
+        ],
+        "text": "“I always do take a walk toward evening, and I don’t know why I should give it up, just because I happen to meet the Professor on his way out,” said Jo to herself, after two or three encounters, for though there were two paths to Meg’s whichever one she took she was sure to meet him, either going or returning."
+      }
+    },
+    {
+      "id": "9491:237",
+      "sentence": 9491,
+      "paragraph": 3969,
+      "range": [
+        237,
+        41
+      ],
+      "text": "got so blooming with her evening exercise",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9484,
+        "paragraph": 3967,
+        "range": [
+          0,
+          311
+        ],
+        "text": "“I always do take a walk toward evening, and I don’t know why I should give it up, just because I happen to meet the Professor on his way out,” said Jo to herself, after two or three encounters, for though there were two paths to Meg’s whichever one she took she was sure to meet him, either going or returning."
+      }
+    },
+    {
+      "id": "9495:530",
+      "sentence": 9495,
+      "paragraph": 3970,
+      "range": [
+        530,
+        69
+      ],
+      "text": "seeing the Professor’s hat on the Marches’ table nearly every evening",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9488,
+        "paragraph": 3968,
+        "range": [
+          0,
+          83
+        ],
+        "text": "Under the circumstances, what could Jo do but greet him civilly, and invite him in?"
+      }
+    },
+    {
+      "id": "9497:0",
+      "sentence": 9497,
+      "paragraph": 3971,
+      "range": [
+        0,
+        72
+      ],
+      "text": "For a fortnight, the Professor came and went with lover-like regularity.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9490,
+        "paragraph": 3969,
+        "range": [
+          0,
+          151
+        ],
+        "text": "By the second week, everyone knew perfectly well what was going on, yet everyone tried to look as if they were stone-blind to the changes in Jo’s face."
+      }
+    },
+    {
+      "id": "9500:229",
+      "sentence": 9500,
+      "paragraph": 3972,
+      "range": [
+        229,
+        63
+      ],
+      "text": "she put on her things for the customary walk one dull afternoon",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9484,
+        "paragraph": 3967,
+        "range": [
+          0,
+          311
+        ],
+        "text": "“I always do take a walk toward evening, and I don’t know why I should give it up, just because I happen to meet the Professor on his way out,” said Jo to herself, after two or three encounters, for though there were two paths to Meg’s whichever one she took she was sure to meet him, either going or returning."
+      }
+    },
+    {
+      "id": "9508:0",
+      "sentence": 9508,
+      "paragraph": 3977,
+      "range": [
+        0,
+        56
+      ],
+      "text": "“If you happen to meet Mr. Bhaer, bring him home to tea.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9498,
+        "paragraph": 3971,
+        "range": [
+          73,
+          184
+        ],
+        "text": "Then he stayed away for three whole days, and made no sign, a proceeding which caused everybody to look sober, and Jo to become pensive, at first, and then—alas for romance—very cross."
+      }
+    },
+    {
+      "id": "9515:767",
+      "sentence": 9515,
+      "paragraph": 3979,
+      "range": [
+        767,
+        38
+      ],
+      "text": "Now she remembered the little umbrella",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9501,
+        "paragraph": 3973,
+        "range": [
+          0,
+          45
+        ],
+        "text": "“You’d better take the little umbrella, dear."
+      }
+    },
+    {
+      "id": "9518:21",
+      "sentence": 9518,
+      "paragraph": 3980,
+      "range": [
+        21,
+        48
+      ],
+      "text": "what business had I to put on all my best things",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9502,
+        "paragraph": 3973,
+        "range": [
+          46,
+          109
+        ],
+        "text": "It looks like rain,” said her mother, observing that she had on her new bonnet, but not alluding to the fact."
+      }
+    },
+    {
+      "id": "9529:151",
+      "sentence": 9529,
+      "paragraph": 3984,
+      "range": [
+        151,
+        21
+      ],
+      "text": "“You haf no umbrella.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9515,
+        "paragraph": 3979,
+        "range": [
+          767,
+          189
+        ],
+        "text": "Now she remembered the little umbrella, which she had forgotten to take in her hurry to be off, but regret was unavailing, and nothing could be done but borrow one or submit to a drenching."
+      }
+    },
+    {
+      "id": "9533:0",
+      "sentence": 9533,
+      "paragraph": 3987,
+      "range": [
+        0,
+        26
+      ],
+      "text": "“We thought you had gone,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9499,
+        "paragraph": 3972,
+        "range": [
+          0,
+          61
+        ],
+        "text": "“Disgusted, I dare say, and gone home as suddenly as he came."
+      }
+    },
+    {
+      "id": "9535:0",
+      "sentence": 9535,
+      "paragraph": 3988,
+      "range": [
+        0,
+        50
+      ],
+      "text": "“Did you believe that I should go with no farewell",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9500,
+        "paragraph": 3972,
+        "range": [
+          62,
+          231
+        ],
+        "text": "It’s nothing to me, of course, but I should think he would have come and bid us goodbye like a gentleman,” she said to herself, with a despairing look at the gate, as she put on her things for the customary walk one dull afternoon."
+      }
+    },
+    {
+      "id": "9541:73",
+      "sentence": 9541,
+      "paragraph": 3992,
+      "range": [
+        73,
+        41
+      ],
+      "text": "the frosty little monosyllable at the end",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9540,
+        "paragraph": 3991,
+        "range": [
+          0,
+          34
+        ],
+        "text": "“I’m always glad to see you, sir.”"
+      }
+    },
+    {
+      "id": "9551:112",
+      "sentence": 9551,
+      "paragraph": 3999,
+      "range": [
+        112,
+        53
+      ],
+      "text": "earn enough to make the way smooth for Franz and Emil",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9547,
+        "paragraph": 3997,
+        "range": [
+          0,
+          112
+        ],
+        "text": "“I ought to think so, for I haf a way opened to me by which I can make my bread and gif my Junglings much help.”"
+      }
+    },
+    {
+      "id": "9564:652",
+      "sentence": 9564,
+      "paragraph": 4003,
+      "range": [
+        652,
+        58
+      ],
+      "text": "On learning his good fortune she almost clapped her hands.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9553,
+        "paragraph": 4000,
+        "range": [
+          0,
+          19
+        ],
+        "text": "“Indeed you should."
+      }
+    },
+    {
+      "id": "9566:741",
+      "sentence": 9566,
+      "paragraph": 4003,
+      "range": [
+        741,
+        57
+      ],
+      "text": "Then on hearing his destination, she said, “So far away!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9556,
+        "paragraph": 4001,
+        "range": [
+          0,
+          4
+        ],
+        "text": "“Ah!"
+      }
+    },
+    {
+      "id": "9573:240",
+      "sentence": 9573,
+      "paragraph": 4005,
+      "range": [
+        240,
+        69
+      ],
+      "text": "She upset the tray of needles, forgot the silesia was to be ‘twilled’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9505,
+        "paragraph": 3975,
+        "range": [
+          0,
+          107
+        ],
+        "text": "“Yes, I want some twilled silesia, a paper of number nine needles, and two yards of narrow lavender ribbon."
+      }
+    },
+    {
+      "id": "9573:392",
+      "sentence": 9573,
+      "paragraph": 4005,
+      "range": [
+        392,
+        48
+      ],
+      "text": "asking for lavender ribbon at the calico counter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9505,
+        "paragraph": 3975,
+        "range": [
+          0,
+          107
+        ],
+        "text": "“Yes, I want some twilled silesia, a paper of number nine needles, and two yards of narrow lavender ribbon."
+      }
+    },
+    {
+      "id": "9584:0",
+      "sentence": 9584,
+      "paragraph": 4012,
+      "range": [
+        0,
+        18
+      ],
+      "text": "“Like a squirrel.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9583,
+        "paragraph": 4011,
+        "range": [
+          0,
+          23
+        ],
+        "text": "“Do you care for nuts?”"
+      }
+    },
+    {
+      "id": "9588:301",
+      "sentence": 9588,
+      "paragraph": 4014,
+      "range": [
+        301,
+        64
+      ],
+      "text": "a pretty jar of honey, to be regarded in the light of a demijohn",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9576,
+        "paragraph": 4007,
+        "range": [
+          0,
+          149
+        ],
+        "text": "“Should we no do a little what you call shopping for the babies, and haf a farewell feast tonight if I go for my last call at your so pleasant home?”"
+      }
+    },
+    {
+      "id": "9595:0",
+      "sentence": 9595,
+      "paragraph": 4019,
+      "range": [
+        0,
+        41
+      ],
+      "text": "“I wish to get a little dress for my Tina",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9590,
+        "paragraph": 4015,
+        "range": [
+          0,
+          111
+        ],
+        "text": "“Miss Marsch, I haf a great favor to ask of you,” began the Professor, after a moist promenade of half a block."
+      }
+    },
+    {
+      "id": "9597:0",
+      "sentence": 9597,
+      "paragraph": 4020,
+      "range": [
+        0,
+        56
+      ],
+      "text": "“Yes, sir,” and Jo felt as calm and cool all of a sudden",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9591,
+        "paragraph": 4016,
+        "range": [
+          0,
+          11
+        ],
+        "text": "“Yes, sir?”"
+      }
+    },
+    {
+      "id": "9598:0",
+      "sentence": 9598,
+      "paragraph": 4021,
+      "range": [
+        0,
+        39
+      ],
+      "text": "“Perhaps also a shawl for Tina’s mother",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9595,
+        "paragraph": 4019,
+        "range": [
+          0,
+          75
+        ],
+        "text": "“I wish to get a little dress for my Tina, and I am too stupid to go alone."
+      }
+    },
+    {
+      "id": "9615:566",
+      "sentence": 9615,
+      "paragraph": 4028,
+      "range": [
+        566,
+        54
+      ],
+      "text": "the daisies flew out of the pot and were badly damaged",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9588,
+        "paragraph": 4014,
+        "range": [
+          152,
+          214
+        ],
+        "text": "Whereat Mr. Bhaer confiscated her purse, produced his own, and finished the marketing by buying several pounds of grapes, a pot of rosy daisies, and a pretty jar of honey, to be regarded in the light of a demijohn."
+      }
+    },
+    {
+      "id": "9621:0",
+      "sentence": 9621,
+      "paragraph": 4031,
+      "range": [
+        0,
+        37
+      ],
+      "text": "Mr. Bhaer saw the drops on her cheeks",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9620,
+        "paragraph": 4030,
+        "range": [
+          78,
+          122
+        ],
+        "text": "I’m used to plodding in the mud,” returned Jo, winking hard, because she would have died rather than openly wipe her eyes."
+      }
+    },
+    {
+      "id": "9624:249",
+      "sentence": 9624,
+      "paragraph": 4032,
+      "range": [
+        249,
+        29
+      ],
+      "text": "“Because you are going away.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9622,
+        "paragraph": 4031,
+        "range": [
+          72,
+          147
+        ],
+        "text": "The sight seemed to touch him very much, for suddenly stooping down, he asked in a tone that meant a great deal, “Heart’s dearest, why do you cry?”"
+      }
+    },
+    {
+      "id": "9632:204",
+      "sentence": 9632,
+      "paragraph": 4034,
+      "range": [
+        204,
+        59
+      ],
+      "text": "even though she had no better shelter than the old umbrella",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9589,
+        "paragraph": 4014,
+        "range": [
+          367,
+          140
+        ],
+        "text": "Then distorting his pockets with knobby bundles, and giving her the flowers to hold, he put up the old umbrella, and they traveled on again."
+      }
+    },
+    {
+      "id": "9638:968",
+      "sentence": 9638,
+      "paragraph": 4035,
+      "range": [
+        968,
+        36
+      ],
+      "text": "for he held the umbrella all over Jo",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9525,
+        "paragraph": 3981,
+        "range": [
+          464,
+          167
+        ],
+        "text": "The fact that a somewhat dilapidated blue one remained stationary above the unprotected bonnet attracted her attention, and looking up, she saw Mr. Bhaer looking down."
+      }
+    },
+    {
+      "id": "9643:782",
+      "sentence": 9643,
+      "paragraph": 4036,
+      "range": [
+        782,
+        24
+      ],
+      "text": "her impetuous “Oh, yes!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9631,
+        "paragraph": 4034,
+        "range": [
+          0,
+          10
+        ],
+        "text": "“Oh, yes!”"
+      }
+    },
+    {
+      "id": "9648:0",
+      "sentence": 9648,
+      "paragraph": 4039,
+      "range": [
+        0,
+        31
+      ],
+      "text": "“I always call you so to myself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9489,
+        "paragraph": 3968,
+        "range": [
+          84,
+          183
+        ],
+        "text": "If she was tired of his visits, she concealed her weariness with perfect skill, and took care that there should be coffee for supper, “as Friedrich—I mean Mr. Bhaer—doesn’t like tea.”"
+      }
+    },
+    {
+      "id": "9658:0",
+      "sentence": 9658,
+      "paragraph": 4043,
+      "range": [
+        0,
+        54
+      ],
+      "text": "“Well, then, why didn’t thou tell me all this sooner?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9645,
+        "paragraph": 4037,
+        "range": [
+          0,
+          30
+        ],
+        "text": "“Friedrich, why didn’t you...”"
+      }
+    },
+    {
+      "id": "9669:0",
+      "sentence": 9669,
+      "paragraph": 4047,
+      "range": [
+        0,
+        32
+      ],
+      "text": "“Yes, the first love is the best",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9668,
+        "paragraph": 4046,
+        "range": [
+          106,
+          73
+        ],
+        "text": "Ah, well, ‘Die erste Liebe ist die beste’, but that I should not expect.”"
+      }
+    },
+    {
+      "id": "9676:0",
+      "sentence": 9676,
+      "paragraph": 4050,
+      "range": [
+        0,
+        75
+      ],
+      "text": "“This,” and Mr. Bhaer took a little worn paper out of his waistcoat pocket.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9675,
+        "paragraph": 4049,
+        "range": [
+          54,
+          64
+        ],
+        "text": "“Now tell me what brought you, at last, just when I wanted you?”"
+      }
+    },
+    {
+      "id": "9783:90",
+      "sentence": 9783,
+      "paragraph": 4151,
+      "range": [
+        90,
+        27
+      ],
+      "text": "had a good cry on a rag bag",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9684,
+        "paragraph": 4054,
+        "range": [
+          0,
+          13
+        ],
+        "text": "IN THE GARRET"
+      }
+    },
+    {
+      "id": "9784:184",
+      "sentence": 9784,
+      "paragraph": 4151,
+      "range": [
+        184,
+        57
+      ],
+      "text": "tearing up the verses the Professor had treasured so long",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9676,
+        "paragraph": 4050,
+        "range": [
+          0,
+          75
+        ],
+        "text": "“This,” and Mr. Bhaer took a little worn paper out of his waistcoat pocket."
+      }
+    },
+    {
+      "id": "9785:77",
+      "sentence": 9785,
+      "paragraph": 4152,
+      "range": [
+        77,
+        52
+      ],
+      "text": "the brown book in which she keeps her little secrets",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9728,
+        "paragraph": 4097,
+        "range": [
+          0,
+          26
+        ],
+        "text": "Diaries of a wilful child,"
+      }
+    },
+    {
+      "id": "9786:274",
+      "sentence": 9786,
+      "paragraph": 4152,
+      "range": [
+        274,
+        31
+      ],
+      "text": "She has a sorrow, she is lonely",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9730,
+        "paragraph": 4099,
+        "range": [
+          0,
+          25
+        ],
+        "text": "A woman in a lonely home,"
+      }
+    },
+    {
+      "id": "9794:0",
+      "sentence": 9794,
+      "paragraph": 4156,
+      "range": [
+        0,
+        34
+      ],
+      "text": "“What made you stay away so long?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9498,
+        "paragraph": 3971,
+        "range": [
+          73,
+          184
+        ],
+        "text": "Then he stayed away for three whole days, and made no sign, a proceeding which caused everybody to look sober, and Jo to become pensive, at first, and then—alas for romance—very cross."
+      }
+    },
+    {
+      "id": "9798:0",
+      "sentence": 9798,
+      "paragraph": 4158,
+      "range": [
+        0,
+        23
+      ],
+      "text": "“I’m glad you are poor.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9797,
+        "paragraph": 4157,
+        "range": [
+          174,
+          103
+        ],
+        "text": "How could I ask you to gif up so much for a poor old fellow, who has no fortune but a little learning?”"
+      }
+    },
+    {
+      "id": "9800:232",
+      "sentence": 9800,
+      "paragraph": 4158,
+      "range": [
+        232,
+        26
+      ],
+      "text": "forty is the prime of life",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9797,
+        "paragraph": 4157,
+        "range": [
+          174,
+          103
+        ],
+        "text": "How could I ask you to gif up so much for a poor old fellow, who has no fortune but a little learning?”"
+      }
+    },
+    {
+      "id": "9810:144",
+      "sentence": 9810,
+      "paragraph": 4161,
+      "range": [
+        144,
+        32
+      ],
+      "text": "I may not break my word to Minna",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9646,
+        "paragraph": 4038,
+        "range": [
+          0,
+          71
+        ],
+        "text": "“Ah, heaven, she gifs me the name that no one speaks since Minna died!”"
+      }
+    },
+    {
+      "id": "9818:149",
+      "sentence": 9818,
+      "paragraph": 4164,
+      "range": [
+        149,
+        16
+      ],
+      "text": "“Not empty now,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9817,
+        "paragraph": 4163,
+        "range": [
+          5,
+          145
+        ],
+        "text": "Thou gifest me such hope and courage, and I haf nothing to gif back but a full heart and these empty hands,” cried the Professor, quite overcome."
+      }
+    },
+    {
+      "id": "9818:185",
+      "sentence": 9818,
+      "paragraph": 4164,
+      "range": [
+        185,
+        39
+      ],
+      "text": "kissed her Friedrich under the umbrella",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9632,
+        "paragraph": 4034,
+        "range": [
+          11,
+          271
+        ],
+        "text": "said Jo, and he was quite satisfied, for she folded both hands over his arm, and looked up at him with an expression that plainly showed how happy she would be to walk through life beside him, even though she had no better shelter than the old umbrella, if he carried it."
+      }
+    },
+    {
+      "id": "9820:667",
+      "sentence": 9820,
+      "paragraph": 4164,
+      "range": [
+        667,
+        15
+      ],
+      "text": "“Welcome home!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9508,
+        "paragraph": 3977,
+        "range": [
+          0,
+          56
+        ],
+        "text": "“If you happen to meet Mr. Bhaer, bring him home to tea."
+      }
+    }
+  ]
+}

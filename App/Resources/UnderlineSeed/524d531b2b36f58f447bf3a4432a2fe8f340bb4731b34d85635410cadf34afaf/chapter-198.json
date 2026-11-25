@@ -1,1 +1,69 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2663:252",
+      "sentence": 2663,
+      "paragraph": 1215,
+      "range": [
+        252,
+        36
+      ],
+      "text": "my last letter had never reached her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2659,
+        "paragraph": 1213,
+        "range": [
+          165,
+          125
+        ],
+        "text": "She accounted for it, however, by supposing that her last letter to her friend from Longbourn had by some accident been lost."
+      }
+    },
+    {
+      "id": "2670:65",
+      "sentence": 2670,
+      "paragraph": 1216,
+      "range": [
+        65,
+        70
+      ],
+      "text": "accident only could discover to Mr. Bingley her sister’s being in town",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2665,
+        "paragraph": 1215,
+        "range": [
+          333,
+          80
+        ],
+        "text": "He was well, but so much engaged with Mr. Darcy that they scarcely ever saw him."
+      }
+    },
+    {
+      "id": "2673:286",
+      "sentence": 2673,
+      "paragraph": 1217,
+      "range": [
+        286,
+        30
+      ],
+      "text": "the visitor did at last appear",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2668,
+        "paragraph": 1215,
+        "range": [
+          552,
+          39
+        ],
+        "text": "I dare say I shall soon see them here.”"
+      }
+    }
+  ]
+}

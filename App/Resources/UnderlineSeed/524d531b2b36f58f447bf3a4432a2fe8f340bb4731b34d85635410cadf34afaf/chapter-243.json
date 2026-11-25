@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3248:73",
+      "sentence": 3248,
+      "paragraph": 1447,
+      "range": [
+        73,
+        31
+      ],
+      "text": "having somebody at his disposal",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3224,
+        "paragraph": 1436,
+        "range": [
+          41,
+          25
+        ],
+        "text": "But I am at his disposal."
+      }
+    },
+    {
+      "id": "3250:271",
+      "sentence": 3250,
+      "paragraph": 1447,
+      "range": [
+        271,
+        32
+      ],
+      "text": "he may do what he likes with her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3228,
+        "paragraph": 1438,
+        "range": [
+          0,
+          93
+        ],
+        "text": "do not know anybody who seems more to enjoy the power of doing what he likes than Mr. Darcy.”"
+      }
+    },
+    {
+      "id": "3256:210",
+      "sentence": 3256,
+      "paragraph": 1449,
+      "range": [
+        210,
+        32
+      ],
+      "text": "she may like to have her own way",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3229,
+        "paragraph": 1439,
+        "range": [
+          0,
+          70
+        ],
+        "text": "“He likes to have his own way very well,” replied Colonel Fitzwilliam."
+      }
+    }
+  ]
+}

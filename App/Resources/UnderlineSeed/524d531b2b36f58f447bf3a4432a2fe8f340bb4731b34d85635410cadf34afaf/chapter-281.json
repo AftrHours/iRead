@@ -1,1 +1,90 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3831:176",
+      "sentence": 3831,
+      "paragraph": 1624,
+      "range": [
+        176,
+        29
+      ],
+      "text": "we talked and laughed so loud",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3791,
+        "paragraph": 1617,
+        "range": [
+          131,
+          84
+        ],
+        "text": "Well, now let us be quite comfortable and snug, and talk and laugh all the way home."
+      }
+    },
+    {
+      "id": "3842:412",
+      "sentence": 3842,
+      "paragraph": 1627,
+      "range": [
+        412,
+        57
+      ],
+      "text": "The comfort to her, of the regiment’s approaching removal",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3753,
+        "paragraph": 1603,
+        "range": [
+          243,
+          134
+        ],
+        "text": "Besides, it will not much signify what one wears this summer, after the ——shire have left Meryton, and they are going in a fortnight.”"
+      }
+    },
+    {
+      "id": "3844:59",
+      "sentence": 3844,
+      "paragraph": 1628,
+      "range": [
+        59,
+        68
+      ],
+      "text": "the Brighton scheme, of which Lydia had given them a hint at the inn",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3756,
+        "paragraph": 1605,
+        "range": [
+          0,
+          104
+        ],
+        "text": "“They are going to be encamped near Brighton; and I do so want papa to take us all there for the summer!"
+      }
+    },
+    {
+      "id": "3845:330",
+      "sentence": 3845,
+      "paragraph": 1628,
+      "range": [
+        330,
+        37
+      ],
+      "text": "her mother, though often disheartened",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3758,
+        "paragraph": 1605,
+        "range": [
+          192,
+          43
+        ],
+        "text": "Mamma would like to go, too, of all things!"
+      }
+    }
+  ]
+}

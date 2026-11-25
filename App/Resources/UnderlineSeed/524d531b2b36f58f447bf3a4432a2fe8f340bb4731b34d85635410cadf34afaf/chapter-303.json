@@ -1,1 +1,90 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4149:58",
+      "sentence": 4149,
+      "paragraph": 1744,
+      "range": [
+        58,
+        82
+      ],
+      "text": "The possibility of meeting Mr. Darcy, while viewing the place, instantly occurred.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4123,
+        "paragraph": 1735,
+        "range": [
+          152,
+          127
+        ],
+        "text": "“But surely,” said she, “I may enter his county with impunity, and rob it of a few petrified spars, without his perceiving me.”"
+      }
+    },
+    {
+      "id": "4153:176",
+      "sentence": 4153,
+      "paragraph": 1745,
+      "range": [
+        176,
+        44
+      ],
+      "text": "whether the family were down for the summer?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4152,
+        "paragraph": 1744,
+        "range": [
+          278,
+          185
+        ],
+        "text": "But against this there were objections; and she finally resolved that it could be the last resource, if her private inquiries as to the absence of the family were unfavourably answered."
+      }
+    },
+    {
+      "id": "4154:533",
+      "sentence": 4154,
+      "paragraph": 1745,
+      "range": [
+        533,
+        44
+      ],
+      "text": "she had not really any dislike to the scheme",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4143,
+        "paragraph": 1742,
+        "range": [
+          0,
+          80
+        ],
+        "text": "business at Pemberley, and was obliged to assume a disinclination for seeing it."
+      }
+    },
+    {
+      "id": "4155:0",
+      "sentence": 4155,
+      "paragraph": 1746,
+      "range": [
+        0,
+        41
+      ],
+      "text": "To Pemberley, therefore, they were to go.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4135,
+        "paragraph": 1739,
+        "range": [
+          681,
+          110
+        ],
+        "text": "In talking over their route the evening before, Mrs. Gardiner expressed an inclination to see the place again."
+      }
+    }
+  ]
+}

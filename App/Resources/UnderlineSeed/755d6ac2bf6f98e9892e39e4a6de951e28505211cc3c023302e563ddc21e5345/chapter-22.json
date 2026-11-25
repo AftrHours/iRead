@@ -1,1 +1,426 @@
-{"parserVersion":1,"underlines":[{"reference":{"text":"Amy came out so strong on this occasion that I think the good thoughts in the little chapel really began to bear fruit.","range":[152,119],"paragraph":1939,"sentence":4442},"paragraph":1940,"range":[482,33],"text":"were alone together in the chapel","id":"4449:482","kind":"thing","decidedBy":"rules","sentence":4449},{"reference":{"text":"“Yes, Mother, and when I go home I mean to have a corner in the big closet to put my books and the copy of that picture which I’ve tried to make.","range":[0,145],"paragraph":1942,"sentence":4454},"paragraph":1949,"range":[12,47],"text":"have more faith in the corner of the big closet","id":"4475:12","kind":"place","decidedBy":"rules","sentence":4475},{"reference":{"text":"Hannah had ‘dished up’ an astonishing breakfast for the traveler, finding it impossible to vent her excitement in any other way, and Meg and Jo fed their mother like dutiful young storks, while they listened to her whispered account of Father’s state, Mr. Brooke’s promise to stay and nurse him, the delays which the storm occasioned on the homeward journey, and the unspeakable comfort Laurie’s hopeful face had given her when she arrived, worn out with fatigue, anxiety, and cold.","range":[0,482],"paragraph":1937,"sentence":4435},"paragraph":1950,"range":[0,86],"text":"That evening while Meg was writing to her father to report the traveler’s safe arrival","id":"4480:0","kind":"thing","decidedBy":"rules","sentence":4480},{"reference":{"text":"There probably were a good many happy little girls in and about the city that day, but it is my private opinion that Amy was the happiest of all, when she sat in her mother’s lap and told her trials, receiving consolation and compensation in the shape of approving smiles and fond caresses.","range":[186,290],"paragraph":1940,"sentence":4448},"paragraph":1972,"range":[126,37],"text":"sit in the lap of luxury all her days","id":"4557:126","kind":"action","decidedBy":"rules","sentence":4557},{"reference":{"text":"I call him ‘John’ now.","range":[13,22],"paragraph":1961,"sentence":4509},"paragraph":1980,"range":[1,21],"text":"Do you call him ‘John","id":"4576:1","kind":"action","decidedBy":"rules","sentence":4576},{"reference":{"text":"John went with me at Mr. Laurence’s request, and was so devoted to poor Father that we couldn’t help getting fond of him.","range":[73,121],"paragraph":1963,"sentence":4518},"paragraph":1981,"range":[43,20],"text":"are very fond of him","id":"4578:43","kind":"thing","decidedBy":"rules","sentence":4578},{"reference":{"text":"He was perfectly open and honorable about Meg, for he told us he loved her, but would earn a comfortable home before he asked her to marry him.","range":[195,143],"paragraph":1963,"sentence":4519},"paragraph":1982,"range":[65,48],"text":"is so inexpressibly comfortable to have you here","id":"4581:65","kind":"place","decidedBy":"rules","sentence":4581}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4447:42",
+      "sentence": 4447,
+      "paragraph": 1940,
+      "range": [
+        42,
+        31
+      ],
+      "text": "not going to wake up till night",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4446,
+        "paragraph": 1939,
+        "range": [
+          899,
+          218
+        ],
+        "text": "She was a long time about it, and when she returned, he was stretched out with both arms under his head, sound asleep, while Aunt March had pulled down the curtains and sat doing nothing in an unusual fit of benignity."
+      }
+    },
+    {
+      "id": "4459:279",
+      "sentence": 4459,
+      "paragraph": 1943,
+      "range": [
+        279,
+        27
+      ],
+      "text": "Aunt gave me the ring today",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4443,
+        "paragraph": 1939,
+        "range": [
+          272,
+          222
+        ],
+        "text": "She dried her tears quickly, restrained her impatience to see her mother, and never even thought of the turquoise ring, when the old lady heartily agreed in Laurie’s opinion, that she behaved ‘like a capital little woman’."
+      }
+    },
+    {
+      "id": "4465:157",
+      "sentence": 4465,
+      "paragraph": 1945,
+      "range": [
+        157,
+        25
+      ],
+      "text": "to remind me of something",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4462,
+        "paragraph": 1943,
+        "range": [
+          504,
+          37
+        ],
+        "text": "I’d like to wear them Mother, can I?”"
+      }
+    },
+    {
+      "id": "4473:499",
+      "sentence": 4473,
+      "paragraph": 1948,
+      "range": [
+        499,
+        47
+      ],
+      "text": "if I had something always about me to remind me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4465,
+        "paragraph": 1945,
+        "range": [
+          37,
+          147
+        ],
+        "text": "“I don’t think I like it only because it’s so pretty, but I want to wear it as the girl in the story wore her bracelet, to remind me of something.”"
+      }
+    },
+    {
+      "id": "4475:1",
+      "sentence": 4475,
+      "paragraph": 1949,
+      "range": [
+        1,
+        58
+      ],
+      "text": "Yes, but I have more faith in the corner of the big closet",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4454,
+        "paragraph": 1942,
+        "range": [
+          0,
+          145
+        ],
+        "text": "“Yes, Mother, and when I go home I mean to have a corner in the big closet to put my books and the copy of that picture which I’ve tried to make."
+      }
+    },
+    {
+      "id": "4476:61",
+      "sentence": 4476,
+      "paragraph": 1949,
+      "range": [
+        61,
+        38
+      ],
+      "text": "Wear your ring, dear, and do your best",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4462,
+        "paragraph": 1943,
+        "range": [
+          504,
+          37
+        ],
+        "text": "I’d like to wear them Mother, can I?”"
+      }
+    },
+    {
+      "id": "4480:130",
+      "sentence": 4480,
+      "paragraph": 1950,
+      "range": [
+        130,
+        37
+      ],
+      "text": "finding her mother in her usual place",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4440,
+        "paragraph": 1938,
+        "range": [
+          458,
+          169
+        ],
+        "text": "Mrs. March would not leave Beth’s side, but rested in the big chair, waking often to look at, touch, and brood over her child, like a miser over some recovered treasure."
+      }
+    },
+    {
+      "id": "4513:40",
+      "sentence": 4513,
+      "paragraph": 1962,
+      "range": [
+        40,
+        24
+      ],
+      "text": "He’s been good to Father",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4435,
+        "paragraph": 1937,
+        "range": [
+          0,
+          482
+        ],
+        "text": "Hannah had ‘dished up’ an astonishing breakfast for the traveler, finding it impossible to vent her excitement in any other way, and Meg and Jo fed their mother like dutiful young storks, while they listened to her whispered account of Father’s state, Mr. Brooke’s promise to stay and nurse him, the delays which the storm occasioned on the homeward journey, and the unspeakable comfort Laurie’s hopeful face had given her when she arrived, worn out with fatigue, anxiety, and cold."
+      }
+    },
+    {
+      "id": "4516:225",
+      "sentence": 4516,
+      "paragraph": 1962,
+      "range": [
+        225,
+        46
+      ],
+      "text": "Jo pulled her hair again with a wrathful tweak",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4480,
+        "paragraph": 1950,
+        "range": [
+          0,
+          263
+        ],
+        "text": "That evening while Meg was writing to her father to report the traveler’s safe arrival, Jo slipped upstairs into Beth’s room, and finding her mother in her usual place, stood a minute twisting her fingers in her hair, with a worried gesture and an undecided look."
+      }
+    },
+    {
+      "id": "4519:271",
+      "sentence": 4519,
+      "paragraph": 1963,
+      "range": [
+        271,
+        66
+      ],
+      "text": "but would earn a comfortable home before he asked her to marry him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4494,
+        "paragraph": 1956,
+        "range": [
+          207,
+          135
+        ],
+        "text": "We forgot about it, till Teddy told me that Mr. Brooke owned that he liked Meg but didn’t dare say so, she was so young and he so poor."
+      }
+    },
+    {
+      "id": "4542:44",
+      "sentence": 4542,
+      "paragraph": 1968,
+      "range": [
+        44,
+        33
+      ],
+      "text": "Let’s send him about his business",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4513,
+        "paragraph": 1962,
+        "range": [
+          40,
+          94
+        ],
+        "text": "He’s been good to Father, and you won’t send him away, but let Meg marry him, if she wants to."
+      }
+    },
+    {
+      "id": "4545:353",
+      "sentence": 4545,
+      "paragraph": 1969,
+      "range": [
+        353,
+        29
+      ],
+      "text": "nor be married, before twenty",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4521,
+        "paragraph": 1963,
+        "range": [
+          442,
+          136
+        ],
+        "text": "He is a truly excellent young man, and we could not refuse to listen to him, but I will not consent to Meg’s engaging herself so young.”"
+      }
+    },
+    {
+      "id": "4550:1",
+      "sentence": 4550,
+      "paragraph": 1970,
+      "range": [
+        1,
+        44
+      ],
+      "text": "Hadn’t you rather have her marry a rich man?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4544,
+        "paragraph": 1969,
+        "range": [
+          26,
+          252
+        ],
+        "text": "It is natural and right you should all go to homes of your own in time, but I do want to keep my girls as long as I can, and I am sorry that this happened so soon, for Meg is only seventeen and it will be some years before John can make a home for her."
+      }
+    },
+    {
+      "id": "4564:129",
+      "sentence": 4564,
+      "paragraph": 1975,
+      "range": [
+        129,
+        20
+      ],
+      "text": "Don’t make plans, Jo",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4557,
+        "paragraph": 1972,
+        "range": [
+          0,
+          164
+        ],
+        "text": "“I understand, Mother, and quite agree, but I’m disappointed about Meg, for I’d planned to have her marry Teddy by-and-by and sit in the lap of luxury all her days."
+      }
+    },
+    {
+      "id": "4565:248",
+      "sentence": 4565,
+      "paragraph": 1975,
+      "range": [
+        248,
+        52
+      ],
+      "text": "had better not get ‘romantic rubbish’ as you call it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4499,
+        "paragraph": 1958,
+        "range": [
+          11,
+          52
+        ],
+        "text": "I don’t know anything about love and such nonsense!”"
+      }
+    },
+    {
+      "id": "4569:1",
+      "sentence": 4569,
+      "paragraph": 1977,
+      "range": [
+        1,
+        37
+      ],
+      "text": "What’s that about flatirons and cats?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4567,
+        "paragraph": 1976,
+        "range": [
+          145,
+          68
+        ],
+        "text": "I wish wearing flatirons on our heads would keep us from growing up."
+      }
+    },
+    {
+      "id": "4570:78",
+      "sentence": 4570,
+      "paragraph": 1977,
+      "range": [
+        78,
+        36
+      ],
+      "text": "with the finished letter in her hand",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4480,
+        "paragraph": 1950,
+        "range": [
+          0,
+          263
+        ],
+        "text": "That evening while Meg was writing to her father to report the traveler’s safe arrival, Jo slipped upstairs into Beth’s room, and finding her mother in her usual place, stood a minute twisting her fingers in her hair, with a worried gesture and an undecided look."
+      }
+    },
+    {
+      "id": "4576:1",
+      "sentence": 4576,
+      "paragraph": 1980,
+      "range": [
+        1,
+        23
+      ],
+      "text": "Do you call him ‘John’?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4508,
+        "paragraph": 1961,
+        "range": [
+          0,
+          12
+        ],
+        "text": "“Mr. Brooke."
+      }
+    },
+    {
+      "id": "4578:6",
+      "sentence": 4578,
+      "paragraph": 1981,
+      "range": [
+        6,
+        28
+      ],
+      "text": "he has been like a son to us",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4518,
+        "paragraph": 1963,
+        "range": [
+          73,
+          121
+        ],
+        "text": "John went with me at Mr. Laurence’s request, and was so devoted to poor Father that we couldn’t help getting fond of him."
+      }
+    },
+    {
+      "id": "4582:135",
+      "sentence": 4582,
+      "paragraph": 1983,
+      "range": [
+        135,
+        50
+      ],
+      "text": "She does not love John yet, but will soon learn to",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4528,
+        "paragraph": 1965,
+        "range": [
+          135,
+          94
+        ],
+        "text": "When John comes back, and I see them together, I can judge better of her feelings toward him.”"
+      }
+    }
+  ]
+}

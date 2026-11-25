@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3867:0",
+      "sentence": 3867,
+      "paragraph": 1641,
+      "range": [
+        0,
+        70
+      ],
+      "text": "It was some time, however, before a smile could be extorted from Jane.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3860,
+        "paragraph": 1639,
+        "range": [
+          107,
+          205
+        ],
+        "text": "What a stroke was this for poor Jane, who would willingly have gone through the world without believing that so much wickedness existed in the whole race of mankind as was here collected in one individual!"
+      }
+    }
+  ]
+}

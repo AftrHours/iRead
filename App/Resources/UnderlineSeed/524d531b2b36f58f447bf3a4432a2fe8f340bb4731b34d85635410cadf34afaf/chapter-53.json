@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[{"kind":"thing","decidedBy":"rules","paragraph":357,"text":"is, Mr. Darcy","range":[49,13],"reference":{"sentence":689,"range":[0,255],"paragraph":356,"text":"Mr. Darcy stood near them in silent indignation at such a mode of passing the evening, to the exclusion of all conversation, and was too much engrossed by his own thoughts to perceive that Sir William Lucas was his neighbour, till Sir William thus began:—"},"sentence":690,"id":"690:49"},{"kind":"thing","decidedBy":"rules","paragraph":358,"text":"has the advantage also of being in vogue amongst the less polished societies of the world","range":[24,89],"reference":{"sentence":692,"range":[106,69],"paragraph":357,"text":"I consider it as one of the first refinements of polished societies.”"},"sentence":693,"id":"693:24"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "689:0",
+      "sentence": 689,
+      "paragraph": 356,
+      "range": [
+        0,
+        47
+      ],
+      "text": "Mr. Darcy stood near them in silent indignation",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 688,
+        "paragraph": 355,
+        "range": [
+          220,
+          365
+        ],
+        "text": "Elizabeth, easy and unaffected, had been listened to with much more pleasure, though not playing half so well; and Mary, at the end of a long concerto, was glad to purchase praise and gratitude by Scotch and Irish airs, at the request of her younger sisters, who with some of the Lucases, and two or three officers, joined eagerly in dancing at one end of the room."
+      }
+    }
+  ]
+}

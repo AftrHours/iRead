@@ -1,1 +1,825 @@
-{"underlines":[{"reference":{"range":[0,98],"text":"Beth had a headache and lay on the sofa, trying to comfort herself with the cat and three kittens.","sentence":839,"paragraph":381},"text":"get over your headache, Bethy","decidedBy":"rules","range":[22,29],"kind":"action","id":"855:22","sentence":855,"paragraph":390},{"reference":{"range":[0,90],"text":"Jo happened to suit Aunt March, who was lame and needed an active person to wait upon her.","sentence":882,"paragraph":402},"text":"happening to meet Jo at a friend’s","decidedBy":"rules","range":[52,34],"kind":"action","id":"887:52","sentence":887,"paragraph":404},{"reference":{"range":[0,90],"text":"Jo happened to suit Aunt March, who was lame and needed an active person to wait upon her.","sentence":882,"paragraph":402},"text":"did not suit Jo at all","decidedBy":"rules","range":[216,22],"kind":"action","id":"888:216","sentence":888,"paragraph":404},{"reference":{"range":[129,238],"text":"Jo remembered the kind old gentleman, who used to let her build railroads and bridges with his big dictionaries, tell her stories about queer pictures in his Latin books, and buy her cards of gingerbread whenever he met her in the street.","sentence":891,"paragraph":405},"text":"illustrating stories with queer specimens of art","decidedBy":"rules","range":[149,48],"kind":"action","id":"923:149","sentence":923,"paragraph":412},{"reference":{"range":[36,97],"text":"returned Amy, washing out the sum that was all wrong with the tears that had fallen on her slate.","sentence":846,"paragraph":384},"text":"complained that instead of doing her sums she covered her slate with animals","decidedBy":"rules","range":[212,76],"kind":"action","id":"924:212","sentence":924,"paragraph":412},{"reference":{"range":[0,37],"text":"Beth was too bashful to go to school.","sentence":901,"paragraph":408},"text":"can’t come to school","decidedBy":"rules","range":[258,20],"kind":"action","id":"935:258","sentence":935,"paragraph":414},{"reference":{"range":[0,109],"text":"If anybody had asked Amy what the greatest trial of her life was, she would have answered at once, “My nose.”","sentence":919,"paragraph":411},"text":"Has anybody got anything to tell","decidedBy":"rules","range":[1,32],"kind":"thing","id":"940:1","sentence":940,"paragraph":416},{"reference":{"range":[452,111],"text":"and she had to leave her paradise to wind yarn, wash the poodle, or read Belsham’s Essays by the hour together.","sentence":896,"paragraph":406},"text":"was reading that everlasting Belsham","decidedBy":"rules","range":[139,36],"kind":"action","id":"943:139","sentence":943,"paragraph":417},{"reference":{"range":[0,116],"text":"Jo laughed, Meg scolded, Beth implored, and Amy wailed because she couldn’t remember how much nine times twelve was.","sentence":848,"paragraph":386},"text":"When they had laughed at Beth’s story","decidedBy":"rules","range":[0,37],"kind":"feeling","id":"993:0","sentence":993,"paragraph":430},{"reference":{"range":[476,139],"text":"Long, quiet days she spent, not lonely nor idle, for her little world was peopled with imaginary friends, and she was by nature a busy bee.","sentence":905,"paragraph":408},"text":"thought how lonely","decidedBy":"rules","range":[220,18],"kind":"action","id":"993:220","sentence":993,"paragraph":430},{"reference":{"range":[822,203],"text":"Poor Meg seldom complained, but a sense of injustice made her feel bitter toward everyone sometimes, for she had not yet learned to know how rich she was in the blessings which alone can make life happy.","sentence":881,"paragraph":401},"text":"felt so rich, so happy thinking of my blessings","decidedBy":"rules","range":[313,47],"kind":"action","id":"1007:313","sentence":1007,"paragraph":435},{"reference":{"range":[320,167],"paragraph":401,"text":"She tried not to be envious or discontented, but it was very natural that the young girl should long for pretty things, gay friends, accomplishments, and a happy life.","sentence":879},"text":"When you feel discontented","decidedBy":"rules","range":[654,26],"kind":"thing","sentence":1014,"paragraph":438,"id":"1014:654"},{"reference":{"range":[822,203],"paragraph":401,"text":"Poor Meg seldom complained, but a sense of injustice made her feel bitter toward everyone sometimes, for she had not yet learned to know how rich she was in the blessings which alone can make life happy.","sentence":881},"text":"think over your blessings","decidedBy":"rules","range":[682,25],"kind":"action","sentence":1014,"paragraph":438,"id":"1014:682"},{"reference":{"range":[81,107],"paragraph":428,"text":"I didn’t envy her then, for I felt that millions of carnelian rings wouldn’t have made me happy after that.","sentence":982},"text":"that even carnelian rings were not so valuable as good behavior","decidedBy":"rules","range":[490,63],"kind":"thing","sentence":1017,"paragraph":439,"id":"1017:490"}],"parserVersion":1,"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "831:87",
+      "sentence": 831,
+      "paragraph": 378,
+      "range": [
+        87,
+        47
+      ],
+      "text": "her burden, consisting of four spoiled children",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 829,
+        "paragraph": 377,
+        "range": [
+          0,
+          120
+        ],
+        "text": "“Well, we can’t have it, so don’t let us grumble but shoulder our bundles and trudge along as cheerfully as Marmee does."
+      }
+    },
+    {
+      "id": "847:7",
+      "sentence": 847,
+      "paragraph": 385,
+      "range": [
+        7,
+        47
+      ],
+      "text": "if you don’t keep these horrid cats down cellar",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 839,
+        "paragraph": 381,
+        "range": [
+          0,
+          98
+        ],
+        "text": "Beth had a headache and lay on the sofa, trying to comfort herself with the cat and three kittens."
+      }
+    },
+    {
+      "id": "848:44",
+      "sentence": 848,
+      "paragraph": 386,
+      "range": [
+        44,
+        71
+      ],
+      "text": "Amy wailed because she couldn’t remember how much nine times twelve was",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 840,
+        "paragraph": 381,
+        "range": [
+          99,
+          89
+        ],
+        "text": "Amy was fretting because her lessons were not learned, and she couldn’t find her rubbers."
+      }
+    },
+    {
+      "id": "850:142",
+      "sentence": 850,
+      "paragraph": 387,
+      "range": [
+        142,
+        53
+      ],
+      "text": "crossing out the third spoiled sentence in her letter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 842,
+        "paragraph": 382,
+        "range": [
+          0,
+          136
+        ],
+        "text": "Mrs. March was very busy trying to finish a letter, which must go at once, and Hannah had the grumps, for being up late didn’t suit her."
+      }
+    },
+    {
+      "id": "853:0",
+      "sentence": 853,
+      "paragraph": 389,
+      "range": [
+        0,
+        75
+      ],
+      "text": "Hannah never forgot to make them, no matter how busy or grumpy she might be",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 842,
+        "paragraph": 382,
+        "range": [
+          0,
+          136
+        ],
+        "text": "Mrs. March was very busy trying to finish a letter, which must go at once, and Hannah had the grumps, for being up late didn’t suit her."
+      }
+    },
+    {
+      "id": "855:1",
+      "sentence": 855,
+      "paragraph": 390,
+      "range": [
+        1,
+        50
+      ],
+      "text": "Cuddle your cats and get over your headache, Bethy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 839,
+        "paragraph": 381,
+        "range": [
+          0,
+          98
+        ],
+        "text": "Beth had a headache and lay on the sofa, trying to comfort herself with the cat and three kittens."
+      }
+    },
+    {
+      "id": "859:194",
+      "sentence": 859,
+      "paragraph": 390,
+      "range": [
+        194,
+        53
+      ],
+      "text": "the pilgrims were not setting out as they ought to do",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 822,
+        "paragraph": 374,
+        "range": [
+          0,
+          228
+        ],
+        "text": "“Oh, dear, how hard it does seem to take up our packs and go on,” sighed Meg the morning after the party, for now the holidays were over, the week of merrymaking did not fit her for going on easily with the task she never liked."
+      }
+    },
+    {
+      "id": "862:1",
+      "sentence": 862,
+      "paragraph": 392,
+      "range": [
+        1,
+        58
+      ],
+      "text": "If Marmee shook her fist instead of kissing her hand to us",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 860,
+        "paragraph": 391,
+        "range": [
+          0,
+          137
+        ],
+        "text": "They always looked back before turning the corner, for their mother was always at the window to nod and smile, and wave her hand to them."
+      }
+    },
+    {
+      "id": "865:44",
+      "sentence": 865,
+      "paragraph": 395,
+      "range": [
+        44,
+        29
+      ],
+      "text": "neither a rascal nor a wretch",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 862,
+        "paragraph": 392,
+        "range": [
+          0,
+          222
+        ],
+        "text": "“If Marmee shook her fist instead of kissing her hand to us, it would serve us right, for more ungrateful wretches than we are were never seen,” cried Jo, taking a remorseful satisfaction in the snowy walk and bitter wind."
+      }
+    },
+    {
+      "id": "866:60",
+      "sentence": 866,
+      "paragraph": 396,
+      "range": [
+        60,
+        47
+      ],
+      "text": "you can’t sit in the lap of luxury all the time",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 827,
+        "paragraph": 376,
+        "range": [
+          57,
+          129
+        ],
+        "text": "But it does seem so nice to have little suppers and bouquets, and go to parties, and drive home, and read and rest, and not work."
+      }
+    },
+    {
+      "id": "872:180",
+      "sentence": 872,
+      "paragraph": 398,
+      "range": [
+        180,
+        20
+      ],
+      "text": "Don’t croak any more",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 838,
+        "paragraph": 380,
+        "range": [
+          90,
+          58
+        ],
+        "text": "Everyone seemed rather out of sorts and inclined to croak."
+      }
+    },
+    {
+      "id": "873:110",
+      "sentence": 873,
+      "paragraph": 399,
+      "range": [
+        110,
+        37
+      ],
+      "text": "each hugging her little warm turnover",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 851,
+        "paragraph": 388,
+        "range": [
+          0,
+          121
+        ],
+        "text": "There was a momentary lull, broken by Hannah, who stalked in, laid two hot turnovers on the table, and stalked out again."
+      }
+    },
+    {
+      "id": "876:0",
+      "sentence": 876,
+      "paragraph": 401,
+      "range": [
+        0,
+        43
+      ],
+      "text": "Margaret found a place as nursery governess",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 831,
+        "paragraph": 378,
+        "range": [
+          0,
+          161
+        ],
+        "text": "This idea tickled Jo’s fancy and put her in good spirits, but Meg didn’t brighten, for her burden, consisting of four spoiled children, seemed heavier than ever."
+      }
+    },
+    {
+      "id": "877:81",
+      "sentence": 877,
+      "paragraph": 401,
+      "range": [
+        81,
+        37
+      ],
+      "text": "As she said, she was ‘fond of luxury’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 828,
+        "paragraph": 376,
+        "range": [
+          187,
+          176
+        ],
+        "text": "It’s like other people, you know, and I always envy girls who do such things, I’m so fond of luxury,” said Meg, trying to decide which of two shabby gowns was the least shabby."
+      }
+    },
+    {
+      "id": "880:584",
+      "sentence": 880,
+      "paragraph": 401,
+      "range": [
+        584,
+        64
+      ],
+      "text": "Meg caught frequent glimpses of dainty ball dresses and bouquets",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 828,
+        "paragraph": 376,
+        "range": [
+          187,
+          176
+        ],
+        "text": "It’s like other people, you know, and I always envy girls who do such things, I’m so fond of luxury,” said Meg, trying to decide which of two shabby gowns was the least shabby."
+      }
+    },
+    {
+      "id": "881:854",
+      "sentence": 881,
+      "paragraph": 401,
+      "range": [
+        854,
+        67
+      ],
+      "text": "a sense of injustice made her feel bitter toward everyone sometimes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 835,
+        "paragraph": 379,
+        "range": [
+          171,
+          177
+        ],
+        "text": "“I shall have to toil and moil all my days, with only little bits of fun now and then, and get old and ugly and sour, because I’m poor and can’t enjoy my life as other girls do."
+      }
+    },
+    {
+      "id": "882:0",
+      "sentence": 882,
+      "paragraph": 402,
+      "range": [
+        0,
+        30
+      ],
+      "text": "Jo happened to suit Aunt March",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 830,
+        "paragraph": 377,
+        "range": [
+          121,
+          186
+        ],
+        "text": "I’m sure Aunt March is a regular Old Man of the Sea to me, but I suppose when I’ve learned to carry her without complaining, she will tumble off, or get so light that I shan’t mind her.”"
+      }
+    },
+    {
+      "id": "899:237",
+      "sentence": 899,
+      "paragraph": 407,
+      "range": [
+        237,
+        86
+      ],
+      "text": "A quick temper, sharp tongue, and restless spirit were always getting her into scrapes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 844,
+        "paragraph": 383,
+        "range": [
+          39,
+          112
+        ],
+        "text": "cried Jo, losing her temper when she had upset an inkstand, broken both boot lacings, and sat down upon her hat."
+      }
+    },
+    {
+      "id": "900:481",
+      "sentence": 900,
+      "paragraph": 407,
+      "range": [
+        481,
+        74
+      ],
+      "text": "the thought that she was doing something to support herself made her happy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 874,
+        "paragraph": 400,
+        "range": [
+          0,
+          167
+        ],
+        "text": "When Mr. March lost his property in trying to help an unfortunate friend, the two oldest girls begged to be allowed to do something toward their own support, at least."
+      }
+    },
+    {
+      "id": "900:556",
+      "sentence": 900,
+      "paragraph": 407,
+      "range": [
+        556,
+        39
+      ],
+      "text": "in spite of the perpetual “Josy-phine!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 894,
+        "paragraph": 406,
+        "range": [
+          218,
+          220
+        ],
+        "text": "But, like all happiness, it did not last long, for as sure as she had just reached the heart of the story, the sweetest verse of a song, or the most perilous adventure of her traveler, a shrill voice called, “Josy-phine!"
+      }
+    },
+    {
+      "id": "924:254",
+      "sentence": 924,
+      "paragraph": 412,
+      "range": [
+        254,
+        34
+      ],
+      "text": "she covered her slate with animals",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 846,
+        "paragraph": 384,
+        "range": [
+          36,
+          97
+        ],
+        "text": "returned Amy, washing out the sum that was all wrong with the tears that had fallen on her slate."
+      }
+    },
+    {
+      "id": "928:934",
+      "sentence": 928,
+      "paragraph": 412,
+      "range": [
+        934,
+        35
+      ],
+      "text": "When Papa was rich we did so-and-so",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 874,
+        "paragraph": 400,
+        "range": [
+          0,
+          167
+        ],
+        "text": "When Mr. March lost his property in trying to help an unfortunate friend, the two oldest girls begged to be allowed to do something toward their own support, at least."
+      }
+    },
+    {
+      "id": "936:329",
+      "sentence": 936,
+      "paragraph": 414,
+      "range": [
+        329,
+        28
+      ],
+      "text": "I can bear even my flat nose",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 921,
+        "paragraph": 411,
+        "range": [
+          240,
+          145
+        ],
+        "text": "It was not big nor red, like poor ‘Petrea’s’, it was only rather flat, and all the pinching in the world could not give it an aristocratic point."
+      }
+    },
+    {
+      "id": "936:362",
+      "sentence": 936,
+      "paragraph": 414,
+      "range": [
+        362,
+        41
+      ],
+      "text": "purple gown with yellow sky-rockets on it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 933,
+        "paragraph": 413,
+        "range": [
+          387,
+          191
+        ],
+        "text": "Everything was good, well made, and little worn, but Amy’s artistic eyes were much afflicted, especially this winter, when her school dress was a dull purple with yellow dots and no trimming."
+      }
+    },
+    {
+      "id": "939:446",
+      "sentence": 939,
+      "paragraph": 415,
+      "range": [
+        446,
+        50
+      ],
+      "text": "put their sisters in the places of discarded dolls",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 906,
+        "paragraph": 408,
+        "range": [
+          616,
+          125
+        ],
+        "text": "There were six dolls to be taken up and dressed every morning, for Beth was a child still and loved her pets as well as ever."
+      }
+    },
+    {
+      "id": "943:137",
+      "sentence": 943,
+      "paragraph": 417,
+      "range": [
+        137,
+        38
+      ],
+      "text": "I was reading that everlasting Belsham",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 896,
+        "paragraph": 406,
+        "range": [
+          452,
+          111
+        ],
+        "text": "and she had to leave her paradise to wind yarn, wash the poodle, or read Belsham’s Essays by the hour together."
+      }
+    },
+    {
+      "id": "943:210",
+      "sentence": 943,
+      "paragraph": 417,
+      "range": [
+        210,
+        23
+      ],
+      "text": "for Aunt soon drops off",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 893,
+        "paragraph": 406,
+        "range": [
+          0,
+          217
+        ],
+        "text": "The moment Aunt March took her nap, or was busy with company, Jo hurried to this quiet place, and curling herself up in the easy chair, devoured poetry, romance, history, travels, and pictures like a regular bookworm."
+      }
+    },
+    {
+      "id": "982:81",
+      "sentence": 982,
+      "paragraph": 428,
+      "range": [
+        81,
+        22
+      ],
+      "text": "I didn’t envy her then",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 970,
+        "paragraph": 426,
+        "range": [
+          240,
+          63
+        ],
+        "text": "I wanted it dreadfully, and wished I was her with all my might."
+      }
+    },
+    {
+      "id": "984:330",
+      "sentence": 984,
+      "paragraph": 428,
+      "range": [
+        330,
+        54
+      ],
+      "text": "the successful utterance of two long words in a breath",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 928,
+        "paragraph": 412,
+        "range": [
+          898,
+          167
+        ],
+        "text": "She had a plaintive way of saying, “When Papa was rich we did so-and-so,” which was very touching, and her long words were considered ‘perfectly elegant’ by the girls."
+      }
+    },
+    {
+      "id": "1005:110",
+      "sentence": 1005,
+      "paragraph": 435,
+      "range": [
+        110,
+        41
+      ],
+      "text": "I’d given one man and thought it too much",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 993,
+        "paragraph": 430,
+        "range": [
+          0,
+          294
+        ],
+        "text": "When they had laughed at Beth’s story, they asked their mother for one, and after a moments thought, she said soberly, “As I sat cutting out blue flannel jackets today at the rooms, I felt very anxious about Father, and thought how lonely and helpless we should be, if anything happened to him."
+      }
+    },
+    {
+      "id": "1014:682",
+      "sentence": 1014,
+      "paragraph": 438,
+      "range": [
+        682,
+        42
+      ],
+      "text": "think over your blessings, and be grateful",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1007,
+        "paragraph": 435,
+        "range": [
+          311,
+          161
+        ],
+        "text": "I felt so rich, so happy thinking of my blessings, that I made him a nice bundle, gave him some money, and thanked him heartily for the lesson he had taught me.”"
+      }
+    },
+    {
+      "id": "1017:130",
+      "sentence": 1017,
+      "paragraph": 439,
+      "range": [
+        130,
+        64
+      ],
+      "text": "money couldn’t keep shame and sorrow out of rich people’s houses",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 965,
+        "paragraph": 425,
+        "range": [
+          147,
+          160
+        ],
+        "text": "At the Kings’ today I found everybody in a flurry, and one of the children said that her oldest brother had done something dreadful, and Papa had sent him away."
+      }
+    },
+    {
+      "id": "1017:308",
+      "sentence": 1017,
+      "paragraph": 439,
+      "range": [
+        308,
+        66
+      ],
+      "text": "a certain fretful, feeble old lady who couldn’t enjoy her comforts",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 961,
+        "paragraph": 424,
+        "range": [
+          231,
+          54
+        ],
+        "text": "What a pleasant life she might have if only she chose!"
+      }
+    },
+    {
+      "id": "1017:433",
+      "sentence": 1017,
+      "paragraph": 439,
+      "range": [
+        433,
+        40
+      ],
+      "text": "it was harder still to go begging for it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 987,
+        "paragraph": 429,
+        "range": [
+          338,
+          212
+        ],
+        "text": "A poor woman came in with a pail and a mop, and asked Mr. Cutter if he would let her do some scrubbing for a bit of fish, because she hadn’t any dinner for her children, and had been disappointed of a day’s work."
+      }
+    },
+    {
+      "id": "1017:495",
+      "sentence": 1017,
+      "paragraph": 439,
+      "range": [
+        495,
+        58
+      ],
+      "text": "even carnelian rings were not so valuable as good behavior",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 969,
+        "paragraph": 426,
+        "range": [
+          170,
+          69
+        ],
+        "text": "“Susie Perkins came to school today with a lovely red carnelian ring."
+      }
+    },
+    {
+      "id": "1019:45",
+      "sentence": 1019,
+      "paragraph": 440,
+      "range": [
+        45,
+        31
+      ],
+      "text": "turn our own stories against us",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1008,
+        "paragraph": 436,
+        "range": [
+          0,
+          63
+        ],
+        "text": "“Tell another story, Mother, one with a moral to it, like this."
+      }
+    },
+    {
+      "id": "1022:92",
+      "sentence": 1022,
+      "paragraph": 441,
+      "range": [
+        92,
+        44
+      ],
+      "text": "putting the needles straight on Jo’s cushion",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 985,
+        "paragraph": 429,
+        "range": [
+          0,
+          154
+        ],
+        "text": "“I saw something I liked this morning, and I meant to tell it at dinner, but I forgot,” said Beth, putting Jo’s topsy-turvy basket in order as she talked."
+      }
+    },
+    {
+      "id": "1023:96",
+      "sentence": 1023,
+      "paragraph": 442,
+      "range": [
+        96,
+        38
+      ],
+      "text": "I’ve had warning from Susie’s downfall",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 973,
+        "paragraph": 426,
+        "range": [
+          472,
+          108
+        ],
+        "text": "We were laughing over it when all of a sudden his eye was on us, and he ordered Susie to bring up her slate."
+      }
+    },
+    {
+      "id": "1025:112",
+      "sentence": 1025,
+      "paragraph": 443,
+      "range": [
+        112,
+        31
+      ],
+      "text": "‘Tink ob yer marcies, chillen!’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1014,
+        "paragraph": 438,
+        "range": [
+          566,
+          161
+        ],
+        "text": "So they asked an old woman what spell they could use to make them happy, and she said, ‘When you feel discontented, think over your blessings, and be grateful.’”"
+      }
+    }
+  ]
+}

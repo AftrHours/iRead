@@ -1,1 +1,90 @@
-{"engineVersion":5,"underlines":[{"range":[323,69],"paragraph":614,"reference":{"sentence":1176,"range":[0,99],"paragraph":612,"text":"“Do you not feel a great inclination, Miss Bennet, to seize such an opportunity of dancing a reel?”"},"decidedBy":"rules","text":"made up my mind to tell you that I do not want to dance a reel at all","sentence":1181,"id":"1181:323","kind":"action"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1176:68",
+      "sentence": 1176,
+      "paragraph": 612,
+      "range": [
+        68,
+        29
+      ],
+      "text": "opportunity of dancing a reel",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1175,
+        "paragraph": 611,
+        "range": [
+          0,
+          156
+        ],
+        "text": "After playing some Italian songs, Miss Bingley varied the charm by a lively Scotch air; and soon afterwards Mr. Darcy, drawing near Elizabeth, said to her,—"
+      }
+    },
+    {
+      "id": "1180:134",
+      "sentence": 1180,
+      "paragraph": 614,
+      "range": [
+        134,
+        54
+      ],
+      "text": "that you might have the pleasure of despising my taste",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1171,
+        "paragraph": 609,
+        "range": [
+          219,
+          174
+        ],
+        "text": "She hardly knew how to suppose that she could be an object of admiration to so great a man, and yet that he should look at her because he disliked her was still more strange."
+      }
+    },
+    {
+      "id": "1185:0",
+      "sentence": 1185,
+      "paragraph": 617,
+      "range": [
+        0,
+        52
+      ],
+      "text": "Miss Bingley saw, or suspected, enough to be jealous",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1183,
+        "paragraph": 616,
+        "range": [
+          0,
+          263
+        ],
+        "text": "Elizabeth, having rather expected to affront him, was amazed at his gallantry; but there was a mixture of sweetness and archness in her manner which made it difficult for her to affront anybody, and Darcy had never been so bewitched by any woman as he was by her."
+      }
+    },
+    {
+      "id": "1185:58",
+      "sentence": 1185,
+      "paragraph": 617,
+      "range": [
+        58,
+        58
+      ],
+      "text": "her great anxiety for the recovery of her dear friend Jane",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1087,
+        "paragraph": 560,
+        "range": [
+          48,
+          191
+        ],
+        "text": "Mrs. Hurst and Miss Bingley had spent some hours of the morning with the invalid, who continued, though slowly, to mend; and, in the evening, Elizabeth joined their party in the drawing-room."
+      }
+    }
+  ]
+}

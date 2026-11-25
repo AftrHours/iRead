@@ -1,1 +1,48 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"paragraph":1801,"kind":"action","decidedBy":"rules","sentence":4267,"text":"returned to it again before they quitted the gallery","id":"4267:446","reference":{"paragraph":1800,"range":[0,101],"sentence":4262,"text":"The picture gallery, and two or three of the principal bed-rooms, were all that remained to be shown."},"range":[446,52]}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4257:0",
+      "sentence": 4257,
+      "paragraph": 1798,
+      "range": [
+        0,
+        33
+      ],
+      "text": "“He is certainly a good brother,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4214,
+        "paragraph": 1773,
+        "range": [
+          110,
+          121
+        ],
+        "text": "In the next room is a new instrument just come down for her—a present from my master: she comes here to-morrow with him.”"
+      }
+    },
+    {
+      "id": "4266:224",
+      "sentence": 4266,
+      "paragraph": 1801,
+      "range": [
+        224,
+        46
+      ],
+      "text": "she beheld a striking resemblance of Mr. Darcy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4205,
+        "paragraph": 1769,
+        "range": [
+          0,
+          118
+        ],
+        "text": "“I am sure I know none so handsome; but in the gallery upstairs you will see a finer, larger picture of him than this."
+      }
+    }
+  ]
+}

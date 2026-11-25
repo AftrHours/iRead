@@ -1,1 +1,90 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4513:0",
+      "sentence": 4513,
+      "paragraph": 1886,
+      "range": [
+        0,
+        66
+      ],
+      "text": "Elizabeth’s collected behaviour, however, soon quieted his emotion",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4508,
+        "paragraph": 1884,
+        "range": [
+          347,
+          183
+        ],
+        "text": "While she spoke, an involuntary glance showed her Darcy with a heightened complexion, earnestly looking at her, and his sister overcome with confusion, and unable to lift up her eyes."
+      }
+    },
+    {
+      "id": "4513:113",
+      "sentence": 4513,
+      "paragraph": 1886,
+      "range": [
+        113,
+        36
+      ],
+      "text": "dared not approach nearer to Wickham",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4507,
+        "paragraph": 1884,
+        "range": [
+          0,
+          346
+        ],
+        "text": "In Darcy’s presence she dared not mention Wickham’s name: but Elizabeth instantly comprehended that he was uppermost in her thoughts; and the various recollections connected with him gave her a moment’s distress; but, exerting herself vigorously to repel the ill-natured attack, she presently answered the question in a tolerably disengaged tone."
+      }
+    },
+    {
+      "id": "4513:151",
+      "sentence": 4513,
+      "paragraph": 1886,
+      "range": [
+        151,
+        80
+      ],
+      "text": "Georgiana also recovered in time, though not enough to be able to speak any more",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4508,
+        "paragraph": 1884,
+        "range": [
+          347,
+          183
+        ],
+        "text": "While she spoke, an involuntary glance showed her Darcy with a heightened complexion, earnestly looking at her, and his sister overcome with confusion, and unable to lift up her eyes."
+      }
+    },
+    {
+      "id": "4514:329",
+      "sentence": 4514,
+      "paragraph": 1886,
+      "range": [
+        329,
+        81
+      ],
+      "text": "the very circumstance which had been designed to turn his thoughts from Elizabeth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4509,
+        "paragraph": 1885,
+        "range": [
+          0,
+          460
+        ],
+        "text": "Had Miss Bingley known what pain she was then giving her beloved friend, she undoubtedly would have refrained from the hint; but she had merely intended to discompose Elizabeth, by bringing forward the idea of a man to whom she believed her partial, to make her betray a sensibility which might injure her in Darcy’s opinion, and, perhaps, to remind the latter of all the follies and absurdities by which some part of her family were connected with that corps."
+      }
+    }
+  ]
+}

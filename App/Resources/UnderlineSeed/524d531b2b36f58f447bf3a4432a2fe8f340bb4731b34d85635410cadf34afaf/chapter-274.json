@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3717:147",
+      "sentence": 3717,
+      "paragraph": 1585,
+      "range": [
+        147,
+        33
+      ],
+      "text": "rejoiced in his domestic comforts",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3716,
+        "paragraph": 1584,
+        "range": [
+          595,
+          46
+        ],
+        "text": "We seem to have been designed for each other.”"
+      }
+    },
+    {
+      "id": "3719:301",
+      "sentence": 3719,
+      "paragraph": 1585,
+      "range": [
+        301,
+        15
+      ],
+      "text": "Poor Charlotte!",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3714,
+        "paragraph": 1584,
+        "range": [
+          440,
+          66
+        ],
+        "text": "My dear Charlotte and I have but one mind and one way of thinking."
+      }
+    },
+    {
+      "id": "3722:509",
+      "sentence": 3722,
+      "paragraph": 1585,
+      "range": [
+        509,
+        57
+      ],
+      "text": "Her home and her housekeeping, her parish and her poultry",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3697,
+        "paragraph": 1578,
+        "range": [
+          337,
+          19
+        ],
+        "text": "Our plain manner of"
+      }
+    }
+  ]
+}

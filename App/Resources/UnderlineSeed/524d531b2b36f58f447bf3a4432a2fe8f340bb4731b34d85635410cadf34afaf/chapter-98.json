@@ -1,1 +1,111 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1385:1",
+      "sentence": 1385,
+      "paragraph": 704,
+      "range": [
+        1,
+        69
+      ],
+      "text": "At four o’clock, therefore, we may expect this peace-making gentleman",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1382,
+        "paragraph": 702,
+        "range": [
+          0,
+          400
+        ],
+        "text": "your house, I propose myself the satisfaction of waiting on you and your family, Monday, November 18th, by four o’clock, and shall probably trespass on your hospitality till the Saturday se’nnight following, which I can do without any inconvenience, as Lady Catherine is far from objecting to my occasional absence on a Sunday, provided that some other clergyman is engaged to do the duty of the day."
+      }
+    },
+    {
+      "id": "1387:68",
+      "sentence": 1387,
+      "paragraph": 705,
+      "range": [
+        68,
+        41
+      ],
+      "text": "if he is disposed to make them any amends",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1380,
+        "paragraph": 701,
+        "range": [
+          1366,
+          226
+        ],
+        "text": "I cannot be otherwise than concerned at being the means of injuring your amiable daughters, and beg leave to apologize for it, as well as to assure you of my readiness to make them every possible amends; but of this hereafter."
+      }
+    },
+    {
+      "id": "1389:34",
+      "sentence": 1389,
+      "paragraph": 707,
+      "range": [
+        34,
+        46
+      ],
+      "text": "his extraordinary deference for Lady Catherine",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1378,
+        "paragraph": 701,
+        "range": [
+          0,
+          953
+        ],
+        "text": "“The disagreement subsisting between yourself and my late honoured father always gave me much uneasiness; and, since I have had the misfortune to lose him, I have frequently wished to heal the breach: but, for some time, I was kept back by my own doubts, fearing lest it might seem disrespectful to his memory for me to be on good terms with anyone with whom it had always pleased him to be at variance.”—‘There, Mrs. Bennet.’—“My mind, however, is now made up on the subject; for, having received ordination at Easter, I have been so fortunate as to be distinguished by the patronage of the Right Honourable Lady Catherine de Bourgh, widow of Sir Lewis de Bourgh, whose bounty and beneficence has preferred me to the valuable rectory of this parish, where it shall be my earnest endeavour to demean myself with grateful respect towards her Ladyship, and be ever ready to perform those rites and ceremonies which are instituted by the Church of England."
+      }
+    },
+    {
+      "id": "1389:108",
+      "sentence": 1389,
+      "paragraph": 707,
+      "range": [
+        108,
+        51
+      ],
+      "text": "christening, marrying, and burying his parishioners",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1378,
+        "paragraph": 701,
+        "range": [
+          0,
+          953
+        ],
+        "text": "“The disagreement subsisting between yourself and my late honoured father always gave me much uneasiness; and, since I have had the misfortune to lose him, I have frequently wished to heal the breach: but, for some time, I was kept back by my own doubts, fearing lest it might seem disrespectful to his memory for me to be on good terms with anyone with whom it had always pleased him to be at variance.”—‘There, Mrs. Bennet.’—“My mind, however, is now made up on the subject; for, having received ordination at Easter, I have been so fortunate as to be distinguished by the patronage of the Right Honourable Lady Catherine de Bourgh, widow of Sir Lewis de Bourgh, whose bounty and beneficence has preferred me to the valuable rectory of this parish, where it shall be my earnest endeavour to demean myself with grateful respect towards her Ladyship, and be ever ready to perform those rites and ceremonies which are instituted by the Church of England."
+      }
+    },
+    {
+      "id": "1393:117",
+      "sentence": 1393,
+      "paragraph": 708,
+      "range": [
+        117,
+        61
+      ],
+      "text": "what can he mean by apologizing for being next in the entail?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1380,
+        "paragraph": 701,
+        "range": [
+          1366,
+          226
+        ],
+        "text": "I cannot be otherwise than concerned at being the means of injuring your amiable daughters, and beg leave to apologize for it, as well as to assure you of my readiness to make them every possible amends; but of this hereafter."
+      }
+    }
+  ]
+}

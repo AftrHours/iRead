@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "674:99",
+      "sentence": 674,
+      "paragraph": 347,
+      "range": [
+        99,
+        61
+      ],
+      "text": "Miss Lucas defied her friend to mention such a subject to him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 670,
+        "paragraph": 344,
+        "range": [
+          0,
+          88
+        ],
+        "text": "“But if he does it any more, I shall certainly let him know that I see what he is about."
+      }
+    }
+  ]
+}

@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[{"sentence":1715,"decidedBy":"rules","paragraph":841,"text":"have you got to say in behalf of the interested people who have probably been concerned in the business","range":[48,103],"reference":{"range":[108,64],"paragraph":840,"sentence":1713,"text":"Interested people have perhaps misrepresented each to the other."},"id":"1715:48","kind":"thing"},{"sentence":1729,"decidedBy":"rules","paragraph":846,"text":"could think with certainty on only one point,—that Mr. Bingley","range":[9,62],"reference":{"range":[0,203],"paragraph":843,"sentence":1723,"text":"“I can much more easily believe Mr. Bingley’s being imposed on than that Mr. Wickham should invent such a history of himself as he gave me last night; names, facts, everything mentioned without ceremony."},"id":"1729:9","kind":"reaction"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1721:376",
+      "sentence": 1721,
+      "paragraph": 842,
+      "range": [
+        376,
+        64
+      ],
+      "text": "Can his most intimate friends be so excessively deceived in him?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1710,
+        "paragraph": 839,
+        "range": [
+          90,
+          245
+        ],
+        "text": "Jane listened with astonishment and concern: she knew not how to believe that Mr. Darcy could be so unworthy of Mr. Bingley’s regard; and yet it was not in her nature to question the veracity of a young man of such amiable appearance as Wickham."
+      }
+    },
+    {
+      "id": "1729:73",
+      "sentence": 1729,
+      "paragraph": 846,
+      "range": [
+        73,
+        26
+      ],
+      "text": "if he had been imposed on,",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1723,
+        "paragraph": 843,
+        "range": [
+          0,
+          203
+        ],
+        "text": "“I can much more easily believe Mr. Bingley’s being imposed on than that Mr. Wickham should invent such a history of himself as he gave me last night; names, facts, everything mentioned without ceremony."
+      }
+    }
+  ]
+}

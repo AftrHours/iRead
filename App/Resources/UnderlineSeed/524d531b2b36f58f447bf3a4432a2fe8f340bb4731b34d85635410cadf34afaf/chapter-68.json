@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[{"id":"947:95","decidedBy":"rules","paragraph":497,"text":"is applied to many a woman who deserves it no otherwise than by netting a purse","range":[95,79],"reference":{"paragraph":496,"range":[28,53],"text":"They all paint tables, cover screens, and net purses.","sentence":944},"sentence":947,"kind":"action"},{"id":"947:178","decidedBy":"rules","paragraph":497,"text":"covering a screen","range":[178,17],"reference":{"paragraph":496,"range":[28,53],"text":"They all paint tables, cover screens, and net purses.","sentence":944},"sentence":947,"kind":"action"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "931:45",
+      "sentence": 931,
+      "paragraph": 490,
+      "range": [
+        45,
+        50
+      ],
+      "text": "as to leave her very little attention for her book",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 903,
+        "paragraph": 470,
+        "range": [
+          374,
+          280
+        ],
+        "text": "On entering the drawing-room, she found the whole party at loo, and was immediately invited to join them; but suspecting them to be playing high, she declined it, and making her sister the excuse, said she would amuse herself, for the short time she could stay below, with a book."
+      }
+    }
+  ]
+}

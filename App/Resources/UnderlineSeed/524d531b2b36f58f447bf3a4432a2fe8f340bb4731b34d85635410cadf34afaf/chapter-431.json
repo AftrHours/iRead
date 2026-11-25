@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6060:0",
+      "sentence": 6060,
+      "paragraph": 2469,
+      "range": [
+        0,
+        33
+      ],
+      "text": "Her carriage remained at the door",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6025,
+        "paragraph": 2449,
+        "range": [
+          0,
+          292
+        ],
+        "text": "ONE morning, about a week after Bingley’s engagement with Jane had been formed, as he and the females of the family were sitting together in the dining-room, their attention was suddenly drawn to the window by the sound of a carriage; and they perceived a chaise and four driving up the lawn."
+      }
+    }
+  ]
+}

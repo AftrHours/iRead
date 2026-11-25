@@ -1,1 +1,888 @@
-{"underlines":[{"paragraph":1077,"text":"shall you do all your vacation","id":"2424:6","range":[6,30],"decidedBy":"rules","sentence":2424,"reference":{"paragraph":1072,"text":"Three months’ vacation—how I shall enjoy it!”","sentence":2408,"range":[78,45]},"kind":"action"},{"paragraph":1088,"text":"was neat and pleasant but ‘Marmee’s corner","id":"2450:321","range":[321,42],"decidedBy":"rules","sentence":2450,"reference":{"paragraph":1084,"text":"asked Meg, turning to Mrs. March, who sat sewing in what they called ‘Marmee’s corner’.","sentence":2439,"range":[18,87]},"kind":"thing"},{"paragraph":1089,"text":"who went shopping in the afternoon","id":"2457:110","range":[110,34],"decidedBy":"rules","sentence":2457,"reference":{"paragraph":1088,"text":"Jo spent the morning on the river with Laurie and the afternoon reading and crying over The Wide, Wide World, up in the apple tree.","sentence":2452,"range":[518,131]},"kind":"thing"},{"paragraph":1089,"text":"learning three or four songs at once","id":"2459:451","range":[451,36],"decidedBy":"rules","sentence":2459,"reference":{"paragraph":1083,"text":"I want to learn some new songs, and my children need fitting up for the summer.","sentence":2436,"range":[39,79]},"kind":"action"},{"paragraph":1089,"text":"told her she was ‘a fright","id":"2467:1920","range":[1920,26],"decidedBy":"rules","sentence":2467,"reference":{"paragraph":1073,"text":"I quaked till she was fairly in the carriage, and had a final fright, for as it drove of, she popped out her head, saying, ‘Josyphine, won’t you—?’","sentence":2415,"range":[474,147]},"kind":"action"},{"paragraph":1090,"text":"Hoping to impress the lesson more deeply, Mrs. March","id":"2473:150","range":[150,52],"decidedBy":"rules","sentence":2473,"reference":{"paragraph":1084,"text":"asked Meg, turning to Mrs. March, who sat sewing in what they called ‘Marmee’s corner’.","sentence":2439,"range":[18,87]},"kind":"action"},{"paragraph":1114,"text":"will get warm","id":"2522:35","range":[35,13],"decidedBy":"rules","sentence":2522,"reference":{"paragraph":1076,"text":"It’s too warm to be particular about one’s parts of speech,” murmured Jo.","sentence":2423,"range":[56,73]},"kind":"action"},{"paragraph":1116,"text":"has had the worst of the experiment","id":"2528:136","range":[136,35],"decidedBy":"rules","sentence":2528,"reference":{"paragraph":1089,"text":"But these were mere trifles, and they assured their mother that the experiment was working finely.","sentence":2460,"range":[644,98]},"kind":"thing"},{"paragraph":1117,"text":"departed to the kitchen","id":"2530:40","range":[40,23],"decidedBy":"rules","sentence":2530,"reference":{"paragraph":1091,"text":"When they got up on Saturday morning, there was no fire in the kitchen, no breakfast in the dining room, and no mother anywhere to be seen.","sentence":2474,"range":[0,139]},"kind":"action"},{"paragraph":1117,"text":"got the dishes piled up ready for washing","id":"2531:163","range":[163,41],"decidedBy":"rules","sentence":2531,"reference":{"paragraph":1088,"text":"Beth began by rummaging everything out of the big closet where her family resided, but getting tired before half done, she left her establishment topsy-turvy and went to her music, rejoicing that she had no dishes to wash.","sentence":2453,"range":[650,222]},"kind":"action"},{"paragraph":1122,"text":"Fearing to ask any more advice","id":"2547:153","range":[153,30],"decidedBy":"rules","sentence":2547,"reference":{"paragraph":1105,"text":"You’ll give me your advice if I get in a muddle, won’t you?”","sentence":2501,"range":[78,60]},"kind":"feeling"},{"paragraph":1122,"text":"is necessary to make a cook","id":"2547:270","range":[270,27],"decidedBy":"rules","sentence":2547,"reference":{"text":"So a tray was fitted out before anyone began, and taken up with the cook’s compliments.","paragraph":1098,"range":[0,87],"sentence":2486},"kind":"thing"},{"paragraph":1122,"text":"concealed in a grove of lettuce leaves","id":"2550:636","range":[636,38],"decidedBy":"rules","sentence":2550,"reference":{"text":"We’ll have lettuce and make a salad.","paragraph":1103,"range":[127,36],"sentence":2495},"kind":"action"},{"paragraph":1124,"text":"drew a long breath as the pretty glass plates went round","id":"2556:417","range":[417,56],"decidedBy":"rules","sentence":2556,"reference":{"text":"cried Jo, rising, glass in hand, as the lemonade went round.","paragraph":1087,"range":[101,60],"sentence":2446},"kind":"action"},{"paragraph":1127,"text":"when she met Laurie’s eyes","id":"2564:272","range":[272,26],"decidedBy":"rules","sentence":2564,"reference":{"text":"Jo read till her eyes gave out and she was sick of books, got so fidgety that even good-natured Laurie had a quarrel with her, and so reduced in spirits that she desperately wished she had gone with Aunt March.","paragraph":1089,"range":[1398,210],"sentence":2465},"kind":"thing"},{"paragraph":1128,"text":"will sober ourselves with a funeral","id":"2567:58","range":[58,35],"decidedBy":"rules","sentence":2567,"reference":{"text":"“The funeral shall be this afternoon, and we will all go.","paragraph":1116,"range":[0,57],"sentence":2526},"kind":"action"},{"kind":"action","range":[50,40],"decidedBy":"rules","id":"2569:50","sentence":2569,"reference":{"text":"The lobster was a scarlet mystery to her, but she hammered and poked till it was unshelled and its meager proportions concealed in a grove of lettuce leaves.","paragraph":1122,"range":[518,157],"sentence":2550},"text":"dug a grave under the ferns in the grove","paragraph":1129},{"kind":"thing","range":[0,24],"decidedBy":"rules","id":"2571:0","sentence":2571,"reference":{"text":"“The first of June!","paragraph":1072,"range":[0,19],"sentence":2406},"text":"Who died the 7th of June","paragraph":1131},{"kind":"action","range":[4,43],"decidedBy":"rules","id":"2585:4","sentence":2585,"reference":{"text":"Here lies Pip March,","paragraph":1130,"range":[0,20],"sentence":2570},"text":"can’t seem so without Marmee and little Pip","paragraph":1140},{"kind":"action","range":[217,32],"decidedBy":"rules","id":"2608:217","sentence":2608,"reference":{"text":"The days kept getting longer and longer, the weather was unusually variable and so were tempers; an unsettled feeling possessed everyone, and Satan found plenty of mischief for the idle hands to do.","paragraph":1089,"range":[1006,198],"sentence":2463},"text":"keeps us from ennui and mischief","paragraph":1152},{"kind":"action","range":[68,44],"decidedBy":"rules","id":"2610:68","sentence":2610,"reference":{"text":"“Suppose you learn plain cooking.","paragraph":1148,"range":[0,33],"sentence":2596},"text":"I’ll learn plain cooking for my holiday task","paragraph":1153},{"kind":"action","range":[52,25],"decidedBy":"rules","id":"2611:52","sentence":2611,"reference":{"text":"asked Meg, turning to Mrs. March, who sat sewing in what they called ‘Marmee’s corner’.","paragraph":1084,"range":[18,87],"sentence":2439},"text":"letting you do it, Marmee","paragraph":1154},{"kind":"action","range":[104,22],"decidedBy":"rules","id":"2612:104","sentence":2612,"reference":{"text":"Then tea must be got, errands done, and one or two necessary bits of sewing neglected until the last minute.","paragraph":1136,"range":[108,108],"sentence":2579},"text":"I’m not fond of sewing","paragraph":1154},{"kind":"thing","range":[19,38],"decidedBy":"rules","id":"2617:19","sentence":2617,"reference":{"text":"“Are you satisfied with your experiment, girls, or do you want another week of it?”","paragraph":1143,"range":[0,83],"sentence":2588},"text":"am quite satisfied with the experiment","paragraph":1156}],"engineVersion":5,"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2431:35",
+      "sentence": 2431,
+      "paragraph": 1080,
+      "range": [
+        35,
+        46
+      ],
+      "text": "as a return snub for the ‘samphire’ correction",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2422,
+        "paragraph": 1076,
+        "range": [
+          0,
+          55
+        ],
+        "text": "“She means vampire, not seaweed, but it doesn’t matter."
+      }
+    },
+    {
+      "id": "2450:313",
+      "sentence": 2450,
+      "paragraph": 1088,
+      "range": [
+        313,
+        51
+      ],
+      "text": "Nothing was neat and pleasant but ‘Marmee’s corner’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2439,
+        "paragraph": 1084,
+        "range": [
+          18,
+          87
+        ],
+        "text": "asked Meg, turning to Mrs. March, who sat sewing in what they called ‘Marmee’s corner’."
+      }
+    },
+    {
+      "id": "2451:389",
+      "sentence": 2451,
+      "paragraph": 1088,
+      "range": [
+        389,
+        37
+      ],
+      "text": "And there Meg sat, to ‘rest and read’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2427,
+        "paragraph": 1078,
+        "range": [
+          92,
+          147
+        ],
+        "text": "“I’ve been routed up early all winter and had to spend my days working for other people, so now I’m going to rest and revel to my heart’s content.”"
+      }
+    },
+    {
+      "id": "2452:568",
+      "sentence": 2452,
+      "paragraph": 1088,
+      "range": [
+        568,
+        80
+      ],
+      "text": "the afternoon reading and crying over The Wide, Wide World, up in the apple tree",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2429,
+        "paragraph": 1079,
+        "range": [
+          48,
+          139
+        ],
+        "text": "I’ve laid in a heap of books, and I’m going to improve my shining hours reading on my perch in the old apple tree, when I’m not having l——”"
+      }
+    },
+    {
+      "id": "2453:650",
+      "sentence": 2453,
+      "paragraph": 1088,
+      "range": [
+        650,
+        81
+      ],
+      "text": "Beth began by rummaging everything out of the big closet where her family resided",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2436,
+        "paragraph": 1083,
+        "range": [
+          39,
+          79
+        ],
+        "text": "I want to learn some new songs, and my children need fitting up for the summer."
+      }
+    },
+    {
+      "id": "2458:289",
+      "sentence": 2458,
+      "paragraph": 1089,
+      "range": [
+        289,
+        43
+      ],
+      "text": "Jo had burned the skin off her nose boating",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2452,
+        "paragraph": 1088,
+        "range": [
+          518,
+          131
+        ],
+        "text": "Jo spent the morning on the river with Laurie and the afternoon reading and crying over The Wide, Wide World, up in the apple tree."
+      }
+    },
+    {
+      "id": "2459:381",
+      "sentence": 2459,
+      "paragraph": 1089,
+      "range": [
+        381,
+        47
+      ],
+      "text": "Beth was worried by the confusion of her closet",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2453,
+        "paragraph": 1088,
+        "range": [
+          650,
+          222
+        ],
+        "text": "Beth began by rummaging everything out of the big closet where her family resided, but getting tired before half done, she left her establishment topsy-turvy and went to her music, rejoicing that she had no dishes to wash."
+      }
+    },
+    {
+      "id": "2459:493",
+      "sentence": 2459,
+      "paragraph": 1089,
+      "range": [
+        493,
+        46
+      ],
+      "text": "Amy deeply regretted the damage done her frock",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2455,
+        "paragraph": 1088,
+        "range": [
+          1053,
+          156
+        ],
+        "text": "As no one appeared but an inquisitive daddy-longlegs, who examined her work with interest, she went to walk, got caught in a shower, and came home dripping."
+      }
+    },
+    {
+      "id": "2465:1556",
+      "sentence": 2465,
+      "paragraph": 1089,
+      "range": [
+        1556,
+        51
+      ],
+      "text": "she desperately wished she had gone with Aunt March",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2412,
+        "paragraph": 1073,
+        "range": [
+          60,
+          51
+        ],
+        "text": "“I was mortally afraid she’d ask me to go with her."
+      }
+    },
+    {
+      "id": "2466:1638",
+      "sentence": 2466,
+      "paragraph": 1089,
+      "range": [
+        1638,
+        68
+      ],
+      "text": "she was constantly forgetting that it was to be all play and no work",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2441,
+        "paragraph": 1085,
+        "range": [
+          65,
+          101
+        ],
+        "text": "I think by Saturday night you will find that all play and no work is as bad as all work and no play.”"
+      }
+    },
+    {
+      "id": "2472:0",
+      "sentence": 2472,
+      "paragraph": 1090,
+      "range": [
+        0,
+        55
+      ],
+      "text": "No one would own that they were tired of the experiment",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2440,
+        "paragraph": 1085,
+        "range": [
+          0,
+          64
+        ],
+        "text": "“You may try your experiment for a week and see how you like it."
+      }
+    },
+    {
+      "id": "2485:1",
+      "sentence": 2485,
+      "paragraph": 1097,
+      "range": [
+        1,
+        75
+      ],
+      "text": "I shall take some up to Mother, though she said we were not to think of her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2479,
+        "paragraph": 1094,
+        "range": [
+          0,
+          129
+        ],
+        "text": "“Mother isn’t sick, only very tired, and she says she is going to stay quietly in her room all day and let us do the best we can."
+      }
+    },
+    {
+      "id": "2492:247",
+      "sentence": 2492,
+      "paragraph": 1101,
+      "range": [
+        247,
+        40
+      ],
+      "text": "a friendly desire to make up the quarrel",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2465,
+        "paragraph": 1089,
+        "range": [
+          1398,
+          210
+        ],
+        "text": "Jo read till her eyes gave out and she was sick of books, got so fidgety that even good-natured Laurie had a quarrel with her, and so reduced in spirits that she desperately wished she had gone with Aunt March."
+      }
+    },
+    {
+      "id": "2535:196",
+      "sentence": 2535,
+      "paragraph": 1119,
+      "range": [
+        196,
+        58
+      ],
+      "text": "after buying a very young lobster, some very old asparagus",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2494,
+        "paragraph": 1103,
+        "range": [
+          0,
+          126
+        ],
+        "text": "“Oh, there’s corned beef and plenty of potatoes, and I shall get some asparagus and a lobster, ‘for a relish’, as Hannah says."
+      }
+    },
+    {
+      "id": "2541:186",
+      "sentence": 2541,
+      "paragraph": 1121,
+      "range": [
+        186,
+        49
+      ],
+      "text": "Mrs. March went out, after peeping here and there",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2509,
+        "paragraph": 1108,
+        "range": [
+          42,
+          101
+        ],
+        "text": "I’m going out to dinner and can’t worry about things at home,” said Mrs. March, when Jo spoke to her."
+      }
+    },
+    {
+      "id": "2541:294",
+      "sentence": 2541,
+      "paragraph": 1121,
+      "range": [
+        294,
+        36
+      ],
+      "text": "Beth, who sat making a winding sheet",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2524,
+        "paragraph": 1115,
+        "range": [
+          58,
+          110
+        ],
+        "text": "I’ll make him a shroud, and he shall be buried in the garden, and I’ll never have another bird, never, my Pip!"
+      }
+    },
+    {
+      "id": "2541:332",
+      "sentence": 2541,
+      "paragraph": 1121,
+      "range": [
+        332,
+        54
+      ],
+      "text": "while the dear departed lay in state in the domino box",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2521,
+        "paragraph": 1113,
+        "range": [
+          0,
+          145
+        ],
+        "text": "Jo peeped into his half-open eye, felt his little heart, and finding him stiff and cold, shook her head, and offered her domino box for a coffin."
+      }
+    },
+    {
+      "id": "2547:153",
+      "sentence": 2547,
+      "paragraph": 1122,
+      "range": [
+        153,
+        30
+      ],
+      "text": "Fearing to ask any more advice",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2501,
+        "paragraph": 1105,
+        "range": [
+          78,
+          60
+        ],
+        "text": "You’ll give me your advice if I get in a muddle, won’t you?”"
+      }
+    },
+    {
+      "id": "2548:299",
+      "sentence": 2548,
+      "paragraph": 1122,
+      "range": [
+        299,
+        36
+      ],
+      "text": "She boiled the asparagus for an hour",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2535,
+        "paragraph": 1119,
+        "range": [
+          86,
+          205
+        ],
+        "text": "The walk revived her spirits, and flattering herself that she had made good bargains, she trudged home again, after buying a very young lobster, some very old asparagus, and two boxes of acid strawberries."
+      }
+    },
+    {
+      "id": "2549:414",
+      "sentence": 2549,
+      "paragraph": 1122,
+      "range": [
+        414,
+        22
+      ],
+      "text": "The bread burned black",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2537,
+        "paragraph": 1119,
+        "range": [
+          370,
+          127
+        ],
+        "text": "Hannah had left a pan of bread to rise, Meg had worked it up early, set it on the hearth for a second rising, and forgotten it."
+      }
+    },
+    {
+      "id": "2549:442",
+      "sentence": 2549,
+      "paragraph": 1122,
+      "range": [
+        442,
+        36
+      ],
+      "text": "the salad dressing so aggravated her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2495,
+        "paragraph": 1103,
+        "range": [
+          127,
+          36
+        ],
+        "text": "We’ll have lettuce and make a salad."
+      }
+    },
+    {
+      "id": "2550:518",
+      "sentence": 2550,
+      "paragraph": 1122,
+      "range": [
+        518,
+        40
+      ],
+      "text": "The lobster was a scarlet mystery to her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2535,
+        "paragraph": 1119,
+        "range": [
+          86,
+          205
+        ],
+        "text": "The walk revived her spirits, and flattering herself that she had made good bargains, she trudged home again, after buying a very young lobster, some very old asparagus, and two boxes of acid strawberries."
+      }
+    },
+    {
+      "id": "2552:774",
+      "sentence": 2552,
+      "paragraph": 1122,
+      "range": [
+        774,
+        74
+      ],
+      "text": "The blanc mange was lumpy, and the strawberries not as ripe as they looked",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2497,
+        "paragraph": 1103,
+        "range": [
+          202,
+          95
+        ],
+        "text": "I’ll have blanc mange and strawberries for dessert, and coffee too, if you want to be elegant.”"
+      }
+    },
+    {
+      "id": "2553:324",
+      "sentence": 2553,
+      "paragraph": 1123,
+      "range": [
+        324,
+        66
+      ],
+      "text": "Miss Crocker, whose tattling tongue would report them far and wide",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2543,
+        "paragraph": 1121,
+        "range": [
+          589,
+          133
+        ],
+        "text": "Now this lady was a thin, yellow spinster, with a sharp nose and inquisitive eyes, who saw everything and gossiped about all she saw."
+      }
+    },
+    {
+      "id": "2562:1",
+      "sentence": 2562,
+      "paragraph": 1126,
+      "range": [
+        1,
+        44
+      ],
+      "text": "Salt instead of sugar, and the cream is sour",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2555,
+        "paragraph": 1124,
+        "range": [
+          263,
+          113
+        ],
+        "text": "Jo’s one strong point was the fruit, for she had sugared it well, and had a pitcher of rich cream to eat with it."
+      }
+    },
+    {
+      "id": "2566:481",
+      "sentence": 2566,
+      "paragraph": 1127,
+      "range": [
+        481,
+        47
+      ],
+      "text": "even ‘Croaker’ as the girls called the old lady",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2542,
+        "paragraph": 1121,
+        "range": [
+          388,
+          200
+        ],
+        "text": "A strange sense of helplessness fell upon the girls as the gray bonnet vanished round the corner, and despair seized them when a few minutes later Miss Crocker appeared, and said she’d come to dinner."
+      }
+    },
+    {
+      "id": "2567:55",
+      "sentence": 2567,
+      "paragraph": 1128,
+      "range": [
+        55,
+        38
+      ],
+      "text": "we will sober ourselves with a funeral",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2529,
+        "paragraph": 1116,
+        "range": [
+          173,
+          167
+        ],
+        "text": "Make the shroud, and lay him in my box, and after the dinner party, we’ll have a nice little funeral,” said Jo, beginning to feel as if she had undertaken a good deal."
+      }
+    },
+    {
+      "id": "2567:154",
+      "sentence": 2567,
+      "paragraph": 1128,
+      "range": [
+        154,
+        66
+      ],
+      "text": "being eager to tell the new story at another friend’s dinner table",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2553,
+        "paragraph": 1123,
+        "range": [
+          0,
+          391
+        ],
+        "text": "“Well, they can eat beef and bread and butter, if they are hungry, only it’s mortifying to have to spend your whole morning for nothing,” thought Jo, as she rang the bell half an hour later than usual, and stood, hot, tired, and dispirited, surveying the feast spread before Laurie, accustomed to all sorts of elegance, and Miss Crocker, whose tattling tongue would report them far and wide."
+      }
+    },
+    {
+      "id": "2570:0",
+      "sentence": 2570,
+      "paragraph": 1130,
+      "range": [
+        0,
+        20
+      ],
+      "text": "Here lies Pip March,",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2515,
+        "paragraph": 1111,
+        "range": [
+          0,
+          235
+        ],
+        "text": "Feeling very much out of sorts herself, Jo hurried into the parlor to find Beth sobbing over Pip, the canary, who lay dead in the cage with his little claws pathetically extended, as if imploring the food for want of which he had died."
+      }
+    },
+    {
+      "id": "2574:63",
+      "sentence": 2574,
+      "paragraph": 1134,
+      "range": [
+        63,
+        33
+      ],
+      "text": "overcome with emotion and lobster",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2550,
+        "paragraph": 1122,
+        "range": [
+          518,
+          157
+        ],
+        "text": "The lobster was a scarlet mystery to her, but she hammered and poked till it was unshelled and its meager proportions concealed in a grove of lettuce leaves."
+      }
+    },
+    {
+      "id": "2576:59",
+      "sentence": 2576,
+      "paragraph": 1135,
+      "range": [
+        59,
+        62
+      ],
+      "text": "the sour cream seemed to have had a bad effect upon her temper",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2559,
+        "paragraph": 1124,
+        "range": [
+          877,
+          130
+        ],
+        "text": "Amy, who was fond of delicate fare, took a heaping spoonful, choked, hid her face in her napkin, and left the table precipitately."
+      }
+    },
+    {
+      "id": "2577:223",
+      "sentence": 2577,
+      "paragraph": 1135,
+      "range": [
+        223,
+        54
+      ],
+      "text": "a glance at the closet gave her an idea of the success",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2459,
+        "paragraph": 1089,
+        "range": [
+          381,
+          262
+        ],
+        "text": "Beth was worried by the confusion of her closet and the difficulty of learning three or four songs at once, and Amy deeply regretted the damage done her frock, for Katy Brown’s party was to be the next day and now like Flora McFlimsey, she had ‘nothing to wear’."
+      }
+    },
+    {
+      "id": "2585:63",
+      "sentence": 2585,
+      "paragraph": 1140,
+      "range": [
+        63,
+        56
+      ],
+      "text": "glancing with full eyes at the empty cage above her head",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2515,
+        "paragraph": 1111,
+        "range": [
+          0,
+          235
+        ],
+        "text": "Feeling very much out of sorts herself, Jo hurried into the parlor to find Beth sobbing over Pip, the canary, who lay dead in the cage with his little claws pathetically extended, as if imploring the food for want of which he had died."
+      }
+    },
+    {
+      "id": "2586:26",
+      "sentence": 2586,
+      "paragraph": 1141,
+      "range": [
+        26,
+        36
+      ],
+      "text": "you shall have another bird tomorrow",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2524,
+        "paragraph": 1115,
+        "range": [
+          58,
+          110
+        ],
+        "text": "I’ll make him a shroud, and he shall be buried in the garden, and I’ll never have another bird, never, my Pip!"
+      }
+    },
+    {
+      "id": "2594:1",
+      "sentence": 2594,
+      "paragraph": 1147,
+      "range": [
+        1,
+        32
+      ],
+      "text": "Lounging and larking doesn’t pay",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2445,
+        "paragraph": 1087,
+        "range": [
+          70,
+          30
+        ],
+        "text": "Fun forever, and no grubbing!”"
+      }
+    },
+    {
+      "id": "2597:118",
+      "sentence": 2597,
+      "paragraph": 1148,
+      "range": [
+        118,
+        59
+      ],
+      "text": "laughing inaudibly at the recollection of Jo’s dinner party",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2546,
+        "paragraph": 1122,
+        "range": [
+          0,
+          152
+        ],
+        "text": "Language cannot describe the anxieties, experiences, and exertions which Jo underwent that morning, and the dinner she served up became a standing joke."
+      }
+    },
+    {
+      "id": "2598:1",
+      "sentence": 2598,
+      "paragraph": 1149,
+      "range": [
+        1,
+        45
+      ],
+      "text": "Mother, did you go away and let everything be",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2480,
+        "paragraph": 1094,
+        "range": [
+          130,
+          74
+        ],
+        "text": "It’s a very queer thing for her to do, she doesn’t act a bit like herself."
+      }
+    },
+    {
+      "id": "2601:93",
+      "sentence": 2601,
+      "paragraph": 1150,
+      "range": [
+        93,
+        32
+      ],
+      "text": "While Hannah and I did your work",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2461,
+        "paragraph": 1089,
+        "range": [
+          743,
+          141
+        ],
+        "text": "She smiled, said nothing, and with Hannah’s help did their neglected work, keeping home pleasant and the domestic machinery running smoothly."
+      }
+    },
+    {
+      "id": "2610:118",
+      "sentence": 2610,
+      "paragraph": 1153,
+      "range": [
+        118,
+        47
+      ],
+      "text": "the next dinner party I have shall be a success",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2566,
+        "paragraph": 1127,
+        "range": [
+          459,
+          149
+        ],
+        "text": "So did everyone else, even ‘Croaker’ as the girls called the old lady, and the unfortunate dinner ended gaily, with bread and butter, olives and fun."
+      }
+    },
+    {
+      "id": "2613:128",
+      "sentence": 2613,
+      "paragraph": 1154,
+      "range": [
+        128,
+        51
+      ],
+      "text": "That will be better than fussing over my own things",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2464,
+        "paragraph": 1089,
+        "range": [
+          1205,
+          192
+        ],
+        "text": "As the height of luxury, Meg put out some of her sewing, and then found time hang so heavily, that she fell to snipping and spoiling her clothes in her attempts to furbish them up a la Moffat."
+      }
+    },
+    {
+      "id": "2614:35",
+      "sentence": 2614,
+      "paragraph": 1155,
+      "range": [
+        35,
+        46
+      ],
+      "text": "not spend so much time with my music and dolls",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2453,
+        "paragraph": 1088,
+        "range": [
+          650,
+          222
+        ],
+        "text": "Beth began by rummaging everything out of the big closet where her family resided, but getting tired before half done, she left her establishment topsy-turvy and went to her music, rejoicing that she had no dishes to wash."
+      }
+    },
+    {
+      "id": "2615:265",
+      "sentence": 2615,
+      "paragraph": 1155,
+      "range": [
+        265,
+        28
+      ],
+      "text": "attend to my parts of speech",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2423,
+        "paragraph": 1076,
+        "range": [
+          56,
+          73
+        ],
+        "text": "It’s too warm to be particular about one’s parts of speech,” murmured Jo."
+      }
+    }
+  ]
+}

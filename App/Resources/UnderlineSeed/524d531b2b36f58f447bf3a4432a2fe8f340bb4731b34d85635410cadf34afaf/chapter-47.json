@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "633:716",
+      "sentence": 633,
+      "paragraph": 328,
+      "range": [
+        716,
+        37
+      ],
+      "text": "Bingley likes your sister undoubtedly",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 625,
+        "paragraph": 326,
+        "range": [
+          701,
+          469
+        ],
+        "text": "It was generally evident, whenever they met, that he did admire her; and to her it was equally evident that Jane was yielding to the preference which she had begun to entertain for him from the first, and was in a way to be very much in love; but she considered with pleasure that it was not likely to be discovered by the world in general, since Jane united with great strength of feeling, a composure of temper and an uniform cheerfulness of manner, which would guard"
+      }
+    },
+    {
+      "id": "634:1",
+      "sentence": 634,
+      "paragraph": 329,
+      "range": [
+        1,
+        58
+      ],
+      "text": "But she does help him on, as much as her nature will allow",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 625,
+        "paragraph": 326,
+        "range": [
+          701,
+          469
+        ],
+        "text": "It was generally evident, whenever they met, that he did admire her; and to her it was equally evident that Jane was yielding to the preference which she had begun to entertain for him from the first, and was in a way to be very much in love; but she considered with pleasure that it was not likely to be discovered by the world in general, since Jane united with great strength of feeling, a composure of temper and an uniform cheerfulness of manner, which would guard"
+      }
+    },
+    {
+      "id": "635:61",
+      "sentence": 635,
+      "paragraph": 329,
+      "range": [
+        61,
+        36
+      ],
+      "text": "If I can perceive her regard for him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 625,
+        "paragraph": 326,
+        "range": [
+          701,
+          469
+        ],
+        "text": "It was generally evident, whenever they met, that he did admire her; and to her it was equally evident that Jane was yielding to the preference which she had begun to entertain for him from the first, and was in a way to be very much in love; but she considered with pleasure that it was not likely to be discovered by the world in general, since Jane united with great strength of feeling, a composure of temper and an uniform cheerfulness of manner, which would guard"
+      }
+    }
+  ]
+}

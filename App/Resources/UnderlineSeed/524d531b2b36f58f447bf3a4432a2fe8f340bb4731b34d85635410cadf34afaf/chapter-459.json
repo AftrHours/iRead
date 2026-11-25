@@ -1,1 +1,90 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6616:7",
+      "sentence": 6616,
+      "paragraph": 2666,
+      "range": [
+        7,
+        56
+      ],
+      "text": "pray apologize for my having disliked him so much before",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6529,
+        "paragraph": 2638,
+        "range": [
+          159,
+          66
+        ],
+        "text": "What can he mean by being so tiresome as to be always coming here?"
+      }
+    },
+    {
+      "id": "6626:0",
+      "sentence": 6626,
+      "paragraph": 2667,
+      "range": [
+        0,
+        65
+      ],
+      "text": "This was enough to prove that her approbation need not be doubted",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6546,
+        "paragraph": 2646,
+        "range": [
+          171,
+          469
+        ],
+        "text": "She could not determine how her mother would take it; sometimes doubting whether all his wealth and grandeur would be enough to overcome her abhorrence of the man; but whether she were violently set against the match, or violently delighted with it, it was certain that her manner would be equally ill adapted to do credit to her sense; and she could no more bear that Mr. Darcy should hear the first raptures of her joy, than the first vehemence of her disapprobation."
+      }
+    },
+    {
+      "id": "6633:0",
+      "sentence": 6633,
+      "paragraph": 2669,
+      "range": [
+        0,
+        84
+      ],
+      "text": "This was a sad omen of what her mother’s behaviour to the gentleman himself might be",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6546,
+        "paragraph": 2646,
+        "range": [
+          171,
+          469
+        ],
+        "text": "She could not determine how her mother would take it; sometimes doubting whether all his wealth and grandeur would be enough to overcome her abhorrence of the man; but whether she were violently set against the match, or violently delighted with it, it was certain that her manner would be equally ill adapted to do credit to her sense; and she could no more bear that Mr. Darcy should hear the first raptures of her joy, than the first vehemence of her disapprobation."
+      }
+    },
+    {
+      "id": "6635:130",
+      "sentence": 6635,
+      "paragraph": 2670,
+      "range": [
+        130,
+        38
+      ],
+      "text": "he was rising every hour in his esteem",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6563,
+        "paragraph": 2653,
+        "range": [
+          14,
+          106
+        ],
+        "text": "We all know him to be a proud, unpleasant sort of man; but this would be nothing if you really liked him.”"
+      }
+    }
+  ]
+}

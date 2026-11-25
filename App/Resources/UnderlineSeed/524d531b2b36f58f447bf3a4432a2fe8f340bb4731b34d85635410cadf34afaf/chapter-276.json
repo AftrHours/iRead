@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3734:1",
+      "sentence": 3734,
+      "paragraph": 1593,
+      "range": [
+        1,
+        70
+      ],
+      "text": "We have dined nine times at Rosings, besides drinking tea there twice!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3706,
+        "paragraph": 1581,
+        "range": [
+          565,
+          45
+        ],
+        "text": "You see how continually we are engaged there."
+      }
+    },
+    {
+      "id": "3740:81",
+      "sentence": 3740,
+      "paragraph": 1597,
+      "range": [
+        81,
+        51
+      ],
+      "text": "before she told her sister of Mr. Darcy’s proposals",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3736,
+        "paragraph": 1594,
+        "range": [
+          0,
+          66
+        ],
+        "text": "Elizabeth privately added, “And how much I shall have to conceal!”"
+      }
+    }
+  ]
+}

@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4454:0",
+      "sentence": 4454,
+      "paragraph": 1863,
+      "range": [
+        0,
+        63
+      ],
+      "text": "But she had no reason to fear Mr. and Mrs. Gardiner’s curiosity",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4407,
+        "paragraph": 1845,
+        "range": [
+          0,
+          211
+        ],
+        "text": "She retreated from the window, fearful of being seen; and as she walked up and down the room, endeavouring to compose herself, saw such looks of inquiring surprise in her uncle and aunt as made everything worse."
+      }
+    },
+    {
+      "id": "4455:215",
+      "sentence": 4455,
+      "paragraph": 1863,
+      "range": [
+        215,
+        53
+      ],
+      "text": "it was evident that he was very much in love with her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4423,
+        "paragraph": 1850,
+        "range": [
+          446,
+          132
+        ],
+        "text": "Of the lady’s sensations they remained a little in doubt; but that the gentleman was overflowing with admiration was evident enough."
+      }
+    },
+    {
+      "id": "4461:902",
+      "sentence": 4461,
+      "paragraph": 1864,
+      "range": [
+        902,
+        19
+      ],
+      "text": "a small market town",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4410,
+        "paragraph": 1846,
+        "range": [
+          189,
+          171
+        ],
+        "text": "Since her being at Lambton, she had heard that Miss Darcy was exceedingly proud; but the observation of a very few minutes convinced her that she was only exceedingly shy."
+      }
+    }
+  ]
+}

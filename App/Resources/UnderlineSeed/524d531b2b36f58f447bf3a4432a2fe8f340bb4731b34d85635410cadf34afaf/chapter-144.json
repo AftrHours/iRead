@@ -1,1 +1,69 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1977:199",
+      "sentence": 1977,
+      "paragraph": 949,
+      "range": [
+        199,
+        60
+      ],
+      "text": "good-naturedly engaged Mr. Collins’s conversation to herself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1768,
+        "paragraph": 861,
+        "range": [
+          0,
+          365
+        ],
+        "text": "But Elizabeth was not formed for ill-humour; and though every prospect of her own was destroyed for the evening, it could not dwell long on her spirits; and, having told all her griefs to Charlotte Lucas, whom she had not seen for a week, she was soon able to make a voluntary transition to the oddities of her cousin, and to point him out to her particular notice."
+      }
+    },
+    {
+      "id": "1979:201",
+      "sentence": 1979,
+      "paragraph": 950,
+      "range": [
+        201,
+        56
+      ],
+      "text": "the probable consequence of her allusions to Mr. Wickham",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1810,
+        "paragraph": 881,
+        "range": [
+          0,
+          152
+        ],
+        "text": "“He has been so unlucky as to lose your friendship,” replied Elizabeth, with emphasis, “and in a manner which he is likely to suffer from all his life.”"
+      }
+    },
+    {
+      "id": "1985:854",
+      "sentence": 1985,
+      "paragraph": 951,
+      "range": [
+        854,
+        75
+      ],
+      "text": "Mr. Bingley and Jane were standing together a little detached from the rest",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1823,
+        "paragraph": 888,
+        "range": [
+          0,
+          245
+        ],
+        "text": "The latter part of this address was scarcely heard by Darcy; but Sir William’s allusion to his friend seemed to strike him forcibly, and his eyes were directed, with a very serious expression, towards Bingley and Jane, who were dancing together."
+      }
+    }
+  ]
+}

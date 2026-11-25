@@ -1,1 +1,27 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2590:0",
+      "sentence": 2590,
+      "paragraph": 1188,
+      "range": [
+        0,
+        32
+      ],
+      "text": "Mrs. Gardiner had seen Pemberley",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2588,
+        "paragraph": 1187,
+        "range": [
+          100,
+          140
+        ],
+        "text": "About ten or a dozen years ago, before her marriage, she had spent a considerable time in that very part of Derbyshire to which he belonged."
+      }
+    }
+  ]
+}

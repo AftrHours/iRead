@@ -1,1 +1,90 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"decidedBy":"rules","range":[341,75],"sentence":2744,"paragraph":1234,"kind":"action","text":"gave her the particulars also of Miss Bingley’s visit in Gracechurch Street","id":"2744:341","reference":{"paragraph":1233,"range":[0,110],"text":"It was a journey of only twenty-four miles, and they began it so early as to be in Gracechurch Street by noon.","sentence":2736}}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2732:35",
+      "sentence": 2732,
+      "paragraph": 1232,
+      "range": [
+        35,
+        55
+      ],
+      "text": "were not of a kind to make her think him less agreeable",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2731,
+        "paragraph": 1231,
+        "range": [
+          92,
+          632
+        ],
+        "text": "His present pursuit could not make him forget that Elizabeth had been the first to excite and to deserve his attention, the first to listen and to pity, the first to be admired; and in his manner of bidding her adieu, wishing her every enjoyment, reminding her of what she was to expect in Lady Catherine de Bourgh, and trusting their opinion of her—their opinion of everybody—would always coincide, there was a solicitude, an interest, which she felt must ever attach her to him with a most sincere regard; and she parted from him convinced, that, whether married or single, he must always be her model of the amiable and pleasing."
+      }
+    },
+    {
+      "id": "2733:92",
+      "sentence": 2733,
+      "paragraph": 1232,
+      "range": [
+        92,
+        41
+      ],
+      "text": "Sir William Lucas, and his daughter Maria",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2727,
+        "paragraph": 1229,
+        "range": [
+          974,
+          57
+        ],
+        "text": "She was to accompany Sir William and his second daughter."
+      }
+    },
+    {
+      "id": "2737:149",
+      "sentence": 2737,
+      "paragraph": 1233,
+      "range": [
+        149,
+        56
+      ],
+      "text": "Jane was at a drawing-room window watching their arrival",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2725,
+        "paragraph": 1229,
+        "range": [
+          734,
+          137
+        ],
+        "text": "The journey would, moreover, give her a peep at Jane; and, in short, as the time drew near, she would have been very sorry for any delay."
+      }
+    },
+    {
+      "id": "2742:170",
+      "sentence": 2742,
+      "paragraph": 1234,
+      "range": [
+        170,
+        51
+      ],
+      "text": "though Jane always struggled to support her spirits",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2737,
+        "paragraph": 1233,
+        "range": [
+          111,
+          255
+        ],
+        "text": "As they drove to Mr. Gardiner’s door, Jane was at a drawing-room window watching their arrival: when they entered the passage, she was there to welcome them, and Elizabeth, looking earnestly in her face, was pleased to see it healthful and lovely as ever."
+      }
+    }
+  ]
+}

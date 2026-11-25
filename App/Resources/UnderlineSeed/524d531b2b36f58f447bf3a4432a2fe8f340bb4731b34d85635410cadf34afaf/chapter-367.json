@@ -1,1 +1,111 @@
-{"underlines":[],"parserVersion":1,"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4990:179",
+      "sentence": 4990,
+      "paragraph": 2053,
+      "range": [
+        179,
+        13
+      ],
+      "text": "“A gamester!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4946,
+        "paragraph": 2036,
+        "range": [
+          450,
+          409
+        ],
+        "text": "Elizabeth, though she did not credit above half of what was said, believed enough to make her former assurance of her sister’s ruin still more certain; and even Jane, who believed still less of it, became almost hopeless, more especially as the time was now come, when, if they had gone to Scotland, which she had never before entirely despaired of, they must in all probability have gained some news of them."
+      }
+    },
+    {
+      "id": "4994:192",
+      "sentence": 4994,
+      "paragraph": 2054,
+      "range": [
+        192,
+        82
+      ],
+      "text": "he had yielded to his brother-in-law’s entreaty that he would return to his family",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4950,
+        "paragraph": 2037,
+        "range": [
+          686,
+          118
+        ],
+        "text": "He added, that Mr. Bennet seemed wholly disinclined at present to leave London, and promised to write again very soon."
+      }
+    },
+    {
+      "id": "4995:481",
+      "sentence": 4995,
+      "paragraph": 2054,
+      "range": [
+        481,
+        57
+      ],
+      "text": "considering what her anxiety for his life had been before",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4939,
+        "paragraph": 2034,
+        "range": [
+          0,
+          284
+        ],
+        "text": "receiving constant information of what was going on; and their uncle promised, at parting, to prevail on Mr. Bennet to return to Longbourn as soon as he could, to the great consolation of his sister, who considered it as the only security for her husband’s not being killed in a duel."
+      }
+    },
+    {
+      "id": "4996:1",
+      "sentence": 4996,
+      "paragraph": 2055,
+      "range": [
+        1,
+        5
+      ],
+      "text": "What!",
+      "kind": "person",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4939,
+        "paragraph": 2034,
+        "range": [
+          0,
+          284
+        ],
+        "text": "receiving constant information of what was going on; and their uncle promised, at parting, to prevail on Mr. Bennet to return to Longbourn as soon as he could, to the great consolation of his sister, who considered it as the only security for her husband’s not being killed in a duel."
+      }
+    },
+    {
+      "id": "5003:0",
+      "sentence": 5003,
+      "paragraph": 2057,
+      "range": [
+        0,
+        45
+      ],
+      "text": "Mrs. Gardiner went away in all the perplexity",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4940,
+        "paragraph": 2035,
+        "range": [
+          0,
+          152
+        ],
+        "text": "Mrs. Gardiner and the children were to remain in Hertfordshire a few days longer, as the former thought her presence might be serviceable to her nieces."
+      }
+    }
+  ]
+}

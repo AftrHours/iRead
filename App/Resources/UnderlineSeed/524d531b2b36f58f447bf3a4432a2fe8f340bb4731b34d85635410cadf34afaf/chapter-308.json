@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4228:78",
+      "sentence": 4228,
+      "paragraph": 1783,
+      "range": [
+        78,
+        65
+      ],
+      "text": "That he was not a good-tempered man had been her firmest opinion.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4226,
+        "paragraph": 1782,
+        "range": [
+          95,
+          224
+        ],
+        "text": "Elizabeth thought this was going pretty far; and she listened with increasing astonishment as the housekeeper added, “I have never had a cross word from him in my life, and I have known him ever since he was four years old.”"
+      }
+    }
+  ]
+}

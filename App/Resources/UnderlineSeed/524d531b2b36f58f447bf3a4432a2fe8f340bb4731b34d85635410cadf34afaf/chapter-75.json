@@ -1,1 +1,111 @@
-{"parserVersion":1,"underlines":[{"range":[3,53],"paragraph":551,"reference":{"range":[122,75],"paragraph":550,"sentence":1062,"text":"I wonder who first discovered the efficacy of poetry in driving away love!”"},"decidedBy":"rules","text":"have been used to consider poetry as the food of love","sentence":1063,"id":"1063:3","kind":"reaction"},{"range":[6,39],"paragraph":554,"reference":{"range":[0,39],"paragraph":552,"sentence":1064,"text":"“Of a fine, stout, healthy love it may."},"decidedBy":"rules","text":"was a stout, well-grown girl of fifteen","sentence":1073,"id":"1073:6","kind":"thing"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1067:59",
+      "sentence": 1067,
+      "paragraph": 553,
+      "range": [
+        59,
+        66
+      ],
+      "text": "Elizabeth tremble lest her mother should be exposing herself again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1031,
+        "paragraph": 541,
+        "range": [
+          154,
+          46
+        ],
+        "text": "I know we dine with four-and-twenty families.”"
+      }
+    },
+    {
+      "id": "1068:209",
+      "sentence": 1068,
+      "paragraph": 553,
+      "range": [
+        209,
+        53
+      ],
+      "text": "Mrs. Bennet began repeating her thanks to Mr. Bingley",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 992,
+        "paragraph": 520,
+        "range": [
+          0,
+          47
+        ],
+        "text": "Mrs. Bennet was profuse in her acknowledgments."
+      }
+    },
+    {
+      "id": "1069:394",
+      "sentence": 1069,
+      "paragraph": 553,
+      "range": [
+        394,
+        42
+      ],
+      "text": "forced his younger sister to be civil also",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1033,
+        "paragraph": 542,
+        "range": [
+          80,
+          75
+        ],
+        "text": "His sister was less delicate, and directed her eye towards Mr. Darcy with a"
+      }
+    },
+    {
+      "id": "1070:474",
+      "sentence": 1070,
+      "paragraph": 553,
+      "range": [
+        474,
+        57
+      ],
+      "text": "She performed her part, indeed, without much graciousness",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 991,
+        "paragraph": 519,
+        "range": [
+          0,
+          156
+        ],
+        "text": "“You may depend upon it, madam,” said Miss Bingley, with cold civility, “that Miss Bennet shall receive every possible attention while she remains with us.”"
+      }
+    },
+    {
+      "id": "1072:675",
+      "sentence": 1072,
+      "paragraph": 553,
+      "range": [
+        675,
+        70
+      ],
+      "text": "The two girls had been whispering to each other during the whole visit",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 978,
+        "paragraph": 515,
+        "range": [
+          543,
+          104
+        ],
+        "text": "Mrs. Bennet, accompanied by her two youngest girls, reached Netherfield soon after the family breakfast."
+      }
+    }
+  ]
+}

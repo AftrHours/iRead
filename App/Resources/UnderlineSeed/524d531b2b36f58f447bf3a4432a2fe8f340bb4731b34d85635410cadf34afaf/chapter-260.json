@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3547:111",
+      "sentence": 3547,
+      "paragraph": 1528,
+      "range": [
+        111,
+        46
+      ],
+      "text": "in half a minute the letter was unfolded again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3546,
+        "paragraph": 1527,
+        "range": [
+          507,
+          244
+        ],
+        "text": "This must be the grossest falsehood!”—and when she had gone through the whole letter, though scarcely knowing anything of the last page or two, put it hastily away, protesting that she would not regard it, that she would never look in it again."
+      }
+    }
+  ]
+}

@@ -1,1 +1,111 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2311:50",
+      "sentence": 2311,
+      "paragraph": 1082,
+      "range": [
+        50,
+        70
+      ],
+      "text": "all of them equally surprised to find that he meditated a quick return",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2301,
+        "paragraph": 1075,
+        "range": [
+          0,
+          205
+        ],
+        "text": "“My dear madam,” he replied, “this invitation is particularly gratifying, because it is what I have been hoping to receive; and you may be very certain that I shall avail myself of it as soon as possible.”"
+      }
+    },
+    {
+      "id": "2315:735",
+      "sentence": 2315,
+      "paragraph": 1082,
+      "range": [
+        735,
+        35
+      ],
+      "text": "related the event of the day before",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2271,
+        "paragraph": 1066,
+        "range": [
+          0,
+          74
+        ],
+        "text": "admirable slyness, and hasten to Lucas Lodge to throw himself at her feet."
+      }
+    },
+    {
+      "id": "2316:0",
+      "sentence": 2316,
+      "paragraph": 1083,
+      "range": [
+        0,
+        73
+      ],
+      "text": "The possibility of Mr. Collins’s fancying himself in love with her friend",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2266,
+        "paragraph": 1064,
+        "range": [
+          190,
+          91
+        ],
+        "text": "“It keeps him in good humour,” said she, “and I am more obliged to you than I can express.”"
+      }
+    },
+    {
+      "id": "2317:1",
+      "sentence": 2317,
+      "paragraph": 1084,
+      "range": [
+        1,
+        23
+      ],
+      "text": "Engaged to Mr. Collins!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2296,
+        "paragraph": 1072,
+        "range": [
+          1052,
+          153
+        ],
+        "text": "Elizabeth would wonder, and probably would blame her; and though her resolution was not to be shaken, her feelings must be hurt by such a disapprobation."
+      }
+    },
+    {
+      "id": "2319:157",
+      "sentence": 2319,
+      "paragraph": 1085,
+      "range": [
+        157,
+        35
+      ],
+      "text": "as it was no more than she expected",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2295,
+        "paragraph": 1072,
+        "range": [
+          887,
+          164
+        ],
+        "text": "The least agreeable circumstance in the business was the surprise it must occasion to Elizabeth Bennet, whose friendship she valued beyond that of any other person."
+      }
+    }
+  ]
+}

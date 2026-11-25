@@ -1,1 +1,615 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"sentence":3116,"id":"3116:336","range":[336,39],"kind":"action","decidedBy":"rules","text":"went up the hill to take an observation","reference":{"sentence":3110,"text":"All walked quietly through the garden, out at the little back gate, and began to climb the hill that lay between the house and river.","paragraph":1349,"range":[354,133]},"paragraph":1351},{"sentence":3121,"id":"3121:306","range":[306,20],"kind":"action","decidedBy":"rules","text":"sat upon her cushion","reference":{"sentence":3109,"text":"Meg had a cushion, Jo a book, Beth a basket, and Amy a portfolio.","paragraph":1349,"range":[288,65]},"paragraph":1353},{"sentence":3125,"id":"3125:913","range":[913,32],"kind":"action","decidedBy":"rules","text":"ran down a pine close beside him","reference":{"sentence":3117,"text":"A grove of pines covered one part of it, and from the heart of this green spot came a clearer sound than the soft sigh of the pines or the drowsy chirp of the crickets.","paragraph":1351,"range":[377,168]},"paragraph":1353},{"sentence":3170,"id":"3170:191","range":[191,14],"kind":"action","decidedBy":"rules","text":"climb the hill","reference":{"sentence":3110,"text":"All walked quietly through the garden, out at the little back gate, and began to climb the hill that lay between the house and river.","paragraph":1349,"range":[354,133]},"paragraph":1377},{"sentence":3178,"id":"3178:37","range":[37,38],"kind":"action","decidedBy":"rules","text":"hope to live sometime—the real country","reference":{"sentence":3171,"text":"We call this hill the Delectable Mountain, for we can look far away and see the country where we hope to live some time.”","paragraph":1377,"range":[254,121]},"paragraph":1381},{"sentence":3182,"id":"3182:97","range":[97,27],"kind":"action","decidedBy":"rules","text":"go in at that splendid gate","reference":{"sentence":3110,"text":"All walked quietly through the garden, out at the little back gate, and began to climb the hill that lay between the house and river.","paragraph":1349,"range":[354,133]},"paragraph":1383},{"sentence":3186,"id":"3186:54","range":[54,82],"kind":"place","decidedBy":"rules","text":"shall have to do a deal of traveling before I come in sight of your Celestial City","reference":{"sentence":3174,"text":"Gold and purple clouds lay on the hilltops, and rising high into the ruddy light were silvery white peaks that shone like the airy spires of some Celestial City.","paragraph":1378,"range":[318,161]},"paragraph":1385},{"sentence":3208,"id":"3208:435","range":[435,16],"kind":"thing","decidedBy":"rules","text":"wouldn’t be idle","reference":{"sentence":3133,"text":"It’s against the rules to be idle here,” replied Meg gravely but graciously.","paragraph":1357,"range":[41,76]},"paragraph":1394},{"sentence":3209,"id":"3209:1","range":[1,53],"kind":"thing","decidedBy":"rules","text":"Wouldn’t you have a master for your castle in the air","reference":{"sentence":3190,"text":"“Wouldn’t it be fun if all the castles in the air which we make could come true, and we could live in them?”","paragraph":1387,"range":[0,108]},"paragraph":1395},{"sentence":3219,"id":"3219:436","range":[436,19],"kind":"action","decidedBy":"rules","text":"get rich and famous","reference":{"sentence":3201,"text":"I’m to be a famous musician myself, and all creation is to rush to hear me.","paragraph":1393,"range":[122,75]},"paragraph":1399},{"sentence":3219,"id":"3219:485","range":[485,20],"kind":"thing","decidedBy":"rules","text":"is my favorite dream","reference":{"sentence":3203,"text":"That’s my favorite castle.","paragraph":1393,"range":[300,26]},"paragraph":1399},{"sentence":3227,"id":"3227:63","range":[63,58],"kind":"action","decidedBy":"rules","text":"wants to be rich and famous, and gorgeous in every respect","reference":{"sentence":3219,"text":"I think I shall write books, and get rich and famous, that would suit me, so that is my favorite dream.”","paragraph":1399,"range":[403,104]},"paragraph":1404},{"sentence":3229,"id":"3229:1","range":[1,40],"kind":"action","decidedBy":"rules","text":"I’ve got the key to my castle in the air","reference":{"sentence":3209,"text":"“Wouldn’t you have a master for your castle in the air?”","paragraph":1395,"range":[0,56]},"paragraph":1405},{"sentence":3230,"id":"3230:1","range":[1,24],"kind":"action","decidedBy":"rules","text":"I’ve got the key to mine","reference":{"sentence":3112,"text":"They can’t be going in the boat, for they haven’t got the key.","paragraph":1350,"range":[81,62]},"paragraph":1406},{"sentence":3246,"id":"3246:11","range":[11,63],"kind":"thing","decidedBy":"rules","text":"will be twenty-six, Teddy, Beth twenty-four, and Amy twenty-two","reference":{"sentence":3109,"text":"Meg had a cushion, Jo a book, Beth a basket, and Amy a portfolio.","paragraph":1349,"range":[288,65]},"paragraph":1417},{"sentence":3249,"id":"3249:90","range":[90,29],"kind":"feeling","decidedBy":"rules","text":"I’m afraid I shall dawdle, Jo","reference":{"sentence":3152,"text":"Tell away, Jo, and don’t be afraid.”","paragraph":1367,"range":[54,36]},"paragraph":1418},{"sentence":3260,"id":"3260:113","range":[113,59],"kind":"action","decidedBy":"rules","text":"was growing up very fast and, in spite of his indolent ways","reference":{"sentence":3103,"text":"The hot weather made him indolent, and he had shirked his studies, tried Mr. Brooke’s patience to the utmost, displeased his grandfather by practicing half the afternoon, frightened the maidservants half out of their wits by mischievously hinting that one of his dogs was going mad, and, after high words with the stableman about some fancied neglect of his horse, he had flung himself into his hammock to fume over the stupidity of the world in general, till the peace of the lovely day quieted him in spite of himself.","paragraph":1348,"range":[297,520]},"paragraph":1421},{"reference":{"sentence":3160,"text":"I wanted to amuse him one night when you were all away, and he was rather dismal.","paragraph":1372,"range":[12,81]},"text":"Don’t be dismal","decidedBy":"rules","range":[448,15],"sentence":3267,"id":"3267:448","paragraph":1423,"kind":"thing"},{"reference":{"sentence":3142,"text":"The story was not a long one, and when it was finished, he ventured to ask a few questions as a reward of merit.","paragraph":1361,"range":[0,112]},"text":"you’ll get your reward","decidedBy":"rules","range":[494,22],"sentence":3267,"id":"3267:494","paragraph":1423,"kind":"action"},{"reference":{"sentence":3270,"text":"“Only what your grandpa told us about him, how he took good care of his own mother till she died, and wouldn’t go abroad as tutor to some nice person because he wouldn’t leave her.","paragraph":1425,"range":[0,180]},"text":"It’s like Grandpa to find out all about him without letting him know","decidedBy":"rules","range":[111,68],"sentence":3274,"id":"3274:111","paragraph":1426,"kind":"action"},{"reference":{"paragraph":1377,"sentence":3169,"range":[0,105],"text":"“Mother likes to have us out-of-doors as much as possible, so we bring our work here and have nice times."},"text":"made himself as agreeable as possible","decidedBy":"rules","range":[45,37],"sentence":3301,"kind":"action","paragraph":1435,"id":"3301:45"},{"reference":{"paragraph":1353,"sentence":3122,"range":[442,106],"text":"Beth was sorting the cones that lay thick under the hemlock near by, for she made pretty things with them."},"text":"shook down cones for Beth","decidedBy":"rules","range":[135,25],"sentence":3301,"kind":"action","paragraph":1435,"id":"3301:135"},{"reference":{"paragraph":1353,"sentence":3123,"range":[549,74],"text":"Amy was sketching a group of ferns, and Jo was knitting as she read aloud."},"text":"helped Amy with her ferns","decidedBy":"rules","range":[166,25],"sentence":3301,"kind":"action","paragraph":1435,"id":"3301:166"},{"reference":{"paragraph":1360,"sentence":3141,"range":[0,136],"text":"“Yes’m.” was the meek answer, as he began, doing his best to prove his gratitude for the favor of admission into the ‘Busy Bee Society’."},"text":"proving himself a fit person to belong to the ‘Busy Bee Society","decidedBy":"rules","range":[193,63],"sentence":3301,"kind":"action","paragraph":1435,"id":"3301:193"},{"reference":{"paragraph":1393,"sentence":3203,"range":[300,26],"text":"That’s my favorite castle."},"text":"I’ll let my castle go","decidedBy":"rules","range":[445,21],"sentence":3310,"kind":"action","paragraph":1440,"id":"3310:445"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3121:302",
+      "sentence": 3121,
+      "paragraph": 1353,
+      "range": [
+        302,
+        24
+      ],
+      "text": "Meg sat upon her cushion",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3109,
+        "paragraph": 1349,
+        "range": [
+          288,
+          65
+        ],
+        "text": "Meg had a cushion, Jo a book, Beth a basket, and Amy a portfolio."
+      }
+    },
+    {
+      "id": "3123:549",
+      "sentence": 3123,
+      "paragraph": 1353,
+      "range": [
+        549,
+        34
+      ],
+      "text": "Amy was sketching a group of ferns",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3109,
+        "paragraph": 1349,
+        "range": [
+          288,
+          65
+        ],
+        "text": "Meg had a cushion, Jo a book, Beth a basket, and Amy a portfolio."
+      }
+    },
+    {
+      "id": "3130:95",
+      "sentence": 3130,
+      "paragraph": 1355,
+      "range": [
+        95,
+        31
+      ],
+      "text": "We should have asked you before",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3111,
+        "paragraph": 1350,
+        "range": [
+          0,
+          80
+        ],
+        "text": "“Well, that’s cool,” said Laurie to himself, “to have a picnic and never ask me!"
+      }
+    },
+    {
+      "id": "3140:1",
+      "sentence": 3140,
+      "paragraph": 1359,
+      "range": [
+        1,
+        37
+      ],
+      "text": "Finish this story while I set my heel",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3123,
+        "paragraph": 1353,
+        "range": [
+          549,
+          74
+        ],
+        "text": "Amy was sketching a group of ferns, and Jo was knitting as she read aloud."
+      }
+    },
+    {
+      "id": "3168:26",
+      "sentence": 3168,
+      "paragraph": 1376,
+      "range": [
+        26,
+        51
+      ],
+      "text": "and Laurie thought regretfully of his own idle days",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3103,
+        "paragraph": 1348,
+        "range": [
+          297,
+          520
+        ],
+        "text": "The hot weather made him indolent, and he had shirked his studies, tried Mr. Brooke’s patience to the utmost, displeased his grandfather by practicing half the afternoon, frightened the maidservants half out of their wits by mischievously hinting that one of his dogs was going mad, and, after high words with the stableman about some fancied neglect of his horse, he had flung himself into his hammock to fume over the stupidity of the world in general, till the peace of the lovely day quieted him in spite of himself."
+      }
+    },
+    {
+      "id": "3170:106",
+      "sentence": 3170,
+      "paragraph": 1377,
+      "range": [
+        106,
+        99
+      ],
+      "text": "For the fun of it we bring our things in these bags, wear the old hats, use poles to climb the hill",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3108,
+        "paragraph": 1349,
+        "range": [
+          184,
+          103
+        ],
+        "text": "Each wore a large, flapping hat, a brown linen pouch slung over one shoulder, and carried a long staff."
+      }
+    },
+    {
+      "id": "3178:1",
+      "sentence": 3178,
+      "paragraph": 1381,
+      "range": [
+        1,
+        57
+      ],
+      "text": "Jo talks about the country where we hope to live sometime",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3171,
+        "paragraph": 1377,
+        "range": [
+          254,
+          121
+        ],
+        "text": "We call this hill the Delectable Mountain, for we can look far away and see the country where we hope to live some time.”"
+      }
+    },
+    {
+      "id": "3186:52",
+      "sentence": 3186,
+      "paragraph": 1385,
+      "range": [
+        52,
+        38
+      ],
+      "text": "I shall have to do a deal of traveling",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3104,
+        "paragraph": 1348,
+        "range": [
+          818,
+          239
+        ],
+        "text": "Staring up into the green gloom of the horse-chestnut trees above him, he dreamed dreams of all sorts, and was just imagining himself tossing on the ocean in a voyage round the world, when the sound of voices brought him ashore in a flash."
+      }
+    },
+    {
+      "id": "3186:91",
+      "sentence": 3186,
+      "paragraph": 1385,
+      "range": [
+        91,
+        45
+      ],
+      "text": "before I come in sight of your Celestial City",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3174,
+        "paragraph": 1378,
+        "range": [
+          318,
+          161
+        ],
+        "text": "Gold and purple clouds lay on the hilltops, and rising high into the ruddy light were silvery white peaks that shone like the airy spires of some Celestial City."
+      }
+    },
+    {
+      "id": "3188:217",
+      "sentence": 3188,
+      "paragraph": 1386,
+      "range": [
+        217,
+        74
+      ],
+      "text": "I don’t believe there are any locks on that door or any guards at the gate",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3182,
+        "paragraph": 1383,
+        "range": [
+          42,
+          84
+        ],
+        "text": "I want to fly away at once, as those swallows fly, and go in at that splendid gate.”"
+      }
+    },
+    {
+      "id": "3192:99",
+      "sentence": 3192,
+      "paragraph": 1388,
+      "range": [
+        99,
+        51
+      ],
+      "text": "throwing cones at the squirrel who had betrayed him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3125,
+        "paragraph": 1353,
+        "range": [
+          852,
+          252
+        ],
+        "text": "He stood so still that a squirrel, busy with its harvesting, ran down a pine close beside him, saw him suddenly and skipped back, scolding so shrilly that Beth looked up, espied the wistful face behind the birches, and beckoned with a reassuring smile."
+      }
+    },
+    {
+      "id": "3200:51",
+      "sentence": 3200,
+      "paragraph": 1393,
+      "range": [
+        51,
+        69
+      ],
+      "text": "I’d like to settle in Germany and have just as much music as I choose",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3103,
+        "paragraph": 1348,
+        "range": [
+          297,
+          520
+        ],
+        "text": "The hot weather made him indolent, and he had shirked his studies, tried Mr. Brooke’s patience to the utmost, displeased his grandfather by practicing half the afternoon, frightened the maidservants half out of their wits by mischievously hinting that one of his dogs was going mad, and, after high words with the stableman about some fancied neglect of his horse, he had flung himself into his hammock to fume over the stupidity of the world in general, till the peace of the lovely day quieted him in spite of himself."
+      }
+    },
+    {
+      "id": "3209:1",
+      "sentence": 3209,
+      "paragraph": 1395,
+      "range": [
+        1,
+        54
+      ],
+      "text": "Wouldn’t you have a master for your castle in the air?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3206,
+        "paragraph": 1394,
+        "range": [
+          301,
+          104
+        ],
+        "text": "I am to be mistress of it, and manage it as I like, with plenty of servants, so I never need work a bit."
+      }
+    },
+    {
+      "id": "3211:1",
+      "sentence": 3211,
+      "paragraph": 1396,
+      "range": [
+        1,
+        34
+      ],
+      "text": "I said ‘pleasant people’, you know",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3205,
+        "paragraph": 1394,
+        "range": [
+          0,
+          300
+        ],
+        "text": "Margaret seemed to find it a little hard to tell hers, and waved a brake before her face, as if to disperse imaginary gnats, while she said slowly, “I should like a lovely house, full of all sorts of luxurious things—nice food, pretty clothes, handsome furniture, pleasant people, and heaps of money."
+      }
+    },
+    {
+      "id": "3216:130",
+      "sentence": 3216,
+      "paragraph": 1399,
+      "range": [
+        130,
+        54
+      ],
+      "text": "so that my works should be as famous as Laurie’s music",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3201,
+        "paragraph": 1393,
+        "range": [
+          122,
+          75
+        ],
+        "text": "I’m to be a famous musician myself, and all creation is to rush to hear me."
+      }
+    },
+    {
+      "id": "3227:36",
+      "sentence": 3227,
+      "paragraph": 1404,
+      "range": [
+        36,
+        54
+      ],
+      "text": "Every one of us, but Beth, wants to be rich and famous",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3220,
+        "paragraph": 1400,
+        "range": [
+          0,
+          111
+        ],
+        "text": "“Mine is to stay at home safe with Father and Mother, and help take care of the family,” said Beth contentedly."
+      }
+    },
+    {
+      "id": "3233:0",
+      "sentence": 3233,
+      "paragraph": 1407,
+      "range": [
+        0,
+        14
+      ],
+      "text": "“Here’s mine!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3225,
+        "paragraph": 1403,
+        "range": [
+          0,
+          171
+        ],
+        "text": "“I have ever so many wishes, but the pet one is to be an artist, and go to Rome, and do fine pictures, and be the best artist in the whole world,” was Amy’s modest desire."
+      }
+    },
+    {
+      "id": "3266:315",
+      "sentence": 3266,
+      "paragraph": 1423,
+      "range": [
+        315,
+        58
+      ],
+      "text": "As you say, there is no one else to stay with and love him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3259,
+        "paragraph": 1420,
+        "range": [
+          656,
+          77
+        ],
+        "text": "If there was anyone left to stay with the old gentleman, I’d do it tomorrow.”"
+      }
+    },
+    {
+      "id": "3269:108",
+      "sentence": 3269,
+      "paragraph": 1424,
+      "range": [
+        108,
+        69
+      ],
+      "text": "glad to turn the conversation from himself after his unusual outbreak",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3260,
+        "paragraph": 1421,
+        "range": [
+          0,
+          274
+        ],
+        "text": "Laurie spoke excitedly, and looked ready to carry his threat into execution on the slightest provocation, for he was growing up very fast and, in spite of his indolent ways, had a young man’s hatred of subjection, a young man’s restless longing to try the world for himself."
+      }
+    },
+    {
+      "id": "3277:501",
+      "sentence": 3277,
+      "paragraph": 1426,
+      "range": [
+        501,
+        57
+      ],
+      "text": "If ever I do get my wish, you see what I’ll do for Brooke",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3228,
+        "paragraph": 1404,
+        "range": [
+          123,
+          102
+        ],
+        "text": "I do wonder if any of us will ever get our wishes,” said Laurie, chewing grass like a meditative calf."
+      }
+    },
+    {
+      "id": "3278:1",
+      "sentence": 3278,
+      "paragraph": 1427,
+      "range": [
+        1,
+        54
+      ],
+      "text": "Begin to do something now by not plaguing his life out",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3103,
+        "paragraph": 1348,
+        "range": [
+          297,
+          520
+        ],
+        "text": "The hot weather made him indolent, and he had shirked his studies, tried Mr. Brooke’s patience to the utmost, displeased his grandfather by practicing half the afternoon, frightened the maidservants half out of their wits by mischievously hinting that one of his dogs was going mad, and, after high words with the stableman about some fancied neglect of his horse, he had flung himself into his hammock to fume over the stupidity of the world in general, till the peace of the lovely day quieted him in spite of himself."
+      }
+    },
+    {
+      "id": "3290:133",
+      "sentence": 3290,
+      "paragraph": 1432,
+      "range": [
+        133,
+        43
+      ],
+      "text": "Only if Brooke is going to be a thermometer",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3280,
+        "paragraph": 1429,
+        "range": [
+          0,
+          49
+        ],
+        "text": "“I can always tell by his face when he goes away."
+      }
+    },
+    {
+      "id": "3293:78",
+      "sentence": 3293,
+      "paragraph": 1433,
+      "range": [
+        78,
+        75
+      ],
+      "text": "I only thought Jo was encouraging you in a feeling which you’d be sorry for",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3261,
+        "paragraph": 1422,
+        "range": [
+          0,
+          255
+        ],
+        "text": "“I advise you to sail away in one of your ships, and never come home again till you have tried your own way,” said Jo, whose imagination was fired by the thought of such a daring exploit, and whose sympathy was excited by what she called ‘Teddy’s Wrongs’."
+      }
+    },
+    {
+      "id": "3298:117",
+      "sentence": 3298,
+      "paragraph": 1434,
+      "range": [
+        117,
+        44
+      ],
+      "text": "I’m cross and have been out of sorts all day",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3102,
+        "paragraph": 1348,
+        "range": [
+          162,
+          134
+        ],
+        "text": "He was in one of his moods, for the day had been both unprofitable and unsatisfactory, and he was wishing he could live it over again."
+      }
+    },
+    {
+      "id": "3301:84",
+      "sentence": 3301,
+      "paragraph": 1435,
+      "range": [
+        84,
+        107
+      ],
+      "text": "wound cotton for Meg, recited poetry to please Jo, shook down cones for Beth, and helped Amy with her ferns",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3136,
+        "paragraph": 1358,
+        "range": [
+          114,
+          49
+        ],
+        "text": "Shall I sew, read, cone, draw, or do all at once?"
+      }
+    },
+    {
+      "id": "3301:193",
+      "sentence": 3301,
+      "paragraph": 1435,
+      "range": [
+        193,
+        64
+      ],
+      "text": "proving himself a fit person to belong to the ‘Busy Bee Society’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3141,
+        "paragraph": 1360,
+        "range": [
+          0,
+          136
+        ],
+        "text": "“Yes’m.” was the meek answer, as he began, doing his best to prove his gratitude for the favor of admission into the ‘Busy Bee Society’."
+      }
+    },
+    {
+      "id": "3303:1",
+      "sentence": 3303,
+      "paragraph": 1436,
+      "range": [
+        1,
+        17
+      ],
+      "text": "May I come again?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3126,
+        "paragraph": 1354,
+        "range": [
+          0,
+          23
+        ],
+        "text": "“May I come in, please?"
+      }
+    },
+    {
+      "id": "3310:445",
+      "sentence": 3310,
+      "paragraph": 1440,
+      "range": [
+        445,
+        21
+      ],
+      "text": "I’ll let my castle go",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3203,
+        "paragraph": 1393,
+        "range": [
+          300,
+          26
+        ],
+        "text": "That’s my favorite castle."
+      }
+    },
+    {
+      "id": "3310:472",
+      "sentence": 3310,
+      "paragraph": 1440,
+      "range": [
+        472,
+        50
+      ],
+      "text": "stay with the dear old gentleman while he needs me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3266,
+        "paragraph": 1423,
+        "range": [
+          315,
+          132
+        ],
+        "text": "As you say, there is no one else to stay with and love him, and you’d never forgive yourself if you left him without his permission."
+      }
+    }
+  ]
+}

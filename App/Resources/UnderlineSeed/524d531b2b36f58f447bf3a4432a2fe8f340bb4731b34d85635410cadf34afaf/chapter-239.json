@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3185:143",
+      "sentence": 3185,
+      "paragraph": 1421,
+      "range": [
+        143,
+        33
+      ],
+      "text": "called on us in this familiar way",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3130,
+        "paragraph": 1390,
+        "range": [
+          219,
+          301
+        ],
+        "text": "As she had heard no carriage, she thought it not unlikely to be Lady Catherine; and under that apprehension was putting away her half-finished letter, that she might escape all impertinent questions, when the door opened, and to her very great surprise Mr. Darcy, and Mr. Darcy only, entered the room."
+      }
+    },
+    {
+      "id": "3186:4",
+      "sentence": 3186,
+      "paragraph": 1422,
+      "range": [
+        4,
+        34
+      ],
+      "text": "when Elizabeth told of his silence",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3132,
+        "paragraph": 1392,
+        "range": [
+          0,
+          115
+        ],
+        "text": "They then sat down, and when her inquiries after Rosings were made, seemed in danger of sinking into total silence."
+      }
+    },
+    {
+      "id": "3192:121",
+      "sentence": 3192,
+      "paragraph": 1423,
+      "range": [
+        121,
+        66
+      ],
+      "text": "frequently sat there ten minutes together without opening his lips",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3180,
+        "paragraph": 1418,
+        "range": [
+          0,
+          160
+        ],
+        "text": "Darcy related the mistake which had occasioned his intruding on Miss Bennet, and, after sitting a few minutes longer, without saying much to anybody, went away."
+      }
+    }
+  ]
+}

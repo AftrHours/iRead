@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2811:996",
+      "sentence": 2811,
+      "paragraph": 1262,
+      "range": [
+        996,
+        53
+      ],
+      "text": "none were to be compared with the prospect of Rosings",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2792,
+        "paragraph": 1258,
+        "range": [
+          145,
+          58
+        ],
+        "text": "The paling of Rosings park was their boundary on one side."
+      }
+    },
+    {
+      "id": "2813:287",
+      "sentence": 2813,
+      "paragraph": 1263,
+      "range": [
+        287,
+        64
+      ],
+      "text": "to have the opportunity of showing it without her husband’s help",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2805,
+        "paragraph": 1261,
+        "range": [
+          645,
+          71
+        ],
+        "text": "Once or twice she could discern a faint blush; but in general Charlotte"
+      }
+    }
+  ]
+}

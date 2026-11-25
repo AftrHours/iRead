@@ -1,1 +1,90 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "955:101",
+      "sentence": 955,
+      "paragraph": 503,
+      "range": [
+        101,
+        48
+      ],
+      "text": "the improvement of her mind by extensive reading",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 908,
+        "paragraph": 472,
+        "range": [
+          57,
+          61
+        ],
+        "text": "She is a great reader, and has no pleasure in anything else.”"
+      }
+    },
+    {
+      "id": "956:1",
+      "sentence": 956,
+      "paragraph": 504,
+      "range": [
+        1,
+        68
+      ],
+      "text": "I am no longer surprised at your knowing only six accomplished women",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 949,
+        "paragraph": 498,
+        "range": [
+          64,
+          117
+        ],
+        "text": "I cannot boast of knowing more than half-a-dozen in the whole range of my acquaintance that are really accomplished.”"
+      }
+    },
+    {
+      "id": "961:117",
+      "sentence": 961,
+      "paragraph": 507,
+      "range": [
+        117,
+        50
+      ],
+      "text": "they knew many women who answered this description",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 950,
+        "paragraph": 499,
+        "range": [
+          0,
+          38
+        ],
+        "text": "“Nor I, I am sure,” said Miss Bingley."
+      }
+    },
+    {
+      "id": "961:169",
+      "sentence": 961,
+      "paragraph": 507,
+      "range": [
+        169,
+        35
+      ],
+      "text": "when Mr. Hurst called them to order",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 903,
+        "paragraph": 470,
+        "range": [
+          374,
+          280
+        ],
+        "text": "On entering the drawing-room, she found the whole party at loo, and was immediately invited to join them; but suspecting them to be playing high, she declined it, and making her sister the excuse, said she would amuse herself, for the short time she could stay below, with a book."
+      }
+    }
+  ]
+}

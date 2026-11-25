@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5523:507",
+      "sentence": 5523,
+      "paragraph": 2233,
+      "range": [
+        507,
+        38
+      ],
+      "text": "He had followed them purposely to town",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5444,
+        "paragraph": 2225,
+        "range": [
+          1090,
+          131
+        ],
+        "text": "From what I can collect, he left Derbyshire only one day after ourselves, and came to town with the resolution of hunting for them."
+      }
+    },
+    {
+      "id": "5523:644",
+      "sentence": 5523,
+      "paragraph": 2233,
+      "range": [
+        644,
+        77
+      ],
+      "text": "supplication had been necessary to a woman whom he must abominate and despise",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5455,
+        "paragraph": 2226,
+        "range": [
+          877,
+          73
+        ],
+        "text": "But it was two or three days before he could get from her what he wanted."
+      }
+    }
+  ]
+}

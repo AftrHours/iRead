@@ -1,1 +1,69 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4673:624",
+      "sentence": 4673,
+      "paragraph": 1933,
+      "range": [
+        624,
+        26
+      ],
+      "text": "she saw him go with regret",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4669,
+        "paragraph": 1931,
+        "range": [
+          0,
+          196
+        ],
+        "text": "his sorrow for her distress, wished it a happier conclusion than there was at present reason to hope, and, leaving his compliments for her relations, with only one serious parting look, went away."
+      }
+    },
+    {
+      "id": "4674:784",
+      "sentence": 4674,
+      "paragraph": 1933,
+      "range": [
+        784,
+        40
+      ],
+      "text": "Never since reading Jane’s second letter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4568,
+        "paragraph": 1903,
+        "range": [
+          0,
+          275
+        ],
+        "text": "Without allowing herself time for consideration, and scarcely knowing what she felt, Elizabeth, on finishing this letter, instantly seized the other, and opening it with the utmost impatience, read as follows: it had been written a day later than the conclusion of the first."
+      }
+    },
+    {
+      "id": "4675:887",
+      "sentence": 4675,
+      "paragraph": 1933,
+      "range": [
+        887,
+        77
+      ],
+      "text": "No one but Jane, she thought, could flatter herself with such an expectation.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4555,
+        "paragraph": 1902,
+        "range": [
+          385,
+          81
+        ],
+        "text": "But I am willing to hope the best, and that his character has been misunderstood."
+      }
+    }
+  ]
+}

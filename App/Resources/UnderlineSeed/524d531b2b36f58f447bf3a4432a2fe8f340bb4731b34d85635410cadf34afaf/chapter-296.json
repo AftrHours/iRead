@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[{"id":"4073:6","decidedBy":"rules","paragraph":1718,"text":"who so well know my feelings towards Mr. Darcy","range":[6,46],"reference":{"text":"“Yes, very different; but I think Mr. Darcy improves on acquaintance.”","paragraph":1712,"range":[0,70],"sentence":4060},"sentence":4073,"kind":"thing"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4071:1",
+      "sentence": 4071,
+      "paragraph": 1716,
+      "range": [
+        1,
+        44
+      ],
+      "text": "When I said that he improved on acquaintance",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4060,
+        "paragraph": 1712,
+        "range": [
+          0,
+          70
+        ],
+        "text": "“Yes, very different; but I think Mr. Darcy improves on acquaintance.”"
+      }
+    },
+    {
+      "id": "4072:0",
+      "sentence": 4072,
+      "paragraph": 1717,
+      "range": [
+        0,
+        55
+      ],
+      "text": "Wickham’s alarm now appeared in a heightened complexion",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4052,
+        "paragraph": 1706,
+        "range": [
+          0,
+          237
+        ],
+        "text": "He looked surprised, displeased, alarmed; but, with a moment’s recollection, and a returning smile, replied, that he had formerly seen him often; and, after observing that he was a very gentlemanlike man, asked her how she had liked him."
+      }
+    }
+  ]
+}

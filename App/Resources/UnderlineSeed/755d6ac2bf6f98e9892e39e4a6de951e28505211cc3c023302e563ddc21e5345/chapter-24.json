@@ -1,1 +1,384 @@
-{"parserVersion":1,"underlines":[{"paragraph":2115,"text":"Be yours, this Christmas day","id":"4898:0","range":[0,28],"decidedBy":"rules","sentence":4898,"reference":{"paragraph":2110,"range":[0,81],"text":"Several days of unusually mild weather fitly ushered in a splendid Christmas Day.","sentence":4889},"kind":"thing"},{"paragraph":2133,"text":"I’m so full of happiness","id":"4917:1","range":[1,24],"decidedBy":"rules","sentence":4917,"reference":{"paragraph":2114,"range":[0,34],"text":"But health and peace and happiness","sentence":4897},"kind":"thing"},{"paragraph":2136,"text":"which the girls had just fastened on her breast","id":"4923:335","range":[335,47],"decidedBy":"rules","sentence":4923,"reference":{"paragraph":2129,"range":[0,25],"text":"Within my breast of snow.","sentence":4913},"kind":"thing"},{"paragraph":2137,"text":"was so full of suppressed excitement","id":"4927:385","range":[385,36],"decidedBy":"rules","sentence":4927,"reference":{"paragraph":2133,"range":[0,281],"text":"“I’m so full of happiness, that if Father was only here, I couldn’t hold one drop more,” said Beth, quite sighing with contentment as Jo carried her off to the study to rest after the excitement, and to refresh herself with some of the delicious grapes the ‘Jungfrau’ had sent her.","sentence":4917},"kind":"thing"},{"paragraph":2140,"text":"put strength into the feeble limbs","id":"4937:101","range":[101,34],"decidedBy":"rules","sentence":4937,"reference":{"paragraph":2108,"range":[337,118],"text":"Her once active limbs were so stiff and feeble that Jo took her for a daily airing about the house in her strong arms.","sentence":4884},"kind":"action"},{"paragraph":2142,"text":"when the fine weather came","id":"4942:60","range":[60,26],"decidedBy":"rules","sentence":4942,"reference":{"paragraph":2110,"range":[0,81],"text":"Several days of unusually mild weather fitly ushered in a splendid Christmas Day.","sentence":4889},"kind":"thing"},{"paragraph":2143,"text":"was such a Christmas dinner as they had that day","id":"4946:12","range":[12,48],"decidedBy":"rules","sentence":4946,"reference":{"paragraph":2115,"range":[0,29],"text":"Be yours, this Christmas day.","sentence":4898},"kind":"thing"},{"paragraph":2144,"text":"sat Beth and her father","id":"4951:194","range":[194,23],"decidedBy":"rules","sentence":4951,"reference":{"paragraph":2140,"range":[21,161],"text":"The study door flew open, the little red wrapper appeared on the threshold, joy put strength into the feeble limbs, and Beth ran straight into her father’s arms.","sentence":4937},"kind":"action"},{"paragraph":2160,"text":"I’ll keep you so, please God","id":"4990:313","range":[313,28],"decidedBy":"rules","sentence":4990,"reference":{"paragraph":2112,"range":[0,31],"text":"God bless you, dear Queen Bess!","sentence":4895},"kind":"action"},{"paragraph":2163,"text":"when Amy had thanked her father","id":"4996:44","range":[44,31],"decidedBy":"rules","sentence":4996,"reference":{"paragraph":2139,"range":[254,145],"text":"And Amy, the dignified, tumbled over a stool, and never stopping to get up, hugged and cried over her father’s boots in the most touching manner.","sentence":4933},"kind":"thing"},{"paragraph":2169,"text":"Have God to be his guide","id":"5004:0","range":[0,24],"decidedBy":"rules","sentence":5004,"reference":{"paragraph":2112,"range":[0,31],"text":"God bless you, dear Queen Bess!","sentence":4895},"kind":"thing"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4892:531",
+      "sentence": 4892,
+      "paragraph": 2110,
+      "range": [
+        531,
+        62
+      ],
+      "text": "The Unquenchables had done their best to be worthy of the name",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4888,
+        "paragraph": 2109,
+        "range": [
+          346,
+          205
+        ],
+        "text": "After many skirmishes and snubbings, the ambitious pair were considered effectually quenched and went about with forlorn faces, which were rather belied by explosions of laughter when the two got together."
+      }
+    },
+    {
+      "id": "4917:232",
+      "sentence": 4917,
+      "paragraph": 2133,
+      "range": [
+        232,
+        48
+      ],
+      "text": "the delicious grapes the ‘Jungfrau’ had sent her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4893,
+        "paragraph": 2110,
+        "range": [
+          671,
+          282
+        ],
+        "text": "Out in the garden stood a stately snow maiden, crowned with holly, bearing a basket of fruit and flowers in one hand, a great roll of music in the other, a perfect rainbow of an Afghan round her chilly shoulders, and a Christmas carol issuing from her lips on a pink paper streamer."
+      }
+    },
+    {
+      "id": "4923:180",
+      "sentence": 4923,
+      "paragraph": 2136,
+      "range": [
+        180,
+        42
+      ],
+      "text": "as her eyes went from her husband’s letter",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4891,
+        "paragraph": 2110,
+        "range": [
+          268,
+          262
+        ],
+        "text": "To begin with, Mr. March wrote that he should soon be with them, then Beth felt uncommonly well that morning, and, being dressed in her mother’s gift, a soft crimson merino wrapper, was borne in high triumph to the window to behold the offering of Jo and Laurie."
+      }
+    },
+    {
+      "id": "4925:210",
+      "sentence": 4925,
+      "paragraph": 2137,
+      "range": [
+        210,
+        13
+      ],
+      "text": "the drop came",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4917,
+        "paragraph": 2133,
+        "range": [
+          0,
+          281
+        ],
+        "text": "“I’m so full of happiness, that if Father was only here, I couldn’t hold one drop more,” said Beth, quite sighing with contentment as Jo carried her off to the study to rest after the excitement, and to refresh herself with some of the delicious grapes the ‘Jungfrau’ had sent her."
+      }
+    },
+    {
+      "id": "4928:78",
+      "sentence": 4928,
+      "paragraph": 2138,
+      "range": [
+        78,
+        56
+      ],
+      "text": "in his place appeared a tall man, muffled up to the eyes",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4882,
+        "paragraph": 2108,
+        "range": [
+          68,
+          94
+        ],
+        "text": "The invalids improved rapidly, and Mr. March began to talk of returning early in the new year."
+      }
+    },
+    {
+      "id": "4937:47",
+      "sentence": 4937,
+      "paragraph": 2140,
+      "range": [
+        47,
+        48
+      ],
+      "text": "the little red wrapper appeared on the threshold",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4891,
+        "paragraph": 2110,
+        "range": [
+          268,
+          262
+        ],
+        "text": "To begin with, Mr. March wrote that he should soon be with them, then Beth felt uncommonly well that morning, and, being dressed in her mother’s gift, a soft crimson merino wrapper, was borne in high triumph to the window to behold the offering of Jo and Laurie."
+      }
+    },
+    {
+      "id": "4937:97",
+      "sentence": 4937,
+      "paragraph": 2140,
+      "range": [
+        97,
+        38
+      ],
+      "text": "joy put strength into the feeble limbs",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4884,
+        "paragraph": 2108,
+        "range": [
+          337,
+          118
+        ],
+        "text": "Her once active limbs were so stiff and feeble that Jo took her for a daily airing about the house in her strong arms."
+      }
+    },
+    {
+      "id": "4942:147",
+      "sentence": 4942,
+      "paragraph": 2142,
+      "range": [
+        147,
+        27
+      ],
+      "text": "how devoted Brooke had been",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4940,
+        "paragraph": 2141,
+        "range": [
+          222,
+          211
+        ],
+        "text": "As the laugh subsided, Mrs. March began to thank Mr. Brooke for his faithful care of her husband, at which Mr. Brooke suddenly remembered that Mr. March needed rest, and seizing Laurie, he precipitately retired."
+      }
+    },
+    {
+      "id": "4947:62",
+      "sentence": 4947,
+      "paragraph": 2143,
+      "range": [
+        62,
+        36
+      ],
+      "text": "The fat turkey was a sight to behold",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4939,
+        "paragraph": 2141,
+        "range": [
+          0,
+          221
+        ],
+        "text": "It was not at all romantic, but a hearty laugh set everybody straight again, for Hannah was discovered behind the door, sobbing over the fat turkey, which she had forgotten to put down when she rushed up from the kitchen."
+      }
+    },
+    {
+      "id": "4949:281",
+      "sentence": 4949,
+      "paragraph": 2143,
+      "range": [
+        281,
+        58
+      ],
+      "text": "Everything turned out well, which was a mercy, Hannah said",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4890,
+        "paragraph": 2110,
+        "range": [
+          82,
+          185
+        ],
+        "text": "Hannah ‘felt in her bones’ that it was going to be an unusually fine day, and she proved herself a true prophetess, for everybody and everything seemed bound to produce a grand success."
+      }
+    },
+    {
+      "id": "4950:64",
+      "sentence": 4950,
+      "paragraph": 2144,
+      "range": [
+        64,
+        26
+      ],
+      "text": "at whom Jo glowered darkly",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4945,
+        "paragraph": 2142,
+        "range": [
+          546,
+          177
+        ],
+        "text": "Jo saw and understood the look, and she stalked grimly away to get wine and beef tea, muttering to herself as she slammed the door, “I hate estimable young men with brown eyes!”"
+      }
+    },
+    {
+      "id": "4951:185",
+      "sentence": 4951,
+      "paragraph": 2144,
+      "range": [
+        185,
+        32
+      ],
+      "text": "in which sat Beth and her father",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4941,
+        "paragraph": 2141,
+        "range": [
+          434,
+          112
+        ],
+        "text": "Then the two invalids were ordered to repose, which they did, by both sitting in one big chair and talking hard."
+      }
+    },
+    {
+      "id": "4958:74",
+      "sentence": 4958,
+      "paragraph": 2146,
+      "range": [
+        74,
+        64
+      ],
+      "text": "congratulating herself on having treated Mr. Brooke with dignity",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4932,
+        "paragraph": 2139,
+        "range": [
+          172,
+          81
+        ],
+        "text": "Mr. Brooke kissed Meg entirely by mistake, as he somewhat incoherently explained."
+      }
+    },
+    {
+      "id": "4959:53",
+      "sentence": 4959,
+      "paragraph": 2147,
+      "range": [
+        53,
+        36
+      ],
+      "text": "watching the light shine on her ring",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4885,
+        "paragraph": 2108,
+        "range": [
+          456,
+          238
+        ],
+        "text": "Meg cheerfully blackened and burned her white hands cooking delicate messes for ‘the dear’, while Amy, a loyal slave of the ring, celebrated her return by giving away as many of her treasures as she could prevail on her sisters to accept."
+      }
+    },
+    {
+      "id": "4974:391",
+      "sentence": 4974,
+      "paragraph": 2153,
+      "range": [
+        391,
+        40
+      ],
+      "text": "A burnt offering has been made to vanity",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4885,
+        "paragraph": 2108,
+        "range": [
+          456,
+          238
+        ],
+        "text": "Meg cheerfully blackened and burned her white hands cooking delicate messes for ‘the dear’, while Amy, a loyal slave of the ring, celebrated her return by giving away as many of her treasures as she could prevail on her sisters to accept."
+      }
+    },
+    {
+      "id": "4984:432",
+      "sentence": 4984,
+      "paragraph": 2157,
+      "range": [
+        432,
+        55
+      ],
+      "text": "takes care of a certain little person in a motherly way",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4884,
+        "paragraph": 2108,
+        "range": [
+          337,
+          118
+        ],
+        "text": "Her once active limbs were so stiff and feeble that Jo took her for a daily airing about the house in her strong arms."
+      }
+    },
+    {
+      "id": "4993:250",
+      "sentence": 4993,
+      "paragraph": 2162,
+      "range": [
+        250,
+        57
+      ],
+      "text": "has not even mentioned a very pretty ring which she wears",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4959,
+        "paragraph": 2147,
+        "range": [
+          0,
+          111
+        ],
+        "text": "“I think it’s been a pretty hard one,” observed Amy, watching the light shine on her ring with thoughtful eyes."
+      }
+    },
+    {
+      "id": "4993:328",
+      "sentence": 4993,
+      "paragraph": 2162,
+      "range": [
+        328,
+        65
+      ],
+      "text": "she has learned to think of other people more and of herself less",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4885,
+        "paragraph": 2108,
+        "range": [
+          456,
+          238
+        ],
+        "text": "Meg cheerfully blackened and burned her white hands cooking delicate messes for ‘the dear’, while Amy, a loyal slave of the ring, celebrated her return by giving away as many of her treasures as she could prevail on her sisters to accept."
+      }
+    }
+  ]
+}

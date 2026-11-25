@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[{"range":[318,34],"id":"5345:318","reference":{"text":"might see the ring, and then I bowed and smiled like anything.”","paragraph":2186,"sentence":5338,"range":[0,63]},"decidedBy":"rules","paragraph":2189,"text":"went after dinner to show her ring","sentence":5345,"kind":"action"}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5343:0",
+      "sentence": 5343,
+      "paragraph": 2189,
+      "range": [
+        0,
+        71
+      ],
+      "text": "It was not to be supposed that time would give Lydia that embarrassment",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5321,
+        "paragraph": 2179,
+        "range": [
+          59,
+          69
+        ],
+        "text": "Lydia was Lydia still; untamed, unabashed, wild, noisy, and fearless."
+      }
+    },
+    {
+      "id": "5345:239",
+      "sentence": 5345,
+      "paragraph": 2189,
+      "range": [
+        239,
+        53
+      ],
+      "text": "to hear herself called “Mrs. Wickham” by each of them",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5336,
+        "paragraph": 2185,
+        "range": [
+          0,
+          62
+        ],
+        "text": "“Oh, mamma, do the people hereabouts know I am married to-day?"
+      }
+    },
+    {
+      "id": "5345:314",
+      "sentence": 5345,
+      "paragraph": 2189,
+      "range": [
+        314,
+        38
+      ],
+      "text": "she went after dinner to show her ring",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5337,
+        "paragraph": 2185,
+        "range": [
+          63,
+          245
+        ],
+        "text": "I was afraid they might not; and we overtook William Goulding in his curricle, so I was determined he should know it, and so I let down the side glass next to him, and took off my glove and let my hand just rest upon the window frame, so that he"
+      }
+    }
+  ]
+}

@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1371:52",
+      "sentence": 1371,
+      "paragraph": 696,
+      "range": [
+        52,
+        46
+      ],
+      "text": "very impertinent of him to write to you at all",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1362,
+        "paragraph": 692,
+        "range": [
+          0,
+          229
+        ],
+        "text": "After amusing himself some time with their curiosity, he thus explained:—“About a month ago I received this letter, and about a fortnight ago I answered it; for I thought it a case of some delicacy, and requiring early attention."
+      }
+    }
+  ]
+}

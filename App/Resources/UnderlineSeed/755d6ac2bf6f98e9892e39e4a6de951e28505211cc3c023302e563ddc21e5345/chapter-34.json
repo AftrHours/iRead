@@ -1,1 +1,447 @@
-{"underlines":[{"text":"lives on the banks of Killarney","range":[4,31],"decidedBy":"rules","kind":"action","reference":{"paragraph":2816,"sentence":6600,"text":"At Queenstown one of my new acquaintances left us, Mr. Lennox, and when I said something about the Lakes of Killarney, he sighed, and sung, with a look at me...","range":[0,160]},"paragraph":2818,"sentence":6602,"id":"6602:4"},{"text":"got nervous like Yankee biddies","range":[407,31],"decidedBy":"rules","kind":"action","reference":{"paragraph":2823,"sentence":6611,"text":"I’ve given ’em the latest Yankee shine.”","range":[462,40]},"paragraph":2824,"sentence":6620,"id":"6620:407"},{"text":"was in a rapture all the way","range":[539,28],"decidedBy":"rules","kind":"thing","reference":{"paragraph":2814,"sentence":6596,"text":"As for Jo, she would have gone up and sat on the maintop jib, or whatever the high thing is called, made friends with the engineers, and tooted on the captain’s speaking trumpet, she’d have been in such a state of rapture.","range":[349,222]},"paragraph":2824,"sentence":6621,"id":"6621:539"},{"text":"rained when we got to London","range":[13,28],"decidedBy":"rules","kind":"action","reference":{"paragraph":2824,"sentence":6617,"text":"I never shall get to London if I don’t hurry.","range":[0,45]},"paragraph":2826,"sentence":6637,"id":"6637:13"},{"text":"shall get my gloves in Paris","range":[471,28],"decidedBy":"rules","kind":"action","reference":{"paragraph":2823,"sentence":6609,"text":"Uncle rushed out and bought a pair of dogskin gloves, some ugly, thick shoes, and an umbrella, and got shaved à la mutton chop, the first thing.","range":[97,144]},"paragraph":2826,"sentence":6643,"id":"6643:471"},{"text":"saw a little door in the roof","range":[586,29],"decidedBy":"rules","kind":"action","reference":{"paragraph":2824,"sentence":6619,"text":"The farmhouses were my delight, with thatched roofs, ivy up to the eaves, latticed windows, and stout women with rosy children at the doors.","range":[130,140]},"paragraph":2827,"sentence":6649,"id":"6649:586"},{"text":"laughed when I spoke of Jo","range":[855,26],"decidedBy":"rules","kind":"feeling","reference":{"paragraph":2814,"sentence":6596,"text":"As for Jo, she would have gone up and sat on the maintop jib, or whatever the high thing is called, made friends with the engineers, and tooted on the captain’s speaking trumpet, she’d have been in such a state of rapture.","range":[349,222]},"paragraph":2833,"sentence":6673,"id":"6673:855"},{"text":"did’ London to our heart’s content, thanks to Fred and Frank","range":[553,60],"decidedBy":"rules","kind":"action","reference":{"paragraph":2833,"sentence":6667,"text":"Laurie’s English friends, Fred and Frank Vaughn!","range":[153,48]},"paragraph":2838,"sentence":6686,"id":"6686:553"},{"text":"whose manners are more charming","range":[318,31],"decidedBy":"rules","kind":"thing","reference":{"paragraph":2838,"sentence":6685,"text":"The day in Richmond Park was charming, for we had a regular English picnic, and I had more splendid oaks and groups of deer than I could copy, also heard a nightingale, and saw larks go up.","range":[359,189]},"paragraph":2843,"sentence":6709,"id":"6709:318"},{"text":"are off to Germany and Switzerland","range":[13,34],"decidedBy":"rules","kind":"thing","reference":{"paragraph":2839,"sentence":6688,"text":"Well, we were hardly settled here, when he turned up again, saying he had come for a holiday, and was going to Switzerland.","range":[0,123]},"paragraph":2844,"sentence":6711,"id":"6711:13"},{"text":"will give you a better idea of my tour than these scribbles","range":[293,59],"decidedBy":"rules","kind":"action","reference":{"paragraph":2812,"sentence":6588,"text":"I never can, so I’ll only give you bits out of my notebook, for I’ve done nothing but sketch and scribble since I started.","range":[287,122]},"paragraph":2844,"sentence":6713,"id":"6713:293"},{"text":"showed us Fred","range":[477,14],"decidedBy":"rules","kind":"action","reference":{"paragraph":2833,"sentence":6667,"text":"Laurie’s English friends, Fred and Frank Vaughn!","range":[153,48]},"paragraph":2849,"sentence":6724,"id":"6724:477"},{"text":"heard Fred’s voice","range":[12,18],"decidedBy":"rules","kind":"action","reference":{"paragraph":2833,"sentence":6667,"text":"Laurie’s English friends, Fred and Frank Vaughn!","range":[153,48]},"paragraph":2854,"sentence":6772,"id":"6772:12"},{"text":"shall soon meet in Rome, and then","range":[413,33],"decidedBy":"rules","kind":"action","reference":{"paragraph":2838,"sentence":6687,"text":"The Vaughns hope to meet us in Rome next winter, and I shall be dreadfully disappointed if they don’t, for Grace and I are great friends, and the boys very nice fellows, especially Fred.","range":[785,186]},"paragraph":2855,"sentence":6779,"id":"6779:413"}],"engineVersion":5,"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6613:530",
+      "sentence": 6613,
+      "paragraph": 2823,
+      "range": [
+        530,
+        48
+      ],
+      "text": "Oh, I must tell you what that absurd Lennox did!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6600,
+        "paragraph": 2816,
+        "range": [
+          0,
+          160
+        ],
+        "text": "At Queenstown one of my new acquaintances left us, Mr. Lennox, and when I said something about the Lakes of Killarney, he sighed, and sung, with a look at me..."
+      }
+    },
+    {
+      "id": "6636:376",
+      "sentence": 6636,
+      "paragraph": 2825,
+      "range": [
+        376,
+        44
+      ],
+      "text": "returns Uncle, in a tone that keeps us quiet",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6623,
+        "paragraph": 2824,
+        "range": [
+          720,
+          103
+        ],
+        "text": "Aunt was tired and went to sleep, but Uncle read his guidebook, and wouldn’t be astonished at anything."
+      }
+    },
+    {
+      "id": "6636:426",
+      "sentence": 6636,
+      "paragraph": 2825,
+      "range": [
+        426,
+        62
+      ],
+      "text": "Flo settles down to enjoy the Flirtations of Captain Cavendish",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6622,
+        "paragraph": 2824,
+        "range": [
+          569,
+          150
+        ],
+        "text": "So was Flo, and we kept bouncing from one side to the other, trying to see everything while we were whisking along at the rate of sixty miles an hour."
+      }
+    },
+    {
+      "id": "6661:256",
+      "sentence": 6661,
+      "paragraph": 2831,
+      "range": [
+        256,
+        47
+      ],
+      "text": "I longed to show them a tearing American gallop",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6594,
+        "paragraph": 2814,
+        "range": [
+          197,
+          85
+        ],
+        "text": "It was almost as exciting as riding a fast horse, when we went rushing on so grandly."
+      }
+    },
+    {
+      "id": "6671:575",
+      "sentence": 6671,
+      "paragraph": 2833,
+      "range": [
+        575,
+        32
+      ],
+      "text": "They went to the theater with us",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6664,
+        "paragraph": 2832,
+        "range": [
+          122,
+          106
+        ],
+        "text": "This evening we are going to see Fechter, which will be an appropriate end to the happiest day of my life."
+      }
+    },
+    {
+      "id": "6683:46",
+      "sentence": 6683,
+      "paragraph": 2838,
+      "range": [
+        46,
+        69
+      ],
+      "text": "how kind the Vaughns were, and what pleasant parties they made for us",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6670,
+        "paragraph": 2833,
+        "range": [
+          419,
+          155
+        ],
+        "text": "They had heard from Laurie where we were to be, and came to ask us to their house, but Uncle won’t go, so we shall return the call, and see them as we can."
+      }
+    },
+    {
+      "id": "6686:589",
+      "sentence": 6686,
+      "paragraph": 2838,
+      "range": [
+        589,
+        24
+      ],
+      "text": "thanks to Fred and Frank",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6667,
+        "paragraph": 2833,
+        "range": [
+          153,
+          48
+        ],
+        "text": "Laurie’s English friends, Fred and Frank Vaughn!"
+      }
+    },
+    {
+      "id": "6688:0",
+      "sentence": 6688,
+      "paragraph": 2839,
+      "range": [
+        0,
+        58
+      ],
+      "text": "Well, we were hardly settled here, when he turned up again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6687,
+        "paragraph": 2838,
+        "range": [
+          785,
+          186
+        ],
+        "text": "The Vaughns hope to meet us in Rome next winter, and I shall be dreadfully disappointed if they don’t, for Grace and I are great friends, and the boys very nice fellows, especially Fred."
+      }
+    },
+    {
+      "id": "6739:0",
+      "sentence": 6739,
+      "paragraph": 2852,
+      "range": [
+        0,
+        26
+      ],
+      "text": "Now comes the serious part",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6718,
+        "paragraph": 2848,
+        "range": [
+          0,
+          137
+        ],
+        "text": "Having a quiet hour before we leave for Berne, I’ll try to tell you what has happened, for some of it is very important, as you will see."
+      }
+    },
+    {
+      "id": "6741:139",
+      "sentence": 6741,
+      "paragraph": 2852,
+      "range": [
+        139,
+        78
+      ],
+      "text": "I never thought of anything but a traveling friendship till the serenade night",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6722,
+        "paragraph": 2849,
+        "range": [
+          180,
+          125
+        ],
+        "text": "At Coblentz we had a lovely time, for some students from Bonn, with whom Fred got acquainted on the boat, gave us a serenade."
+      }
+    },
+    {
+      "id": "6742:258",
+      "sentence": 6742,
+      "paragraph": 2852,
+      "range": [
+        258,
+        30
+      ],
+      "text": "moonlight walks, balcony talks",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6707,
+        "paragraph": 2843,
+        "range": [
+          0,
+          111
+        ],
+        "text": "Our rooms are on the Rue de Rivoli, and sitting on the balcony, we look up and down the long, brilliant street."
+      }
+    },
+    {
+      "id": "6748:830",
+      "sentence": 6748,
+      "paragraph": 2852,
+      "range": [
+        830,
+        51
+      ],
+      "text": "He is handsome, young, clever enough, and very rich",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6710,
+        "paragraph": 2843,
+        "range": [
+          351,
+          187
+        ],
+        "text": "I wish Fred was dark, for I don’t fancy light men, however, the Vaughns are very rich and come of an excellent family, so I won’t find fault with their yellow hair, as my own is yellower."
+      }
+    },
+    {
+      "id": "6761:2125",
+      "sentence": 6761,
+      "paragraph": 2852,
+      "range": [
+        2125,
+        51
+      ],
+      "text": "it was impossible to help seeing that Fred liked me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6727,
+        "paragraph": 2850,
+        "range": [
+          180,
+          104
+        ],
+        "text": "Next morning Fred showed me one of the crumpled flowers in his vest pocket, and looked very sentimental."
+      }
+    },
+    {
+      "id": "6763:2224",
+      "sentence": 6763,
+      "paragraph": 2852,
+      "range": [
+        2224,
+        46
+      ],
+      "text": "He never goes with Flo, always gets on my side",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6671,
+        "paragraph": 2833,
+        "range": [
+          575,
+          202
+        ],
+        "text": "They went to the theater with us, and we did have such a good time, for Frank devoted himself to Flo, and Fred and I talked over past, present, and future fun as if we had known each other all our days."
+      }
+    },
+    {
+      "id": "6774:178",
+      "sentence": 6774,
+      "paragraph": 2854,
+      "range": [
+        178,
+        55
+      ],
+      "text": "He said he’d just got a letter begging him to come home",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6766,
+        "paragraph": 2853,
+        "range": [
+          0,
+          157
+        ],
+        "text": "Well, last evening we went up to the castle about sunset, at least all of us but Fred, who was to meet us there after going to the Post Restante for letters."
+      }
+    },
+    {
+      "id": "6774:235",
+      "sentence": 6774,
+      "paragraph": 2854,
+      "range": [
+        235,
+        22
+      ],
+      "text": "for Frank was very ill",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6669,
+        "paragraph": 2833,
+        "range": [
+          273,
+          145
+        ],
+        "text": "Both are tall fellows with whiskers, Fred handsome in the English style, and Frank much better, for he only limps slightly, and uses no crutches."
+      }
+    },
+    {
+      "id": "6776:366",
+      "sentence": 6776,
+      "paragraph": 2854,
+      "range": [
+        366,
+        23
+      ],
+      "text": "disappointed for myself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6770,
+        "paragraph": 2853,
+        "range": [
+          745,
+          74
+        ],
+        "text": "I had a feeling that something was going to happen and I was ready for it."
+      }
+    },
+    {
+      "id": "6778:332",
+      "sentence": 6778,
+      "paragraph": 2855,
+      "range": [
+        332,
+        20
+      ],
+      "text": "for he is a rash boy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6730,
+        "paragraph": 2851,
+        "range": [
+          0,
+          101
+        ],
+        "text": "The baths at Nassau were very gay, so was Baden-Baden, where Fred lost some money, and I scolded him."
+      }
+    },
+    {
+      "id": "6778:358",
+      "sentence": 6778,
+      "paragraph": 2855,
+      "range": [
+        358,
+        50
+      ],
+      "text": "the old gentleman dreads a foreign daughter-in-law",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6749,
+        "paragraph": 2852,
+        "range": [
+          922,
+          135
+        ],
+        "text": "I don’t think his family would object, and I should be very happy, for they are all kind, well-bred, generous people, and they like me."
+      }
+    },
+    {
+      "id": "6779:410",
+      "sentence": 6779,
+      "paragraph": 2855,
+      "range": [
+        410,
+        26
+      ],
+      "text": "We shall soon meet in Rome",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6687,
+        "paragraph": 2838,
+        "range": [
+          785,
+          186
+        ],
+        "text": "The Vaughns hope to meet us in Rome next winter, and I shall be dreadfully disappointed if they don’t, for Grace and I are great friends, and the boys very nice fellows, especially Fred."
+      }
+    },
+    {
+      "id": "6779:475",
+      "sentence": 6779,
+      "paragraph": 2855,
+      "range": [
+        475,
+        59
+      ],
+      "text": "I’ll say “Yes, thank you,” when he says “Will you, please?”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6746,
+        "paragraph": 2852,
+        "range": [
+          591,
+          190
+        ],
+        "text": "Now I know Mother will shake her head, and the girls say, “Oh, the mercenary little wretch!”, but I’ve made up my mind, and if Fred asks me, I shall accept him, though I’m not madly in love."
+      }
+    }
+  ]
+}

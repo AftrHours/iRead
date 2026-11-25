@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1459:1",
+      "sentence": 1459,
+      "paragraph": 731,
+      "range": [
+        1,
+        68
+      ],
+      "text": "Her indifferent state of health unhappily prevents her being in town",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1454,
+        "paragraph": 728,
+        "range": [
+          254,
+          256
+        ],
+        "text": "She is unfortunately of a sickly constitution, which has prevented her making that progress in many accomplishments which she could not otherwise have failed of, as I am informed by the lady who superintended her education, and who still resides with them."
+      }
+    },
+    {
+      "id": "1463:74",
+      "sentence": 1463,
+      "paragraph": 732,
+      "range": [
+        74,
+        50
+      ],
+      "text": "you possess the talent of flattering with delicacy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1460,
+        "paragraph": 731,
+        "range": [
+          189,
+          178
+        ],
+        "text": "Her Ladyship seemed pleased with the idea; and you may imagine that I am happy on every occasion to offer those little delicate compliments which are always acceptable to ladies."
+      }
+    },
+    {
+      "id": "1466:0",
+      "sentence": 1466,
+      "paragraph": 734,
+      "range": [
+        0,
+        45
+      ],
+      "text": "Mr. Bennet’s expectations were fully answered",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1431,
+        "paragraph": 721,
+        "range": [
+          0,
+          275
+        ],
+        "text": "DURING dinner, Mr. Bennet scarcely spoke at all; but when the servants were withdrawn, he thought it time to have some conversation with his guest, and therefore started a subject in which he expected him to shine, by observing that he seemed very fortunate in his patroness."
+      }
+    }
+  ]
+}

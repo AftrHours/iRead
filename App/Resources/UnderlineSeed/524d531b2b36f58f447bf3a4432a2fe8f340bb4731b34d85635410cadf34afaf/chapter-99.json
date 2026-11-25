@@ -1,1 +1,69 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1402:75",
+      "sentence": 1402,
+      "paragraph": 711,
+      "range": [
+        75,
+        28
+      ],
+      "text": "The idea of the olive branch",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1379,
+        "paragraph": 701,
+        "range": [
+          954,
+          411
+        ],
+        "text": "As a clergyman, moreover, I feel it my duty to promote and establish the blessing of peace in all families within the reach of my influence; and on these grounds I flatter myself that my present overtures of good-will are highly commendable, and that the circumstance of my being next in the entail of Longbourn estate will be kindly overlooked on your side, and not lead you to reject the offered olive branch."
+      }
+    },
+    {
+      "id": "1405:291",
+      "sentence": 1405,
+      "paragraph": 712,
+      "range": [
+        291,
+        55
+      ],
+      "text": "Mr. Collins’s letter had done away much of her ill-will",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1365,
+        "paragraph": 693,
+        "range": [
+          70,
+          36
+        ],
+        "text": "Pray do not talk of that odious man."
+      }
+    },
+    {
+      "id": "1406:0",
+      "sentence": 1406,
+      "paragraph": 713,
+      "range": [
+        0,
+        36
+      ],
+      "text": "Mr. Collins was punctual to his time",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1385,
+        "paragraph": 704,
+        "range": [
+          0,
+          117
+        ],
+        "text": "“At four o’clock, therefore, we may expect this peace-making gentleman,” said Mr. Bennet, as he folded up the letter."
+      }
+    }
+  ]
+}

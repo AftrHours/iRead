@@ -1,1 +1,27 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"range":[10,17],"paragraph":1317,"reference":{"range":[0,30],"sentence":2941,"paragraph":1316,"text":"“Has your governess left you?”"},"decidedBy":"rules","text":"had any governess","sentence":2942,"id":"2942:10","kind":"thing"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2953:146",
+      "sentence": 2953,
+      "paragraph": 1321,
+      "range": [
+        146,
+        39
+      ],
+      "text": "had all the masters that were necessary",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2939,
+        "paragraph": 1314,
+        "range": [
+          61,
+          83
+        ],
+        "text": "Your mother should have taken you to town every spring for the benefit of masters.”"
+      }
+    }
+  ]
+}

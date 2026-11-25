@@ -1,1 +1,48 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4083:201",
+      "sentence": 4083,
+      "paragraph": 1721,
+      "range": [
+        201,
+        78
+      ],
+      "text": "Kitty was the only one who shed tears; but she did weep from vexation and envy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3990,
+        "paragraph": 1685,
+        "range": [
+          160,
+          311
+        ],
+        "text": "Wholly inattentive to her sister’s feelings, Lydia flew about the house in restless ecstasy, calling for everyone’s congratulations, and laughing and talking with more violence than ever; whilst the luckless Kitty continued in the parlour repining at her fate in terms as unreasonable as her accent was peevish."
+      }
+    },
+    {
+      "id": "4084:550",
+      "sentence": 4084,
+      "paragraph": 1721,
+      "range": [
+        550,
+        60
+      ],
+      "text": "the clamorous happiness of Lydia herself in bidding farewell",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3990,
+        "paragraph": 1685,
+        "range": [
+          160,
+          311
+        ],
+        "text": "Wholly inattentive to her sister’s feelings, Lydia flew about the house in restless ecstasy, calling for everyone’s congratulations, and laughing and talking with more violence than ever; whilst the luckless Kitty continued in the parlour repining at her fate in terms as unreasonable as her accent was peevish."
+      }
+    }
+  ]
+}

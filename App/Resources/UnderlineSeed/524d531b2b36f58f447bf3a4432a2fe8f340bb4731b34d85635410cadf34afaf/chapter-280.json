@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3819:219",
+      "sentence": 3819,
+      "paragraph": 1619,
+      "range": [
+        219,
+        60
+      ],
+      "text": "there was no escaping the frequent mention of Wickham’s name",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3775,
+        "paragraph": 1610,
+        "range": [
+          265,
+          88
+        ],
+        "text": "Well, but now for my news: it is about dear Wickham; too good for the waiter, is not it?"
+      }
+    },
+    {
+      "id": "3825:313",
+      "sentence": 3825,
+      "paragraph": 1623,
+      "range": [
+        313,
+        69
+      ],
+      "text": "we treated the other three with the nicest cold luncheon in the world",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3746,
+        "paragraph": 1601,
+        "range": [
+          0,
+          159
+        ],
+        "text": "After welcoming their sisters, they triumphantly displayed a table set out with such cold meat as an inn larder usually affords, exclaiming, “Is not this nice?"
+      }
+    }
+  ]
+}

@@ -1,1 +1,5 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"sentence":132,"id":"132:362","range":[362,35],"kind":"thing","decidedBy":"rules","reference":{"range":[38,279],"sentence":129,"paragraph":51,"text":"These are the things which give Miss Austen’s readers the pleasant shocks, the delightful thrills, which are felt by the readers of Swift, of Fielding, and we may here add, of Thackeray, as they are felt by the readers of no other English author of fiction outside of these four."},"paragraph":52,"text":"is not every author, even of genius"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": []
+}

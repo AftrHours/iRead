@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1807:26",
+      "sentence": 1807,
+      "paragraph": 879,
+      "range": [
+        26,
+        49
+      ],
+      "text": "A deeper shade of hauteur overspread his features",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1805,
+        "paragraph": 878,
+        "range": [
+          52,
+          161
+        ],
+        "text": "She answered in the affirmative; and, unable to resist the temptation, added, “When you met us there the other day, we had just been forming a new acquaintance.”"
+      }
+    }
+  ]
+}

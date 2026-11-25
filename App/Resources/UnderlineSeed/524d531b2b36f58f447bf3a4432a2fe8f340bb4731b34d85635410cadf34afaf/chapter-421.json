@@ -1,1 +1,48 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[{"reference":{"paragraph":2389,"range":[0,25],"text":"“Can you come to-morrow?”","sentence":5886},"id":"5887:8","paragraph":2390,"decidedBy":"rules","text":"had no engagement at all for to-morrow","sentence":5887,"range":[8,38],"kind":"thing"},{"reference":{"paragraph":2391,"range":[80,110],"text":"In ran Mrs. Bennet to her daughters’ room, in her dressing-gown, and with her hair half finished, crying out,—","sentence":5889},"id":"5894:163","paragraph":2392,"decidedBy":"rules","text":"help her on with her gown","sentence":5894,"range":[163,25],"kind":"action"},{"reference":{"paragraph":2391,"range":[80,110],"text":"In ran Mrs. Bennet to her daughters’ room, in her dressing-gown, and with her hair half finished, crying out,—","sentence":5889},"id":"5895:196","paragraph":2392,"decidedBy":"rules","text":"mind Miss Lizzy’s hair","sentence":5895,"range":[196,22],"kind":"action"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5888:0",
+      "sentence": 5888,
+      "paragraph": 2391,
+      "range": [
+        0,
+        79
+      ],
+      "text": "He came, and in such very good time, that the ladies were none of them dressed.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5887,
+        "paragraph": 2390,
+        "range": [
+          0,
+          94
+        ],
+        "text": "Yes, he had no engagement at all for to-morrow; and her invitation was accepted with alacrity."
+      }
+    },
+    {
+      "id": "5903:0",
+      "sentence": 5903,
+      "paragraph": 2396,
+      "range": [
+        0,
+        76
+      ],
+      "text": "The same anxiety to get them by themselves was visible again in the evening.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5889,
+        "paragraph": 2391,
+        "range": [
+          80,
+          110
+        ],
+        "text": "In ran Mrs. Bennet to her daughters’ room, in her dressing-gown, and with her hair half finished, crying out,—"
+      }
+    }
+  ]
+}

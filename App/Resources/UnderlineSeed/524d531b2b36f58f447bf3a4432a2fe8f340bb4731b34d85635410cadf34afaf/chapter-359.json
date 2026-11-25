@@ -1,1 +1,90 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4901:149",
+      "sentence": 4901,
+      "paragraph": 2019,
+      "range": [
+        149,
+        58
+      ],
+      "text": "it shows that she was serious in the object of her journey",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4885,
+        "paragraph": 2015,
+        "range": [
+          141,
+          158
+        ],
+        "text": "I am going to Gretna Green, and if you cannot guess with who, I shall think you a simpleton, for there is but one man in the world I love, and he is an angel."
+      }
+    },
+    {
+      "id": "4902:255",
+      "sentence": 4902,
+      "paragraph": 2019,
+      "range": [
+        255,
+        41
+      ],
+      "text": "it was not on her side a scheme of infamy",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4740,
+        "paragraph": 1952,
+        "range": [
+          0,
+          137
+        ],
+        "text": "“But can you think that Lydia is so lost to everything but love of him, as to consent to live with him on any other terms than marriage?”"
+      }
+    },
+    {
+      "id": "4908:30",
+      "sentence": 4908,
+      "paragraph": 2021,
+      "range": [
+        30,
+        68
+      ],
+      "text": "was there a servant belonging to it who did not know the whole story",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4835,
+        "paragraph": 1989,
+        "range": [
+          0,
+          420
+        ],
+        "text": "Though her brother and sister were persuaded that there was no real occasion for such a seclusion from the family, they did not attempt to oppose it; for they knew that she had not prudence enough to hold her tongue before the servants, while they waited at table, and judged it better that one only of the household, and the one whom they could most trust, should comprehend all her fears and solicitude on the subject."
+      }
+    },
+    {
+      "id": "4914:53",
+      "sentence": 4914,
+      "paragraph": 2023,
+      "range": [
+        53,
+        21
+      ],
+      "text": "You do not look well.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4805,
+        "paragraph": 1978,
+        "range": [
+          40,
+          15
+        ],
+        "text": "“You look pale."
+      }
+    }
+  ]
+}

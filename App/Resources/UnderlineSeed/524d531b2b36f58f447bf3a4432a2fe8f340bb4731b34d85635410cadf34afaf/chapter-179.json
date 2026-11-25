@@ -1,1 +1,27 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2383:198",
+      "sentence": 2383,
+      "paragraph": 1113,
+      "range": [
+        198,
+        41
+      ],
+      "text": "The sight of Miss Lucas was odious to her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2351,
+        "paragraph": 1098,
+        "range": [
+          331,
+          233
+        ],
+        "text": "A week elapsed before she could see Elizabeth without scolding her: a month passed away before she could speak to Sir William or Lady Lucas without being rude; and many months were gone before she could at all forgive their daughter."
+      }
+    }
+  ]
+}

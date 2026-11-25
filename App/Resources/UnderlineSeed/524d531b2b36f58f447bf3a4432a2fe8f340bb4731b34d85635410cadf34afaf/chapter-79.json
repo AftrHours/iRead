@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[{"kind":"action","decidedBy":"rules","paragraph":587,"text":"consider them as proceeding from a rapidity of thought and carelessness of execution, which, if not estimable","range":[86,109],"reference":{"sentence":1127,"range":[75,75],"paragraph":585,"text":"It is often only carelessness of opinion, and sometimes an indirect boast.”"},"sentence":1129,"id":"1129:86"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1129:25",
+      "sentence": 1129,
+      "paragraph": 587,
+      "range": [
+        25,
+        47
+      ],
+      "text": "you are really proud of your defects in writing",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1123,
+        "paragraph": 582,
+        "range": [
+          79,
+          50
+        ],
+        "text": "He leaves out half his words, and blots the rest.”"
+      }
+    }
+  ]
+}

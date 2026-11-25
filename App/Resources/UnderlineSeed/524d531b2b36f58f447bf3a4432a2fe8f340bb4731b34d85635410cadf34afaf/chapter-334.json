@@ -1,1 +1,27 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[{"id":"4529:0","decidedBy":"rules","paragraph":1892,"text":"Persuaded as Miss Bingley was that Darcy admired Elizabeth","range":[0,58],"reference":{"paragraph":1888,"range":[294,132],"sentence":4519,"text":"When Darcy returned to the saloon, Miss Bingley could not help repeating to him some part of what she had been saying to his sister."},"sentence":4529,"kind":"reaction"}]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4518:68",
+      "sentence": 4518,
+      "paragraph": 1888,
+      "range": [
+        68,
+        60
+      ],
+      "text": "Her brother’s recommendation was enough to insure her favour",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4503,
+        "paragraph": 1882,
+        "range": [
+          712,
+          239
+        ],
+        "text": "Miss Darcy, on her brother’s entrance, exerted herself much more to talk; and Elizabeth saw that he was anxious for his sister and herself to get acquainted, and forwarded, as much as possible, every attempt at conversation on either side."
+      }
+    }
+  ]
+}

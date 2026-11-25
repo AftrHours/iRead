@@ -1,1 +1,111 @@
-{"engineVersion":5,"underlines":[{"decidedBy":"rules","range":[3,33],"reference":{"sentence":6212,"range":[100,71],"paragraph":2527,"text":"Do not imagine, Miss Bennet, that your ambition will ever be gratified."},"paragraph":2529,"text":"take no leave of you, Miss Bennet","sentence":6216,"kind":"action","id":"6216:3"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6214:191",
+      "sentence": 6214,
+      "paragraph": 2527,
+      "range": [
+        191,
+        30
+      ],
+      "text": "I hoped to find you reasonable",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6165,
+        "paragraph": 2514,
+        "range": [
+          43,
+          49
+        ],
+        "text": "I expected to find a more reasonable young woman."
+      }
+    },
+    {
+      "id": "6214:223",
+      "sentence": 6214,
+      "paragraph": 2527,
+      "range": [
+        223,
+        40
+      ],
+      "text": "but depend upon it I will carry my point",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6136,
+        "paragraph": 2501,
+        "range": [
+          164,
+          140
+        ],
+        "text": "You are to understand, Miss Bennet, that I came here with the determined resolution of carrying my purpose; nor will I be dissuaded from it."
+      }
+    },
+    {
+      "id": "6222:265",
+      "sentence": 6222,
+      "paragraph": 2530,
+      "range": [
+        265,
+        59
+      ],
+      "text": "why Lady Catherine would not come in again and rest herself",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6053,
+        "paragraph": 2465,
+        "range": [
+          0,
+          205
+        ],
+        "text": "Mrs. Bennet, with great civility, begged her Ladyship to take some refreshment: but Lady Catherine very resolutely, and not very politely, declined eating anything; and then, rising up, said to Elizabeth,—"
+      }
+    },
+    {
+      "id": "6225:39",
+      "sentence": 6225,
+      "paragraph": 2532,
+      "range": [
+        39,
+        40
+      ],
+      "text": "her calling here was prodigiously civil!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6034,
+        "paragraph": 2452,
+        "range": [
+          0,
+          128
+        ],
+        "text": "Mrs. Bennet, all amazement, though flattered by having a guest of such high importance, received her with the utmost politeness."
+      }
+    },
+    {
+      "id": "6226:84",
+      "sentence": 6226,
+      "paragraph": 2532,
+      "range": [
+        84,
+        60
+      ],
+      "text": "she only came, I suppose, to tell us the Collinses were well",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6049,
+        "paragraph": 2463,
+        "range": [
+          0,
+          16
+        ],
+        "text": "“Yes, very well."
+      }
+    }
+  ]
+}

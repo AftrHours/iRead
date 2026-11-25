@@ -1,1 +1,552 @@
-{"underlines":[{"decidedBy":"rules","sentence":3321,"reference":{"paragraph":1443,"range":[106,322],"text":"For two or three hours the sun lay warmly in the high window, showing Jo seated on the old sofa, writing busily, with her papers spread out upon a trunk before her, while Scrabble, the pet rat, promenaded the beams overhead, accompanied by his oldest son, a fine young fellow, who was evidently very proud of his whiskers.","sentence":3314},"id":"3321:455","kind":"action","range":[455,28],"text":"shut away from Scrabble, who","paragraph":1445},{"decidedBy":"rules","sentence":3346,"reference":{"paragraph":1459,"range":[13,54],"text":"What were you doing, sir, up in that billiard saloon?”","sentence":3345},"id":"3346:32","kind":"thing","range":[32,41],"text":"wasn’t a billiard saloon, but a gymnasium","paragraph":1460},{"decidedBy":"rules","sentence":3351,"reference":{"paragraph":1463,"range":[0,119],"text":"“You can teach me, and then when we play Hamlet, you can be Laertes, and we’ll make a fine thing of the fencing scene.”","sentence":3349},"id":"3351:1","kind":"action","range":[1,44],"text":"I’ll teach you whether we play Hamlet or not","paragraph":1465},{"decidedBy":"rules","sentence":3359,"reference":{"paragraph":1459,"range":[13,54],"text":"What were you doing, sir, up in that billiard saloon?”","sentence":3345},"id":"3359:21","kind":"place","range":[21,22],"text":"have billiards at home","paragraph":1469},{"decidedBy":"rules","sentence":3371,"reference":{"paragraph":1474,"range":[0,122],"text":"“No, she can’t bear fashionable young men, and she’d shut us all up in bandboxes rather than have us associate with them.”","sentence":3370},"id":"3371:11","kind":"reaction","range":[11,33],"text":"needn’t get out her bandboxes yet","paragraph":1475},{"decidedBy":"rules","sentence":3372,"reference":{"paragraph":1474,"range":[0,122],"text":"“No, she can’t bear fashionable young men, and she’d shut us all up in bandboxes rather than have us associate with them.”","sentence":3370},"id":"3372:46","kind":"thing","range":[46,27],"text":"I’m not a fashionable party","paragraph":1475},{"decidedBy":"rules","sentence":3419,"reference":{"paragraph":1500,"range":[0,59],"text":"“Hurrah for Miss March, the celebrated American authoress!”","sentence":3413},"id":"3419:173","kind":"action","range":[173,27],"text":"feel proud of our authoress","paragraph":1502},{"decidedBy":"rules","sentence":3429,"reference":{"paragraph":1499,"range":[0,127],"text":"“Well, I’ve left two stories with a newspaperman, and he’s to give his answer next week,” whispered Jo, in her confidant’s ear.","sentence":3412},"id":"3429:17","kind":"reaction","range":[17,33],"text":"whispered three words in Jo’s ear","paragraph":1509},{"decidedBy":"rules","sentence":3466,"reference":{"paragraph":1500,"range":[60,181],"text":"cried Laurie, throwing up his hat and catching it again, to the great delight of two ducks, four cats, five hens, and half a dozen Irish children, for they were out of the city now.","sentence":3414},"id":"3466:30","kind":"action","range":[30,35],"text":"throwing half a dozen into Jo’s lap","paragraph":1534},{"decidedBy":"rules","sentence":3477,"reference":{"paragraph":1448,"range":[0,433],"text":"There was a dentist’s sign, among others, which adorned the entrance, and after staring a moment at the pair of artificial jaws which slowly opened and shut to draw attention to a fine set of teeth, the young gentleman put on his coat, took his hat, and went down to post himself in the opposite doorway, saying with a smile and a shiver, “It’s like her to come alone, but if she has a bad time she’ll need someone to help her home.”","sentence":3329},"id":"3477:287","kind":"action","range":[287,46],"text":"drew Meg’s attention from it by asking quickly","paragraph":1537},{"decidedBy":"rules","sentence":3492,"reference":{"paragraph":1448,"range":[0,433],"text":"There was a dentist’s sign, among others, which adorned the entrance, and after staring a moment at the pair of artificial jaws which slowly opened and shut to draw attention to a fine set of teeth, the young gentleman put on his coat, took his hat, and went down to post himself in the opposite doorway, saying with a smile and a shiver, “It’s like her to come alone, but if she has a bad time she’ll need someone to help her home.”","sentence":3329},"id":"3492:313","kind":"action","range":[313,39],"text":"were always making signs to one another","paragraph":1545},{"decidedBy":"rules","sentence":3499,"reference":{"sentence":3462,"range":[139,144],"paragraph":1531,"text":"But someone did pass, and who should it be but Meg, looking particularly ladylike in her state and festival suit, for she had been making calls."},"id":"3499:187","kind":"action","range":[187,44],"text":"made her feel unusually elegant and ladylike","paragraph":1548},{"decidedBy":"rules","sentence":3500,"reference":{"sentence":3314,"range":[106,322],"paragraph":1443,"text":"For two or three hours the sun lay warmly in the high window, showing Jo seated on the old sofa, writing busily, with her papers spread out upon a trunk before her, while Scrabble, the pet rat, promenaded the beams overhead, accompanied by his oldest son, a fine young fellow, who was evidently very proud of his whiskers."},"id":"3500:32","kind":"action","range":[32,24],"text":"laid herself on the sofa","paragraph":1549},{"decidedBy":"rules","sentence":3501,"reference":{"sentence":3392,"range":[38,82],"paragraph":1486,"text":"If you’re not, I’d like to walk with you and tell you something very interesting.”"},"id":"3501:1","kind":"place","range":[1,35],"text":"Have you anything interesting there","paragraph":1550},{"decidedBy":"rules","sentence":3513,"reference":{"sentence":3435,"range":[0,27],"paragraph":1514,"text":"“Yes, isn’t that romantic?”"},"id":"3513:113","kind":"thing","range":[113,35],"text":"was romantic, and somewhat pathetic","paragraph":1556},{"decidedBy":"rules","sentence":3520,"reference":{"sentence":3511,"range":[0,18],"paragraph":1556,"text":"With a loud “Hem!”"},"id":"3520:136","kind":"action","range":[136,23],"text":"replied in a loud voice","paragraph":1559}],"engineVersion":5,"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3321:470",
+      "sentence": 3321,
+      "paragraph": 1445,
+      "range": [
+        470,
+        48
+      ],
+      "text": "Scrabble, who, being likewise of a literary turn",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3314,
+        "paragraph": 1443,
+        "range": [
+          106,
+          322
+        ],
+        "text": "For two or three hours the sun lay warmly in the high window, showing Jo seated on the old sofa, writing busily, with her papers spread out upon a trunk before her, while Scrabble, the pet rat, promenaded the beams overhead, accompanied by his oldest son, a fine young fellow, who was evidently very proud of his whiskers."
+      }
+    },
+    {
+      "id": "3322:736",
+      "sentence": 3322,
+      "paragraph": 1445,
+      "range": [
+        736,
+        59
+      ],
+      "text": "leaving her friends to nibble on her pens and taste her ink",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3314,
+        "paragraph": 1443,
+        "range": [
+          106,
+          322
+        ],
+        "text": "For two or three hours the sun lay warmly in the high window, showing Jo seated on the old sofa, writing busily, with her papers spread out upon a trunk before her, while Scrabble, the pet rat, promenaded the beams overhead, accompanied by his oldest son, a fine young fellow, who was evidently very proud of his whiskers."
+      }
+    },
+    {
+      "id": "3332:303",
+      "sentence": 3332,
+      "paragraph": 1449,
+      "range": [
+        303,
+        24
+      ],
+      "text": "Did you have a bad time?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3329,
+        "paragraph": 1448,
+        "range": [
+          0,
+          433
+        ],
+        "text": "There was a dentist’s sign, among others, which adorned the entrance, and after staring a moment at the pair of artificial jaws which slowly opened and shut to draw attention to a fine set of teeth, the young gentleman put on his coat, took his hat, and went down to post himself in the opposite doorway, saying with a smile and a shiver, “It’s like her to come alone, but if she has a bad time she’ll need someone to help her home.”"
+      }
+    },
+    {
+      "id": "3336:1",
+      "sentence": 3336,
+      "paragraph": 1453,
+      "range": [
+        1,
+        21
+      ],
+      "text": "Why did you go alone?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3329,
+        "paragraph": 1448,
+        "range": [
+          0,
+          433
+        ],
+        "text": "There was a dentist’s sign, among others, which adorned the entrance, and after staring a moment at the pair of artificial jaws which slowly opened and shut to draw attention to a fine set of teeth, the young gentleman put on his coat, took his hat, and went down to post himself in the opposite doorway, saying with a smile and a shiver, “It’s like her to come alone, but if she has a bad time she’ll need someone to help her home.”"
+      }
+    },
+    {
+      "id": "3339:38",
+      "sentence": 3339,
+      "paragraph": 1455,
+      "range": [
+        38,
+        26
+      ],
+      "text": "How many did you have out?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3329,
+        "paragraph": 1448,
+        "range": [
+          0,
+          433
+        ],
+        "text": "There was a dentist’s sign, among others, which adorned the entrance, and after staring a moment at the pair of artificial jaws which slowly opened and shut to draw attention to a fine set of teeth, the young gentleman put on his coat, took his hat, and went down to post himself in the opposite doorway, saying with a smile and a shiver, “It’s like her to come alone, but if she has a bad time she’ll need someone to help her home.”"
+      }
+    },
+    {
+      "id": "3341:1",
+      "sentence": 3341,
+      "paragraph": 1457,
+      "range": [
+        1,
+        68
+      ],
+      "text": "There are two which I want to have come out, but I must wait a week.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3322,
+        "paragraph": 1445,
+        "range": [
+          621,
+          175
+        ],
+        "text": "From this tin receptacle Jo produced another manuscript, and putting both in her pocket, crept quietly downstairs, leaving her friends to nibble on her pens and taste her ink."
+      }
+    },
+    {
+      "id": "3345:13",
+      "sentence": 3345,
+      "paragraph": 1459,
+      "range": [
+        13,
+        53
+      ],
+      "text": "What were you doing, sir, up in that billiard saloon?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3327,
+        "paragraph": 1447,
+        "range": [
+          408,
+          143
+        ],
+        "text": "This maneuver she repeated several times, to the great amusement of a black-eyed young gentleman lounging in the window of a building opposite."
+      }
+    },
+    {
+      "id": "3365:46",
+      "sentence": 3365,
+      "paragraph": 1472,
+      "range": [
+        46,
+        28
+      ],
+      "text": "I don’t like Ned and his set",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3359,
+        "paragraph": 1469,
+        "range": [
+          19,
+          174
+        ],
+        "text": "I have billiards at home, but it’s no fun unless you have good players, so, as I’m fond of it, I come sometimes and have a game with Ned Moffat or some of the other fellows.”"
+      }
+    },
+    {
+      "id": "3382:94",
+      "sentence": 3382,
+      "paragraph": 1480,
+      "range": [
+        94,
+        30
+      ],
+      "text": "I sometimes wish you were poor",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3379,
+        "paragraph": 1478,
+        "range": [
+          157,
+          166
+        ],
+        "text": "He had plenty of money, but didn’t know how to spend it, and got tipsy and gambled, and ran away, and forged his father’s name, I believe, and was altogether horrid.”"
+      }
+    },
+    {
+      "id": "3387:1",
+      "sentence": 3387,
+      "paragraph": 1484,
+      "range": [
+        1,
+        51
+      ],
+      "text": "Are you going to deliver lectures all the way home?",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3361,
+        "paragraph": 1470,
+        "range": [
+          138,
+          100
+        ],
+        "text": "I did hope you’d stay respectable and be a satisfaction to your friends,” said Jo, shaking her head."
+      }
+    },
+    {
+      "id": "3412:1",
+      "sentence": 3412,
+      "paragraph": 1499,
+      "range": [
+        1,
+        86
+      ],
+      "text": "Well, I’ve left two stories with a newspaperman, and he’s to give his answer next week",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3341,
+        "paragraph": 1457,
+        "range": [
+          0,
+          70
+        ],
+        "text": "“There are two which I want to have come out, but I must wait a week.”"
+      }
+    },
+    {
+      "id": "3416:88",
+      "sentence": 3416,
+      "paragraph": 1501,
+      "range": [
+        88,
+        76
+      ],
+      "text": "I said nothing about it because I didn’t want anyone else to be disappointed",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3337,
+        "paragraph": 1454,
+        "range": [
+          0,
+          29
+        ],
+        "text": "“Didn’t want anyone to know.”"
+      }
+    },
+    {
+      "id": "3457:197",
+      "sentence": 3457,
+      "paragraph": 1529,
+      "range": [
+        197,
+        87
+      ],
+      "text": "Laurie reached the goal first and was quite satisfied with the success of his treatment",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3455,
+        "paragraph": 1528,
+        "range": [
+          0,
+          73
+        ],
+        "text": "“Race down this hill with me, and you’ll be all right,” suggested Laurie."
+      }
+    },
+    {
+      "id": "3460:145",
+      "sentence": 3460,
+      "paragraph": 1530,
+      "range": [
+        145,
+        36
+      ],
+      "text": "Go, pick up my things, like a cherub",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3456,
+        "paragraph": 1529,
+        "range": [
+          0,
+          196
+        ],
+        "text": "No one was in sight, the smooth road sloped invitingly before her, and finding the temptation irresistible, Jo darted away, soon leaving hat and comb behind her and scattering hairpins as she ran."
+      }
+    },
+    {
+      "id": "3465:0",
+      "sentence": 3465,
+      "paragraph": 1533,
+      "range": [
+        0,
+        36
+      ],
+      "text": "“Getting leaves,” meekly answered Jo",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3460,
+        "paragraph": 1530,
+        "range": [
+          145,
+          143
+        ],
+        "text": "Go, pick up my things, like a cherub, as you are,” said Jo, dropping down under a maple tree, which was carpeting the bank with crimson leaves."
+      }
+    },
+    {
+      "id": "3466:0",
+      "sentence": 3466,
+      "paragraph": 1534,
+      "range": [
+        0,
+        28
+      ],
+      "text": "“And hairpins,” added Laurie",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3456,
+        "paragraph": 1529,
+        "range": [
+          0,
+          196
+        ],
+        "text": "No one was in sight, the smooth road sloped invitingly before her, and finding the temptation irresistible, Jo darted away, soon leaving hat and comb behind her and scattering hairpins as she ran."
+      }
+    },
+    {
+      "id": "3468:1",
+      "sentence": 3468,
+      "paragraph": 1535,
+      "range": [
+        1,
+        26
+      ],
+      "text": "You have been running, Jo.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3456,
+        "paragraph": 1529,
+        "range": [
+          0,
+          196
+        ],
+        "text": "No one was in sight, the smooth road sloped invitingly before her, and finding the temptation irresistible, Jo darted away, soon leaving hat and comb behind her and scattering hairpins as she ran."
+      }
+    },
+    {
+      "id": "3476:147",
+      "sentence": 3476,
+      "paragraph": 1537,
+      "range": [
+        147,
+        45
+      ],
+      "text": "Laurie’s secret made her dread the separation",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3448,
+        "paragraph": 1523,
+        "range": [
+          0,
+          48
+        ],
+        "text": "“At the idea of anybody coming to take Meg away?"
+      }
+    },
+    {
+      "id": "3488:110",
+      "sentence": 3488,
+      "paragraph": 1543,
+      "range": [
+        110,
+        48
+      ],
+      "text": "who was mutely warning her to mind what she said",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3442,
+        "paragraph": 1518,
+        "range": [
+          0,
+          28
+        ],
+        "text": "“You are not to tell anyone."
+      }
+    },
+    {
+      "id": "3491:81",
+      "sentence": 3491,
+      "paragraph": 1545,
+      "range": [
+        81,
+        44
+      ],
+      "text": "She rushed to the door when the postman rang",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3412,
+        "paragraph": 1499,
+        "range": [
+          0,
+          127
+        ],
+        "text": "“Well, I’ve left two stories with a newspaperman, and he’s to give his answer next week,” whispered Jo, in her confidant’s ear."
+      }
+    },
+    {
+      "id": "3491:127",
+      "sentence": 3491,
+      "paragraph": 1545,
+      "range": [
+        127,
+        40
+      ],
+      "text": "was rude to Mr. Brooke whenever they met",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3429,
+        "paragraph": 1509,
+        "range": [
+          0,
+          84
+        ],
+        "text": "Laurie bent, and whispered three words in Jo’s ear, which produced a comical change."
+      }
+    },
+    {
+      "id": "3493:443",
+      "sentence": 3493,
+      "paragraph": 1545,
+      "range": [
+        443,
+        53
+      ],
+      "text": "On the second Saturday after Jo got out of the window",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3323,
+        "paragraph": 1446,
+        "range": [
+          0,
+          209
+        ],
+        "text": "She put on her hat and jacket as noiselessly as possible, and going to the back entry window, got out upon the roof of a low porch, swung herself down to the grassy bank, and took a roundabout way to the road."
+      }
+    },
+    {
+      "id": "3503:1",
+      "sentence": 3503,
+      "paragraph": 1551,
+      "range": [
+        1,
+        50
+      ],
+      "text": "Nothing but a story, won’t amount to much, I guess",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3416,
+        "paragraph": 1501,
+        "range": [
+          7,
+          159
+        ],
+        "text": "It won’t come to anything, I dare say, but I couldn’t rest till I had tried, and I said nothing about it because I didn’t want anyone else to be disappointed.”"
+      }
+    },
+    {
+      "id": "3536:646",
+      "sentence": 3536,
+      "paragraph": 1563,
+      "range": [
+        646,
+        50
+      ],
+      "text": "the ‘Spread Eagle’ might be said to flap his wings",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3492,
+        "paragraph": 1545,
+        "range": [
+          298,
+          144
+        ],
+        "text": "Laurie and she were always making signs to one another, and talking about ‘Spread Eagles’ till the girls declared they had both lost their wits."
+      }
+    },
+    {
+      "id": "3544:217",
+      "sentence": 3544,
+      "paragraph": 1565,
+      "range": [
+        217,
+        65
+      ],
+      "text": "And when I went to get my answer, the man said he liked them both",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3412,
+        "paragraph": 1499,
+        "range": [
+          0,
+          127
+        ],
+        "text": "“Well, I’ve left two stories with a newspaperman, and he’s to give his answer next week,” whispered Jo, in her confidant’s ear."
+      }
+    },
+    {
+      "id": "3546:521",
+      "sentence": 3546,
+      "paragraph": 1565,
+      "range": [
+        521,
+        50
+      ],
+      "text": "Laurie caught me with it and insisted on seeing it",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3493,
+        "paragraph": 1545,
+        "range": [
+          443,
+          204
+        ],
+        "text": "On the second Saturday after Jo got out of the window, Meg, as she sat sewing at her window, was scandalized by the sight of Laurie chasing Jo all over the garden and finally capturing her in Amy’s bower."
+      }
+    }
+  ]
+}

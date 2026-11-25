@@ -1,1 +1,27 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2283:16",
+      "sentence": 2283,
+      "paragraph": 1071,
+      "range": [
+        16,
+        51
+      ],
+      "text": "how many years longer Mr. Bennet was likely to live",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2279,
+        "paragraph": 1068,
+        "range": [
+          120,
+          183
+        ],
+        "text": "Mr. Collins’s present circumstances made it a most eligible match for their daughter, to whom they could give little fortune; and his prospects of future wealth were exceedingly fair."
+      }
+    }
+  ]
+}

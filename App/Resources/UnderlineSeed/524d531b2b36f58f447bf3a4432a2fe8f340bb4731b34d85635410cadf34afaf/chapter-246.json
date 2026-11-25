@@ -1,1 +1,48 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3299:59",
+      "sentence": 3299,
+      "paragraph": 1471,
+      "range": [
+        59,
+        32
+      ],
+      "text": "were Colonel Fitzwilliam’s words",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3277,
+        "paragraph": 1461,
+        "range": [
+          0,
+          76
+        ],
+        "text": "“I understood that there were some very strong objections against the lady.”"
+      }
+    },
+    {
+      "id": "3304:0",
+      "sentence": 3304,
+      "paragraph": 1473,
+      "range": [
+        0,
+        52
+      ],
+      "text": "The agitation and tears which the subject occasioned",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3281,
+        "paragraph": 1464,
+        "range": [
+          0,
+          77
+        ],
+        "text": "Elizabeth made no answer, and walked on, her heart swelling with indignation."
+      }
+    }
+  ]
+}

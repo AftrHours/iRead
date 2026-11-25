@@ -1,1 +1,111 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5120:79",
+      "sentence": 5120,
+      "paragraph": 2118,
+      "range": [
+        79,
+        58
+      ],
+      "text": "His debts to be discharged, and something still to remain!",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5080,
+        "paragraph": 2100,
+        "range": [
+          921,
+          195
+        ],
+        "text": "The world has been deceived in that respect; and I am happy to say, there will be some little money, even when all his debts are discharged, to settle on my niece, in addition to her own fortune."
+      }
+    },
+    {
+      "id": "5130:108",
+      "sentence": 5130,
+      "paragraph": 2121,
+      "range": [
+        108,
+        46
+      ],
+      "text": "Their father then went to the library to write",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5100,
+        "paragraph": 2107,
+        "range": [
+          5,
+          61
+        ],
+        "text": "my dear father,” she cried, “come back and write immediately."
+      }
+    },
+    {
+      "id": "5138:190",
+      "sentence": 5138,
+      "paragraph": 2123,
+      "range": [
+        190,
+        81
+      ],
+      "text": "I cannot believe that ten thousand pounds, or anything like it, has been advanced",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5125,
+        "paragraph": 2119,
+        "range": [
+          23,
+          166
+        ],
+        "text": "“Wickham’s a fool if he takes her with a farthing less than ten thousand pounds: I should be sorry to think so ill of him, in the very beginning of our relationship.”"
+      }
+    },
+    {
+      "id": "5141:190",
+      "sentence": 5141,
+      "paragraph": 2124,
+      "range": [
+        190,
+        43
+      ],
+      "text": "because Wickham has not sixpence of his own",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5079,
+        "paragraph": 2100,
+        "range": [
+          778,
+          142
+        ],
+        "text": "You will easily comprehend, from these particulars, that Mr. Wickham’s circumstances are not so hopeless as they are generally believed to be."
+      }
+    },
+    {
+      "id": "5143:292",
+      "sentence": 5143,
+      "paragraph": 2124,
+      "range": [
+        292,
+        36
+      ],
+      "text": "Their taking her home, and affording",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5084,
+        "paragraph": 2100,
+        "range": [
+          1543,
+          105
+        ],
+        "text": "We have judged it best that my niece should be married from this house, of which I hope you will approve."
+      }
+    }
+  ]
+}

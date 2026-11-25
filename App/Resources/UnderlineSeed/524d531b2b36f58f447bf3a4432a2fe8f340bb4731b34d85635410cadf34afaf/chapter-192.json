@@ -1,1 +1,111 @@
-{"parserVersion":1,"engineVersion":5,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2579:125",
+      "sentence": 2579,
+      "paragraph": 1183,
+      "range": [
+        125,
+        41
+      ],
+      "text": "Bingley’s being withheld from seeing Jane",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2571,
+        "paragraph": 1180,
+        "range": [
+          0,
+          155
+        ],
+        "text": "“And that is quite impossible; for he is now in the custody of his friend, and Mr. Darcy would no more suffer him to call on Jane in such a part of London!"
+      }
+    },
+    {
+      "id": "2579:247",
+      "sentence": 2579,
+      "paragraph": 1183,
+      "range": [
+        247,
+        41
+      ],
+      "text": "she did not consider it entirely hopeless",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2571,
+        "paragraph": 1180,
+        "range": [
+          0,
+          155
+        ],
+        "text": "“And that is quite impossible; for he is now in the custody of his friend, and Mr. Darcy would no more suffer him to call on Jane in such a part of London!"
+      }
+    },
+    {
+      "id": "2581:0",
+      "sentence": 2581,
+      "paragraph": 1184,
+      "range": [
+        0,
+        56
+      ],
+      "text": "Miss Bennet accepted her aunt’s invitation with pleasure",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2565,
+        "paragraph": 1176,
+        "range": [
+          257,
+          62
+        ],
+        "text": "But do you think she would be prevailed on to go back with us?"
+      }
+    },
+    {
+      "id": "2581:145",
+      "sentence": 2581,
+      "paragraph": 1184,
+      "range": [
+        145,
+        59
+      ],
+      "text": "by Caroline’s not living in the same house with her brother",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2576,
+        "paragraph": 1181,
+        "range": [
+          55,
+          45
+        ],
+        "text": "But does not Jane correspond with his sister?"
+      }
+    },
+    {
+      "id": "2581:255",
+      "sentence": 2581,
+      "paragraph": 1184,
+      "range": [
+        255,
+        32
+      ],
+      "text": "without any danger of seeing him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2569,
+        "paragraph": 1178,
+        "range": [
+          104,
+          208
+        ],
+        "text": "We live in so different a part of town, all our connections are so different, and, as you well know, we go out so little, that it is very improbable they should meet at all, unless he really comes to see her."
+      }
+    }
+  ]
+}

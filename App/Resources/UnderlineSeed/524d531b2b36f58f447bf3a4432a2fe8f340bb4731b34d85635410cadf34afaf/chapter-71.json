@@ -1,1 +1,69 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "984:39",
+      "sentence": 984,
+      "paragraph": 517,
+      "range": [
+        39,
+        39
+      ],
+      "text": "She is a great deal too ill to be moved",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 979,
+        "paragraph": 516,
+        "range": [
+          0,
+          275
+        ],
+        "text": "Had she found Jane in any apparent danger, Mrs. Bennet would have been very miserable; but being satisfied on seeing her that her illness was not alarming, she had no wish of her recovering immediately, as her restoration to health would probably remove her from Netherfield."
+      }
+    },
+    {
+      "id": "985:80",
+      "sentence": 985,
+      "paragraph": 517,
+      "range": [
+        80,
+        46
+      ],
+      "text": "Mr. Jones says we must not think of moving her",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 980,
+        "paragraph": 516,
+        "range": [
+          276,
+          170
+        ],
+        "text": "She would not listen, therefore, to her daughter’s proposal of being carried home; neither did the apothecary, who arrived about the same time, think it at all advisable."
+      }
+    },
+    {
+      "id": "990:54",
+      "sentence": 990,
+      "paragraph": 518,
+      "range": [
+        54,
+        50
+      ],
+      "text": "My sister, I am sure, will not hear of her removal",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 980,
+        "paragraph": 516,
+        "range": [
+          276,
+          170
+        ],
+        "text": "She would not listen, therefore, to her daughter’s proposal of being carried home; neither did the apothecary, who arrived about the same time, think it at all advisable."
+      }
+    }
+  ]
+}

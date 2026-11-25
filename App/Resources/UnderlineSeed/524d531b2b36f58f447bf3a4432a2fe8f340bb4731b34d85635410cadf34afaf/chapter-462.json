@@ -1,1 +1,27 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "6683:1",
+      "sentence": 6683,
+      "paragraph": 2690,
+      "range": [
+        1,
+        39
+      ],
+      "text": "Lady Catherine has been of infinite use",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 6679,
+        "paragraph": 2689,
+        "range": [
+          67,
+          98
+        ],
+        "text": "Lady Catherine’s unjustifiable endeavours to separate us were the means of removing all my doubts."
+      }
+    }
+  ]
+}

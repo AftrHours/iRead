@@ -1,1 +1,90 @@
-{"parserVersion":1,"underlines":[{"kind":"action","paragraph":948,"decidedBy":"rules","sentence":1972,"id":"1972:58","text":"was teased by Mr. Collins","reference":{"range":[226,261],"paragraph":946,"sentence":1968,"text":"Many stared—many smiled; but no one looked more amused than Mr. Bennet himself, while his wife seriously commended Mr. Collins for having spoken so sensibly, and observed, in a half-whisper to Lady Lucas, that he was a remarkably clever, good kind of young man."},"range":[58,25]}],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1967:109",
+      "sentence": 1967,
+      "paragraph": 946,
+      "range": [
+        109,
+        52
+      ],
+      "text": "And with a bow to Mr. Darcy, he concluded his speech",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1901,
+        "paragraph": 928,
+        "range": [
+          73,
+          44
+        ],
+        "text": "I believe him to be Lady Catherine’s nephew."
+      }
+    },
+    {
+      "id": "1969:31",
+      "sentence": 1969,
+      "paragraph": 947,
+      "range": [
+        31,
+        53
+      ],
+      "text": "had her family made an agreement to expose themselves",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1910,
+        "paragraph": 931,
+        "range": [
+          1311,
+          53
+        ],
+        "text": "It vexed her to see him expose himself to such a man."
+      }
+    },
+    {
+      "id": "1970:591",
+      "sentence": 1970,
+      "paragraph": 947,
+      "range": [
+        591,
+        74
+      ],
+      "text": "the silent contempt of the gentleman, or the insolent smiles of the ladies",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1951,
+        "paragraph": 942,
+        "range": [
+          20,
+          141
+        ],
+        "text": "She looked at his two sisters, and saw them making signs of derision at each other, and at Darcy, who continued, however, impenetrably grave."
+      }
+    },
+    {
+      "id": "1972:135",
+      "sentence": 1972,
+      "paragraph": 948,
+      "range": [
+        135,
+        60
+      ],
+      "text": "though he could not prevail with her to dance with him again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1769,
+        "paragraph": 861,
+        "range": [
+          366,
+          95
+        ],
+        "text": "The two first dances, however, brought a return of distress: they were dances of mortification."
+      }
+    }
+  ]
+}

@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "4348:290",
+      "sentence": 4348,
+      "paragraph": 1822,
+      "range": [
+        290,
+        39
+      ],
+      "text": "fatigued by the exercise of the morning",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4318,
+        "paragraph": 1815,
+        "range": [
+          986,
+          258
+        ],
+        "text": "Elizabeth longed to explore its windings; but when they had crossed the bridge, and perceived their distance from the house, Mrs. Gardiner, who was not a great walker, could go no farther, and thought only of returning to the carriage as quickly as possible."
+      }
+    },
+    {
+      "id": "4351:742",
+      "sentence": 4351,
+      "paragraph": 1822,
+      "range": [
+        742,
+        63
+      ],
+      "text": "informed us that you would certainly not be here till to-morrow",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 4186,
+        "paragraph": 1758,
+        "range": [
+          0,
+          107
+        ],
+        "text": "She longed to inquire of the housekeeper whether her master were really absent, but had not courage for it."
+      }
+    }
+  ]
+}

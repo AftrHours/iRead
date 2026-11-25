@@ -1,1 +1,27 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "2272:363",
+      "sentence": 2272,
+      "paragraph": 1066,
+      "range": [
+        363,
+        44
+      ],
+      "text": "for Charlotte had been tolerably encouraging",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 2264,
+        "paragraph": 1064,
+        "range": [
+          0,
+          142
+        ],
+        "text": "THE Bennets were engaged to dine with the Lucases; and again, during the chief of the day, was Miss Lucas so kind as to listen to Mr. Collins."
+      }
+    }
+  ]
+}

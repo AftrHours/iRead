@@ -1,1 +1,678 @@
-{"engineVersion":5,"underlines":[{"range":[454,25],"decidedBy":"rules","sentence":9858,"reference":{"range":[7,126],"sentence":9839,"paragraph":4177,"text":"I want to open a school for little lads—a good, happy, homelike school, with me to take care of them and Fritz to teach them.”"},"kind":"place","text":"have a flourishing school","id":"9858:454","paragraph":4185},{"range":[642,36],"decidedBy":"rules","sentence":9861,"reference":{"range":[95,98],"sentence":9832,"paragraph":4172,"text":"The garden and orchard alone need two or three men, and farming isn’t in Bhaer’s line, I take it.”"},"kind":"action","text":"could help in the garden and orchard","id":"9861:642","paragraph":4185},{"range":[140,13],"decidedBy":"rules","sentence":9869,"reference":{"range":[7,126],"sentence":9839,"paragraph":4177,"text":"I want to open a school for little lads—a good, happy, homelike school, with me to take care of them and Fritz to teach them.”"},"kind":"action","text":"open a school","id":"9869:140","paragraph":4187},{"range":[48,28],"decidedBy":"rules","sentence":9874,"reference":{"range":[165,115],"sentence":9872,"paragraph":4188,"text":"If all the pupils are little ragamuffins, I’m afraid your crop won’t be profitable in a worldly sense, Mrs. Bhaer.”"},"kind":"thing","text":"shall have rich pupils, also","id":"9874:48","paragraph":4189},{"range":[144,50],"decidedBy":"rules","sentence":9875,"reference":{"range":[165,115],"sentence":9872,"paragraph":4188,"text":"If all the pupils are little ragamuffins, I’m afraid your crop won’t be profitable in a worldly sense, Mrs. Bhaer.”"},"kind":"action","text":"can take in a ragamuffin or two, just for a relish","id":"9875:144","paragraph":4189},{"range":[344,22],"decidedBy":"rules","sentence":9888,"reference":{"range":[0,35],"sentence":9873,"paragraph":4189,"text":"“Now don’t be a wet-blanket, Teddy."},"kind":"thing","text":"am proud of you, Teddy","id":"9888:344","paragraph":4191},{"range":[194,48],"decidedBy":"rules","sentence":9905,"reference":{"range":[1011,83],"sentence":9866,"paragraph":4185,"text":"Think what luxury— Plumfield my own, and a wilderness of boys to enjoy it with me.”"},"kind":"action","text":"did enjoy her ‘wilderness of boys’, and how poor","id":"9905:194","paragraph":4196},{"range":[1583,36],"decidedBy":"rules","sentence":9916,"reference":{"range":[759,167],"sentence":9907,"paragraph":4196,"text":"It became a sort of boys’ paradise, and Laurie suggested that it should be called the ‘Bhaer-garten’, as a compliment to its master and appropriate to its inhabitants."},"kind":"thing","text":"who was welcome to the ‘Bhaer-garten","id":"9916:1583","paragraph":4197},{"range":[327,36],"decidedBy":"rules","sentence":9935,"reference":{"range":[660,152],"sentence":9928,"paragraph":4199,"text":"Birds twittered their adieux from the alders in the lane, and every tree stood ready to send down its shower of red or yellow apples at the first shake."},"kind":"action","text":"took Daisy up among the bird’s nests","id":"9935:327","paragraph":4202},{"range":[794,45],"decidedBy":"rules","sentence":9943,"reference":{"range":[660,152],"sentence":9928,"paragraph":4199,"text":"Birds twittered their adieux from the alders in the lane, and every tree stood ready to send down its shower of red or yellow apples at the first shake."},"kind":"action","text":"roosted in the trees like a new style of bird","id":"9943:794","paragraph":4204},{"range":[106,50],"decidedBy":"rules","sentence":9950,"reference":{"range":[0,107],"sentence":9932,"paragraph":4200,"text":"Mr. March strolled placidly about, quoting Tusser, Cowley, and Columella to Mr. Laurence, while enjoying..."},"kind":"action","text":"Everybody’s health was proposed, from Mr. Laurence","id":"9950:106","paragraph":4207},{"range":[1014,34],"decidedBy":"rules","sentence":9954,"reference":{"range":[0,34],"sentence":9947,"paragraph":4206,"text":"“Now, Grandma’s sixtieth birthday!"},"kind":"action","text":"dear Grandma, from her little Beth","id":"9954:1014","paragraph":4207},{"range":[11,37],"decidedBy":"rules","sentence":9970,"reference":{"range":[0,75],"sentence":9960,"paragraph":4211,"text":"“And yet your life is very different from the one you pictured so long ago."},"kind":"thing","text":"is very different from what I planned","id":"9970:11","paragraph":4214},{"range":[123,27],"decidedBy":"rules","sentence":9973,"reference":{"range":[265,113],"sentence":9877,"paragraph":4189,"text":"I’ve seen unfortunate little creatures left to servants, or backward ones pushed forward, when it’s real cruelty."},"kind":"thing","text":"was a frail little creature","id":"9973:123","paragraph":4215},{"range":[12,37],"decidedBy":"rules","sentence":9990,"reference":{"range":[611,48],"sentence":9927,"paragraph":4199,"text":"Squirrels were busy with their small harvesting."},"kind":"reaction","text":"think your harvest will be a good one","id":"9990:12","paragraph":4221},{"range":[75,44],"decidedBy":"rules","sentence":9995,"reference":{"range":[299,165],"sentence":9951,"paragraph":4207,"text":"Demi, as the oldest grandchild, then presented the queen of the day with various gifts, so numerous that they were transported to the festive scene in a wheelbarrow."},"kind":"action","text":"gather children and grandchildren to herself","id":"9995:75","paragraph":4225}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "9828:0",
+      "sentence": 9828,
+      "paragraph": 4169,
+      "range": [
+        0,
+        38
+      ],
+      "text": "“No, I don’t,” was Jo’s decided answer",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9827,
+        "paragraph": 4168,
+        "range": [
+          0,
+          164
+        ],
+        "text": "“It’s a fine old place, and will bring a handsome sum, for of course you intend to sell it,” said Laurie, as they were all talking the matter over some weeks later."
+      }
+    },
+    {
+      "id": "9833:0",
+      "sentence": 9833,
+      "paragraph": 4173,
+      "range": [
+        0,
+        50
+      ],
+      "text": "“He’ll try his hand at it there, if I propose it.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9832,
+        "paragraph": 4172,
+        "range": [
+          95,
+          98
+        ],
+        "text": "The garden and orchard alone need two or three men, and farming isn’t in Bhaer’s line, I take it.”"
+      }
+    },
+    {
+      "id": "9836:0",
+      "sentence": 9836,
+      "paragraph": 4175,
+      "range": [
+        0,
+        53
+      ],
+      "text": "“The crop we are going to raise is a profitable one,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9834,
+        "paragraph": 4174,
+        "range": [
+          0,
+          52
+        ],
+        "text": "“And you expect to live on the produce of the place?"
+      }
+    },
+    {
+      "id": "9838:0",
+      "sentence": 9838,
+      "paragraph": 4177,
+      "range": [
+        0,
+        6
+      ],
+      "text": "“Boys.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9837,
+        "paragraph": 4176,
+        "range": [
+          0,
+          46
+        ],
+        "text": "“Of what is this fine crop to consist, ma’am?”"
+      }
+    },
+    {
+      "id": "9844:30",
+      "sentence": 9844,
+      "paragraph": 4180,
+      "range": [
+        30,
+        67
+      ],
+      "text": "who welcomed the thought of a chance for trying the Socratic method",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9839,
+        "paragraph": 4177,
+        "range": [
+          7,
+          126
+        ],
+        "text": "I want to open a school for little lads—a good, happy, homelike school, with me to take care of them and Fritz to teach them.”"
+      }
+    },
+    {
+      "id": "9849:0",
+      "sentence": 9849,
+      "paragraph": 4183,
+      "range": [
+        0,
+        31
+      ],
+      "text": "“I knew you’d stand by me, sir.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9846,
+        "paragraph": 4182,
+        "range": [
+          0,
+          34
+        ],
+        "text": "“Jo can do it, and be happy in it."
+      }
+    },
+    {
+      "id": "9855:0",
+      "sentence": 9855,
+      "paragraph": 4185,
+      "range": [
+        0,
+        29
+      ],
+      "text": "“I told my plan to Fritz once",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9851,
+        "paragraph": 4183,
+        "range": [
+          141,
+          125
+        ],
+        "text": "Now, my dear people,” continued Jo earnestly, “just understand that this isn’t a new idea of mine, but a long cherished plan."
+      }
+    },
+    {
+      "id": "9858:303",
+      "sentence": 9858,
+      "paragraph": 4185,
+      "range": [
+        303,
+        26
+      ],
+      "text": "thanks to my good old aunt",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9826,
+        "paragraph": 4167,
+        "range": [
+          294,
+          216
+        ],
+        "text": "But when their first sorrow was over—for they loved the old lady in spite of her sharp tongue—they found they had cause for rejoicing, for she had left Plumfield to Jo, which made all sorts of joyful things possible."
+      }
+    },
+    {
+      "id": "9866:1030",
+      "sentence": 9866,
+      "paragraph": 4185,
+      "range": [
+        1030,
+        62
+      ],
+      "text": "Plumfield my own, and a wilderness of boys to enjoy it with me",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9826,
+        "paragraph": 4167,
+        "range": [
+          294,
+          216
+        ],
+        "text": "But when their first sorrow was over—for they loved the old lady in spite of her sharp tongue—they found they had cause for rejoicing, for she had left Plumfield to Jo, which made all sorts of joyful things possible."
+      }
+    },
+    {
+      "id": "9869:73",
+      "sentence": 9869,
+      "paragraph": 4187,
+      "range": [
+        73,
+        80
+      ],
+      "text": "“Nothing could be more natural and proper than for my Professor to open a school",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9838,
+        "paragraph": 4177,
+        "range": [
+          0,
+          6
+        ],
+        "text": "“Boys."
+      }
+    },
+    {
+      "id": "9872:207",
+      "sentence": 9872,
+      "paragraph": 4188,
+      "range": [
+        207,
+        59
+      ],
+      "text": "I’m afraid your crop won’t be profitable in a worldly sense",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9836,
+        "paragraph": 4175,
+        "range": [
+          0,
+          69
+        ],
+        "text": "“The crop we are going to raise is a profitable one,” and Jo laughed."
+      }
+    },
+    {
+      "id": "9885:0",
+      "sentence": 9885,
+      "paragraph": 4190,
+      "range": [
+        0,
+        39
+      ],
+      "text": "“I’ll testify that you tried to do it,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9884,
+        "paragraph": 4189,
+        "range": [
+          1044,
+          98
+        ],
+        "text": "I’ve had experience, too, for haven’t I brought up one boy to be a pride and honor to his family?”"
+      }
+    },
+    {
+      "id": "9889:519",
+      "sentence": 9889,
+      "paragraph": 4191,
+      "range": [
+        519,
+        29
+      ],
+      "text": "‘There’s your model, my lads’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9884,
+        "paragraph": 4189,
+        "range": [
+          1044,
+          98
+        ],
+        "text": "I’ve had experience, too, for haven’t I brought up one boy to be a pride and honor to his family?”"
+      }
+    },
+    {
+      "id": "9890:0",
+      "sentence": 9890,
+      "paragraph": 4192,
+      "range": [
+        0,
+        37
+      ],
+      "text": "Poor Laurie didn’t know where to look",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9888,
+        "paragraph": 4191,
+        "range": [
+          342,
+          113
+        ],
+        "text": "I am proud of you, Teddy, for you get better every year, and everyone feels it, though you won’t let them say so."
+      }
+    },
+    {
+      "id": "9902:326",
+      "sentence": 9902,
+      "paragraph": 4195,
+      "range": [
+        326,
+        70
+      ],
+      "text": "Mr. Laurence was continually finding some touching case of destitution",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9848,
+        "paragraph": 4182,
+        "range": [
+          57,
+          132
+        ],
+        "text": "Tell us all about it,” cried Mr. Laurence, who had been longing to lend the lovers a hand, but knew that they would refuse his help."
+      }
+    },
+    {
+      "id": "9903:511",
+      "sentence": 9903,
+      "paragraph": 4195,
+      "range": [
+        511,
+        40
+      ],
+      "text": "the sly old gentleman got round proud Jo",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9848,
+        "paragraph": 4182,
+        "range": [
+          57,
+          132
+        ],
+        "text": "Tell us all about it,” cried Mr. Laurence, who had been longing to lend the lovers a hand, but knew that they would refuse his help."
+      }
+    },
+    {
+      "id": "9905:187",
+      "sentence": 9905,
+      "paragraph": 4196,
+      "range": [
+        187,
+        41
+      ],
+      "text": "How Jo did enjoy her ‘wilderness of boys’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9866,
+        "paragraph": 4185,
+        "range": [
+          1011,
+          83
+        ],
+        "text": "Think what luxury— Plumfield my own, and a wilderness of boys to enjoy it with me.”"
+      }
+    },
+    {
+      "id": "9908:39",
+      "sentence": 9908,
+      "paragraph": 4197,
+      "range": [
+        39,
+        38
+      ],
+      "text": "the Professor did not lay up a fortune",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9857,
+        "paragraph": 4185,
+        "range": [
+          234,
+          59
+        ],
+        "text": "Money doesn’t stay in his pocket long enough to lay up any."
+      }
+    },
+    {
+      "id": "9908:121",
+      "sentence": 9908,
+      "paragraph": 4197,
+      "range": [
+        121,
+        75
+      ],
+      "text": "‘a happy, homelike place for boys, who needed teaching, care, and kindness’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9839,
+        "paragraph": 4177,
+        "range": [
+          7,
+          126
+        ],
+        "text": "I want to open a school for little lads—a good, happy, homelike school, with me to take care of them and Fritz to teach them.”"
+      }
+    },
+    {
+      "id": "9913:618",
+      "sentence": 9913,
+      "paragraph": 4197,
+      "range": [
+        618,
+        23
+      ],
+      "text": "She had boys enough now",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9865,
+        "paragraph": 4185,
+        "range": [
+          869,
+          141
+        ],
+        "text": "I’ve always longed for lots of boys, and never had enough, now I can fill the house full and revel in the little dears to my heart’s content."
+      }
+    },
+    {
+      "id": "9916:1517",
+      "sentence": 9916,
+      "paragraph": 4197,
+      "range": [
+        1517,
+        60
+      ],
+      "text": "a merry little quadroon, who could not be taken in elsewhere",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9875,
+        "paragraph": 4189,
+        "range": [
+          113,
+          82
+        ],
+        "text": "Then, when I’ve got a start, I can take in a ragamuffin or two, just for a relish."
+      }
+    },
+    {
+      "id": "9938:200",
+      "sentence": 9938,
+      "paragraph": 4203,
+      "range": [
+        200,
+        32
+      ],
+      "text": "Little Teddy bore a charmed life",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9919,
+        "paragraph": 4198,
+        "range": [
+          292,
+          232
+        ],
+        "text": "As the years went on, two little lads of her own came to increase her happiness—Rob, named for Grandpa, and Teddy, a happy-go-lucky baby, who seemed to have inherited his papa’s sunshiny temper as well as his mother’s lively spirit."
+      }
+    },
+    {
+      "id": "9945:117",
+      "sentence": 9945,
+      "paragraph": 4205,
+      "range": [
+        117,
+        28
+      ],
+      "text": "“Aunt March, God bless her!”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9858,
+        "paragraph": 4185,
+        "range": [
+          294,
+          186
+        ],
+        "text": "But now, thanks to my good old aunt, who loved me better than I ever deserved, I’m rich, at least I feel so, and we can live at Plumfield perfectly well, if we have a flourishing school."
+      }
+    },
+    {
+      "id": "9954:1010",
+      "sentence": 9954,
+      "paragraph": 4207,
+      "range": [
+        1010,
+        40
+      ],
+      "text": "“To dear Grandma, from her little Beth.”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9935,
+        "paragraph": 4202,
+        "range": [
+          240,
+          173
+        ],
+        "text": "Laurie devoted himself to the little ones, rode his small daughter in a bushel-basket, took Daisy up among the bird’s nests, and kept adventurous Rob from breaking his neck."
+      }
+    },
+    {
+      "id": "9957:676",
+      "sentence": 9957,
+      "paragraph": 4208,
+      "range": [
+        676,
+        82
+      ],
+      "text": "from tall Franz and Emil to the little quadroon, who had the sweetest voice of all",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9916,
+        "paragraph": 4197,
+        "range": [
+          1380,
+          312
+        ],
+        "text": "There were slow boys and bashful boys, feeble boys and riotous boys, boys that lisped and boys that stuttered, one or two lame ones, and a merry little quadroon, who could not be taken in elsewhere, but who was welcome to the ‘Bhaer-garten’, though some people predicted that his admission would ruin the school."
+      }
+    },
+    {
+      "id": "9959:0",
+      "sentence": 9959,
+      "paragraph": 4210,
+      "range": [
+        0,
+        61
+      ],
+      "text": "“I don’t think I ever ought to call myself ‘unlucky Jo’ again",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9853,
+        "paragraph": 4183,
+        "range": [
+          531,
+          214
+        ],
+        "text": "I see so many going to ruin for want of help at the right minute, I love so to do anything for them, I seem to feel their wants, and sympathize with their troubles, and oh, I should so like to be a mother to them!”"
+      }
+    },
+    {
+      "id": "9967:0",
+      "sentence": 9967,
+      "paragraph": 4213,
+      "range": [
+        0,
+        47
+      ],
+      "text": "“My castle was the most nearly realized of all.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9961,
+        "paragraph": 4211,
+        "range": [
+          76,
+          40
+        ],
+        "text": "Do you remember our castles in the air?”"
+      }
+    },
+    {
+      "id": "9970:0",
+      "sentence": 9970,
+      "paragraph": 4214,
+      "range": [
+        0,
+        48
+      ],
+      "text": "“My castle is very different from what I planned",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9961,
+        "paragraph": 4211,
+        "range": [
+          76,
+          40
+        ],
+        "text": "Do you remember our castles in the air?”"
+      }
+    },
+    {
+      "id": "9973:93",
+      "sentence": 9973,
+      "paragraph": 4215,
+      "range": [
+        93,
+        57
+      ],
+      "text": "her one well-beloved daughter was a frail little creature",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9935,
+        "paragraph": 4202,
+        "range": [
+          240,
+          173
+        ],
+        "text": "Laurie devoted himself to the little ones, rode his small daughter in a bushel-basket, took Daisy up among the bird’s nests, and kept adventurous Rob from breaking his neck."
+      }
+    },
+    {
+      "id": "9982:204",
+      "sentence": 9982,
+      "paragraph": 4219,
+      "range": [
+        204,
+        18
+      ],
+      "text": "so devoted to Beth",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9954,
+        "paragraph": 4207,
+        "range": [
+          743,
+          307
+        ],
+        "text": "Demi’s miracle of mechanical skill, though the cover wouldn’t shut, Rob’s footstool had a wiggle in its uneven legs that she declared was soothing, and no page of the costly book Amy’s child gave her was so fair as that on which appeared in tipsy capitals, the words—“To dear Grandma, from her little Beth.”"
+      }
+    },
+    {
+      "id": "9983:345",
+      "sentence": 9983,
+      "paragraph": 4219,
+      "range": [
+        345,
+        31
+      ],
+      "text": "‘Thank God, I’m a happy woman.’",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9969,
+        "paragraph": 4213,
+        "range": [
+          204,
+          163
+        ],
+        "text": "I’ve got them all, thank God, and am the happiest woman in the world,” and Meg laid her hand on her tall boy’s head, with a face full of tender and devout content."
+      }
+    },
+    {
+      "id": "9990:0",
+      "sentence": 9990,
+      "paragraph": 4221,
+      "range": [
+        0,
+        51
+      ],
+      "text": "“Yes, Jo, I think your harvest will be a good one,”",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 9836,
+        "paragraph": 4175,
+        "range": [
+          0,
+          69
+        ],
+        "text": "“The crop we are going to raise is a profitable one,” and Jo laughed."
+      }
+    }
+  ]
+}

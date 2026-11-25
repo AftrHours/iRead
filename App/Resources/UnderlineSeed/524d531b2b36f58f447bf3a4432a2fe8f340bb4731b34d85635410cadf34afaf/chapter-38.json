@@ -1,1 +1,48 @@
-{"parserVersion":1,"underlines":[],"engineVersion":5}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "536:0",
+      "sentence": 536,
+      "paragraph": 287,
+      "range": [
+        0,
+        52
+      ],
+      "text": "Elizabeth listened in silence, but was not convinced",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 535,
+        "paragraph": 286,
+        "range": [
+          88,
+          140
+        ],
+        "text": "Miss Bingley is to live with her brother, and keep his house; and I am much mistaken if we shall not find a very charming neighbour in her.”"
+      }
+    },
+    {
+      "id": "536:175",
+      "sentence": 536,
+      "paragraph": 287,
+      "range": [
+        175,
+        38
+      ],
+      "text": "less pliancy of temper than her sister",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 524,
+        "paragraph": 283,
+        "range": [
+          72,
+          33
+        ],
+        "text": "You never see a fault in anybody."
+      }
+    }
+  ]
+}

@@ -1,1 +1,48 @@
-{"engineVersion":5,"underlines":[],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "5920:57",
+      "sentence": 5920,
+      "paragraph": 2403,
+      "range": [
+        57,
+        102
+      ],
+      "text": "remained quietly in the hall till she and Kitty were out of sight, then returned into the drawing-room",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5914,
+        "paragraph": 2399,
+        "range": [
+          72,
+          138
+        ],
+        "text": "Jane instantly gave a look at Elizabeth which spoke her distress at such premeditation, and her entreaty that she would not give in to it."
+      }
+    },
+    {
+      "id": "5921:0",
+      "sentence": 5921,
+      "paragraph": 2404,
+      "range": [
+        0,
+        52
+      ],
+      "text": "Mrs. Bennet’s schemes for this day were ineffectual.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 5918,
+        "paragraph": 2402,
+        "range": [
+          0,
+          100
+        ],
+        "text": "“We may as well leave them by themselves, you know,” said her mother as soon as she was in the hall."
+      }
+    }
+  ]
+}

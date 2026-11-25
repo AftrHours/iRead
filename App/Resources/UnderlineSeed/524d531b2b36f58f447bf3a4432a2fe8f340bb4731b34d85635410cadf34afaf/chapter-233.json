@@ -1,1 +1,132 @@
-{"engineVersion":5,"underlines":[{"sentence":3121,"decidedBy":"rules","paragraph":1385,"text":"said to Darcy","range":[206,13],"reference":{"range":[0,48],"paragraph":1384,"sentence":3115,"text":"Darcy smiled and said, “You are perfectly right."},"id":"3121:206","kind":"action"}],"parserVersion":1}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "3113:38",
+      "sentence": 3113,
+      "paragraph": 1383,
+      "range": [
+        38,
+        50
+      ],
+      "text": "because I would not take the trouble of practising",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3107,
+        "paragraph": 1380,
+        "range": [
+          74,
+          52
+        ],
+        "text": "It is because he will not give himself the trouble.”"
+      }
+    },
+    {
+      "id": "3118:166",
+      "sentence": 3118,
+      "paragraph": 1384,
+      "range": [
+        166,
+        38
+      ],
+      "text": "We neither of us perform to strangers.",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3108,
+        "paragraph": 1381,
+        "range": [
+          0,
+          131
+        ],
+        "text": "“I certainly have not the talent which some people possess,” said Darcy, “of conversing easily with those I have never seen before."
+      }
+    },
+    {
+      "id": "3119:46",
+      "sentence": 3119,
+      "paragraph": 1385,
+      "range": [
+        46,
+        48
+      ],
+      "text": "who called out to know what they were talking of",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3051,
+        "paragraph": 1358,
+        "range": [
+          43,
+          30
+        ],
+        "text": "What is it you are talking of?"
+      }
+    },
+    {
+      "id": "3122:1",
+      "sentence": 3122,
+      "paragraph": 1386,
+      "range": [
+        1,
+        61
+      ],
+      "text": "Miss Bennet would not play at all amiss if she practised more",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3072,
+        "paragraph": 1365,
+        "range": [
+          232,
+          276
+        ],
+        "text": "I have told Miss Bennet several times, that she will never play really well, unless she practises more; and though Mrs. Collins has no instrument, she is very welcome, as I have often told her, to come to Rosings every day, and play on the pianoforte in Mrs. Jenkinson’s room."
+      }
+    },
+    {
+      "id": "3124:195",
+      "sentence": 3124,
+      "paragraph": 1386,
+      "range": [
+        195,
+        80
+      ],
+      "text": "Anne would have been a delightful performer, had her health allowed her to learn",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3062,
+        "paragraph": 1361,
+        "range": [
+          120,
+          58
+        ],
+        "text": "And so would Anne, if her health had allowed her to apply."
+      }
+    },
+    {
+      "id": "3126:82",
+      "sentence": 3126,
+      "paragraph": 1388,
+      "range": [
+        82,
+        40
+      ],
+      "text": "many instructions on execution and taste",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 3060,
+        "paragraph": 1361,
+        "range": [
+          0,
+          58
+        ],
+        "text": "enjoyment of music than myself, or a better natural taste."
+      }
+    }
+  ]
+}

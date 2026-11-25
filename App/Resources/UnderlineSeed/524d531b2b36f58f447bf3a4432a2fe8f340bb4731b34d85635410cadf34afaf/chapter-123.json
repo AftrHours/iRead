@@ -1,1 +1,111 @@
-{"engineVersion":5,"parserVersion":1,"underlines":[]}
+{
+  "parserVersion": 1,
+  "engineVersion": 5,
+  "underlines": [
+    {
+      "id": "1700:387",
+      "sentence": 1700,
+      "paragraph": 835,
+      "range": [
+        387,
+        37
+      ],
+      "text": "the rest from the pride of her nephew",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1690,
+        "paragraph": 829,
+        "range": [
+          0,
+          140
+        ],
+        "text": "“You know of course that Lady Catherine de Bourgh and Lady Anne Darcy were sisters; consequently that she is aunt to the present Mr. Darcy.”"
+      }
+    },
+    {
+      "id": "1703:356",
+      "sentence": 1703,
+      "paragraph": 836,
+      "range": [
+        356,
+        31
+      ],
+      "text": "Whatever he said, was said well",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1553,
+        "paragraph": 771,
+        "range": [
+          0,
+          334
+        ],
+        "text": "the happy woman by whom he finally seated himself; and the agreeable manner in which he immediately fell into conversation, though it was only on its being a wet night, and on the probability of a rainy season, made her feel that the commonest, dullest, most threadbare topic might be rendered interesting by the skill of the speaker."
+      }
+    },
+    {
+      "id": "1704:427",
+      "sentence": 1704,
+      "paragraph": 836,
+      "range": [
+        427,
+        45
+      ],
+      "text": "Elizabeth went away with her head full of him",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1547,
+        "paragraph": 766,
+        "range": [
+          692,
+          185
+        ],
+        "text": "The gentlemen did approach: and when Mr. Wickham walked into the room, Elizabeth felt that she had neither been seeing him before, nor thinking of him since, with the smallest degree of"
+      }
+    },
+    {
+      "id": "1706:690",
+      "sentence": 1706,
+      "paragraph": 836,
+      "range": [
+        690,
+        43
+      ],
+      "text": "Lydia talked incessantly of lottery tickets",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1558,
+        "paragraph": 775,
+        "range": [
+          122,
+          301
+        ],
+        "text": "At first there seemed danger of Lydia’s engrossing him entirely, for she was a most determined talker; but being likewise extremely fond of lottery tickets, she soon grew too much interested in the game, too eager in making bets and exclaiming after prizes, to have attention for anyone in particular."
+      }
+    },
+    {
+      "id": "1706:965",
+      "sentence": 1706,
+      "paragraph": 836,
+      "range": [
+        965,
+        46
+      ],
+      "text": "repeatedly fearing that he crowded his cousins",
+      "kind": "thing",
+      "decidedBy": "hand",
+      "reference": {
+        "sentence": 1542,
+        "paragraph": 764,
+        "range": [
+          0,
+          438
+        ],
+        "text": "AS no objection was made to the young people’s engagement with their aunt, and all Mr. Collins’s scruples of leaving Mr. and Mrs. Bennet for a single evening during his visit were most steadily resisted, the coach conveyed him and his five cousins at a suitable hour to Meryton; and the girls had the pleasure of hearing, as they entered the drawing-room, that Mr. Wickham had accepted their uncle’s invitation, and was then in the house."
+      }
+    }
+  ]
+}
